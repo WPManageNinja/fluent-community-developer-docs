@@ -60,7 +60,7 @@ Search for GIFs from Giphy's library.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/giphy
+GET /wp-json/fluent-community/v2/giphy
 ```
 
 ### Query Parameters
@@ -76,8 +76,8 @@ GET /wp-json/fluent-community/v1/giphy
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/giphy?q=happy&limit=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/giphy?q=happy&limit=10" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -167,8 +167,8 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/giphy?q=happy&limit
 When creating or updating a post, include the Giphy URL in the content:
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Celebrating our milestone!",
@@ -190,8 +190,8 @@ curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds" \
 Include Giphy data when creating a comment:
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds/123/comments" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds/123/comments" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Congratulations! 🎊",
@@ -278,8 +278,8 @@ curl -X GET ".../giphy?q=happy&limit=25&offset=50"
 To enable Giphy integration, configure your Giphy API key in the admin settings:
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/settings/features" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/settings/features" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "giphy_enabled": true,

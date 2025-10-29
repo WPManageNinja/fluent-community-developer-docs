@@ -50,14 +50,14 @@ Retrieve list of available migration sources.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/migrations
+GET /wp-json/fluent-community/v2/migrations
 ```
 
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/migrations" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/migrations" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -97,14 +97,14 @@ Retrieve configuration options for BuddyPress migration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/migrations/buddypress/config
+GET /wp-json/fluent-community/v2/migrations/buddypress/config
 ```
 
 **Example Request**
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/migrations/buddypress/config" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/migrations/buddypress/config" \
+  -u "username:password"
 ```
 
 **Example Response**
@@ -155,7 +155,7 @@ Initiate the migration process from BuddyPress.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/migrations/buddypress/start
+POST /wp-json/fluent-community/v2/migrations/buddypress/start
 ```
 
 **Request Body**
@@ -172,8 +172,8 @@ POST /wp-json/fluent-community/v1/migrations/buddypress/start
 **Example Request**
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/migrations/buddypress/start" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/migrations/buddypress/start" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "items": ["groups", "members", "activities"],
@@ -220,14 +220,14 @@ Poll the migration status to track progress.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/migrations/buddypress/status
+GET /wp-json/fluent-community/v2/migrations/buddypress/status
 ```
 
 **Example Request**
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/migrations/buddypress/status" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/migrations/buddypress/status" \
+  -u "username:password"
 ```
 
 **Example Response (In Progress)**

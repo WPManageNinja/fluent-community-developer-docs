@@ -15,7 +15,7 @@ This method is used when making requests from the same site (e.g., from JavaScri
 **Example:**
 
 ```javascript
-fetch('/wp-json/fluent-community/v1/posts', {
+fetch('/wp-json/fluent-community/v2/posts', {
   method: 'GET',
   headers: {
     'X-WP-Nonce': wpApiSettings.nonce
@@ -49,7 +49,7 @@ WordPress Application Passwords allow you to authenticate API requests without e
 Use HTTP Basic Authentication with your WordPress username and the application password:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -60,7 +60,7 @@ const username = 'your_username';
 const appPassword = 'xxxx xxxx xxxx xxxx xxxx xxxx';
 const credentials = btoa(`${username}:${appPassword}`);
 
-fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
+fetch('https://your-site.com/wp-json/fluent-community/v2/posts', {
   method: 'GET',
   headers: {
     'Authorization': `Basic ${credentials}`
@@ -90,7 +90,7 @@ Install and configure a JWT authentication plugin (e.g., JWT Authentication for 
 **Getting a Token:**
 
 ```bash
-curl -X POST "https://your-site.com/wp-json/jwt-auth/v1/token" \
+curl -X POST "https://your-site.com/wp-json/jwt-auth/v2/token" \
   -H "Content-Type: application/json" \
   -d '{
     "username": "your_username",
@@ -112,7 +112,7 @@ curl -X POST "https://your-site.com/wp-json/jwt-auth/v1/token" \
 **Using the Token:**
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts" \
   -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc..."
 ```
 
@@ -120,7 +120,7 @@ curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts" \
 
 ```javascript
 // Get token
-const response = await fetch('https://your-site.com/wp-json/jwt-auth/v1/token', {
+const response = await fetch('https://your-site.com/wp-json/jwt-auth/v2/token', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -134,7 +134,7 @@ const response = await fetch('https://your-site.com/wp-json/jwt-auth/v1/token', 
 const { token } = await response.json();
 
 // Use token for API requests
-const posts = await fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
+const posts = await fetch('https://your-site.com/wp-json/fluent-community/v2/posts', {
   headers: {
     'Authorization': `Bearer ${token}`
   }
@@ -195,7 +195,7 @@ https://your-site.com/oauth/authorize?
 You can verify your authentication by making a request to the current user endpoint:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/auth/user" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/auth/user" \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 

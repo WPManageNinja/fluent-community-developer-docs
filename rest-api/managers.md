@@ -66,7 +66,7 @@ Retrieve all community managers.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/managers
+GET /wp-json/fluent-community/v2/admin/managers
 ```
 
 **Permissions:** Administrator only
@@ -84,8 +84,8 @@ GET /wp-json/fluent-community/v1/admin/managers
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/managers?role=manager" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/admin/managers?role=manager" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -109,11 +109,29 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/managers?role
       "assigned_by": 1,
       "created_at": "2024-01-01 10:00:00",
       "updated_at": "2024-01-15 14:30:00",
-      "user": {
-        "id": 45,
-        "display_name": "John Doe",
-        "email": "john@example.com",
-        "avatar": "https://example.com/avatar.jpg"
+      "xprofile": {
+        "user_id": 45,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       }
     },
     {
@@ -130,11 +148,29 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/managers?role
       "assigned_by": 1,
       "created_at": "2024-01-05 11:00:00",
       "updated_at": "2024-01-10 09:20:00",
-      "user": {
-        "id": 67,
-        "display_name": "Jane Smith",
-        "email": "jane@example.com",
-        "avatar": "https://example.com/avatar2.jpg"
+      "xprofile": {
+        "user_id": 67,
+        "total_points": 3210,
+        "is_verified": 0,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       }
     }
   ],
@@ -154,7 +190,7 @@ Add a new manager or update an existing manager's permissions.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/managers
+POST /wp-json/fluent-community/v2/admin/managers
 ```
 
 **Permissions:** Administrator only
@@ -172,8 +208,8 @@ POST /wp-json/fluent-community/v1/admin/managers
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/managers" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/managers" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "user_id": 89,
@@ -220,7 +256,7 @@ Update an existing manager's role or permissions.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/admin/managers/{user_id}
+PUT /wp-json/fluent-community/v2/admin/managers/{user_id}
 ```
 
 **Permissions:** Administrator only
@@ -237,8 +273,8 @@ PUT /wp-json/fluent-community/v1/admin/managers/{user_id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/admin/managers/89" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/admin/managers/89" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "permissions": [
@@ -282,7 +318,7 @@ Remove a user's manager role.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/admin/managers/{user_id}
+DELETE /wp-json/fluent-community/v2/admin/managers/{user_id}
 ```
 
 **Permissions:** Administrator only
@@ -290,8 +326,8 @@ DELETE /wp-json/fluent-community/v1/admin/managers/{user_id}
 ### Example Request
 
 ```bash
-curl -X DELETE "https://example.com/wp-json/fluent-community/v1/admin/managers/89" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://example.com/wp-json/fluent-community/v2/admin/managers/89" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -335,7 +371,7 @@ const rolePermissions = {
 Limit moderators to specific spaces:
 
 ```javascript
-await fetch('/wp-json/fluent-community/v1/admin/managers', {
+await fetch('/wp-json/fluent-community/v2/admin/managers', {
   method: 'POST',
   body: JSON.stringify({
     user_id: 67,
@@ -353,7 +389,7 @@ Track what managers do:
 async function getManagerActivity(userId) {
   // Get activities performed by manager
   const response = await fetch(
-    `/wp-json/fluent-community/v1/activities?user_id=${userId}&action_type=moderation`
+    `/wp-json/fluent-community/v2/activities?user_id=${userId}&action_type=moderation`
   );
   return await response.json();
 }
@@ -364,7 +400,7 @@ Periodically review manager permissions:
 
 ```javascript
 async function reviewManagerPermissions() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/managers');
+  const response = await fetch('/wp-json/fluent-community/v2/admin/managers');
   const data = await response.json();
   
   data.managers.forEach(manager => {
@@ -378,7 +414,7 @@ Send notifications when manager roles change:
 
 ```javascript
 async function addManagerWithNotification(userId, role, permissions) {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/managers', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/managers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -409,7 +445,7 @@ Create a manager management interface:
 
 ```javascript
 async function getManagerDashboard() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/managers');
+  const response = await fetch('/wp-json/fluent-community/v2/admin/managers');
   const data = await response.json();
   
   return {
@@ -431,7 +467,7 @@ Add a new community manager:
 
 ```javascript
 async function assignCommunityManager(userId) {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/managers', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/managers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -463,7 +499,7 @@ Add a moderator for specific spaces:
 
 ```javascript
 async function assignSpaceModerator(userId, spaceIds) {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/managers', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/managers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -493,7 +529,7 @@ Assign multiple managers at once:
 ```javascript
 async function bulkAssignManagers(managers) {
   const promises = managers.map(manager =>
-    fetch('/wp-json/fluent-community/v1/admin/managers', {
+    fetch('/wp-json/fluent-community/v2/admin/managers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ The Fluent Community REST API provides endpoints for managing community content,
 All API requests should be made to:
 
 ```
-https://your-site.com/wp-json/fluent-community/v1/
+https://your-site.com/wp-json/fluent-community/v2/
 ```
 
 ## API Namespace
@@ -26,7 +26,7 @@ Fluent Community uses the following namespaces:
 Here's a simple example of making an API request:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 

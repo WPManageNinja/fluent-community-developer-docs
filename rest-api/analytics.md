@@ -17,7 +17,7 @@ Retrieve summary statistics for the community dashboard.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/overview/widget
+GET /wp-json/fluent-community/v2/analytics/overview/widget
 ```
 
 **Permissions:** Administrator only
@@ -33,8 +33,8 @@ GET /wp-json/fluent-community/v1/analytics/overview/widget
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/analytics/overview/widget?date_from=2024-01-01&date_to=2024-01-31" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/analytics/overview/widget?date_from=2024-01-01&date_to=2024-01-31" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -67,7 +67,7 @@ Retrieve detailed activity metrics over time.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/overview/activity
+GET /wp-json/fluent-community/v2/analytics/overview/activity
 ```
 
 ### Parameters
@@ -110,7 +110,7 @@ Analyze when your community is most active.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/overview/popular-day-time
+GET /wp-json/fluent-community/v2/analytics/overview/popular-day-time
 ```
 
 ### Parameters
@@ -160,7 +160,7 @@ Retrieve member statistics summary.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/members/widget
+GET /wp-json/fluent-community/v2/analytics/members/widget
 ```
 
 ### Parameters
@@ -196,7 +196,7 @@ Retrieve detailed member activity metrics.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/members/activity
+GET /wp-json/fluent-community/v2/analytics/members/activity
 ```
 
 ### Parameters
@@ -235,7 +235,7 @@ Retrieve the most active community members.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/members/top-members
+GET /wp-json/fluent-community/v2/analytics/members/top-members
 ```
 
 ### Parameters
@@ -281,7 +281,7 @@ Retrieve members who create the most posts.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/members/top-post-starters
+GET /wp-json/fluent-community/v2/analytics/members/top-post-starters
 ```
 
 ### Example Response
@@ -308,7 +308,7 @@ Retrieve members who comment the most.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/members/top-commenters
+GET /wp-json/fluent-community/v2/analytics/members/top-commenters
 ```
 
 ### Example Response
@@ -340,7 +340,7 @@ Retrieve space statistics summary.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/spaces/widget
+GET /wp-json/fluent-community/v2/analytics/spaces/widget
 ```
 
 ### Parameters
@@ -376,7 +376,7 @@ Retrieve detailed space activity metrics.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/spaces/activity
+GET /wp-json/fluent-community/v2/analytics/spaces/activity
 ```
 
 ### Parameters
@@ -411,7 +411,7 @@ Retrieve the most active spaces.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/spaces/popular
+GET /wp-json/fluent-community/v2/analytics/spaces/popular
 ```
 
 ### Parameters
@@ -448,7 +448,7 @@ Search spaces for analytics filtering.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/analytics/spaces/search
+GET /wp-json/fluent-community/v2/analytics/spaces/search
 ```
 
 ### Parameters
@@ -478,7 +478,7 @@ Don't query unnecessarily large date ranges:
 
 ```javascript
 // Good: Last 30 days
-const analytics = await fetch('/wp-json/fluent-community/v1/analytics/overview/widget?date_from=2024-01-01&date_to=2024-01-31');
+const analytics = await fetch('/wp-json/fluent-community/v2/analytics/overview/widget?date_from=2024-01-01&date_to=2024-01-31');
 
 // Bad: Multiple years
 // const analytics = await fetch('...?date_from=2020-01-01&date_to=2024-12-31');
@@ -488,7 +488,7 @@ const analytics = await fetch('/wp-json/fluent-community/v1/analytics/overview/w
 Fetch raw data and aggregate on the client when possible:
 
 ```javascript
-const activity = await fetch('/wp-json/fluent-community/v1/analytics/overview/activity');
+const activity = await fetch('/wp-json/fluent-community/v2/analytics/overview/activity');
 const totalPosts = activity.data.reduce((sum, day) => sum + day.posts, 0);
 ```
 
@@ -496,7 +496,7 @@ const totalPosts = activity.data.reduce((sum, day) => sum + day.posts, 0);
 Enable comparison to show trends:
 
 ```javascript
-const analytics = await fetch('/wp-json/fluent-community/v1/analytics/overview/widget?compare=true');
+const analytics = await fetch('/wp-json/fluent-community/v2/analytics/overview/widget?compare=true');
 console.log(`Posts increased by ${analytics.comparison.posts_change}%`);
 ```
 
@@ -511,10 +511,10 @@ Create a comprehensive admin dashboard:
 ```javascript
 async function getAdminDashboard() {
   const [overview, activity, topMembers, topSpaces] = await Promise.all([
-    fetch('/wp-json/fluent-community/v1/analytics/overview/widget'),
-    fetch('/wp-json/fluent-community/v1/analytics/overview/activity?date_from=2024-01-01&date_to=2024-01-31&interval=day'),
-    fetch('/wp-json/fluent-community/v1/analytics/members/top-members?limit=5'),
-    fetch('/wp-json/fluent-community/v1/analytics/spaces/popular?limit=5')
+    fetch('/wp-json/fluent-community/v2/analytics/overview/widget'),
+    fetch('/wp-json/fluent-community/v2/analytics/overview/activity?date_from=2024-01-01&date_to=2024-01-31&interval=day'),
+    fetch('/wp-json/fluent-community/v2/analytics/members/top-members?limit=5'),
+    fetch('/wp-json/fluent-community/v2/analytics/spaces/popular?limit=5')
   ]);
   
   return {
@@ -537,7 +537,7 @@ async function generateMonthlyReport(year, month) {
   const dateTo = `${year}-${month.toString().padStart(2, '0')}-${lastDay}`;
   
   const response = await fetch(
-    `/wp-json/fluent-community/v1/analytics/overview/activity?date_from=${dateFrom}&date_to=${dateTo}&interval=day`
+    `/wp-json/fluent-community/v2/analytics/overview/activity?date_from=${dateFrom}&date_to=${dateTo}&interval=day`
   );
   
   const data = await response.json();

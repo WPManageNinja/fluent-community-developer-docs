@@ -34,7 +34,7 @@ Follow another user in the community.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/profile/{username}/follow
+POST /wp-json/fluent-community/v2/profile/{username}/follow
 ```
 
 ### Parameters
@@ -46,9 +46,9 @@ POST /wp-json/fluent-community/v1/profile/{username}/follow
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/jane_smith/follow" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/follow" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -84,15 +84,15 @@ Stop following a user.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/profile/{username}/unfollow
+POST /wp-json/fluent-community/v2/profile/{username}/unfollow
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/jane_smith/unfollow" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/unfollow" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -110,7 +110,7 @@ Retrieve a list of users following a specific user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/followers
+GET /wp-json/fluent-community/v2/profile/{username}/followers
 ```
 
 ### Parameters
@@ -124,34 +124,59 @@ GET /wp-json/fluent-community/v1/profile/{username}/followers
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/jane_smith/followers?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/followers?per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
-    {
-      "id": 123,
-      "follower_id": 1,
-      "following_id": 2,
-      "status": "active",
-      "created_at": "2025-10-27T12:00:00",
-      "follower": {
-        "id": 1,
-        "username": "john_doe",
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg",
-        "bio": "Community enthusiast"
+  "followers": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 123,
+        "follower_id": 1,
+        "following_id": 2,
+        "status": "active",
+        "created_at": "2025-10-27 12:00:00",
+        "xprofile": {
+          "user_id": 1,
+          "total_points": 6425,
+          "is_verified": 1,
+          "status": "active",
+          "display_name": "User Name",
+          "username": "username",
+          "avatar": "avatar_url",
+          "created_at": "2024-03-05 16:37:02",
+          "short_description": "User description",
+          "meta": {
+            "website": "website_url",
+            "cover_photo": "cover_photo_url",
+            "social_links": {
+              "twitter": "@handle",
+              "youtube": "@handle",
+              "linkedin": "handle",
+              "fb": "handle",
+              "instagram": "handle"
+            },
+            "badge_slug": ["badge1", "badge2"]
+          },
+          "badge": null
+        }
       }
-    }
-  ],
-  "meta": {
-    "total": 56,
+    ],
+    "first_page_url": "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/followers/?page=1",
+    "from": 1,
+    "last_page": 3,
+    "last_page_url": "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/followers/?page=3",
+    "next_page_url": "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/followers/?page=2",
+    "path": "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/followers",
     "per_page": 20,
-    "current_page": 1
+    "prev_page_url": null,
+    "to": 20,
+    "total": 56
   }
 }
 ```
@@ -163,7 +188,7 @@ Retrieve a list of users that a specific user is following.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/following
+GET /wp-json/fluent-community/v2/profile/{username}/followings
 ```
 
 ### Parameters
@@ -176,34 +201,59 @@ GET /wp-json/fluent-community/v1/profile/{username}/following
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe/following?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/followings?per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
-    {
-      "id": 124,
-      "follower_id": 1,
-      "following_id": 3,
-      "status": "active",
-      "created_at": "2025-10-25T10:00:00",
-      "following": {
-        "id": 3,
-        "username": "jane_smith",
-        "display_name": "Jane Smith",
-        "avatar": "https://example.com/avatar2.jpg",
-        "bio": "Tech enthusiast"
+  "followings": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 124,
+        "follower_id": 1,
+        "following_id": 3,
+        "status": "active",
+        "created_at": "2025-10-25 10:00:00",
+        "xprofile": {
+          "user_id": 3,
+          "total_points": 6425,
+          "is_verified": 1,
+          "status": "active",
+          "display_name": "User Name",
+          "username": "username",
+          "avatar": "avatar_url",
+          "created_at": "2024-03-05 16:37:02",
+          "short_description": "User description",
+          "meta": {
+            "website": "website_url",
+            "cover_photo": "cover_photo_url",
+            "social_links": {
+              "twitter": "@handle",
+              "youtube": "@handle",
+              "linkedin": "handle",
+              "fb": "handle",
+              "instagram": "handle"
+            },
+            "badge_slug": ["badge1", "badge2"]
+          },
+          "badge": null
+        }
       }
-    }
-  ],
-  "meta": {
-    "total": 42,
+    ],
+    "first_page_url": "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/followings/?page=1",
+    "from": 1,
+    "last_page": 3,
+    "last_page_url": "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/followings/?page=3",
+    "next_page_url": "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/followings/?page=2",
+    "path": "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/followings",
     "per_page": 20,
-    "current_page": 1
+    "prev_page_url": null,
+    "to": 20,
+    "total": 42
   }
 }
 ```
@@ -215,14 +265,14 @@ Check if the current user is following another user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/follow-status
+GET /wp-json/fluent-community/v2/profile/{username}/follow-status
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/jane_smith/follow-status" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/jane_smith/follow-status" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -244,14 +294,14 @@ Retrieve pending follow requests for the current user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/follow-requests
+GET /wp-json/fluent-community/v2/profile/follow-requests
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/follow-requests" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/follow-requests" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -282,15 +332,15 @@ Approve a pending follow request.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/profile/follow-requests/{request_id}/approve
+POST /wp-json/fluent-community/v2/profile/follow-requests/{request_id}/approve
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/follow-requests/125/approve" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/follow-requests/125/approve" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -312,15 +362,15 @@ Reject a pending follow request.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/profile/follow-requests/{request_id}/reject
+POST /wp-json/fluent-community/v2/profile/follow-requests/{request_id}/reject
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/follow-requests/125/reject" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/follow-requests/125/reject" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -342,12 +392,12 @@ async function toggleFollow(username) {
   const status = await checkFollowStatus(username);
   
   if (status.is_following) {
-    await fetch(`/wp-json/fluent-community/v1/profile/${username}/unfollow`, {
+    await fetch(`/wp-json/fluent-community/v2/profile/${username}/unfollow`, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer TOKEN' }
     });
   } else {
-    await fetch(`/wp-json/fluent-community/v1/profile/${username}/follow`, {
+    await fetch(`/wp-json/fluent-community/v2/profile/${username}/follow`, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer TOKEN' }
     });
@@ -400,7 +450,7 @@ Show content from followed users:
 
 ```bash
 # Get following list
-curl ".../profile/me/following"
+curl ".../profile/me/followings"
 
 # Get feeds from followed users
 curl ".../feeds?user_id[]=2&user_id[]=3&user_id[]=5"
@@ -446,7 +496,7 @@ Find mutual connections:
 curl ".../profile/jane_smith/followers"
 
 # Get current user's following
-curl ".../profile/me/following"
+curl ".../profile/me/followings"
 
 # Find intersection
 ```

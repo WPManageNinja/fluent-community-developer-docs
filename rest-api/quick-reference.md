@@ -5,17 +5,17 @@ A quick reference guide for the Fluent Community REST API with real endpoints.
 ## Base URL
 
 ```
-https://your-site.com/wp-json/fluent-community/v1/
+https://your-site.com/wp-json/fluent-community/v2/
 ```
 
 ## Authentication
 
 ```bash
 # Application Password
-curl --user "username:app_password" https://your-site.com/wp-json/fluent-community/v1/feeds
+curl --user "username:app_password" https://your-site.com/wp-json/fluent-community/v2/feeds
 
 # JWT Token
-curl -H "Authorization: Bearer YOUR_TOKEN" https://your-site.com/wp-json/fluent-community/v1/feeds
+curl -H "Authorization: Bearer YOUR_TOKEN" https://your-site.com/wp-json/fluent-community/v2/feeds
 ```
 
 ---

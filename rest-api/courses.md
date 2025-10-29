@@ -48,7 +48,7 @@ Retrieve a list of available courses.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses
+GET /wp-json/fluent-community/v2/courses
 ```
 
 ### Parameters
@@ -67,44 +67,87 @@ GET /wp-json/fluent-community/v1/courses
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses?status=published&per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses?status=published&per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
-    {
-      "id": 10,
-      "title": "Introduction to Web Development",
-      "slug": "intro-web-development",
-      "description": "Learn the basics of web development",
-      "featured_image": "https://example.com/course-image.jpg",
-      "status": "published",
-      "category": "Development",
-      "difficulty": "beginner",
-      "duration": "4 weeks",
-      "lessons_count": 12,
-      "students_count": 145,
-      "rating": 4.8,
-      "reviews_count": 32,
-      "price": 0,
-      "instructor": {
-        "id": 5,
-        "display_name": "Jane Instructor",
-        "avatar": "https://example.com/avatar.jpg"
+  "courses": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 881,
+        "created_by": "54824",
+        "parent_id": "78",
+        "title": "Introduction to Web Development",
+        "slug": "intro-web-development",
+        "logo": "https://example.com/logo.jpg",
+        "cover_photo": "https://example.com/cover.jpg",
+        "description": "Learn the basics of web development",
+        "type": "course",
+        "privacy": "public",
+        "status": "published",
+        "serial": "5",
+        "settings": {
+          "restricted_post_only": "yes",
+          "emoji": "",
+          "shape_svg": "",
+          "custom_lock_screen": "yes",
+          "can_request_join": "no",
+          "layout_style": "timeline",
+          "show_sidebar": "yes",
+          "og_image": "",
+          "links": [],
+          "topic_required": "no",
+          "hide_members_count": "no",
+          "members_page_status": "members_only",
+          "course_type": "self_paced"
+        },
+        "created_at": "2025-01-06 10:59:31",
+        "updated_at": "2025-01-06 10:59:31",
+        "isEnrolled": false,
+        "sectionsCount": 0,
+        "lessonsCount": 12,
+        "studentsCount": 145
+      }
+    ],
+    "first_page_url": "https://community.test/wp-json/fluent-community/v2/courses/?page=1",
+    "from": 1,
+    "last_page": 271,
+    "last_page_url": "https://community.test/wp-json/fluent-community/v2/courses/?page=271",
+    "links": [
+      {
+        "url": null,
+        "label": "pagination.previous",
+        "active": false
       },
-      "created_at": "2025-01-15T10:00:00",
-      "updated_at": "2025-10-20T14:30:00"
-    }
-  ],
-  "meta": {
-    "total": 25,
+      {
+        "url": "https://community.test/wp-json/fluent-community/v2/courses/?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": "https://community.test/wp-json/fluent-community/v2/courses/?page=2",
+        "label": "2",
+        "active": false
+      },
+      {
+        "url": null,
+        "label": "pagination.next",
+        "active": false
+      }
+    ],
+    "next_page_url": "https://community.test/wp-json/fluent-community/v2/courses/?page=2",
+    "path": "https://community.test/wp-json/fluent-community/v2/courses",
     "per_page": 10,
-    "current_page": 1
-  }
+    "prev_page_url": null,
+    "to": 10,
+    "total": 2710
+  },
+  "course_categories": []
 }
 ```
 
@@ -115,7 +158,7 @@ Retrieve detailed information about a course.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/{id}
+GET /wp-json/fluent-community/v2/courses/{id}
 ```
 
 ### Parameters
@@ -127,8 +170,8 @@ GET /wp-json/fluent-community/v1/courses/{id}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -172,7 +215,7 @@ Create a new course (instructor/admin only).
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/courses
+POST /wp-json/fluent-community/v2/courses
 ```
 
 ### Parameters
@@ -193,9 +236,9 @@ POST /wp-json/fluent-community/v1/courses
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Advanced JavaScript",
@@ -229,7 +272,7 @@ Modify an existing course.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/courses/{id}
+PUT /wp-json/fluent-community/v2/courses/{id}
 ```
 
 ### Parameters
@@ -239,9 +282,9 @@ All create parameters are available for updates (all optional).
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/25" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/25" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Advanced JavaScript Masterclass",
@@ -269,15 +312,15 @@ Remove a course permanently.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/courses/{id}
+DELETE /wp-json/fluent-community/v2/courses/{id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/25" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/25" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -297,7 +340,7 @@ Retrieve courses the current user is enrolled in.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/my-courses
+GET /wp-json/fluent-community/v2/courses/my-courses
 ```
 
 ### Parameters
@@ -311,8 +354,8 @@ GET /wp-json/fluent-community/v1/courses/my-courses
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/my-courses?status=active" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/my-courses?status=active" \
+  -u "username:password"
 ```
 
 ## Best Practices
@@ -483,7 +526,7 @@ Update lockscreen settings for a course to restrict access based on conditions.
 ### HTTP Request
 
 ```
-PUT /wp-json/fluent-community/v1/admin/courses/{course_id}/lockscreens
+PUT /wp-json/fluent-community/v2/admin/courses/{course_id}/lockscreens
 ```
 
 ### URL Parameters
@@ -515,8 +558,8 @@ PUT /wp-json/fluent-community/v1/admin/courses/{course_id}/lockscreens
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/admin/courses/15/lockscreens" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/admin/courses/15/lockscreens" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "enabled": true,

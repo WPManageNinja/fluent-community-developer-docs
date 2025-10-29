@@ -42,7 +42,7 @@ Retrieve a user's profile information.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}
+GET /wp-json/fluent-community/v2/profile/{username}
 ```
 
 ### Parameters
@@ -54,16 +54,16 @@ GET /wp-json/fluent-community/v1/profile/{username}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": {
-    "id": 1,
+  "profile": {
+    "user_id": 1,
     "username": "john_doe",
     "display_name": "John Doe",
     "first_name": "John",
@@ -71,31 +71,36 @@ curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe" \
     "email": "[email protected]",
     "avatar": "https://example.com/avatar.jpg",
     "cover_photo": "https://example.com/cover.jpg",
-    "bio": "Community enthusiast and tech lover",
-    "location": "San Francisco, CA",
+    "short_description": "Community enthusiast and tech lover",
+    "short_description_rendered": "<p>Community enthusiast and tech lover</p>",
     "website": "https://johndoe.com",
     "social_links": {
       "twitter": "https://twitter.com/johndoe",
       "linkedin": "https://linkedin.com/in/johndoe"
     },
     "status": "active",
-    "role": "member",
-    "badges": [
+    "is_verified": 0,
+    "badge_slugs": [],
+    "total_points": 0,
+    "compilation_score": 40,
+    "followers_count": 56,
+    "followings_count": 42,
+    "created_at": "2025-01-15T10:00:00",
+    "last_activity": "2025-10-27T11:30:00",
+    "can_change_username": true,
+    "can_change_email": true,
+    "canViewUserSpaces": true,
+    "profile_navs": [
       {
-        "id": 1,
-        "name": "Early Adopter",
-        "icon": "🌟"
+        "slug": "user_profile",
+        "title": "About",
+        "url": "https://example.com/portal/u/john_doe/",
+        "route": {
+          "name": "user_profile"
+        }
       }
     ],
-    "stats": {
-      "posts_count": 45,
-      "comments_count": 128,
-      "reactions_received": 234,
-      "followers_count": 56,
-      "following_count": 42
-    },
-    "created_at": "2025-01-15T10:00:00",
-    "last_seen": "2025-10-27T11:30:00"
+    "profile_nav_actions": []
   }
 }
 ```
@@ -107,14 +112,14 @@ Retrieve the authenticated user's own profile.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/me
+GET /wp-json/fluent-community/v2/profile/me
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/me" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/me" \
+  -u "username:password"
 ```
 
 ## Update Profile
@@ -124,7 +129,7 @@ Update the current user's profile information.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/profile/me
+PUT /wp-json/fluent-community/v2/profile/me
 ```
 
 ### Parameters
@@ -144,9 +149,9 @@ PUT /wp-json/fluent-community/v1/profile/me
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/me" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/me" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "display_name": "John Doe",
@@ -181,13 +186,14 @@ Retrieve feeds created by a specific user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/feeds
+GET /wp-json/fluent-community/v2/feeds?username={username}
 ```
 
 ### Parameters
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
+| `username` | string | - | Username to filter by |
 | `page` | integer | 1 | Page number |
 | `per_page` | integer | 20 | Items per page |
 | `status` | string | published | Filter by status |
@@ -195,8 +201,41 @@ GET /wp-json/fluent-community/v1/profile/{username}/feeds
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe/feeds?per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds?username=john_doe&per_page=10" \
+  -u "username:password"
+```
+
+### Example Response
+
+```json
+{
+  "feeds": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 123,
+        "user_id": 1,
+        "title": "My First Post",
+        "slug": "my-first-post",
+        "message": "Hello community!",
+        "message_rendered": "<p>Hello community!</p>",
+        "type": "feed",
+        "status": "published",
+        "comments_count": 5,
+        "reactions_count": 12,
+        "created_at": "2025-10-27T10:00:00",
+        "xprofile": {
+          "user_id": 1,
+          "display_name": "John Doe",
+          "username": "john_doe",
+          "avatar": "https://example.com/avatar.jpg"
+        }
+      }
+    ],
+    "total": 45,
+    "per_page": 10
+  }
+}
 ```
 
 ## Get User's Comments
@@ -206,7 +245,7 @@ Retrieve comments made by a specific user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/comments
+GET /wp-json/fluent-community/v2/profile/{username}/comments
 ```
 
 ### Parameters
@@ -219,8 +258,8 @@ GET /wp-json/fluent-community/v1/profile/{username}/comments
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe/comments" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/comments" \
+  -u "username:password"
 ```
 
 ## Get User's Spaces
@@ -230,14 +269,14 @@ Retrieve spaces a user is a member of.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/spaces
+GET /wp-json/fluent-community/v2/profile/{username}/spaces
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe/spaces" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/spaces" \
+  -u "username:password"
 ```
 
 ## Get Notification Preferences
@@ -247,14 +286,14 @@ Retrieve the current user's notification settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/notification-preferences
+GET /wp-json/fluent-community/v2/profile/notification-preferences
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/notification-preferences" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/notification-preferences" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -286,7 +325,7 @@ Update the current user's notification settings.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/profile/notification-preferences
+PUT /wp-json/fluent-community/v2/profile/notification-preferences
 ```
 
 ### Parameters
@@ -300,9 +339,9 @@ PUT /wp-json/fluent-community/v1/profile/notification-preferences
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/notification-preferences" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/notification-preferences" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "email_notifications": {
@@ -357,7 +396,7 @@ const socialLinks = {
 };
 
 // Update profile
-await fetch('/wp-json/fluent-community/v1/profile/me', {
+await fetch('/wp-json/fluent-community/v2/profile/me', {
   method: 'PUT',
   body: JSON.stringify({ social_links: socialLinks })
 });

@@ -285,7 +285,7 @@ Uploaded file exceeds size limit.
 ### 1. Always Check Response Status
 
 ```javascript
-fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
+fetch('https://your-site.com/wp-json/fluent-community/v2/posts', {
   method: 'GET',
   headers: {
     'Authorization': `Bearer ${token}`
@@ -310,7 +310,7 @@ fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
 ### 2. Handle Specific Error Codes
 
 ```javascript
-fetch('https://your-site.com/wp-json/fluent-community/v1/posts/123')
+fetch('https://your-site.com/wp-json/fluent-community/v2/posts/123')
   .then(response => response.json())
   .then(data => {
     if (data.code) {
@@ -422,7 +422,7 @@ function displayValidationErrors(errors) {
 }
 
 // Usage
-fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
+fetch('https://your-site.com/wp-json/fluent-community/v2/posts', {
   method: 'POST',
   body: JSON.stringify(postData)
 })
@@ -442,15 +442,15 @@ Test your error handling by simulating different error conditions:
 
 ```javascript
 // Test 401 Unauthorized
-fetch('/wp-json/fluent-community/v1/posts', {
+fetch('/wp-json/fluent-community/v2/posts', {
   // No authentication
 })
 
 // Test 404 Not Found
-fetch('/wp-json/fluent-community/v1/posts/999999')
+fetch('/wp-json/fluent-community/v2/posts/999999')
 
 // Test 400 Bad Request
-fetch('/wp-json/fluent-community/v1/posts', {
+fetch('/wp-json/fluent-community/v2/posts', {
   method: 'POST',
   body: JSON.stringify({}) // Missing required fields
 })

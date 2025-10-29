@@ -48,7 +48,7 @@ Retrieve all comments for a specific feed.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/{feed_id}/comments
+GET /wp-json/fluent-community/v2/feeds/{feed_id}/comments
 ```
 
 ### Parameters
@@ -65,53 +65,96 @@ GET /wp-json/fluent-community/v1/feeds/{feed_id}/comments
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/comments?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments?per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
+  "comments": [
     {
-      "id": 45,
-      "user_id": 2,
-      "post_id": 123,
+      "id": 1001,
+      "user_id": "1",
+      "post_id": "1001",
       "parent_id": null,
-      "message": "Great post! Thanks for sharing.",
-      "message_rendered": "<p>Great post! Thanks for sharing.</p>",
+      "message": "asdfasdf",
+      "message_rendered": "<p>asdfasdf</p>",
       "type": "comment",
       "content_type": "text",
       "status": "published",
-      "reactions_count": 5,
-      "is_sticky": false,
-      "created_at": "2025-10-27T11:00:00",
-      "updated_at": "2025-10-27T11:00:00",
-      "author": {
-        "id": 2,
-        "username": "jane_smith",
-        "display_name": "Jane Smith",
-        "avatar": "https://example.com/avatar.jpg"
-      },
-      "replies": [
-        {
-          "id": 46,
-          "parent_id": 45,
-          "message": "Thanks! Glad you found it helpful.",
-          "author": {
-            "id": 1,
-            "display_name": "John Doe"
-          }
-        }
-      ]
+      "reactions_count": "0",
+      "is_sticky": "0",
+      "meta": [],
+      "created_at": "2025-02-04 13:24:30",
+      "updated_at": "2025-02-04 13:24:30",
+      "xprofile": {
+        "user_id": 1,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
+      }
+    },
+    {
+      "id": 1002,
+      "user_id": "1",
+      "post_id": "1001",
+      "parent_id": null,
+      "message": "asdfasdfasdf",
+      "message_rendered": "<p>asdfasdfasdf</p>",
+      "type": "comment",
+      "content_type": "text",
+      "status": "published",
+      "reactions_count": "0",
+      "is_sticky": "0",
+      "meta": [],
+      "created_at": "2025-02-04 13:24:33",
+      "updated_at": "2025-02-04 13:24:33",
+      "xprofile": {
+        "user_id": 1,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
+      }
     }
-  ],
-  "meta": {
-    "total": 12,
-    "per_page": 20,
-    "current_page": 1
-  }
+  ]
 }
 ```
 
@@ -122,7 +165,7 @@ Retrieve details for a single comment.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/comments/{id}
+GET /wp-json/fluent-community/v2/comments/{id}
 ```
 
 ### Parameters
@@ -134,8 +177,8 @@ GET /wp-json/fluent-community/v1/comments/{id}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/comments/45" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/comments/45" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -153,11 +196,29 @@ curl "https://your-site.com/wp-json/fluent-community/v1/comments/45" \
     "status": "published",
     "reactions_count": 5,
     "created_at": "2025-10-27T11:00:00",
-    "author": {
-      "id": 2,
-      "username": "jane_smith",
-      "display_name": "Jane Smith",
-      "avatar": "https://example.com/avatar.jpg"
+    "xprofile": {
+      "user_id": 1,
+      "total_points": 6425,
+      "is_verified": 1,
+      "status": "active",
+      "display_name": "User Name",
+      "username": "username",
+      "avatar": "avatar_url",
+      "created_at": "2024-03-05 16:37:02",
+      "short_description": "User description",
+      "meta": {
+        "website": "website_url",
+        "cover_photo": "cover_photo_url",
+        "social_links": {
+          "twitter": "@handle",
+          "youtube": "@handle",
+          "linkedin": "handle",
+          "fb": "handle",
+          "instagram": "handle"
+        },
+        "badge_slug": ["badge1", "badge2"]
+      },
+      "badge": null
     }
   }
 }
@@ -170,7 +231,7 @@ Add a new comment to a feed.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/comments
 ```
 
 ### Parameters
@@ -185,9 +246,9 @@ POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/comments" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "message": "This is a great discussion!",
@@ -217,7 +278,7 @@ Reply to an existing comment.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/comments
 ```
 
 ### Parameters
@@ -227,9 +288,9 @@ Include `parent_id` to create a nested reply.
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/comments" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "message": "I agree with your point!",
@@ -259,7 +320,7 @@ Modify an existing comment.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments/{comment_id}
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/comments/{comment_id}
 ```
 
 ### Parameters
@@ -272,9 +333,9 @@ POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments/{comment_id}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/comments/47" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments/47" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "message": "This is an updated comment!"
@@ -301,15 +362,15 @@ Remove a comment permanently.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/feeds/{feed_id}/comments/{comment_id}
+DELETE /wp-json/fluent-community/v2/feeds/{feed_id}/comments/{comment_id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/comments/47" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments/47" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -378,7 +439,7 @@ Poll for new comments on active discussions:
 ```javascript
 // Check for new comments every 30 seconds
 setInterval(() => {
-  fetch('/wp-json/fluent-community/v1/feeds/123/comments?orderby=created_at&order=desc&per_page=5')
+  fetch('/wp-json/fluent-community/v2/feeds/123/comments?orderby=created_at&order=desc&per_page=5')
     .then(response => response.json())
     .then(data => updateComments(data));
 }, 30000);

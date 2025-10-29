@@ -30,7 +30,7 @@ Retrieve a paginated list of community members.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/members
+GET /wp-json/fluent-community/v2/members
 ```
 
 ### Parameters
@@ -48,96 +48,137 @@ GET /wp-json/fluent-community/v1/members
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/members?per_page=20&orderby=last_seen" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/members?per_page=20&orderby=last_seen" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
-    {
-      "id": 1,
-      "username": "john_doe",
-      "display_name": "John Doe",
-      "avatar": "https://example.com/avatar.jpg",
-      "bio": "Community enthusiast",
-      "location": "San Francisco, CA",
-      "role": "member",
-      "status": "active",
-      "badges": [
-        {
-          "id": 1,
-          "name": "Early Adopter",
-          "icon": "🌟"
-        }
-      ],
-      "stats": {
-        "posts_count": 45,
-        "comments_count": 128,
-        "reactions_received": 234
-      },
-      "created_at": "2025-01-15T10:00:00",
-      "last_seen": "2025-10-27T11:30:00"
-    }
-  ],
-  "meta": {
-    "total": 1250,
-    "per_page": 20,
+  "members": {
     "current_page": 1,
-    "total_pages": 63
-  }
+    "data": [
+      {
+        "user_id": 1,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "last_activity": "2025-10-29 06:55:33",
+        "badge": null
+      }
+    ],
+    "first_page_url": "https://community.test/wp-json/fluent-community/v2/members/?page=1",
+    "from": 1,
+    "last_page": 72,
+    "last_page_url": "https://community.test/wp-json/fluent-community/v2/members/?page=72",
+    "links": [
+      {
+        "url": null,
+        "label": "pagination.previous",
+        "active": false
+      },
+      {
+        "url": "https://community.test/wp-json/fluent-community/v2/members/?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": "https://community.test/wp-json/fluent-community/v2/members/?page=2",
+        "label": "2",
+        "active": false
+      },
+      {
+        "url": null,
+        "label": "pagination.next",
+        "active": false
+      }
+    ],
+    "next_page_url": "https://community.test/wp-json/fluent-community/v2/members/?page=2",
+    "path": "https://community.test/wp-json/fluent-community/v2/members",
+    "per_page": 20,
+    "prev_page_url": null,
+    "to": 20,
+    "total": 1250
+  },
+  "execution_time": 0.123
 }
 ```
 
 ## Search Members
 
-Search for members by name, username, or email.
+Search for members by name, username, or email using the `search` query parameter.
 
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/members/search
+GET /wp-json/fluent-community/v2/members?search={query}
 ```
 
 ### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `q` | string | Yes | Search query |
-| `per_page` | integer | No | Results limit (default: 10, max: 50) |
-| `exclude` | array | No | User IDs to exclude |
+| `search` | string | Yes | Search query (name, username, or email) |
+| `per_page` | integer | No | Results limit (default: 20, max: 100) |
+| `page` | integer | No | Page number for pagination |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/members/search?q=john" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/members?search=john&per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
-    {
-      "id": 1,
-      "username": "john_doe",
-      "display_name": "John Doe",
-      "avatar": "https://example.com/avatar.jpg",
-      "bio": "Community enthusiast",
-      "role": "member"
-    },
-    {
-      "id": 15,
-      "username": "johnny_smith",
-      "display_name": "Johnny Smith",
-      "avatar": "https://example.com/avatar2.jpg",
-      "bio": "Tech lover",
-      "role": "member"
-    }
-  ]
+  "members": {
+    "current_page": 1,
+    "data": [
+      {
+        "user_id": 1,
+        "username": "john_doe",
+        "display_name": "John Doe",
+        "avatar": "https://example.com/avatar.jpg",
+        "short_description": "Community enthusiast",
+        "total_points": 150,
+        "is_verified": 1,
+        "status": "active"
+      },
+      {
+        "user_id": 15,
+        "username": "johnny_smith",
+        "display_name": "Johnny Smith",
+        "avatar": "https://example.com/avatar2.jpg",
+        "short_description": "Tech lover",
+        "total_points": 89,
+        "is_verified": 0,
+        "status": "active"
+      }
+    ],
+    "total": 2,
+    "per_page": 10
+  },
+  "execution_time": 0.045
 }
 ```
 
@@ -148,7 +189,7 @@ Retrieve currently active members.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/members/active
+GET /wp-json/fluent-community/v2/members/active
 ```
 
 ### Parameters
@@ -161,8 +202,8 @@ GET /wp-json/fluent-community/v1/members/active
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/members/active?per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/members/active?per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -192,7 +233,7 @@ Retrieve recently joined members.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/members/new
+GET /wp-json/fluent-community/v2/members/new
 ```
 
 ### Parameters
@@ -205,8 +246,8 @@ GET /wp-json/fluent-community/v1/members/new
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/members/new?per_page=5" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/members/new?per_page=5" \
+  -u "username:password"
 ```
 
 ## Get Top Contributors
@@ -216,7 +257,7 @@ Retrieve members with the most activity.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/members/top-contributors
+GET /wp-json/fluent-community/v2/members/top-contributors
 ```
 
 ### Parameters
@@ -230,8 +271,8 @@ GET /wp-json/fluent-community/v1/members/top-contributors
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/members/top-contributors?period=month&metric=posts" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/members/top-contributors?period=month&metric=posts" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -275,10 +316,10 @@ Use specific search queries for better results:
 
 ```bash
 # Search by username
-curl ".../members/search?q=john_doe"
+curl ".../members?search=john_doe"
 
 # Search by display name
-curl ".../members/search?q=John%20Doe"
+curl ".../members?search=John%20Doe"
 ```
 
 ### 3. Filtering
@@ -325,7 +366,7 @@ Create a searchable member directory:
 curl ".../members?per_page=50&orderby=display_name&order=asc"
 
 # Add search functionality
-curl ".../members/search?q=john"
+curl ".../members?search=john"
 ```
 
 ### Welcome New Members
@@ -333,8 +374,8 @@ curl ".../members/search?q=john"
 Display recently joined members:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/members/new?per_page=5&days=7" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/members/new?per_page=5&days=7" \
+  -u "username:password"
 ```
 
 ### Online Members Widget
@@ -370,8 +411,8 @@ Suggest members to follow or connect with:
 # Get members with similar interests
 curl ".../members?space_id=5&per_page=10"
 
-# Exclude already following
-curl ".../members/search?q=tech&exclude[]=1&exclude[]=2"
+# Search with filters
+curl ".../members?search=tech&per_page=10"
 ```
 
 ### Space Member Invites
@@ -380,7 +421,7 @@ Find members to invite to a space:
 
 ```bash
 # Search for members not in space
-curl ".../members/search?q=john"
+curl ".../members?search=john"
 
 # Check if member is in space
 curl ".../spaces/tech-talk/members"

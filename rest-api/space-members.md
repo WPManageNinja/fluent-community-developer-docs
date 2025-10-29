@@ -38,7 +38,7 @@ Retrieve all members of a space.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/spaces/{spaceSlug}/members
+GET /wp-json/fluent-community/v2/spaces/{spaceSlug}/members
 ```
 
 ### Parameters
@@ -57,8 +57,8 @@ GET /wp-json/fluent-community/v1/spaces/{spaceSlug}/members
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members?per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members?per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -72,13 +72,30 @@ curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members
       "user_id": 1,
       "role": "admin",
       "status": "active",
-      "joined_at": "2025-01-15T10:00:00",
-      "user": {
-        "id": 1,
-        "username": "john_doe",
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg",
-        "email": "[email protected]"
+      "joined_at": "2025-01-15 10:00:00",
+      "xprofile": {
+        "user_id": 1,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       }
     },
     {
@@ -87,12 +104,30 @@ curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members
       "user_id": 2,
       "role": "member",
       "status": "active",
-      "joined_at": "2025-02-01T14:30:00",
-      "user": {
-        "id": 2,
-        "username": "jane_smith",
-        "display_name": "Jane Smith",
-        "avatar": "https://example.com/avatar2.jpg"
+      "joined_at": "2025-02-01 14:30:00",
+      "xprofile": {
+        "user_id": 2,
+        "total_points": 3210,
+        "is_verified": 0,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       }
     }
   ],
@@ -112,7 +147,7 @@ Add a user to a space with a specific role.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/members
+POST /wp-json/fluent-community/v2/spaces/{spaceSlug}/members
 ```
 
 ### Parameters
@@ -126,9 +161,9 @@ POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/members
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "user_id": 5,
@@ -159,7 +194,7 @@ Change a member's role in a space.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/{user_id}
+PUT /wp-json/fluent-community/v2/spaces/{spaceSlug}/members/{user_id}
 ```
 
 ### Parameters
@@ -171,9 +206,9 @@ PUT /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/{user_id}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members/5" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members/5" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "role": "moderator"
@@ -200,8 +235,8 @@ Remove a user from a space.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/remove
-DELETE /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/{user_id}
+POST /wp-json/fluent-community/v2/spaces/{spaceSlug}/members/remove
+DELETE /wp-json/fluent-community/v2/spaces/{spaceSlug}/members/{user_id}
 ```
 
 ### Parameters
@@ -213,9 +248,9 @@ DELETE /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/{user_id}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members/remove" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members/remove" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "user_id": 5
@@ -237,15 +272,15 @@ Ban a user from a space.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/{user_id}/ban
+POST /wp-json/fluent-community/v2/spaces/{spaceSlug}/members/{user_id}/ban
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members/5/ban" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members/5/ban" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -267,15 +302,15 @@ Restore a banned member's access.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/members/{user_id}/unban
+POST /wp-json/fluent-community/v2/spaces/{spaceSlug}/members/{user_id}/unban
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members/5/unban" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members/5/unban" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -297,7 +332,7 @@ Search for users to add to a space.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/spaces/users/search
+GET /wp-json/fluent-community/v2/spaces/users/search
 ```
 
 ### Parameters
@@ -311,8 +346,8 @@ GET /wp-json/fluent-community/v1/spaces/users/search
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/users/search?q=john&space_id=15" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/users/search?q=john&space_id=15" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -410,9 +445,9 @@ curl -X POST ".../spaces/tech-talk/members" -d '{
 Promote active members to moderators:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/members/5" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/members/5" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "role": "moderator"
   }'

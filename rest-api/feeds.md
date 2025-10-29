@@ -65,7 +65,7 @@ Retrieve a paginated list of feeds.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds
+GET /wp-json/fluent-community/v2/feeds
 ```
 
 ### Parameters
@@ -73,62 +73,91 @@ GET /wp-json/fluent-community/v1/feeds
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `page` | integer | 1 | Page number |
-| `per_page` | integer | 20 | Items per page (max: 100) |
-| `space_id` | integer | - | Filter by space |
-| `user_id` | integer | - | Filter by author |
-| `status` | string | published | Filter by status |
-| `type` | string | - | Filter by feed type |
+| `per_page` | integer | 10 | Items per page (max: 100) |
+| `space` | string | - | Filter by space slug |
+| `user_id` | integer | - | Filter by author ID |
 | `search` | string | - | Search in title and content |
-| `orderby` | string | created_at | Sort field |
-| `order` | string | desc | Sort order (asc, desc) |
+| `topic_slug` | string | - | Filter by topic slug |
+| `order_by_type` | string | - | Sort type (recent, popular, etc.) |
+| `disable_sticky` | string | - | Set to 'yes' to exclude sticky posts |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds?space_id=5&per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://community.test/wp-json/fluent-community/v2/feeds?space=general&per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
-    {
-      "id": 123,
-      "user_id": 1,
-      "title": "Welcome to the Community",
-      "slug": "welcome-to-the-community",
-      "message": "We're excited to have you here!",
-      "message_rendered": "<p>We're excited to have you here!</p>",
-      "type": "feed",
-      "content_type": "text",
-      "space_id": 5,
-      "privacy": "public",
-      "status": "published",
-      "comments_count": 12,
-      "reactions_count": 45,
-      "is_sticky": false,
-      "created_at": "2025-10-27T10:00:00",
-      "author": {
-        "id": 1,
-        "username": "john_doe",
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg"
-      },
-      "space": {
-        "id": 5,
-        "title": "General Discussion",
-        "slug": "general"
+  "feeds": {
+    "data": [
+      {
+        "id": 1007,
+        "slug": "kmkm-1753433461",
+        "title": "kmkm",
+        "message_rendered": "<p>kmkm</p>",
+        "type": "text",
+        "content_type": "text",
+        "space_id": "478",
+        "user_id": "1",
+        "privacy": "public",
+        "status": "published",
+        "priority": 0,
+        "featured_image": null,
+        "is_sticky": 0,
+        "scheduled_at": null,
+        "comments_count": 0,
+        "reactions_count": 0,
+        "created_at": "2025-07-25 08:51:01",
+        "permalink": "https://community.test/portal/space/...",
+        "meta": {},
+        "xprofile": {
+          "user_id": 1,
+          "total_points": 6425,
+          "is_verified": 1,
+          "status": "active",
+          "display_name": "User Name",
+          "username": "username",
+          "avatar": "avatar_url",
+          "created_at": "2024-03-05 16:37:02",
+          "short_description": "User description",
+          "meta": {
+            "website": "website_url",
+            "cover_photo": "cover_photo_url",
+            "social_links": {
+              "twitter": "@handle",
+              "youtube": "@handle",
+              "linkedin": "handle",
+              "fb": "handle",
+              "instagram": "handle"
+            },
+            "badge_slug": ["badge1", "badge2"]
+          },
+          "badge": null
+        },
+        "space": {
+          "id": 478,
+          "title": "Nolan-Koch PLC",
+          "slug": "sapiente-perspiciatis-tempore-consequatur-debitis",
+          "type": "community"
+        },
+        "comments": [],
+        "reactions": [],
+        "terms": []
       }
-    }
-  ],
-  "meta": {
-    "total": 150,
-    "per_page": 10,
+    ],
     "current_page": 1,
-    "total_pages": 15
-  }
+    "per_page": 1,
+    "from": 1,
+    "to": 1,
+    "has_more": true,
+    "total": 2
+  },
+  "sticky": null,
+  "execution_time": 0.014298
 }
 ```
 
@@ -139,8 +168,8 @@ Retrieve details for a single feed by ID or slug.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/{feed_id}/by-id
-GET /wp-json/fluent-community/v1/feeds/{feed_slug}/by-slug
+GET /wp-json/fluent-community/v2/feeds/{feed_id}/by-id
+GET /wp-json/fluent-community/v2/feeds/{feed_slug}/by-slug
 ```
 
 ### Parameters
@@ -153,8 +182,8 @@ GET /wp-json/fluent-community/v1/feeds/{feed_slug}/by-slug
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/by-id" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/by-id" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -182,11 +211,29 @@ curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/by-id" \
     "is_sticky": false,
     "created_at": "2025-10-27T10:00:00",
     "updated_at": "2025-10-27T11:30:00",
-    "author": {
-      "id": 1,
-      "username": "john_doe",
-      "display_name": "John Doe",
-      "avatar": "https://example.com/avatar.jpg"
+    "xprofile": {
+      "user_id": 1,
+      "total_points": 6425,
+      "is_verified": 1,
+      "status": "active",
+      "display_name": "User Name",
+      "username": "username",
+      "avatar": "avatar_url",
+      "created_at": "2024-03-05 16:37:02",
+      "short_description": "User description",
+      "meta": {
+        "website": "website_url",
+        "cover_photo": "cover_photo_url",
+        "social_links": {
+          "twitter": "@handle",
+          "youtube": "@handle",
+          "linkedin": "handle",
+          "fb": "handle",
+          "instagram": "handle"
+        },
+        "badge_slug": ["badge1", "badge2"]
+      },
+      "badge": null
     }
   }
 }
@@ -199,7 +246,7 @@ Create a new feed post.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds
+POST /wp-json/fluent-community/v2/feeds
 ```
 
 ### Parameters
@@ -219,9 +266,9 @@ POST /wp-json/fluent-community/v1/feeds
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "My First Post",
@@ -256,7 +303,7 @@ Modify an existing feed.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}
+POST /wp-json/fluent-community/v2/feeds/{feed_id}
 ```
 
 ### Parameters
@@ -266,9 +313,9 @@ All create parameters are available for updates (all optional).
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/124" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/124" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "My Updated Post",
@@ -296,15 +343,15 @@ Remove a feed permanently.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/feeds/{feed_id}
+DELETE /wp-json/fluent-community/v2/feeds/{feed_id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/124" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/124" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -330,9 +377,9 @@ Always assign feeds to appropriate spaces for better organization:
 
 ```bash
 # Post to a specific space
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "message": "Space-specific content",
     "space_id": 5
@@ -344,9 +391,9 @@ curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
 Use scheduled posts for time-sensitive content:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "message": "This will be published later",
     "status": "scheduled",
@@ -359,9 +406,9 @@ curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
 Save drafts before publishing:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "message": "Work in progress",
     "status": "draft"
@@ -375,9 +422,9 @@ curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
 Create important announcements with sticky posts:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "title": "Important Announcement",
     "message": "System maintenance scheduled for tomorrow.",
@@ -392,9 +439,9 @@ curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
 Start a discussion in a specific space:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "title": "What are your thoughts on...?",
     "message": "I would love to hear your opinions about...",
@@ -409,9 +456,9 @@ Bulk import content from another system:
 ```bash
 # Import multiple feeds
 for post in "${posts[@]}"; do
-  curl "https://your-site.com/wp-json/fluent-community/v1/feeds" \
+  curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
     -X POST \
-    -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+    -u "username:password" \
     -d "$post"
 done
 ```
@@ -481,7 +528,7 @@ Vote on a survey/poll in a feed post.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/apps/survey-vote
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/apps/survey-vote
 ```
 
 **Permissions:** Authenticated users
@@ -495,8 +542,8 @@ POST /wp-json/fluent-community/v1/feeds/{feed_id}/apps/survey-vote
 **Example Request:**
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds/123/apps/survey-vote" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds/123/apps/survey-vote" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "option_slug": "option-1"
@@ -536,7 +583,7 @@ Retrieve list of users who voted for a specific option.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/{feed_id}/apps/survey-voters/{option_slug}
+GET /wp-json/fluent-community/v2/feeds/{feed_id}/apps/survey-voters/{option_slug}
 ```
 
 **Permissions:** Authenticated users
@@ -551,8 +598,8 @@ GET /wp-json/fluent-community/v1/feeds/{feed_id}/apps/survey-voters/{option_slug
 **Example Request:**
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/feeds/123/apps/survey-voters/option-1?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/feeds/123/apps/survey-voters/option-1?per_page=20" \
+  -u "username:password"
 ```
 
 **Example Response:**
@@ -589,8 +636,8 @@ Create a feed post with an embedded survey.
 **Example Request:**
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "What feature should we build next?",
@@ -625,7 +672,7 @@ Retrieve recent activity ticker for the community.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/ticker
+GET /wp-json/fluent-community/v2/feeds/ticker
 ```
 
 **Permissions:** Authenticated users
@@ -660,7 +707,7 @@ Convert markdown to HTML for preview.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/markdown-preview
+POST /wp-json/fluent-community/v2/feeds/markdown-preview
 ```
 
 **Permissions:** Authenticated users
@@ -674,8 +721,8 @@ POST /wp-json/fluent-community/v1/feeds/markdown-preview
 **Example Request:**
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds/markdown-preview" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds/markdown-preview" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Hello World\n\nThis is **bold** and this is *italic*."
@@ -697,7 +744,7 @@ Retrieve links associated with feeds.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/links
+GET /wp-json/fluent-community/v2/feeds/links
 ```
 
 **Permissions:** Administrator only
@@ -709,7 +756,7 @@ Update links configuration for feeds.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/links
+POST /wp-json/fluent-community/v2/feeds/links
 ```
 
 **Permissions:** Administrator only

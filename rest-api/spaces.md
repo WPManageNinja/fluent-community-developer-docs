@@ -46,7 +46,7 @@ Retrieve a list of community spaces.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/spaces
+GET /wp-json/fluent-community/v2/spaces
 ```
 
 ### Parameters
@@ -66,45 +66,50 @@ GET /wp-json/fluent-community/v1/spaces
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces?privacy=public" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces?privacy=public" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
+  "spaces": [
     {
       "id": 5,
-      "created_by": 1,
+      "created_by": "1",
       "parent_id": null,
       "title": "General Discussion",
       "slug": "general-discussion",
       "logo": "https://example.com/logo.jpg",
       "cover_photo": "https://example.com/cover.jpg",
       "description": "A place for general discussions",
-      "type": "discussion",
+      "type": "community",
       "privacy": "public",
       "status": "published",
-      "serial": 1,
+      "serial": "1",
       "settings": {
-        "allow_posts": true,
-        "require_approval": false
+        "restricted_post_only": "no",
+        "emoji": "",
+        "shape_svg": "",
+        "custom_lock_screen": "no",
+        "can_request_join": "yes",
+        "layout_style": "timeline",
+        "show_sidebar": "yes",
+        "og_image": "",
+        "links": [],
+        "topic_required": "no",
+        "hide_members_count": "no",
+        "members_page_status": "public"
       },
-      "created_at": "2025-01-01T00:00:00",
-      "updated_at": "2025-01-01T00:00:00",
+      "created_at": "2025-01-01 00:00:00",
+      "updated_at": "2025-01-01 00:00:00",
       "members_count": 150,
       "posts_count": 342,
       "is_member": true,
       "role": "member"
     }
-  ],
-  "meta": {
-    "total": 10,
-    "per_page": 20,
-    "current_page": 1
-  }
+  ]
 }
 ```
 
@@ -115,8 +120,8 @@ Retrieve details for a single space by slug or ID.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/spaces/{spaceSlug}/by-slug
-GET /wp-json/fluent-community/v1/spaces/{spaceId}/by-id
+GET /wp-json/fluent-community/v2/spaces/{spaceSlug}/by-slug
+GET /wp-json/fluent-community/v2/spaces/{spaceId}/by-id
 ```
 
 ### Parameters
@@ -129,8 +134,8 @@ GET /wp-json/fluent-community/v1/spaces/{spaceId}/by-id
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/general-discussion/by-slug" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/general-discussion/by-slug" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -173,7 +178,7 @@ Create a new community space.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces
+POST /wp-json/fluent-community/v2/spaces
 ```
 
 ### Parameters
@@ -194,9 +199,9 @@ POST /wp-json/fluent-community/v1/spaces
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Tech Talk",
@@ -233,8 +238,8 @@ Modify an existing space.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/spaces/{spaceSlug}/by-slug
-PUT /wp-json/fluent-community/v1/spaces/{spaceId}/by-id
+PUT /wp-json/fluent-community/v2/spaces/{spaceSlug}/by-slug
+PUT /wp-json/fluent-community/v2/spaces/{spaceId}/by-id
 ```
 
 ### Parameters
@@ -244,9 +249,9 @@ All create parameters are available for updates (all optional).
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/by-slug" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/by-slug" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Tech Talk & Innovation",
@@ -274,16 +279,16 @@ Remove a space permanently.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/spaces/{spaceSlug}
-DELETE /wp-json/fluent-community/v1/spaces/{spaceId}/by-id
+DELETE /wp-json/fluent-community/v2/spaces/{spaceSlug}
+DELETE /wp-json/fluent-community/v2/spaces/{spaceId}/by-id
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -303,15 +308,15 @@ Join a public space or request to join a private space.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/join
+POST /wp-json/fluent-community/v2/spaces/{spaceSlug}/join
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/join" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/join" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -346,15 +351,15 @@ Leave a space you're a member of.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/spaces/{spaceSlug}/leave
+POST /wp-json/fluent-community/v2/spaces/{spaceSlug}/leave
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/tech-talk/leave" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/tech-talk/leave" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -372,7 +377,7 @@ Find public spaces to join.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/spaces/discover
+GET /wp-json/fluent-community/v2/spaces/discover
 ```
 
 ### Parameters
@@ -386,8 +391,8 @@ GET /wp-json/fluent-community/v1/spaces/discover
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces/discover?search=tech" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces/discover?search=tech" \
+  -u "username:password"
 ```
 
 ## Best Practices
@@ -452,9 +457,9 @@ curl -X POST ".../spaces/tech-talk/members" -d '{
 Set up a default space for new members:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "title": "Welcome & Introductions",
     "description": "Introduce yourself to the community",
@@ -485,9 +490,9 @@ done
 Create exclusive spaces for premium members:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/spaces" \
+curl "https://your-site.com/wp-json/fluent-community/v2/spaces" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -d '{
     "title": "VIP Members Only",
     "privacy": "private",
@@ -558,7 +563,7 @@ Update lockscreen settings for a space to restrict access based on conditions.
 ### HTTP Request
 
 ```
-PUT /wp-json/fluent-community/v1/spaces/{spaceSlug}/lockscreens
+PUT /wp-json/fluent-community/v2/spaces/{spaceSlug}/lockscreens
 ```
 
 ### URL Parameters
@@ -581,8 +586,8 @@ PUT /wp-json/fluent-community/v1/spaces/{spaceSlug}/lockscreens
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/spaces/premium-space/lockscreens" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/spaces/premium-space/lockscreens" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "enabled": true,

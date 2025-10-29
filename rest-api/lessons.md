@@ -31,7 +31,7 @@ Retrieve all lessons for a specific course.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/{id}/lessons
+GET /wp-json/fluent-community/v2/courses/{id}/lessons
 ```
 
 ### Parameters
@@ -43,8 +43,8 @@ GET /wp-json/fluent-community/v1/courses/{id}/lessons
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -82,14 +82,14 @@ Retrieve details for a single lesson.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}
+GET /wp-json/fluent-community/v2/courses/{course_id}/lessons/{lesson_id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons/101" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/101" \
+  -u "username:password"
 ```
 
 ## Create a Lesson
@@ -99,7 +99,7 @@ Add a new lesson to a course.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/courses/{id}/lessons
+POST /wp-json/fluent-community/v2/courses/{id}/lessons
 ```
 
 ### Parameters
@@ -116,9 +116,9 @@ POST /wp-json/fluent-community/v1/courses/{id}/lessons
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "CSS Fundamentals",
@@ -151,15 +151,15 @@ Modify an existing lesson.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}
+PUT /wp-json/fluent-community/v2/courses/{course_id}/lessons/{lesson_id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons/102" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/102" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "CSS Fundamentals - Updated",
@@ -174,15 +174,15 @@ Remove a lesson from a course.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}
+DELETE /wp-json/fluent-community/v2/courses/{course_id}/lessons/{lesson_id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons/102" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/102" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ## Reorder Lessons
@@ -192,7 +192,7 @@ Change the order of lessons in a course.
 **HTTP Request**
 
 ```
-PATCH /wp-json/fluent-community/v1/courses/{id}/lessons/reorder
+PATCH /wp-json/fluent-community/v2/courses/{id}/lessons/reorder
 ```
 
 ### Parameters
@@ -204,9 +204,9 @@ PATCH /wp-json/fluent-community/v1/courses/{id}/lessons/reorder
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons/reorder" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/reorder" \
   -X PATCH \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "lesson_ids": [101, 103, 102, 104]

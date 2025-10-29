@@ -16,7 +16,7 @@ Before you begin, make sure you have:
 First, verify that the API is accessible by making a request to the API root:
 
 ```bash
-curl https://your-site.com/wp-json/fluent-community/v1/
+curl https://your-site.com/wp-json/fluent-community/v2/
 ```
 
 **Expected Response:**
@@ -25,7 +25,7 @@ curl https://your-site.com/wp-json/fluent-community/v1/
 {
   "namespace": "fluent-community/v1",
   "routes": {
-    "/fluent-community/v1/posts": {
+    "/fluent-community/v2/posts": {
       "methods": ["GET", "POST"]
     },
     // ... other routes
@@ -63,7 +63,7 @@ Let's fetch a list of community posts:
 ### Using cURL
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -74,7 +74,7 @@ const username = 'your_username';
 const appPassword = 'xxxx xxxx xxxx xxxx xxxx xxxx';
 const credentials = btoa(`${username}:${appPassword}`);
 
-fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
+fetch('https://your-site.com/wp-json/fluent-community/v2/posts', {
   method: 'GET',
   headers: {
     'Authorization': `Basic ${credentials}`,
@@ -92,7 +92,7 @@ fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
 import requests
 from requests.auth import HTTPBasicAuth
 
-url = 'https://your-site.com/wp-json/fluent-community/v1/posts'
+url = 'https://your-site.com/wp-json/fluent-community/v2/posts'
 username = 'your_username'
 app_password = 'xxxx xxxx xxxx xxxx xxxx xxxx'
 
@@ -108,7 +108,7 @@ print(response.json())
 
 ```php
 <?php
-$url = 'https://your-site.com/wp-json/fluent-community/v1/posts';
+$url = 'https://your-site.com/wp-json/fluent-community/v2/posts';
 $username = 'your_username';
 $app_password = 'xxxx xxxx xxxx xxxx xxxx xxxx';
 
@@ -132,7 +132,7 @@ print_r($data);
 Now let's create a new community post:
 
 ```bash
-curl -X POST "https://your-site.com/wp-json/fluent-community/v1/posts" \
+curl -X POST "https://your-site.com/wp-json/fluent-community/v2/posts" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx" \
   -H "Content-Type: application/json" \
   -d '{
@@ -166,7 +166,7 @@ curl -X POST "https://your-site.com/wp-json/fluent-community/v1/posts" \
 Update the post you just created:
 
 ```bash
-curl -X PUT "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
+curl -X PUT "https://your-site.com/wp-json/fluent-community/v2/posts/123" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx" \
   -H "Content-Type: application/json" \
   -d '{
@@ -180,7 +180,7 @@ curl -X PUT "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
 Delete the post:
 
 ```bash
-curl -X DELETE "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
+curl -X DELETE "https://your-site.com/wp-json/fluent-community/v2/posts/123" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -191,7 +191,7 @@ curl -X DELETE "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
 Fetch paginated results:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?page=2&per_page=20" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts?page=2&per_page=20" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -200,7 +200,7 @@ curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?page=2&per_
 Filter posts by space:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?space_id=5" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts?space_id=5" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -209,7 +209,7 @@ curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?space_id=5"
 Sort posts by date:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?orderby=created_at&order=desc" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts?orderby=created_at&order=desc" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -218,7 +218,7 @@ curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?orderby=cre
 Include author information:
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?include=author" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts?include=author" \
   --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
@@ -227,7 +227,7 @@ curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?include=aut
 Always handle errors in your API requests:
 
 ```javascript
-fetch('https://your-site.com/wp-json/fluent-community/v1/posts', {
+fetch('https://your-site.com/wp-json/fluent-community/v2/posts', {
   method: 'GET',
   headers: {
     'Authorization': `Basic ${credentials}`

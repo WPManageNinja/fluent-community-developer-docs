@@ -43,7 +43,7 @@ Add or toggle a reaction on a feed post.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/react
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/react
 ```
 
 ### Parameters
@@ -56,9 +56,9 @@ POST /wp-json/fluent-community/v1/feeds/{feed_id}/react
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/react" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/react" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "type": "like"
@@ -93,7 +93,7 @@ Add or toggle a reaction on a comment.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments/{comment_id}/reactions
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/comments/{comment_id}/reactions
 ```
 
 ### Parameters
@@ -107,9 +107,9 @@ POST /wp-json/fluent-community/v1/feeds/{feed_id}/comments/{comment_id}/reaction
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/comments/45/reactions" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments/45/reactions" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "type": "love"
@@ -142,7 +142,7 @@ Retrieve all reactions for a specific feed.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/{feed_id}/reactions
+GET /wp-json/fluent-community/v2/feeds/{feed_id}/reactions
 ```
 
 ### Parameters
@@ -157,38 +157,48 @@ GET /wp-json/fluent-community/v1/feeds/{feed_id}/reactions
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/reactions?type=like" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/reactions?type=like" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "data": [
+  "reactions": [
     {
       "id": 456,
-      "user_id": 1,
-      "object_id": 123,
+      "user_id": "1",
+      "object_id": "123",
       "object_type": "feed",
       "type": "like",
-      "created_at": "2025-10-27T12:00:00",
-      "user": {
-        "id": 1,
-        "username": "john_doe",
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg"
+      "created_at": "2025-10-27 12:00:00",
+      "xprofile": {
+        "user_id": 1,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       }
     }
-  ],
-  "meta": {
-    "total": 45,
-    "by_type": {
-      "like": 30,
-      "love": 10,
-      "laugh": 5
-    }
-  }
+  ]
 }
 ```
 
@@ -199,14 +209,14 @@ Retrieve all reactions for a specific comment.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/comments/{comment_id}/reactions
+GET /wp-json/fluent-community/v2/comments/{comment_id}/reactions
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/comments/45/reactions" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/comments/45/reactions" \
+  -u "username:password"
 ```
 
 ## Remove a Reaction
@@ -216,15 +226,15 @@ Remove a user's reaction from content.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/reactions/{reaction_id}
+DELETE /wp-json/fluent-community/v2/reactions/{reaction_id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/reactions/456" \
+curl "https://your-site.com/wp-json/fluent-community/v2/reactions/456" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -269,7 +279,7 @@ Always display reaction counts to encourage engagement:
 
 ```bash
 # Get feed with reaction counts
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/by-id"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/by-id"
 
 # Response includes reactions_count
 {
@@ -292,7 +302,7 @@ Consider polling for reaction updates on active posts:
 ```javascript
 // Poll every 30 seconds for popular posts
 setInterval(() => {
-  fetch('/wp-json/fluent-community/v1/feeds/123/reactions')
+  fetch('/wp-json/fluent-community/v2/feeds/123/reactions')
     .then(response => response.json())
     .then(data => updateReactionCounts(data));
 }, 30000);
@@ -305,8 +315,8 @@ setInterval(() => {
 Show a summary of all reactions on a feed:
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/reactions" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/reactions" \
+  -u "username:password"
 ```
 
 Use the response to display:
@@ -314,33 +324,14 @@ Use the response to display:
 - Breakdown by reaction type
 - Top reactors
 
-### User Reaction History
-
-Get all reactions by a specific user:
-
-```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/reactions?user_id=1" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
-```
-
 ### Most Reacted Content
 
 Find the most popular content:
 
 ```bash
 # Get feeds sorted by reaction count
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds?orderby=reactions_count&order=desc" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
-```
-
-### Reaction Analytics
-
-Track engagement over time:
-
-```bash
-# Get reactions created in the last 24 hours
-curl "https://your-site.com/wp-json/fluent-community/v1/reactions?created_after=2025-10-26T12:00:00" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds?orderby=reactions_count&order=desc" \
+  -u "username:password"
 ```
 
 ## Error Handling

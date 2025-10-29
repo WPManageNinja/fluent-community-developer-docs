@@ -79,7 +79,7 @@ Retrieve all configured webhooks.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/webhooks
+GET /wp-json/fluent-community/v2/admin/webhooks
 ```
 
 **Permissions:** Administrator only
@@ -87,8 +87,8 @@ GET /wp-json/fluent-community/v1/admin/webhooks
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/webhooks" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/admin/webhooks" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -123,7 +123,7 @@ Create a new webhook.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/webhooks
+POST /wp-json/fluent-community/v2/admin/webhooks
 ```
 
 **Permissions:** Administrator only
@@ -143,8 +143,8 @@ POST /wp-json/fluent-community/v1/admin/webhooks
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/webhooks" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/webhooks" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Slack Notifications",
@@ -178,7 +178,7 @@ Update an existing webhook.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/admin/webhooks/{webhook_id}
+PUT /wp-json/fluent-community/v2/admin/webhooks/{webhook_id}
 ```
 
 **Permissions:** Administrator only
@@ -197,8 +197,8 @@ PUT /wp-json/fluent-community/v1/admin/webhooks/{webhook_id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/admin/webhooks/2" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/admin/webhooks/2" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "events": ["feed.created", "comment.created", "space.created"],
@@ -226,7 +226,7 @@ Delete a webhook.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/admin/webhooks/{webhook_id}
+DELETE /wp-json/fluent-community/v2/admin/webhooks/{webhook_id}
 ```
 
 **Permissions:** Administrator only
@@ -234,8 +234,8 @@ DELETE /wp-json/fluent-community/v1/admin/webhooks/{webhook_id}
 ### Example Request
 
 ```bash
-curl -X DELETE "https://example.com/wp-json/fluent-community/v1/admin/webhooks/2" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://example.com/wp-json/fluent-community/v2/admin/webhooks/2" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -253,7 +253,7 @@ Send a test payload to verify webhook configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/webhooks/{webhook_id}/test
+POST /wp-json/fluent-community/v2/admin/webhooks/{webhook_id}/test
 ```
 
 **Permissions:** Administrator only
@@ -261,8 +261,8 @@ POST /wp-json/fluent-community/v1/admin/webhooks/{webhook_id}/test
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/webhooks/1/test" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/webhooks/1/test" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -294,11 +294,29 @@ All webhook events send a JSON payload with the following structure:
     "space_id": 12,
     "created_at": "2024-01-15 10:30:00"
   },
-  "user": {
-    "id": 45,
-    "display_name": "John Doe",
-    "email": "john@example.com",
-    "avatar": "https://example.com/avatar.jpg"
+  "xprofile": {
+    "user_id": 45,
+    "total_points": 6425,
+    "is_verified": 1,
+    "status": "active",
+    "display_name": "User Name",
+    "username": "username",
+    "avatar": "avatar_url",
+    "created_at": "2024-03-05 16:37:02",
+    "short_description": "User description",
+    "meta": {
+      "website": "website_url",
+      "cover_photo": "cover_photo_url",
+      "social_links": {
+        "twitter": "@handle",
+        "youtube": "@handle",
+        "linkedin": "handle",
+        "fb": "handle",
+        "instagram": "handle"
+      },
+      "badge_slug": ["badge1", "badge2"]
+    },
+    "badge": null
   }
 }
 ```
@@ -387,7 +405,7 @@ Track webhook failures and response times:
 
 ```javascript
 async function checkWebhookHealth() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/webhooks');
+  const response = await fetch('/wp-json/fluent-community/v2/admin/webhooks');
   const data = await response.json();
   
   data.webhooks.forEach(webhook => {
@@ -408,7 +426,7 @@ Send notifications to Slack:
 
 ```javascript
 async function createSlackWebhook() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/webhooks', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/webhooks', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -432,7 +450,7 @@ Send notifications to Discord:
 
 ```javascript
 async function createDiscordWebhook() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/webhooks', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/webhooks', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -456,7 +474,7 @@ Track events in your analytics platform:
 
 ```javascript
 async function createAnalyticsWebhook() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/webhooks', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/webhooks', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -483,7 +501,7 @@ Trigger email notifications via webhook:
 
 ```javascript
 async function createEmailWebhook() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/webhooks', {
+  const response = await fetch('/wp-json/fluent-community/v2/admin/webhooks', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

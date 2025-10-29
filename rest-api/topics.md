@@ -39,7 +39,7 @@ Retrieve all topics in the community.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/topics
+GET /wp-json/fluent-community/v2/admin/topics
 ```
 
 **Permissions:** Administrator only
@@ -57,8 +57,8 @@ GET /wp-json/fluent-community/v1/admin/topics
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/topics?status=active" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/admin/topics?status=active" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -111,7 +111,7 @@ Create a new topic.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/topics
+POST /wp-json/fluent-community/v2/admin/topics
 ```
 
 **Permissions:** Administrator only
@@ -132,8 +132,8 @@ POST /wp-json/fluent-community/v1/admin/topics
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/topics" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/topics" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Feature Requests",
@@ -171,7 +171,7 @@ Update an existing topic.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/admin/topics/{topic_id}
+PUT /wp-json/fluent-community/v2/admin/topics/{topic_id}
 ```
 
 **Permissions:** Administrator only
@@ -192,8 +192,8 @@ PUT /wp-json/fluent-community/v1/admin/topics/{topic_id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/admin/topics/13" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/admin/topics/13" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Feature Ideas",
@@ -225,7 +225,7 @@ Delete a topic.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/admin/topics/{topic_id}
+DELETE /wp-json/fluent-community/v2/admin/topics/{topic_id}
 ```
 
 **Permissions:** Administrator only
@@ -233,8 +233,8 @@ DELETE /wp-json/fluent-community/v1/admin/topics/{topic_id}
 ### Example Request
 
 ```bash
-curl -X DELETE "https://example.com/wp-json/fluent-community/v1/admin/topics/13" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://example.com/wp-json/fluent-community/v2/admin/topics/13" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -256,7 +256,7 @@ Retrieve topic configuration settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/topics/config
+GET /wp-json/fluent-community/v2/admin/topics/config
 ```
 
 **Permissions:** Administrator only
@@ -282,7 +282,7 @@ Update topic configuration settings.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/topics/config
+POST /wp-json/fluent-community/v2/admin/topics/config
 ```
 
 **Permissions:** Administrator only
@@ -302,8 +302,8 @@ POST /wp-json/fluent-community/v1/admin/topics/config
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/topics/config" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/topics/config" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "enabled": true,
@@ -334,8 +334,8 @@ Topics can be assigned to feeds when creating or updating posts.
 ### Create Feed with Topics
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "New Feature Announcement",
@@ -348,8 +348,8 @@ curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds" \
 ### Update Feed Topics
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/feeds/123" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/feeds/123" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "topics": [1, 3, 7]
@@ -359,8 +359,8 @@ curl -X PUT "https://example.com/wp-json/fluent-community/v1/feeds/123" \
 ### Filter Feeds by Topic
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/feeds?topics=1,2" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/feeds?topics=1,2" \
+  -u "username:password"
 ```
 
 ---
@@ -418,7 +418,7 @@ Track which topics are most popular:
 
 ```javascript
 async function getTopicStats() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/topics');
+  const response = await fetch('/wp-json/fluent-community/v2/admin/topics');
   const data = await response.json();
   
   return data.topics
@@ -438,8 +438,8 @@ Create a topic management interface:
 ```javascript
 async function getTopicsDashboard() {
   const [topics, config] = await Promise.all([
-    fetch('/wp-json/fluent-community/v1/admin/topics'),
-    fetch('/wp-json/fluent-community/v1/admin/topics/config')
+    fetch('/wp-json/fluent-community/v2/admin/topics'),
+    fetch('/wp-json/fluent-community/v2/admin/topics/config')
   ]);
   
   return {
@@ -455,7 +455,7 @@ Create a topic filter for feeds:
 
 ```javascript
 async function getTopicsForFilter() {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/topics?status=active');
+  const response = await fetch('/wp-json/fluent-community/v2/admin/topics?status=active');
   const data = await response.json();
   
   return data.topics.map(topic => ({
@@ -473,7 +473,7 @@ Display trending topics based on recent activity:
 
 ```javascript
 async function getTrendingTopics(days = 7) {
-  const response = await fetch('/wp-json/fluent-community/v1/admin/topics');
+  const response = await fetch('/wp-json/fluent-community/v2/admin/topics');
   const data = await response.json();
   
   // Sort by recent activity (simplified)
@@ -491,7 +491,7 @@ Assign topics to multiple posts:
 ```javascript
 async function bulkAssignTopics(feedIds, topicIds) {
   const promises = feedIds.map(feedId =>
-    fetch(`/wp-json/fluent-community/v1/feeds/${feedId}`, {
+    fetch(`/wp-json/fluent-community/v2/feeds/${feedId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

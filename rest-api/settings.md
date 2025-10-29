@@ -34,7 +34,7 @@ Retrieve all community settings (admin only).
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings
+GET /wp-json/fluent-community/v2/settings
 ```
 
 ### Parameters
@@ -46,8 +46,8 @@ GET /wp-json/fluent-community/v1/settings
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/settings" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/settings" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -91,7 +91,7 @@ Retrieve a specific setting value.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/{key}
+GET /wp-json/fluent-community/v2/settings/{key}
 ```
 
 ### Parameters
@@ -103,8 +103,8 @@ GET /wp-json/fluent-community/v1/settings/{key}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/settings/site_name" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/settings/site_name" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -126,7 +126,7 @@ Update one or more settings (admin only).
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/settings
+PUT /wp-json/fluent-community/v2/settings
 ```
 
 ### Parameters
@@ -136,9 +136,9 @@ Send an object with setting keys and values to update.
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/settings" \
+curl "https://your-site.com/wp-json/fluent-community/v2/settings" \
   -X PUT \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "site_name": "Updated Community Name",
@@ -166,13 +166,13 @@ Retrieve public settings (no authentication required).
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/public
+GET /wp-json/fluent-community/v2/settings/public
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/settings/public"
+curl "https://your-site.com/wp-json/fluent-community/v2/settings/public"
 ```
 
 ### Example Response
@@ -202,7 +202,7 @@ Reset settings to default values (admin only).
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/reset
+POST /wp-json/fluent-community/v2/settings/reset
 ```
 
 ### Parameters
@@ -214,9 +214,9 @@ POST /wp-json/fluent-community/v1/settings/reset
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/settings/reset" \
+curl "https://your-site.com/wp-json/fluent-community/v2/settings/reset" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "keys": ["site_name", "timezone"]
@@ -255,7 +255,7 @@ async function getSettings() {
     }
   }
   
-  const response = await fetch('/wp-json/fluent-community/v1/settings/public');
+  const response = await fetch('/wp-json/fluent-community/v2/settings/public');
   const settings = await response.json();
   
   localStorage.setItem(CACHE_KEY, JSON.stringify({
@@ -464,7 +464,7 @@ Retrieve general community settings (admin only).
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/general
+GET /wp-json/fluent-community/v2/admin/general
 ```
 
 **Permissions:** Administrator only
@@ -476,7 +476,7 @@ Update general community settings.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/general
+POST /wp-json/fluent-community/v2/admin/general
 ```
 
 **Permissions:** Administrator only
@@ -488,7 +488,7 @@ Retrieve email configuration settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/email-settings
+GET /wp-json/fluent-community/v2/admin/email-settings
 ```
 
 **Permissions:** Administrator only
@@ -500,7 +500,7 @@ Update email configuration settings.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/email-settings
+POST /wp-json/fluent-community/v2/admin/email-settings
 ```
 
 **Permissions:** Administrator only
@@ -512,7 +512,7 @@ Retrieve media storage configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/storage-settings
+GET /wp-json/fluent-community/v2/admin/storage-settings
 ```
 
 **Permissions:** Administrator only
@@ -524,7 +524,7 @@ Update media storage configuration (local, S3, etc.).
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/storage-settings
+POST /wp-json/fluent-community/v2/admin/storage-settings
 ```
 
 **Permissions:** Administrator only
@@ -536,7 +536,7 @@ Retrieve welcome banner configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/welcome-banner
+GET /wp-json/fluent-community/v2/admin/welcome-banner
 ```
 
 **Permissions:** Administrator only
@@ -548,7 +548,7 @@ Update welcome banner settings.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/welcome-banner
+POST /wp-json/fluent-community/v2/admin/welcome-banner
 ```
 
 **Permissions:** Administrator only
@@ -560,7 +560,7 @@ Retrieve authentication settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/auth-settings
+GET /wp-json/fluent-community/v2/admin/auth-settings
 ```
 
 **Permissions:** Administrator only
@@ -572,7 +572,7 @@ Retrieve onboarding configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/on-boardings
+GET /wp-json/fluent-community/v2/admin/on-boardings
 ```
 
 **Permissions:** Administrator only
@@ -584,7 +584,7 @@ Update onboarding configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/on-boardings
+POST /wp-json/fluent-community/v2/admin/on-boardings
 ```
 
 **Permissions:** Administrator only
@@ -596,7 +596,7 @@ Update the community portal URL slug.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/on-boardings/change-slug
+POST /wp-json/fluent-community/v2/admin/on-boardings/change-slug
 ```
 
 **Permissions:** Administrator only
@@ -614,7 +614,7 @@ Retrieve social profile link providers configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/profile-link-providers
+GET /wp-json/fluent-community/v2/admin/profile-link-providers
 ```
 
 **Permissions:** Administrator only
@@ -626,7 +626,7 @@ Update social profile link providers.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/profile-link-providers
+POST /wp-json/fluent-community/v2/admin/profile-link-providers
 ```
 
 **Permissions:** Administrator only
@@ -642,7 +642,7 @@ Retrieve list of enabled features.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/features
+GET /wp-json/fluent-community/v2/settings/features
 ```
 
 **Permissions:** Administrator only
@@ -671,7 +671,7 @@ Enable or disable community features.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/features
+POST /wp-json/fluent-community/v2/settings/features
 ```
 
 **Permissions:** Administrator only
@@ -685,8 +685,8 @@ POST /wp-json/fluent-community/v1/settings/features
 **Example Request:**
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/settings/features" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/settings/features" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "features": {
@@ -710,7 +710,7 @@ Retrieve navigation menu configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/menu-settings
+GET /wp-json/fluent-community/v2/settings/menu-settings
 ```
 
 **Permissions:** Administrator only
@@ -722,7 +722,7 @@ Update navigation menu configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/menu-settings
+POST /wp-json/fluent-community/v2/settings/menu-settings
 ```
 
 **Permissions:** Administrator only
@@ -738,7 +738,7 @@ Retrieve UI customization settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/customization-settings
+GET /wp-json/fluent-community/v2/settings/customization-settings
 ```
 
 **Permissions:** Administrator only
@@ -750,7 +750,7 @@ Update UI customization settings.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/customization-settings
+POST /wp-json/fluent-community/v2/settings/customization-settings
 ```
 
 **Permissions:** Administrator only
@@ -762,7 +762,7 @@ Retrieve color scheme configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/color-config
+GET /wp-json/fluent-community/v2/settings/color-config
 ```
 
 **Permissions:** Administrator only
@@ -774,7 +774,7 @@ Update color scheme configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/color-config
+POST /wp-json/fluent-community/v2/settings/color-config
 ```
 
 **Permissions:** Administrator only (PRO feature)
@@ -790,7 +790,7 @@ Retrieve privacy configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/privacy-settings
+GET /wp-json/fluent-community/v2/settings/privacy-settings
 ```
 
 **Permissions:** Administrator only
@@ -802,7 +802,7 @@ Update privacy configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/privacy-settings
+POST /wp-json/fluent-community/v2/settings/privacy-settings
 ```
 
 **Permissions:** Administrator only
@@ -822,7 +822,7 @@ Retrieve CRM tagging configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/crm-tagging-config
+GET /wp-json/fluent-community/v2/settings/crm-tagging-config
 ```
 
 **Permissions:** Administrator only
@@ -834,7 +834,7 @@ Update CRM tagging configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/crm-tagging-config
+POST /wp-json/fluent-community/v2/settings/crm-tagging-config
 ```
 
 **Permissions:** Administrator only
@@ -846,7 +846,7 @@ Retrieve custom code snippets configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/snippets-settings
+GET /wp-json/fluent-community/v2/settings/snippets-settings
 ```
 
 **Permissions:** Administrator only
@@ -858,7 +858,7 @@ Update custom code snippets.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/snippets-settings
+POST /wp-json/fluent-community/v2/settings/snippets-settings
 ```
 
 **Permissions:** Administrator only
@@ -870,7 +870,7 @@ Retrieve messaging/chat configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/messaging-setting
+GET /wp-json/fluent-community/v2/admin/messaging-setting
 ```
 
 **Permissions:** Administrator only
@@ -882,7 +882,7 @@ Update messaging/chat configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/messaging-setting
+POST /wp-json/fluent-community/v2/admin/messaging-setting
 ```
 
 **Permissions:** Administrator only
@@ -894,7 +894,7 @@ Retrieve followers feature configuration.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/followers/config
+GET /wp-json/fluent-community/v2/settings/followers/config
 ```
 
 **Permissions:** Administrator only
@@ -906,7 +906,7 @@ Update followers feature configuration.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/settings/followers/config
+POST /wp-json/fluent-community/v2/settings/followers/config
 ```
 
 **Permissions:** Administrator only
@@ -928,7 +928,7 @@ Create or update a custom sidebar link.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/links
+POST /wp-json/fluent-community/v2/admin/links
 ```
 
 **Request Body**
@@ -946,8 +946,8 @@ POST /wp-json/fluent-community/v1/admin/links
 **Example Request**
 
 ```bash
-curl -X POST "https://your-site.com/wp-json/fluent-community/v1/admin/links" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://your-site.com/wp-json/fluent-community/v2/admin/links" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Help Center",
@@ -987,7 +987,7 @@ Remove a custom sidebar link.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/admin/links/{id}
+DELETE /wp-json/fluent-community/v2/admin/links/{id}
 ```
 
 **URL Parameters**
@@ -999,8 +999,8 @@ DELETE /wp-json/fluent-community/v1/admin/links/{id}
 **Example Request**
 
 ```bash
-curl -X DELETE "https://your-site.com/wp-json/fluent-community/v1/admin/links/5" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://your-site.com/wp-json/fluent-community/v2/admin/links/5" \
+  -u "username:password"
 ```
 
 **Example Response**
@@ -1030,14 +1030,14 @@ Retrieve current license information.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/admin/license
+GET /wp-json/fluent-community/v2/admin/license
 ```
 
 **Example Request**
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/admin/license" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/admin/license" \
+  -u "username:password"
 ```
 
 **Example Response**
@@ -1079,7 +1079,7 @@ Activate your Pro license on this site.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/admin/license
+POST /wp-json/fluent-community/v2/admin/license
 ```
 
 **Request Body**
@@ -1091,8 +1091,8 @@ POST /wp-json/fluent-community/v1/admin/license
 **Example Request**
 
 ```bash
-curl -X POST "https://your-site.com/wp-json/fluent-community/v1/admin/license" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://your-site.com/wp-json/fluent-community/v2/admin/license" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "license_key": "XXXX-XXXX-XXXX-XXXX"
@@ -1133,14 +1133,14 @@ Deactivate the license from this site.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/admin/license
+DELETE /wp-json/fluent-community/v2/admin/license
 ```
 
 **Example Request**
 
 ```bash
-curl -X DELETE "https://your-site.com/wp-json/fluent-community/v1/admin/license" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://your-site.com/wp-json/fluent-community/v2/admin/license" \
+  -u "username:password"
 ```
 
 **Example Response**

@@ -28,7 +28,7 @@ Enroll the current user in a course.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/courses/{id}/enroll
+POST /wp-json/fluent-community/v2/courses/{id}/enroll
 ```
 
 ### Parameters
@@ -40,9 +40,9 @@ POST /wp-json/fluent-community/v1/courses/{id}/enroll
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/enroll" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/enroll" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -66,15 +66,15 @@ Unenroll the current user from a course.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/courses/{id}/unenroll
+POST /wp-json/fluent-community/v2/courses/{id}/unenroll
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/unenroll" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/unenroll" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -92,14 +92,14 @@ Retrieve the current user's progress in a course.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/{id}/progress
+GET /wp-json/fluent-community/v2/courses/{id}/progress
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/progress" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/progress" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -132,7 +132,7 @@ Mark a lesson as completed for the current user.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/courses/{id}/lessons/{lesson_id}/complete
+POST /wp-json/fluent-community/v2/courses/{id}/lessons/{lesson_id}/complete
 ```
 
 ### Parameters
@@ -145,9 +145,9 @@ POST /wp-json/fluent-community/v1/courses/{id}/lessons/{lesson_id}/complete
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons/101/complete" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/101/complete" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -174,15 +174,15 @@ Mark a lesson as incomplete (undo completion).
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/courses/{id}/lessons/{lesson_id}/incomplete
+POST /wp-json/fluent-community/v2/courses/{id}/lessons/{lesson_id}/incomplete
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/lessons/101/incomplete" \
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/101/incomplete" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ## Get Course Students
@@ -192,7 +192,7 @@ Retrieve a list of students enrolled in a course.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/{id}/students
+GET /wp-json/fluent-community/v2/courses/{id}/students
 ```
 
 ### Parameters
@@ -207,8 +207,8 @@ GET /wp-json/fluent-community/v1/courses/{id}/students
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/students?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/students?per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -241,14 +241,14 @@ Get or generate a certificate for a completed course.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/courses/{id}/certificate
+GET /wp-json/fluent-community/v2/courses/{id}/certificate
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/courses/10/certificate" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/certificate" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -278,7 +278,7 @@ async function accessCourse(courseId) {
   
   if (!progress) {
     // Auto-enroll
-    await fetch(`/wp-json/fluent-community/v1/courses/${courseId}/enroll`, {
+    await fetch(`/wp-json/fluent-community/v2/courses/${courseId}/enroll`, {
       method: 'POST'
     });
   }
@@ -294,7 +294,7 @@ Track progress automatically:
 ```javascript
 // Mark lesson complete when video ends
 videoPlayer.on('ended', async () => {
-  await fetch(`/wp-json/fluent-community/v1/courses/${courseId}/lessons/${lessonId}/complete`, {
+  await fetch(`/wp-json/fluent-community/v2/courses/${courseId}/lessons/${lessonId}/complete`, {
     method: 'POST'
   });
   

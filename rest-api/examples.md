@@ -18,7 +18,7 @@ Practical code examples for common tasks using the Fluent Community REST API.
 ```javascript
 async function fetchPosts(page = 1, perPage = 20) {
   const response = await fetch(
-    `https://your-site.com/wp-json/fluent-community/v1/posts?page=${page}&per_page=${perPage}`,
+    `https://your-site.com/wp-json/fluent-community/v2/posts?page=${page}&per_page=${perPage}`,
     {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -44,7 +44,7 @@ fetchPosts(1, 10).then(result => {
 ```javascript
 async function createPost(postData) {
   const response = await fetch(
-    'https://your-site.com/wp-json/fluent-community/v1/posts',
+    'https://your-site.com/wp-json/fluent-community/v2/posts',
     {
       method: 'POST',
       headers: {
@@ -80,7 +80,7 @@ createPost({
 ```javascript
 async function addComment(postId, content) {
   const response = await fetch(
-    'https://your-site.com/wp-json/fluent-community/v1/comments',
+    'https://your-site.com/wp-json/fluent-community/v2/comments',
     {
       method: 'POST',
       headers: {
@@ -118,7 +118,7 @@ function usePosts(spaceId) {
     async function fetchPosts() {
       try {
         const response = await fetch(
-          `https://your-site.com/wp-json/fluent-community/v1/posts?space_id=${spaceId}`,
+          `https://your-site.com/wp-json/fluent-community/v2/posts?space_id=${spaceId}`,
           {
             headers: {
               'Authorization': `Bearer ${token}`
@@ -169,7 +169,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 def fetch_posts(base_url, username, app_password, space_id=None):
-    url = f"{base_url}/wp-json/fluent-community/v1/posts"
+    url = f"{base_url}/wp-json/fluent-community/v2/posts"
     params = {}
     
     if space_id:
@@ -204,7 +204,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 def create_post(base_url, username, app_password, post_data):
-    url = f"{base_url}/wp-json/fluent-community/v1/posts"
+    url = f"{base_url}/wp-json/fluent-community/v2/posts"
     
     response = requests.post(
         url,
@@ -239,7 +239,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 def upload_media(base_url, username, app_password, file_path):
-    url = f"{base_url}/wp-json/fluent-community/v1/media"
+    url = f"{base_url}/wp-json/fluent-community/v2/media"
     
     with open(file_path, 'rb') as file:
         files = {'file': file}
@@ -318,7 +318,7 @@ print(posts)
 ```php
 <?php
 function fetch_posts($base_url, $username, $app_password, $space_id = null) {
-    $url = $base_url . '/wp-json/fluent-community/v1/posts';
+    $url = $base_url . '/wp-json/fluent-community/v2/posts';
     
     if ($space_id) {
         $url .= '?space_id=' . $space_id;
@@ -361,7 +361,7 @@ echo "Found " . count($posts['data']) . " posts\n";
 ```php
 <?php
 function create_post($base_url, $username, $app_password, $post_data) {
-    $url = $base_url . '/wp-json/fluent-community/v1/posts';
+    $url = $base_url . '/wp-json/fluent-community/v2/posts';
     
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -401,7 +401,7 @@ echo "Created post ID: " . $new_post['data']['id'] . "\n";
 ### Get Posts
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?space_id=5&per_page=10" \
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts?space_id=5&per_page=10" \
   --user "username:xxxx xxxx xxxx xxxx"
 ```
 
@@ -410,7 +410,7 @@ curl -X GET "https://your-site.com/wp-json/fluent-community/v1/posts?space_id=5&
 ### Create Post
 
 ```bash
-curl -X POST "https://your-site.com/wp-json/fluent-community/v1/posts" \
+curl -X POST "https://your-site.com/wp-json/fluent-community/v2/posts" \
   --user "username:xxxx xxxx xxxx xxxx" \
   -H "Content-Type: application/json" \
   -d '{
@@ -425,7 +425,7 @@ curl -X POST "https://your-site.com/wp-json/fluent-community/v1/posts" \
 ### Update Post
 
 ```bash
-curl -X PUT "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
+curl -X PUT "https://your-site.com/wp-json/fluent-community/v2/posts/123" \
   --user "username:xxxx xxxx xxxx xxxx" \
   -H "Content-Type: application/json" \
   -d '{
@@ -438,7 +438,7 @@ curl -X PUT "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
 ### Delete Post
 
 ```bash
-curl -X DELETE "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
+curl -X DELETE "https://your-site.com/wp-json/fluent-community/v2/posts/123" \
   --user "username:xxxx xxxx xxxx xxxx"
 ```
 
@@ -447,7 +447,7 @@ curl -X DELETE "https://your-site.com/wp-json/fluent-community/v1/posts/123" \
 ### Upload Media
 
 ```bash
-curl -X POST "https://your-site.com/wp-json/fluent-community/v1/media" \
+curl -X POST "https://your-site.com/wp-json/fluent-community/v2/media" \
   --user "username:xxxx xxxx xxxx xxxx" \
   -F "file=@/path/to/image.jpg" \
   -F "title=My Image"

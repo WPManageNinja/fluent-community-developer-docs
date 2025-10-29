@@ -61,7 +61,7 @@ Submit a report for inappropriate content or behavior.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/moderation/report
+POST /wp-json/fluent-community/v2/moderation/report
 ```
 
 **Permissions:** Authenticated users
@@ -78,8 +78,8 @@ POST /wp-json/fluent-community/v1/moderation/report
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/moderation/report" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/moderation/report" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "object_id": 123,
@@ -113,7 +113,7 @@ Retrieve all moderation reports (moderators/admins only).
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/moderation/reports
+GET /wp-json/fluent-community/v2/moderation/reports
 ```
 
 **Permissions:** Moderator or Administrator
@@ -131,8 +131,8 @@ GET /wp-json/fluent-community/v1/moderation/reports
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/moderation/reports?status=pending&per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/moderation/reports?status=pending&per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -183,7 +183,7 @@ Update a report's status and take action (moderators/admins only).
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/moderation/reports/{report_id}
+PUT /wp-json/fluent-community/v2/moderation/reports/{report_id}
 ```
 
 **Permissions:** Moderator or Administrator
@@ -199,8 +199,8 @@ PUT /wp-json/fluent-community/v1/moderation/reports/{report_id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/moderation/reports/45" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/moderation/reports/45" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "status": "resolved",
@@ -230,7 +230,7 @@ Delete a report (admins only).
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/moderation/reports/{report_id}
+DELETE /wp-json/fluent-community/v2/moderation/reports/{report_id}
 ```
 
 **Permissions:** Administrator only
@@ -238,8 +238,8 @@ DELETE /wp-json/fluent-community/v1/moderation/reports/{report_id}
 ### Example Request
 
 ```bash
-curl -X DELETE "https://example.com/wp-json/fluent-community/v1/moderation/reports/45" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://example.com/wp-json/fluent-community/v2/moderation/reports/45" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -257,7 +257,7 @@ Retrieve moderation configuration settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/settings/moderation-config
+GET /wp-json/fluent-community/v2/settings/moderation-config
 ```
 
 **Permissions:** Administrator only
@@ -293,7 +293,7 @@ Update moderation configuration settings.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/moderation/config
+POST /wp-json/fluent-community/v2/moderation/config
 ```
 
 **Permissions:** Administrator only
@@ -312,8 +312,8 @@ POST /wp-json/fluent-community/v1/moderation/config
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/moderation/config" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/moderation/config" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "auto_moderation": {
@@ -357,7 +357,7 @@ Review and respond to reports within 24 hours:
 ```javascript
 // Check for pending reports daily
 async function checkPendingReports() {
-  const response = await fetch('/wp-json/fluent-community/v1/moderation/reports?status=pending');
+  const response = await fetch('/wp-json/fluent-community/v2/moderation/reports?status=pending');
   const data = await response.json();
   
   if (data.reports.length > 0) {
@@ -370,7 +370,7 @@ async function checkPendingReports() {
 Always add notes when taking action:
 
 ```javascript
-await fetch(`/wp-json/fluent-community/v1/moderation/reports/${reportId}`, {
+await fetch(`/wp-json/fluent-community/v2/moderation/reports/${reportId}`, {
   method: 'PUT',
   body: JSON.stringify({
     status: 'resolved',
@@ -415,7 +415,7 @@ Monitor moderation effectiveness:
 ```javascript
 async function getModerationMetrics(dateFrom, dateTo) {
   const response = await fetch(
-    `/wp-json/fluent-community/v1/moderation/reports?date_from=${dateFrom}&date_to=${dateTo}`
+    `/wp-json/fluent-community/v2/moderation/reports?date_from=${dateFrom}&date_to=${dateTo}`
   );
   const data = await response.json();
   
@@ -439,9 +439,9 @@ Create a moderator dashboard:
 ```javascript
 async function getModerationDashboard() {
   const [pending, recent, config] = await Promise.all([
-    fetch('/wp-json/fluent-community/v1/moderation/reports?status=pending'),
-    fetch('/wp-json/fluent-community/v1/moderation/reports?per_page=10'),
-    fetch('/wp-json/fluent-community/v1/settings/moderation-config')
+    fetch('/wp-json/fluent-community/v2/moderation/reports?status=pending'),
+    fetch('/wp-json/fluent-community/v2/moderation/reports?per_page=10'),
+    fetch('/wp-json/fluent-community/v2/settings/moderation-config')
   ]);
   
   return {
@@ -458,7 +458,7 @@ Allow users to report inappropriate content:
 
 ```javascript
 async function reportContent(objectId, objectType, reason, description) {
-  const response = await fetch('/wp-json/fluent-community/v1/moderation/report', {
+  const response = await fetch('/wp-json/fluent-community/v2/moderation/report', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -485,7 +485,7 @@ Process multiple reports at once:
 ```javascript
 async function bulkModerateReports(reportIds, action) {
   const promises = reportIds.map(id =>
-    fetch(`/wp-json/fluent-community/v1/moderation/reports/${id}`, {
+    fetch(`/wp-json/fluent-community/v2/moderation/reports/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

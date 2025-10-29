@@ -13,12 +13,29 @@ The Leaderboard API provides gamification features to encourage community engage
 ```json
 {
   "user_id": 42,
-  "user": {
-    "id": 42,
-    "display_name": "John Doe",
-    "username": "johndoe",
-    "avatar": "https://example.com/avatar.jpg",
-    "profile_url": "https://example.com/profile/johndoe"
+  "xprofile": {
+    "user_id": 42,
+    "total_points": 6425,
+    "is_verified": 1,
+    "status": "active",
+    "display_name": "User Name",
+    "username": "username",
+    "avatar": "avatar_url",
+    "created_at": "2024-03-05 16:37:02",
+    "short_description": "User description",
+    "meta": {
+      "website": "website_url",
+      "cover_photo": "cover_photo_url",
+      "social_links": {
+        "twitter": "@handle",
+        "youtube": "@handle",
+        "linkedin": "handle",
+        "fb": "handle",
+        "instagram": "handle"
+      },
+      "badge_slug": ["badge1", "badge2"]
+    },
+    "badge": null
   },
   "rank": 1,
   "total_points": 2450,
@@ -124,7 +141,7 @@ Retrieve the community leaderboard with top members.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/leaderboard
+GET /wp-json/fluent-community/v2/leaderboard
 ```
 
 ### Query Parameters
@@ -139,8 +156,8 @@ GET /wp-json/fluent-community/v1/leaderboard
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/leaderboard?period=this_month&limit=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/leaderboard?period=this_month&limit=20" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -149,64 +166,140 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/leaderboard?period=
 {
   "leaderboard": [
     {
-      "user_id": 42,
-      "user": {
-        "id": 42,
-        "display_name": "John Doe",
-        "username": "johndoe",
-        "avatar": "https://example.com/avatar.jpg"
-      },
-      "rank": 1,
-      "total_points": 2450,
-      "level": {
-        "id": 5,
-        "title": "Expert Contributor",
-        "badge_icon": "🏆",
-        "badge_color": "#FFD700"
-      },
-      "points_breakdown": {
-        "posts_created": 850,
-        "comments_made": 600,
-        "reactions_received": 500
-      }
+      "title": "Last 7 days",
+      "items": [
+        {
+          "user_id": "1",
+          "total_points": "0",
+          "xprofile": {
+            "user_id": 1,
+            "total_points": 6425,
+            "is_verified": 1,
+            "status": "active",
+            "display_name": "User Name",
+            "username": "username",
+            "avatar": "avatar_url",
+            "created_at": "2024-03-05 16:37:02",
+            "short_description": "User description",
+            "meta": {
+              "website": "website_url",
+              "cover_photo": "cover_photo_url",
+              "social_links": {
+                "twitter": "@handle",
+                "youtube": "@handle",
+                "linkedin": "handle",
+                "fb": "handle",
+                "instagram": "handle"
+              },
+              "badge_slug": ["badge1", "badge2"]
+            },
+            "last_activity": "2025-10-29 06:55:33",
+            "badge": null
+          }
+        },
+        {
+          "user_id": "2",
+          "total_points": "0",
+          "xprofile": {
+            "user_id": 2,
+            "total_points": 927,
+            "is_verified": 1,
+            "status": "active",
+            "display_name": "User Name",
+            "username": "username",
+            "avatar": "avatar_url",
+            "created_at": "2024-03-05 16:37:02",
+            "short_description": "User description",
+            "meta": {
+              "website": "website_url",
+              "cover_photo": "cover_photo_url",
+              "social_links": {
+                "twitter": "@handle",
+                "youtube": "@handle",
+                "linkedin": "handle",
+                "fb": "handle",
+                "instagram": "handle"
+              },
+              "badge_slug": ["badge1", "badge2"]
+            },
+            "last_activity": "2025-01-04 04:59:08",
+            "badge": null
+          }
+        }
+      ],
+      "key": "7_days"
     },
     {
-      "user_id": 43,
-      "user": {
-        "id": 43,
-        "display_name": "Jane Smith",
-        "username": "janesmith",
-        "avatar": "https://example.com/avatar2.jpg"
-      },
-      "rank": 2,
-      "total_points": 2100,
-      "level": {
-        "id": 5,
-        "title": "Expert Contributor",
-        "badge_icon": "🏆",
-        "badge_color": "#FFD700"
-      },
-      "points_breakdown": {
-        "posts_created": 700,
-        "comments_made": 800,
-        "reactions_received": 600
-      }
+      "title": "Last 30 days",
+      "items": [
+        {
+          "user_id": "1",
+          "total_points": "0",
+          "xprofile": {
+            "user_id": 1,
+            "total_points": 6425,
+            "is_verified": 1,
+            "status": "active",
+            "display_name": "User Name",
+            "username": "username",
+            "avatar": "avatar_url",
+            "created_at": "2024-03-05 16:37:02",
+            "short_description": "User description",
+            "meta": {
+              "website": "website_url",
+              "cover_photo": "cover_photo_url",
+              "social_links": {
+                "twitter": "@handle",
+                "youtube": "@handle",
+                "linkedin": "handle",
+                "fb": "handle",
+                "instagram": "handle"
+              },
+              "badge_slug": ["badge1", "badge2"]
+            },
+            "last_activity": "2025-10-29 06:55:33",
+            "badge": null
+          }
+        }
+      ],
+      "key": "30_days"
+    },
+    {
+      "title": "All time",
+      "items": [
+        {
+          "user_id": "1",
+          "total_points": "1",
+          "xprofile": {
+            "user_id": 1,
+            "total_points": 6425,
+            "is_verified": 1,
+            "status": "active",
+            "display_name": "User Name",
+            "username": "username",
+            "avatar": "avatar_url",
+            "created_at": "2024-03-05 16:37:02",
+            "short_description": "User description",
+            "meta": {
+              "website": "website_url",
+              "cover_photo": "cover_photo_url",
+              "social_links": {
+                "twitter": "@handle",
+                "youtube": "@handle",
+                "linkedin": "handle",
+                "fb": "handle",
+                "instagram": "handle"
+              },
+              "badge_slug": ["badge1", "badge2"]
+            },
+            "last_activity": "2025-10-29 06:55:33",
+            "badge": null
+          }
+        }
+      ],
+      "key": "all_time"
     }
-  ],
-  "current_user": {
-    "user_id": 50,
-    "rank": 15,
-    "total_points": 850,
-    "level": {
-      "id": 3,
-      "title": "Active Member",
-      "badge_icon": "⭐",
-      "badge_color": "#4CAF50"
-    }
-  },
-  "period": "this_month",
-  "total_members": 245,
-  "updated_at": "2024-01-25 10:00:00"
+  ]
 }
 ```
 
@@ -219,14 +312,14 @@ Retrieve all available levels and their requirements. Admin only.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/admin/leaderboards/levels
+GET /wp-json/fluent-community/v2/admin/leaderboards/levels
 ```
 
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/leaderboards/levels" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/admin/leaderboards/levels" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -333,7 +426,7 @@ Create or update leaderboard levels and point configuration. Admin only.
 ### HTTP Request
 
 ```
-POST /wp-json/fluent-community/v1/admin/leaderboards/levels
+POST /wp-json/fluent-community/v2/admin/leaderboards/levels
 ```
 
 ### Request Body
@@ -346,8 +439,8 @@ POST /wp-json/fluent-community/v1/admin/leaderboards/levels
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/leaderboards/levels" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/leaderboards/levels" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "levels": [

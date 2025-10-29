@@ -48,7 +48,7 @@ Upload a file to the community.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/media-upload
+POST /wp-json/fluent-community/v2/feeds/media-upload
 ```
 
 ### Parameters
@@ -62,9 +62,9 @@ POST /wp-json/fluent-community/v1/feeds/media-upload
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/media-upload" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/media-upload" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+  -u "username:password" \
   -F "file=@/path/to/image.jpg" \
   -F "object_source=feed"
 ```
@@ -95,7 +95,7 @@ Retrieve details for a specific media file.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/media/{id}
+GET /wp-json/fluent-community/v2/media/{id}
 ```
 
 ### Parameters
@@ -107,8 +107,8 @@ GET /wp-json/fluent-community/v1/media/{id}
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/media/789" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/media/789" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -144,7 +144,7 @@ Retrieve media files uploaded by a specific user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/profile/{username}/media
+GET /wp-json/fluent-community/v2/profile/{username}/media
 ```
 
 ### Parameters
@@ -159,8 +159,8 @@ GET /wp-json/fluent-community/v1/profile/{username}/media
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/profile/john_doe/media?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/media?per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -192,15 +192,15 @@ Remove a media file permanently.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/media/{id}
+DELETE /wp-json/fluent-community/v2/media/{id}
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/media/789" \
+curl "https://your-site.com/wp-json/fluent-community/v2/media/789" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -218,7 +218,7 @@ Retrieve oEmbed data for a URL (YouTube, Vimeo, etc.).
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/oembed
+GET /wp-json/fluent-community/v2/feeds/oembed
 ```
 
 ### Parameters
@@ -230,8 +230,8 @@ GET /wp-json/fluent-community/v1/feeds/oembed
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/oembed?url=https://youtube.com/watch?v=abc123" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/oembed?url=https://youtube.com/watch?v=abc123" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -289,7 +289,7 @@ xhr.upload.addEventListener('progress', (e) => {
   updateProgressBar(percent);
 });
 
-xhr.open('POST', '/wp-json/fluent-community/v1/feeds/media-upload');
+xhr.open('POST', '/wp-json/fluent-community/v2/feeds/media-upload');
 xhr.send(formData);
 ```
 

@@ -46,7 +46,7 @@ Retrieve all space groups with their associated spaces.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/spaces/space_groups
+GET /wp-json/fluent-community/v2/spaces/space_groups
 ```
 
 ### Query Parameters
@@ -59,15 +59,15 @@ GET /wp-json/fluent-community/v1/spaces/space_groups
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/spaces/space_groups?with_spaces=true" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/spaces/space_groups?with_spaces=true" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "space_groups": [
+  "groups": [
     {
       "id": 1,
       "title": "Product Teams",
@@ -112,7 +112,8 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/spaces/space_groups
         }
       ]
     }
-  ]
+  ],
+  "orphaned_spaces": []
 }
 ```
 
@@ -125,7 +126,7 @@ Create a new space group to organize your spaces.
 ### HTTP Request
 
 ```
-POST /wp-json/fluent-community/v1/spaces/space_groups
+POST /wp-json/fluent-community/v2/spaces/space_groups
 ```
 
 ### Request Body
@@ -140,8 +141,8 @@ POST /wp-json/fluent-community/v1/spaces/space_groups
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/spaces/space_groups" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/spaces/space_groups" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Marketing Teams",
@@ -184,7 +185,7 @@ Update an existing space group's details.
 ### HTTP Request
 
 ```
-PUT /wp-json/fluent-community/v1/spaces/space_groups/{id}
+PUT /wp-json/fluent-community/v2/spaces/space_groups/{id}
 ```
 
 ### URL Parameters
@@ -204,8 +205,8 @@ PUT /wp-json/fluent-community/v1/spaces/space_groups/{id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/spaces/space_groups/3" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/spaces/space_groups/3" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Marketing & Sales",
@@ -243,7 +244,7 @@ Delete a space group. Spaces in the group will be moved to "Uncategorized".
 ### HTTP Request
 
 ```
-DELETE /wp-json/fluent-community/v1/spaces/space_groups/{id}
+DELETE /wp-json/fluent-community/v2/spaces/space_groups/{id}
 ```
 
 ### URL Parameters
@@ -255,8 +256,8 @@ DELETE /wp-json/fluent-community/v1/spaces/space_groups/{id}
 ### Example Request
 
 ```bash
-curl -X DELETE "https://example.com/wp-json/fluent-community/v1/spaces/space_groups/3" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X DELETE "https://example.com/wp-json/fluent-community/v2/spaces/space_groups/3" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -276,7 +277,7 @@ Update the display order of space groups.
 ### HTTP Request
 
 ```
-PATCH /wp-json/fluent-community/v1/spaces/space_groups/re-index
+PATCH /wp-json/fluent-community/v2/spaces/space_groups/re-index
 ```
 
 ### Request Body
@@ -288,8 +289,8 @@ PATCH /wp-json/fluent-community/v1/spaces/space_groups/re-index
 ### Example Request
 
 ```bash
-curl -X PATCH "https://example.com/wp-json/fluent-community/v1/spaces/space_groups/re-index" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PATCH "https://example.com/wp-json/fluent-community/v2/spaces/space_groups/re-index" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "group_ids": [2, 1, 3]
@@ -313,7 +314,7 @@ Update the display order of spaces within their groups.
 ### HTTP Request
 
 ```
-PATCH /wp-json/fluent-community/v1/spaces/space_groups/re-index-spaces
+PATCH /wp-json/fluent-community/v2/spaces/space_groups/re-index-spaces
 ```
 
 ### Request Body
@@ -326,8 +327,8 @@ PATCH /wp-json/fluent-community/v1/spaces/space_groups/re-index-spaces
 ### Example Request
 
 ```bash
-curl -X PATCH "https://example.com/wp-json/fluent-community/v1/spaces/space_groups/re-index-spaces" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PATCH "https://example.com/wp-json/fluent-community/v2/spaces/space_groups/re-index-spaces" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "space_ids": [11, 10, 12],
@@ -352,7 +353,7 @@ Move a space from one group to another.
 ### HTTP Request
 
 ```
-PATCH /wp-json/fluent-community/v1/spaces/space_groups/move-space
+PATCH /wp-json/fluent-community/v2/spaces/space_groups/move-space
 ```
 
 ### Request Body
@@ -366,8 +367,8 @@ PATCH /wp-json/fluent-community/v1/spaces/space_groups/move-space
 ### Example Request
 
 ```bash
-curl -X PATCH "https://example.com/wp-json/fluent-community/v1/spaces/space_groups/move-space" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PATCH "https://example.com/wp-json/fluent-community/v2/spaces/space_groups/move-space" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "space_id": 10,

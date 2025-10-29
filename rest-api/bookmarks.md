@@ -23,7 +23,7 @@ Retrieve all bookmarked feeds for the current user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/bookmarks
+GET /wp-json/fluent-community/v2/feeds/bookmarks
 ```
 
 ### Parameters
@@ -38,8 +38,8 @@ GET /wp-json/fluent-community/v1/feeds/bookmarks
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks?per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks?per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -63,11 +63,29 @@ curl "https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks?per_page
         "comments_count": 12,
         "reactions_count": 45,
         "created_at": "2025-10-25T14:30:00",
-        "author": {
-          "id": 2,
-          "username": "jane_smith",
-          "display_name": "Jane Smith",
-          "avatar": "https://example.com/avatar.jpg"
+        "xprofile": {
+          "user_id": 1,
+          "total_points": 6425,
+          "is_verified": 1,
+          "status": "active",
+          "display_name": "User Name",
+          "username": "username",
+          "avatar": "avatar_url",
+          "created_at": "2024-03-05 16:37:02",
+          "short_description": "User description",
+          "meta": {
+            "website": "website_url",
+            "cover_photo": "cover_photo_url",
+            "social_links": {
+              "twitter": "@handle",
+              "youtube": "@handle",
+              "linkedin": "handle",
+              "fb": "handle",
+              "instagram": "handle"
+            },
+            "badge_slug": ["badge1", "badge2"]
+          },
+          "badge": null
         }
       }
     }
@@ -88,7 +106,7 @@ Save a feed to the current user's bookmarks.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds/{feed_id}/bookmark
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark
 ```
 
 ### Parameters
@@ -100,9 +118,9 @@ POST /wp-json/fluent-community/v1/feeds/{feed_id}/bookmark
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/bookmark" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -129,7 +147,7 @@ Remove a feed from the current user's bookmarks.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v1/feeds/{feed_id}/bookmark
+DELETE /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark
 ```
 
 ### Parameters
@@ -141,9 +159,9 @@ DELETE /wp-json/fluent-community/v1/feeds/{feed_id}/bookmark
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/bookmark" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark" \
   -X DELETE \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Example Response
@@ -164,14 +182,14 @@ Check if a feed is bookmarked by the current user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/feeds/{feed_id}/bookmark-status
+GET /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark-status
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/bookmark-status" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark-status" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -198,13 +216,13 @@ async function toggleBookmark(feedId) {
   
   if (status.is_bookmarked) {
     // Remove bookmark
-    await fetch(`/wp-json/fluent-community/v1/feeds/${feedId}/bookmark`, {
+    await fetch(`/wp-json/fluent-community/v2/feeds/${feedId}/bookmark`, {
       method: 'DELETE',
       headers: { 'Authorization': 'Bearer TOKEN' }
     });
   } else {
     // Add bookmark
-    await fetch(`/wp-json/fluent-community/v1/feeds/${feedId}/bookmark`, {
+    await fetch(`/wp-json/fluent-community/v2/feeds/${feedId}/bookmark`, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer TOKEN' }
     });
@@ -218,8 +236,8 @@ Organize bookmarks by space or topic:
 
 ```bash
 # Get bookmarks from a specific space
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks" \
+  -u "username:password" \
   | jq '.data[] | select(.feed.space_id == 5)'
 ```
 
@@ -229,8 +247,8 @@ Create a "Read Later" feature:
 
 ```bash
 # Get unread bookmarks (feeds created before bookmark)
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks?orderby=created_at&order=asc" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks?orderby=created_at&order=asc" \
+  -u "username:password"
 ```
 
 ### 4. Bookmark Limits
@@ -249,7 +267,7 @@ async function addBookmark(feedId) {
   }
   
   // Add bookmark
-  await fetch(`/wp-json/fluent-community/v1/feeds/${feedId}/bookmark`, {
+  await fetch(`/wp-json/fluent-community/v2/feeds/${feedId}/bookmark`, {
     method: 'POST'
   });
 }
@@ -263,8 +281,8 @@ Create a personalized reading list:
 
 ```bash
 # Get all bookmarks
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks" \
+  -u "username:password"
 
 # Display as "Read Later" list in your app
 ```
@@ -275,9 +293,9 @@ Allow users to mark favorite posts:
 
 ```bash
 # Bookmark important content
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/123/bookmark" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark" \
   -X POST \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+  -u "username:password"
 ```
 
 ### Content Curation
@@ -286,8 +304,8 @@ Curate content for later sharing:
 
 ```bash
 # Get bookmarks to share in a newsletter
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks?per_page=5&orderby=reactions_count" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks?per_page=5&orderby=reactions_count" \
+  -u "username:password"
 ```
 
 ### Offline Reading
@@ -298,7 +316,7 @@ Sync bookmarks for offline access:
 // Fetch all bookmarks and cache locally
 async function syncBookmarksForOffline() {
   const response = await fetch(
-    'https://your-site.com/wp-json/fluent-community/v1/feeds/bookmarks?per_page=100',
+    'https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks?per_page=100',
     {
       headers: { 'Authorization': 'Bearer TOKEN' }
     }
@@ -317,8 +335,8 @@ Track which content users find most valuable:
 
 ```bash
 # Get most bookmarked feeds
-curl "https://your-site.com/wp-json/fluent-community/v1/feeds?orderby=bookmarks_count&order=desc" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds?orderby=bookmarks_count&order=desc" \
+  -u "username:password"
 ```
 
 ## Error Handling

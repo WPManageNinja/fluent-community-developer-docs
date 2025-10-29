@@ -34,7 +34,7 @@ Retrieve all scheduled posts.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/scheduled-posts
+GET /wp-json/fluent-community/v2/scheduled-posts
 ```
 
 **Permissions:** Post author or Administrator
@@ -53,8 +53,8 @@ GET /wp-json/fluent-community/v1/scheduled-posts
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/scheduled-posts?per_page=20" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/scheduled-posts?per_page=20" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -73,10 +73,29 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/scheduled-posts?per
       "timezone": "America/New_York",
       "auto_publish": true,
       "created_at": "2024-01-15 10:30:00",
-      "user": {
-        "id": 45,
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg"
+      "xprofile": {
+        "user_id": 45,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       },
       "space": {
         "id": 12,
@@ -101,7 +120,7 @@ Create a new scheduled post.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/feeds
+POST /wp-json/fluent-community/v2/feeds
 ```
 
 **Permissions:** Authenticated users
@@ -120,8 +139,8 @@ All parameters from [Create Feed](/rest-api/feeds#create-feed) plus:
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/feeds" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Weekly Newsletter - January 20",
@@ -159,7 +178,7 @@ Change the scheduled publication time for a post.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/scheduled-posts/{feed_id}
+PUT /wp-json/fluent-community/v2/scheduled-posts/{feed_id}
 ```
 
 **Permissions:** Post author or Administrator
@@ -174,8 +193,8 @@ PUT /wp-json/fluent-community/v1/scheduled-posts/{feed_id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/scheduled-posts/124" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/scheduled-posts/124" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "scheduled_at": "2024-01-21 10:00:00",
@@ -202,7 +221,7 @@ Immediately publish a scheduled post.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v1/scheduled-posts/publish/{feed_id}
+POST /wp-json/fluent-community/v2/scheduled-posts/publish/{feed_id}
 ```
 
 **Permissions:** Post author or Administrator
@@ -210,8 +229,8 @@ POST /wp-json/fluent-community/v1/scheduled-posts/publish/{feed_id}
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/scheduled-posts/publish/124" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X POST "https://example.com/wp-json/fluent-community/v2/scheduled-posts/publish/124" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -232,7 +251,7 @@ Cancel a scheduled post (converts to draft).
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v1/feeds/{feed_id}
+PUT /wp-json/fluent-community/v2/feeds/{feed_id}
 ```
 
 **Permissions:** Post author or Administrator
@@ -246,8 +265,8 @@ PUT /wp-json/fluent-community/v1/feeds/{feed_id}
 ### Example Request
 
 ```bash
-curl -X PUT "https://example.com/wp-json/fluent-community/v1/feeds/124" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X PUT "https://example.com/wp-json/fluent-community/v2/feeds/124" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "status": "draft"
@@ -302,7 +321,7 @@ Schedule multiple posts at once for content calendar:
 ```javascript
 async function scheduleWeeklyPosts(posts) {
   const promises = posts.map(post =>
-    fetch('/wp-json/fluent-community/v1/feeds', {
+    fetch('/wp-json/fluent-community/v2/feeds', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -324,7 +343,7 @@ Regularly check scheduled posts:
 
 ```javascript
 async function getUpcomingPosts() {
-  const response = await fetch('/wp-json/fluent-community/v1/scheduled-posts');
+  const response = await fetch('/wp-json/fluent-community/v2/scheduled-posts');
   const data = await response.json();
   
   // Posts scheduled for next 7 days
@@ -373,7 +392,7 @@ async function createContentCalendar(posts) {
   const scheduled = [];
   
   for (const post of posts) {
-    const response = await fetch('/wp-json/fluent-community/v1/feeds', {
+    const response = await fetch('/wp-json/fluent-community/v2/feeds', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -433,7 +452,7 @@ async function scheduleRecurringPost(template, weeks = 4) {
     const scheduledDate = new Date(startDate);
     scheduledDate.setDate(scheduledDate.getDate() + (i * 7));
     
-    const response = await fetch('/wp-json/fluent-community/v1/feeds', {
+    const response = await fetch('/wp-json/fluent-community/v2/feeds', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -461,7 +480,7 @@ Schedule important announcements in advance:
 
 ```javascript
 async function scheduleAnnouncement(announcement) {
-  const response = await fetch('/wp-json/fluent-community/v1/feeds', {
+  const response = await fetch('/wp-json/fluent-community/v2/feeds', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -488,7 +507,7 @@ Create a dashboard to manage scheduled posts:
 
 ```javascript
 async function getScheduledPostsDashboard() {
-  const response = await fetch('/wp-json/fluent-community/v1/scheduled-posts');
+  const response = await fetch('/wp-json/fluent-community/v2/scheduled-posts');
   const data = await response.json();
   
   const now = new Date();

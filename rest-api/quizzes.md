@@ -105,7 +105,7 @@ Submit quiz answers for grading.
 ### HTTP Request
 
 ```
-POST /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}/quiz/submit
+POST /wp-json/fluent-community/v2/courses/{course_id}/lessons/{lesson_id}/quiz/submit
 ```
 
 ### URL Parameters
@@ -125,8 +125,8 @@ POST /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}/quiz/s
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/courses/5/lessons/15/quiz/submit" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/courses/5/lessons/15/quiz/submit" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "answers": {
@@ -191,7 +191,7 @@ Retrieve the result of a previously submitted quiz.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}/quiz/result
+GET /wp-json/fluent-community/v2/courses/{course_id}/lessons/{lesson_id}/quiz/result
 ```
 
 ### URL Parameters
@@ -211,8 +211,8 @@ GET /wp-json/fluent-community/v1/courses/{course_id}/lessons/{lesson_id}/quiz/re
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/courses/5/lessons/15/quiz/result?attempt=latest" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/courses/5/lessons/15/quiz/result?attempt=latest" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -267,7 +267,7 @@ Retrieve all quiz results for a course. Admin only.
 ### HTTP Request
 
 ```
-GET /wp-json/fluent-community/v1/admin/courses/{course_id}/quiz-results
+GET /wp-json/fluent-community/v2/admin/courses/{course_id}/quiz-results
 ```
 
 ### URL Parameters
@@ -291,8 +291,8 @@ GET /wp-json/fluent-community/v1/admin/courses/{course_id}/quiz-results
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/courses/5/quiz-results?status=passed&per_page=10" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/admin/courses/5/quiz-results?status=passed&per_page=10" \
+  -u "username:password"
 ```
 
 ### Example Response
@@ -302,11 +302,29 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/courses/5/qui
   "quiz_results": [
     {
       "id": 123,
-      "user": {
-        "id": 42,
-        "display_name": "John Doe",
-        "username": "johndoe",
-        "avatar": "https://example.com/avatar.jpg"
+      "xprofile": {
+        "user_id": 42,
+        "total_points": 6425,
+        "is_verified": 1,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       },
       "lesson": {
         "id": 15,
@@ -323,11 +341,29 @@ curl -X GET "https://example.com/wp-json/fluent-community/v1/admin/courses/5/qui
     },
     {
       "id": 124,
-      "user": {
-        "id": 43,
-        "display_name": "Jane Smith",
-        "username": "janesmith",
-        "avatar": "https://example.com/avatar2.jpg"
+      "xprofile": {
+        "user_id": 43,
+        "total_points": 3210,
+        "is_verified": 0,
+        "status": "active",
+        "display_name": "User Name",
+        "username": "username",
+        "avatar": "avatar_url",
+        "created_at": "2024-03-05 16:37:02",
+        "short_description": "User description",
+        "meta": {
+          "website": "website_url",
+          "cover_photo": "cover_photo_url",
+          "social_links": {
+            "twitter": "@handle",
+            "youtube": "@handle",
+            "linkedin": "handle",
+            "fb": "handle",
+            "instagram": "handle"
+          },
+          "badge_slug": ["badge1", "badge2"]
+        },
+        "badge": null
       },
       "lesson": {
         "id": 15,
@@ -368,7 +404,7 @@ Manually update or grade a quiz result. Admin only.
 ### HTTP Request
 
 ```
-POST /wp-json/fluent-community/v1/admin/courses/{course_id}/quiz-results/{quiz_id}
+POST /wp-json/fluent-community/v2/admin/courses/{course_id}/quiz-results/{quiz_id}
 ```
 
 ### URL Parameters
@@ -390,8 +426,8 @@ POST /wp-json/fluent-community/v1/admin/courses/{course_id}/quiz-results/{quiz_i
 ### Example Request
 
 ```bash
-curl -X POST "https://example.com/wp-json/fluent-community/v1/admin/courses/5/quiz-results/123" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD" \
+curl -X POST "https://example.com/wp-json/fluent-community/v2/admin/courses/5/quiz-results/123" \
+  -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
     "score": 90,

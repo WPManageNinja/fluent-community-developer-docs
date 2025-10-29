@@ -39,7 +39,7 @@ Retrieve activity history for a user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/activities
+GET /wp-json/fluent-community/v2/activities
 ```
 
 ### Parameters
@@ -57,58 +57,98 @@ GET /wp-json/fluent-community/v1/activities
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/activities?per_page=20&page=1" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?per_page=20&page=1" \
+  -u "username:password"
 ```
 
 ### Example Response
 
 ```json
 {
-  "activities": [
-    {
-      "id": 123,
-      "user_id": 45,
-      "action_type": "post_created",
-      "object_id": 789,
-      "object_type": "feed",
-      "space_id": 12,
-      "meta": {
-        "feed_title": "Welcome to our community!",
-        "space_name": "General Discussion"
+  "activities": {
+    "data": [
+      {
+        "id": 100007,
+        "message": "<span class=\"fcom_user_name\">User Name</span> published a new status <span class=\"fcom_feed_excerpt\">Post Title</span>",
+        "updated_at": "2025-07-25 08:51:01",
+        "xprofile": {
+          "user_id": 1,
+          "total_points": 6425,
+          "is_verified": 1,
+          "status": "active",
+          "display_name": "User Name",
+          "username": "username",
+          "avatar": "avatar_url",
+          "created_at": "2024-03-05 16:37:02",
+          "short_description": "User description",
+          "meta": {
+            "website": "website_url",
+            "cover_photo": "cover_photo_url",
+            "social_links": {
+              "twitter": "@handle",
+              "youtube": "@handle",
+              "linkedin": "handle",
+              "fb": "handle",
+              "instagram": "handle"
+            },
+            "badge_slug": ["badge1", "badge2"]
+          },
+          "badge": null
+        },
+        "route": {
+          "name": "space_feed",
+          "params": {
+            "space": "general-discussion",
+            "feed_slug": "post-title-slug"
+          }
+        }
       },
-      "created_at": "2024-01-15 10:30:00",
-      "user": {
-        "id": 45,
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg"
+      {
+        "id": 100003,
+        "message": "<span class=\"fcom_user_name\">User Name</span> added a comment on <span class=\"fcom_feed_excerpt\">Post Title</span>",
+        "updated_at": "2025-02-04 13:24:33",
+        "xprofile": {
+          "user_id": 1,
+          "total_points": 6425,
+          "is_verified": 1,
+          "status": "active",
+          "display_name": "User Name",
+          "username": "username",
+          "avatar": "avatar_url",
+          "created_at": "2024-03-05 16:37:02",
+          "short_description": "User description",
+          "meta": {
+            "website": "website_url",
+            "cover_photo": "cover_photo_url",
+            "social_links": {
+              "twitter": "@handle",
+              "youtube": "@handle",
+              "linkedin": "handle",
+              "fb": "handle",
+              "instagram": "handle"
+            },
+            "badge_slug": ["badge1", "badge2"]
+          },
+          "badge": null
+        },
+        "route": {
+          "name": "space_feed",
+          "params": {
+            "space": "general-discussion",
+            "feed_slug": "post-title-slug"
+          },
+          "query": {
+            "comment_id": "1002"
+          }
+        }
       }
-    },
-    {
-      "id": 122,
-      "user_id": 45,
-      "action_type": "comment_added",
-      "object_id": 456,
-      "object_type": "comment",
-      "space_id": 12,
-      "meta": {
-        "feed_id": 788,
-        "comment_excerpt": "Great post! Thanks for sharing..."
-      },
-      "created_at": "2024-01-15 09:15:00",
-      "user": {
-        "id": 45,
-        "display_name": "John Doe",
-        "avatar": "https://example.com/avatar.jpg"
-      }
-    }
-  ],
-  "pagination": {
+    ],
     "total": 156,
     "per_page": 20,
-    "current_page": 1,
-    "total_pages": 8
-  }
+    "current_page": 1
+  },
+  "after_contents": "",
+  "pinned_posts": []
 }
 ```
 
@@ -119,15 +159,15 @@ Filter activities by specific action type.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/activities?action_type={type}
+GET /wp-json/fluent-community/v2/activities?action_type={type}
 ```
 
 ### Example Request
 
 ```bash
 # Get all post creation activities
-curl -X GET "https://example.com/wp-json/fluent-community/v1/activities?action_type=post_created" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?action_type=post_created" \
+  -u "username:password"
 ```
 
 ## Get Activities by Date Range
@@ -137,15 +177,15 @@ Filter activities within a specific date range.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/activities?date_from={start}&date_to={end}
+GET /wp-json/fluent-community/v2/activities?date_from={start}&date_to={end}
 ```
 
 ### Example Request
 
 ```bash
 # Get activities from last 7 days
-curl -X GET "https://example.com/wp-json/fluent-community/v1/activities?date_from=2024-01-08&date_to=2024-01-15" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?date_from=2024-01-08&date_to=2024-01-15" \
+  -u "username:password"
 ```
 
 ## Get Space Activities
@@ -155,14 +195,14 @@ Retrieve all activities within a specific space.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v1/activities?space_id={space_id}
+GET /wp-json/fluent-community/v2/activities?space_id={space_id}
 ```
 
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v1/activities?space_id=12" \
-  -H "Authorization: Basic API_USERNAME:API_PASSWORD"
+curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?space_id=12" \
+  -u "username:password"
 ```
 
 ---
@@ -174,7 +214,7 @@ Always paginate activity feeds to avoid performance issues:
 
 ```javascript
 // Load activities in batches
-const activities = await fetch('/wp-json/fluent-community/v1/activities?per_page=20&page=1');
+const activities = await fetch('/wp-json/fluent-community/v2/activities?per_page=20&page=1');
 ```
 
 ### 2. Filter by Type
@@ -182,7 +222,7 @@ Filter activities by type for specific use cases:
 
 ```javascript
 // Show only post creation activities
-const posts = await fetch('/wp-json/fluent-community/v1/activities?action_type=post_created');
+const posts = await fetch('/wp-json/fluent-community/v2/activities?action_type=post_created');
 ```
 
 ### 3. Cache Activity Data
@@ -202,7 +242,7 @@ Use date ranges for historical analysis:
 
 ```javascript
 // Get last month's activities
-const lastMonth = await fetch('/wp-json/fluent-community/v1/activities?date_from=2024-01-01&date_to=2024-01-31');
+const lastMonth = await fetch('/wp-json/fluent-community/v2/activities?date_from=2024-01-01&date_to=2024-01-31');
 ```
 
 ### 5. Combine Filters
@@ -210,7 +250,7 @@ Combine multiple filters for specific queries:
 
 ```javascript
 // Get user's posts in a specific space
-const activities = await fetch('/wp-json/fluent-community/v1/activities?user_id=45&action_type=post_created&space_id=12');
+const activities = await fetch('/wp-json/fluent-community/v2/activities?user_id=45&action_type=post_created&space_id=12');
 ```
 
 ---
@@ -224,7 +264,7 @@ Display a user's recent activity on their profile:
 ```javascript
 async function getUserTimeline(userId) {
   const response = await fetch(
-    `/wp-json/fluent-community/v1/activities?user_id=${userId}&per_page=10`,
+    `/wp-json/fluent-community/v2/activities?user_id=${userId}&per_page=10`,
     {
       headers: {
         'Authorization': 'Basic ' + btoa('API_USERNAME:API_PASSWORD')
@@ -250,7 +290,7 @@ Create a real-time activity feed for the community:
 ```javascript
 async function getRecentActivity() {
   const response = await fetch(
-    '/wp-json/fluent-community/v1/activities?per_page=20',
+    '/wp-json/fluent-community/v2/activities?per_page=20',
     {
       headers: {
         'Authorization': 'Basic ' + btoa('API_USERNAME:API_PASSWORD')
@@ -282,7 +322,7 @@ async function getSpaceActivity(spaceId, days = 7) {
     .toISOString().split('T')[0];
   
   const response = await fetch(
-    `/wp-json/fluent-community/v1/activities?space_id=${spaceId}&date_from=${dateFrom}&date_to=${dateTo}`,
+    `/wp-json/fluent-community/v2/activities?space_id=${spaceId}&date_from=${dateFrom}&date_to=${dateTo}`,
     {
       headers: {
         'Authorization': 'Basic ' + btoa('API_USERNAME:API_PASSWORD')
@@ -311,7 +351,7 @@ Generate engagement reports based on activity data:
 ```javascript
 async function getUserEngagement(userId, dateFrom, dateTo) {
   const response = await fetch(
-    `/wp-json/fluent-community/v1/activities?user_id=${userId}&date_from=${dateFrom}&date_to=${dateTo}`,
+    `/wp-json/fluent-community/v2/activities?user_id=${userId}&date_from=${dateFrom}&date_to=${dateTo}`,
     {
       headers: {
         'Authorization': 'Basic ' + btoa('API_USERNAME:API_PASSWORD')
