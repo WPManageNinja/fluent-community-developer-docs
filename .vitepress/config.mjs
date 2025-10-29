@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Fluent Community",
   description: "Complete developer documentation for Fluent Community plugin",
+  ignoreDeadLinks: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     siteTitle: 'Developer Docs',
@@ -11,10 +12,65 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'REST API', link: '/rest-api/' },
+      { text: 'Hooks', link: '/hooks/' },
       { text: 'Getting Started', link: '/rest-api/getting-started' }
     ],
 
     sidebar: {
+      '/hooks/': [
+        {
+          text: 'Getting Started',
+          items: [
+            { text: 'Hooks Overview', link: '/hooks/' },
+            { text: 'Quick Reference', link: '/hooks/quick-reference' },
+            { text: 'Examples & Use Cases', link: '/hooks/examples' }
+          ]
+        },
+        {
+          text: 'Actions',
+          collapsed: false,
+          items: [
+            { text: 'All Actions', link: '/hooks/actions/' },
+            { text: 'Feeds & Posts', link: '/hooks/actions/feeds' },
+            { text: 'Comments', link: '/hooks/actions/comments' },
+            { text: 'Spaces', link: '/hooks/actions/spaces' },
+            { text: 'Users & Members', link: '/hooks/actions/users' },
+            { text: 'Media', link: '/hooks/actions/media' },
+            { text: 'Reactions', link: '/hooks/actions/reactions' },
+            { text: 'Notifications', link: '/hooks/actions/notifications' },
+            { text: 'Authentication', link: '/hooks/actions/authentication' },
+            { text: 'Courses', link: '/hooks/actions/courses' },
+            { text: 'Portal & UI', link: '/hooks/actions/portal' },
+            { text: 'Activities', link: '/hooks/actions/activities' },
+            { text: 'Managers', link: '/hooks/actions/managers' },
+            { text: 'Moderation [PRO]', link: '/hooks/actions/moderation' },
+            { text: 'Followers [PRO]', link: '/hooks/actions/followers' },
+            { text: 'Miscellaneous', link: '/hooks/actions/miscellaneous' }
+          ]
+        },
+        {
+          text: 'Filters',
+          collapsed: false,
+          items: [
+            { text: 'All Filters', link: '/hooks/filters/' },
+            { text: 'Feeds & Posts', link: '/hooks/filters/feeds' },
+            { text: 'Comments', link: '/hooks/filters/comments' },
+            { text: 'Spaces', link: '/hooks/filters/spaces' },
+            { text: 'Users & Members', link: '/hooks/filters/users' },
+            { text: 'Media', link: '/hooks/filters/media' },
+            { text: 'Reactions', link: '/hooks/filters/reactions' },
+            { text: 'Notifications', link: '/hooks/filters/notifications' },
+            { text: 'Authentication', link: '/hooks/filters/authentication' },
+            { text: 'Courses', link: '/hooks/filters/courses' },
+            { text: 'Portal & UI', link: '/hooks/filters/portal' },
+            { text: 'Activities', link: '/hooks/filters/activities' },
+            { text: 'Managers', link: '/hooks/filters/managers' },
+            { text: 'Moderation [PRO]', link: '/hooks/filters/moderation' },
+            { text: 'Followers [PRO]', link: '/hooks/filters/followers' },
+            { text: 'Miscellaneous', link: '/hooks/filters/miscellaneous' }
+          ]
+        }
+      ],
       '/rest-api/': [
         {
           text: 'Getting Started',
