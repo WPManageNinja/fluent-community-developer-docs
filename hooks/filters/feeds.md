@@ -1,3 +1,12 @@
+---
+prev:
+  text: 'Filter Hooks Overview'
+  link: '/hooks/filters'
+next:
+  text: 'Comments'
+  link: '/hooks/filters/comments'
+---
+
 # Feeds & Posts Filters
 
 Filters for modifying feed/post data, API responses, and settings in Fluent Community.

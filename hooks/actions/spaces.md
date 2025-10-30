@@ -1,12 +1,12 @@
 # Spaces Actions
 
-Actions related to space creation, management, membership, and space groups in Fluent Community.
+Actions related to space creation, management, and membership in Fluent Community.
 
 ## Overview
 
 Spaces are community areas where members can gather around specific topics or interests. These actions allow you to hook into space lifecycle events and member management.
 
-**Total Actions:** 14
+**Total Actions:** 10
 
 ---
 
@@ -397,68 +397,6 @@ add_action('fluent_community/space/member/role_updated', function($space, $userI
     ));
 }, 10, 4);
 ```
-
----
-
-## Space Groups
-
-### fluent_community/space_group/created
-
-Fires when a space group is created.
-
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$spaceGroup` | SpaceGroup Object | The created space group |
-
-**Example Usage:**
-
-```php
-add_action('fluent_community/space_group/created', function($spaceGroup) {
-    error_log(sprintf(
-        'Space group created: %s (ID: %d)',
-        $spaceGroup->title,
-        $spaceGroup->id
-    ));
-}, 10, 1);
-```
-
----
-
-### fluent_community/space_group/updated
-
-Fires when a space group is updated.
-
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$spaceGroup` | SpaceGroup Object | Updated space group |
-
----
-
-### fluent_community/space_group/before_delete
-
-Fires before a space group is deleted.
-
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$spaceGroup` | SpaceGroup Object | Space group about to be deleted |
-
----
-
-### fluent_community/space_group/deleted
-
-Fires after a space group is deleted.
-
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$spaceGroup` | SpaceGroup Object | Deleted space group |
 
 ---
 

@@ -1,3 +1,12 @@
+---
+prev:
+  text: 'Action Hooks Overview'
+  link: '/hooks/actions'
+next:
+  text: 'Comments'
+  link: '/hooks/actions/comments'
+---
+
 # Feeds & Posts Actions
 
 Actions related to feed/post creation, updates, deletion, and management in Fluent Community.
