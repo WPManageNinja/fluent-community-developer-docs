@@ -1,3 +1,12 @@
+---
+prev:
+  text: 'Feeds & Posts'
+  link: '/hooks/actions/feeds'
+next:
+  text: 'Spaces'
+  link: '/hooks/actions/spaces'
+---
+
 # Comments Actions
 
 Actions related to comment creation, updates, deletion, and management in Fluent Community.
@@ -609,6 +618,42 @@ add_action('fluent_community/comment_added', function($comment, $feed) {
     send_notifications($comment);
 }, 10, 2);
 ```
+
+---
+
+## Dynamic Comment Hooks
+
+The following dynamic hooks fire based on comment context:
+
+### fluent_community/comment/new_comment_{$type}
+
+Fires when a new comment of a specific type is created. Replace `{$type}` with the comment type.
+
+**Example:**
+```php
+// Hook into feed comments specifically
+add_action('fluent_community/comment/new_comment_feed', function($comment) {
+    error_log('New feed comment: ' . $comment->id);
+}, 10, 1);
+```
+
+---
+
+### fluent_community/comment_added_{$objectType}
+
+Fires when a comment is added to a specific object type.
+
+---
+
+### fluent_community/comment_updated_{$objectType}
+
+Fires when a comment on a specific object type is updated.
+
+---
+
+### fluent_community/comment_deleted_{$objectType}
+
+Fires when a comment on a specific object type is deleted.
 
 ---
 

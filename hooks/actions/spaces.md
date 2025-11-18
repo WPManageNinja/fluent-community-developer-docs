@@ -1,3 +1,12 @@
+---
+prev:
+  text: 'Comments'
+  link: '/hooks/actions/comments'
+next:
+  text: 'Users & Members'
+  link: '/hooks/actions/users'
+---
+
 # Spaces Actions
 
 Actions related to space creation, management, and membership in Fluent Community.
@@ -525,6 +534,43 @@ add_action('fluent_community/space/before_delete', function($space) {
         ], 400);
     }
 }, 10, 1);
+```
+
+---
+
+## Dynamic Space Hooks
+
+### fluent_community/space
+
+Generic space hook that fires for various space events.
+
+**Example:**
+```php
+add_action('fluent_community/space', function($space, $action) {
+    error_log('Space event: ' . $action . ' for space ' . $space->id);
+}, 10, 2);
+```
+
+---
+
+### fluent_community/space_feed/email_notify_sub_query
+
+Fires when building the email notification query for space feeds.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$query` | Query Object | The query builder instance |
+| `$spaceId` | int | Space ID |
+
+**Example Usage:**
+
+```php
+add_action('fluent_community/space_feed/email_notify_sub_query', function($query, $spaceId) {
+    // Modify email notification query
+    $query->where('custom_field', 'value');
+}, 10, 2);
 ```
 
 ---

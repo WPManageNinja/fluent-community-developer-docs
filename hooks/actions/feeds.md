@@ -650,6 +650,36 @@ Fires when scheduling a feed with @everyone tag.
 
 ---
 
+## Dynamic Feed Hooks
+
+The following dynamic hooks fire based on feed context:
+
+### fluent_community/feed/new_feed_{$type}
+
+Fires when a new feed of a specific type is created. Replace `{$type}` with the feed type (e.g., `post`, `video`, `poll`).
+
+**Example:**
+```php
+add_action('fluent_community/feed/new_feed_video', function($feed) {
+    // Handle video feed specifically
+    error_log('New video feed: ' . $feed->id);
+}, 10, 1);
+```
+
+---
+
+### fluent_community/feed/just_created_type_{$type}
+
+Fires immediately after a feed of a specific type is created.
+
+---
+
+### fluent_community/feed/updating_content_type_old_{$oldType}
+
+Fires when updating a feed's content type from an old type.
+
+---
+
 ## See Also
 
 - [Feed Filters](/hooks/filters/feeds) - Modify feed data

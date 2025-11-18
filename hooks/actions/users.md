@@ -528,3 +528,40 @@ add_action('user_register', function($user_id) {
 }, 10, 1);
 ```
 
+---
+
+## Query Modification Hooks
+
+### fluent_community/members_query_ref
+
+Fires when building the members query, allowing modification by reference.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$query` | Query Object (by reference) | The query builder instance |
+| `$filters` | array | Applied filters |
+
+**Example Usage:**
+
+```php
+add_action('fluent_community/members_query_ref', function(&$query, $filters) {
+    // Modify members query
+    if (isset($filters['premium_only'])) {
+        $query->whereHas('meta', function($q) {
+            $q->where('meta_key', 'is_premium')->where('meta_value', '1');
+        });
+    }
+}, 10, 2);
+```
+
+---
+
+## See Also
+
+- [User Filters](/hooks/filters/users) - Modify user data
+- [Authentication Actions](/hooks/actions/authentication) - Login/registration
+- [Space Actions](/hooks/actions/spaces) - Space membership
+- [Examples](/hooks/examples) - Real-world examples
+
