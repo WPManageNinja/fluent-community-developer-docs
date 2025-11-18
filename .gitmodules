@@ -1,0 +1,3 @@
+[submodule "user-docs"]
+	path = user-docs
+	url = git@github.com:WPManageNinja/fluent-community-docs.git

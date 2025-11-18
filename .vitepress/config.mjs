@@ -5,13 +5,23 @@ export default defineConfig({
   title: "Fluent Community",
   description: "Complete developer documentation for Fluent Community plugin",
   ignoreDeadLinks: true,
+  srcExclude: ['**/user-docs/**'],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     siteTitle: 'Developer Docs',
 
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'REST API', link: '/rest-api/' },
+      { text: 'Getting Started', link: '/getting-started' },
+      {
+        text: 'Database',
+        items: [
+          { text: 'Database Schema', link: '/database/schema' },
+          { text: 'Database Models', link: '/database/models' },
+          { text: 'Model Relationships', link: '/database/relationships' },
+          { text: 'Query Builder', link: '/database/query-builder' }
+        ]
+      },
       {
         text: 'Developer Hooks',
         items: [
@@ -19,10 +29,29 @@ export default defineConfig({
           { text: 'Filter Hooks', link: '/hooks/filters' }
         ]
       },
-      { text: 'Getting Started', link: '/rest-api/getting-started' }
+      { text: 'REST API', link: '/rest-api/' }
     ],
 
     sidebar: {
+      '/getting-started': [
+        {
+          text: 'Getting Started',
+          items: [
+            { text: 'Overview', link: '/getting-started' }
+          ]
+        }
+      ],
+      '/database/': [
+        {
+          text: 'Database',
+          items: [
+            { text: 'Database Schema', link: '/database/schema' },
+            { text: 'Database Models', link: '/database/models' },
+            { text: 'Model Relationships', link: '/database/relationships' },
+            { text: 'Query Builder', link: '/database/query-builder' }
+          ]
+        }
+      ],
       '/hooks/': [
         {
           text: 'Developer Hooks',
