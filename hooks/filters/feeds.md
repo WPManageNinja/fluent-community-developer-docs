@@ -664,6 +664,61 @@ add_filter('fluent_community/feed/new_feed_data', function($data, $requestData) 
 
 ---
 
+### fluent_community/post_order_options ​
+
+Filters available post ordering options.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$options` | array | Available ordering options |
+
+**Return:** `array` - Modified options
+
+**Example Usage:**
+
+```php
+// Add custom ordering options
+add_filter('fluent_community/post_order_options', function($options) {
+    $options['most_viewed'] = [
+        'label' => 'Most Viewed',
+        'order_by' => 'views_count',
+        'order' => 'DESC'
+    ];
+
+    $options['trending'] = [
+        'label' => 'Trending',
+        'order_by' => 'engagement_score',
+        'order' => 'DESC'
+    ];
+
+    return $options;
+});
+
+// Remove ordering options
+add_filter('fluent_community/post_order_options', function($options) {
+    unset($options['oldest']);
+
+    return $options;
+});
+
+// Customize labels
+add_filter('fluent_community/post_order_options', function($options) {
+    $options['latest']['label'] = 'Newest First';
+    $options['popular']['label'] = 'Most Popular';
+
+    return $options;
+});
+```
+
+**Common Use Cases:**
+- Custom sorting options
+- Remove unwanted options
+- Localize labels
+
+---
+
 ## See Also
 
 - [Feed Actions](/hooks/actions/feeds) - Feed lifecycle hooks

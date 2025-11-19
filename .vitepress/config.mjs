@@ -26,10 +26,30 @@ export default defineConfig({
         text: 'Developer Hooks',
         items: [
           { text: 'Action Hooks', link: '/hooks/actions' },
-          { text: 'Filter Hooks', link: '/hooks/filters' }
+          { text: 'Filter Hooks', link: '/hooks/filters' },
+          { text: 'Helper Functions', link: '/helpers/' }
         ]
       },
-      { text: 'REST API', link: '/rest-api/' }
+      {
+        text: 'Guides',
+        items: [
+          { text: 'Code Snippets', link: '/guides/code-snippets' },
+          { text: 'Meta Settings API', link: '/guides/meta-settings-api' },
+          { text: 'Cloud Storage', link: '/guides/cloud-storage/' },
+          { text: 'Incoming Webhooks', link: '/guides/incoming-webhooks' },
+          { text: 'Menu Customization', link: '/guides/menu-customization' },
+          { text: 'Theme Compatibility', link: '/guides/theme-compatibility' }
+        ]
+      },
+      { text: 'REST API', link: '/rest-api/' },
+      {
+        text: 'Deployment',
+        items: [
+          { text: 'Server Requirements', link: '/deployment/server-requirements' },
+          { text: 'Performance Optimization', link: '/deployment/performance-optimization' },
+          { text: 'Benchmarks', link: '/deployment/benchmarks' }
+        ]
+      }
     ],
 
     sidebar: {
@@ -49,6 +69,47 @@ export default defineConfig({
             { text: 'Database Models', link: '/database/models' },
             { text: 'Model Relationships', link: '/database/relationships' },
             { text: 'Query Builder', link: '/database/query-builder' }
+          ]
+        }
+      ],
+      '/helpers/': [
+        {
+          text: 'Helper Functions',
+          items: [
+            { text: 'Overview', link: '/helpers/' },
+            { text: 'Helper Class Reference', link: '/helpers/helper-class' }
+          ]
+        }
+      ],
+      '/guides/': [
+        {
+          text: 'Guides',
+          items: [
+            { text: 'Code Snippets & Recipes', link: '/guides/code-snippets' },
+            { text: 'Meta Settings API', link: '/guides/meta-settings-api' },
+            {
+              text: 'Cloud Storage',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/guides/cloud-storage/' },
+                { text: 'Cloudflare R2', link: '/guides/cloud-storage/cloudflare-r2' },
+                { text: 'Amazon S3', link: '/guides/cloud-storage/amazon-s3' },
+                { text: 'BunnyCDN', link: '/guides/cloud-storage/bunnycdn' }
+              ]
+            },
+            { text: 'Incoming Webhooks', link: '/guides/incoming-webhooks' },
+            { text: 'Menu Customization', link: '/guides/menu-customization' },
+            { text: 'Theme Compatibility', link: '/guides/theme-compatibility' }
+          ]
+        }
+      ],
+      '/deployment/': [
+        {
+          text: 'Deployment & Performance',
+          items: [
+            { text: 'Server Requirements', link: '/deployment/server-requirements' },
+            { text: 'Performance Optimization', link: '/deployment/performance-optimization' },
+            { text: 'Benchmarks', link: '/deployment/benchmarks' }
           ]
         }
       ],

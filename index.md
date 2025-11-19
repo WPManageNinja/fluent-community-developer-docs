@@ -131,3 +131,48 @@ Full REST API documentation with examples
 
 </div>
 
+## 📚 Popular Guides
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+
+<div style="padding: 1rem; background: var(--vp-c-bg-soft); border-radius: 8px;">
+
+**💾 Cloud Storage**
+
+Configure S3, R2, or BunnyCDN for media
+
+[Setup Guide →](/guides/cloud-storage/)
+
+</div>
+
+<div style="padding: 1rem; background: var(--vp-c-bg-soft); border-radius: 8px;">
+
+**🔗 Incoming Webhooks**
+
+Connect external apps to your community
+
+[Webhook Guide →](/guides/incoming-webhooks)
+
+</div>
+
+<div style="padding: 1rem; background: var(--vp-c-bg-soft); border-radius: 8px;">
+
+**📝 Code Snippets**
+
+30+ ready-to-use code examples
+
+[View Snippets →](/guides/code-snippets)
+
+</div>
+
+<div style="padding: 1rem; background: var(--vp-c-bg-soft); border-radius: 8px;">
+
+**⚡ Performance**
+
+Optimize your community for speed
+
+[Optimization Guide →](/deployment/performance-optimization)
+
+</div>
+
+</div>

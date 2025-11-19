@@ -455,5 +455,37 @@ Build custom analytics dashboards and reporting tools for community insights.
 
 ---
 
-Ready to start building? Explore the documentation and dive in! 🚀
+## Next Steps ​
 
+Now that you understand the basics, explore these resources to start building:
+
+### Core Documentation ​
+
+- **[Database Schema](/database/schema.md)** - Understand the database structure
+- **[Database Models](/database/models.md)** - Learn about available models and their methods
+- **[Query Builder](/database/query-builder.md)** - Master database queries
+- **[Helper Functions](/helpers/)** - Discover utility functions
+
+### Practical Guides ​
+
+- **[Code Snippets](/guides/code-snippets.md)** - Ready-to-use code examples
+- **[Meta Settings API](/guides/meta-settings-api.md)** - Extend space and course settings
+- **[Menu Customization](/guides/menu-customization.md)** - Add custom navigation items
+- **[Theme Compatibility](/guides/theme-compatibility.md)** - Integrate with your theme
+
+### Integration & Deployment ​
+
+- **[Cloud Storage](/guides/cloud-storage/)** - Configure cloud storage providers
+- **[Incoming Webhooks](/guides/incoming-webhooks.md)** - Connect external applications
+- **[Performance Optimization](/deployment/performance-optimization.md)** - Optimize your setup
+- **[Server Requirements](/deployment/server-requirements.md)** - Hosting recommendations
+
+### Developer Hooks & API ​
+
+- **[Action Hooks](/hooks/actions/)** - Available action hooks
+- **[Filter Hooks](/hooks/filters/)** - Available filter hooks
+- **[REST API](/rest-api/)** - Complete API reference
+
+---
+
+Ready to start building? Explore the documentation and dive in! 🚀
