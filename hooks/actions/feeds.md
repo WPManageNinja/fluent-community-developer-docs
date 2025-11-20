@@ -9,16 +9,6 @@ next:
 
 # Feeds & Posts Actions
 
-Actions related to feed/post creation, updates, deletion, and management in Fluent Community.
-
-## Overview
-
-Feeds (also called posts) are the primary content type in Fluent Community. These actions allow you to hook into the feed lifecycle and execute custom code when feeds are created, updated, deleted, or interacted with.
-
-**Total Actions:** 18
-
----
-
 ## Feed Lifecycle
 
 ### fluent_community/feed/created
@@ -316,119 +306,265 @@ add_action('fluent_community/feed/rescheduled', function($feed) {
 
 ---
 
-## Dynamic Actions
+### fluent_community/feed/react_added
 
-### fluent_community/feed/new_feed_{status}
-
-Fires when a feed is created with a specific status.
-
-**Dynamic Values:**
-- `new_feed_published` - When status is 'published'
-- `new_feed_draft` - When status is 'draft'
-- `new_feed_pending` - When status is 'pending'
-- `new_feed_scheduled` - When status is 'scheduled'
+Fires when a reaction is added to a feed.
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$feed` | Feed Object | The newly created feed |
+| `$reaction` | Reaction Object | The reaction that was added |
+| `$feed` | Feed Object | The feed that received the reaction |
+
+**Reaction Object Properties:**
+- `id` (int) - Reaction ID
+- `user_id` (int) - User who reacted
+- `object_id` (int) - Feed ID
+- `object_type` (string) - Object type ('feed')
+- `type` (string) - Reaction type ('like', 'love', 'celebrate', etc.)
+- `created_at` (string) - Reaction timestamp
 
 **Source Files:**
-- `app/Http/Controllers/FeedsController.php:464`
+- `app/Http/Controllers/FeedsController.php`
 
 **Example Usage:**
 
 ```php
-// Only handle published feeds
-add_action('fluent_community/feed/new_feed_published', function($feed) {
-    // Send to social media
-    share_to_twitter($feed);
-}, 10, 1);
+// Award points for receiving reactions
+add_action('fluent_community/feed/react_added', function($reaction, $feed) {
+    // Award points to feed author
+    $points = get_user_meta($feed->user_id, 'community_points', true) ?: 0;
+    update_user_meta($feed->user_id, 'community_points', $points + 5);
 
-// Handle pending feeds differently
-add_action('fluent_community/feed/new_feed_pending', function($feed) {
-    // Notify moderators
-    notify_moderators($feed);
-}, 10, 1);
+    // Log the reaction
+    error_log(sprintf(
+        'User %d reacted with %s to feed %d',
+        $reaction->user_id,
+        $reaction->type,
+        $feed->id
+    ));
+}, 10, 2);
+
+// Send notification to feed author
+add_action('fluent_community/feed/react_added', function($reaction, $feed) {
+    // Don't notify if user reacted to their own post
+    if ($reaction->user_id === $feed->user_id) {
+        return;
+    }
+
+    $reactor = get_user_by('id', $reaction->user_id);
+    $author = get_user_by('id', $feed->user_id);
+
+    wp_mail(
+        $author->user_email,
+        'Someone reacted to your post',
+        sprintf(
+            '%s reacted with %s to your post: %s',
+            $reactor->display_name,
+            $reaction->type,
+            wp_trim_words($feed->message, 20)
+        )
+    );
+}, 10, 2);
+
+// Track reaction analytics
+add_action('fluent_community/feed/react_added', function($reaction, $feed) {
+    // Send to analytics service
+    wp_remote_post('https://analytics.example.com/events', [
+        'body' => json_encode([
+            'event' => 'feed_reaction',
+            'reaction_type' => $reaction->type,
+            'feed_id' => $feed->id,
+            'feed_type' => $feed->type,
+            'user_id' => $reaction->user_id
+        ])
+    ]);
+}, 10, 2);
 ```
+
+**Common Use Cases:**
+- Award gamification points to feed author
+- Send notifications to feed author
+- Track engagement analytics
+- Trigger automated workflows based on reaction types
+- Update user reputation scores
+- Create activity logs
 
 ---
 
-### fluent_community/feed/just_created_type_{type}
+## Dynamic Actions
 
-Fires immediately after a feed of a specific type is created.
+### fluent_community/feed/new_feed_
+
+**Dynamic Action** - Fires when a feed is created, with the feed type appended to the hook name.
+
+**Hook Pattern:** `fluent_community/feed/new_feed_{type}`
 
 **Dynamic Values:**
-- `just_created_type_feed` - Regular feed post
-- `just_created_type_article` - Article post
-- `just_created_type_video` - Video post
-- `just_created_type_audio` - Audio post
-- `just_created_type_event` - Event post
+- `fluent_community/feed/new_feed_post` - Regular feed post
+- `fluent_community/feed/new_feed_article` - Article post
+- `fluent_community/feed/new_feed_video` - Video post
+- `fluent_community/feed/new_feed_audio` - Audio post
+- `fluent_community/feed/new_feed_event` - Event post
+- `fluent_community/feed/new_feed_poll` - Poll post
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `$feed` | Feed Object | The newly created feed |
-| `$requestData` | array | Original request data |
+| `$data` | array | Feed creation data |
 
 **Source Files:**
-- `app/Http/Controllers/FeedsController.php:434`
+- `app/Http/Controllers/FeedsController.php`
 
 **Example Usage:**
 
 ```php
 // Handle article posts specifically
-add_action('fluent_community/feed/just_created_type_article', function($feed, $requestData) {
+add_action('fluent_community/feed/new_feed_article', function($feed, $data) {
     // Add to article index
     update_option('latest_articles', array_merge(
         get_option('latest_articles', []),
         [$feed->id]
     ));
+
+    // Send to article RSS feed
+    update_article_rss_feed($feed);
 }, 10, 2);
 
 // Handle video posts
-add_action('fluent_community/feed/just_created_type_video', function($feed, $requestData) {
+add_action('fluent_community/feed/new_feed_video', function($feed, $data) {
     // Process video thumbnail
     generate_video_thumbnail($feed);
+
+    // Add to video gallery
+    add_to_video_gallery($feed);
+}, 10, 2);
+
+// Handle poll posts
+add_action('fluent_community/feed/new_feed_poll', function($feed, $data) {
+    // Initialize poll tracking
+    init_poll_tracking($feed->id);
 }, 10, 2);
 ```
 
+**Common Use Cases:**
+- Type-specific content processing
+- Custom notifications per content type
+- Analytics tracking by type
+- Type-specific integrations
+
 ---
 
-### fluent_community/feed/updating_content_type_old_{type}
+### fluent_community/feed/just_created_type_
 
-Fires when a feed's content type is being changed from one type to another.
+**Dynamic Action** - Fires immediately after a feed of a specific type is created (before other processing).
+
+**Hook Pattern:** `fluent_community/feed/just_created_type_{type}`
 
 **Dynamic Values:**
-- `updating_content_type_old_feed`
-- `updating_content_type_old_article`
-- `updating_content_type_old_video`
+- `fluent_community/feed/just_created_type_post` - Regular feed post
+- `fluent_community/feed/just_created_type_article` - Article post
+- `fluent_community/feed/just_created_type_video` - Video post
+- `fluent_community/feed/just_created_type_audio` - Audio post
+- `fluent_community/feed/just_created_type_event` - Event post
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$existingFeed` | Feed Object | The feed before update |
-| `$newContentType` | string | The new content type |
-| `$requestData` | array | Update request data |
+| `$feed` | Feed Object | The newly created feed |
+| `$data` | array | Original request data |
 
 **Source Files:**
-- `app/Http/Controllers/FeedsController.php:548`
+- `app/Http/Controllers/FeedsController.php`
 
 **Example Usage:**
 
 ```php
-// Clean up when converting from video to article
-add_action('fluent_community/feed/updating_content_type_old_video', function($existingFeed, $newContentType, $requestData) {
-    if ($newContentType === 'article') {
-        // Remove video-specific metadata
-        delete_post_meta($existingFeed->id, 'video_url');
-        delete_post_meta($existingFeed->id, 'video_thumbnail');
+// Early processing for articles
+add_action('fluent_community/feed/just_created_type_article', function($feed, $data) {
+    // Extract and save article metadata early
+    if (isset($data['reading_time'])) {
+        update_post_meta($feed->id, 'reading_time', $data['reading_time']);
     }
-}, 10, 3);
+}, 10, 2);
+
+// Early video processing
+add_action('fluent_community/feed/just_created_type_video', function($feed, $data) {
+    // Queue video processing job
+    queue_video_processing_job($feed->id);
+}, 10, 2);
 ```
+
+**Common Use Cases:**
+- Early content processing
+- Queue background jobs
+- Set initial metadata
+- Trigger immediate workflows
+
+---
+
+### fluent_community/feed/updating_content_type_old_
+
+**Dynamic Action** - Fires when a feed's content type is being changed, with the old type appended.
+
+**Hook Pattern:** `fluent_community/feed/updating_content_type_old_{old_type}`
+
+**Dynamic Values:**
+- `fluent_community/feed/updating_content_type_old_post`
+- `fluent_community/feed/updating_content_type_old_article`
+- `fluent_community/feed/updating_content_type_old_video`
+- `fluent_community/feed/updating_content_type_old_audio`
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$feed` | Feed Object | The feed before update |
+| `$data` | array | Update request data |
+
+**Source Files:**
+- `app/Http/Controllers/FeedsController.php`
+
+**Example Usage:**
+
+```php
+// Clean up when converting from video
+add_action('fluent_community/feed/updating_content_type_old_video', function($feed, $data) {
+    // Get new type from data
+    $newType = $data['type'] ?? null;
+
+    if ($newType && $newType !== 'video') {
+        // Remove video-specific metadata
+        delete_post_meta($feed->id, 'video_url');
+        delete_post_meta($feed->id, 'video_thumbnail');
+        delete_post_meta($feed->id, 'video_duration');
+
+        // Cancel any pending video processing
+        cancel_video_processing($feed->id);
+    }
+}, 10, 2);
+
+// Clean up when converting from article
+add_action('fluent_community/feed/updating_content_type_old_article', function($feed, $data) {
+    $newType = $data['type'] ?? null;
+
+    if ($newType && $newType !== 'article') {
+        // Remove article-specific metadata
+        delete_post_meta($feed->id, 'reading_time');
+        delete_post_meta($feed->id, 'article_category');
+    }
+}, 10, 2);
+```
+
+**Common Use Cases:**
+- Clean up type-specific metadata
+- Cancel type-specific background jobs
+- Update indexes when type changes
+- Log content type conversions
 
 ---
 
@@ -575,26 +711,111 @@ Fires with the list of mentioned user IDs.
 | `$userIds` | array | Array of mentioned user IDs |
 | `$feed` | Feed Object | The feed object |
 
+**Source Files:**
+- `app/Services/FeedsHelper.php`
+
+**Example Usage:**
+
+```php
+// Send custom notifications to mentioned users
+add_action('fluent_community/feed_mentioned_user_ids', function($userIds, $feed) {
+    foreach ($userIds as $userId) {
+        $user = get_user_by('id', $userId);
+
+        // Send custom email notification
+        wp_mail(
+            $user->user_email,
+            'You were mentioned in a post',
+            sprintf(
+                'You were mentioned in a post by %s',
+                get_user_by('id', $feed->user_id)->display_name
+            )
+        );
+    }
+}, 10, 2);
+
+// Award points to mentioned users
+add_action('fluent_community/feed_mentioned_user_ids', function($userIds, $feed) {
+    foreach ($userIds as $userId) {
+        $points = get_user_meta($userId, 'community_points', true) ?: 0;
+        update_user_meta($userId, 'community_points', $points + 2);
+    }
+}, 10, 2);
+```
+
+**Common Use Cases:**
+- Send custom mention notifications
+- Award points to mentioned users
+- Track mention analytics
+- Trigger workflows for mentioned users
+
 ---
 
-## Query Modification
+### fluent_community/profile_feed/created
 
-### fluent_community/feeds_query
-
-Fires before feeds are queried, allowing modification of the query.
+Fires when a feed is created on a user's profile.
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$feedsQuery` | Query Builder | The query builder instance (passed by reference) |
-| `$requestParams` | array | Request parameters |
-| `$queryArgs` | array | Query arguments |
+| `$feed` | Feed Object | The newly created profile feed |
 
 **Source Files:**
-- `app/Http/Controllers/FeedsController.php:157`
+- `app/Http/Controllers/FeedsController.php:498`
 
 **Example Usage:**
+
+```php
+// Notify profile owner about new post on their profile
+add_action('fluent_community/profile_feed/created', function($feed) {
+    // Get profile owner from feed metadata or space
+    $profile_owner_id = get_profile_owner_from_feed($feed);
+
+    // Don't notify if user posted on their own profile
+    if ($profile_owner_id === $feed->user_id) {
+        return;
+    }
+
+    $profile_owner = get_user_by('id', $profile_owner_id);
+    $author = get_user_by('id', $feed->user_id);
+
+    wp_mail(
+        $profile_owner->user_email,
+        'New post on your profile',
+        sprintf(
+            '%s posted on your profile: %s',
+            $author->display_name,
+            wp_trim_words($feed->message, 20)
+        )
+    );
+}, 10, 1);
+
+// Log profile feed creation
+add_action('fluent_community/profile_feed/created', function($feed) {
+    error_log(sprintf(
+        'Profile feed created: Feed ID %d by User %d',
+        $feed->id,
+        $feed->user_id
+    ));
+}, 10, 1);
+
+// Track profile engagement
+add_action('fluent_community/profile_feed/created', function($feed) {
+    $profile_owner_id = get_profile_owner_from_feed($feed);
+
+    $engagement_count = get_user_meta($profile_owner_id, 'profile_posts_count', true) ?: 0;
+    update_user_meta($profile_owner_id, 'profile_posts_count', $engagement_count + 1);
+}, 10, 1);
+```
+
+**Common Use Cases:**
+- Notify profile owner of new posts
+- Track profile engagement metrics
+- Moderate profile posts
+- Award points for profile interactions
+
+---
 
 ```php
 add_action('fluent_community/feeds_query', function(&$feedsQuery, $requestParams, $queryArgs) {
@@ -654,9 +875,9 @@ Fires when scheduling a feed with @everyone tag.
 
 The following dynamic hooks fire based on feed context:
 
-### fluent_community/feed/new_feed_{$type}
+### fluent_community/feed/new_feed_`{type}`
 
-Fires when a new feed of a specific type is created. Replace `{$type}` with the feed type (e.g., `post`, `video`, `poll`).
+Fires when a new feed of a specific type is created. Replace `{type}` with the feed type (e.g., `post`, `video`, `poll`).
 
 **Example:**
 ```php
@@ -668,13 +889,13 @@ add_action('fluent_community/feed/new_feed_video', function($feed) {
 
 ---
 
-### fluent_community/feed/just_created_type_{$type}
+### fluent_community/feed/just_created_type_`{type}`
 
 Fires immediately after a feed of a specific type is created.
 
 ---
 
-### fluent_community/feed/updating_content_type_old_{$oldType}
+### fluent_community/feed/updating_content_type_old_`{oldType}`
 
 Fires when updating a feed's content type from an old type.
 

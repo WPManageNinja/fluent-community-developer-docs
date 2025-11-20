@@ -1,23 +1,13 @@
 ---
 prev:
-  text: 'Moderation'
-  link: '/hooks/actions/moderation'
+  text: 'Reactions'
+  link: '/hooks/actions/reactions'
 next:
   text: 'Courses'
   link: '/hooks/actions/courses'
 ---
 
 # Notifications Actions
-
-Actions related to notification management and cleanup in Fluent Community.
-
-## Overview
-
-Notification actions handle the cleanup of old notifications and course-related notification scheduling.
-
-**Total Actions:** 1 (+ 4 course notification actions documented in [Courses](/hooks/actions/courses))
-
----
 
 ## Notification Cleanup
 
@@ -90,7 +80,7 @@ add_action('fluent_community/remove_old_notifications', function($daysOld, $dele
 
 ---
 
-## Course Notification Actions [PRO]
+## Course Notification Actions
 
 The following notification actions are related to courses and are documented in the [Courses Actions](/hooks/actions/courses) page:
 

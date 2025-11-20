@@ -1,23 +1,13 @@
 ---
 prev:
-  text: 'Courses'
-  link: '/hooks/actions/courses'
+  text: 'Integrations'
+  link: '/hooks/actions/integrations'
 next:
   text: 'Activities'
   link: '/hooks/actions/activities'
 ---
 
 # Portal & UI Actions
-
-Actions related to portal rendering, templates, headers, sidebars, and UI customization in Fluent Community.
-
-## Overview
-
-Portal actions allow you to customize the community portal's appearance, inject custom content, and control the rendering process. These hooks fire during various stages of portal rendering.
-
-**Total Actions:** 34
-
----
 
 ## Portal Lifecycle
 
@@ -759,7 +749,7 @@ add_action('fluent_community_send_daily_digest', function() {
 
 ## Dynamic System Hooks
 
-### fluent_community/rendering_path_ssr_{$path}
+### fluent_community/rendering_path_ssr_`{path}`
 
 Fires when rendering a specific path in server-side rendering mode.
 
@@ -772,13 +762,13 @@ add_action('fluent_community/rendering_path_ssr_profile', function() {
 
 ---
 
-### fluent_community/course/update_meta_settings_{$key}
+### fluent_community/course/update_meta_settings_`{key}`
 
 Fires when updating specific course meta settings.
 
 ---
 
-### fluent_community/space/update_meta_settings_{$key}
+### fluent_community/space/update_meta_settings_`{key}`
 
 Fires when updating specific space meta settings.
 

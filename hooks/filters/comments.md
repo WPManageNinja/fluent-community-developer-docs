@@ -1,15 +1,5 @@
 # Comments Filters
 
-Filters for modifying comment data, validation, and API responses in Fluent Community.
-
-## Overview
-
-These filters allow you to modify comment data before it's saved, validate comment content, and customize API responses.
-
-**Total Filters:** 5
-
----
-
 ## Comment Data Modification
 
 ### fluent_community/comment/comment_data

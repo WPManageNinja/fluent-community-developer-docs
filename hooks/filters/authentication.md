@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/users'
 ---
 
-# Authentication Filters ​
-
-Filters for customizing authentication, registration, login, and user verification in Fluent Community.
-
-## Overview ​
-
-Authentication filters control user registration, login flows, email verification, redirects, and authentication settings. These filters are essential for customizing the user onboarding experience.
-
-**Total Filters:** 18
-
----
+# Authentication Filters
 
 ## Login Filters
 

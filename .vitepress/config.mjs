@@ -119,6 +119,7 @@ export default defineConfig({
           items: [
             {
               text: 'Action Hooks',
+              collapsed: false,
               items: [
                 { text: 'Action Hooks Overview', link: '/hooks/actions' },
                 { text: 'Feeds & Posts', link: '/hooks/actions/feeds' },
@@ -130,15 +131,18 @@ export default defineConfig({
                 { text: 'Reactions', link: '/hooks/actions/reactions' },
                 { text: 'Notifications', link: '/hooks/actions/notifications' },
                 { text: 'Courses', link: '/hooks/actions/courses' },
+                { text: 'Lessons', link: '/hooks/actions/lessons' },
+                { text: 'Integrations', link: '/hooks/actions/integrations' },
                 { text: 'Portal & UI', link: '/hooks/actions/portal' },
                 { text: 'Activities', link: '/hooks/actions/activities' },
                 { text: 'Managers', link: '/hooks/actions/managers' },
-                { text: 'Moderation [PRO]', link: '/hooks/actions/moderation' },
-                { text: 'Followers [PRO]', link: '/hooks/actions/followers' }
+                { text: 'Moderation', link: '/hooks/actions/moderation' },
+                { text: 'Followers', link: '/hooks/actions/followers' }
               ]
             },
             {
               text: 'Filter Hooks',
+              collapsed: false,
               items: [
                 { text: 'Filter Hooks Overview', link: '/hooks/filters' },
                 { text: 'Feeds & Posts', link: '/hooks/filters/feeds' },
@@ -153,8 +157,8 @@ export default defineConfig({
                 { text: 'Portal & UI', link: '/hooks/filters/portal' },
                 { text: 'Activities', link: '/hooks/filters/activities' },
                 { text: 'Managers', link: '/hooks/filters/managers' },
-                { text: 'Moderation [PRO]', link: '/hooks/filters/moderation' },
-                { text: 'Followers [PRO]', link: '/hooks/filters/followers' }
+                { text: 'Moderation', link: '/hooks/filters/moderation' },
+                { text: 'Followers', link: '/hooks/filters/followers' }
               ]
             }
           ]
@@ -200,14 +204,14 @@ export default defineConfig({
                 { text: 'Courses', link: '/rest-api/courses' },
                 { text: 'Lessons', link: '/rest-api/lessons' },
                 { text: 'Course Progress', link: '/rest-api/course-progress' },
-                { text: 'Quizzes [PRO]', link: '/rest-api/quizzes' }
+                { text: 'Quizzes', link: '/rest-api/quizzes' }
               ]
             },
             {
               text: 'Media & Settings',
               items: [
                 { text: 'Media', link: '/rest-api/media' },
-                { text: 'Giphy [PRO]', link: '/rest-api/giphy' },
+                { text: 'Giphy', link: '/rest-api/giphy' },
                 { text: 'Settings', link: '/rest-api/settings' },
                 { text: 'Migrations', link: '/rest-api/migrations' }
               ]

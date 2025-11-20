@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/reactions'
 ---
 
-# Portal & UI Filters ​
-
-Filters for customizing portal appearance, navigation, access control, and UI behavior in Fluent Community.
-
-## Overview ​
-
-Portal filters control the community portal's core functionality including URL structure, menu items, access permissions, theme integration, and UI customization. These are critical for customizing the user experience.
-
-**Total Filters:** 25
-
----
+# Portal & UI Filters
 
 ## Portal Configuration
 

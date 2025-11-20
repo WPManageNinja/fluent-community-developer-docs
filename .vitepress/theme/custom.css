@@ -1,0 +1,97 @@
+/* Enhanced Active Navigation Highlighting */
+
+/* Active sidebar link - make it more prominent */
+.VPSidebarItem.level-0 .link.active,
+.VPSidebarItem.level-1 .link.active,
+.VPSidebarItem.level-2 .link.active {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600 !important;
+  background-color: var(--vp-c-brand-soft) !important;
+  border-left: 3px solid var(--vp-c-brand-1) !important;
+  padding-left: calc(var(--vp-sidebar-item-padding-left) - 3px) !important;
+}
+
+/* Hover state for sidebar links */
+.VPSidebarItem .link:hover {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-default-soft);
+}
+
+/* Make nested active items more visible */
+.VPSidebarItem.has-active > .item > .link {
+  color: var(--vp-c-brand-2);
+  font-weight: 500;
+}
+
+/* Ensure collapsed sections expand when active item is inside */
+.VPSidebarItem.has-active.collapsed {
+  /* This will be handled by VitePress automatically with collapsed: false */
+}
+
+/* Active state for nested navigation items */
+.VPSidebarItem.level-2 .link.active {
+  background-color: var(--vp-c-brand-soft) !important;
+  border-left: 2px solid var(--vp-c-brand-1) !important;
+}
+
+/* Improve contrast for active links in dark mode */
+.dark .VPSidebarItem .link.active {
+  color: var(--vp-c-brand-lighter) !important;
+  background-color: var(--vp-c-brand-dimm) !important;
+}
+
+/* Active indicator for top-level navigation */
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600 !important;
+}
+
+/* Improve visibility of current page in outline */
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600 !important;
+  border-left: 2px solid var(--vp-c-brand-1);
+  padding-left: 14px;
+}
+
+/* Better hover states */
+.VPDocAsideOutline .outline-link:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* Ensure proper spacing for nested sidebar items */
+.VPSidebarItem.level-0 {
+  margin-bottom: 4px;
+}
+
+.VPSidebarItem.level-1 {
+  margin-bottom: 2px;
+}
+
+.VPSidebarItem.level-2 {
+  margin-bottom: 1px;
+}
+
+/* Make the sidebar group titles more prominent */
+.VPSidebarItem .text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Active parent group highlighting */
+.VPSidebarItem.has-active > .item > .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* Smooth transitions for better UX */
+.VPSidebarItem .link {
+  transition: all 0.2s ease;
+}
+
+/* Fix for deeply nested active states */
+.VPSidebarItem.level-3 .link.active {
+  background-color: var(--vp-c-brand-soft) !important;
+  border-left: 2px solid var(--vp-c-brand-2) !important;
+  padding-left: calc(var(--vp-sidebar-item-padding-left) - 2px) !important;
+}
+

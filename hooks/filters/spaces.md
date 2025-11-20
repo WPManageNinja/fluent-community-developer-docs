@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/users'
 ---
 
-# Spaces Filters ​
-
-Filters for customizing space creation, updates, membership, and behavior in Fluent Community.
-
-## Overview ​
-
-Spaces are the core organizational units in Fluent Community where members gather around specific topics. These filters allow you to customize space data, control membership, and modify space behavior.
-
-**Total Filters:** 8
-
----
+# Spaces Filters
 
 ## Space Data Filters
 

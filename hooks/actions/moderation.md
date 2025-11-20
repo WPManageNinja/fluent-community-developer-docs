@@ -1,23 +1,13 @@
 ---
 prev:
-  text: 'Reactions'
-  link: '/hooks/actions/reactions'
+  text: 'Managers'
+  link: '/hooks/actions/managers'
 next:
-  text: 'Notifications'
-  link: '/hooks/actions/notifications'
+  text: 'Followers'
+  link: '/hooks/actions/followers'
 ---
 
-# Moderation Actions [PRO]
-
-Actions related to content moderation, flagging, and reporting in Fluent Community Pro.
-
-## Overview
-
-Moderation actions allow you to hook into content flagging, moderation workflows, and report management. These features are available in Fluent Community Pro.
-
-**Total Actions:** 5
-
----
+# Moderation Actions
 
 ## Content Flagging
 
@@ -416,9 +406,9 @@ add_action('fluent_community/content_flagged', function($flag, $content) {
 
 ## Dynamic Report Hooks
 
-### fluent_community/report/{$action}
+### fluent_community/report/`{action}`
 
-Dynamic hook that fires for specific report actions. Replace `{$action}` with the action name (e.g., `approved`, `dismissed`, `escalated`).
+Dynamic hook that fires for specific report actions. Replace `{action}` with the action name (e.g., `approved`, `dismissed`, `escalated`).
 
 **Example:**
 ```php

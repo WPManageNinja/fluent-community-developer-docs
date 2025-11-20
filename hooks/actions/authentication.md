@@ -9,16 +9,6 @@ next:
 
 # Authentication Actions
 
-Actions related to authentication forms, registration, and invitations in Fluent Community.
-
-## Overview
-
-These actions allow you to hook into authentication-related events and customize the authentication flow.
-
-**Total Actions:** 5
-
----
-
 ## Registration Form Hooks
 
 ### fluent_community/before_registration_form

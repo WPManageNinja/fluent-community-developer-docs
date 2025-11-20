@@ -20,9 +20,11 @@ Action hooks allow you to execute custom code at specific points in Fluent Commu
 - **[Reactions](/hooks/actions/reactions)** - Likes, votes, and user reactions
 - **[Notifications](/hooks/actions/notifications)** - Notification system and alerts
 - **[Courses](/hooks/actions/courses)** - Learning management and course features
+- **[Lessons](/hooks/actions/lessons)** - Lesson and section management
+- **[Integrations](/hooks/actions/integrations)** - Paywall and product integrations
 - **[Portal & UI](/hooks/actions/portal)** - Frontend rendering and user interface
 - **[Activities](/hooks/actions/activities)** - Activity streams and user actions
 - **[Managers](/hooks/actions/managers)** - Administrative functions
-- **[Moderation [PRO]](/hooks/actions/moderation)** - Content moderation features
-- **[Followers [PRO]](/hooks/actions/followers)** - User following system
+- **[Moderation](/hooks/actions/moderation)** - Content moderation features
+- **[Followers](/hooks/actions/followers)** - User following system
 

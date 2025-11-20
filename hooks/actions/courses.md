@@ -3,21 +3,11 @@ prev:
   text: 'Notifications'
   link: '/hooks/actions/notifications'
 next:
-  text: 'Portal & UI'
-  link: '/hooks/actions/portal'
+  text: 'Lessons & Sections'
+  link: '/hooks/actions/lessons'
 ---
 
 # Courses Actions
-
-Actions related to course creation, management, enrollment, lessons, and quizzes in Fluent Community.
-
-## Overview
-
-These actions allow you to hook into course lifecycle events, student enrollment, lesson completion, and quiz submissions.
-
-**Total Actions:** 19
-
----
 
 ## Course Lifecycle
 
@@ -338,7 +328,7 @@ add_action('fluent_community/course/student_left', function($course, $userId) {
 // Send feedback request
 add_action('fluent_community/course/student_left', function($course, $userId) {
     $user = get_user_by('id', $userId);
-    
+
     wp_mail(
         $user->user_email,
         'We\'d love your feedback',
@@ -346,6 +336,174 @@ add_action('fluent_community/course/student_left', function($course, $userId) {
     );
 }, 10, 2);
 ```
+
+---
+
+### fluent_community/course/topic_completed
+
+Fires when a student completes a course topic.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$topic` | Topic Object | The completed topic |
+| `$course` | Course Object | The course containing the topic |
+| `$user` | User Object | The user who completed the topic |
+
+**Topic Object Properties:**
+- `id` (int) - Topic ID
+- `course_id` (int) - Parent course ID
+- `title` (string) - Topic title
+- `type` (string) - Topic type ('lesson', 'quiz', etc.)
+- `serial` (int) - Topic order in course
+- `status` (string) - Topic status
+
+**Source Files:**
+- `app-pro/Http/Controllers/CourseController.php`
+
+**Example Usage:**
+
+```php
+// Award points for topic completion
+add_action('fluent_community/course/topic_completed', function($topic, $course, $user) {
+    $points = get_user_meta($user->ID, 'community_points', true) ?: 0;
+    update_user_meta($user->ID, 'community_points', $points + 20);
+
+    error_log(sprintf(
+        'User %d completed topic "%s" in course "%s"',
+        $user->ID,
+        $topic->title,
+        $course->title
+    ));
+}, 10, 3);
+
+// Send congratulations email
+add_action('fluent_community/course/topic_completed', function($topic, $course, $user) {
+    wp_mail(
+        $user->user_email,
+        'Topic Completed!',
+        sprintf(
+            'Congratulations! You completed "%s" in the course "%s".',
+            $topic->title,
+            $course->title
+        )
+    );
+}, 10, 3);
+
+// Track progress analytics
+add_action('fluent_community/course/topic_completed', function($topic, $course, $user) {
+    // Calculate completion percentage
+    $total_topics = count_course_topics($course->id);
+    $completed_topics = count_user_completed_topics($user->ID, $course->id);
+    $progress = ($completed_topics / $total_topics) * 100;
+
+    // Send to analytics
+    wp_remote_post('https://analytics.example.com/events', [
+        'body' => json_encode([
+            'event' => 'topic_completed',
+            'user_id' => $user->ID,
+            'course_id' => $course->id,
+            'topic_id' => $topic->id,
+            'progress' => $progress
+        ])
+    ]);
+}, 10, 3);
+
+// Check if course is now complete
+add_action('fluent_community/course/topic_completed', function($topic, $course, $user) {
+    $total_topics = count_course_topics($course->id);
+    $completed_topics = count_user_completed_topics($user->ID, $course->id);
+
+    if ($completed_topics >= $total_topics) {
+        // Trigger course completion
+        do_action('fluent_community/course/completed', $course, $user->ID);
+    }
+}, 10, 3);
+```
+
+**Common Use Cases:**
+- Award gamification points for progress
+- Send progress notifications
+- Track learning analytics
+- Unlock next topics or courses
+- Update user progress dashboards
+- Trigger course completion when all topics done
+
+---
+
+### fluent_community/course/update_meta_settings_`{key}`
+
+**Dynamic Action** - Fires when course meta settings are updated with a specific key.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$metaData` | mixed | The meta data value being set |
+| `$course` | Course Object | The course being updated |
+
+**Dynamic Suffix:**
+
+The `{key}` is replaced at runtime with the actual meta setting key being updated. Common keys include:
+- `enrollment_settings` - Enrollment configuration
+- `access_settings` - Access control settings
+- `notification_settings` - Notification preferences
+- `completion_settings` - Completion requirements
+- `certificate_settings` - Certificate configuration
+
+**Source Files:**
+- `app-pro/Http/Controllers/CourseAdminController.php`
+
+**Example Hooks:**
+
+```php
+// Fires as: fluent_community/course/update_meta_settings_enrollment_settings
+add_action('fluent_community/course/update_meta_settings_enrollment_settings', function($metaData, $course) {
+    error_log(sprintf(
+        'Enrollment settings updated for course %d: %s',
+        $course->id,
+        json_encode($metaData)
+    ));
+}, 10, 2);
+
+// Fires as: fluent_community/course/update_meta_settings_access_settings
+add_action('fluent_community/course/update_meta_settings_access_settings', function($metaData, $course) {
+    // Notify enrolled students if access changed
+    if (isset($metaData['access_type']) && $metaData['access_type'] === 'private') {
+        $students = get_course_students($course->id);
+        foreach ($students as $student) {
+            send_notification($student->user_id, [
+                'type' => 'course_access_changed',
+                'course_id' => $course->id
+            ]);
+        }
+    }
+}, 10, 2);
+
+// Fires as: fluent_community/course/update_meta_settings_notification_settings
+add_action('fluent_community/course/update_meta_settings_notification_settings', function($metaData, $course) {
+    // Log notification preference changes
+    error_log(sprintf(
+        'Notification settings updated for course %d',
+        $course->id
+    ));
+}, 10, 2);
+
+// Hook into any meta setting update
+add_action('fluent_community/course/update_meta_settings_', function($metaData, $course) {
+    // This won't work - you need to specify the exact key
+    // Use specific keys like above
+}, 10, 2);
+```
+
+**Common Use Cases:**
+- Log configuration changes
+- Notify affected users when settings change
+- Sync settings with external systems
+- Validate setting changes
+- Trigger workflows based on specific settings
+- Update related course data
 
 ---
 
@@ -493,7 +651,7 @@ add_action('fluent_community/course/lesson_completed', function($lesson, $userId
 
 ---
 
-## Quiz Management [PRO]
+## Quiz Management
 
 ### fluent_community/quiz/submitted
 
@@ -532,7 +690,7 @@ add_action('fluent_community/quiz/submitted', function($quiz, $submission, $user
 
 ---
 
-## Notifications [PRO]
+## Notifications
 
 ### fluent_community/course/scheduled/init_notification
 

@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/media'
 ---
 
-# Users & Profiles Filters ​
-
-Filters for customizing user profiles, avatars, member lists, and user-related data in Fluent Community.
-
-## Overview ​
-
-User filters control profile display, avatar handling, member directory access, user permissions, and profile data management. These filters are essential for customizing the user experience.
-
-**Total Filters:** 10
-
----
+# Users & Profiles Filters
 
 ## Avatar & Display Filters
 

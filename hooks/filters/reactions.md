@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/activities'
 ---
 
-# Reactions & Engagement Filters ​
-
-Filters for customizing reactions and engagement features in Fluent Community.
-
-## Overview ​
-
-Reaction filters control how users can react to posts and comments, including self-reaction restrictions and reaction API responses. These filters help maintain engagement quality and prevent abuse.
-
-**Total Filters:** 3
-
----
+# Reactions & Engagement Filters
 
 ## Self-Reaction Controls
 

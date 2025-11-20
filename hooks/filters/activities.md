@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/integrations'
 ---
 
-# Activity & Tracking Filters ​
-
-Filters for customizing activity feeds and content tracking in Fluent Community.
-
-## Overview ​
-
-Activity filters allow you to modify activity feed content and add custom tracking for user actions. These filters are useful for displaying additional context, filtering activities, and customizing activity displays.
-
-**Total Filters:** 3
-
----
+# Activity & Tracking Filters
 
 ## Activity Content Filters
 

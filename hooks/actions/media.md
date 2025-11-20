@@ -9,16 +9,6 @@ next:
 
 # Media Actions
 
-Actions related to media file management, uploads, deletion, and URL-based media removal in Fluent Community.
-
-## Overview
-
-Media actions handle file uploads, deletions, and cleanup for images, videos, documents, and other file types attached to feeds, comments, lessons, and user profiles.
-
-**Total Actions:** 6
-
----
-
 ## Media Deletion
 
 ### fluent_community/feed/media_deleted
@@ -319,9 +309,134 @@ add_action('fluent_community/lesson/additional_media_updated', function($request
 
 ---
 
+### fluent_community/document/local_file_access
+
+Fires when a local document file is accessed by a user.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$file` | array | File information array |
+| `$user` | User Object | The user accessing the file |
+
+**File Array Structure:**
+```php
+[
+    'id' => 123,              // Media ID
+    'file_path' => '/path/to/file.pdf',
+    'file_name' => 'document.pdf',
+    'file_type' => 'application/pdf',
+    'file_size' => 1024000,   // Size in bytes
+    'user_id' => 456,         // Uploader user ID
+    'created_at' => '2024-01-01 12:00:00'
+]
+```
+
+**Source Files:**
+- `app/Http/Controllers/MediaController.php`
+
+**Example Usage:**
+
+```php
+// Log document access
+add_action('fluent_community/document/local_file_access', function($file, $user) {
+    error_log(sprintf(
+        'User %d (%s) accessed document: %s (ID: %d)',
+        $user->ID,
+        $user->user_email,
+        $file['file_name'],
+        $file['id']
+    ));
+}, 10, 2);
+
+// Track download analytics
+add_action('fluent_community/document/local_file_access', function($file, $user) {
+    // Increment download counter
+    $download_count = get_post_meta($file['id'], 'download_count', true) ?: 0;
+    update_post_meta($file['id'], 'download_count', $download_count + 1);
+
+    // Log access time
+    $access_log = get_post_meta($file['id'], 'access_log', true) ?: [];
+    $access_log[] = [
+        'user_id' => $user->ID,
+        'timestamp' => current_time('mysql'),
+        'ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown'
+    ];
+    update_post_meta($file['id'], 'access_log', $access_log);
+}, 10, 2);
+
+// Restrict access based on user role
+add_action('fluent_community/document/local_file_access', function($file, $user) {
+    // Check if file is marked as restricted
+    $is_restricted = get_post_meta($file['id'], 'is_restricted', true);
+
+    if ($is_restricted && !user_can($user->ID, 'manage_options')) {
+        // Log unauthorized access attempt
+        error_log(sprintf(
+            'Unauthorized access attempt by user %d to restricted file %d',
+            $user->ID,
+            $file['id']
+        ));
+
+        // You could also prevent access here if needed
+        // wp_die('Access denied');
+    }
+}, 10, 2);
+
+// Send notification to file owner
+add_action('fluent_community/document/local_file_access', function($file, $user) {
+    // Don't notify if owner is accessing their own file
+    if ($file['user_id'] === $user->ID) {
+        return;
+    }
+
+    // Check if owner wants notifications
+    $notify_on_access = get_user_meta($file['user_id'], 'notify_on_file_access', true);
+
+    if ($notify_on_access) {
+        $owner = get_user_by('id', $file['user_id']);
+        wp_mail(
+            $owner->user_email,
+            'Your document was accessed',
+            sprintf(
+                '%s accessed your document "%s"',
+                $user->display_name,
+                $file['file_name']
+            )
+        );
+    }
+}, 10, 2);
+
+// Sync with external analytics
+add_action('fluent_community/document/local_file_access', function($file, $user) {
+    wp_remote_post('https://analytics.example.com/events', [
+        'body' => json_encode([
+            'event' => 'document_accessed',
+            'file_id' => $file['id'],
+            'file_name' => $file['file_name'],
+            'file_type' => $file['file_type'],
+            'user_id' => $user->ID,
+            'timestamp' => current_time('mysql')
+        ])
+    ]);
+}, 10, 2);
+```
+
+**Common Use Cases:**
+- Track document download statistics
+- Log file access for compliance/auditing
+- Restrict access to sensitive documents
+- Notify file owners when documents are accessed
+- Sync access data with external analytics
+- Monitor popular documents
+- Implement access control policies
+
+---
+
 ## Dynamic Media Hooks
 
-### fluent_community/delete_remote_media_{$provider}
+### fluent_community/delete_remote_media_`{provider}`
 
 Fires when deleting media from a specific remote storage provider (e.g., S3, CloudFlare, DigitalOcean Spaces).
 

@@ -9,16 +9,6 @@ next:
 
 # Users & Members Actions
 
-Actions related to user profiles, points, levels, blocking, and following in Fluent Community.
-
-## Overview
-
-These actions allow you to hook into user-related events like profile updates, point changes, user blocking/following, and more.
-
-**Total Actions:** 10
-
----
-
 ## Profile Management
 
 ### fluent_community/profile_deactivated

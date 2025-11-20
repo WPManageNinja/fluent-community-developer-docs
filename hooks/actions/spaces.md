@@ -9,16 +9,6 @@ next:
 
 # Spaces Actions
 
-Actions related to space creation, management, and membership in Fluent Community.
-
-## Overview
-
-Spaces are community areas where members can gather around specific topics or interests. These actions allow you to hook into space lifecycle events and member management.
-
-**Total Actions:** 10
-
----
-
 ## Space Lifecycle
 
 ### fluent_community/space/created
@@ -363,6 +353,150 @@ add_action('fluent_community/space/user_left', function($space, $userId) {
 
 ---
 
+### fluent_community/space_feed/created
+
+Fires when a feed is created in a space.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$feed` | Feed Object | The newly created feed in the space |
+
+**Source Files:**
+- `app/Http/Controllers/FeedsController.php:496`
+- `app/Services/FeedsHelper.php:489`
+- `app-pro/Controllers/ModerationController.php:202`
+
+**Example Usage:**
+
+```php
+// Notify space members about new feed
+add_action('fluent_community/space_feed/created', function($feed) {
+    if (!$feed->space_id) {
+        return;
+    }
+
+    $space = get_space($feed->space_id);
+    $members = get_space_members($space->id);
+
+    foreach ($members as $member) {
+        // Skip the author
+        if ($member->user_id === $feed->user_id) {
+            continue;
+        }
+
+        // Send notification
+        send_notification($member->user_id, [
+            'type' => 'space_new_feed',
+            'feed_id' => $feed->id,
+            'space_id' => $space->id
+        ]);
+    }
+}, 10, 1);
+
+// Award points for posting in space
+add_action('fluent_community/space_feed/created', function($feed) {
+    if (!$feed->space_id) {
+        return;
+    }
+
+    $points = get_user_meta($feed->user_id, 'community_points', true) ?: 0;
+    update_user_meta($feed->user_id, 'community_points', $points + 15);
+}, 10, 1);
+
+// Log space activity
+add_action('fluent_community/space_feed/created', function($feed) {
+    if (!$feed->space_id) {
+        return;
+    }
+
+    error_log(sprintf(
+        'New feed %d created in space %d by user %d',
+        $feed->id,
+        $feed->space_id,
+        $feed->user_id
+    ));
+}, 10, 1);
+```
+
+**Common Use Cases:**
+- Notify space members about new content
+- Award extra points for space contributions
+- Track space activity metrics
+- Trigger space-specific workflows
+- Update space statistics
+
+---
+
+### fluent_community/space_feed/updated
+
+Fires when a feed in a space is updated.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$existingFeed` | Feed Object | The updated feed object |
+
+**Source Files:**
+- `app/Http/Controllers/FeedsController.php:663`
+
+**Example Usage:**
+
+```php
+// Log space feed updates
+add_action('fluent_community/space_feed/updated', function($existingFeed) {
+    if (!$existingFeed->space_id) {
+        return;
+    }
+
+    error_log(sprintf(
+        'Feed %d updated in space %d',
+        $existingFeed->id,
+        $existingFeed->space_id
+    ));
+}, 10, 1);
+
+// Notify space moderators of edits
+add_action('fluent_community/space_feed/updated', function($existingFeed) {
+    if (!$existingFeed->space_id) {
+        return;
+    }
+
+    $space = get_space($existingFeed->space_id);
+    $moderators = get_space_moderators($space->id);
+
+    foreach ($moderators as $moderator) {
+        send_notification($moderator->user_id, [
+            'type' => 'space_feed_updated',
+            'feed_id' => $existingFeed->id,
+            'space_id' => $space->id
+        ]);
+    }
+}, 10, 1);
+
+// Track edit history
+add_action('fluent_community/space_feed/updated', function($existingFeed) {
+    if (!$existingFeed->space_id) {
+        return;
+    }
+
+    $edit_count = get_post_meta($existingFeed->id, 'edit_count', true) ?: 0;
+    update_post_meta($existingFeed->id, 'edit_count', $edit_count + 1);
+    update_post_meta($existingFeed->id, 'last_edited_at', current_time('mysql'));
+}, 10, 1);
+```
+
+**Common Use Cases:**
+- Notify space moderators of content changes
+- Track edit history and frequency
+- Log space content modifications
+- Trigger moderation workflows for edited content
+- Update space activity metrics
+
+---
+
 ### fluent_community/space/member/role_updated
 
 Fires when a space member's role is updated.
@@ -411,7 +545,7 @@ add_action('fluent_community/space/member/role_updated', function($space, $userI
 
 ## Dynamic Actions
 
-### fluent_community/space/update_meta_settings_{provider}
+### fluent_community/space/update_meta_settings_`{provider}`
 
 Fires when space meta settings are updated for a specific provider.
 

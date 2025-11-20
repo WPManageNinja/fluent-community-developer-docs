@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/notifications'
 ---
 
-# API Responses Filters ​
-
-Filters for customizing API response data in Fluent Community.
-
-## Overview ​
-
-API response filters allow you to modify data before it's sent to the frontend or external applications. These filters are essential for adding custom fields, hiding sensitive data, or transforming response structures.
-
-**Total Filters:** 8
-
----
+# API Responses Filters
 
 ## Feed Responses
 

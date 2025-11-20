@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/settings'
 ---
 
-# Permissions Filters ​
-
-Filters for controlling user permissions, access control, and capability checks in Fluent Community.
-
-## Overview ​
-
-Permission filters control what users can see and do within the community. These filters are essential for implementing custom access control, role-based permissions, and content visibility rules.
-
-**Total Filters:** 7
-
----
+# Permissions Filters
 
 ## Core Permission Filters
 

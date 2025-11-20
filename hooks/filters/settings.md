@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/courses'
 ---
 
-# Settings & Configuration Filters ​
-
-Filters for customizing settings, configuration options, and admin interfaces in Fluent Community.
-
-## Overview ​
-
-Settings filters control configuration options, admin menus, editor settings, and various system configurations. These filters are essential for customizing the community's behavior and appearance.
-
-**Total Filters:** 22
-
----
+# Settings & Configuration Filters
 
 ## General Configuration
 

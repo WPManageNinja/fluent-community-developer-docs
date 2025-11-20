@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/permissions'
 ---
 
-# Media & Uploads Filters ​
-
-Filters for customizing media uploads, file handling, storage, and image processing in Fluent Community.
-
-## Overview ​
-
-Media filters control file uploads, image processing, storage locations, file size limits, and media URL generation. These filters are essential for customizing media handling and integrating with cloud storage.
-
-**Total Filters:** 12
-
----
+# Media & Uploads Filters
 
 ## Upload Configuration Filters
 

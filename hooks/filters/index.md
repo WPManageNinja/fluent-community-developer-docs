@@ -23,6 +23,6 @@ Filter hooks allow you to modify data, settings, and behavior in Fluent Communit
 - **[Portal & UI](/hooks/filters/portal)** - Frontend customization and templates
 - **[Activities](/hooks/filters/activities)** - Activity feed filtering
 - **[Managers](/hooks/filters/managers)** - Manager permissions and capabilities
-- **[Moderation [PRO]](/hooks/filters/moderation)** - Moderation rules and settings
-- **[Followers [PRO]](/hooks/filters/followers)** - Follow system configuration
+- **[Moderation](/hooks/filters/moderation)** - Moderation rules and settings
+- **[Followers](/hooks/filters/followers)** - Follow system configuration
 

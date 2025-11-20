@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/miscellaneous'
 ---
 
-# Integrations Filters ​
-
-Filters for customizing third-party integrations and external links in Fluent Community.
-
-## Overview ​
-
-Integration filters allow you to customize how Fluent Community integrates with other plugins and external services. These filters are useful for configuring default settings, customizing URLs, and managing integration behavior.
-
-**Total Filters:** 5
-
----
+# Integrations Filters
 
 ## Fluent Forms Integration
 

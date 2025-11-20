@@ -9,16 +9,6 @@ next:
 
 # Comments Actions
 
-Actions related to comment creation, updates, deletion, and management in Fluent Community.
-
-## Overview
-
-Comments allow users to respond to feeds/posts. These actions let you hook into the comment lifecycle and execute custom code when comments are created, updated, or deleted.
-
-**Total Actions:** 11
-
----
-
 ## Comment Lifecycle
 
 ### fluent_community/before_comment_create
@@ -318,16 +308,19 @@ add_action('fluent_community/comment_deleted', function($comment, $feed) {
 
 ## Dynamic Actions
 
-### fluent_community/comment_added_{feed_type}
+### fluent_community/comment_added_
 
-Fires when a comment is added to a specific feed type.
+**Dynamic Action** - Fires when a comment is added, with the feed type appended to the hook name.
+
+**Hook Pattern:** `fluent_community/comment_added_{type}`
 
 **Dynamic Values:**
-- `comment_added_feed` - Comment on regular feed
-- `comment_added_article` - Comment on article
-- `comment_added_video` - Comment on video
-- `comment_added_course` - Comment on course
-- `comment_added_event` - Comment on event
+- `fluent_community/comment_added_post` - Comment on regular feed post
+- `fluent_community/comment_added_article` - Comment on article
+- `fluent_community/comment_added_video` - Comment on video
+- `fluent_community/comment_added_course` - Comment on course
+- `fluent_community/comment_added_event` - Comment on event
+- `fluent_community/comment_added_poll` - Comment on poll
 
 **Parameters:**
 
@@ -336,6 +329,9 @@ Fires when a comment is added to a specific feed type.
 | `$comment` | Comment Object | The new comment |
 | `$feed` | Feed Object | The parent feed |
 
+**Source Files:**
+- `app/Http/Controllers/CommentsController.php:152`
+
 **Example Usage:**
 
 ```php
@@ -343,21 +339,43 @@ Fires when a comment is added to a specific feed type.
 add_action('fluent_community/comment_added_article', function($comment, $feed) {
     // Add to article discussion index
     update_post_meta($feed->id, 'has_active_discussion', true);
-    
+
     // Notify article subscribers
-    notify_article_subscribers($feed, $comment);
+    $subscribers = get_article_subscribers($feed->id);
+    foreach ($subscribers as $subscriber) {
+        send_notification($subscriber, [
+            'type' => 'article_comment',
+            'comment_id' => $comment->id,
+            'feed_id' => $feed->id
+        ]);
+    }
 }, 10, 2);
 
 // Track video engagement
 add_action('fluent_community/comment_added_video', function($comment, $feed) {
     // Log video engagement
     log_video_engagement($feed->id, 'comment', $comment->user_id);
+
+    // Update video discussion metrics
+    $comment_count = get_post_meta($feed->id, 'video_comments_count', true) ?: 0;
+    update_post_meta($feed->id, 'video_comments_count', $comment_count + 1);
 }, 10, 2);
 
 // Course discussion notifications
 add_action('fluent_community/comment_added_course', function($comment, $feed) {
     // Notify course instructor
-    notify_course_instructor($feed, $comment);
+    $course = get_course_from_feed($feed);
+    $instructor = get_user_by('id', $course->created_by);
+
+    wp_mail(
+        $instructor->user_email,
+        'New comment on your course',
+        sprintf(
+            '%s commented on your course: %s',
+            get_user_by('id', $comment->user_id)->display_name,
+            wp_trim_words($comment->message, 20)
+        )
+    );
 }, 10, 2);
 ```
 
@@ -366,18 +384,21 @@ add_action('fluent_community/comment_added_course', function($comment, $feed) {
 - Different handling for different content types
 - Track engagement by content type
 - Apply type-specific rules
+- Custom analytics per type
 
 ---
 
-### fluent_community/comment_updated_{feed_type}
+### fluent_community/comment_updated_
 
-Fires when a comment on a specific feed type is updated.
+**Dynamic Action** - Fires when a comment is updated, with the feed type appended to the hook name.
+
+**Hook Pattern:** `fluent_community/comment_updated_{type}`
 
 **Dynamic Values:**
-- `comment_updated_feed`
-- `comment_updated_article`
-- `comment_updated_video`
-- `comment_updated_course`
+- `fluent_community/comment_updated_post` - Comment on regular post updated
+- `fluent_community/comment_updated_article` - Comment on article updated
+- `fluent_community/comment_updated_video` - Comment on video updated
+- `fluent_community/comment_updated_course` - Comment on course updated
 
 **Parameters:**
 
@@ -385,74 +406,168 @@ Fires when a comment on a specific feed type is updated.
 |-----------|------|-------------|
 | `$comment` | Comment Object | Updated comment |
 | `$feed` | Feed Object | Parent feed |
-| `$oldComment` | Comment Object | Previous state |
+
+**Source Files:**
+- `app/Http/Controllers/CommentsController.php`
+
+**Example Usage:**
+
+```php
+// Track article comment edits
+add_action('fluent_community/comment_updated_article', function($comment, $feed) {
+    // Log edit history
+    $edit_history = get_comment_meta($comment->id, 'edit_history', true) ?: [];
+    $edit_history[] = [
+        'edited_at' => current_time('mysql'),
+        'edited_by' => get_current_user_id()
+    ];
+    update_comment_meta($comment->id, 'edit_history', $edit_history);
+}, 10, 2);
+
+// Notify on video comment updates
+add_action('fluent_community/comment_updated_video', function($comment, $feed) {
+    // Notify video owner if comment was edited
+    $video_owner = get_user_by('id', $feed->user_id);
+    send_notification($video_owner->ID, [
+        'type' => 'comment_edited',
+        'comment_id' => $comment->id
+    ]);
+}, 10, 2);
+```
+
+**Common Use Cases:**
+- Track edit history by type
+- Type-specific update notifications
+- Validate updates based on content type
+- Log changes for audit trail
 
 ---
 
-### fluent_community/comment_deleted_{feed_type}
+### fluent_community/comment_deleted_
 
-Fires when a comment on a specific feed type is deleted.
+**Dynamic Action** - Fires when a comment is deleted, with the feed type appended to the hook name.
+
+**Hook Pattern:** `fluent_community/comment_deleted_{type}`
 
 **Dynamic Values:**
-- `comment_deleted_feed`
-- `comment_deleted_article`
-- `comment_deleted_video`
-- `comment_deleted_course`
+- `fluent_community/comment_deleted_post` - Comment on regular post deleted
+- `fluent_community/comment_deleted_article` - Comment on article deleted
+- `fluent_community/comment_deleted_video` - Comment on video deleted
+- `fluent_community/comment_deleted_course` - Comment on course deleted
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$comment` | Comment Object | Deleted comment |
+| `$commentId` | integer | Deleted comment ID |
 | `$feed` | Feed Object | Parent feed |
+
+**Source Files:**
+- `app/Http/Controllers/CommentsController.php`
+
+**Example Usage:**
+
+```php
+// Clean up article comment metadata
+add_action('fluent_community/comment_deleted_article', function($commentId, $feed) {
+    // Remove from article discussion index
+    $discussion_comments = get_post_meta($feed->id, 'discussion_comment_ids', true) ?: [];
+    $discussion_comments = array_diff($discussion_comments, [$commentId]);
+    update_post_meta($feed->id, 'discussion_comment_ids', $discussion_comments);
+}, 10, 2);
+
+// Track video comment deletions
+add_action('fluent_community/comment_deleted_video', function($commentId, $feed) {
+    // Update video engagement metrics
+    $comment_count = get_post_meta($feed->id, 'video_comments_count', true) ?: 0;
+    update_post_meta($feed->id, 'video_comments_count', max(0, $comment_count - 1));
+}, 10, 2);
+```
+
+**Common Use Cases:**
+- Clean up type-specific metadata
+- Update content-specific counters
+- Log deletions by type
+- Trigger type-specific cleanup
 
 ---
 
-### fluent_community/comment/new_comment_{status}
+### fluent_community/comment/new_comment_
 
-Fires when a comment is created with a specific status.
+**Dynamic Action** - Fires when a comment is created, with the comment status appended to the hook name.
+
+**Hook Pattern:** `fluent_community/comment/new_comment_{status}`
 
 **Dynamic Values:**
-- `new_comment_published` - Published comment
-- `new_comment_pending` - Pending moderation
-- `new_comment_spam` - Marked as spam
+- `fluent_community/comment/new_comment_published` - Published comment
+- `fluent_community/comment/new_comment_pending` - Pending moderation
+- `fluent_community/comment/new_comment_spam` - Marked as spam
+- `fluent_community/comment/new_comment_draft` - Draft comment
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `$comment` | Comment Object | The new comment |
+| `$feed` | Feed Object | The parent feed |
+
+**Source Files:**
+- `app/Http/Controllers/CommentsController.php:145`
 
 **Example Usage:**
 
 ```php
 // Handle pending comments
-add_action('fluent_community/comment/new_comment_pending', function($comment) {
+add_action('fluent_community/comment/new_comment_pending', function($comment, $feed) {
     // Notify moderators
     $moderators = get_users(['role' => 'moderator']);
-    
+
     foreach ($moderators as $moderator) {
         wp_mail(
             $moderator->user_email,
             'Comment Pending Moderation',
-            sprintf('A comment is waiting for moderation. Comment ID: %d', $comment->id)
+            sprintf(
+                'A comment is waiting for moderation.\nComment ID: %d\nAuthor: %s\nContent: %s',
+                $comment->id,
+                get_user_by('id', $comment->user_id)->display_name,
+                wp_trim_words($comment->message, 20)
+            )
         );
     }
-}, 10, 1);
+}, 10, 2);
 
 // Log spam comments
-add_action('fluent_community/comment/new_comment_spam', function($comment) {
+add_action('fluent_community/comment/new_comment_spam', function($comment, $feed) {
     error_log(sprintf(
-        'Spam comment detected: ID %d, User %d',
+        'Spam comment detected: ID %d, User %d, Feed %d',
         $comment->id,
-        $comment->user_id
+        $comment->user_id,
+        $feed->id
     ));
-    
+
     // Update user spam score
     $spam_count = get_user_meta($comment->user_id, 'spam_comments', true) ?: 0;
     update_user_meta($comment->user_id, 'spam_comments', $spam_count + 1);
-}, 10, 1);
+
+    // Auto-ban if spam threshold reached
+    if ($spam_count >= 5) {
+        ban_user($comment->user_id);
+    }
+}, 10, 2);
+
+// Track published comments
+add_action('fluent_community/comment/new_comment_published', function($comment, $feed) {
+    // Update user engagement score
+    $engagement = get_user_meta($comment->user_id, 'engagement_score', true) ?: 0;
+    update_user_meta($comment->user_id, 'engagement_score', $engagement + 5);
+}, 10, 2);
 ```
+
+**Common Use Cases:**
+- Status-specific moderation workflows
+- Spam detection and handling
+- Auto-moderation rules
+- Status-based notifications
 
 ---
 
@@ -618,42 +733,6 @@ add_action('fluent_community/comment_added', function($comment, $feed) {
     send_notifications($comment);
 }, 10, 2);
 ```
-
----
-
-## Dynamic Comment Hooks
-
-The following dynamic hooks fire based on comment context:
-
-### fluent_community/comment/new_comment_{$type}
-
-Fires when a new comment of a specific type is created. Replace `{$type}` with the comment type.
-
-**Example:**
-```php
-// Hook into feed comments specifically
-add_action('fluent_community/comment/new_comment_feed', function($comment) {
-    error_log('New feed comment: ' . $comment->id);
-}, 10, 1);
-```
-
----
-
-### fluent_community/comment_added_{$objectType}
-
-Fires when a comment is added to a specific object type.
-
----
-
-### fluent_community/comment_updated_{$objectType}
-
-Fires when a comment on a specific object type is updated.
-
----
-
-### fluent_community/comment_deleted_{$objectType}
-
-Fires when a comment on a specific object type is deleted.
 
 ---
 

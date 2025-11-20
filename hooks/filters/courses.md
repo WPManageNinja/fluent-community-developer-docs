@@ -7,18 +7,7 @@ next:
   link: '/hooks/filters/api-responses'
 ---
 
-# Courses & Lessons Filters ​
-
-Filters for customizing courses, lessons, sections, and learning management features in Fluent Community Pro.
-
-## Overview ​
-
-Course filters control course display, lesson access, completion tracking, and learning experience customization. These filters are part of the Pro version and enable advanced learning management features.
-
-**Total Filters:** 12
-**Availability:** Pro Feature
-
----
+# Courses & Lessons Filters
 
 ## Course Configuration
 

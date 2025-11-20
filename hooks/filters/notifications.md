@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/reactions'
 ---
 
-# Email & Notifications Filters ​
-
-Filters for customizing email notifications and digest emails in Fluent Community.
-
-## Overview ​
-
-Email notification filters allow you to customize email content, subjects, and notification settings. These filters are essential for branding, personalization, and controlling communication with your community members.
-
-**Total Filters:** 5
-
----
+# Email & Notifications Filters
 
 ## Authentication Emails
 

@@ -9,16 +9,6 @@ next:
 
 # Feeds & Posts Filters
 
-Filters for modifying feed/post data, API responses, and settings in Fluent Community.
-
-## Overview
-
-These filters allow you to modify feed data before it's saved, customize API responses, and control feed behavior.
-
-**Total Filters:** 15
-
----
-
 ## Feed Creation & Updates
 
 ### fluent_community/feed/new_feed_data

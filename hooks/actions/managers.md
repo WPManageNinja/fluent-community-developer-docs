@@ -1,21 +1,13 @@
 ---
 prev:
-  text: 'Followers'
-  link: '/hooks/actions/followers'
-next: false
+  text: 'Activities'
+  link: '/hooks/actions/activities'
+next:
+  text: 'Moderation'
+  link: '/hooks/actions/moderation'
 ---
 
-# Managers Actions [PRO]
-
-Actions related to manager assignment and management in Fluent Community Pro.
-
-## Overview
-
-Manager actions handle the assignment, removal, and updates of managers for spaces, courses, and other community resources. Managers have elevated permissions to moderate and manage specific areas of the community.
-
-**Total Actions:** 4
-
----
+# Managers Actions
 
 ## Manager Assignment
 

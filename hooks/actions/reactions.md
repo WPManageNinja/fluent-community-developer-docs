@@ -3,21 +3,11 @@ prev:
   text: 'Media'
   link: '/hooks/actions/media'
 next:
-  text: 'Moderation'
-  link: '/hooks/actions/moderation'
+  text: 'Notifications'
+  link: '/hooks/actions/notifications'
 ---
 
 # Reactions Actions
-
-Actions related to reactions (likes, emojis) on feeds and content in Fluent Community.
-
-## Overview
-
-Reactions allow users to express emotions or feedback on feeds, comments, and other content. These actions fire when reactions are added or when reaction counts are updated.
-
-**Total Actions:** 2
-
----
 
 ## Reaction Events
 

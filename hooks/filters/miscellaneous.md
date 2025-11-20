@@ -7,17 +7,7 @@ next:
   link: '/hooks/quick-reference'
 ---
 
-# Miscellaneous Filters ​
-
-Various utility filters for customizing Fluent Community functionality.
-
-## Overview ​
-
-This section contains filters that don't fit into other specific categories but provide important customization options for HTML sanitization, date formatting, features, execution limits, and more.
-
-**Total Filters:** 15
-
----
+# Miscellaneous Filters
 
 ## HTML & Content Sanitization
 

@@ -1,23 +1,11 @@
 ---
 prev:
-  text: 'Activities'
-  link: '/hooks/actions/activities'
-next:
-  text: 'Managers'
-  link: '/hooks/actions/managers'
+  text: 'Moderation'
+  link: '/hooks/actions/moderation'
+next: false
 ---
 
 # Followers Actions
-
-Actions related to user following and follower relationships in Fluent Community.
-
-## Overview
-
-Follower actions are documented in the [User Actions](/hooks/actions/users) page as they are part of the user relationship system.
-
-**Total Actions:** 2 (documented in User Actions)
-
----
 
 ## Available Actions
 
@@ -31,7 +19,7 @@ Fires when a user follows another user.
 
 ---
 
-### fluent_community/before_unfollowing_user [PRO]
+### fluent_community/before_unfollowing_user
 
 Fires before a user unfollows another user.
 

@@ -1,23 +1,13 @@
 ---
 prev:
-  text: 'Portal'
+  text: 'Portal & UI'
   link: '/hooks/actions/portal'
 next:
-  text: 'Followers'
-  link: '/hooks/actions/followers'
+  text: 'Managers'
+  link: '/hooks/actions/managers'
 ---
 
 # Activities Actions
-
-Actions related to activity tracking in Fluent Community.
-
-## Overview
-
-Activity actions allow you to track and log user activities throughout the community. This includes page views, interactions, and custom events.
-
-**Total Actions:** 1
-
----
 
 ## Activity Tracking
 

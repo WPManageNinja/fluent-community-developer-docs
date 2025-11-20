@@ -7,17 +7,7 @@ next:
   link: '/hooks/filters/integrations'
 ---
 
-# Rate Limiting Filters ​
-
-Filters for customizing rate limiting and spam prevention in Fluent Community.
-
-## Overview ​
-
-Rate limiting filters control how frequently users can perform actions like posting and commenting. These filters are essential for preventing spam, managing server load, and maintaining community quality.
-
-**Total Filters:** 2
-
----
+# Rate Limiting Filters
 
 ## Comment Rate Limiting
 
