@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Lessons
 
 The Lessons API allows you to create and manage individual lessons within courses.
@@ -358,4 +360,3 @@ curl ".../courses/10/progress"
 
 - [Courses](./courses.md) - Manage courses
 - [Course Progress](./course-progress.md) - Track lesson completion
-

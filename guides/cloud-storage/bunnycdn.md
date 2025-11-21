@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # BunnyCDN Configuration ​
 
 ## Introduction ​

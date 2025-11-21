@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/courses'
 ---
 
+<DocStatusBanner />
+
 # Notifications Actions
 
 ## Notification Cleanup

@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Bookmarks
 
 The Bookmarks API allows users to save feeds for later reading and organize their favorite content.
@@ -397,4 +399,3 @@ When trying to remove a non-existent bookmark:
 - [Feeds](./feeds.md) - View and manage feeds
 - [Profiles](./profiles.md) - User bookmark collections
 - [Spaces](./spaces.md) - Bookmark feeds from specific spaces
-

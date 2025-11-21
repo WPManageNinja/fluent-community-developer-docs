@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Media
 
 The Media API allows you to upload and manage images, videos, and other files in your community.
@@ -452,4 +454,3 @@ curl ".../feeds/oembed?url=https://youtube.com/watch?v=abc123"
 - [Comments](./comments.md) - Attach media to comments
 - [Profiles](./profiles.md) - Update profile images
 - [Spaces](./spaces.md) - Update space images
-

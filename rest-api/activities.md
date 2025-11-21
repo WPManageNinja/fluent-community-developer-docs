@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Activities
 
 The Activities API allows you to retrieve user activity history, including posts created, comments added, reactions, space joins, and other community interactions.
@@ -419,4 +421,3 @@ async function getUserEngagement(userId, dateFrom, dateTo) {
 - [Spaces](/rest-api/spaces) - Join and manage spaces
 - [Profiles](/rest-api/profiles) - View user profiles
 - [Notifications](/rest-api/notifications) - Get user notifications
-

@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Spaces
 
 The Spaces API allows you to manage community spaces (groups/channels) where users can organize discussions and content.
@@ -632,4 +634,3 @@ curl -X PUT "https://example.com/wp-json/fluent-community/v2/spaces/premium-spac
 - [Feeds](./feeds.md) - Post content in spaces
 - [Profiles](./profiles.md) - View user's spaces
 - [Courses](./courses.md) - Course lockscreen settings
-

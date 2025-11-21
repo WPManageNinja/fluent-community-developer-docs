@@ -360,7 +360,6 @@ Use the REST API to build native mobile applications for iOS and Android.
 
 **Resources:**
 - [REST API Documentation](/rest-api/)
-- [Authentication Guide](/rest-api/authentication)
 
 ### Integrating with External Services
 

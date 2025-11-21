@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Amazon S3 Configuration ​
 
 ## Introduction ​

@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Notifications
 
 The Notifications API allows users to receive and manage notifications about community activity.
@@ -476,4 +478,3 @@ curl ".../profile/notification-preferences"
 - [Feeds](./feeds.md) - Content that triggers notifications
 - [Comments](./comments.md) - Comment notifications
 - [Followers](./followers.md) - Follower notifications [PRO]
-

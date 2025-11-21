@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/courses'
 ---
 
+<DocStatusBanner />
+
+
 # Settings & Configuration Filters
 
 ## General Configuration

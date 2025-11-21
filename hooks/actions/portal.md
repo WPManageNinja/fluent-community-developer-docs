@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/activities'
 ---
 
+<DocStatusBanner />
+
 # Portal & UI Actions
 
 ## Portal Lifecycle

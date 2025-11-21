@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/users'
 ---
 
+<DocStatusBanner />
+
+
 # Spaces Filters
 
 ## Space Data Filters

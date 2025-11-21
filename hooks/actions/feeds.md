@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/comments'
 ---
 
+<DocStatusBanner />
+
 # Feeds & Posts Actions
 
 ## Feed Lifecycle

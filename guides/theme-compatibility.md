@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Theme Compatibility ​
 
 ## Introduction ​

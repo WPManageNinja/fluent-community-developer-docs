@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Members
 
 The Members API allows you to list, search, and discover community members.
@@ -476,4 +478,3 @@ curl -X POST ".../spaces/tech-talk/members" -d '{
 - [Followers](./followers.md) - Follow/unfollow members [PRO]
 - [Space Members](./space-members.md) - Manage space membership
 - [Spaces](./spaces.md) - Filter members by space
-

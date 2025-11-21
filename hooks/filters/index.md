@@ -5,6 +5,8 @@ next:
   link: '/hooks/filters/feeds'
 ---
 
+<DocStatusBanner />
+
 # Fluent Community Filter Hooks
 
 Filter hooks allow you to modify data, settings, and behavior in Fluent Community. They are perfect for customizing functionality, modifying output, and extending Fluent Community's capabilities.

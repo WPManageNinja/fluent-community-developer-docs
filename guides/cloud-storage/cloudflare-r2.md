@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Cloudflare R2 Configuration ​
 
 ## Introduction ​

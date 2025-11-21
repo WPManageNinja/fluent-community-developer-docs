@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Webhooks [PRO]
 
 ::: tip PRO FEATURE
@@ -568,4 +570,3 @@ async function createEmailWebhook() {
 - [Settings](/rest-api/settings) - Community settings
 - [Notifications](/rest-api/notifications) - User notifications
 - [Activities](/rest-api/activities) - Activity tracking
-

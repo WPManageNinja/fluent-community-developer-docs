@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Leaderboard API [PRO]
 
 ::: tip PRO FEATURE
@@ -639,4 +641,3 @@ curl -X GET ".../leaderboard?include_current_user=true"
 - [Analytics API](/rest-api/analytics) - View engagement statistics
 - [Activities API](/rest-api/activities) - Track member activities
 - [Settings API](/rest-api/settings) - Configure gamification settings
-

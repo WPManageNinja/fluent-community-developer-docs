@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Menu Customization ​
 
 ## Introduction ​

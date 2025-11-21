@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Course Progress
 
 The Course Progress API allows you to track student enrollment, lesson completion, and course progress.
@@ -443,4 +445,3 @@ curl ".../courses/10/progress"
 - [Courses](./courses.md) - Manage courses
 - [Lessons](./lessons.md) - Manage lessons
 - [Profiles](./profiles.md) - View student profiles
-

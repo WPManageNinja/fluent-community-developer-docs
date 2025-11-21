@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Quizzes API [PRO]
 
 ::: tip PRO FEATURE
@@ -560,4 +562,3 @@ curl -X GET ".../courses/5/lessons/15/quiz/result?attempt=latest"
 - [Lessons API](/rest-api/lessons) - Manage lessons
 - [Course Progress API](/rest-api/course-progress) - Track student progress
 - [Analytics API](/rest-api/analytics) - View quiz statistics
-

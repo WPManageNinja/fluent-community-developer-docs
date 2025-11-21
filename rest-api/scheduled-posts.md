@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Scheduled Posts [PRO]
 
 ::: tip PRO FEATURE
@@ -574,4 +576,3 @@ async function getScheduledPostsDashboard() {
 - [Feeds](/rest-api/feeds) - Create and manage feed posts
 - [Spaces](/rest-api/spaces) - Manage community spaces
 - [Notifications](/rest-api/notifications) - User notifications
-

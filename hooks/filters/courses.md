@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/api-responses'
 ---
 
+<DocStatusBanner />
+
+
 # Courses & Lessons Filters
 
 ## Course Configuration

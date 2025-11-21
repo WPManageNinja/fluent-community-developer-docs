@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Comments
 
 The Comments API allows users to add comments and replies to feeds, creating threaded discussions in your community.
@@ -569,4 +571,3 @@ curl ".../profile/john_doe/comments"
 - [Reactions](./reactions.md) - React to comments
 - [Profiles](./profiles.md) - View user's comment history
 - [Notifications](./notifications.md) - Get notified of new comments
-

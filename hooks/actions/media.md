@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/reactions'
 ---
 
+<DocStatusBanner />
+
 # Media Actions
 
 ## Media Deletion

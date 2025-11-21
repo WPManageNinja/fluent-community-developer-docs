@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/users'
 ---
 
+<DocStatusBanner />
+
+
 # Authentication Filters
 
 ## Login Filters

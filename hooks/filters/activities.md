@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/integrations'
 ---
 
+<DocStatusBanner />
+
+
 # Activity & Tracking Filters
 
 ## Activity Content Filters

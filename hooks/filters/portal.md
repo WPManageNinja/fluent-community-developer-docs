@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/reactions'
 ---
 
+<DocStatusBanner />
+
+
 # Portal & UI Filters
 
 ## Portal Configuration

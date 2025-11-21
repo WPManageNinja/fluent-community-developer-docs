@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Reactions
 
 The Reactions API allows users to express emotions and engagement with feeds and comments through reaction types like likes, loves, and more.
@@ -390,4 +392,3 @@ When toggling off a reaction:
 - [Feeds](./feeds.md) - React to feed posts
 - [Comments](./comments.md) - React to comments
 - [Profiles](./profiles.md) - View user reaction history
-

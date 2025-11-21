@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Code Examples
 
 Practical code examples for common tasks using the Fluent Community REST API.
@@ -350,7 +352,8 @@ $posts = fetch_posts(
     5
 );
 
-echo "Found " . count($posts['data']) . " posts\n";
+echo "Found " . count($posts['data']) . " posts
+";
 ?>
 ```
 
@@ -390,7 +393,8 @@ $new_post = create_post(
     ]
 );
 
-echo "Created post ID: " . $new_post['data']['id'] . "\n";
+echo "Created post ID: " . $new_post['data']['id'] . "
+";
 ?>
 ```
 
@@ -462,4 +466,3 @@ For more examples and use cases, check out:
 - [Getting Started Guide](./getting-started.md)
 - [Authentication Guide](./authentication.md)
 - [Error Handling](./errors.md)
-

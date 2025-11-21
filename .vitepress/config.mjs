@@ -30,6 +30,7 @@ export default defineConfig({
           { text: 'Helper Functions', link: '/helpers/' }
         ]
       },
+      { text: 'REST API', link: '/rest-api/' },
       {
         text: 'Guides',
         items: [
@@ -41,7 +42,6 @@ export default defineConfig({
           { text: 'Theme Compatibility', link: '/guides/theme-compatibility' }
         ]
       },
-      { text: 'REST API', link: '/rest-api/' },
       {
         text: 'Deployment',
         items: [
@@ -168,10 +168,9 @@ export default defineConfig({
         {
           text: 'Getting Started',
           items: [
-            { text: 'REST API Overview', link: '/rest-api/' },
-            { text: 'Quick Reference', link: '/rest-api/quick-reference' },
-            { text: 'Authentication', link: '/rest-api/authentication' },
-            { text: 'Getting Started', link: '/rest-api/getting-started' }
+            { text: 'API Overview', link: '/rest-api/' },
+            { text: 'Error Handling', link: '/rest-api/errors' },
+            { text: 'Code Examples', link: '/rest-api/examples' }
           ]
         },
         {
@@ -229,14 +228,6 @@ export default defineConfig({
                 { text: 'Leaderboard', link: '/rest-api/leaderboard' }
               ]
             }
-          ]
-        },
-        {
-          text: 'Guides & Reference',
-          items: [
-            { text: 'Error Handling', link: '/rest-api/errors' },
-            { text: 'Code Examples', link: '/rest-api/examples' },
-            { text: 'Changelog', link: '/rest-api/changelog' }
           ]
         }
       ]

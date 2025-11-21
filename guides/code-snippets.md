@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Code Snippets & Recipes ​
 
 ## Introduction ​

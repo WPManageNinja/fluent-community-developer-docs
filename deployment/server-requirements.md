@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Server Requirements & Configuration ​
 
 ## Introduction ​

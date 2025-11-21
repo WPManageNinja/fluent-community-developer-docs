@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Error Handling
 
 Understanding and handling errors properly is crucial for building robust applications with the Fluent Community REST API.
@@ -463,4 +465,3 @@ fetch('/wp-json/fluent-community/v2/posts', {
 - [Getting Started Guide](./getting-started.md)
 - [Authentication Guide](./authentication.md)
 - [Code Examples](./examples.md)
-

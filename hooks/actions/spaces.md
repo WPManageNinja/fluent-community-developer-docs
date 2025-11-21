@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/users'
 ---
 
+<DocStatusBanner />
+
 # Spaces Actions
 
 ## Space Lifecycle

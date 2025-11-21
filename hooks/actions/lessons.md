@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/integrations'
 ---
 
+<DocStatusBanner />
+
 # Lessons & Sections Actions
 
 ## Lesson Actions

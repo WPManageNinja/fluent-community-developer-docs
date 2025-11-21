@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/moderation'
 ---
 
+<DocStatusBanner />
+
+
 # Managers Filters
 
 ## Status

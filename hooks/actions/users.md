@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/authentication'
 ---
 
+<DocStatusBanner />
+
 # Users & Members Actions
 
 ## Profile Management

@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/spaces'
 ---
 
+<DocStatusBanner />
+
 # Comments Actions
 
 ## Comment Lifecycle

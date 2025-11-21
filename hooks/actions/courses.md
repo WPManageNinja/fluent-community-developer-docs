@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/lessons'
 ---
 
+<DocStatusBanner />
+
 # Courses Actions
 
 ## Course Lifecycle

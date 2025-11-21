@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Courses
 
 The Courses API allows you to create and manage learning courses within your community.
@@ -604,4 +606,3 @@ curl -X PUT "https://example.com/wp-json/fluent-community/v2/admin/courses/15/lo
 - [Quizzes](./quizzes.md) - Course assessments
 - [Profiles](./profiles.md) - View instructor profiles
 - [Spaces](./spaces.md) - Space lockscreen settings
-

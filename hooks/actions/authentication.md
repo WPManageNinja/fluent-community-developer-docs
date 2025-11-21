@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/media'
 ---
 
+<DocStatusBanner />
+
 # Authentication Actions
 
 ## Registration Form Hooks

@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Giphy API [PRO]
 
 ::: tip PRO FEATURE
@@ -395,4 +397,3 @@ Giphy API has rate limits based on your API key tier:
 - [Giphy API Documentation](https://developers.giphy.com/docs/api)
 - [Giphy Content Guidelines](https://support.giphy.com/hc/en-us/articles/360020027752)
 - [Giphy Attribution Requirements](https://support.giphy.com/hc/en-us/articles/360020027752-GIPHY-Attribution)
-

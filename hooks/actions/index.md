@@ -5,6 +5,8 @@ next:
   link: '/hooks/actions/feeds'
 ---
 
+<DocStatusBanner />
+
 # Fluent Community Action Hooks
 
 Action hooks allow you to execute custom code at specific points in Fluent Community's execution flow. They are perfect for triggering side effects, sending notifications, logging events, or performing custom business logic.

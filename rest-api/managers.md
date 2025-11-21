@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Community Managers [PRO]
 
 ::: tip PRO FEATURE
@@ -600,4 +602,3 @@ await bulkAssignManagers(newManagers);
 - [Moderation](/rest-api/moderation) - Content moderation
 - [Settings](/rest-api/settings) - Community settings
 - [Analytics](/rest-api/analytics) - Community analytics
-

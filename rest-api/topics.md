@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Topics [PRO]
 
 ::: tip PRO FEATURE
@@ -552,4 +554,3 @@ async function bulkAssignTopics(feedIds, topicIds) {
 - [Feeds](/rest-api/feeds) - Create and manage feed posts
 - [Spaces](/rest-api/spaces) - Manage community spaces
 - [Settings](/rest-api/settings) - Community settings
-

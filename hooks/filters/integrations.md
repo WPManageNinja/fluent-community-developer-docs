@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/miscellaneous'
 ---
 
+<DocStatusBanner />
+
+
 # Integrations Filters
 
 ## Fluent Forms Integration

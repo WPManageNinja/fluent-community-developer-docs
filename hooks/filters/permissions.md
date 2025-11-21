@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/settings'
 ---
 
+<DocStatusBanner />
+
+
 # Permissions Filters
 
 ## Core Permission Filters

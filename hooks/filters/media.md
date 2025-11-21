@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/permissions'
 ---
 
+<DocStatusBanner />
+
+
 # Media & Uploads Filters
 
 ## Upload Configuration Filters

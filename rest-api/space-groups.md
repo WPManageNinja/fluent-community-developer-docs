@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Space Groups API
 
 Space Groups allow you to organize spaces into logical categories or sections within your community. This helps members navigate and discover spaces more easily.
@@ -485,4 +487,3 @@ curl -X DELETE ".../space_groups/5"
 - [Spaces API](/rest-api/spaces) - Manage individual spaces
 - [Settings API](/rest-api/settings) - Configure community settings
 - [Members API](/rest-api/members) - Manage community members
-

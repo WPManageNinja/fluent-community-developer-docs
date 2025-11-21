@@ -1,116 +1,178 @@
+<DocStatusBanner />
+
 # Fluent Community REST API
 
-Welcome to the Fluent Community REST API documentation. This API allows you to interact with your Fluent Community site programmatically.
+Welcome to the Fluent Community REST API documentation. Our API allows you to programmatically interact with your Fluent Community site, manage content, users, spaces, and more.
 
-## Overview
+## Getting Started
 
-The Fluent Community REST API provides endpoints for managing community content, users, spaces, and more. It follows RESTful principles and returns JSON responses.
+The Fluent Community API uses WordPress Application Passwords for authentication and follows RESTful principles. All endpoints return JSON responses.
 
-## Base URL
-
-All API requests should be made to:
-
+**Base URL:**
 ```
 https://your-site.com/wp-json/fluent-community/v2/
 ```
 
-## API Namespace
+## Authentication
 
-Fluent Community uses the following namespaces:
+All API requests require authentication using WordPress Application Passwords:
 
-- **Free Version**: `fluent-community/v1`
-- **Pro Version**: `fluent-community-pro/v1`
+1. Go to **WordPress Dashboard → Users → Your Profile**
+2. Scroll to **Application Passwords** section
+3. Create a new application password
+4. Use the credentials in the format: `username:application_password`
 
-## Quick Start
-
-Here's a simple example of making an API request:
+**Example Request:**
 
 ```bash
-curl -X GET "https://your-site.com/wp-json/fluent-community/v2/posts" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/feeds" \
+  --user "username:xxxx xxxx xxxx xxxx xxxx xxxx"
 ```
 
-## Key Features
+**JavaScript Example:**
 
-- **RESTful Architecture**: Standard HTTP methods (GET, POST, PUT, DELETE)
-- **JSON Responses**: All responses are returned in JSON format
-- **Authentication**: Multiple authentication methods supported
-- **Pagination**: Large result sets are paginated
-- **Error Handling**: Consistent error response format
-- **Rate Limiting**: API rate limits to ensure fair usage
+```javascript
+const username = 'your_username';
+const appPassword = 'xxxx xxxx xxxx xxxx xxxx xxxx';
+const credentials = btoa(`${username}:${appPassword}`);
+
+fetch('https://your-site.com/wp-json/fluent-community/v2/feeds', {
+  headers: {
+    'Authorization': `Basic ${credentials}`
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+::: tip
+For same-site requests (e.g., from WordPress admin), you can use WordPress Cookie Authentication with the `X-WP-Nonce` header.
+:::
+
+## Quick Example
+
+**List Feeds:**
+```bash
+curl -X GET "https://your-site.com/wp-json/fluent-community/v2/feeds" \
+  --user "username:app_password"
+```
+
+**Create a Post:**
+```bash
+curl -X POST "https://your-site.com/wp-json/fluent-community/v2/feeds" \
+  --user "username:app_password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "My First API Post",
+    "message": "This post was created via the REST API!",
+    "space_id": 1
+  }'
+```
 
 ## API Resources
 
-The Fluent Community API provides access to the following resources:
-
 ### Core Resources
 
-- [**Posts**](./posts.md) - Create, read, update, and delete community posts
-- [**Comments**](./comments.md) - Manage comments on posts
-- [**Users**](./users.md) - User management and profiles
+- [**Feeds**](./feeds.md) - Create, read, update, and delete community posts
+- [**Comments**](./comments.md) - Manage comments and replies
 - [**Spaces**](./spaces.md) - Community spaces and groups
+- [**Space Groups**](./space-groups.md) - Organize spaces into groups
+- [**Space Members**](./space-members.md) - Manage space membership
+- [**Profiles**](./profiles.md) - User profiles and information
+- [**Members**](./members.md) - Community member management
+- [**Activities**](./activities.md) - Activity stream and logs
+
+### Engagement
+
 - [**Reactions**](./reactions.md) - Reactions and likes on content
-- [**Media**](./media.md) - Upload and manage media files
-
-### Additional Resources
-
-- [**Notifications**](./notifications.md) - User notifications
 - [**Bookmarks**](./bookmarks.md) - Saved posts and bookmarks
-- [**Feeds**](./feeds.md) - Activity feeds and timelines
-- [**Search**](./search.md) - Search across community content
+- [**Notifications**](./notifications.md) - User notifications
+
+### Learning & Courses
+
+- [**Courses**](./courses.md) - Course management
+- [**Lessons**](./lessons.md) - Course lessons
+- [**Course Progress**](./course-progress.md) - Track student progress
+- [**Quizzes**](./quizzes.md) - Course quizzes and assessments
+
+### Media & Settings
+
+- [**Media**](./media.md) - Upload and manage media files
+- [**Giphy**](./giphy.md) - Giphy integration
 - [**Settings**](./settings.md) - Community settings and configuration
+- [**Migrations**](./migrations.md) - Migrate from other platforms
 
-## Authentication
+### Pro Features
 
-Before making API requests, you'll need to authenticate. See the [Authentication Guide](./authentication.md) for detailed information on available authentication methods.
+- [**Followers**](./followers.md) - User following system
+- [**Analytics**](./analytics.md) - Community analytics and insights
+- [**Moderation**](./moderation.md) - Content moderation tools
+- [**Topics**](./topics.md) - Topic management
+- [**Webhooks**](./webhooks.md) - Webhook integrations
+- [**Scheduled Posts**](./scheduled-posts.md) - Schedule posts for later
+- [**Community Managers**](./managers.md) - Manager roles and permissions
+- [**Leaderboard**](./leaderboard.md) - Gamification and points
 
 ## Common Concepts
 
 ### Pagination
 
-Most list endpoints support pagination using the following parameters:
-
-- `page` - Page number (default: 1)
-- `per_page` - Items per page (default: 20, max: 100)
-
-Example:
-```bash
-GET /posts?page=2&per_page=50
-```
-
-### Filtering
-
-Many endpoints support filtering using query parameters:
+Most list endpoints support pagination:
 
 ```bash
-GET /posts?space_id=123&status=published
+GET /feeds?page=2&per_page=20
 ```
 
-### Sorting
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `page` | integer | 1 | Page number |
+| `per_page` | integer | 20 | Items per page (max: 100) |
 
-Use the `orderby` and `order` parameters to sort results:
+### Filtering & Sorting
+
+Filter and sort results using query parameters:
 
 ```bash
-GET /posts?orderby=created_at&order=desc
+# Filter by space
+GET /feeds?space_id=5
+
+# Sort by date
+GET /feeds?orderby=created_at&order=desc
+
+# Search
+GET /feeds?search=javascript
+
+# Combine filters
+GET /feeds?space_id=5&status=published&orderby=created_at&order=desc
 ```
 
-## Response Format
+### Response Format
 
-All API responses follow a consistent format:
-
-### Success Response
-
+**Success Response:**
 ```json
 {
   "data": {
-    // Response data here
+    "id": 123,
+    "title": "Example Post"
   },
-  "message": "Success message"
+  "message": "Success"
 }
 ```
 
-### Error Response
+**List Response:**
+```json
+{
+  "data": [...],
+  "meta": {
+    "total": 150,
+    "per_page": 20,
+    "current_page": 1,
+    "total_pages": 8
+  }
+}
+```
 
+**Error Response:**
 ```json
 {
   "code": "error_code",
@@ -121,43 +183,39 @@ All API responses follow a consistent format:
 }
 ```
 
-## HTTP Status Codes
+### HTTP Status Codes
 
-The API uses standard HTTP status codes:
-
-- `200` - Success
-- `201` - Created
-- `204` - No Content (successful deletion)
-- `400` - Bad Request
-- `401` - Unauthorized
-- `403` - Forbidden
-- `404` - Not Found
-- `422` - Unprocessable Entity (validation error)
-- `429` - Too Many Requests (rate limit exceeded)
-- `500` - Internal Server Error
+| Code | Description |
+|------|-------------|
+| 200 | Success |
+| 201 | Created |
+| 204 | No Content (successful deletion) |
+| 400 | Bad Request (validation error) |
+| 401 | Unauthorized (authentication required) |
+| 403 | Forbidden (insufficient permissions) |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
 ## Rate Limiting
 
-API requests are rate-limited to ensure fair usage and system stability. Rate limit information is included in response headers:
+API requests are rate-limited to ensure fair usage:
 
-- `X-RateLimit-Limit` - Maximum requests allowed
-- `X-RateLimit-Remaining` - Remaining requests in current window
-- `X-RateLimit-Reset` - Time when the rate limit resets
+- **Default**: 100 requests per minute per user
+- **Authenticated**: 1000 requests per minute
+- **Admin**: Unlimited
 
-## Versioning
-
-The API is versioned to ensure backward compatibility. The current version is `v1`. Always include the version in your API requests.
+Rate limit headers:
+```
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1635724800
+```
 
 ## Need Help?
 
-- [Authentication Guide](./authentication.md)
-- [Error Handling](./errors.md)
-- [Code Examples](./examples.md)
-- [Changelog](./changelog.md)
+- [Error Handling](./errors.md) - Complete error reference
+- [Code Examples](./examples.md) - Examples in multiple languages
 
-## Next Steps
+## Interactive Playground
 
-1. [Set up authentication](./authentication.md)
-2. [Make your first API request](./getting-started.md)
-3. [Explore API resources](#api-resources)
-
+Every API endpoint page includes an interactive playground where you can test requests directly from your browser.

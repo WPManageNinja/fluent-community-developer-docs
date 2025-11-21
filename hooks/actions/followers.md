@@ -5,6 +5,8 @@ prev:
 next: false
 ---
 
+<DocStatusBanner />
+
 # Followers Actions
 
 ## Available Actions

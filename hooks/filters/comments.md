@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Comments Filters
 
 ## Comment Data Modification
@@ -121,4 +123,3 @@ Set maximum comment length in characters.
 - [Comment Actions](/hooks/actions/comments) - Comment lifecycle hooks
 - [Feed Filters](/hooks/filters/feeds) - Feed data filters
 - [Examples](/hooks/examples) - Real-world examples
-

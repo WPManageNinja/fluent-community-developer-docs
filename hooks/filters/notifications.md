@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/reactions'
 ---
 
+<DocStatusBanner />
+
+
 # Email & Notifications Filters
 
 ## Authentication Emails

@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/notifications'
 ---
 
+<DocStatusBanner />
+
 # Reactions Actions
 
 ## Reaction Events

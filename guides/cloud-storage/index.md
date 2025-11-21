@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Cloud Storage Configuration ​
 
 ## Introduction ​

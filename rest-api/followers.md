@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Followers [PRO]
 
 The Followers API allows users to follow other members and build connections within the community. This is a Pro feature.
@@ -569,4 +571,3 @@ curl ".../profile/me/followings"
 - [Members](./members.md) - Discover members to follow
 - [Notifications](./notifications.md) - Get notified of new followers
 - [Feeds](./feeds.md) - View content from followed users
-

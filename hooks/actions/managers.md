@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/moderation'
 ---
 
+<DocStatusBanner />
+
 # Managers Actions
 
 ## Manager Assignment

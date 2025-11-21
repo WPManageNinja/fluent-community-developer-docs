@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Profiles
 
 The Profiles API allows users to manage their profile information, settings, and preferences.
@@ -528,4 +530,3 @@ curl ".../profile/john_doe/comments?orderby=created_at&order=desc"
 - [Followers](./followers.md) - Follow/unfollow users [PRO]
 - [Feeds](./feeds.md) - View user's feeds
 - [Spaces](./spaces.md) - View user's spaces
-

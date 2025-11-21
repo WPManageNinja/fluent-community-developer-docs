@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Migrations API
 
 The Migrations API allows administrators to migrate data from other community platforms into Fluent Community.
@@ -431,4 +433,3 @@ done
 - Increase PHP memory limit for large migrations
 - Use WP-CLI for very large migrations
 - Schedule migrations during low-traffic periods
-

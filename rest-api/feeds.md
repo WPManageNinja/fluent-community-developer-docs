@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Feeds
 
 The Feeds API allows you to manage posts and content in your community. Feeds are the primary content type where users share updates, discussions, and media.
@@ -725,7 +727,9 @@ curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds/markdown-pre
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
-    "content": "# Hello World\n\nThis is **bold** and this is *italic*."
+    "content": "# Hello World
+
+This is **bold** and this is *italic*."
   }'
 ```
 
@@ -733,7 +737,8 @@ curl -X POST "https://example.com/wp-json/fluent-community/v2/feeds/markdown-pre
 
 ```json
 {
-  "html": "<h1>Hello World</h1>\n<p>This is <strong>bold</strong> and this is <em>italic</em>.</p>"
+  "html": "<h1>Hello World</h1>
+<p>This is <strong>bold</strong> and this is <em>italic</em>.</p>"
 }
 ```
 
@@ -771,4 +776,3 @@ POST /wp-json/fluent-community/v2/feeds/links
 - [Spaces](./spaces.md) - Manage spaces where feeds are posted
 - [Media](./media.md) - Upload media for feeds
 - [Scheduled Posts](/rest-api/scheduled-posts) - Schedule posts for future publication
-

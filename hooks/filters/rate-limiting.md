@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/integrations'
 ---
 
+<DocStatusBanner />
+
+
 # Rate Limiting Filters
 
 ## Comment Rate Limiting

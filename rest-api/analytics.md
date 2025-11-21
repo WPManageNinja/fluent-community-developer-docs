@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Analytics [PRO]
 
 ::: tip PRO FEATURE
@@ -562,4 +564,3 @@ async function generateMonthlyReport(year, month) {
 - [Members](/rest-api/members) - Member management
 - [Spaces](/rest-api/spaces) - Space management
 - [Feeds](/rest-api/feeds) - Feed posts
-

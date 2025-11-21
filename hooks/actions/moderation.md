@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/followers'
 ---
 
+<DocStatusBanner />
+
 # Moderation Actions
 
 ## Content Flagging

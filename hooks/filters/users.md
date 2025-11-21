@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters/media'
 ---
 
+<DocStatusBanner />
+
+
 # Users & Profiles Filters
 
 ## Avatar & Display Filters

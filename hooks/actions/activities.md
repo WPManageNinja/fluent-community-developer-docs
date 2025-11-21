@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/managers'
 ---
 
+<DocStatusBanner />
+
 # Activities Actions
 
 ## Activity Tracking

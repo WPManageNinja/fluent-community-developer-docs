@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Settings
 
 The Settings API allows administrators to manage community configuration and preferences.
@@ -1163,4 +1165,3 @@ curl -X DELETE "https://your-site.com/wp-json/fluent-community/v2/admin/license"
 - [Managers](/rest-api/managers) - Community managers
 - [Topics](/rest-api/topics) - Topic management
 - [Webhooks](/rest-api/webhooks) - Webhook configuration
-

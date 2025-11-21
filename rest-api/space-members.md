@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Space Members
 
 The Space Members API allows you to manage membership in community spaces, including adding members, removing members, and updating roles.
@@ -531,4 +533,3 @@ curl -X POST ".../spaces/tech-talk/members/remove" -d '{
 - [Spaces](./spaces.md) - Manage spaces
 - [Profiles](./profiles.md) - View user profiles
 - [Members](./members.md) - List all community members
-

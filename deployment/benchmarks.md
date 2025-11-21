@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Performance Benchmarks ​
 
 ## Introduction ​

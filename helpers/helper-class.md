@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Helper Class Reference ​
 
 ## Introduction ​

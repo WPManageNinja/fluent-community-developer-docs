@@ -7,6 +7,9 @@ next:
   link: '/hooks/filters'
 ---
 
+<DocStatusBanner />
+
+
 # Followers Filters
 
 ## Status

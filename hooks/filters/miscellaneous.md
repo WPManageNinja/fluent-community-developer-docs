@@ -7,6 +7,9 @@ next:
   link: '/hooks/quick-reference'
 ---
 
+<DocStatusBanner />
+
+
 # Miscellaneous Filters
 
 ## HTML & Content Sanitization

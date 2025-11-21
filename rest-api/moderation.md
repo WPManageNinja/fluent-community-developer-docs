@@ -1,3 +1,5 @@
+<DocStatusBanner />
+
 # Moderation [PRO]
 
 ::: tip PRO FEATURE
@@ -550,4 +552,3 @@ async function bulkModerateReports(reportIds, action) {
 - [Comments](/rest-api/comments) - Manage comments
 - [Members](/rest-api/members) - Manage members
 - [Settings](/rest-api/settings) - Community settings
-

@@ -7,6 +7,8 @@ next:
   link: '/hooks/actions/portal'
 ---
 
+<DocStatusBanner />
+
 # Integrations Actions
 
 ## Paywall Actions
