@@ -4,7 +4,7 @@ Official developer documentation for the Fluent Community REST API.
 
 ## 📚 Documentation
 
-Visit the documentation site: [https://your-docs-site.com](https://your-docs-site.com)
+Visit the documentation site: [https://dev.fluentcommunity.co](https://dev.fluentcommunity.co)
 
 ## 🚀 Quick Start
 
