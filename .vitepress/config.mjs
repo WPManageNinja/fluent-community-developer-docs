@@ -2,7 +2,7 @@ import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: "Fluent Community",
+    title: "Fluent Community Developer Docs",
     description: "Complete developer documentation for Fluent Community plugin",
     ignoreDeadLinks: true,
     srcExclude: ['**/user-docs/**'],
@@ -250,6 +250,9 @@ export default defineConfig({
         outline: {
             level: [2, 3],
             label: 'On this page'
+        },
+        editLink: {
+            pattern: 'https://github.com/WPManageNinja/fluent-community-developer-docs/edit/master/:path'
         }
     },
     head: [
