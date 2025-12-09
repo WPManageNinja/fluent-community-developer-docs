@@ -2,8 +2,6 @@
 
 # Helper Class Reference ​
 
-## Introduction ​
-
 The `Helper` class (located at `FluentCommunity\App\Functions\Utility`) provides a comprehensive set of utility functions for working with Fluent Community. This reference documents all available methods with their parameters, return types, and usage examples.
 
 ## Portal Configuration Methods ​
