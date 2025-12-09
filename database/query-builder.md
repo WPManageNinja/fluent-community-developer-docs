@@ -806,6 +806,8 @@ $spaceActivity = Space::leftJoin($wpdb->prefix . 'fcom_posts', 'fcom_spaces.id',
 - Learn about [Model Relationships](./relationships.md) for working with related data
 - Explore [Database Schema](./schema.md) for table structures
 - Check [Database Models](./models.md) for model details
+
+```
 global $wpdb;
 
 Feed::join($wpdb->prefix . 'fcom_spaces', function ($join) {
