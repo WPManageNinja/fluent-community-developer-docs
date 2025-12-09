@@ -1,6 +1,4 @@
-# Fluent Community Query Builder ​
-
-## Introduction ​
+# Fluent Community Query Builder ​​
 
 Fluent Community uses an Eloquent-based ORM system compatible with Laravel's Eloquent ORM. You can interact with database tables through Model classes or using direct query builder methods.
 
