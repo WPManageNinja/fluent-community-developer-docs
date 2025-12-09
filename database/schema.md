@@ -15,25 +15,42 @@ Click on the diagram below to zoom in for better readability. The diagram shows 
 The Fluent Community database schema is built around these core concepts:
 
 **Feeds & Content**: Community posts with rich media support and nested discussions
+
 **Comments & Discussions**: Threaded comment system with reactions and moderation
+
 **Spaces & Groups**: Content organization with membership management and permissions
+
 **Users & Profiles**: Extended user profiles with points, badges, and verification
+
 **Reactions & Engagement**: Social interactions (likes, bookmarks, custom reactions) on posts and comments
+
 **Notifications**: Real-time user notification system with multiple delivery channels
+
 **Media Management**: File uploads with multiple storage drivers (local, S3, R2, BunnyCDN)
+
 **Activity Tracking**: Comprehensive audit trail for all user actions and events
+
 **Topics & Tags**: Content categorization and discovery system
+
 **Follow System** (Pro): User-to-user following relationships and personalized feeds
+
 **Moderation** (Pro): Content moderation and reporting system
+
 **Metadata System**: Flexible key-value storage for all entities
+
 
 ## Key Design Principles ​
 
 **Flexible Architecture**: JSON columns used for extensible configuration data
+
 **Performance Optimization**: Strategic indexing on frequently queried columns
+
 **Referential Integrity**: Proper foreign key relationships maintained throughout
+
 **Audit Trail**: Comprehensive activity logging for all important operations
+
 **WordPress Integration**: Seamless integration with WordPress core tables (wp_users, wp_usermeta)
+
 
 ## Database Tables ​
 
