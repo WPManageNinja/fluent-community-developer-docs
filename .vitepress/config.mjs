@@ -256,6 +256,7 @@ export default defineConfig({
         }
     },
     head: [
-        ['meta', { name: 'og:image', content: 'https://fluentcommunity.co/wp-content/uploads/2025/11/fluent-com-dev-docs.png' }]
+        ['meta', { name: 'og:image', content: 'https://fluentcommunity.co/wp-content/uploads/2025/11/fluent-com-dev-docs.png' }],
+        ['link', { rel: 'icon', type: 'image/webp', href: '/favicon/favicon.webp' }]
     ]
 })
