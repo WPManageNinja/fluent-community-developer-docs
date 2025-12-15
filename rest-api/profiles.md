@@ -107,23 +107,6 @@ curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe" \
 }
 ```
 
-## Get Current User Profile
-
-Retrieve the authenticated user's own profile.
-
-**HTTP Request**
-
-```
-GET /wp-json/fluent-community/v2/profile/me
-```
-
-### Example Request
-
-```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/profile/me" \
-  -u "username:password"
-```
-
 ## Update Profile
 
 Update the current user's profile information.
@@ -131,7 +114,7 @@ Update the current user's profile information.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v2/profile/me
+POST /wp-json/fluent-community/v2/profile/{username}
 ```
 
 ### Parameters
@@ -151,8 +134,8 @@ PUT /wp-json/fluent-community/v2/profile/me
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/profile/me" \
-  -X PUT \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe" \
+  -X POST \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
@@ -188,22 +171,22 @@ Retrieve feeds created by a specific user.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v2/feeds?username={username}
+GET /wp-json/fluent-community/v2/feeds?user_id={user_id}
 ```
 
 ### Parameters
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `username` | string | - | Username to filter by |
+| `user_id` | string | - | User ID |
 | `page` | integer | 1 | Page number |
 | `per_page` | integer | 20 | Items per page |
-| `status` | string | published | Filter by status |
+| `order_by_type` | string | published | Sort type (new_activity, latest, oldest, likes, popular, alphabetical, unanswered) |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/feeds?username=john_doe&per_page=10" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds?user_id_=1&per_page=10" \
   -u "username:password"
 ```
 
@@ -288,13 +271,13 @@ Retrieve the current user's notification settings.
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v2/profile/notification-preferences
+GET /wp-json/fluent-community/v2/profile/{username}/notification-preferences
 ```
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/profile/notification-preferences" \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/john_doe/notification-preferences" \
   -u "username:password"
 ```
 
@@ -327,7 +310,7 @@ Update the current user's notification settings.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v2/profile/notification-preferences
+POST /wp-json/fluent-community/v2/profile/{username}/notification-preferences
 ```
 
 ### Parameters
@@ -341,8 +324,8 @@ PUT /wp-json/fluent-community/v2/profile/notification-preferences
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/profile/notification-preferences" \
-  -X PUT \
+curl "https://your-site.com/wp-json/fluent-community/v2/profile/{username}/notification-preferences" \
+  -X POST \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{

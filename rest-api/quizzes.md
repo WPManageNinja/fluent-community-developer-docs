@@ -100,6 +100,53 @@ Quizzes allow you to add assessments to course lessons, test student knowledge, 
 
 ---
 
+## Create a Quiz
+
+Add a new quiz to a course's section.
+
+**HTTP Request**
+
+```
+POST /wp-json/fluent-community/v2/admin/courses/{course_id}/lessons
+```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `title` | string | Yes | Lesson title |
+| `type` | string | Yes | type: "quiz" |
+| `section_id` | integer | Yes | ID of the section; where the quiz will be created |
+
+### Example Request
+
+```bash
+curl "https://your-site.com/wp-json/fluent-community/v2/admin/courses/13/lessons" \
+  -X POST \
+  -u "username:password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Wordpress Intermediate",
+    "type": "quiz",
+    "section_id": 12,
+  }'
+```
+
+### Example Response
+
+```json
+{
+  "message": "Quiz created successfully",
+  "data": {
+    "id": 102,
+    "course_id": 10,
+    "title": "Wordpress Intermediate",
+    "order": 2,
+    "created_at": "2025-10-27T12:00:00"
+  }
+}
+```
+
 ## Submit Quiz
 
 Submit quiz answers for grading.

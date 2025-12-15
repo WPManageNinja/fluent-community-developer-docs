@@ -34,13 +34,12 @@ GET /wp-json/fluent-community/v2/feeds/bookmarks
 |-----------|------|---------|-------------|
 | `page` | integer | 1 | Page number |
 | `per_page` | integer | 20 | Items per page (max: 100) |
-| `orderby` | string | created_at | Sort field |
-| `order` | string | desc | Sort order (asc, desc) |
+| `order_by_type` | string | latest | Sort type (latest, oldest, new_activity, likes, popular, alphabetical, unanswered) |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks?per_page=10" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/bookmarks?page=1&per_page=10&space=&order_by_type=latest" \
   -u "username:password"
 ```
 
@@ -108,7 +107,7 @@ Save a feed to the current user's bookmarks.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/react
 ```
 
 ### Parameters
@@ -116,13 +115,18 @@ POST /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `feed_id` | integer | Yes | Feed ID to bookmark |
+| `react_type` | string | Yes | react_type: "bookmark" |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark" \
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/react" \
   -X POST \
-  -u "username:password"
+  -u "username:password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "react_type": "bookmark",
+  }'
 ```
 
 ### Example Response
@@ -149,7 +153,7 @@ Remove a feed from the current user's bookmarks.
 **HTTP Request**
 
 ```
-DELETE /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark
+POST /wp-json/fluent-community/v2/feeds/{feed_id}/react
 ```
 
 ### Parameters
@@ -157,13 +161,20 @@ DELETE /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `feed_id` | integer | Yes | Feed ID to unbookmark |
+| `react_type` | string | Yes | react_type: "bookmark" |
+| `remove` | boolean | Yes | remove: true |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark" \
-  -X DELETE \
-  -u "username:password"
+curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/react" \
+  -X POST \
+  -u "username:password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "react_type": "bookmark",
+    "remove": true
+  }'
 ```
 
 ### Example Response
@@ -173,35 +184,6 @@ curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark" \
   "message": "Bookmark removed successfully",
   "data": {
     "action": "removed"
-  }
-}
-```
-
-## Check Bookmark Status
-
-Check if a feed is bookmarked by the current user.
-
-**HTTP Request**
-
-```
-GET /wp-json/fluent-community/v2/feeds/{feed_id}/bookmark-status
-```
-
-### Example Request
-
-```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/bookmark-status" \
-  -u "username:password"
-```
-
-### Example Response
-
-```json
-{
-  "data": {
-    "is_bookmarked": true,
-    "bookmark_id": 789,
-    "bookmarked_at": "2025-10-27T12:00:00"
   }
 }
 ```
