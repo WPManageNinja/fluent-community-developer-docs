@@ -260,6 +260,8 @@ export default defineConfig({
     },
     head: [
         ['meta', { name: 'og:image', content: 'https://fluentcommunity.co/wp-content/uploads/2025/11/fluent-com-dev-docs.png' }],
-        ['link', { rel: 'icon', type: 'image/webp', href: '/favicon/favicon.webp' }]
+        ['link', { rel: 'icon', type: 'image/webp', href: '/favicon/favicon.webp' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/gh/fluent-docai/fluent-bot-chat-widget-open@latest/fluent-bot-chat-widget.umd.js' }],
+        ['script', {}, '(function() { function initWidget() { if (typeof FluentBotChatWidget !== "undefined") { FluentBotChatWidget.injectWidget("dbe13b70-6e14-432a-9eda-be1f7d1d9478"); } else { setTimeout(initWidget, 100); } } initWidget(); })();']
     ]
 })
