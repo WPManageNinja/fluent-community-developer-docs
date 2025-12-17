@@ -48,163 +48,320 @@ GET /wp-json/fluent-community/v2/activities
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `user_id` | integer | No | Filter by specific user ID (defaults to current user) |
-| `action_type` | string | No | Filter by activity type |
-| `space_id` | integer | No | Filter by space |
-| `per_page` | integer | No | Number of activities per page (default: 20) |
+| `context[user_id]` | integer | Yes | Filter by specific user ID |
 | `page` | integer | No | Page number for pagination |
-| `date_from` | string | No | Start date (YYYY-MM-DD format) |
-| `date_to` | string | No | End date (YYYY-MM-DD format) |
+| `per_page` | integer | No | Number of activities per page (default: 20) |
+
 
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?per_page=20&page=1" \
-  -u "username:password"
+curl "https://your-site.com/wp-json/fluent-community/v2/activities" \
+  -X GET \
+  -u "username:password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    context[user_id]: 1,
+    page: 1,
+    per_page: 5
+  }'
 ```
 
 ### Example Response
 
 ```json
 {
-  "activities": {
-    "data": [
-      {
-        "id": 100007,
-        "message": "<span class=\"fcom_user_name\">User Name</span> published a new status <span class=\"fcom_feed_excerpt\">Post Title</span>",
-        "updated_at": "2025-07-25 08:51:01",
-        "xprofile": {
-          "user_id": 1,
-          "total_points": 6425,
-          "is_verified": 1,
-          "status": "active",
-          "display_name": "User Name",
-          "username": "username",
-          "avatar": "avatar_url",
-          "created_at": "2024-03-05 16:37:02",
-          "short_description": "User description",
-          "meta": {
-            "website": "website_url",
-            "cover_photo": "cover_photo_url",
-            "social_links": {
-              "twitter": "@handle",
-              "youtube": "@handle",
-              "linkedin": "handle",
-              "fb": "handle",
-              "instagram": "handle"
+    "activities": {
+        "data": [
+            {
+                "id": 781,
+                "message": "<span class=\"fcom_user_name\">John Doe<\/span> added a comment on <span class=\"fcom_feed_excerpt\">Please give your vote l<\/span>",
+                "xprofile": {
+                    "user_id": 1,
+                    "total_points": 61,
+                    "is_verified": 1,
+                    "status": "active",
+                    "display_name": "John Doe",
+                    "username": "admin",
+                    "avatar": "",
+                    "created_at": "2024-01-31 09:12:21",
+                    "short_description": "Lorem Ipsum is not simply random text..",
+                    "meta": {
+                        "cover_photo": "",
+                        "website": ""
+                    },
+                    "last_activity": "2025-12-17 12:09:24",
+                    "badge": null
+                },
+                "updated_at": "2025-12-15 08:30:33",
+                "route": {
+                    "name": "space_feed",
+                    "params": {
+                        "space": "give-feedback123",
+                        "feed_slug": "please-give-your-vote"
+                    },
+                    "query": {
+                        "comment_id": "554"
+                    }
+                }
             },
-            "badge_slug": ["badge1", "badge2"]
-          },
-          "badge": null
-        },
-        "route": {
-          "name": "space_feed",
-          "params": {
-            "space": "general-discussion",
-            "feed_slug": "post-title-slug"
-          }
-        }
-      },
-      {
-        "id": 100003,
-        "message": "<span class=\"fcom_user_name\">User Name</span> added a comment on <span class=\"fcom_feed_excerpt\">Post Title</span>",
-        "updated_at": "2025-02-04 13:24:33",
-        "xprofile": {
-          "user_id": 1,
-          "total_points": 6425,
-          "is_verified": 1,
-          "status": "active",
-          "display_name": "User Name",
-          "username": "username",
-          "avatar": "avatar_url",
-          "created_at": "2024-03-05 16:37:02",
-          "short_description": "User description",
-          "meta": {
-            "website": "website_url",
-            "cover_photo": "cover_photo_url",
-            "social_links": {
-              "twitter": "@handle",
-              "youtube": "@handle",
-              "linkedin": "handle",
-              "fb": "handle",
-              "instagram": "handle"
+            {
+                "id": 780,
+                "message": "<span class=\"fcom_user_name\">John Doe<\/span> published a new status <span class=\"fcom_feed_excerpt\">topf<\/span>",
+                "xprofile": {
+                    "user_id": 1,
+                    "total_points": 61,
+                    "is_verified": 1,
+                    "status": "active",
+                    "display_name": "John Doe",
+                    "username": "admin",
+                    "avatar": "",
+                    "created_at": "2024-01-31 09:12:21",
+                    "short_description": "Lorem Ipsum is not simply random text.",
+                    "meta": {
+                        "cover_photo": "",
+                        "website": ""
+                    },
+                    "last_activity": "2025-12-17 12:09:24",
+                    "badge": null
+                },
+                "updated_at": "2025-12-14 20:39:29",
+                "route": {
+                    "name": "space_feed",
+                    "params": {
+                        "space": "give-feedback123",
+                        "feed_slug": "topf-1765723169"
+                    }
+                }
             },
-            "badge_slug": ["badge1", "badge2"]
-          },
-          "badge": null
-        },
-        "route": {
-          "name": "space_feed",
-          "params": {
-            "space": "general-discussion",
-            "feed_slug": "post-title-slug"
-          },
-          "query": {
-            "comment_id": "1002"
-          }
-        }
-      }
-    ],
-    "total": 156,
-    "per_page": 20,
-    "current_page": 1
-  },
-  "after_contents": "",
-  "pinned_posts": []
+        ],
+        "total": 376,
+        "per_page": 5,
+        "current_page": 1
+    },
+    "after_contents": "",
+    "before_contents": ""
 }
 ```
 
-## Get Activities by Type
-
-Filter activities by specific action type.
-
-**HTTP Request**
-
-```
-GET /wp-json/fluent-community/v2/activities?action_type={type}
-```
-
-### Example Request
-
-```bash
-# Get all post creation activities
-curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?action_type=post_created" \
-  -u "username:password"
-```
-
-## Get Activities by Date Range
-
-Filter activities within a specific date range.
-
-**HTTP Request**
-
-```
-GET /wp-json/fluent-community/v2/activities?date_from={start}&date_to={end}
-```
-
-### Example Request
-
-```bash
-# Get activities from last 7 days
-curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?date_from=2024-01-08&date_to=2024-01-15" \
-  -u "username:password"
-```
-
-## Get Space Activities
+## Get Single Space Activities
 
 Retrieve all activities within a specific space.
 
 **HTTP Request**
 
 ```
-GET /wp-json/fluent-community/v2/activities?space_id={space_id}
+GET /wp-json/fluent-community/v2/activities
 ```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `context[type]` | string | Yes | Filter by specific activities type |
+| `context[space_id]` | integer | Yes | ID of the space |
+| `page` | integer | No | Page number for pagination |
+| `per_page` | integer | No | Number of activities per page |
+
 
 ### Example Request
 
 ```bash
-curl -X GET "https://example.com/wp-json/fluent-community/v2/activities?space_id=12" \
-  -u "username:password"
+curl "https://your-site.com.com/wp-json/fluent-community/v2/activities" \
+  -X GET \
+  -u "username:password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    context[user_id]: 1,
+    page: 1,
+    per_page: 5
+  }'
+```
+
+### Example Response
+
+```json
+{
+    "activities": {
+        "data": [
+            {
+                "id": 781,
+                "message": "<span class=\"fcom_user_name\">Test User<\/span> added a comment on <span class=\"fcom_feed_excerpt\">Please give your vote l<\/span>",
+                "xprofile": {
+                    "user_id": 1,
+                    "total_points": 61,
+                    "is_verified": 1,
+                    "status": "active",
+                    "display_name": "Test User",
+                    "username": "test_user",
+                    "avatar": "",
+                    "created_at": "2024-01-31 09:12:21",
+                    "short_description": "Lorem Ipsum is not simply random text..",
+                    "meta": {
+                        "cover_photo": "",
+                        "website": ""
+                    },
+                    "last_activity": "2025-12-17 12:09:24",
+                    "badge": null
+                },
+                "updated_at": "2025-12-15 08:30:33",
+                "route": {
+                    "name": "space_feed",
+                    "params": {
+                        "space": "give-feedback123",
+                        "feed_slug": "please-give-your-vote"
+                    },
+                    "query": {
+                        "comment_id": "554"
+                    }
+                }
+            },
+            {
+                "id": 780,
+                "message": "<span class=\"fcom_user_name\">John Doe<\/span> published a new status <span class=\"fcom_feed_excerpt\">topf<\/span>",
+                "xprofile": {
+                    "user_id": 1,
+                    "total_points": 61,
+                    "is_verified": 1,
+                    "status": "active",
+                    "display_name": "John Doe",
+                    "username": "admin",
+                    "avatar": "",
+                    "created_at": "2024-01-31 09:12:21",
+                    "short_description": "Lorem Ipsum is not simply random text.",
+                    "meta": {
+                        "cover_photo": "",
+                        "website": ""
+                    },
+                    "last_activity": "2025-12-17 12:09:24",
+                    "badge": null
+                },
+                "updated_at": "2025-12-14 20:39:29",
+                "route": {
+                    "name": "space_feed",
+                    "params": {
+                        "space": "give-feedback123",
+                        "feed_slug": "topf-1765723169"
+                    }
+                }
+            },
+        ],
+        "total": 376,
+        "per_page": 5,
+        "current_page": 1
+    },
+    "after_contents": "",
+    "before_contents": ""
+}
+```
+
+## Get All Spaces Activities
+
+Retrieve all activities of all available spaces.
+
+**HTTP Request**
+
+```
+GET /wp-json/fluent-community/v2/activities
+```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `page` | integer | No | Page number for pagination |
+| `per_page` | integer | No | Number of activities per page |
+
+
+### Example Request
+
+```bash
+curl "https://your-site.com.com/wp-json/fluent-community/v2/activities" \
+  -X GET \
+  -u "username:password" \
+  -H "Content-Type: application/json" \
+  -d '{
+    context[user_id]: 1,
+    page: 1,
+    per_page: 5
+  }'
+```
+
+### Example Response
+
+```json
+{
+    "activities": {
+        "data": [
+            {
+                "id": 781,
+                "message": "<span class=\"fcom_user_name\">Richard Johnson<\/span> added a comment on <span class=\"fcom_feed_excerpt\">Please give your note<\/span>",
+                "xprofile": {
+                    "user_id": 12,
+                    "total_points": 61,
+                    "is_verified": 1,
+                    "status": "active",
+                    "display_name": "Richard Johnson",
+                    "username": "richard_johnson",
+                    "avatar": "",
+                    "created_at": "2024-01-31 09:12:21",
+                    "short_description": "Lorem Ipsum is not simply random text..",
+                    "meta": {
+                        "cover_photo": "",
+                        "website": ""
+                    },
+                    "last_activity": "2025-12-17 12:09:24",
+                    "badge": null
+                },
+                "updated_at": "2025-12-15 08:30:33",
+                "route": {
+                    "name": "space_feed",
+                    "params": {
+                        "space": "test-server",
+                        "feed_slug": "test-server22"
+                    },
+                    "query": {
+                        "comment_id": "552"
+                    }
+                }
+            },
+            {
+                "id": 780,
+                "message": "<span class=\"fcom_user_name\">John Doe<\/span> published a new status <span class=\"fcom_feed_excerpt\">topf<\/span>",
+                "xprofile": {
+                    "user_id": 21,
+                    "total_points": 61,
+                    "is_verified": 1,
+                    "status": "active",
+                    "display_name": "John Doe",
+                    "username": "admin",
+                    "avatar": "",
+                    "created_at": "2024-01-31 09:12:21",
+                    "short_description": "Lorem Ipsum is not simply random text.",
+                    "meta": {
+                        "cover_photo": "",
+                        "website": ""
+                    },
+                    "last_activity": "2025-12-17 12:09:24",
+                    "badge": null
+                },
+                "updated_at": "2025-12-14 20:39:29",
+                "route": {
+                    "name": "space_feed",
+                    "params": {
+                        "space": "give-feedback123",
+                        "feed_slug": "topf-1765723169"
+                    }
+                }
+            },
+        ],
+        "total": 376,
+        "per_page": 5,
+        "current_page": 1
+    },
+    "after_contents": "",
+    "before_contents": ""
+}
 ```
 
 ---
