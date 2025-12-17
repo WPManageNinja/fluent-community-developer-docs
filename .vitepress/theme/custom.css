@@ -95,3 +95,6 @@
   padding-left: calc(var(--vp-sidebar-item-padding-left) - 2px) !important;
 }
 
+.VPDoc .content>:first-child {
+    max-width: 100% !important;
+}
