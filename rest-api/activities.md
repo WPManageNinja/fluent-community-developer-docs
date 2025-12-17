@@ -295,14 +295,14 @@ curl "https://your-site.com.com/wp-json/fluent-community/v2/activities" \
         "data": [
             {
                 "id": 781,
-                "message": "<span class=\"fcom_user_name\">Test User<\/span> added a comment on <span class=\"fcom_feed_excerpt\">Please give your vote l<\/span>",
+                "message": "<span class=\"fcom_user_name\">Richard Johnson<\/span> added a comment on <span class=\"fcom_feed_excerpt\">Please give your note<\/span>",
                 "xprofile": {
-                    "user_id": 1,
+                    "user_id": 12,
                     "total_points": 61,
                     "is_verified": 1,
                     "status": "active",
-                    "display_name": "Test User",
-                    "username": "test_user",
+                    "display_name": "Richard Johnson",
+                    "username": "richard_johnson",
                     "avatar": "",
                     "created_at": "2024-01-31 09:12:21",
                     "short_description": "Lorem Ipsum is not simply random text..",
@@ -317,11 +317,11 @@ curl "https://your-site.com.com/wp-json/fluent-community/v2/activities" \
                 "route": {
                     "name": "space_feed",
                     "params": {
-                        "space": "give-feedback123",
-                        "feed_slug": "please-give-your-vote"
+                        "space": "test-server",
+                        "feed_slug": "test-server22"
                     },
                     "query": {
-                        "comment_id": "554"
+                        "comment_id": "552"
                     }
                 }
             },
@@ -329,7 +329,7 @@ curl "https://your-site.com.com/wp-json/fluent-community/v2/activities" \
                 "id": 780,
                 "message": "<span class=\"fcom_user_name\">John Doe<\/span> published a new status <span class=\"fcom_feed_excerpt\">topf<\/span>",
                 "xprofile": {
-                    "user_id": 1,
+                    "user_id": 21,
                     "total_points": 61,
                     "is_verified": 1,
                     "status": "active",
