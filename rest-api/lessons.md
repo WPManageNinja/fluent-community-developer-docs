@@ -101,7 +101,7 @@ Add a new lesson to a course.
 **HTTP Request**
 
 ```
-POST /wp-json/fluent-community/v2/courses/{id}/lessons
+POST /wp-json/fluent-community/v2/admin/courses/{course_id}/lessons
 ```
 
 ### Parameters
@@ -109,25 +109,20 @@ POST /wp-json/fluent-community/v2/courses/{id}/lessons
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `title` | string | Yes | Lesson title |
-| `content` | string | Yes | Lesson content |
-| `video_url` | string | No | Video URL |
-| `duration` | string | No | Lesson duration |
-| `order` | integer | No | Display order |
-| `is_preview` | boolean | No | Free preview (default: false) |
+| `type` | string | Yes | type: "lesson" |
+| `section_id` | integer | Yes | ID of the section; where the lesson will be created |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons" \
+curl "https://your-site.com/wp-json/fluent-community/v2/admin/courses/10/lessons" \
   -X POST \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
-    "title": "CSS Fundamentals",
-    "content": "<p>Learn CSS basics...</p>",
-    "video_url": "https://youtube.com/watch?v=xyz789",
-    "duration": "20 min",
-    "order": 2
+    "title": "JS Fundamentals",
+    "type": "lesson",
+    "section_id": 11,
   }'
 ```
 
