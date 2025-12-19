@@ -262,18 +262,19 @@ Filters portal-wide notices displayed to users.
 
 ```php
 // Add custom notice
-add_filter('fluent_community/portal_notices', function($notices) {
-    $notices[] = [
-        'type'    => 'info', // 'info', 'warning', 'error', 'success'
-        'message' => 'Welcome to our community! Please read the guidelines.',
-        'dismissible' => true
-    ];
+add_filter('fluent_community/portal_notices', function ($notices) {
+    $notices = []; // This clears all previous notices to show ONLY your custom message
+
+    // your custom notice 
+    $welcome_message = '<div>' . esc_html__('Welcome to Fluent Community! We are glad to have you here.', 'your-text-domain') . '</div>';
+    $notices[] = $welcome_message;
 
     return $notices;
 });
 
 // Conditional notices
 add_filter('fluent_community/portal_notices', function($notices) {
+    $notices = [];
     $user = wp_get_current_user();
 
     // Show notice to new users
@@ -281,11 +282,8 @@ add_filter('fluent_community/portal_notices', function($notices) {
     $days_since = (time() - $registered) / DAY_IN_SECONDS;
 
     if ($days_since < 7) {
-        $notices[] = [
-            'type'    => 'success',
-            'message' => 'You joined ' . ceil($days_since) . ' days ago. Welcome!',
-            'dismissible' => true
-        ];
+        $welcome_message = '<div>' . esc_html__('You joined ' . ceil($days_since) . ' days ago. Welcome!', 'your-text-domain') . '</div>';
+        $notices[] = $welcome_message;
     }
 
     return $notices;
