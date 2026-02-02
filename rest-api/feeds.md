@@ -257,11 +257,8 @@ POST /wp-json/fluent-community/v2/feeds
 |-----------|------|----------|-------------|
 | `title` | string | No | Feed title |
 | `message` | string | Yes | Feed content |
-| `content_type` | string | No | Content format (text, markdown, html) |
-| `space_id` | integer | No | Space to post in |
-| `privacy` | string | No | Privacy setting (public, private) |
-| `status` | string | No | Publication status (published, draft) |
-| `featured_image` | string | No | Featured image URL |
+| `type` | string | No | Post type (text, survey, document) |
+| `space` | string | Yes | Space to post in (using space_slug) |
 | `scheduled_at` | datetime | No | Schedule publication time |
 | `meta` | object | No | Additional metadata |
 
@@ -275,10 +272,8 @@ curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
   -d '{
     "title": "My First Post",
     "message": "Hello everyone! This is my first post.",
-    "content_type": "text",
-    "space_id": 5,
-    "privacy": "public",
-    "status": "published"
+    "type": "text",
+    "space": "general_feedback",
   }'
 ```
 
@@ -286,13 +281,18 @@ curl "https://your-site.com/wp-json/fluent-community/v2/feeds" \
 
 ```json
 {
-  "message": "Feed created successfully",
+  "message": "Your post has been published",
   "data": {
     "id": 124,
     "title": "My First Post",
-    "slug": "my-first-post",
     "message": "Hello everyone! This is my first post.",
+    "message_rendered": "<p>Hello everyone! This is my first post.</p>",
+    "slug": "my-first-post",
+    "content_type": "text",   
     "status": "published",
+    "privacy": "public",
+    "space_id": "1",
+    "user_id": "1",
     "created_at": "2025-10-27T12:00:00"
   }
 }
