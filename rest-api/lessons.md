@@ -122,7 +122,7 @@ curl "https://your-site.com/wp-json/fluent-community/v2/admin/courses/10/lessons
   -d '{
     "title": "JS Fundamentals",
     "type": "lesson",
-    "section_id": 11,
+    "section_id": 11
   }'
 ```
 
@@ -148,19 +148,48 @@ Modify an existing lesson.
 **HTTP Request**
 
 ```
-PUT /wp-json/fluent-community/v2/courses/{course_id}/lessons/{lesson_id}
+PUT /wp-json/fluent-community/v2/admin/courses/{course_id}/lessons/{lesson_id}
 ```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `lesson` | object | Yes | Lesson data object |
+| `lesson.id` | integer | Yes | Lesson ID |
+| `lesson.title` | string | Yes | Lesson title |
+| `lesson.message` | string | No | Lesson content (HTML with block markup) |
+| `lesson.status` | string | No | Lesson status (`draft`, `published`) |
+| `lesson.parent_id` | string | No | Parent course ID |
+| `lesson.space_id` | string | No | Space ID |
+| `lesson.meta` | object | No | Lesson metadata |
+| `lesson.meta.media` | object | No | Media settings (`type`, `url`, `content_type`, `html`) |
+| `lesson.meta.document_lists` | array | No | Attached document lists |
+| `lesson.meta.enable_comments` | string | No | Enable comments (`yes` or `no`) |
+| `lesson.meta.enable_media` | string | No | Enable media (`yes` or `no`) |
 
 ### Example Request
 
 ```bash
-curl "https://your-site.com/wp-json/fluent-community/v2/courses/10/lessons/102" \
+curl "https://your-site.com/wp-json/fluent-community/v2/admin/courses/10/lessons/102" \
   -X PUT \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
-    "title": "CSS Fundamentals - Updated",
-    "content": "<p>Updated content...</p>"
+    "lesson": {
+      "id": 102,
+      "title": "CSS Fundamentals - Updated",
+      "message": "<!-- wp:paragraph -->\n<p>Updated content...</p>\n<!-- /wp:paragraph -->",
+      "parent_id": "10",
+      "space_id": "110",
+      "status": "published",
+      "meta": {
+        "media": {"type": "oembed", "url": "", "content_type": "video", "html": ""},
+        "document_lists": [],
+        "enable_comments": "yes",
+        "enable_media": "yes"
+      }
+    }
   }'
 ```
 
