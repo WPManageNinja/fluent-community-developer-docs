@@ -1,0 +1,239 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/general": {
+      "get": {
+        "operationId": "getGeneralSettings",
+        "summary": "GET Get General Settings",
+        "description": "Get General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:96`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "site_title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "white_logo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo_permalink_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo_permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "access": {
+                          "type": "object",
+                          "properties": {
+                            "acess_level": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "access_roles": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "auth_form_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "explicit_registration": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "disable_global_posts": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_content": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_redirect": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "restricted_role_content": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "cutsom_auth_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "use_custom_signup_page": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "custom_signup_url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "user_roles": {
+                      "type": "object",
+                      "properties": {
+                        "subscriber": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "contributor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "author": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "editor": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "users_can_register": {
+                      "type": "boolean"
+                    },
+                    "user_registration_enable_url": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "settings": {
+                    "site_title": "",
+                    "slug": "portal",
+                    "logo": "",
+                    "white_logo": "",
+                    "logo_permalink_type": "default",
+                    "logo_permalink": "",
+                    "featured_image": "",
+                    "access": {
+                      "acess_level": "public",
+                      "access_roles": []
+                    },
+                    "auth_form_type": "default",
+                    "explicit_registration": "no",
+                    "disable_global_posts": "yes",
+                    "auth_content": "Please login first to access this page",
+                    "auth_redirect": "",
+                    "restricted_role_content": "Sorry, you cannot access this page. Only authorized users can access this page.",
+                    "auth_url": "",
+                    "cutsom_auth_url": "",
+                    "use_custom_signup_page": "no",
+                    "custom_signup_url": ""
+                  },
+                  "user_roles": {
+                    "subscriber": "Subscriber",
+                    "contributor": "Contributor",
+                    "author": "Author",
+                    "editor": "Editor"
+                  },
+                  "users_can_register": false,
+                  "user_registration_enable_url": ""
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

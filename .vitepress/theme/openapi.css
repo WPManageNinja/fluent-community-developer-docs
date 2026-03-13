@@ -1,0 +1,290 @@
+/* OpenAPI styles - only apply to OpenAPI pages */
+:root {
+  --openapi-page: false;
+}
+
+/* Scope all OpenAPI styles to pages with OpenAPI content */
+.VPDoc:has(.oa-operation),
+.VPDoc:has([class*="openapi"]),
+.VPDoc:has([class*="OpenAPI"]) {
+  --openapi-page: true;
+}
+
+/* Completely remove the aside from layout (only on OpenAPI pages) */
+.VPDoc:has(.oa-operation) .aside,
+.VPDoc:has(.oa-operation) .VPDocAside,
+.VPDoc:has(.oa-operation) .VPDoc .aside,
+.VPDoc:has([class*="openapi"]) .aside,
+.VPDoc:has([class*="OpenAPI"]) .aside {
+  display: none !important;
+  width: 0 !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Remove has-aside class effects (only on OpenAPI pages) */
+.VPDoc:has(.oa-operation).has-aside .container,
+.VPDoc:has([class*="openapi"]).has-aside .container,
+.VPDoc:has([class*="OpenAPI"]).has-aside .container {
+  display: block !important;
+}
+
+.OAPlaygroundParameters>details{
+    margin-top: 20px !important;
+    margin-left: 24px !important;
+}
+.OAPlaygroundParameters>details>summary{
+    font-size: .90rem !important;
+}
+
+.VPDoc.has-aside .container > .content {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Remove max-width from content-container - target all variations */
+.VPDoc.has-aside .content-container,
+.VPDoc .content-container,
+.content-container{
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Make content full width by removing all max-width constraints */
+.VPDoc.has-aside .container,
+.VPDoc .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+.VPDoc .content,
+.VPDoc.has-aside .content {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Remove max-width from the main content wrapper */
+.VPContent.has-sidebar .VPContent-main {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Target the actual content area */
+.VPDoc .container .content {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure no padding/margin constraints */
+.VPDoc.has-aside {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Make sure the grid layout uses full width */
+.VPContent.has-sidebar {
+  grid-template-columns: var(--vp-sidebar-width) 1fr !important;
+}
+
+/* Target any nested containers that might limit width */
+.VPDoc .container > *:not(.aside) {
+  max-width: 100% !important;
+}
+
+/* Remove any default VitePress content width constraints */
+main.VPContent {
+  max-width: 100% !important;
+}
+
+/* Target vitepress-openapi component containers */
+.vitepress-openapi,
+.vitepress-openapi > *,
+[class*="openapi"],
+[class*="OpenAPI"] {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Ensure the OpenAPI operation component uses full width */
+.oa-operation,
+.oa-spec {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Fix any remaining width constraints */
+.VPDoc .container > .content-container {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Hide VitePress title since OAOperation will render it (only on OpenAPI pages) */
+.VPDoc:has(.oa-operation) h1:first-of-type,
+.VPDoc:has([class*="openapi"]) h1:first-of-type,
+.VPDoc:has([class*="OpenAPI"]) h1:first-of-type {
+  display: none !important;
+}
+
+/* Hide VitePress description paragraph (only on OpenAPI pages) */
+.VPDoc:has(.oa-operation) .content > p:first-child,
+.VPDoc:has([class*="openapi"]) .content > p:first-child,
+.VPDoc:has([class*="OpenAPI"]) .content > p:first-child {
+  display: none !important;
+}
+
+/* Ensure OAOperation component is full width at top */
+.VPDoc .content > :first-child {
+  /* width: 100% !important; */
+  max-width: 100% !important;
+}
+
+/* Ensure full width for all content wrappers */
+.VPDoc.has-aside .container > .content-container > .content {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Hide "Powered by VitePress OpenAPI" footer */
+[class*="powered"],
+[class*="footer"][class*="openapi"],
+footer:has([class*="powered"]),
+footer:has([class*="openapi"]) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.VPSidebarItem badge[type="tip"] {
+    background-color: rgb(22 101 52);
+    color: rgba(187 247 208, .4);
+}
+
+.VPSidebarItem badge[type="warning"] {
+    background-color: rgb(30 64 175);
+    color: rgba(191 219 254, .4);
+}
+
+.VPSidebarItem badge[type="danger"] {
+    background-color: rgb(153 27 27);
+    color: rgba(254 202 202, .4);
+}
+
+.VPSidebarItem badge[type="info"] {
+    background-color: rgb(133 77 14);
+    color: rgba(254 240 138, .4);
+}
+
+html:not(.dark) .VPSidebarItem badge[type="tip"] {
+    background-color: rgba(34, 197, 94, 0.14);
+    color: #166534;
+    border: 1px solid rgba(34, 197, 94, 0.28);
+}
+
+input#Authorization {
+  margin-top: 10px;
+}
+
+.playground-server-box {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+}
+
+.playground-server-box label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.playground-server-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.playground-server-box p {
+  margin: 10px 0 0;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+html:not(.dark) .VPSidebarItem badge[type="warning"] {
+    background-color: rgba(59, 130, 246, 0.14);
+    color: #1e3a8a;
+    border: 1px solid rgba(59, 130, 246, 0.28);
+}
+
+html:not(.dark) .VPSidebarItem badge[type="danger"] {
+    background-color: rgba(248, 113, 113, 0.16);
+    color: #991b1b;
+    border: 1px solid rgba(248, 113, 113, 0.32);
+}
+
+html:not(.dark) .VPSidebarItem badge[type="info"] {
+    background-color: rgba(250, 204, 21, 0.18);
+    color: #854d0e;
+    border: 1px solid rgba(250, 204, 21, 0.32);
+}
+
+html:not(.dark) .VPSidebarItem badge {
+    opacity: 1;
+}
+
+.VPSidebarItem badge{
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 4px;
+    opacity: .7;
+}
+
+/* Playground Instructions Box Styles */
+[data-playground-instructions] {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-playground-instructions] > summary {
+    list-style: none;
+}
+
+[data-playground-instructions] > summary::-webkit-details-marker {
+    display: none;
+}
+
+[data-playground-instructions] ol {
+    list-style-type: decimal;
+}
+
+[data-playground-instructions] li::marker {
+    color: var(--vp-c-brand-1, #3b82f6);
+    font-weight: 600;
+}
+
+/* Playground Warning Box Styles */
+[data-playground-warning] {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-playground-warning] ul {
+    list-style-type: disc;
+}
+
+[data-playground-warning] li::marker {
+    color: var(--vp-c-yellow-1, #d97706);
+}

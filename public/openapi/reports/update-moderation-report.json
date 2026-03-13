@@ -1,0 +1,322 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/moderation/reports/{report_id}": {
+      "put": {
+        "operationId": "updateModerationReport",
+        "summary": "PUT Update Moderation Report",
+        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:91`",
+        "tags": [
+          "Reports"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "description": "Report ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "status": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "report": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "content": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "post_id": {
+                          "type": "integer"
+                        },
+                        "parent_id": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message_rendered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "media_preview": {
+                              "type": "object",
+                              "properties": {
+                                "image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "author_name": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "width": {
+                                  "type": "integer"
+                                },
+                                "height": {
+                                  "type": "integer"
+                                },
+                                "media_id": {
+                                  "type": "integer"
+                                },
+                                "player": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "media_items": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "media_id": {
+                                    "type": "integer"
+                                  },
+                                  "width": {
+                                    "type": "integer"
+                                  },
+                                  "height": {
+                                    "type": "integer"
+                                  },
+                                  "provider": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "mentioned_user_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_sticky": {
+                          "type": "boolean"
+                        },
+                        "reactions_count": {
+                          "type": "integer"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "report": {
+                    "id": 0
+                  },
+                  "content": {
+                    "id": 0,
+                    "user_id": 0,
+                    "post_id": 0,
+                    "parent_id": 0,
+                    "message": "",
+                    "message_rendered": "<p>...</p>",
+                    "meta": {
+                      "media_preview": {
+                        "image": "",
+                        "url": "",
+                        "type": "image",
+                        "provider": "",
+                        "content_type": "",
+                        "title": "",
+                        "author_name": "",
+                        "html": "<p>...</p>",
+                        "width": 0,
+                        "height": 0,
+                        "media_id": 0,
+                        "player": ""
+                      },
+                      "media_items": [
+                        {
+                          "url": "",
+                          "type": "image",
+                          "media_id": 0,
+                          "width": 0,
+                          "height": 0,
+                          "provider": "uploader"
+                        }
+                      ],
+                      "mentioned_user_ids": [
+                        0
+                      ]
+                    },
+                    "type": "",
+                    "content_type": "",
+                    "status": "",
+                    "is_sticky": false,
+                    "reactions_count": 0,
+                    "created_at": "2026-01-01 00:00:00",
+                    "updated_at": "2026-01-01 00:00:00"
+                  },
+                  "message": "Report updated successfully"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

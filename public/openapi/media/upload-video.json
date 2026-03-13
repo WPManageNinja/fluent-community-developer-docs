@@ -1,0 +1,221 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/fluent-player/video-upload": {
+      "post": {
+        "operationId": "uploadVideo",
+        "summary": "POST Upload Video",
+        "description": "Upload Video for the FluentCommunity Media API.\n\nController: `MediaController@uploadVideo`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:11`",
+        "tags": [
+          "Media"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "example": {
+                "file": "(binary)"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "media_id": {
+                          "type": "integer"
+                        },
+                        "url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "media_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "src": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "original_name": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "width": {
+                              "type": "integer"
+                            },
+                            "height": {
+                              "type": "integer"
+                            },
+                            "provider": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "crossorigin": {
+                              "type": "boolean"
+                            },
+                            "posterSrc": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "playerWidth": {
+                              "type": "integer"
+                            },
+                            "brandColor": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "controlBarColor": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "aspectRatio": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "html": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "media": {
+                    "media_id": 0,
+                    "url": "",
+                    "media_key": "",
+                    "type": "",
+                    "settings": {
+                      "src": "",
+                      "title": "",
+                      "original_name": "",
+                      "width": 0,
+                      "height": 0,
+                      "provider": "uploader",
+                      "crossorigin": false,
+                      "posterSrc": "",
+                      "playerWidth": 0,
+                      "brandColor": "",
+                      "controlBarColor": "",
+                      "aspectRatio": ""
+                    },
+                    "html": ""
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Error response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error while uploading the video",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Error while uploading the video"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

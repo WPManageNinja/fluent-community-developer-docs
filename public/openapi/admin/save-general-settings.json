@@ -1,0 +1,191 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/general": {
+      "post": {
+        "operationId": "saveGeneralSettings",
+        "summary": "POST Save General Settings",
+        "description": "Save General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:97`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "logo": {
+                        "type": "string"
+                      },
+                      "white_logo": {
+                        "type": "string"
+                      },
+                      "featured_image": {
+                        "type": "string"
+                      },
+                      "site_title": {
+                        "type": "string"
+                      },
+                      "disable_global_posts": {
+                        "type": "string"
+                      },
+                      "access": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "auth_content": {
+                        "type": "string"
+                      },
+                      "auth_redirect": {
+                        "type": "string"
+                      },
+                      "restricted_role_content": {
+                        "type": "string"
+                      },
+                      "logo_permalink": {
+                        "type": "string"
+                      },
+                      "logo_permalink_type": {
+                        "type": "string"
+                      },
+                      "auth_url": {
+                        "type": "string"
+                      },
+                      "cutsom_auth_url": {
+                        "type": "string"
+                      },
+                      "auth_form_type": {
+                        "type": "string"
+                      },
+                      "explicit_registration": {
+                        "type": "string"
+                      },
+                      "use_custom_signup_page": {
+                        "type": "string"
+                      },
+                      "custom_signup_url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              },
+              "example": {
+                "settings": {
+                  "logo": "",
+                  "white_logo": "",
+                  "featured_image": "",
+                  "site_title": "",
+                  "disable_global_posts": "",
+                  "access": [],
+                  "auth_content": "",
+                  "auth_redirect": "",
+                  "restricted_role_content": "",
+                  "logo_permalink": "",
+                  "logo_permalink_type": "",
+                  "auth_url": "",
+                  "cutsom_auth_url": "",
+                  "auth_form_type": "",
+                  "explicit_registration": "",
+                  "use_custom_signup_page": "",
+                  "custom_signup_url": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "redirect_url": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Settings have been saved successfully.",
+                  "redirect_url": ""
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Please provide a valid signup URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Please provide a valid signup URL"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

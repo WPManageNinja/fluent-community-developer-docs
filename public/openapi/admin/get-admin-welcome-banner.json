@@ -1,0 +1,314 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/welcome-banner": {
+      "get": {
+        "operationId": "getAdminWelcomeBanner",
+        "summary": "GET Get Admin Welcome Banner",
+        "description": "Get Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:105`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "login": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerImage": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerVideo": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "author_name": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "ctaButtons": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "link": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "newTab": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "allowClose": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "logout": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerImage": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerVideo": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "author_name": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "ctaButtons": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "link": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "newTab": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "useCustomUrl": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "settings": {
+                    "login": {
+                      "enabled": "no",
+                      "mediaType": "image",
+                      "bannerImage": "",
+                      "bannerVideo": {
+                        "type": "oembed",
+                        "url": "",
+                        "content_type": "",
+                        "provider": "",
+                        "title": "",
+                        "author_name": "",
+                        "html": ""
+                      },
+                      "ctaButtons": [
+                        {
+                          "label": "",
+                          "link": "",
+                          "type": "primary",
+                          "newTab": "no"
+                        }
+                      ],
+                      "description": "",
+                      "allowClose": "no"
+                    },
+                    "logout": {
+                      "enabled": "no",
+                      "mediaType": "image",
+                      "bannerImage": "",
+                      "bannerVideo": {
+                        "type": "oembed",
+                        "url": "",
+                        "content_type": "",
+                        "provider": "",
+                        "title": "",
+                        "author_name": "",
+                        "html": ""
+                      },
+                      "ctaButtons": [
+                        {
+                          "label": "",
+                          "link": "",
+                          "type": "primary",
+                          "newTab": "no"
+                        }
+                      ],
+                      "description": "",
+                      "useCustomUrl": "no"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

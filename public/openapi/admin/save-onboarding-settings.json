@@ -1,0 +1,159 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/on-boardings": {
+      "post": {
+        "operationId": "saveOnboardingSettings",
+        "summary": "POST Save Onboarding Settings",
+        "description": "Save Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:111`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "site_title": {
+                        "type": "string"
+                      },
+                      "logo": {
+                        "type": "string"
+                      },
+                      "slug": {
+                        "type": "string"
+                      },
+                      "subscribe_to_newsletter": {
+                        "type": "string"
+                      },
+                      "share_data": {
+                        "type": "string"
+                      },
+                      "user_full_name": {
+                        "type": "string"
+                      },
+                      "user_email_address": {
+                        "type": "string"
+                      },
+                      "template": {
+                        "type": "string"
+                      },
+                      "install_fluentcrm": {
+                        "type": "string"
+                      },
+                      "install_fluentsmtp": {
+                        "type": "string"
+                      },
+                      "install_fluentcart": {
+                        "type": "string"
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              },
+              "example": {
+                "settings": {
+                  "site_title": "",
+                  "logo": "",
+                  "slug": "",
+                  "subscribe_to_newsletter": "",
+                  "share_data": "",
+                  "user_full_name": "",
+                  "user_email_address": "",
+                  "template": "",
+                  "install_fluentcrm": "",
+                  "install_fluentsmtp": "",
+                  "install_fluentcart": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Onboarding settings have been updated."
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

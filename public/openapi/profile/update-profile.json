@@ -1,0 +1,306 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/profile/{username}": {
+      "post": {
+        "operationId": "updateProfile",
+        "summary": "POST Update Profile",
+        "description": "Update Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@updateProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:85`",
+        "tags": [
+          "Profile"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Username extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "is_verified": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "badge_slugs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "first_name": {
+                        "type": "string"
+                      },
+                      "last_name": {
+                        "type": "string"
+                      },
+                      "short_description": {
+                        "type": "string"
+                      },
+                      "website": {
+                        "type": "string"
+                      },
+                      "social_links": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "first_name"
+                    ]
+                  }
+                }
+              },
+              "example": {
+                "data": {
+                  "is_verified": "",
+                  "status": "",
+                  "username": "",
+                  "badge_slugs": [],
+                  "first_name": "",
+                  "last_name": "",
+                  "short_description": "",
+                  "website": "",
+                  "social_links": [],
+                  "email": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "profile": {
+                      "type": "object",
+                      "properties": {
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "badge": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "website": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "cover_photo": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "badge_slug": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "social_links": {
+                              "type": "object",
+                              "properties": {
+                                "instagram": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "twitter": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "youtube": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "linkedin": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "fb": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "blue_sky": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "tiktok": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "pinterest": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "telegram": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "snapchat": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "reddit": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "twitch": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "vk": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "github": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "mastodon": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Profile has been updated",
+                  "profile": {
+                    "user_id": 0,
+                    "badge": "",
+                    "permalink": "",
+                    "meta": {
+                      "website": "",
+                      "cover_photo": "",
+                      "badge_slug": [
+                        ""
+                      ],
+                      "social_links": {
+                        "instagram": "",
+                        "twitter": "",
+                        "youtube": "",
+                        "linkedin": "",
+                        "fb": "",
+                        "blue_sky": "",
+                        "tiktok": "",
+                        "pinterest": "",
+                        "telegram": "",
+                        "snapchat": "",
+                        "reddit": "",
+                        "twitch": "",
+                        "vk": "",
+                        "github": "",
+                        "mastodon": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Email address already taken by someone else. Please use a different email address.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Email address already taken by someone else. Please use a different email address."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

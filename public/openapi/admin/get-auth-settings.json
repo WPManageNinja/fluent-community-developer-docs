@@ -1,0 +1,396 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/auth-settings": {
+      "get": {
+        "operationId": "getAuthSettings",
+        "summary": "GET Get Auth Settings",
+        "description": "Get Auth Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getAuthSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:108`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "login": {
+                          "type": "object",
+                          "properties": {
+                            "banner": {
+                              "type": "object",
+                              "properties": {
+                                "hidden": {
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "position": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "logo": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "text_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "form": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "position": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "text_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "button_label": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "button_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "button_label_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "signup": {
+                          "type": "object",
+                          "properties": {
+                            "banner": {
+                              "type": "object",
+                              "properties": {
+                                "hidden": {
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "position": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "logo": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "text_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "form": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "position": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "button_label": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "terms_label": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "text_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "button_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "button_label_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "background_color": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "fields": {
+                                  "type": "object",
+                                  "properties": {
+                                    "terms": {
+                                      "type": "object",
+                                      "properties": {
+                                        "disabled": {
+                                          "type": "boolean"
+                                        },
+                                        "required": {
+                                          "type": "boolean"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "label": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "inline_label": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "settings": {
+                    "login": {
+                      "banner": {
+                        "hidden": false,
+                        "type": "banner",
+                        "position": "left",
+                        "logo": "",
+                        "title": "Welcome to Your Site",
+                        "description": "Join our community and start your journey to success",
+                        "title_color": "#19283a",
+                        "text_color": "#525866",
+                        "background_image": "",
+                        "background_color": "#F5F7FA"
+                      },
+                      "form": {
+                        "type": "form",
+                        "position": "right",
+                        "title": "Login to Your Site",
+                        "description": "Enter your email and password to login",
+                        "title_color": "#19283a",
+                        "text_color": "#525866",
+                        "button_label": "Login",
+                        "button_color": "#2B2E33",
+                        "button_label_color": "#ffffff",
+                        "background_image": "",
+                        "background_color": "#ffffff"
+                      }
+                    },
+                    "signup": {
+                      "banner": {
+                        "hidden": false,
+                        "type": "banner",
+                        "position": "left",
+                        "logo": "",
+                        "title": "Welcome to Your Site",
+                        "description": "Join our community and start your journey to success",
+                        "title_color": "#19283a",
+                        "text_color": "#525866",
+                        "background_image": "",
+                        "background_color": "#F5F7FA"
+                      },
+                      "form": {
+                        "type": "form",
+                        "position": "right",
+                        "title": "Sign Up to Your Site",
+                        "description": "Create an account to get started",
+                        "button_label": "Sign up",
+                        "terms_label": "",
+                        "title_color": "#19283a",
+                        "text_color": "#525866",
+                        "button_color": "#2B2E33",
+                        "button_label_color": "#ffffff",
+                        "background_image": "",
+                        "background_color": "#ffffff",
+                        "fields": {
+                          "terms": {
+                            "disabled": false,
+                            "required": true,
+                            "type": "inline_checkbox",
+                            "label": "",
+                            "inline_label": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

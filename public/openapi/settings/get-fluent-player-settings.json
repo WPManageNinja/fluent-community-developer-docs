@@ -1,0 +1,216 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/fluent-player-settings": {
+      "get": {
+        "operationId": "getFluentPlayerSettings",
+        "summary": "GET Get Fluent Player Settings",
+        "description": "Get Fluent Player Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:163`",
+        "tags": [
+          "Settings"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "enable_fluent_player": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "skin": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "brandColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "controlBarColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "controls": {
+                          "type": "object",
+                          "properties": {
+                            "play": {
+                              "type": "boolean"
+                            },
+                            "volume": {
+                              "type": "boolean"
+                            },
+                            "progress_bar": {
+                              "type": "boolean"
+                            },
+                            "current_time": {
+                              "type": "boolean"
+                            },
+                            "captions_toggle": {
+                              "type": "boolean"
+                            },
+                            "playback_speed": {
+                              "type": "boolean"
+                            },
+                            "settings": {
+                              "type": "boolean"
+                            },
+                            "pip": {
+                              "type": "boolean"
+                            },
+                            "fullscreen": {
+                              "type": "boolean"
+                            },
+                            "backward": {
+                              "type": "boolean"
+                            },
+                            "forward": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "behaviors": {
+                          "type": "object",
+                          "properties": {
+                            "muted_autoplay": {
+                              "type": "boolean"
+                            },
+                            "save_play_position": {
+                              "type": "boolean"
+                            },
+                            "hide_top_controls": {
+                              "type": "boolean"
+                            },
+                            "hide_center_controls": {
+                              "type": "boolean"
+                            },
+                            "hide_bottom_controls": {
+                              "type": "boolean"
+                            },
+                            "load_strategy": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "video_upload": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "video_upload_role": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "play_embedded_videos": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "settings": {
+                    "enable_fluent_player": "no",
+                    "skin": "modern",
+                    "brandColor": "#4a90e2",
+                    "controlBarColor": "",
+                    "controls": {
+                      "play": true,
+                      "volume": true,
+                      "progress_bar": true,
+                      "current_time": true,
+                      "captions_toggle": true,
+                      "playback_speed": true,
+                      "settings": true,
+                      "pip": true,
+                      "fullscreen": true,
+                      "backward": true,
+                      "forward": true
+                    },
+                    "behaviors": {
+                      "muted_autoplay": false,
+                      "save_play_position": false,
+                      "hide_top_controls": false,
+                      "hide_center_controls": false,
+                      "hide_bottom_controls": false,
+                      "load_strategy": "visible"
+                    },
+                    "video_upload": "no",
+                    "video_upload_role": "admin",
+                    "play_embedded_videos": "yes"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}
