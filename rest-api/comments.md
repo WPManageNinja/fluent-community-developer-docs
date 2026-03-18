@@ -241,8 +241,8 @@ POST /wp-json/fluent-community/v2/feeds/{feed_id}/comments
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `feed_id` | integer | Yes | Feed ID to comment on |
-| `message` | string | Yes | Comment content |
-| `content_type` | string | No | Content format (text, markdown, html) |
+| `comment` | string | Yes | Comment content |
+| `media_images` | array | No | Array of media image URLs |
 | `parent_id` | integer | No | Parent comment ID (for replies) |
 
 ### Example Request
@@ -253,8 +253,7 @@ curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments" \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
-    "message": "This is a great discussion!",
-    "content_type": "text"
+    "comment": "This is a great discussion!"
   }'
 ```
 
@@ -295,7 +294,7 @@ curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments" \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
-    "message": "I agree with your point!",
+    "comment": "I agree with your point!",
     "parent_id": 45
   }'
 ```
@@ -329,8 +328,7 @@ POST /wp-json/fluent-community/v2/feeds/{feed_id}/comments/{comment_id}
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `message` | string | Yes | Updated comment content |
-| `content_type` | string | No | Content format |
+| `comment` | string | Yes | Updated comment content |
 
 ### Example Request
 
@@ -340,7 +338,7 @@ curl "https://your-site.com/wp-json/fluent-community/v2/feeds/123/comments/47" \
   -u "username:password" \
   -H "Content-Type: application/json" \
   -d '{
-    "message": "This is an updated comment!"
+    "comment": "This is an updated comment!"
   }'
 ```
 
@@ -394,12 +392,12 @@ Use `parent_id` to create nested conversations:
 ```bash
 # Top-level comment
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "What do you think about this?"
+  "comment": "What do you think about this?"
 }'
 
 # Reply to comment
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "I think it is great!",
+  "comment": "I think it is great!",
   "parent_id": 45
 }'
 ```
@@ -411,14 +409,12 @@ Choose appropriate content types:
 ```bash
 # Plain text
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "Simple comment",
-  "content_type": "text"
+  "comment": "Simple comment"
 }'
 
-# Markdown for formatting
+# Markdown
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "**Bold** and *italic* text",
-  "content_type": "markdown"
+  "comment": "**Bold** and *italic* text"
 }'
 ```
 
@@ -456,12 +452,12 @@ Create engaging threaded discussions:
 ```bash
 # User posts a question
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "How do I get started with the API?"
+  "comment": "How do I get started with the API?"
 }'
 
 # Others reply
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "Check out the authentication guide first!",
+  "comment": "Check out the authentication guide first!",
   "parent_id": 45
 }'
 ```
@@ -486,8 +482,7 @@ Mention users in comments:
 
 ```bash
 curl -X POST ".../feeds/123/comments" -d '{
-  "message": "@john_doe what do you think about this?",
-  "content_type": "text"
+  "comment": "@john_doe what do you think about this?"
 }'
 ```
 
