@@ -1,0 +1,141 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/storage-settings": {
+      "get": {
+        "operationId": "getStorageSettings",
+        "summary": "GET Get Storage Settings",
+        "description": "Get Storage Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:102`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "driver": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "access_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "secret_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "bucket": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "public_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "endpoint_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "account_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "sub_folder": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "s3_endpoint": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "config": {
+                    "driver": "local",
+                    "access_key": "",
+                    "secret_key": "",
+                    "bucket": "",
+                    "public_url": "",
+                    "endpoint_url": "",
+                    "account_id": "",
+                    "sub_folder": "",
+                    "s3_endpoint": ""
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

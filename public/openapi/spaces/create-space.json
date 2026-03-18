@@ -1,0 +1,410 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/spaces": {
+      "post": {
+        "operationId": "createSpace",
+        "summary": "POST Create Space",
+        "description": "Create Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@create`\nRoute source: `fluent-community/app/Http/Routes/api.php:8`",
+        "tags": [
+          "Spaces"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "space": {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "privacy": {
+                        "type": "string"
+                      },
+                      "settings": {
+                        "type": "object",
+                        "properties": {
+                          "og_image": {
+                            "type": "string"
+                          }
+                        },
+                        "required": []
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "topic_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "privacy"
+                    ]
+                  }
+                }
+              },
+              "example": {
+                "space": {
+                  "slug": "",
+                  "title": "",
+                  "privacy": "",
+                  "settings": {
+                    "og_image": ""
+                  },
+                  "description": "",
+                  "topic_ids": []
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "space": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "created_by": {
+                          "type": "integer"
+                        },
+                        "parent_id": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "cover_photo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "serial": {
+                          "type": "integer"
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "restricted_post_only": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "emoji": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "shape_svg": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "custom_lock_screen": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "can_request_join": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "layout_style": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "disable_layout_style": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_sidebar": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_paywalls": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "og_image": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "links": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "title": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "enabled": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "new_tab": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "emoji": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "icon_image": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "shape_svg": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "privacy": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "membership_ids": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": true
+                                    }
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "document_library": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "document_access": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "disable_post_sort_by": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "default_post_sort_by": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "default_comment_sort_by": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "document_upload": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "topic_required": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_members_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "onboard_redirect_url": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "members_page_status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "cart_product_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Space has been created successfully",
+                  "space": {
+                    "id": 0,
+                    "created_by": 0,
+                    "parent_id": 0,
+                    "title": "",
+                    "slug": "",
+                    "description": "",
+                    "logo": "",
+                    "cover_photo": "",
+                    "type": "",
+                    "privacy": "",
+                    "status": "",
+                    "serial": 0,
+                    "settings": {
+                      "restricted_post_only": "no",
+                      "emoji": "",
+                      "shape_svg": "",
+                      "custom_lock_screen": "no",
+                      "can_request_join": "no",
+                      "layout_style": "timeline",
+                      "disable_layout_style": "no",
+                      "show_sidebar": "yes",
+                      "show_paywalls": "no",
+                      "og_image": "",
+                      "links": [
+                        {
+                          "title": "",
+                          "enabled": "yes",
+                          "new_tab": "no",
+                          "emoji": "",
+                          "icon_image": "",
+                          "shape_svg": "",
+                          "permalink": "",
+                          "slug": "",
+                          "privacy": "public",
+                          "membership_ids": []
+                        }
+                      ],
+                      "document_library": "no",
+                      "document_access": "members_only",
+                      "disable_post_sort_by": "no",
+                      "default_post_sort_by": "",
+                      "default_comment_sort_by": "",
+                      "document_upload": "admin_only",
+                      "topic_required": "no",
+                      "hide_members_count": "no",
+                      "onboard_redirect_url": "",
+                      "members_page_status": "members_only",
+                      "cart_product_ids": [
+                        0
+                      ]
+                    },
+                    "created_at": "2026-01-01 00:00:00",
+                    "updated_at": "2026-01-01 00:00:00"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Error response"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

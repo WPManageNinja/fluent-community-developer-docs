@@ -1,0 +1,158 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/cart/spaces/{spaceId}/paywalls": {
+      "post": {
+        "operationId": "createSpacePaywall",
+        "summary": "POST Create Space Paywall",
+        "description": "Create Space Paywall for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@addPaywall`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:14`",
+        "tags": [
+          "Cart Integration"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "spaceId",
+            "in": "path",
+            "required": true,
+            "description": "SpaceId extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cart_product_id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "cart_product_id": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "paywall": {
+                      "type": "object",
+                      "properties": {
+                        "ID": {
+                          "type": "integer"
+                        },
+                        "post_title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_excerpt": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "thumbnail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "view_url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Paywall has been added",
+                  "paywall": {
+                    "ID": 0,
+                    "post_title": "",
+                    "post_status": "publish",
+                    "post_excerpt": "",
+                    "thumbnail": "",
+                    "view_url": ""
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Product already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Product already exists"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

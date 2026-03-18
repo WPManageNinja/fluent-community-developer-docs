@@ -1,0 +1,192 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/activities": {
+      "get": {
+        "operationId": "listActivities",
+        "summary": "GET List Activities",
+        "description": "List Activities for the FluentCommunity Activity API.\n\nController: `ActivityController@getActivities`\nRoute source: `fluent-community/app/Http/Routes/api.php:135`",
+        "tags": [
+          "Activity"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "context",
+            "in": "query",
+            "required": false,
+            "description": "Context read via `$request->get()` in getActivities().",
+            "schema": {
+              "type": "array",
+              "default": []
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Per Page read via `$request->get()` in getActivities().",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page read via `$request->get()` in getActivities().",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "with_pins",
+            "in": "query",
+            "required": false,
+            "description": "With Pins read via `$request->get()` in getActivities().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "is_trending",
+            "in": "query",
+            "required": false,
+            "description": "Is Trending read via `$request->get()` in getActivities().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "with_pending_count",
+            "in": "query",
+            "required": false,
+            "description": "With Pending Count read via `$request->get()` in getActivities().",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "activities": {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "has_more": {
+                          "type": "boolean"
+                        },
+                        "per_page": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "current_page": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "after_contents": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "before_contents": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "activities": {
+                    "data": [],
+                    "has_more": false,
+                    "per_page": [],
+                    "current_page": []
+                  },
+                  "after_contents": "",
+                  "before_contents": ""
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

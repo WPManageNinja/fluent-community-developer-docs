@@ -1,0 +1,207 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/courses": {
+      "post": {
+        "operationId": "createCourse",
+        "summary": "POST Create Course",
+        "description": "Create Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:19`",
+        "tags": [
+          "Courses"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "parent_id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "privacy": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "course_type": {
+                    "type": "string"
+                  },
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "emoji": {
+                        "type": "string"
+                      },
+                      "shape_svg": {
+                        "type": "string"
+                      },
+                      "disable_comments": {
+                        "type": "string"
+                      },
+                      "hide_members_count": {
+                        "type": "string"
+                      },
+                      "course_layout": {
+                        "type": "string"
+                      },
+                      "course_details": {
+                        "type": "string"
+                      },
+                      "hide_instructor_view": {
+                        "type": "string"
+                      },
+                      "show_instructor_students_count": {
+                        "type": "string"
+                      },
+                      "custom_lock_screen": {
+                        "type": "string"
+                      },
+                      "onboard_redirect_url": {
+                        "type": "string"
+                      },
+                      "public_lesson_view": {
+                        "type": "string"
+                      }
+                    },
+                    "required": []
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "category_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "title",
+                  "privacy",
+                  "description",
+                  "course_type"
+                ]
+              },
+              "example": {
+                "parent_id": "",
+                "title": "",
+                "privacy": "",
+                "description": "",
+                "status": "",
+                "course_type": "",
+                "settings": {
+                  "emoji": "",
+                  "shape_svg": "",
+                  "disable_comments": "",
+                  "hide_members_count": "",
+                  "course_layout": "",
+                  "course_details": "",
+                  "hide_instructor_view": "",
+                  "show_instructor_students_count": "",
+                  "custom_lock_screen": "",
+                  "onboard_redirect_url": "",
+                  "public_lesson_view": ""
+                },
+                "slug": "",
+                "category_ids": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "course": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "course": {
+                    "id": 0
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Course Redirect URL is not valid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Course Redirect URL is not valid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/profile/{username}": {
+      "get": {
+        "operationId": "getProfile",
+        "summary": "GET Get Profile",
+        "description": "Get Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:84`",
+        "tags": [
+          "Profile"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Username extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "profile": {
+                      "type": "object",
+                      "properties": {
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "is_verified": {
+                          "type": "boolean"
+                        },
+                        "display_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "username": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "avatar": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "cover_photo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "total_points": {
+                          "type": "integer"
+                        },
+                        "badge_slugs": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_restricted": {
+                          "type": "boolean"
+                        },
+                        "canViewUserSpaces": {
+                          "type": "boolean"
+                        },
+                        "last_activity": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "website": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "social_links": {
+                          "type": "object",
+                          "properties": {
+                            "instagram": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "twitter": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "youtube": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "linkedin": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "fb": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "blue_sky": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tiktok": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "pinterest": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "telegram": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "snapchat": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "reddit": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "twitch": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "vk": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "github": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mastodon": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "compilation_score": {
+                          "type": "integer"
+                        },
+                        "short_description_rendered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "email": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "first_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "last_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "short_description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "can_change_username": {
+                          "type": "boolean"
+                        },
+                        "can_change_email": {
+                          "type": "boolean"
+                        },
+                        "profile_navs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "title": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "wrapper_class": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "route": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "profile_nav_actions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "profile": {
+                    "user_id": 0,
+                    "is_verified": false,
+                    "display_name": "",
+                    "username": "",
+                    "avatar": "",
+                    "cover_photo": "",
+                    "total_points": 0,
+                    "badge_slugs": [
+                      ""
+                    ],
+                    "status": "",
+                    "is_restricted": false,
+                    "canViewUserSpaces": false,
+                    "last_activity": "2026-01-01 00:00:00",
+                    "website": "",
+                    "created_at": "2026-01-01 00:00:00",
+                    "social_links": {
+                      "instagram": "",
+                      "twitter": "",
+                      "youtube": "",
+                      "linkedin": "",
+                      "fb": "",
+                      "blue_sky": "",
+                      "tiktok": "",
+                      "pinterest": "",
+                      "telegram": "",
+                      "snapchat": "",
+                      "reddit": "",
+                      "twitch": "",
+                      "vk": "",
+                      "github": "",
+                      "mastodon": ""
+                    },
+                    "compilation_score": 0,
+                    "short_description_rendered": "<p>...</p>",
+                    "email": "",
+                    "first_name": "",
+                    "last_name": "",
+                    "short_description": "",
+                    "can_change_username": false,
+                    "can_change_email": false,
+                    "profile_navs": [
+                      {
+                        "slug": "",
+                        "title": "",
+                        "url": "",
+                        "wrapper_class": "",
+                        "route": {
+                          "name": ""
+                        }
+                      }
+                    ],
+                    "profile_nav_actions": []
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "This profile is not active",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "This profile is not active"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

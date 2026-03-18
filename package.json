@@ -1,11 +1,18 @@
 {
-  "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview",
-    "dev": "vitepress dev"
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "mermaid": "^10.6.1",
+    "vitepress": "^1.6.4",
+    "vitepress-openapi": "^0.1.15",
+    "vue": "^3.5.30"
   },
-  "dependencies": {
-    "vitepress": "^1.6.4"
-  }
+  "scripts": {
+    "generate:docs": "node scripts/generate-docs.mjs",
+    "generate:manifest": "node generate-manifest.js",
+    "docs:dev": "npm run generate:docs && npm run generate:manifest && vitepress dev",
+    "docs:build": "npm run generate:docs && npm run generate:manifest && vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "packageManager": "yarn@4.11.0"
 }

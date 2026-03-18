@@ -1,0 +1,107 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/courses/{course_slug}/by-slug": {
+      "get": {
+        "operationId": "getCourseBySlug",
+        "summary": "GET Get Course By Slug",
+        "description": "Get Course By Slug for the FluentCommunity Courses API.\n\nController: `CourseController@getCourseBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:10`",
+        "tags": [
+          "Courses"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "course_slug",
+            "in": "path",
+            "required": true,
+            "description": "Course Slug extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "intended_lesson_slug",
+            "in": "query",
+            "required": false,
+            "description": "Intended Lesson Slug read via `$request->get()` in getCourseBySlug().",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                },
+                "example": []
+              }
+            }
+          },
+          "422": {
+            "description": "Course not found. maybe the course is not published yet!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Course not found. maybe the course is not published yet!"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

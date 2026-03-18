@@ -1,0 +1,182 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/crm-tagging-config": {
+      "post": {
+        "operationId": "saveCrmTaggingConfig",
+        "summary": "POST Save CRM Tagging Config",
+        "description": "Save CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:28`",
+        "tags": [
+          "Settings"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "tagging_maps": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "linked_maps": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "is_enabled": {
+                        "type": "string"
+                      },
+                      "create_crm_contact": {
+                        "type": "string"
+                      },
+                      "create_user": {
+                        "type": "string"
+                      },
+                      "send_welcome_email": {
+                        "type": "string"
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              },
+              "example": {
+                "settings": {
+                  "tagging_maps": [],
+                  "linked_maps": [],
+                  "is_enabled": "",
+                  "create_crm_contact": "",
+                  "create_user": "",
+                  "send_welcome_email": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "is_enabled": {
+                          "type": "boolean"
+                        },
+                        "tagging_maps": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "linked_maps": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "create_crm_contact": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "create_user": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "send_welcome_email": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "CRM Tagging settings have been updated successfully",
+                  "settings": {
+                    "is_enabled": false,
+                    "tagging_maps": null,
+                    "linked_maps": null,
+                    "create_crm_contact": null,
+                    "create_user": null,
+                    "send_welcome_email": ""
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/customization-settings": {
+      "get": {
+        "operationId": "getCustomizationSettings",
+        "summary": "GET Get Customization Settings",
+        "description": "Get Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
+        "tags": [
+          "Settings"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "dark_mode": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "fixed_page_header": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "show_powered_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "feed_link_on_sidebar": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "show_post_modal": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "fixed_sidebar": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "icon_on_header_menu": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "affiliate_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "rich_post_layout": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "member_list_layout": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "default_feed_layout": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "disable_feed_layout": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_title_pref": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "max_media_per_post": {
+                          "type": "integer"
+                        },
+                        "disable_feed_sort_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "default_feed_sort_by": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "settings": {
+                    "dark_mode": "yes",
+                    "fixed_page_header": "yes",
+                    "show_powered_by": "yes",
+                    "feed_link_on_sidebar": "yes",
+                    "show_post_modal": "yes",
+                    "fixed_sidebar": "no",
+                    "icon_on_header_menu": "no",
+                    "affiliate_id": "",
+                    "rich_post_layout": "classic",
+                    "member_list_layout": "classic",
+                    "default_feed_layout": "timeline",
+                    "disable_feed_layout": "no",
+                    "post_title_pref": "optional",
+                    "max_media_per_post": 4,
+                    "disable_feed_sort_by": "no",
+                    "default_feed_sort_by": ""
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/profile/{username}/unblock": {
+      "post": {
+        "operationId": "unblockProfileUser",
+        "summary": "POST Unblock Profile User",
+        "description": "Unblock Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@unblock`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:113`",
+        "tags": [
+          "Profile"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Username extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "follow": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "xprofile": {
+                      "type": "object",
+                      "properties": {
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "badge": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "website": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "cover_photo": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "badge_slug": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "social_links": {
+                              "type": "object",
+                              "properties": {
+                                "instagram": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "twitter": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "youtube": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "linkedin": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "fb": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "blue_sky": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "tiktok": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "pinterest": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "telegram": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "snapchat": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "reddit": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "twitch": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "vk": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "github": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "mastodon": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "follow": {
+                    "id": 0
+                  },
+                  "xprofile": {
+                    "user_id": 0,
+                    "badge": "",
+                    "permalink": "",
+                    "meta": {
+                      "website": "",
+                      "cover_photo": "",
+                      "badge_slug": [
+                        ""
+                      ],
+                      "social_links": {
+                        "instagram": "",
+                        "twitter": "",
+                        "youtube": "",
+                        "linkedin": "",
+                        "fb": "",
+                        "blue_sky": "",
+                        "tiktok": "",
+                        "pinterest": "",
+                        "telegram": "",
+                        "snapchat": "",
+                        "reddit": "",
+                        "twitch": "",
+                        "vk": "",
+                        "github": "",
+                        "mastodon": ""
+                      }
+                    }
+                  },
+                  "message": "You unblocked this user successfully"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "You are not currently blocking this user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "You are not currently blocking this user."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

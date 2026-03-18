@@ -1,0 +1,949 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/color-config": {
+      "get": {
+        "operationId": "getColorConfig",
+        "summary": "GET Get Color Config",
+        "description": "Get Color Config for the FluentCommunity Settings API.\n\nController: `SettingController@getColorConfig`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
+        "tags": [
+          "Settings"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "light_schema": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "dark_schema": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "light_config": {
+                          "type": "object",
+                          "properties": {
+                            "body": {
+                              "type": "object",
+                              "properties": {
+                                "primary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_border": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "secondary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "secondary_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "fcom_top_menu": {
+                              "type": "object",
+                              "properties": {
+                                "primary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_border": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_active": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "active_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_bg_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "spaces": {
+                              "type": "object",
+                              "properties": {
+                                "primary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_border": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_bg_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_active": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "active_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "dark_config": {
+                          "type": "object",
+                          "properties": {
+                            "body": {
+                              "type": "object",
+                              "properties": {
+                                "primary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_border": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "secondary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "secondary_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "fcom_top_menu": {
+                              "type": "object",
+                              "properties": {
+                                "primary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_border": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_active": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "active_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_bg_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "spaces": {
+                              "type": "object",
+                              "properties": {
+                                "primary_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "primary_border": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_bg_hover": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "menu_text_active": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "active_bg": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "version": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "schemas": {
+                      "type": "object",
+                      "properties": {
+                        "lightSkins": {
+                          "type": "object",
+                          "properties": {
+                            "default": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "selectors": {
+                                  "type": "object",
+                                  "properties": {
+                                    "body": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "fcom_top_menu": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "spaces": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "custom": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "selectors": {
+                                  "type": "object",
+                                  "properties": {
+                                    "body": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "fcom_top_menu": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "spaces": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "darkSkins": {
+                          "type": "object",
+                          "properties": {
+                            "default": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "selectors": {
+                                  "type": "object",
+                                  "properties": {
+                                    "body": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "fcom_top_menu": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "spaces": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "custom": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "selectors": {
+                                  "type": "object",
+                                  "properties": {
+                                    "body": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "secondary_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "fcom_top_menu": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "spaces": {
+                                      "type": "object",
+                                      "properties": {
+                                        "primary_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "primary_border": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_bg_hover": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "menu_text_active": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "active_bg": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "config": {
+                    "light_schema": "default",
+                    "dark_schema": "default",
+                    "light_config": {
+                      "body": {
+                        "primary_bg": "#FFFFFF",
+                        "primary_border": "#E5E7EB",
+                        "primary_text": "#111827",
+                        "secondary_bg": "#F8FAFC",
+                        "secondary_text": "#64748B"
+                      },
+                      "fcom_top_menu": {
+                        "primary_bg": "#FFFFFF",
+                        "primary_border": "#E5E7EB",
+                        "menu_text": "#475569",
+                        "menu_text_active": "#111827",
+                        "active_bg": "#F1F5F9",
+                        "menu_bg_hover": "#F8FAFC",
+                        "menu_text_hover": "#111827"
+                      },
+                      "spaces": {
+                        "primary_bg": "#FFFFFF",
+                        "primary_border": "#E5E7EB",
+                        "menu_text": "#475569",
+                        "menu_text_hover": "#111827",
+                        "menu_bg_hover": "#F8FAFC",
+                        "menu_text_active": "#FFFFFF",
+                        "active_bg": "#0F172A"
+                      }
+                    },
+                    "dark_config": {
+                      "body": {
+                        "primary_bg": "#FFFFFF",
+                        "primary_border": "#E5E7EB",
+                        "primary_text": "#111827",
+                        "secondary_bg": "#F8FAFC",
+                        "secondary_text": "#64748B"
+                      },
+                      "fcom_top_menu": {
+                        "primary_bg": "#FFFFFF",
+                        "primary_border": "#E5E7EB",
+                        "menu_text": "#475569",
+                        "menu_text_active": "#111827",
+                        "active_bg": "#F1F5F9",
+                        "menu_bg_hover": "#F8FAFC",
+                        "menu_text_hover": "#111827"
+                      },
+                      "spaces": {
+                        "primary_bg": "#FFFFFF",
+                        "primary_border": "#E5E7EB",
+                        "menu_text": "#475569",
+                        "menu_text_hover": "#111827",
+                        "menu_bg_hover": "#F8FAFC",
+                        "menu_text_active": "#FFFFFF",
+                        "active_bg": "#0F172A"
+                      }
+                    },
+                    "version": "1.0.0"
+                  },
+                  "schemas": {
+                    "lightSkins": {
+                      "default": {
+                        "title": "Default",
+                        "selectors": {
+                          "body": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "primary_text": "#111827",
+                            "secondary_bg": "#F8FAFC",
+                            "secondary_text": "#64748B"
+                          },
+                          "fcom_top_menu": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_active": "#111827",
+                            "active_bg": "#F1F5F9",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_hover": "#111827"
+                          },
+                          "spaces": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_hover": "#111827",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_active": "#FFFFFF",
+                            "active_bg": "#0F172A"
+                          }
+                        }
+                      },
+                      "custom": {
+                        "title": "Custom",
+                        "selectors": {
+                          "body": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "primary_text": "#111827",
+                            "secondary_bg": "#F8FAFC",
+                            "secondary_text": "#64748B"
+                          },
+                          "fcom_top_menu": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_active": "#111827",
+                            "active_bg": "#F1F5F9",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_hover": "#111827"
+                          },
+                          "spaces": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_hover": "#111827",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_active": "#FFFFFF",
+                            "active_bg": "#0F172A"
+                          }
+                        }
+                      }
+                    },
+                    "darkSkins": {
+                      "default": {
+                        "title": "Default",
+                        "selectors": {
+                          "body": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "primary_text": "#111827",
+                            "secondary_bg": "#F8FAFC",
+                            "secondary_text": "#64748B"
+                          },
+                          "fcom_top_menu": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_active": "#111827",
+                            "active_bg": "#F1F5F9",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_hover": "#111827"
+                          },
+                          "spaces": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_hover": "#111827",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_active": "#FFFFFF",
+                            "active_bg": "#0F172A"
+                          }
+                        }
+                      },
+                      "custom": {
+                        "title": "Custom",
+                        "selectors": {
+                          "body": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "primary_text": "#111827",
+                            "secondary_bg": "#F8FAFC",
+                            "secondary_text": "#64748B"
+                          },
+                          "fcom_top_menu": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_active": "#111827",
+                            "active_bg": "#F1F5F9",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_hover": "#111827"
+                          },
+                          "spaces": {
+                            "primary_bg": "#FFFFFF",
+                            "primary_border": "#E5E7EB",
+                            "menu_text": "#475569",
+                            "menu_text_hover": "#111827",
+                            "menu_bg_hover": "#F8FAFC",
+                            "menu_text_active": "#FFFFFF",
+                            "active_bg": "#0F172A"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}
