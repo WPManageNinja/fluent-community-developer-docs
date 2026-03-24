@@ -1,106 +1,52 @@
 ---
 title: Getting Started
-description: Architecture overview, key concepts, and first steps for FluentCommunity developers.
+description: Setup, architecture, and navigation guidance for FluentCommunity developers.
 ---
 
 # Getting Started
 
-FluentCommunity is a WordPress community plugin built on the WPFluent framework. It ships a Vue 3 single-page app at `/portal` and exposes a full REST API under the `fluent-community/v2` namespace.
+FluentCommunity is a WordPress community/forum plugin built on the WPFluent framework. This docs site is generated directly from the checked-out FluentCommunity core and Pro plugin source, so the counts, routes, hook names, and model references match the current code.
 
-This docs site is generated directly from the plugin source code, so route names, hook signatures, model references, and counts always match the current codebase.
+## What This Site Covers
 
-## Architecture at a Glance
+- **Database layer:** 21 first-party models mapped to 17 tables and shared tables.
+- **Hooks:** 154 unique action hooks and 224 unique filter hooks found across 505 call sites in the core and Pro `app/` and `Modules/` trees.
+- **REST API:** 226 registered routes across core and Pro route files.
 
-| Layer | Stack | Details |
-| --- | --- | --- |
-| **Backend** | PHP, WPFluent Framework | Eloquent-style ORM, policy-based authorization, Action Scheduler for background jobs |
-| **Frontend** | Vue 3, Pinia, Element Plus | Options API, Milkdown editor, Vite build with HMR |
-| **REST API** | `fluent-community/v2` | 226 routes across 18 modules, cookie + Application Password auth |
-| **Database** | Custom tables (`fcom_` prefix) | 13 migrations, 21 models, shared multi-type tables |
-
-## Key Concepts
-
-### Portal
-
-The community frontend is a Vue SPA mounted at the `/portal` URL (configurable). It uses WordPress cookie auth with nonces for browser sessions.
-
-```php
-// Change the portal URL slug
-define('FLUENT_COMMUNITY_PORTAL_SLUG', 'community');
-```
-
-### Spaces
-
-Spaces are the primary content containers. The `fcom_spaces` table is a shared multi-type table that stores Spaces, SpaceGroups, and SidebarLinks — each filtered by a `type` global scope on the model.
-
-### REST Method Override
-
-The Vue frontend sends PUT, PATCH, and DELETE requests as POST with the `X-HTTP-Method-Override` header. Keep this in mind when testing endpoints.
-
-### Policy-Based Authorization
-
-Destructive controller actions require a matching policy method. If no policy exists, the controller falls back to `verifyRequest()`, which is a weaker check. Always define policies for sensitive operations.
-
-## Authentication
-
-FluentCommunity uses WordPress REST infrastructure with two auth modes:
-
-- **Browser sessions** — Cookie auth + nonce. This is what the portal SPA uses.
-- **Server-to-server** — [WordPress Application Passwords](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/) sent as Basic auth. Best for external integrations and API scripts.
+## Development Commands
 
 ```bash
-# Example: fetch feeds with Application Passwords
-curl -u "admin:xxxx xxxx xxxx xxxx xxxx xxxx" \
-  https://your-site.com/wp-json/fluent-community/v2/spaces/1/feeds
+yarn install
+yarn docs:dev
+yarn docs:build
 ```
 
-## Where to Go Next
+## Source of Truth
 
-<div class="getting-started-grid">
-
-<a href="/restapi/" class="getting-started-card">
-  <strong>REST API Reference</strong>
-  <span>Browse all 226 endpoints with parameters, auth requirements, and response shapes.</span>
-</a>
-
-<a href="/database/schema" class="getting-started-card">
-  <strong>Database Schema</strong>
-  <span>ER diagrams, table inventory, and the 21 Eloquent-style models.</span>
-</a>
-
-<a href="/hooks/actions/" class="getting-started-card">
-  <strong>Action Hooks</strong>
-  <span>154 action hooks for feeds, spaces, members, notifications, and more.</span>
-</a>
-
-<a href="/hooks/filters/" class="getting-started-card">
-  <strong>Filter Hooks</strong>
-  <span>224 filter hooks for permissions, settings, content, and rendering.</span>
-</a>
-
-<a href="/guides/code-snippets" class="getting-started-card">
-  <strong>Code Snippets</strong>
-  <span>Copy-paste recipes for portal slug, custom CSS, role checks, and common tasks.</span>
-</a>
-
-<a href="/deployment/" class="getting-started-card">
-  <strong>Deployment Guide</strong>
-  <span>Server requirements, performance optimization, and production rollout.</span>
-</a>
-
-</div>
-
-## Source Files Reference
-
-If you're reading the plugin source alongside these docs, here are the key entry points:
-
-| Concern | Path |
+| Concern | Source |
 | --- | --- |
-| Core routes | `app/Http/Routes/api.php` |
-| Controllers | `app/Http/Controllers/` |
-| Models | `app/Models/` |
+| Core routes | `fluent-community/app/Http/Routes/api.php` |
+| Pro routes | `fluent-community-pro/app/Http/Routes/api.php`, `fluent-community-pro/app/Modules/**/Http/*_api.php`, and route-bearing Pro modules |
+| Controllers | `fluent-community/app/Http/Controllers/`, `fluent-community/Modules/**/Controllers/`, and the matching Pro controller trees |
+| Models | `fluent-community/app/Models/` plus Pro runtime models used by route responses |
 | Migrations | `database/Migrations/` |
-| Hook handlers | `app/Hooks/` |
-| Vue app entry | `src/app.js` (portal), `src/admin_app.js` (admin) |
-| Pinia stores | `src/stores/` |
-| Pro modules | `Modules/` (Auth, Courses, Gutenberg, Integrations, etc.) |
+| Hooks | `do_action(...)` and `apply_filters(...)` calls across the core and Pro source trees |
+
+## Authentication Notes
+
+FluentCommunity uses WordPress REST infrastructure. In browser-driven portal flows, the plugin typically relies on cookie authentication and nonces. For server-to-server calls, WordPress Application Passwords are the most practical option for routes that are not intentionally public.
+
+## REST Client Conventions
+
+- The REST namespace is **`fluent-community/v2`**.
+- Portal clients in the plugin send **PUT/PATCH/DELETE** requests as POST requests with the `X-HTTP-Method-Override` header.
+- Space, admin, and portal permission checks are enforced by policy classes first and then by controller-level validation.
+
+## Main Sections
+
+- [Database Schema](/database/schema)
+- [Model Reference](/database/models)
+- [Action Hooks](/hooks/actions/)
+- [Filter Hooks](/hooks/filters/)
+- [REST API](/restapi/)
+- [Extending FluentCommunity](/modules/extending)

@@ -20,13 +20,13 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/get_lockscreen_settings`](#fluent_communityget_lockscreen_settings) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:918` |
 | [`fluent_community/lockscreen_fields`](#fluent_communitylockscreen_fields) | Core | 1 | `fluent-community/app/Services/LockscreenService.php:80` |
 | [`fluent_community/lockscreen_formatted_field`](#fluent_communitylockscreen_formatted_field) | Core | 1 | `fluent-community/app/Services/LockscreenService.php:112` |
-| [`fluent_community/main_menu_items`](#fluent_communitymain_menu_items) | Core | 2 | `fluent-community/app/Functions/Utility.php:1167` |
+| [`fluent_community/main_menu_items`](#fluent_communitymain_menu_items) | Core | 2 | `fluent-community/app/Functions/Utility.php:1175` |
 | [`fluent_community/menu_groups`](#fluent_communitymenu_groups) | Core | 1 | `fluent-community/app/Services/Helper.php:1216` |
 | [`fluent_community/menu_groups_for_user`](#fluent_communitymenu_groups_for_user) | Core | 1 | `fluent-community/app/Services/Helper.php:839` |
 | [`fluent_community/menu_items_api_response`](#fluent_communitymenu_items_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:31` |
 | [`fluent_community/menu_settings_api_response`](#fluent_communitymenu_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:94` |
 | [`fluent_community/mobile_menu`](#fluent_communitymobile_menu) | Core | 1 | `fluent-community/app/Services/Helper.php:1496` |
-| [`fluent_community/portal_data_vars`](#fluent_communityportal_data_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:982` |
+| [`fluent_community/portal_data_vars`](#fluent_communityportal_data_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:986` |
 | [`fluent_community/portal_page_headless`](#fluent_communityportal_page_headless) | Core | 1 | `fluent-community/app/Services/Helper.php:117` |
 | [`fluent_community/portal_route_type`](#fluent_communityportal_route_type) | Core | 1 | `fluent-community/app/Services/Helper.php:107` |
 | [`fluent_community/portal_settings_menu_items`](#fluent_communityportal_settings_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalSettingsHandler.php:68` |
@@ -34,8 +34,8 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/portal_supported_query_params`](#fluent_communityportal_supported_query_params) | Core | 1 | `fluent-community/app/Services/Helper.php:2004` |
 | [`fluent_community/portal_vars`](#fluent_communityportal_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:465` |
 | [`fluent_community/profile_spaces_api_response`](#fluent_communityprofile_spaces_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:471` |
-| [`fluent_community/settings_menu`](#fluent_communitysettings_menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1162` |
-| [`fluent_community/sidebar_menu_groups_config`](#fluent_communitysidebar_menu_groups_config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1169` |
+| [`fluent_community/settings_menu`](#fluent_communitysettings_menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1170` |
+| [`fluent_community/sidebar_menu_groups_config`](#fluent_communitysidebar_menu_groups_config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1177` |
 | [`fluent_community/sidebar_menu_html_api_response`](#fluent_communitysidebar_menu_html_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:74` |
 | [`fluent_community/space_api_response`](#fluent_communityspace_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:252` |
 | [`fluent_community/space_document_title_label`](#fluent_communityspace_document_title_label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:56` |
@@ -277,8 +277,8 @@ add_filter('fluent_community/lockscreen_formatted_field', function ($formattedFi
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1167` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1129` | `$items` (mixed)<br>`$scope` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1175` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1144` | `$items` (mixed)<br>`$scope` (mixed) |
 
 ### Example
 
@@ -416,7 +416,7 @@ add_filter('fluent_community/mobile_menu', function ($mobileMenuItems, $xprofile
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:982` | `$dataVars` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:986` | `$dataVars` (mixed) |
 
 ### Example
 
@@ -600,7 +600,7 @@ add_filter('fluent_community/profile_spaces_api_response', function ($data, $all
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1162` | `[]` (array)<br>`$userModel` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1170` | `[]` (array)<br>`$userModel` (mixed) |
 
 ### Example
 
@@ -623,7 +623,7 @@ add_filter('fluent_community/settings_menu', function ($param1, $userModel) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1169` | `[ 'primaryItems' => $primaryMenuItems, 'spaceGroups' => $spaceGroups, 'settingsItems' => $settingsMenu, 'topInlineLinks' => $topInlines, 'bottomLinkGroups' => $bottomLinkGroups, 'is_admin' => Helper::isSiteAdmin(null, $userModel), 'has_color_scheme' => Helper::hasColorScheme(), 'context' => $scope, ]` (array)<br>`$userModel` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1177` | `[ 'primaryItems' => $primaryMenuItems, 'spaceGroups' => $spaceGroups, 'settingsItems' => $settingsMenu, 'topInlineLinks' => $topInlines, 'bottomLinkGroups' => $bottomLinkGroups, 'is_admin' => Helper::isSiteAdmin(null, $userModel), 'has_color_scheme' => Helper::hasColorScheme(), 'context' => $scope, ]` (array)<br>`$userModel` (mixed) |
 
 ### Example
 

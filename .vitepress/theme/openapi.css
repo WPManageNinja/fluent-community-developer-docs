@@ -168,22 +168,22 @@ footer:has([class*="openapi"]) {
 
 .VPSidebarItem badge[type="tip"] {
     background-color: rgb(22 101 52);
-    color: rgba(187 247 208, .4);
+    color: rgb(187 247 208);
 }
 
 .VPSidebarItem badge[type="warning"] {
     background-color: rgb(30 64 175);
-    color: rgba(191 219 254, .4);
+    color: rgb(191 219 254);
 }
 
 .VPSidebarItem badge[type="danger"] {
     background-color: rgb(153 27 27);
-    color: rgba(254 202 202, .4);
+    color: rgb(254 202 202);
 }
 
 .VPSidebarItem badge[type="info"] {
     background-color: rgb(133 77 14);
-    color: rgba(254 240 138, .4);
+    color: rgb(254 240 138);
 }
 
 html:not(.dark) .VPSidebarItem badge[type="tip"] {

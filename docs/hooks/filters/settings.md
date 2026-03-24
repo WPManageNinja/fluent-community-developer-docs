@@ -26,7 +26,7 @@ description: Settings filter hooks for FluentCommunity.
 | [`fluent_community/onboarding_settings_api_response`](#fluent_communityonboarding_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:418` |
 | [`fluent_community/privacy_settings_api_response`](#fluent_communityprivacy_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:493` |
 | [`fluent_community/storage_settings_response`](#fluent_communitystorage_settings_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:213` |
-| [`fluent_community/suggested_colors`](#fluent_communitysuggested_colors) | Core | 1 | `fluent-community/app/Functions/Utility.php:1124` |
+| [`fluent_community/suggested_colors`](#fluent_communitysuggested_colors) | Core | 1 | `fluent-community/app/Functions/Utility.php:1132` |
 | [`fluent_community/template_slug`](#fluent_communitytemplate_slug) | Core | 1 | `fluent-community/Modules/Theming/TemplateLoader.php:75` |
 | [`fluent_community/update_welcome_banner_settings`](#fluent_communityupdate_welcome_banner_settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:366` |
 
@@ -389,7 +389,7 @@ add_filter('fluent_community/storage_settings_response', function ($config, $all
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1124` | `$colors` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1132` | `$colors` (mixed) |
 
 ### Example
 

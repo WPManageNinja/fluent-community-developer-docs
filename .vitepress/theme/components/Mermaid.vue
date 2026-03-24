@@ -9,12 +9,14 @@
 
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue'
+import { useData } from 'vitepress'
 
 interface Props {
   content: string
 }
 
 const props = defineProps<Props>()
+const { isDark } = useData()
 
 const mermaidContainer = ref<HTMLElement>()
 const renderedContent = ref('')
@@ -25,42 +27,63 @@ const handleClick = (event: MouseEvent) => {
 
 onMounted(async () => {
   await nextTick()
-  
+
   try {
     const { default: mermaid } = await import('mermaid')
-    
-    // Initialize Mermaid with better settings for ER diagrams
+
+    const dark = isDark.value
+
+    const themeVars = dark ? {
+      primaryColor: '#1e1e20',
+      primaryTextColor: '#e5e7eb',
+      primaryBorderColor: '#6370E0',
+      lineColor: '#6370E0',
+      secondaryColor: '#2c2c30',
+      tertiaryColor: '#3a3a40',
+      background: '#1e1e20',
+      mainBkg: '#1e1e20',
+      secondBkg: '#2c2c30',
+      tertiaryBkg: '#3a3a40',
+      entityBkg: '#1e1e20',
+      entityTextColor: '#e5e7eb',
+      relationLabelColor: '#e5e7eb',
+      relationLabelBackground: '#1e1e20'
+    } : {
+      primaryColor: '#ffffff',
+      primaryTextColor: '#1e293b',
+      primaryBorderColor: '#2271b1',
+      lineColor: '#2271b1',
+      secondaryColor: '#f8fafc',
+      tertiaryColor: '#e2e8f0',
+      background: '#ffffff',
+      mainBkg: '#ffffff',
+      secondBkg: '#f8fafc',
+      tertiaryBkg: '#e2e8f0',
+      entityBkg: '#ffffff',
+      entityTextColor: '#1e293b',
+      relationLabelColor: '#1e293b',
+      relationLabelBackground: '#ffffff'
+    }
+
+    const brandColor = dark ? '#6370E0' : '#2271b1'
+
+    // Initialize Mermaid with theme-aware settings
     mermaid.initialize({
       startOnLoad: false,
       theme: 'base',
       securityLevel: 'loose',
-      themeVariables: {
-        primaryColor: '#ffffff',
-        primaryTextColor: '#1e293b',
-        primaryBorderColor: '#2271b1',
-        lineColor: '#2271b1',
-        secondaryColor: '#f8fafc',
-        tertiaryColor: '#e2e8f0',
-        background: '#ffffff',
-        mainBkg: '#ffffff',
-        secondBkg: '#f8fafc',
-        tertiaryBkg: '#e2e8f0',
-        entityBkg: '#ffffff',
-        entityTextColor: '#1e293b',
-        relationLabelColor: '#1e293b',
-        relationLabelBackground: '#ffffff'
-      },
+      themeVariables: themeVars,
       er: {
         diagramPadding: 40,
         layoutDirection: 'TB',
         minEntityWidth: 180,
         minEntityHeight: 120,
         entityPadding: 30,
-        stroke: '#2271b1',
-        fill: '#ffffff',
+        stroke: brandColor,
+        fill: dark ? '#1e1e20' : '#ffffff',
         fontSize: 13,
         useMaxWidth: true,
-        relationColor: '#2271b1'
+        relationColor: brandColor
       },
       flowchart: {
         useMaxWidth: true,
@@ -107,7 +130,7 @@ onMounted(async () => {
   } catch (error) {
     console.error('Mermaid rendering error:', error)
     // Fallback to showing the raw content
-    renderedContent.value = `<pre style="background: #f6f8fa; padding: 1rem; border-radius: 8px; overflow: auto;"><code>${props.content}</code></pre>`
+    renderedContent.value = `<pre style="background: var(--vp-c-bg-soft); padding: 1rem; border-radius: 8px; overflow: auto;"><code>${props.content}</code></pre>`
   }
 })
 </script>
@@ -133,8 +156,8 @@ onMounted(async () => {
 }
 
 :deep(.labelBkg) {
-  background: white !important;
+  background: var(--vp-c-bg) !important;
   padding: 4px 8px !important;
-  border: 1px solid #2271b1;
+  border: 1px solid var(--vp-c-brand-1);
 }
 </style>

@@ -36,7 +36,7 @@ description: Feeds action hooks for FluentCommunity.
 | [`fluent_community/product_integration_feed_updated`](#fluent_communityproduct_integration_feed_updated) | Core | 2 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:56` |
 | [`fluent_community/profile_feed/created`](#fluent_communityprofile_feedcreated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:519` |
 | [`fluent_community/space_feed/created`](#fluent_communityspace_feedcreated) | Core + <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:95` |
-| [`fluent_community/space_feed/email_notify_sub_query`](#fluent_communityspace_feedemail_notify_sub_query) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:66` |
+| [`fluent_community/space_feed/email_notify_sub_query`](#fluent_communityspace_feedemail_notify_sub_query) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:65` |
 | [`fluent_community/space_feed/updated`](#fluent_communityspace_feedupdated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:702` |
 
 <a id="fluent_communitycheck_rate_limitcreate_post"></a>
@@ -620,8 +620,8 @@ add_action('fluent_community/space_feed/created', function ($feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:66` | `[&$query, $feed, $space, $types]` (array) |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:120` | `[&$query, $feed, $space, $types]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:65` | `[&$query, $feed, $space, $types]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:119` | `[&$query, $feed, $space, $types]` (array) |
 
 ### Example
 

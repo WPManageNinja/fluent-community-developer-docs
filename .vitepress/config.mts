@@ -444,7 +444,7 @@ export default defineConfig({
       ],
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/WPManageNinja/fluent-community' },
+      { icon: 'github', link: 'https://github.com/WPManageNinja/fluent-community-developer-docs' },
     ],
     search: {
       provider: 'local',

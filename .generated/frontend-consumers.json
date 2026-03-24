@@ -2887,7 +2887,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/MessagingSettings.vue",
-    "line": 229
+    "line": 219
   },
   {
     "method": "POST",
@@ -2904,7 +2904,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/MessagingSettings.vue",
-    "line": 267
+    "line": 257
   },
   {
     "method": "GET",
@@ -3113,7 +3113,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_CustomProfileFieldsConfig.vue",
-    "line": 371
+    "line": 372
   },
   {
     "method": "POST",
@@ -3132,7 +3132,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_CustomProfileFieldsConfig.vue",
-    "line": 386
+    "line": 387
   },
   {
     "method": "GET",

@@ -12,7 +12,7 @@ description: Members action hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/after_sync_bp_users`](#fluent_communityafter_sync_bp_users) | Core | 2 | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:152` |
-| [`fluent_community/auth/show_invitation_for_user`](#fluent_communityauthshow_invitation_for_user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:263` |
+| [`fluent_community/auth/show_invitation_for_user`](#fluent_communityauthshow_invitation_for_user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:267` |
 | [`fluent_community/before_unblocking_user`](#fluent_communitybefore_unblocking_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:205` |
 | [`fluent_community/before_unfollowing_user`](#fluent_communitybefore_unfollowing_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` |
 | [`fluent_community/blocked_user`](#fluent_communityblocked_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
@@ -60,7 +60,7 @@ add_action('fluent_community/after_sync_bp_users', function ($users) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:263` | `$inviation` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:267` | `$inviation` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 

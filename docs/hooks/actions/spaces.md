@@ -16,15 +16,15 @@ description: Spaces action hooks for FluentCommunity.
 | [`fluent_community/after_portal_sidebar`](#fluent_communityafter_portal_sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:144` |
 | [`fluent_community/before_header_menu_items`](#fluent_communitybefore_header_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:310` |
 | [`fluent_community/before_header_right_menu_items`](#fluent_communitybefore_header_right_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:246` |
-| [`fluent_community/before_portal_dom`](#fluent_communitybefore_portal_dom) | Core | 4 | `fluent-community/app/Views/portal_page.php:76` |
+| [`fluent_community/before_portal_dom`](#fluent_communitybefore_portal_dom) | Core | 4 | `fluent-community/app/Views/portal_page.php:78` |
 | [`fluent_community/before_portal_rendered`](#fluent_communitybefore_portal_rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:857` |
 | [`fluent_community/course/topic_completed`](#fluent_communitycoursetopic_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:210` |
 | [`fluent_community/portal_action_{action}`](#fluent_communityportal_action_action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:783` |
 | [`fluent_community/portal_footer`](#fluent_communityportal_footer) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:82` |
-| [`fluent_community/portal_head`](#fluent_communityportal_head) | Core | 1 | `fluent-community/app/Views/portal_page.php:72` |
-| [`fluent_community/portal_head_meta`](#fluent_communityportal_head_meta) | Core | 1 | `fluent-community/app/Views/portal_page.php:32` |
+| [`fluent_community/portal_head`](#fluent_communityportal_head) | Core | 1 | `fluent-community/app/Views/portal_page.php:74` |
+| [`fluent_community/portal_head_meta`](#fluent_communityportal_head_meta) | Core | 1 | `fluent-community/app/Views/portal_page.php:34` |
 | [`fluent_community/portal_header`](#fluent_communityportal_header) | Core + <span class="pro-badge">PRO</span> | 6 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:64` |
-| [`fluent_community/portal_html`](#fluent_communityportal_html) | Core | 1 | `fluent-community/app/Views/portal_page.php:78` |
+| [`fluent_community/portal_html`](#fluent_communityportal_html) | Core | 1 | `fluent-community/app/Views/portal_page.php:80` |
 | [`fluent_community/portal_render_for_user`](#fluent_communityportal_render_for_user) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:843` |
 | [`fluent_community/portal_sidebar`](#fluent_communityportal_sidebar) | Core + <span class="pro-badge">PRO</span> | 7 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:71` |
 | [`fluent_community/portal/not_logged_in`](#fluent_communityportalnot_logged_in) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:804` |
@@ -165,7 +165,7 @@ add_action('fluent_community/before_header_right_menu_items', function ($auth) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:76` | No parameters |
+| Core | `fluent-community/app/Views/portal_page.php:78` | No parameters |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:165` | No parameters |
 | Core | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:24` | No parameters |
 | Core | `fluent-community/Modules/Theming/templates/fluent-community-frame.php:24` | No parameters |
@@ -257,7 +257,7 @@ add_action('fluent_community/portal_action_{action}', function ($_get) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:82` | No parameters |
-| Core | `fluent-community/app/Views/portal_page.php:82` | No parameters |
+| Core | `fluent-community/app/Views/portal_page.php:84` | No parameters |
 
 ### Example
 
@@ -279,7 +279,7 @@ add_action('fluent_community/portal_footer', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:72` | No parameters |
+| Core | `fluent-community/app/Views/portal_page.php:74` | No parameters |
 
 ### Example
 
@@ -301,7 +301,7 @@ add_action('fluent_community/portal_head', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:32` | `$landing_route` (mixed) |
+| Core | `fluent-community/app/Views/portal_page.php:34` | `$landing_route` (mixed) |
 
 ### Example
 
@@ -350,7 +350,7 @@ add_action('fluent_community/portal_header', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:78` | No parameters |
+| Core | `fluent-community/app/Views/portal_page.php:80` | No parameters |
 
 ### Example
 

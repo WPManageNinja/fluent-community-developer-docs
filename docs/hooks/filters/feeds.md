@@ -18,7 +18,7 @@ description: Feeds filter hooks for FluentCommunity.
 | [`fluent_community/feed_links_api_response`](#fluent_communityfeed_links_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:791` |
 | [`fluent_community/feed_oembed_api_response`](#fluent_communityfeed_oembed_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1463` |
 | [`fluent_community/feed_ticker`](#fluent_communityfeed_ticker) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1293` |
-| [`fluent_community/feed_view_json_ld`](#fluent_communityfeed_view_json_ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1095` |
+| [`fluent_community/feed_view_json_ld`](#fluent_communityfeed_view_json_ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1109` |
 | [`fluent_community/feed/new_feed_data`](#fluent_communityfeednew_feed_data) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:445` |
 | [`fluent_community/feed/new_feed_data_type_{formContentType}`](#fluent_communityfeednew_feed_data_type_formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:450` |
 | [`fluent_community/feed/new_feed_response`](#fluent_communityfeednew_feed_response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:507` |
@@ -35,8 +35,8 @@ description: Feeds filter hooks for FluentCommunity.
 | [`fluent_community/last_activity_date_for_unread_feeds`](#fluent_communitylast_activity_date_for_unread_feeds) | Core | 1 | `fluent-community/app/Services/Helper.php:857` |
 | [`fluent_community/max_media_per_post`](#fluent_communitymax_media_per_post) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:791` |
 | [`fluent_community/max_post_length`](#fluent_communitymax_post_length) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:548` |
-| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent_communitynew_feed_everybody_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:457` |
-| [`fluent_community/new_feed_notification/email_sections`](#fluent_communitynew_feed_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:181` |
+| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent_communitynew_feed_everybody_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:456` |
+| [`fluent_community/new_feed_notification/email_sections`](#fluent_communitynew_feed_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:180` |
 | [`fluent_community/pinned_posts_api_response`](#fluent_communitypinned_posts_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:191` |
 | [`fluent_community/post_order_options`](#fluent_communitypost_order_options) | Core | 1 | `fluent-community/app/Services/Helper.php:2113` |
 | [`fluent_community/rate_limit/posts_per_5_minutes`](#fluent_communityrate_limitposts_per_5_minutes) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:31` |
@@ -220,7 +220,7 @@ add_filter('fluent_community/feed_ticker', function ($response, $all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1095` | `[]` (array)<br>`$feed` (Feed|mixed)<br>`$data` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1109` | `[]` (array)<br>`$feed` (Feed|mixed)<br>`$data` (mixed) |
 
 ### Example
 
@@ -613,7 +613,7 @@ add_filter('fluent_community/max_post_length', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:457` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:456` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -636,7 +636,7 @@ add_filter('fluent_community/new_feed_everybody_notification/email_sections', fu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:181` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:180` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 

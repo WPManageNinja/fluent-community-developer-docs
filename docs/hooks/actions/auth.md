@@ -11,7 +11,7 @@ description: Auth action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/auth/before_auth_page_process`](#fluent_communityauthbefore_auth_page_process) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:125` |
+| [`fluent_community/auth/before_auth_page_process`](#fluent_communityauthbefore_auth_page_process) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:128` |
 | [`fluent_community/before_auth_form_header`](#fluent_communitybefore_auth_form_header) | Core | 3 | `fluent-community/app/Views/auth/login_form.php:3` |
 | [`fluent_community/invitation_created`](#fluent_communityinvitation_created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:193` |
 | [`fluent_community/invitation_link_created`](#fluent_communityinvitation_link_created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:211` |
@@ -29,7 +29,7 @@ description: Auth action hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:125` | `$currentUserId` (mixed)<br>`$inviation` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:128` | `$currentUserId` (mixed)<br>`$inviation` (mixed) |
 
 ### Example
 
@@ -53,7 +53,7 @@ add_action('fluent_community/auth/before_auth_page_process', function ($currentU
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:3` | `'login'` (mixed) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:4` | `'signup'` (mixed) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:705` | `'login'` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:709` | `'login'` (mixed) |
 
 ### Example
 

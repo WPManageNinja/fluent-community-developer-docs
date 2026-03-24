@@ -16,7 +16,7 @@
   margin-bottom: 24px;
   background-color: var(--vp-custom-block-warning-bg);
   border: 1px solid var(--vp-custom-block-warning-border);
-  border-left: 3px solid #f59e0b;
+  border-left: 3px solid var(--vp-c-yellow-1, #f59e0b);
   border-radius: 8px;
   color: var(--vp-custom-block-warning-text);
 }

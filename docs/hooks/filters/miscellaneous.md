@@ -25,12 +25,12 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/convert_image_to_webp`](#fluent_communityconvert_image_to_webp) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:971` |
 | [`fluent_community/custom_order_by`](#fluent_communitycustom_order_by) | Core | 1 | `fluent-community/app/Models/Feed.php:341` |
 | [`fluent_community/default_avatar`](#fluent_communitydefault_avatar) | Core | 4 | `fluent-community/app/Models/User.php:97` |
-| [`fluent_community/default_redirect_url`](#fluent_communitydefault_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:690` |
+| [`fluent_community/default_redirect_url`](#fluent_communitydefault_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:694` |
 | [`fluent_community/editor_i18n_strings`](#fluent_communityeditor_i18n_strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:337` |
 | [`fluent_community/features_api_response`](#fluent_communityfeatures_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:22` |
-| [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1151` |
+| [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1159` |
 | [`fluent_community/fluentform__defaults`](#fluent_communityfluentform__defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
-| [`fluent_community/header_vars`](#fluent_communityheader_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1163` |
+| [`fluent_community/header_vars`](#fluent_communityheader_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1178` |
 | [`fluent_community/image_size_names_choose`](#fluent_communityimage_size_names_choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:342` |
 | [`fluent_community/is_rtl`](#fluent_communityis_rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:28` |
 | [`fluent_community/max_execution_time`](#fluent_communitymax_execution_time) | Core | 1 | `fluent-community/app/Functions/Utility.php:546` |
@@ -43,7 +43,7 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/support_video_types`](#fluent_communitysupport_video_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:46` |
 | [`fluent_community/terms_policy_url`](#fluent_communityterms_policy_url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:143` |
 | [`fluent_community/use_editor_block`](#fluent_communityuse_editor_block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:160` |
-| [`fluent_community/verified_email_senders`](#fluent_communityverified_email_senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1192` |
+| [`fluent_community/verified_email_senders`](#fluent_communityverified_email_senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1200` |
 | [`fluent_community/welcome_banner_api_response`](#fluent_communitywelcome_banner_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:779` |
 | [`fluent_community/welcome_banner_for_guests`](#fluent_communitywelcome_banner_for_guests) | Core | 1 | `fluent-community/app/Services/Helper.php:1447` |
 | [`fluent_community/welcome_banner_for_logged_in`](#fluent_communitywelcome_banner_for_logged_in) | Core | 1 | `fluent-community/app/Services/Helper.php:1444` |
@@ -390,7 +390,7 @@ add_filter('fluent_community/default_avatar', function ($param1, $id) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:690` | `Helper::baseUrl()` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:694` | `Helper::baseUrl()` (mixed) |
 
 ### Example
 
@@ -459,7 +459,7 @@ add_filter('fluent_community/features_api_response', function ($data, $request) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1151` | `$defaultSettings` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1159` | `$defaultSettings` (mixed) |
 
 ### Example
 
@@ -505,7 +505,7 @@ add_filter('fluent_community/fluentform__defaults', function ($fields, $formId) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1163` | `[ 'portal_url' => Helper::baseUrl('/'), 'logo' => $logo, 'white_logo' => $whiteLogo, 'logo_permalink' => $logoPermalink, 'site_title' => Arr::get($settings, 'site_title'), 'profile_url' => $xprofile ? Helper::baseUrl('u/' . $xprofile->username . '/') : '', 'auth' => $xprofile ? $xprofile : null, 'auth_url' => $authUrl, 'menuItems' => $this->getMainMenuItems('header'), 'context' => $context ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1178` | `[ 'portal_url' => Helper::baseUrl('/'), 'logo' => $logo, 'white_logo' => $whiteLogo, 'logo_permalink' => $logoPermalink, 'site_title' => Arr::get($settings, 'site_title'), 'profile_url' => $xprofile ? Helper::baseUrl('u/' . $xprofile->username . '/') : '', 'auth' => $xprofile ? $xprofile : null, 'auth_url' => $authUrl, 'menuItems' => $this->getMainMenuItems('header'), 'context' => $context ]` (array) |
 
 ### Example
 
@@ -807,7 +807,7 @@ add_filter('fluent_community/use_editor_block', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1192` | `$verifiedSenders` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1200` | `$verifiedSenders` (mixed) |
 
 ### Example
 
