@@ -291,6 +291,18 @@ export default defineConfig({
         content: 'Database, hooks, and REST API references for FluentCommunity.',
       },
     ],
+    [
+      'script',
+      {
+        type: 'module',
+        src: 'https://cdn.jsdelivr.net/gh/fluent-docai/chat-widget@latest/chat-widget.js',
+      },
+    ],
+    [
+      'script',
+      { type: 'module' },
+      'FluentBotChatWidget.injectWidget("dbe13b70-6e14-432a-9eda-be1f7d1d9478");',
+    ],
   ],
   vite: {
     publicDir: join(projectRoot, 'public'),
