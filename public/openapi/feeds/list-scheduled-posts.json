@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listScheduledPosts",
         "summary": "GET List Scheduled Posts",
-        "description": "List Scheduled Posts for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@getScheduledPosts`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
+        "description": "List Scheduled Posts for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@getScheduledPosts`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:103`",
         "tags": [
           "Feeds"
         ],

@@ -13,14 +13,14 @@ description: Auth filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/allow_auto_login_by_url`](#fluent_communityallow_auto_login_by_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:54` |
 | [`fluent_community/auth/after_login_redirect_url`](#fluent_communityauthafter_login_redirect_url) | Core | 2 | `fluent-community/Modules/Auth/AuthModdule.php:43` |
-| [`fluent_community/auth/after_login_with_invitation`](#fluent_communityauthafter_login_with_invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:618` |
-| [`fluent_community/auth/after_signup_redirect_url`](#fluent_communityauthafter_signup_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:532` |
+| [`fluent_community/auth/after_login_with_invitation`](#fluent_communityauthafter_login_with_invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:615` |
+| [`fluent_community/auth/after_signup_redirect_url`](#fluent_communityauthafter_signup_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:529` |
 | [`fluent_community/auth/disable_rate_limit`](#fluent_communityauthdisable_rate_limit) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:395` |
-| [`fluent_community/auth/invitation`](#fluent_communityauthinvitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:88` |
+| [`fluent_community/auth/invitation`](#fluent_communityauthinvitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:85` |
 | [`fluent_community/auth/login_fields`](#fluent_communityauthlogin_fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:224` |
 | [`fluent_community/auth/login_url`](#fluent_communityauthlogin_url) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1249` |
 | [`fluent_community/auth/lost_password_url`](#fluent_communityauthlost_password_url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:219` |
-| [`fluent_community/auth/pre_content`](#fluent_communityauthpre_content) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:232` |
+| [`fluent_community/auth/pre_content`](#fluent_communityauthpre_content) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:229` |
 | [`fluent_community/auth/registration_enabled`](#fluent_communityauthregistration_enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:257` |
 | [`fluent_community/auth/settings`](#fluent_communityauthsettings) | Core | 1 | `fluent-community/app/Services/AuthenticationService.php:102` |
 | [`fluent_community/auth/signup_fields`](#fluent_communityauthsignup_fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:156` |
@@ -28,7 +28,7 @@ description: Auth filter hooks for FluentCommunity.
 | [`fluent_community/auth/signup_verification_mail_subject`](#fluent_communityauthsignup_verification_mail_subject) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:290` |
 | [`fluent_community/create_invitation_link`](#fluent_communitycreate_invitation_link) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationController.php:134` |
 | [`fluent_community/get_auth_settings`](#fluent_communityget_auth_settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:385` |
-| [`fluent_community/update_auth_settings`](#fluent_communityupdate_auth_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:379` |
+| [`fluent_community/update_auth_settings`](#fluent_communityupdate_auth_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:383` |
 
 <a id="fluent_communityallow_auto_login_by_url"></a>
 
@@ -67,7 +67,7 @@ add_filter('fluent_community/allow_auto_login_by_url', function ($tagetUser, $ta
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Auth/AuthModdule.php:43` | `$redirectUrl` (mixed)<br>`$user` (mixed) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:633` | `$redirectUrl` (mixed)<br>`$user` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:630` | `$redirectUrl` (mixed)<br>`$user` (mixed) |
 
 ### Example
 
@@ -90,7 +90,7 @@ add_filter('fluent_community/auth/after_login_redirect_url', function ($redirect
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:618` | `null` (mixed)<br>`$user` (mixed)<br>`$invitationToken` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:615` | `null` (mixed)<br>`$user` (mixed)<br>`$invitationToken` (mixed) |
 
 ### Example
 
@@ -113,7 +113,7 @@ add_filter('fluent_community/auth/after_login_with_invitation', function ($param
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:532` | `$redirectUrl` (mixed)<br>`$user` (mixed)<br>`$_REQUEST` (array) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:529` | `$redirectUrl` (mixed)<br>`$user` (mixed)<br>`$_REQUEST` (array) |
 
 ### Example
 
@@ -159,7 +159,7 @@ add_filter('fluent_community/auth/disable_rate_limit', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:88` | `null` (mixed)<br>`$inivtationToken` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:85` | `null` (mixed)<br>`$inivtationToken` (mixed) |
 
 ### Example
 
@@ -251,7 +251,7 @@ add_filter('fluent_community/auth/lost_password_url', function ($url) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:232` | `''` (mixed)<br>`$context` (mixed)<br>`$targetForm` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:229` | `''` (mixed)<br>`$context` (mixed)<br>`$targetForm` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 
@@ -435,7 +435,7 @@ add_filter('fluent_community/get_auth_settings', function ($settings) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:379` | `$formattedSettings` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:383` | `$formattedSettings` (mixed) |
 
 ### Example
 

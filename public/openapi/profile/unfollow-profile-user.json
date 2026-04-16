@@ -27,7 +27,7 @@
       "post": {
         "operationId": "unfollowProfileUser",
         "summary": "POST Unfollow Profile User",
-        "description": "Unfollow Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@unfollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:110`",
+        "description": "Unfollow Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@unfollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:114`",
         "tags": [
           "Profile"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/scheduled-posts/{feed_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SchedulePostsController@reschedulePost`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:100`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:104`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php`
 
 <OAOperation operationId="reschedulePost" specUrl="/openapi/public/feeds/reschedule-post.json" />

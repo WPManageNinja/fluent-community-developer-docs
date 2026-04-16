@@ -13,6 +13,5 @@
     "docs:dev": "npm run generate:docs && npm run generate:manifest && vitepress dev",
     "docs:build": "npm run generate:docs && npm run generate:manifest && vitepress build",
     "docs:preview": "vitepress preview"
-  },
-  "packageManager": "yarn@4.11.0"
+  }
 }

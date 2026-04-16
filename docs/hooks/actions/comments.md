@@ -14,7 +14,7 @@ description: Comments action hooks for FluentCommunity.
 | [`fluent_community/before_comment_create`](#fluent_communitybefore_comment_create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:126` |
 | [`fluent_community/before_comment_delete`](#fluent_communitybefore_comment_delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:564` |
 | [`fluent_community/check_rate_limit/create_comment`](#fluent_communitycheck_rate_limitcreate_comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:68` |
-| [`fluent_community/comment_added`](#fluent_communitycomment_added) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:198` |
+| [`fluent_community/comment_added`](#fluent_communitycomment_added) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:199` |
 | [`fluent_community/comment_deleted`](#fluent_communitycomment_deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:577` |
 | [`fluent_community/comment_updated`](#fluent_communitycomment_updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:252` |
 | [`fluent_community/comment/media_deleted`](#fluent_communitycommentmedia_deleted) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:246` |
@@ -105,7 +105,7 @@ add_action('fluent_community/check_rate_limit/create_comment', function ($user) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:198` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:199` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:168` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed)<br>`Arr::get($mentions, 'users', [])` (array) |
 
 ### Example

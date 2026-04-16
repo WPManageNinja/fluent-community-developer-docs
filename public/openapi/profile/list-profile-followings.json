@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileFollowings",
         "summary": "GET List Profile Followings",
-        "description": "List Profile Followings for the FluentCommunity Profile API.\n\nController: `FollowController@getFollowings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:107`",
+        "description": "List Profile Followings for the FluentCommunity Profile API.\n\nController: `FollowController@getFollowings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:111`",
         "tags": [
           "Profile"
         ],
@@ -44,6 +44,25 @@
             "description": "Username extracted from the URL path.",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Search read via `$request->getSafe()` in getFollowings().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort By read via `$request->getSafe()` in getFollowings().",
+            "schema": {
+              "type": "string",
+              "default": "id"
             }
           }
         ],
@@ -62,12 +81,7 @@
                           "type": "array",
                           "items": {
                             "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "integer"
-                              }
-                            },
-                            "additionalProperties": false
+                            "additionalProperties": true
                           }
                         },
                         "current_page": {
@@ -99,17 +113,13 @@
                 },
                 "example": {
                   "followings": {
-                    "data": [
-                      {
-                        "id": 0
-                      }
-                    ],
+                    "data": [],
                     "current_page": 1,
                     "per_page": 10,
-                    "from": 1,
-                    "to": 1,
-                    "total": 1,
-                    "last_page": 1,
+                    "from": 0,
+                    "to": 0,
+                    "total": 0,
+                    "last_page": 0,
                     "has_more": false
                   }
                 }

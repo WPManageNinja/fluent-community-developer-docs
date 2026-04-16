@@ -27,7 +27,7 @@
       "post": {
         "operationId": "blockProfileUser",
         "summary": "POST Block Profile User",
-        "description": "Block Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@block`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:112`",
+        "description": "Block Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@block`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:116`",
         "tags": [
           "Profile"
         ],

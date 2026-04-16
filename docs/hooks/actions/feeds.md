@@ -12,7 +12,7 @@ description: Feeds action hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/check_rate_limit/create_post`](#fluent_communitycheck_rate_limitcreate_post) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:359` |
-| [`fluent_community/comment_added_{feed}`](#fluent_communitycomment_added_feed) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:197` |
+| [`fluent_community/comment_added_{feed}`](#fluent_communitycomment_added_feed) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:198` |
 | [`fluent_community/comment_deleted_{feed}`](#fluent_communitycomment_deleted_feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:576` |
 | [`fluent_community/comment_updated_{feed}`](#fluent_communitycomment_updated_feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:253` |
 | [`fluent_community/feed_mentioned`](#fluent_communityfeed_mentioned) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:466` |
@@ -74,7 +74,7 @@ add_action('fluent_community/check_rate_limit/create_post', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:197` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:198` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:167` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
@@ -231,7 +231,7 @@ add_action('fluent_community/feed/cast_survey_vote', function ($newSyncIndexes, 
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:92` | `$feed` (Feed|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:200` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:201` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:76` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:514` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:490` | `$feed` (Feed|mixed) |
@@ -595,7 +595,7 @@ add_action('fluent_community/profile_feed/created', function ($feed) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:95` | `$feed` (Feed|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:202` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:203` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:79` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:517` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:493` | `$feed` (Feed|mixed) |

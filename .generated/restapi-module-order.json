@@ -152,6 +152,9 @@
     "deactivate-license-key",
     "get-messaging-settings",
     "save-messaging-settings",
+    "get-get-custom-profile-fields",
+    "post-save-custom-profile-fields",
+    "get-get-exportable-students",
     "list-topics",
     "save-topics",
     "save-topic-config",
@@ -210,7 +213,8 @@
     "submit-lesson-quiz",
     "get-lesson-quiz-result",
     "list-course-quiz-results",
-    "update-course-quiz-result"
+    "update-course-quiz-result",
+    "get-get-exportable-quiz-results"
   ],
   "migrations": [
     "list-available-migrations",

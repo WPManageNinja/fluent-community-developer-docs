@@ -1,0 +1,147 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/custom-profile-fields": {
+      "post": {
+        "operationId": "postSaveCustomProfileFields",
+        "summary": "POST Post Save Custom Profile Fields",
+        "description": "Post Save Custom Profile Fields for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:25`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "is_enabled": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "groups": [],
+                "fields": [],
+                "is_enabled": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "is_enabled": {
+                          "type": "boolean"
+                        },
+                        "groups": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fields": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Custom profile fields have been saved successfully",
+                  "config": {
+                    "is_enabled": false,
+                    "groups": null,
+                    "fields": null
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

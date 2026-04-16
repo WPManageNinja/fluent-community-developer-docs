@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteTopic",
         "summary": "DELETE Delete Topic",
-        "description": "Delete Topic for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteTopic`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
+        "description": "Delete Topic for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteTopic`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:46`",
         "tags": [
           "Admin"
         ],

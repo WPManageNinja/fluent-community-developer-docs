@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/moderation/reports/{report_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ModerationController@update`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:91`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:95`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ModerationController.php`
 
 <OAOperation operationId="updateModerationReport" specUrl="/openapi/public/reports/update-moderation-report.json" />

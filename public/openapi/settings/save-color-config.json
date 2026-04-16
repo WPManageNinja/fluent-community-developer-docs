@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveColorConfig",
         "summary": "POST Save Color Config",
-        "description": "Save Color Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveColorConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
+        "description": "Save Color Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveColorConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:31`",
         "tags": [
           "Settings"
         ],

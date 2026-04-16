@@ -11,6 +11,8 @@
     "/openapi/public/admin/get-auth-settings.json",
     "/openapi/public/admin/get-email-settings.json",
     "/openapi/public/admin/get-general-settings.json",
+    "/openapi/public/admin/get-get-custom-profile-fields.json",
+    "/openapi/public/admin/get-get-exportable-students.json",
     "/openapi/public/admin/get-license-status.json",
     "/openapi/public/admin/get-messaging-settings.json",
     "/openapi/public/admin/get-onboarding-settings.json",
@@ -21,6 +23,7 @@
     "/openapi/public/admin/list-topics.json",
     "/openapi/public/admin/list-user-badges.json",
     "/openapi/public/admin/list-webhooks.json",
+    "/openapi/public/admin/post-save-custom-profile-fields.json",
     "/openapi/public/admin/save-admin-manager.json",
     "/openapi/public/admin/save-admin-welcome-banner.json",
     "/openapi/public/admin/save-auth-settings.json",
@@ -66,6 +69,7 @@
     "/openapi/public/courses/get-course-meta-settings.json",
     "/openapi/public/courses/get-course-section.json",
     "/openapi/public/courses/get-course.json",
+    "/openapi/public/courses/get-get-exportable-quiz-results.json",
     "/openapi/public/courses/get-lesson-by-slug.json",
     "/openapi/public/courses/get-lesson-quiz-result.json",
     "/openapi/public/courses/list-admin-courses.json",
@@ -228,5 +232,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-03-24T07:17:39.788Z"
+  "generated": "2026-04-16T06:03:19.763Z"
 }

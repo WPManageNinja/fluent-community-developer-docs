@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCrmTaggingConfig",
         "summary": "POST Save CRM Tagging Config",
-        "description": "Save CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:28`",
+        "description": "Save CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:32`",
         "tags": [
           "Settings"
         ],

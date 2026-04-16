@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateModerationReport",
         "summary": "PUT Update Moderation Report",
-        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:91`",
+        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:95`",
         "tags": [
           "Reports"
         ],
@@ -282,7 +282,7 @@
                     "created_at": "2026-01-01 00:00:00",
                     "updated_at": "2026-01-01 00:00:00"
                   },
-                  "message": "Report updated successfully"
+                  "message": "The report was dismissed. The comment is published and visible to the community."
                 }
               }
             }
