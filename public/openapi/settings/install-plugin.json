@@ -81,7 +81,7 @@
             }
           },
           "422": {
-            "description": "FluentPlayer is required pro version of FluentCommunity. Please install FluentCommunity Pro first.",
+            "description": "FluentMessaging is required pro version of FluentCommunity. Please install FluentCommunity Pro first.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +93,7 @@
                   }
                 },
                 "example": {
-                  "message": "FluentPlayer is required pro version of FluentCommunity. Please install FluentCommunity Pro first."
+                  "message": "FluentMessaging is required pro version of FluentCommunity. Please install FluentCommunity Pro first."
                 }
               }
             }

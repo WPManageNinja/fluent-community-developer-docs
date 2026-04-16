@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateCourseLockscreenSettings",
         "summary": "PUT Update Course Lockscreen Settings",
-        "description": "Update Course Lockscreen Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@updateCourseLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:57`",
+        "description": "Update Course Lockscreen Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@updateCourseLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:61`",
         "tags": [
           "Courses"
         ],

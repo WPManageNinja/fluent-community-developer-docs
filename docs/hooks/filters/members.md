@@ -5,7 +5,7 @@ description: Members filter hooks for FluentCommunity.
 
 # Members Filters
 
-20 unique filter hooks currently map to this category, across 27 call sites.
+21 unique filter hooks currently map to this category, across 28 call sites.
 
 ## Hook Inventory
 
@@ -17,6 +17,7 @@ description: Members filter hooks for FluentCommunity.
 | [`fluent_community/can_view_leaderboard_members`](#fluent_communitycan_view_leaderboard_members) | Core | 3 | `fluent-community/app/Functions/Utility.php:305` |
 | [`fluent_community/can_view_members_page`](#fluent_communitycan_view_members_page) | Core | 3 | `fluent-community/app/Functions/Utility.php:290` |
 | [`fluent_community/can_view_user_profile`](#fluent_communitycan_view_user_profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:320` |
+| [`fluent_community/custom_profile_field_types`](#fluent_communitycustom_profile_field_types) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProfileFieldsService.php:60` |
 | [`fluent_community/leaderboard_api_response`](#fluent_communityleaderboard_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:109` |
 | [`fluent_community/max_profile_description_length`](#fluent_communitymax_profile_description_length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:335` |
 | [`fluent_community/members_api_response`](#fluent_communitymembers_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:114` |
@@ -174,6 +175,29 @@ add_filter('fluent_community/can_view_members_page', function ($param1, $pageSta
 add_filter('fluent_community/can_view_user_profile', function ($param1, $pageStatus, $targetUserId) {
     return $param1;
 }, 10, 3);
+```
+
+<a id="fluent_communitycustom_profile_field_types"></a>
+
+## `fluent_community/custom_profile_field_types`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Custom Profile Field Types hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProfileFieldsService.php:60` | `[ 'text' => __('Text', 'fluent-community-pro'), 'textarea' => __('Textarea', 'fluent-community-pro'), 'number' => __('Number', 'fluent-community-pro'), 'date' => __('Date', 'fluent-community-pro'), 'select' => __('Dropdown', 'fluent-community-pro'), 'radio' => __('Radio', 'fluent-community-pro'), 'url' => __('URL', 'fluent-community-pro'), 'multiselect' => __('Multi Select', 'fluent-community-pro'), ]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/custom_profile_field_types', function ($param1) {
+    return $param1;
+}, 10, 1);
 ```
 
 <a id="fluent_communityleaderboard_api_response"></a>

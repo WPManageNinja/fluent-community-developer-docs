@@ -5,12 +5,13 @@ description: Courses filter hooks for FluentCommunity.
 
 # Courses Filters
 
-24 unique filter hooks currently map to this category, across 25 call sites.
+28 unique filter hooks currently map to this category, across 29 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
+| [`fluent_community/admin_course_exportable_students_api_response`](#fluent_communityadmin_course_exportable_students_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:856` |
 | [`fluent_community/admin_course_lesson_api_response`](#fluent_communityadmin_course_lesson_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:859` |
 | [`fluent_community/admin_course_lessons_api_response`](#fluent_communityadmin_course_lessons_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:843` |
 | [`fluent_community/admin_course_other_instructors_api_response`](#fluent_communityadmin_course_other_instructors_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1119` |
@@ -26,6 +27,7 @@ description: Courses filter hooks for FluentCommunity.
 | [`fluent_community/course_view_json_ld`](#fluent_communitycourse_view_json_ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1053` |
 | [`fluent_community/course/access_message_html`](#fluent_communitycourseaccess_message_html) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:576` |
 | [`fluent_community/course/can_view_lesson`](#fluent_communitycoursecan_view_lesson) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:194` |
+| [`fluent_community/course/exportable_student_row`](#fluent_communitycourseexportable_student_row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:846` |
 | [`fluent_community/course/meta_fields`](#fluent_communitycoursemeta_fields) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1091` |
 | [`fluent_community/courses_api_response`](#fluent_communitycourses_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:77` |
 | [`fluent_community/get_course_api_response`](#fluent_communityget_course_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:99` |
@@ -34,7 +36,32 @@ description: Courses filter hooks for FluentCommunity.
 | [`fluent_community/lesson/get_public_meta`](#fluent_communitylessonget_public_meta) | Core | 1 | `fluent-community/Modules/Course/Model/CourseLesson.php:307` |
 | [`fluent_community/lesson/sanitize_meta`](#fluent_communitylessonsanitize_meta) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:413` |
 | [`fluent_community/lesson/update_data`](#fluent_communitylessonupdate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:959` |
+| [`fluent_community/quiz/exportable_result_row`](#fluent_communityquizexportable_result_row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:218` |
+| [`fluent_community/quiz/exportable_result_rows`](#fluent_communityquizexportable_result_rows) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:230` |
 | [`fluent_community/section/update_data`](#fluent_communitysectionupdate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:737` |
+
+<a id="fluent_communityadmin_course_exportable_students_api_response"></a>
+
+## `fluent_community/admin_course_exportable_students_api_response`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Admin Course Exportable Students API Response hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:856` | `[ 'students' => $rows ]` (array)<br>`$request->all()` (array)<br>`$courseId` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/admin_course_exportable_students_api_response', function ($rows, $all, $courseId) {
+    return $rows;
+}, 10, 3);
+```
 
 <a id="fluent_communityadmin_course_lesson_api_response"></a>
 
@@ -382,6 +409,29 @@ add_filter('fluent_community/course/can_view_lesson', function ($canViewLesson, 
 }, 10, 4);
 ```
 
+<a id="fluent_communitycourseexportable_student_row"></a>
+
+## `fluent_community/course/exportable_student_row`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Course/Exportable Student Row hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:846` | `[ 'Name' => $student->display_name, 'Email' => $student->user->user_email, 'Username' => $student->username, 'Progress' => $progress . '%', 'Enrollment Date' => $student->space_pivot->created_at->format('Y-m-d H:i:s'), 'Last Activity' => $student->last_activity ?: '', ]` (array)<br>`$student` (mixed)<br>`$progress` (mixed)<br>`$courseId` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/course/exportable_student_row', function ($display_name, $student, $progress, $courseId) {
+    return $display_name;
+}, 10, 4);
+```
+
 <a id="fluent_communitycoursemeta_fields"></a>
 
 ## `fluent_community/course/meta_fields`
@@ -564,6 +614,52 @@ add_filter('fluent_community/lesson/sanitize_meta', function ($meta, $lesson) {
 add_filter('fluent_community/lesson/update_data', function ($updateData, $lesson) {
     return $updateData;
 }, 10, 2);
+```
+
+<a id="fluent_communityquizexportable_result_row"></a>
+
+## `fluent_community/quiz/exportable_result_row`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Quiz/Exportable Result Row hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:218` | `[ 'Student Name' => $xprofile ? $xprofile->display_name : '', 'Email' => $result->user ? $result->user->user_email : '', 'Username' => $xprofile ? $xprofile->username : '', 'Quiz' => $result->lesson ? $result->lesson->title : '', 'Score' => ($result->score ?: 0) . '%', 'Grade' => in_array($result->status, ['passed', 'failed']) ? $result->status : 'n/a', 'Total Attempts' => Arr::get($meta, 'attempts', 0), 'Submitted At' => $result->updated_at ? $result->updated_at->format('Y-m-d H:i:s') : '', ]` (array)<br>`$result` (mixed)<br>`$courseId` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/quiz/exportable_result_row', function ($display_name, $result, $courseId) {
+    return $display_name;
+}, 10, 3);
+```
+
+<a id="fluent_communityquizexportable_result_rows"></a>
+
+## `fluent_community/quiz/exportable_result_rows`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Quiz/Exportable Result Rows hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:230` | `[ 'results' => $rows ]` (array)<br>`$results` (mixed)<br>`$courseId` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/quiz/exportable_result_rows', function ($rows, $results, $courseId) {
+    return $rows;
+}, 10, 3);
 ```
 
 <a id="fluent_communitysectionupdate_data"></a>

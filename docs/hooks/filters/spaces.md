@@ -48,7 +48,7 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/space/meta_fields`](#fluent_communityspacemeta_fields) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:928` |
 | [`fluent_community/space/update_data`](#fluent_communityspaceupdate_data) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:302` |
 | [`fluent_community/spaces_api_response`](#fluent_communityspaces_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:34` |
-| [`fluent_community/update_lockscreen_settings`](#fluent_communityupdate_lockscreen_settings) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:402` |
+| [`fluent_community/update_lockscreen_settings`](#fluent_communityupdate_lockscreen_settings) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:406` |
 | [`fluent_community/user/space/permissions`](#fluent_communityuserspacepermissions) | Core | 1 | `fluent-community/app/Models/User.php:600` |
 
 <a id="fluent_communityactivityafter_contents_space"></a>
@@ -924,8 +924,8 @@ add_filter('fluent_community/spaces_api_response', function ($data, $request) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:402` | `$formattedFields` (mixed)<br>`$course` (mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:420` | `$formattedFields` (mixed)<br>`$space` (Space|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:406` | `$formattedFields` (mixed)<br>`$course` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:424` | `$formattedFields` (mixed)<br>`$space` (Space|mixed) |
 
 ### Example
 

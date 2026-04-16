@@ -25,7 +25,7 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/convert_image_to_webp`](#fluent_communityconvert_image_to_webp) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:971` |
 | [`fluent_community/custom_order_by`](#fluent_communitycustom_order_by) | Core | 1 | `fluent-community/app/Models/Feed.php:341` |
 | [`fluent_community/default_avatar`](#fluent_communitydefault_avatar) | Core | 4 | `fluent-community/app/Models/User.php:97` |
-| [`fluent_community/default_redirect_url`](#fluent_communitydefault_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:694` |
+| [`fluent_community/default_redirect_url`](#fluent_communitydefault_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:691` |
 | [`fluent_community/editor_i18n_strings`](#fluent_communityeditor_i18n_strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:337` |
 | [`fluent_community/features_api_response`](#fluent_communityfeatures_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:22` |
 | [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1159` |
@@ -390,7 +390,7 @@ add_filter('fluent_community/default_avatar', function ($param1, $id) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:694` | `Helper::baseUrl()` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:691` | `Helper::baseUrl()` (mixed) |
 
 ### Example
 

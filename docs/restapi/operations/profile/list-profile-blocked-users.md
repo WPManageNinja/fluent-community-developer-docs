@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/blocked-users`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@getBlockedUsers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:108`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:112`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 <OAOperation operationId="listProfileBlockedUsers" specUrl="/openapi/public/profile/list-profile-blocked-users.json" />

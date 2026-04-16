@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSnippetsSettings",
         "summary": "GET Get Snippets Settings",
-        "description": "Get Snippets Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@getSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:29`",
+        "description": "Get Snippets Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@getSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:33`",
         "tags": [
           "Settings"
         ],

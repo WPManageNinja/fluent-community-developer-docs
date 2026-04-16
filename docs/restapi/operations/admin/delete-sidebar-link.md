@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/links/{id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@deleteSidebarLink`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:49`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:53`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 <OAOperation operationId="deleteSidebarLink" specUrl="/openapi/public/admin/delete-sidebar-link.json" />

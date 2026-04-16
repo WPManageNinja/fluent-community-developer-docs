@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteSidebarLink",
         "summary": "DELETE Delete Sidebar Link",
-        "description": "Delete Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:49`",
+        "description": "Delete Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:53`",
         "tags": [
           "Admin"
         ],

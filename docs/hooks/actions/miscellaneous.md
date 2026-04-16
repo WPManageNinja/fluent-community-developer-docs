@@ -19,8 +19,8 @@ description: Miscellaneous action hooks for FluentCommunity.
 | [`fluent_community/before_registration_form`](#fluent_communitybefore_registration_form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:16` |
 | [`fluent_community/block_editor_footer`](#fluent_communityblock_editor_footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:400` |
 | [`fluent_community/block_editor_head`](#fluent_communityblock_editor_head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:393` |
-| [`fluent_community/content_flagged`](#fluent_communitycontent_flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:204` |
-| [`fluent_community/enqueue_global_assets`](#fluent_communityenqueue_global_assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:184` |
+| [`fluent_community/content_flagged`](#fluent_communitycontent_flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:233` |
+| [`fluent_community/enqueue_global_assets`](#fluent_communityenqueue_global_assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:181` |
 | [`fluent_community/headless/before_js_loaded`](#fluent_communityheadlessbefore_js_loaded) | Core | 1 | `fluent-community/app/Views/headless_page.php:95` |
 | [`fluent_community/headless/content`](#fluent_communityheadlesscontent) | Core | 2 | `fluent-community/app/Views/headless_page.php:79` |
 | [`fluent_community/headless/footer`](#fluent_communityheadlessfooter) | Core | 1 | `fluent-community/app/Views/headless_page.php:103` |
@@ -28,16 +28,16 @@ description: Miscellaneous action hooks for FluentCommunity.
 | [`fluent_community/headless/head_early`](#fluent_communityheadlesshead_early) | Core | 1 | `fluent-community/app/Views/headless_page.php:46` |
 | [`fluent_community/install_fluent_player_plugin`](#fluent_communityinstall_fluent_player_plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:300` |
 | [`fluent_community/install_messaging_plugin`](#fluent_communityinstall_messaging_plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:293` |
-| [`fluent_community/managed/after_remove`](#fluent_communitymanagedafter_remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:120` |
-| [`fluent_community/manager/added`](#fluent_communitymanageradded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:96` |
-| [`fluent_community/manager/before_remove`](#fluent_communitymanagerbefore_remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:116` |
-| [`fluent_community/manager/updated`](#fluent_communitymanagerupdated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:79` |
+| [`fluent_community/managed/after_remove`](#fluent_communitymanagedafter_remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:124` |
+| [`fluent_community/manager/added`](#fluent_communitymanageradded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:100` |
+| [`fluent_community/manager/before_remove`](#fluent_communitymanagerbefore_remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:120` |
+| [`fluent_community/manager/updated`](#fluent_communitymanagerupdated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:83` |
 | [`fluent_community/paywall_added`](#fluent_communitypaywall_added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:93` |
 | [`fluent_community/paywall_removed`](#fluent_communitypaywall_removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:128` |
 | [`fluent_community/reactivate_account`](#fluent_communityreactivate_account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:228` |
 | [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent_communityrendering_path_ssr_pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:787` |
-| [`fluent_community/sidebar_link/after_delete`](#fluent_communitysidebar_linkafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:745` |
-| [`fluent_community/sidebar_link/before_delete`](#fluent_communitysidebar_linkbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:741` |
+| [`fluent_community/sidebar_link/after_delete`](#fluent_communitysidebar_linkafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:749` |
+| [`fluent_community/sidebar_link/before_delete`](#fluent_communitysidebar_linkbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:745` |
 | [`fluent_community/track_activity`](#fluent_communitytrack_activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:80` |
 
 <a id="fluent_communityafter_header_logo"></a>
@@ -230,7 +230,7 @@ add_action('fluent_community/block_editor_head', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:204` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:233` | `$report` (mixed)<br>`$content` (mixed) |
 
 ### Example
 
@@ -252,7 +252,7 @@ add_action('fluent_community/content_flagged', function ($report, $content) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:184` | `true` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:181` | `true` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:129` | `$useBuildInTheme` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:195` | `true` (mixed) |
 | Core | `fluent-community/Modules/Theming/TemplateLoader.php:200` | `true` (mixed) |
@@ -432,7 +432,7 @@ add_action('fluent_community/install_messaging_plugin', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:120` | `$user` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:124` | `$user` (mixed) |
 
 ### Example
 
@@ -454,7 +454,7 @@ add_action('fluent_community/managed/after_remove', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:96` | `$user` (mixed)<br>`$roles` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:100` | `$user` (mixed)<br>`$roles` (mixed) |
 
 ### Example
 
@@ -476,7 +476,7 @@ add_action('fluent_community/manager/added', function ($user, $roles) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:116` | `$user` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:120` | `$user` (mixed) |
 
 ### Example
 
@@ -498,7 +498,7 @@ add_action('fluent_community/manager/before_remove', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:79` | `$user` (mixed)<br>`$roles` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:83` | `$user` (mixed)<br>`$roles` (mixed) |
 
 ### Example
 
@@ -608,7 +608,7 @@ add_action('fluent_community/rendering_path_ssr_{pathParts}', function ($pathPar
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:745` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:749` | `$link` (mixed) |
 
 ### Example
 
@@ -630,7 +630,7 @@ add_action('fluent_community/sidebar_link/after_delete', function ($link) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:741` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:745` | `$link` (mixed) |
 
 ### Example
 

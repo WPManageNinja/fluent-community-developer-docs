@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopPostStartersReport",
         "summary": "GET List Top Post Starters Report",
-        "description": "List Top Post Starters Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@topPostStarter`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:72`",
+        "description": "List Top Post Starters Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@topPostStarter`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:76`",
         "tags": [
           "Reports"
         ],

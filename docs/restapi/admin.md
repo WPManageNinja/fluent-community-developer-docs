@@ -40,6 +40,9 @@ All admin endpoints are protected by `AdminPolicy`.
 | `DELETE` | `/admin/license` | <span class="pro-badge">PRO</span> | [Deactivate License Key](/restapi/operations/admin/deactivate-license-key) | `LicenseController@deactivateLicense` |
 | `GET` | `/admin/messaging-setting` | <span class="pro-badge">PRO</span> | [Get Messaging Settings](/restapi/operations/admin/get-messaging-settings) | `ProAdminController@getMessagingSettings` |
 | `POST` | `/admin/messaging-setting` | <span class="pro-badge">PRO</span> | [Save Messaging Settings](/restapi/operations/admin/save-messaging-settings) | `ProAdminController@updateMessagingSettings` |
+| `GET` | `/admin/custom-profile-fields` | <span class="pro-badge">PRO</span> | [Get Get Custom Profile Fields](/restapi/operations/admin/get-get-custom-profile-fields) | `ProAdminController@getCustomProfileFields` |
+| `POST` | `/admin/custom-profile-fields` | <span class="pro-badge">PRO</span> | [Post Save Custom Profile Fields](/restapi/operations/admin/post-save-custom-profile-fields) | `ProAdminController@saveCustomProfileFields` |
+| `GET` | `/admin/courses/{course_id}/export/students` | <span class="pro-badge">PRO</span> | [Get Get Exportable Students](/restapi/operations/admin/get-get-exportable-students) | `ProAdminController@getExportableStudents` |
 | `GET` | `/admin/topics` | <span class="pro-badge">PRO</span> | [List Topics](/restapi/operations/admin/list-topics) | `ProAdminController@getTopics` |
 | `POST` | `/admin/topics` | <span class="pro-badge">PRO</span> | [Save Topics](/restapi/operations/admin/save-topics) | `ProAdminController@saveTopics` |
 | `POST` | `/admin/topics/config` | <span class="pro-badge">PRO</span> | [Save Topic Config](/restapi/operations/admin/save-topic-config) | `ProAdminController@updateTopicConfig` |

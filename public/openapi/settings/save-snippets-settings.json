@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSnippetsSettings",
         "summary": "POST Save Snippets Settings",
-        "description": "Save Snippets Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@updateSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:30`",
+        "description": "Save Snippets Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@updateSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:34`",
         "tags": [
           "Settings"
         ],

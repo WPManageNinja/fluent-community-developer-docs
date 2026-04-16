@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleProfileFollow",
         "summary": "POST Toggle Profile Follow",
-        "description": "Toggle Profile Follow for the FluentCommunity Profile API.\n\nController: `FollowController@toggleFollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:111`",
+        "description": "Toggle Profile Follow for the FluentCommunity Profile API.\n\nController: `FollowController@toggleFollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:115`",
         "tags": [
           "Profile"
         ],

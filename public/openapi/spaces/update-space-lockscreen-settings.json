@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceLockscreenSettings",
         "summary": "PUT Update Space Lockscreen Settings",
-        "description": "Update Space Lockscreen Settings for the FluentCommunity Spaces API.\n\nController: `ProAdminController@updateSpaceLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:53`",
+        "description": "Update Space Lockscreen Settings for the FluentCommunity Spaces API.\n\nController: `ProAdminController@updateSpaceLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:57`",
         "tags": [
           "Spaces"
         ],

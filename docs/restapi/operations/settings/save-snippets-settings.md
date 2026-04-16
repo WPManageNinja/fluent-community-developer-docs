@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/snippets-settings`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateSnippetsSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:30`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:34`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 <OAOperation operationId="saveSnippetsSettings" specUrl="/openapi/public/settings/save-snippets-settings.json" />
