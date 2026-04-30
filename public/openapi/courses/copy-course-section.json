@@ -96,7 +96,7 @@
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "You do not have permission to access this course",
             "content": {
               "application/json": {
                 "schema": {
@@ -108,7 +108,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "You do not have permission to access this course"
                 }
               }
             }

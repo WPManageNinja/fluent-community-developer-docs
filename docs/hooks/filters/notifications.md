@@ -11,7 +11,7 @@ description: Notifications filter hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/default_course_email_notification`](#fluent_communitydefault_course_email_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:178` |
+| [`fluent_community/default_course_email_notification`](#fluent_communitydefault_course_email_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:199` |
 | [`fluent_community/digest_email_body`](#fluent_communitydigest_email_body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:118` |
 | [`fluent_community/digest_email_subject`](#fluent_communitydigest_email_subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:148` |
 | [`fluent_community/digest_notification/email_sections`](#fluent_communitydigest_notificationemail_sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:105` |
@@ -31,7 +31,7 @@ description: Notifications filter hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:178` | `[ 'subject' => '{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'message' => 'Hi {&#8203;{user.display_name}&#8203;},' . PHP_EOL . PHP_EOL . '{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.' . PHP_EOL . 'To complete this section, please follow this link:' . PHP_EOL . '{&#8203;{section.url}&#8203;},' . PHP_EOL . PHP_EOL . 'Thanks,' . PHP_EOL .'{&#8203;{community.name_with_url}&#8203;}' ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:199` | `[ 'subject' => '{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'message' => 'Hi {&#8203;{user.display_name}&#8203;},' . PHP_EOL . PHP_EOL . '{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.' . PHP_EOL . 'To complete this section, please follow this link:' . PHP_EOL . '{&#8203;{section.url}&#8203;},' . PHP_EOL . PHP_EOL . 'Thanks,' . PHP_EOL .'{&#8203;{community.name_with_url}&#8203;}' ]` (array) |
 
 ### Example
 

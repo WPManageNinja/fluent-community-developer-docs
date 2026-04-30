@@ -12,24 +12,24 @@ description: Feeds action hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/check_rate_limit/create_post`](#fluent_communitycheck_rate_limitcreate_post) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:359` |
-| [`fluent_community/comment_added_{feed}`](#fluent_communitycomment_added_feed) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:198` |
-| [`fluent_community/comment_deleted_{feed}`](#fluent_communitycomment_deleted_feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:576` |
-| [`fluent_community/comment_updated_{feed}`](#fluent_communitycomment_updated_feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:253` |
+| [`fluent_community/comment_added_{feed}`](#fluent_communitycomment_added_feed) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:204` |
+| [`fluent_community/comment_deleted_{feed}`](#fluent_communitycomment_deleted_feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:579` |
+| [`fluent_community/comment_updated_{feed}`](#fluent_communitycomment_updated_feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:256` |
 | [`fluent_community/feed_mentioned`](#fluent_communityfeed_mentioned) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:466` |
 | [`fluent_community/feed_mentioned_user_ids`](#fluent_communityfeed_mentioned_user_ids) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:598` |
-| [`fluent_community/feed/before_deleted`](#fluent_communityfeedbefore_deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:886` |
+| [`fluent_community/feed/before_deleted`](#fluent_communityfeedbefore_deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:901` |
 | [`fluent_community/feed/cast_survey_vote`](#fluent_communityfeedcast_survey_vote) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:374` |
 | [`fluent_community/feed/created`](#fluent_communityfeedcreated) | Core + <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:92` |
-| [`fluent_community/feed/deleted`](#fluent_communityfeeddeleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:889` |
+| [`fluent_community/feed/deleted`](#fluent_communityfeeddeleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:904` |
 | [`fluent_community/feed/just_created_type_{formContentType}`](#fluent_communityfeedjust_created_type_formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:470` |
 | [`fluent_community/feed/media_deleted`](#fluent_communityfeedmedia_deleted) | Core + <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:31` |
 | [`fluent_community/feed/new_feed_{feed}`](#fluent_communityfeednew_feed_feed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:504` |
-| [`fluent_community/feed/react_added`](#fluent_communityfeedreact_added) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:537` |
-| [`fluent_community/feed/react_removed`](#fluent_communityfeedreact_removed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:507` |
+| [`fluent_community/feed/react_added`](#fluent_communityfeedreact_added) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:540` |
+| [`fluent_community/feed/react_removed`](#fluent_communityfeedreact_removed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:510` |
 | [`fluent_community/feed/rescheduled`](#fluent_communityfeedrescheduled) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:131` |
 | [`fluent_community/feed/scheduled`](#fluent_communityfeedscheduled) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:492` |
 | [`fluent_community/feed/scheduling_everyone_tag`](#fluent_communityfeedscheduling_everyone_tag) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:644` |
-| [`fluent_community/feed/updated`](#fluent_communityfeedupdated) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:700` |
+| [`fluent_community/feed/updated`](#fluent_communityfeedupdated) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:711` |
 | [`fluent_community/feed/updating_content_type_old_{existingContentType}`](#fluent_communityfeedupdating_content_type_old_existingContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:600` |
 | [`fluent_community/feeds_query`](#fluent_communityfeeds_query) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:158` |
 | [`fluent_community/product_integration_feed_created`](#fluent_communityproduct_integration_feed_created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:83` |
@@ -37,7 +37,7 @@ description: Feeds action hooks for FluentCommunity.
 | [`fluent_community/profile_feed/created`](#fluent_communityprofile_feedcreated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:519` |
 | [`fluent_community/space_feed/created`](#fluent_communityspace_feedcreated) | Core + <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:95` |
 | [`fluent_community/space_feed/email_notify_sub_query`](#fluent_communityspace_feedemail_notify_sub_query) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:65` |
-| [`fluent_community/space_feed/updated`](#fluent_communityspace_feedupdated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:702` |
+| [`fluent_community/space_feed/updated`](#fluent_communityspace_feedupdated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:713` |
 
 <a id="fluent_communitycheck_rate_limitcreate_post"></a>
 
@@ -74,8 +74,8 @@ add_action('fluent_community/check_rate_limit/create_post', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:198` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:167` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:204` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:170` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -97,7 +97,7 @@ add_action('fluent_community/comment_added_{feed}', function ($content, $feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:576` | `$commentId` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:579` | `$commentId` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -119,7 +119,7 @@ add_action('fluent_community/comment_deleted_{feed}', function ($commentId, $fee
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:253` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:256` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -186,7 +186,7 @@ add_action('fluent_community/feed_mentioned_user_ids', function ($feed, $mention
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:886` | `$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:901` | `$feed` (Feed|mixed) |
 
 ### Example
 
@@ -231,7 +231,7 @@ add_action('fluent_community/feed/cast_survey_vote', function ($newSyncIndexes, 
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:92` | `$feed` (Feed|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:201` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:207` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:76` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:514` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:490` | `$feed` (Feed|mixed) |
@@ -256,7 +256,7 @@ add_action('fluent_community/feed/created', function ($feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:889` | `$feed_id` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:904` | `$feed_id` (Feed|mixed) |
 
 ### Example
 
@@ -304,7 +304,7 @@ add_action('fluent_community/feed/just_created_type_{formContentType}', function
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:148` | `$documents` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:164` | `$deletedDocuments` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:203` | `$media` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:902` | `$feed->media` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:917` | `$feed->media` (Feed|mixed) |
 
 ### Example
 
@@ -348,7 +348,7 @@ add_action('fluent_community/feed/new_feed_{feed}', function ($feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:537` | `$react` (mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:540` | `$react` (mixed)<br>`$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/ReactionController.php:125` | `$react` (mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
@@ -371,7 +371,7 @@ add_action('fluent_community/feed/react_added', function ($react, $feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:507` | `$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:510` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/ReactionController.php:96` | `$feed` (Feed|mixed) |
 
 ### Example
@@ -460,8 +460,8 @@ add_action('fluent_community/feed/scheduling_everyone_tag', function ($feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:700` | `$existingFeed` (Feed|mixed)<br>`$dirty` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:761` | `$feed` (Feed|mixed)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:711` | `$existingFeed` (Feed|mixed)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:772` | `$feed` (Feed|mixed)<br>`$dirty` (mixed) |
 
 ### Example
 
@@ -595,7 +595,7 @@ add_action('fluent_community/profile_feed/created', function ($feed) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:95` | `$feed` (Feed|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:203` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:209` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:79` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:517` | `$feed` (Feed|mixed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:493` | `$feed` (Feed|mixed) |
@@ -643,7 +643,7 @@ add_action('fluent_community/space_feed/email_notify_sub_query', function ($quer
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:702` | `$existingFeed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:713` | `$existingFeed` (Feed|mixed) |
 
 ### Example
 

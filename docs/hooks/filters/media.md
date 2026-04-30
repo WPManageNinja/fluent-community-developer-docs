@@ -16,10 +16,10 @@ description: Media filter hooks for FluentCommunity.
 | [`fluent_community/media_public_url_{this}`](#fluent_communitymedia_public_url_this) | Core | 1 | `fluent-community/app/Models/Media.php:117` |
 | [`fluent_community/media_signed_public_url_{this}`](#fluent_communitymedia_signed_public_url_this) | Core | 1 | `fluent-community/app/Models/Media.php:122` |
 | [`fluent_community/media_upload_data`](#fluent_communitymedia_upload_data) | Core + <span class="pro-badge">PRO</span> | 4 | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:253` |
-| [`fluent_community/media_upload_max_file_size`](#fluent_communitymedia_upload_max_file_size) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:939` |
-| [`fluent_community/media_upload_max_file_unit`](#fluent_communitymedia_upload_max_file_unit) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:938` |
-| [`fluent_community/media_upload_max_width_{context}`](#fluent_communitymedia_upload_max_width_context) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:978` |
-| [`fluent_community/media_upload_resize`](#fluent_communitymedia_upload_resize) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:975` |
+| [`fluent_community/media_upload_max_file_size`](#fluent_communitymedia_upload_max_file_size) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:969` |
+| [`fluent_community/media_upload_max_file_unit`](#fluent_communitymedia_upload_max_file_unit) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:968` |
+| [`fluent_community/media_upload_max_width_{context}`](#fluent_communitymedia_upload_max_width_context) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1016` |
+| [`fluent_community/media_upload_resize`](#fluent_communitymedia_upload_resize) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1013` |
 | [`fluent_community/rate_limit/media_upload_per_minute`](#fluent_communityrate_limitmedia_upload_per_minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:67` |
 | [`fluent_community/upload_folder_name`](#fluent_communityupload_folder_name) | Core | 2 | `fluent-community/app/Services/Libs/FileSystem.php:26` |
 | [`fluent_community/video_upload_max_file_size`](#fluent_communityvideo_upload_max_file_size) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:55` |
@@ -132,7 +132,7 @@ add_filter('fluent_community/media_signed_public_url_{this}', function ($media_u
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:253` | `$mediaData` (mixed)<br>`$file` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1073` | `$mediaData` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1109` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:182` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:93` | `$mediaData` (mixed)<br>`$file` (mixed) |
 
@@ -157,7 +157,7 @@ add_filter('fluent_community/media_upload_data', function ($mediaData, $file) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:939` | `100` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:969` | `100` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:40` | `$options['max_size']` (array) |
 
 ### Example
@@ -181,7 +181,7 @@ add_filter('fluent_community/media_upload_max_file_size', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:938` | `'MB'` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:968` | `'MB'` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:39` | `$options['size_unit']` (array) |
 
 ### Example
@@ -205,7 +205,7 @@ add_filter('fluent_community/media_upload_max_file_unit', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:978` | `$maxWidth` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1016` | `$maxWidth` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:87` | `$maxWidth` (mixed)<br>`$file` (mixed) |
 
 ### Example
@@ -229,7 +229,7 @@ add_filter('fluent_community/media_upload_max_width_{context}', function ($maxWi
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:975` | `$willResize` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1013` | `$willResize` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:84` | `$willResize` (mixed)<br>`$file` (mixed) |
 
 ### Example

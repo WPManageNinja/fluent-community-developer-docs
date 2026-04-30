@@ -57,6 +57,9 @@
                   "new_space_id": {
                     "type": "string"
                   },
+                  "move_to_profile": {
+                    "type": "string"
+                  },
                   "status": {
                     "type": "string"
                   },
@@ -103,6 +106,7 @@
               },
               "example": {
                 "new_space_id": "",
+                "move_to_profile": "",
                 "status": "",
                 "send_announcement_email": "",
                 "content_type": "",

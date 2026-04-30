@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/unfollow`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@unfollow`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:114`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:126`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 <OAOperation operationId="unfollowProfileUser" specUrl="/openapi/public/profile/unfollow-profile-user.json" />

@@ -120,8 +120,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "Webhook not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -133,7 +133,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Webhook not found."
                 }
               }
             }

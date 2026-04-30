@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileBlockedUsers",
         "summary": "GET List Profile Blocked Users",
-        "description": "List Profile Blocked Users for the FluentCommunity Profile API.\n\nController: `FollowController@getBlockedUsers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:112`",
+        "description": "List Profile Blocked Users for the FluentCommunity Profile API.\n\nController: `FollowController@getBlockedUsers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:124`",
         "tags": [
           "Profile"
         ],

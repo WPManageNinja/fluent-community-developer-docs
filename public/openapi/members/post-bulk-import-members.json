@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/fluent-player/video-content/{media_id}": {
-      "get": {
-        "operationId": "getVideoContent",
-        "summary": "GET Get Video Content",
-        "description": "Get Video Content for the FluentCommunity Media API.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:12`",
+    "/spaces/{spaceSlug}/members/bulk-import": {
+      "post": {
+        "operationId": "postBulkImportMembers",
+        "summary": "POST Post Bulk Import Members",
+        "description": "Post Bulk Import Members for the FluentCommunity Members API.\n\nController: `BulkMembersController@bulkImportMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:116`",
         "tags": [
-          "Media"
+          "Members"
         ],
         "security": [
           {
@@ -38,28 +38,10 @@
         ],
         "parameters": [
           {
-            "name": "media_id",
+            "name": "spaceSlug",
             "in": "path",
             "required": true,
-            "description": "Media ID extracted from the URL path.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "player_instance_key",
-            "in": "query",
-            "required": false,
-            "description": "Player Instance Key read via `$request->get()` in getFluentPlayerContent().",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "share_url",
-            "in": "query",
-            "required": false,
-            "description": "Share URL read via `$request->get()` in getFluentPlayerContent().",
+            "description": "SpaceSlug extracted from the URL path.",
             "schema": {
               "type": "string"
             }
@@ -78,8 +60,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "403": {
+            "description": "Permission denied",
             "content": {
               "application/json": {
                 "schema": {
@@ -91,7 +73,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Permission denied"
                 }
               }
             }
