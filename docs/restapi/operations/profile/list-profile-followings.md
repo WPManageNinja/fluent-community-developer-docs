@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/followings`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@getFollowings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:111`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:123`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 <OAOperation operationId="listProfileFollowings" specUrl="/openapi/public/profile/list-profile-followings.json" />

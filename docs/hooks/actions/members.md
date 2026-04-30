@@ -17,7 +17,7 @@ description: Members action hooks for FluentCommunity.
 | [`fluent_community/before_unfollowing_user`](#fluent_communitybefore_unfollowing_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` |
 | [`fluent_community/blocked_user`](#fluent_communityblocked_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
 | [`fluent_community/followed_user`](#fluent_communityfollowed_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` |
-| [`fluent_community/members_query_ref`](#fluent_communitymembers_query_ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:110` |
+| [`fluent_community/members_query_ref`](#fluent_communitymembers_query_ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:112` |
 | [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:483` |
 | [`fluent_community/profile_deactivated`](#fluent_communityprofile_deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:156` |
 | [`fluent_community/update_profile_link_providers`](#fluent_communityupdate_profile_link_providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:537` |
@@ -172,7 +172,7 @@ add_action('fluent_community/followed_user', function ($follow, $xProfile) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:110` | `[&$members, $request->all()]` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:112` | `[&$members, $request->all()]` (array) |
 
 ### Example
 

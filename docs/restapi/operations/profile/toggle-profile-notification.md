@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/notification`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@toggleNotification`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:118`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:130`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 <OAOperation operationId="toggleProfileNotification" specUrl="/openapi/public/profile/toggle-profile-notification.json" />

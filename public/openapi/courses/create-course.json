@@ -152,6 +152,10 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
                     "course": {
                       "type": "object",
                       "properties": {
@@ -165,6 +169,7 @@
                   "additionalProperties": false
                 },
                 "example": {
+                  "message": "Course has been created successfully",
                   "course": {
                     "id": 0
                   }

@@ -82,6 +82,9 @@
     "/openapi/public/courses/move-course-lesson.json",
     "/openapi/public/courses/patch-course-lesson.json",
     "/openapi/public/courses/patch-course-section.json",
+    "/openapi/public/courses/post-bulk-add-students.json",
+    "/openapi/public/courses/post-bulk-import-students.json",
+    "/openapi/public/courses/post-resolve-crm-tag-course.json",
     "/openapi/public/courses/reindex-course-lessons.json",
     "/openapi/public/courses/reindex-course-sections.json",
     "/openapi/public/courses/remove-course-student.json",
@@ -135,6 +138,9 @@
     "/openapi/public/members/add-space-member.json",
     "/openapi/public/members/list-members.json",
     "/openapi/public/members/list-space-members.json",
+    "/openapi/public/members/post-bulk-add-members.json",
+    "/openapi/public/members/post-bulk-import-members.json",
+    "/openapi/public/members/post-resolve-crm-tag-space.json",
     "/openapi/public/members/remove-space-member.json",
     "/openapi/public/members/update-member.json",
     "/openapi/public/migrations/get-buddypress-migration-config.json",
@@ -232,5 +238,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-04-16T06:03:19.763Z"
+  "generated": "2026-04-30T13:31:06.370Z"
 }

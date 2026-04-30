@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/fluent-player/video-content/{media_id}": {
-      "get": {
-        "operationId": "getVideoContent",
-        "summary": "GET Get Video Content",
-        "description": "Get Video Content for the FluentCommunity Media API.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:12`",
+    "/admin/courses/{course_id}/students/bulk-add": {
+      "post": {
+        "operationId": "postBulkAddStudents",
+        "summary": "POST Post Bulk Add Students",
+        "description": "Post Bulk Add Students for the FluentCommunity Courses API.\n\nController: `BulkMembersController@bulkAddStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:109`",
         "tags": [
-          "Media"
+          "Courses"
         ],
         "security": [
           {
@@ -38,33 +38,36 @@
         ],
         "parameters": [
           {
-            "name": "media_id",
+            "name": "course_id",
             "in": "path",
             "required": true,
-            "description": "Media ID extracted from the URL path.",
+            "description": "Course ID extracted from the URL path.",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "player_instance_key",
-            "in": "query",
-            "required": false,
-            "description": "Player Instance Key read via `$request->get()` in getFluentPlayerContent().",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "share_url",
-            "in": "query",
-            "required": false,
-            "description": "Share URL read via `$request->get()` in getFluentPlayerContent().",
-            "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "example": {
+                "user_ids": []
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -78,8 +81,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "403": {
+            "description": "Permission denied",
             "content": {
               "application/json": {
                 "schema": {
@@ -91,7 +94,25 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Permission denied"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too many user_ids in one request. Maximum 500 per chunk.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Too many user_ids in one request. Maximum 500 per chunk."
                 }
               }
             }

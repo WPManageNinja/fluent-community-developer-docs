@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/fluent-player/video-content/{media_id}": {
-      "get": {
-        "operationId": "getVideoContent",
-        "summary": "GET Get Video Content",
-        "description": "Get Video Content for the FluentCommunity Media API.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:12`",
+    "/admin/courses/{course_id}/students/resolve-crm-tag": {
+      "post": {
+        "operationId": "postResolveCrmTagCourse",
+        "summary": "POST Post Resolve CRM Tag Course",
+        "description": "Post Resolve CRM Tag Course for the FluentCommunity Courses API.\n\nController: `BulkMembersController@resolveCrmTagCourse`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:111`",
         "tags": [
-          "Media"
+          "Courses"
         ],
         "security": [
           {
@@ -38,30 +38,12 @@
         ],
         "parameters": [
           {
-            "name": "media_id",
+            "name": "course_id",
             "in": "path",
             "required": true,
-            "description": "Media ID extracted from the URL path.",
+            "description": "Course ID extracted from the URL path.",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "player_instance_key",
-            "in": "query",
-            "required": false,
-            "description": "Player Instance Key read via `$request->get()` in getFluentPlayerContent().",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "share_url",
-            "in": "query",
-            "required": false,
-            "description": "Share URL read via `$request->get()` in getFluentPlayerContent().",
-            "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -78,8 +60,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "400": {
+            "description": "FluentCRM is not active",
             "content": {
               "application/json": {
                 "schema": {
@@ -91,7 +73,25 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "FluentCRM is not active"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Permission denied"
                 }
               }
             }

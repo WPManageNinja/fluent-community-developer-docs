@@ -12,9 +12,9 @@ description: Admin action hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/content_moderation/created`](#fluent_communitycontent_moderationcreated) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:76` |
-| [`fluent_community/report/{status}`](#fluent_communityreportstatus) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:208` |
-| [`fluent_community/report/after_delete`](#fluent_communityreportafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:233` |
-| [`fluent_community/report/before_delete`](#fluent_communityreportbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:230` |
+| [`fluent_community/report/{status}`](#fluent_communityreportstatus) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:214` |
+| [`fluent_community/report/after_delete`](#fluent_communityreportafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:239` |
+| [`fluent_community/report/before_delete`](#fluent_communityreportbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:236` |
 
 <a id="fluent_communitycontent_moderationcreated"></a>
 
@@ -55,7 +55,7 @@ add_action('fluent_community/content_moderation/created', function ($report, $fe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:208` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:214` | `$report` (mixed) |
 
 ### Example
 
@@ -77,7 +77,7 @@ add_action('fluent_community/report/{status}', function ($report) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:233` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:239` | `$report` (mixed) |
 
 ### Example
 
@@ -99,7 +99,7 @@ add_action('fluent_community/report/after_delete', function ($report) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:230` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:236` | `$report` (mixed) |
 
 ### Example
 
