@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveEmailSettings",
         "summary": "POST Save Email Settings",
-        "description": "Save Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
+        "description": "Save Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:101`",
         "tags": [
           "Admin"
         ],

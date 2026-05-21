@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/options/menu-items`
 - **Edition:** Core
 - **Controller:** `OptionController@getMenuItems`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:146`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:147`
 - **Controller source:** `fluent-community/app/Http/Controllers/OptionController.php`
 
 <OAOperation operationId="getMenuItems" specUrl="/openapi/public/options/get-menu-items.json" />

@@ -25,9 +25,9 @@
   "paths": {
     "/admin/courses/{course_id}/comments": {
       "get": {
-        "operationId": "getGetCourseComments",
-        "summary": "GET Get Get Course Comments",
-        "description": "Get Get Course Comments for the FluentCommunity Comments API.\n\nController: `CourseAdminController@getCourseComments`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:24`",
+        "operationId": "getCourseComments",
+        "summary": "GET Get Course Comments",
+        "description": "Get Course Comments for the FluentCommunity Comments API.\n\nController: `CourseAdminController@getCourseComments`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:26`",
         "tags": [
           "Comments"
         ],

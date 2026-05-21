@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/activities`
 - **Edition:** Core
 - **Controller:** `ActivityController@getActivities`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:135`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:136`
 - **Controller source:** `fluent-community/app/Http/Controllers/ActivityController.php`
 
 <OAOperation operationId="listActivities" specUrl="/openapi/public/activity/list-activities.json" />

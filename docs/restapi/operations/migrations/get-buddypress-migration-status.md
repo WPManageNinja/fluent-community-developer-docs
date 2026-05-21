@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/migrations/buddypress/status`
 - **Edition:** Core
 - **Controller:** `BPMigrationController@getPollingStatus`
-- **Route source:** `fluent-community/Modules/Migrations/Http/migration_api.php:14`
+- **Route source:** `fluent-community/Modules/Migrations/Http/migration_api.php:16`
 - **Controller source:** `fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php`
 
 <OAOperation operationId="getBuddypressMigrationStatus" specUrl="/openapi/public/migrations/get-buddypress-migration-status.json" />

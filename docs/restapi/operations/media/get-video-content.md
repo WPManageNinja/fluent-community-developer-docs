@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/fluent-player/video-content/{media_id}`
 - **Edition:** Core
 - **Controller:** `MediaController@getFluentPlayerContent`
-- **Route source:** `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:12`
+- **Route source:** `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:14`
 - **Controller source:** `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php`
 
 <OAOperation operationId="getVideoContent" specUrl="/openapi/public/media/get-video-content.json" />

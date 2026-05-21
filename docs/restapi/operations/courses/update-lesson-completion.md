@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/courses/{course_id}/lessons/{lesson_id}/completion`
 - **Edition:** Core
 - **Controller:** `CourseController@updateCompletionLesson`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:13`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:15`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseController.php`
 
 <OAOperation operationId="updateLessonCompletion" specUrl="/openapi/public/courses/update-lesson-completion.json" />

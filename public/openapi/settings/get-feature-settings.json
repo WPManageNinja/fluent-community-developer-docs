@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeatureSettings",
         "summary": "GET Get Feature Settings",
-        "description": "Get Feature Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:150`",
+        "description": "Get Feature Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:151`",
         "tags": [
           "Settings"
         ],

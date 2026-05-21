@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUnreadNotifications",
         "summary": "GET List Unread Notifications",
-        "description": "List Unread Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:128`",
+        "description": "List Unread Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:129`",
         "tags": [
           "Notifications"
         ],

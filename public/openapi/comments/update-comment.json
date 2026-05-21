@@ -570,7 +570,7 @@
             }
           },
           "422": {
-            "description": "Comment text is too long",
+            "description": "The comment is too long. Please keep it under %s characters.",
             "content": {
               "application/json": {
                 "schema": {
@@ -582,7 +582,7 @@
                   }
                 },
                 "example": {
-                  "message": "Comment text is too long"
+                  "message": "The comment is too long. Please keep it under %s characters."
                 }
               }
             }

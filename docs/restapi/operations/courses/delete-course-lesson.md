@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/lessons/{lesson_id}`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@deleteLesson`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:53`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:55`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 <OAOperation operationId="deleteCourseLesson" specUrl="/openapi/public/courses/delete-course-lesson.json" />

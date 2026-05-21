@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOnboardingSettings",
         "summary": "GET Get Onboarding Settings",
-        "description": "Get Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:110`",
+        "description": "Get Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:111`",
         "tags": [
           "Admin"
         ],

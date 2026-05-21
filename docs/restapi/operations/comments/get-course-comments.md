@@ -1,6 +1,6 @@
 ---
-title: Get Get Course Comments
-description: "Get Get Course Comments for the FluentCommunity Comments API."
+title: Get Course Comments
+description: "Get Course Comments for the FluentCommunity Comments API."
 outline: false
 aside: false
 ---
@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/comments`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@getCourseComments`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:24`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:26`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
-<OAOperation operationId="getGetCourseComments" specUrl="/openapi/public/comments/get-get-course-comments.json" />
+<OAOperation operationId="getCourseComments" specUrl="/openapi/public/comments/get-course-comments.json" />

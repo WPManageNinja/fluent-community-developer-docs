@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/cart/products/create`
 - **Edition:** Core
 - **Controller:** `PaywallController@createProduct`
-- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:12`
+- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:14`
 - **Controller source:** `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php`
 
 <OAOperation operationId="createCartProduct" specUrl="/openapi/public/cart/create-cart-product.json" />

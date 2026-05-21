@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getBuddypressMigrationStatus",
         "summary": "GET Get Buddypress Migration Status",
-        "description": "Get Buddypress Migration Status for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@getPollingStatus`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:14`",
+        "description": "Get Buddypress Migration Status for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@getPollingStatus`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:16`",
         "tags": [
           "Migrations"
         ],

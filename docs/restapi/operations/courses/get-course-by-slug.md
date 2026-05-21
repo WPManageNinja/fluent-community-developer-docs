@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/courses/{course_slug}/by-slug`
 - **Edition:** Core
 - **Controller:** `CourseController@getCourseBySlug`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:10`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:12`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseController.php`
 
 <OAOperation operationId="getCourseBySlug" specUrl="/openapi/public/courses/get-course-by-slug.json" />

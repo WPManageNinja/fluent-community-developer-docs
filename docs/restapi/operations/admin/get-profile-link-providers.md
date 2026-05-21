@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/profile-link-providers`
 - **Edition:** Core
 - **Controller:** `AdminController@getProfileLinkProviders`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:114`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:115`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="getProfileLinkProviders" specUrl="/openapi/public/admin/get-profile-link-providers.json" />

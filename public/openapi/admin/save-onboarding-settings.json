@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveOnboardingSettings",
         "summary": "POST Save Onboarding Settings",
-        "description": "Save Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:111`",
+        "description": "Save Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:112`",
         "tags": [
           "Admin"
         ],

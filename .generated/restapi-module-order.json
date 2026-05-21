@@ -61,9 +61,9 @@
     "update-comment",
     "patch-comment",
     "delete-comment",
-    "get-get-comments",
+    "get-comments",
     "get-comment",
-    "get-get-course-comments"
+    "get-course-comments"
   ],
   "reactions": [
     "toggle-feed-reaction",
@@ -88,6 +88,7 @@
     "update-profile",
     "patch-profile",
     "list-profile-spaces",
+    "get-courses",
     "list-profile-memberships",
     "get-notification-preferences",
     "save-notification-preferences",
@@ -103,7 +104,7 @@
   ],
   "media": [
     "post-handle-media-upload",
-    "delete-delete-media-preview",
+    "delete-media-preview",
     "upload-video",
     "get-video-content"
   ],
@@ -155,9 +156,9 @@
     "deactivate-license-key",
     "get-messaging-settings",
     "save-messaging-settings",
-    "get-get-custom-profile-fields",
+    "get-custom-profile-fields",
     "post-save-custom-profile-fields",
-    "get-get-exportable-students",
+    "get-exportable-students",
     "list-topics",
     "save-topics",
     "save-topic-config",
@@ -220,7 +221,7 @@
     "get-lesson-quiz-result",
     "list-course-quiz-results",
     "update-course-quiz-result",
-    "get-get-exportable-quiz-results"
+    "get-exportable-quiz-results"
   ],
   "migrations": [
     "list-available-migrations",

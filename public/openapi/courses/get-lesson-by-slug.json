@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLessonBySlug",
         "summary": "GET Get Lesson By Slug",
-        "description": "Get Lesson By Slug for the FluentCommunity Courses API.\n\nController: `CourseController@getLessonBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:11`",
+        "description": "Get Lesson By Slug for the FluentCommunity Courses API.\n\nController: `CourseController@getLessonBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:13`",
         "tags": [
           "Courses"
         ],

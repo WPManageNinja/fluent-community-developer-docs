@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createCourse",
         "summary": "POST Create Course",
-        "description": "Create Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:19`",
+        "description": "Create Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:21`",
         "tags": [
           "Courses"
         ],
@@ -89,6 +89,9 @@
                       "show_instructor_students_count": {
                         "type": "string"
                       },
+                      "sequential_lesson_order": {
+                        "type": "string"
+                      },
                       "custom_lock_screen": {
                         "type": "string"
                       },
@@ -134,6 +137,7 @@
                   "course_details": "",
                   "hide_instructor_view": "",
                   "show_instructor_students_count": "",
+                  "sequential_lesson_order": "",
                   "custom_lock_screen": "",
                   "onboard_redirect_url": "",
                   "public_lesson_view": ""

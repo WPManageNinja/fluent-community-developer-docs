@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveAdminWelcomeBanner",
         "summary": "POST Save Admin Welcome Banner",
-        "description": "Save Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@updateWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:106`",
+        "description": "Save Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@updateWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:107`",
         "tags": [
           "Admin"
         ],

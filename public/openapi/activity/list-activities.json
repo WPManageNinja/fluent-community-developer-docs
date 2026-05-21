@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listActivities",
         "summary": "GET List Activities",
-        "description": "List Activities for the FluentCommunity Activity API.\n\nController: `ActivityController@getActivities`\nRoute source: `fluent-community/app/Http/Routes/api.php:135`",
+        "description": "List Activities for the FluentCommunity Activity API.\n\nController: `ActivityController@getActivities`\nRoute source: `fluent-community/app/Http/Routes/api.php:136`",
         "tags": [
           "Activity"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/courses/{course_id}/enroll`
 - **Edition:** Core
 - **Controller:** `CourseController@enrollCourse`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:12`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:14`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseController.php`
 
 <OAOperation operationId="enrollCourse" specUrl="/openapi/public/courses/enroll-course.json" />

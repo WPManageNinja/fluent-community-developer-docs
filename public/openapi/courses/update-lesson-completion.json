@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateLessonCompletion",
         "summary": "PUT Update Lesson Completion",
-        "description": "Update Lesson Completion for the FluentCommunity Courses API.\n\nController: `CourseController@updateCompletionLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:13`",
+        "description": "Update Lesson Completion for the FluentCommunity Courses API.\n\nController: `CourseController@updateCompletionLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:15`",
         "tags": [
           "Courses"
         ],

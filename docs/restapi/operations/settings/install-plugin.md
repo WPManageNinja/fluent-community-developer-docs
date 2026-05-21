@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/install_plugin`
 - **Edition:** Core
 - **Controller:** `SettingController@installPlugin`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:154`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:155`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="installPlugin" specUrl="/openapi/public/settings/install-plugin.json" />

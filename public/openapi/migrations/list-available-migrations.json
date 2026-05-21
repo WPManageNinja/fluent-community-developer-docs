@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAvailableMigrations",
         "summary": "GET List Available Migrations",
-        "description": "List Available Migrations for the FluentCommunity Migrations API.\n\nController: `MigrationController@getAvailableMigrations`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:11`",
+        "description": "List Available Migrations for the FluentCommunity Migrations API.\n\nController: `MigrationController@getAvailableMigrations`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:13`",
         "tags": [
           "Migrations"
         ],

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCustomizationSettings",
         "summary": "POST Save Customization Settings",
-        "description": "Save Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updateCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:156`",
+        "description": "Save Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updateCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:157`",
         "tags": [
           "Settings"
         ],

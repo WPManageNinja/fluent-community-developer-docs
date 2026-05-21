@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/menu-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@getMenuSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:152`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:153`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="getMenuSettings" specUrl="/openapi/public/settings/get-menu-settings.json" />

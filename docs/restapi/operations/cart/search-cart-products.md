@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/cart/products/search`
 - **Edition:** Core
 - **Controller:** `PaywallController@searchProduct`
-- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:11`
+- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:13`
 - **Controller source:** `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php`
 
 <OAOperation operationId="searchCartProducts" specUrl="/openapi/public/cart/search-cart-products.json" />

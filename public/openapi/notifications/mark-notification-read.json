@@ -27,7 +27,7 @@
       "post": {
         "operationId": "markNotificationRead",
         "summary": "POST Mark Notification Read",
-        "description": "Mark Notification Read for the FluentCommunity Notifications API.\n\nController: `NotificationsController@markAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:129`",
+        "description": "Mark Notification Read for the FluentCommunity Notifications API.\n\nController: `NotificationsController@markAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:130`",
         "tags": [
           "Notifications"
         ],
