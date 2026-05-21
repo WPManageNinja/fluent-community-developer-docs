@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/comments/{id}`
 - **Edition:** Core
 - **Controller:** `CommentsController@show`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:140`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:141`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 <OAOperation operationId="getComment" specUrl="/openapi/public/comments/get-comment.json" />

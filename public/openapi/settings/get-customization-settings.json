@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCustomizationSettings",
         "summary": "GET Get Customization Settings",
-        "description": "Get Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
+        "description": "Get Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:156`",
         "tags": [
           "Settings"
         ],

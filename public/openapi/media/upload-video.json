@@ -27,7 +27,7 @@
       "post": {
         "operationId": "uploadVideo",
         "summary": "POST Upload Video",
-        "description": "Upload Video for the FluentCommunity Media API.\n\nController: `MediaController@uploadVideo`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:11`",
+        "description": "Upload Video for the FluentCommunity Media API.\n\nController: `MediaController@uploadVideo`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:13`",
         "tags": [
           "Media"
         ],

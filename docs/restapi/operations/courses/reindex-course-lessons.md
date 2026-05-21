@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/sections/{section_id}/indexes`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@resetLessonIndexes`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:44`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:46`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 <OAOperation operationId="reindexCourseLessons" specUrl="/openapi/public/courses/reindex-course-lessons.json" />

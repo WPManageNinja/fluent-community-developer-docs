@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/notifications`
 - **Edition:** Core
 - **Controller:** `NotificationsController@getNotifications`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:127`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:128`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 <OAOperation operationId="listNotifications" specUrl="/openapi/public/notifications/list-notifications.json" />

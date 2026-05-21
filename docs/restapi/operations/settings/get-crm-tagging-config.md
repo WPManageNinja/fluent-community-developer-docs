@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/crm-tagging-config`
 - **Edition:** Core
 - **Controller:** `SettingController@getCrmTaggingConfig`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:161`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:162`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="getCrmTaggingConfig" specUrl="/openapi/public/settings/get-crm-tagging-config.json" />

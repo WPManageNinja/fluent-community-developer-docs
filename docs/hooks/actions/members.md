@@ -12,14 +12,14 @@ description: Members action hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/after_sync_bp_users`](#fluent_communityafter_sync_bp_users) | Core | 2 | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:152` |
-| [`fluent_community/auth/show_invitation_for_user`](#fluent_communityauthshow_invitation_for_user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:264` |
+| [`fluent_community/auth/show_invitation_for_user`](#fluent_communityauthshow_invitation_for_user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:269` |
 | [`fluent_community/before_unblocking_user`](#fluent_communitybefore_unblocking_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:205` |
 | [`fluent_community/before_unfollowing_user`](#fluent_communitybefore_unfollowing_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` |
 | [`fluent_community/blocked_user`](#fluent_communityblocked_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
 | [`fluent_community/followed_user`](#fluent_communityfollowed_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` |
-| [`fluent_community/members_query_ref`](#fluent_communitymembers_query_ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:112` |
-| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:483` |
-| [`fluent_community/profile_deactivated`](#fluent_communityprofile_deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:156` |
+| [`fluent_community/members_query_ref`](#fluent_communitymembers_query_ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:114` |
+| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:538` |
+| [`fluent_community/profile_deactivated`](#fluent_communityprofile_deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:173` |
 | [`fluent_community/update_profile_link_providers`](#fluent_communityupdate_profile_link_providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:537` |
 | [`fluent_community/user_level_upgraded`](#fluent_communityuser_level_upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:110` |
 | [`fluent_community/user_points_updated`](#fluent_communityuser_points_updated) | Core + <span class="pro-badge">PRO</span> | 3 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` |
@@ -60,7 +60,7 @@ add_action('fluent_community/after_sync_bp_users', function ($users) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:264` | `$inviation` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:269` | `$inviation` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 
@@ -172,7 +172,7 @@ add_action('fluent_community/followed_user', function ($follow, $xProfile) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:112` | `[&$members, $request->all()]` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:114` | `[&$members, $request->all()]` (array) |
 
 ### Example
 
@@ -194,7 +194,7 @@ add_action('fluent_community/members_query_ref', function ($all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:483` | `[ 'user_ids' => $sendingUserIds, 'key' => 'notifed_to_other_users', 'notification' => $notification, 'comment' => $comment, 'feed' => $feed ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:538` | `[ 'user_ids' => $sendingUserIds, 'key' => 'notifed_to_other_users', 'notification' => $notification, 'comment' => $comment, 'feed' => $feed ]` (array) |
 
 ### Example
 
@@ -216,7 +216,7 @@ add_action('fluent_community/notification/comment/notifed_to_other_users', funct
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:156` | `$xprofile` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:173` | `$xprofile` (mixed) |
 
 ### Example
 

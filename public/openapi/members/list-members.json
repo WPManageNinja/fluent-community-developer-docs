@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listMembers",
         "summary": "GET List Members",
-        "description": "List Members for the FluentCommunity Members API.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:122`",
+        "description": "List Members for the FluentCommunity Members API.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:123`",
         "tags": [
           "Members"
         ],

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "startBuddypressMigration",
         "summary": "POST Start Buddypress Migration",
-        "description": "Start Buddypress Migration for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@startMigration`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:13`",
+        "description": "Start Buddypress Migration for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@startMigration`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:15`",
         "tags": [
           "Migrations"
         ],

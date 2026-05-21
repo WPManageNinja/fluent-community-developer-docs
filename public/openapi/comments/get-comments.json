@@ -25,9 +25,9 @@
   "paths": {
     "/profile/{username}/comments": {
       "get": {
-        "operationId": "getGetComments",
-        "summary": "GET Get Get Comments",
-        "description": "Get Get Comments for the FluentCommunity Comments API.\n\nController: `ProfileController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:89`",
+        "operationId": "getComments",
+        "summary": "GET Get Comments",
+        "description": "Get Comments for the FluentCommunity Comments API.\n\nController: `ProfileController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:90`",
         "tags": [
           "Comments"
         ],

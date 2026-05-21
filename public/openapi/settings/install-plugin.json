@@ -27,7 +27,7 @@
       "post": {
         "operationId": "installPlugin",
         "summary": "POST Install Plugin",
-        "description": "Install Plugin for the FluentCommunity Settings API.\n\nController: `SettingController@installPlugin`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
+        "description": "Install Plugin for the FluentCommunity Settings API.\n\nController: `SettingController@installPlugin`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
         "tags": [
           "Settings"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/color-config`
 - **Edition:** Core
 - **Controller:** `SettingController@getColorConfig`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:159`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:160`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="getColorConfig" specUrl="/openapi/public/settings/get-color-config.json" />

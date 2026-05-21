@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAppVars",
         "summary": "GET Get App Vars",
-        "description": "Get App Vars for the FluentCommunity Options API.\n\nController: `OptionController@getAppVars`\nRoute source: `fluent-community/app/Http/Routes/api.php:144`",
+        "description": "Get App Vars for the FluentCommunity Options API.\n\nController: `OptionController@getAppVars`\nRoute source: `fluent-community/app/Http/Routes/api.php:145`",
         "tags": [
           "Options"
         ],

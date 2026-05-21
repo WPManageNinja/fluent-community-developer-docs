@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAdminWelcomeBanner",
         "summary": "GET Get Admin Welcome Banner",
-        "description": "Get Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:105`",
+        "description": "Get Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:106`",
         "tags": [
           "Admin"
         ],

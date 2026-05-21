@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/migrations`
 - **Edition:** Core
 - **Controller:** `MigrationController@getAvailableMigrations`
-- **Route source:** `fluent-community/Modules/Migrations/Http/migration_api.php:11`
+- **Route source:** `fluent-community/Modules/Migrations/Http/migration_api.php:13`
 - **Controller source:** `fluent-community/Modules/Migrations/Http/Controllers/MigrationController.php`
 
 <OAOperation operationId="listAvailableMigrations" specUrl="/openapi/public/migrations/list-available-migrations.json" />

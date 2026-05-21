@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createCartProduct",
         "summary": "POST Create Cart Product",
-        "description": "Create Cart Product for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@createProduct`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:12`",
+        "description": "Create Cart Product for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@createProduct`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:14`",
         "tags": [
           "Cart Integration"
         ],

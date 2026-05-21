@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/email-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@saveEmailSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:100`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:101`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="saveEmailSettings" specUrl="/openapi/public/admin/save-email-settings.json" />

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/notifications/unread`
 - **Edition:** Core
 - **Controller:** `NotificationsController@getUnreadNotifications`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:128`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:129`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 <OAOperation operationId="listUnreadNotifications" specUrl="/openapi/public/notifications/list-unread-notifications.json" />

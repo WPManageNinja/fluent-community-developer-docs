@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCrmTaggingConfig",
         "summary": "GET Get CRM Tagging Config",
-        "description": "Get CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `SettingController@getCrmTaggingConfig`\nRoute source: `fluent-community/app/Http/Routes/api.php:161`",
+        "description": "Get CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `SettingController@getCrmTaggingConfig`\nRoute source: `fluent-community/app/Http/Routes/api.php:162`",
         "tags": [
           "Settings"
         ],

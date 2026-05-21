@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveNotificationPreferences",
         "summary": "POST Save Notification Preferences",
-        "description": "Save Notification Preferences for the FluentCommunity Profile API.\n\nController: `ProfileController@saveNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:92`",
+        "description": "Save Notification Preferences for the FluentCommunity Profile API.\n\nController: `ProfileController@saveNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:93`",
         "tags": [
           "Profile"
         ],

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveStorageSettings",
         "summary": "POST Save Storage Settings",
-        "description": "Save Storage Settings for the FluentCommunity Admin API.\n\nController: `AdminController@updateStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:103`",
+        "description": "Save Storage Settings for the FluentCommunity Admin API.\n\nController: `AdminController@updateStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:104`",
         "tags": [
           "Admin"
         ],

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveProfileLinkProviders",
         "summary": "POST Save Profile Link Providers",
-        "description": "Save Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@updateProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:115`",
+        "description": "Save Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@updateProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:116`",
         "tags": [
           "Admin"
         ],

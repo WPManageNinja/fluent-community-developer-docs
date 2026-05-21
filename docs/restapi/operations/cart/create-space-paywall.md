@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/cart/spaces/{spaceId}/paywalls`
 - **Edition:** Core
 - **Controller:** `PaywallController@addPaywall`
-- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:14`
+- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:16`
 - **Controller source:** `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php`
 
 <OAOperation operationId="createSpacePaywall" specUrl="/openapi/public/cart/create-space-paywall.json" />

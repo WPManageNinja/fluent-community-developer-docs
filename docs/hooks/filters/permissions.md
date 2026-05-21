@@ -11,7 +11,7 @@ description: Permissions filter hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/super_admin_capability`](#fluent_communitysuper_admin_capability) | Core | 1 | `fluent-community/app/Services/Helper.php:133` |
+| [`fluent_community/super_admin_capability`](#fluent_communitysuper_admin_capability) | Core | 1 | `fluent-community/app/Services/Helper.php:134` |
 
 <a id="fluent_communitysuper_admin_capability"></a>
 
@@ -26,7 +26,7 @@ description: Permissions filter hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:133` | `'manage_options'` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:134` | `'manage_options'` (mixed) |
 
 ### Example
 

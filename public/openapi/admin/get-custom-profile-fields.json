@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/export/quiz-results": {
+    "/admin/custom-profile-fields": {
       "get": {
-        "operationId": "getGetExportableQuizResults",
-        "summary": "GET Get Get Exportable Quiz Results",
-        "description": "Get Get Exportable Quiz Results for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getExportableQuizResults`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`",
+        "operationId": "getCustomProfileFields",
+        "summary": "GET Get Custom Profile Fields",
+        "description": "Get Custom Profile Fields for the FluentCommunity Admin API.\n\nController: `ProAdminController@getCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:24`",
         "tags": [
-          "Courses"
+          "Admin"
         ],
         "security": [
           {
@@ -45,21 +45,22 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "config": {}
                 }
               }
             }
           },
-          "400": {
-            "description": "Request error.",
+          "422": {
+            "description": "Request validation or permission error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -71,7 +72,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request error."
+                  "message": "Request validation or permission error."
                 }
               }
             }

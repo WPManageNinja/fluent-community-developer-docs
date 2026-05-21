@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/comments/{comment_id}/reactions`
 - **Edition:** Core
 - **Controller:** `ReactionController@getByCommentId`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:139`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:140`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 <OAOperation operationId="listCommentReactions" specUrl="/openapi/public/reactions/list-comment-reactions.json" />

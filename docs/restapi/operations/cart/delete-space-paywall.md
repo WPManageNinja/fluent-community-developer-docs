@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/cart/spaces/{spaceId}/paywalls`
 - **Edition:** Core
 - **Controller:** `PaywallController@removePaywall`
-- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:15`
+- **Route source:** `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:17`
 - **Controller source:** `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php`
 
 <OAOperation operationId="deleteSpacePaywall" specUrl="/openapi/public/cart/delete-space-paywall.json" />

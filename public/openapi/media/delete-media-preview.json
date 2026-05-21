@@ -23,20 +23,30 @@
     }
   ],
   "paths": {
-    "/admin/custom-profile-fields": {
-      "get": {
-        "operationId": "getGetCustomProfileFields",
-        "summary": "GET Get Get Custom Profile Fields",
-        "description": "Get Get Custom Profile Fields for the FluentCommunity Admin API.\n\nController: `ProAdminController@getCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:24`",
+    "/feeds/{feed_id}/media-preview": {
+      "delete": {
+        "operationId": "deleteMediaPreview",
+        "summary": "DELETE Delete Media Preview",
+        "description": "Delete Media Preview for the FluentCommunity Media API.\n\nController: `FeedsController@deleteMediaPreview`\nRoute source: `fluent-community/app/Http/Routes/api.php:61`",
         "tags": [
-          "Admin"
+          "Media"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "feed_id",
+            "in": "path",
+            "required": true,
+            "description": "Feed ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -45,16 +55,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "config": {
-                      "type": "object",
-                      "properties": {},
-                      "additionalProperties": false
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "config": {}
+                  "message": "Media preview image has been removed successfully."
                 }
               }
             }

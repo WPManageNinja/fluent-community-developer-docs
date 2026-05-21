@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/welcome-banner`
 - **Edition:** Core
 - **Controller:** `AdminController@updateWelcomeBannerSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:106`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:107`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="saveAdminWelcomeBanner" specUrl="/openapi/public/admin/save-admin-welcome-banner.json" />

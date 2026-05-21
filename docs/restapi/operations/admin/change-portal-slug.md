@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/on-boardings/change-slug`
 - **Edition:** Core
 - **Controller:** `AdminController@changePortalSlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:112`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:113`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="changePortalSlug" specUrl="/openapi/public/admin/change-portal-slug.json" />

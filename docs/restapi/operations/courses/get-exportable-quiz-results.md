@@ -1,6 +1,6 @@
 ---
-title: Get Get Exportable Quiz Results
-description: "Get Get Exportable Quiz Results for the FluentCommunity Courses API."
+title: Get Exportable Quiz Results
+description: "Get Exportable Quiz Results for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
@@ -12,4 +12,4 @@ aside: false
 - **Controller:** `FluentCommunityPro\App\Modules\Quiz\Http\Controllers\QuizController@getExportableQuizResults`
 - **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`
 
-<OAOperation operationId="getGetExportableQuizResults" specUrl="/openapi/public/courses/get-get-exportable-quiz-results.json" />
+<OAOperation operationId="getExportableQuizResults" specUrl="/openapi/public/courses/get-exportable-quiz-results.json" />

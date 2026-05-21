@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "updateMember",
         "summary": "PATCH Update Member",
-        "description": "Update Member for the FluentCommunity Members API.\n\nController: `MembersController@patchMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:123`",
+        "description": "Update Member for the FluentCommunity Members API.\n\nController: `MembersController@patchMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:124`",
         "tags": [
           "Members"
         ],

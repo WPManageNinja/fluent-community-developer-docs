@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateCourse",
         "summary": "PUT Update Course",
-        "description": "Update Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:21`",
+        "description": "Update Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:23`",
         "tags": [
           "Courses"
         ],
@@ -117,6 +117,9 @@
                       "course_details": {
                         "type": "string"
                       },
+                      "sequential_lesson_order": {
+                        "type": "string"
+                      },
                       "public_lesson_view": {
                         "type": "string"
                       }
@@ -166,6 +169,7 @@
                   "show_paywalls": "",
                   "course_layout": "",
                   "course_details": "",
+                  "sequential_lesson_order": "",
                   "public_lesson_view": ""
                 },
                 "category_ids": [],

@@ -23,39 +23,20 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/export/students": {
+    "/admin/courses/{course_id}/export/quiz-results": {
       "get": {
-        "operationId": "getGetExportableStudents",
-        "summary": "GET Get Get Exportable Students",
-        "description": "Get Get Exportable Students for the FluentCommunity Admin API.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
+        "operationId": "getExportableQuizResults",
+        "summary": "GET Get Exportable Quiz Results",
+        "description": "Get Exportable Quiz Results for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getExportableQuizResults`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`",
         "tags": [
-          "Admin"
+          "Courses"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [
-          {
-            "name": "course_id",
-            "in": "path",
-            "required": true,
-            "description": "Course ID extracted from the URL path.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "required": false,
-            "description": "Search read via `$request->getSafe()` in getExportableStudents().",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -64,24 +45,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "students": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "students": []
+                  "message": "Success"
                 }
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "400": {
+            "description": "Request error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +71,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Request error."
                 }
               }
             }

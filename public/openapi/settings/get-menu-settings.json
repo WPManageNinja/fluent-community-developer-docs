@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMenuSettings",
         "summary": "GET Get Menu Settings",
-        "description": "Get Menu Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:152`",
+        "description": "Get Menu Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:153`",
         "tags": [
           "Settings"
         ],

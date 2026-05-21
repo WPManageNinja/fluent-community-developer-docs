@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMenuItems",
         "summary": "GET Get Menu Items",
-        "description": "Get Menu Items for the FluentCommunity Options API.\n\nController: `OptionController@getMenuItems`\nRoute source: `fluent-community/app/Http/Routes/api.php:146`",
+        "description": "Get Menu Items for the FluentCommunity Options API.\n\nController: `OptionController@getMenuItems`\nRoute source: `fluent-community/app/Http/Routes/api.php:147`",
         "tags": [
           "Options"
         ],

@@ -1772,7 +1772,12 @@ function buildOperationAlias(route) {
     return found.slug
   }
 
-  return `${route.methodKey.toLowerCase()}-${slugifyClass(route.action)}`
+  const verb = route.methodKey.toLowerCase()
+  const actionSlug = slugifyClass(route.action)
+  if (actionSlug === verb || actionSlug.startsWith(`${verb}-`)) {
+    return actionSlug
+  }
+  return `${verb}-${actionSlug}`
 }
 
 function buildOperationMeta(route) {

@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 236 routes registered in the FluentCommunity core and module route files.
+This reference covers 237 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -28,7 +28,7 @@ This reference covers 236 routes registered in the FluentCommunity core and modu
 | [Reactions API](/restapi/reactions) | Core | 6 | Feed/comment reactions plus survey vote and survey voter endpoints. |
 | [Notifications API](/restapi/notifications) | Core | 5 | Read, unread, mark-as-read, and mark-all-read notification workflows. |
 | [Activity API](/restapi/activity) | Core | 1 | Activity feed retrieval, including support for pinned and trending content. |
-| [Profile API](/restapi/profile) | Core + <span class="pro-badge">PRO</span> | 16 | Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences. |
+| [Profile API](/restapi/profile) | Core + <span class="pro-badge">PRO</span> | 17 | Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences. |
 | [Media API](/restapi/media) | Core | 4 | Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints. |
 | [Settings API](/restapi/settings) | Core + <span class="pro-badge">PRO</span> | 20 | Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings. |
 | [Admin API](/restapi/admin) | Core + <span class="pro-badge">PRO</span> | 39 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |

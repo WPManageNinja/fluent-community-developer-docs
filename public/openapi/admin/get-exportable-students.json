@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/feeds/{feed_id}/media-preview": {
-      "delete": {
-        "operationId": "deleteDeleteMediaPreview",
-        "summary": "DELETE Delete Delete Media Preview",
-        "description": "Delete Delete Media Preview for the FluentCommunity Media API.\n\nController: `FeedsController@deleteMediaPreview`\nRoute source: `fluent-community/app/Http/Routes/api.php:61`",
+    "/admin/courses/{course_id}/export/students": {
+      "get": {
+        "operationId": "getExportableStudents",
+        "summary": "GET Get Exportable Students",
+        "description": "Get Exportable Students for the FluentCommunity Admin API.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
         "tags": [
-          "Media"
+          "Admin"
         ],
         "security": [
           {
@@ -38,12 +38,21 @@
         ],
         "parameters": [
           {
-            "name": "feed_id",
+            "name": "course_id",
             "in": "path",
             "required": true,
-            "description": "Feed ID extracted from the URL path.",
+            "description": "Course ID extracted from the URL path.",
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Search read via `$request->getSafe()` in getExportableStudents().",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -55,15 +64,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "students": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Media preview image has been removed successfully."
+                  "students": []
                 }
               }
             }

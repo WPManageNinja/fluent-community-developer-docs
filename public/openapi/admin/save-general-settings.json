@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveGeneralSettings",
         "summary": "POST Save General Settings",
-        "description": "Save General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:97`",
+        "description": "Save General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:98`",
         "tags": [
           "Admin"
         ],

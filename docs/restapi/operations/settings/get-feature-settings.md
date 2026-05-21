@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/features`
 - **Edition:** Core
 - **Controller:** `SettingController@getFeatures`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:150`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:151`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="getFeatureSettings" specUrl="/openapi/public/settings/get-feature-settings.json" />

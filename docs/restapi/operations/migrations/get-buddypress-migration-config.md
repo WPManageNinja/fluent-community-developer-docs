@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/migrations/buddypress/config`
 - **Edition:** Core
 - **Controller:** `BPMigrationController@getMigrationConfig`
-- **Route source:** `fluent-community/Modules/Migrations/Http/migration_api.php:12`
+- **Route source:** `fluent-community/Modules/Migrations/Http/migration_api.php:14`
 - **Controller source:** `fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php`
 
 <OAOperation operationId="getBuddypressMigrationConfig" specUrl="/openapi/public/migrations/get-buddypress-migration-config.json" />

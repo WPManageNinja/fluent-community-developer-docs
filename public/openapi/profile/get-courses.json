@@ -23,20 +23,30 @@
     }
   ],
   "paths": {
-    "/notifications/mark-all-read": {
-      "post": {
-        "operationId": "markAllNotificationsRead",
-        "summary": "POST Mark All Notifications Read",
-        "description": "Mark All Notifications Read for the FluentCommunity Notifications API.\n\nController: `NotificationsController@markAllRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
+    "/profile/{username}/courses": {
+      "get": {
+        "operationId": "getCourses",
+        "summary": "GET Get Courses",
+        "description": "Get Courses for the FluentCommunity Profile API.\n\nController: `ProfileController@getCourses`\nRoute source: `fluent-community/app/Http/Routes/api.php:88`",
         "tags": [
-          "Notifications"
+          "Profile"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "Username extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -45,21 +55,24 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "courses": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "All notifications have been marked as read."
+                  "courses": []
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "You are not allowed to view this profile\\",
             "content": {
               "application/json": {
                 "schema": {
@@ -71,7 +84,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "You are not allowed to view this profile\\"
                 }
               }
             }
