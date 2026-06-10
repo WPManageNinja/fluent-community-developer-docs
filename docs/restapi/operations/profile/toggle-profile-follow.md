@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{userId}/toggle-follow`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@toggleFollow`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:127`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:129`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 <OAOperation operationId="toggleProfileFollow" specUrl="/openapi/public/profile/toggle-profile-follow.json" />

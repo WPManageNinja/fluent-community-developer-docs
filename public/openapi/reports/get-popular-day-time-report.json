@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPopularDayTimeReport",
         "summary": "GET Get Popular Day Time Report",
-        "description": "Get Popular Day Time Report for the FluentCommunity Reports API.\n\nController: `ReportsController@popularDayTimeReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:69`",
+        "description": "Get Popular Day Time Report for the FluentCommunity Reports API.\n\nController: `ReportsController@popularDayTimeReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:71`",
         "tags": [
           "Reports"
         ],

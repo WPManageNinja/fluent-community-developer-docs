@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/block`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@block`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:128`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:130`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 <OAOperation operationId="blockProfileUser" specUrl="/openapi/public/profile/block-profile-user.json" />

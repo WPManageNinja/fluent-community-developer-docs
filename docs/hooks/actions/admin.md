@@ -11,7 +11,7 @@ description: Admin action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/content_moderation/created`](#fluent_communitycontent_moderationcreated) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:76` |
+| [`fluent_community/content_moderation/created`](#fluent_communitycontent_moderationcreated) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:77` |
 | [`fluent_community/report/{status}`](#fluent_communityreportstatus) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:214` |
 | [`fluent_community/report/after_delete`](#fluent_communityreportafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:239` |
 | [`fluent_community/report/before_delete`](#fluent_communityreportbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:236` |
@@ -29,10 +29,10 @@ description: Admin action hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:76` | `$report` (mixed)<br>`$feed` (Feed|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:143` | `$report` (mixed)<br>`$comment` (Comment|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:454` | `$report` (mixed)<br>`$feed` (Feed|mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:494` | `$report` (mixed)<br>`$comment` (Comment|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:77` | `$report` (mixed)<br>`$feed` (Feed|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:141` | `$report` (mixed)<br>`$comment` (Comment|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:505` | `$report` (mixed)<br>`$feed` (Feed|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:545` | `$report` (mixed)<br>`$comment` (Comment|mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:124` | `$report` (mixed)<br>`$content` (mixed)<br>`$data['content_type']` (array) |
 
 ### Example

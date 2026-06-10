@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/analytics/spaces/search`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SpacesReportsController@searchSpace`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:84`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:86`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SpacesReportsController.php`
 
 <OAOperation operationId="searchReportSpaces" specUrl="/openapi/public/reports/search-report-spaces.json" />

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "publishScheduledPost",
         "summary": "POST Publish Scheduled Post",
-        "description": "Publish Scheduled Post for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@publishPost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:105`",
+        "description": "Publish Scheduled Post for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@publishPost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:107`",
         "tags": [
           "Feeds"
         ],

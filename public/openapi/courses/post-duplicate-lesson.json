@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/moderation/reports/{report_id}": {
-      "delete": {
-        "operationId": "deleteModerationReport",
-        "summary": "DELETE Delete Moderation Report",
-        "description": "Delete Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@delete`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:98`",
+    "/admin/courses/{course_id}/lessons/{lesson_id}/duplicate": {
+      "post": {
+        "operationId": "postDuplicateLesson",
+        "summary": "POST Post Duplicate Lesson",
+        "description": "Post Duplicate Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@duplicateLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:56`",
         "tags": [
-          "Reports"
+          "Courses"
         ],
         "security": [
           {
@@ -38,10 +38,19 @@
         ],
         "parameters": [
           {
-            "name": "report_id",
+            "name": "course_id",
             "in": "path",
             "required": true,
-            "description": "Report ID extracted from the URL path.",
+            "description": "Course ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "lesson_id",
+            "in": "path",
+            "required": true,
+            "description": "Lesson ID extracted from the URL path.",
             "schema": {
               "type": "integer"
             }
@@ -58,12 +67,24 @@
                     "message": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "lesson": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Report deleted successfully"
+                  "message": "Lesson has been duplicated successfully.",
+                  "lesson": {
+                    "id": 0
+                  }
                 }
               }
             }

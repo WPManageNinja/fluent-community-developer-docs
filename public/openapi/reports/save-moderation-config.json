@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveModerationConfig",
         "summary": "POST Save Moderation Config",
-        "description": "Save Moderation Config for the FluentCommunity Reports API.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
+        "description": "Save Moderation Config for the FluentCommunity Reports API.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:101`",
         "tags": [
           "Reports"
         ],
@@ -55,6 +55,9 @@
                       },
                       "flag_after_threshold": {
                         "type": "integer"
+                      },
+                      "first_comment_approval": {
+                        "type": "string"
                       }
                     },
                     "required": []
@@ -65,7 +68,8 @@
                 "config": {
                   "is_enabled": "",
                   "profanity_filter": "",
-                  "flag_after_threshold": 0
+                  "flag_after_threshold": 0,
+                  "first_comment_approval": ""
                 }
               }
             }

@@ -9,8 +9,8 @@ This page is generated from `do_action()` and `do_action_ref_array()` calls in t
 
 ## Overview
 
-- **Unique actions:** 154
-- **Action call sites:** 239
+- **Unique actions:** 156
+- **Action call sites:** 241
 - **Categories covered:** `feeds`, `spaces`, `members`, `comments`, `notifications`, `reactions`, `auth`, `admin`, `media`, `courses`, `miscellaneous`
 
 ## Categories

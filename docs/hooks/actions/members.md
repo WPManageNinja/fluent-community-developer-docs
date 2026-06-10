@@ -18,9 +18,9 @@ description: Members action hooks for FluentCommunity.
 | [`fluent_community/blocked_user`](#fluent_communityblocked_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
 | [`fluent_community/followed_user`](#fluent_communityfollowed_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` |
 | [`fluent_community/members_query_ref`](#fluent_communitymembers_query_ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:114` |
-| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:538` |
+| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:541` |
 | [`fluent_community/profile_deactivated`](#fluent_communityprofile_deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:173` |
-| [`fluent_community/update_profile_link_providers`](#fluent_communityupdate_profile_link_providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:537` |
+| [`fluent_community/update_profile_link_providers`](#fluent_communityupdate_profile_link_providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:527` |
 | [`fluent_community/user_level_upgraded`](#fluent_communityuser_level_upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:110` |
 | [`fluent_community/user_points_updated`](#fluent_communityuser_points_updated) | Core + <span class="pro-badge">PRO</span> | 3 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` |
 
@@ -38,7 +38,7 @@ description: Members action hooks for FluentCommunity.
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:152` | `$users` (array) |
-| Core | `fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php:165` | `$users` (array) |
+| Core | `fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php:162` | `$users` (array) |
 
 ### Example
 
@@ -194,7 +194,7 @@ add_action('fluent_community/members_query_ref', function ($all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:538` | `[ 'user_ids' => $sendingUserIds, 'key' => 'notifed_to_other_users', 'notification' => $notification, 'comment' => $comment, 'feed' => $feed ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:541` | `[ 'user_ids' => $sendingUserIds, 'key' => 'notifed_to_other_users', 'notification' => $notification, 'comment' => $comment, 'feed' => $feed ]` (array) |
 
 ### Example
 
@@ -238,7 +238,7 @@ add_action('fluent_community/profile_deactivated', function ($xprofile) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:537` | `$config` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:527` | `$config` (mixed) |
 
 ### Example
 

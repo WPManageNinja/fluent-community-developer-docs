@@ -13,7 +13,7 @@ description: Members filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/activity/after_contents_user`](#fluent_communityactivityafter_contents_user) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:97` |
 | [`fluent_community/activity/before_contents_user`](#fluent_communityactivitybefore_contents_user) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:98` |
-| [`fluent_community/admin_course_non_members_api_response`](#fluent_communityadmin_course_non_members_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1091` |
+| [`fluent_community/admin_course_non_members_api_response`](#fluent_communityadmin_course_non_members_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1149` |
 | [`fluent_community/bulk_members/{filterTag}`](#fluent_communitybulk_membersfilterTag) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:168` |
 | [`fluent_community/bulk_members/add_members_response`](#fluent_communitybulk_membersadd_members_response) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:74` |
 | [`fluent_community/bulk_members/add_students_response`](#fluent_communitybulk_membersadd_students_response) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:30` |
@@ -31,7 +31,7 @@ description: Members filter hooks for FluentCommunity.
 | [`fluent_community/profile_all_memberships_api_response`](#fluent_communityprofile_all_memberships_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:453` |
 | [`fluent_community/profile_comments_api_response`](#fluent_communityprofile_comments_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:591` |
 | [`fluent_community/profile_courses_api_response`](#fluent_communityprofile_courses_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:549` |
-| [`fluent_community/profile_link_providers_api_response`](#fluent_communityprofile_link_providers_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:525` |
+| [`fluent_community/profile_link_providers_api_response`](#fluent_communityprofile_link_providers_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:515` |
 | [`fluent_community/profile_notification_pref_api_response`](#fluent_communityprofile_notification_pref_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:751` |
 | [`fluent_community/profile_view_data`](#fluent_communityprofile_view_data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:148` |
 | [`fluent_community/reserved_usernames`](#fluent_communityreserved_usernames) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:217` |
@@ -99,7 +99,7 @@ add_filter('fluent_community/activity/before_contents_user', function ($param1, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1091` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1149` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -521,7 +521,7 @@ add_filter('fluent_community/profile_courses_api_response', function ($data, $al
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:525` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:515` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 

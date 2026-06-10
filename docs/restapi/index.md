@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 237 routes registered in the FluentCommunity core and module route files.
+This reference covers 240 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -33,7 +33,7 @@ This reference covers 237 routes registered in the FluentCommunity core and modu
 | [Settings API](/restapi/settings) | Core + <span class="pro-badge">PRO</span> | 20 | Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings. |
 | [Admin API](/restapi/admin) | Core + <span class="pro-badge">PRO</span> | 39 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |
 | [Options API](/restapi/options) | Core | 3 | Portal bootstrap variables, server-rendered sidebar HTML, and menu item payloads. |
-| [Courses API](/restapi/courses) | Core + <span class="pro-badge">PRO</span> | 45 | Portal course consumption endpoints and the full course administration surface. |
+| [Courses API](/restapi/courses) | Core + <span class="pro-badge">PRO</span> | 48 | Portal course consumption endpoints and the full course administration surface. |
 | [Migrations API](/restapi/migrations) | Core | 4 | BuddyBoss and BuddyPress migration discovery, execution, and status polling. |
 | [Invitations API](/restapi/invitations) | Core | 5 | Invitation listing, creation, resend, delete, and link-generation endpoints. |
 | [Cart Integration API](/restapi/cart) | Core | 5 | FluentCart-backed paywall search, creation, retrieval, and removal for spaces. |

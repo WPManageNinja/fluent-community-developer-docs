@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/analytics/spaces/popular`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SpacesReportsController@getTopSpaces`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:83`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:85`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SpacesReportsController.php`
 
 <OAOperation operationId="listPopularSpacesReport" specUrl="/openapi/public/reports/list-popular-spaces-report.json" />

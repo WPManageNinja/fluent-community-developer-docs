@@ -10,8 +10,8 @@ FluentCommunity is a WordPress community/forum plugin built on the WPFluent fram
 ## What This Site Covers
 
 - **Database layer:** 21 first-party models mapped to 17 tables and shared tables.
-- **Hooks:** 154 unique action hooks and 241 unique filter hooks found across 524 call sites in the core and Pro `app/` and `Modules/` trees.
-- **REST API:** 237 registered routes across core and Pro route files.
+- **Hooks:** 156 unique action hooks and 246 unique filter hooks found across 531 call sites in the core and Pro `app/` and `Modules/` trees.
+- **REST API:** 240 registered routes across core and Pro route files.
 
 ## Development Commands
 

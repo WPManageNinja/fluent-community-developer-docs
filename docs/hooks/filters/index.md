@@ -9,8 +9,8 @@ This page is generated from `apply_filters()` calls in the FluentCommunity core 
 
 ## Overview
 
-- **Unique filters:** 241
-- **Filter call sites:** 285
+- **Unique filters:** 246
+- **Filter call sites:** 290
 - **Categories covered:** `feeds`, `spaces`, `members`, `notifications`, `settings`, `permissions`, `auth`, `media`, `courses`, `miscellaneous`
 
 ## Categories

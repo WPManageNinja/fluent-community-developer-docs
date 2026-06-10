@@ -111,6 +111,9 @@
                       "show_paywalls": {
                         "type": "string"
                       },
+                      "show_welcome_banner": {
+                        "type": "string"
+                      },
                       "course_layout": {
                         "type": "string"
                       },
@@ -167,6 +170,7 @@
                   "hide_instructor_view": "",
                   "show_instructor_students_count": "",
                   "show_paywalls": "",
+                  "show_welcome_banner": "",
                   "course_layout": "",
                   "course_details": "",
                   "sequential_lesson_order": "",

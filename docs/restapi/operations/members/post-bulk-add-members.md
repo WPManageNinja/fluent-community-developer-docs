@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/members/bulk-add`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@bulkAddMembers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:115`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:117`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 <OAOperation operationId="postBulkAddMembers" specUrl="/openapi/public/members/post-bulk-add-members.json" />

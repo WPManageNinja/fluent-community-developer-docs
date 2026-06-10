@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopMembersReport",
         "summary": "GET List Top Members Report",
-        "description": "List Top Members Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@getTopMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:75`",
+        "description": "List Top Members Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@getTopMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:77`",
         "tags": [
           "Reports"
         ],

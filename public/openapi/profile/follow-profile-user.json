@@ -27,7 +27,7 @@
       "post": {
         "operationId": "followProfileUser",
         "summary": "POST Follow Profile User",
-        "description": "Follow Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@follow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:125`",
+        "description": "Follow Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@follow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:127`",
         "tags": [
           "Profile"
         ],

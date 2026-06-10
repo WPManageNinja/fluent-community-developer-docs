@@ -5,41 +5,43 @@ description: Courses filter hooks for FluentCommunity.
 
 # Courses Filters
 
-29 unique filter hooks currently map to this category, across 29 call sites.
+31 unique filter hooks currently map to this category, across 31 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/admin_course_exportable_students_api_response`](#fluent_communityadmin_course_exportable_students_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:863` |
-| [`fluent_community/admin_course_lesson_api_response`](#fluent_communityadmin_course_lesson_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:885` |
-| [`fluent_community/admin_course_lessons_api_response`](#fluent_communityadmin_course_lessons_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:869` |
-| [`fluent_community/admin_course_other_instructors_api_response`](#fluent_communityadmin_course_other_instructors_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1145` |
-| [`fluent_community/admin_course_section_api_response`](#fluent_communityadmin_course_section_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:612` |
-| [`fluent_community/admin_course_sections_api_response`](#fluent_communityadmin_course_sections_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:595` |
-| [`fluent_community/admin_course_students_api_response`](#fluent_communityadmin_course_students_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:511` |
+| [`fluent_community/admin_course_exportable_students_api_response`](#fluent_communityadmin_course_exportable_students_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:904` |
+| [`fluent_community/admin_course_lesson_api_response`](#fluent_communityadmin_course_lesson_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:886` |
+| [`fluent_community/admin_course_lessons_api_response`](#fluent_communityadmin_course_lessons_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:870` |
+| [`fluent_community/admin_course_other_instructors_api_response`](#fluent_communityadmin_course_other_instructors_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1203` |
+| [`fluent_community/admin_course_section_api_response`](#fluent_communityadmin_course_section_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:613` |
+| [`fluent_community/admin_course_sections_api_response`](#fluent_communityadmin_course_sections_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:596` |
+| [`fluent_community/admin_course_students_api_response`](#fluent_communityadmin_course_students_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:512` |
 | [`fluent_community/admin_courses_api_response`](#fluent_communityadmin_courses_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:66` |
-| [`fluent_community/all_courses_api_response`](#fluent_communityall_courses_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:472` |
+| [`fluent_community/all_courses_api_response`](#fluent_communityall_courses_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:476` |
 | [`fluent_community/course_api_response`](#fluent_communitycourse_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:140` |
 | [`fluent_community/course_info`](#fluent_communitycourse_info) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:209` |
 | [`fluent_community/course_lesson_api_response`](#fluent_communitycourse_lesson_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:215` |
 | [`fluent_community/course_smart_codes`](#fluent_communitycourse_smart_codes) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:180` |
-| [`fluent_community/course_view_json_ld`](#fluent_communitycourse_view_json_ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1066` |
+| [`fluent_community/course_view_json_ld`](#fluent_communitycourse_view_json_ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1077` |
+| [`fluent_community/course_welcome_banner`](#fluent_communitycourse_welcome_banner) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:236` |
 | [`fluent_community/course/access_message_html`](#fluent_communitycourseaccess_message_html) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:596` |
 | [`fluent_community/course/can_view_lesson`](#fluent_communitycoursecan_view_lesson) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:33` |
-| [`fluent_community/course/exportable_student_row`](#fluent_communitycourseexportable_student_row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:853` |
+| [`fluent_community/course/exportable_student_row`](#fluent_communitycourseexportable_student_row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:894` |
 | [`fluent_community/course/lesson_access_info`](#fluent_communitycourselesson_access_info) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:34` |
-| [`fluent_community/course/meta_fields`](#fluent_communitycoursemeta_fields) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1117` |
+| [`fluent_community/course/meta_fields`](#fluent_communitycoursemeta_fields) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1175` |
+| [`fluent_community/course/processed`](#fluent_communitycourseprocessed) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:245` |
 | [`fluent_community/courses_api_response`](#fluent_communitycourses_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:82` |
 | [`fluent_community/get_course_api_response`](#fluent_communityget_course_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:103` |
-| [`fluent_community/is_allowed_to_complete_lesson`](#fluent_communityis_allowed_to_complete_lesson) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:404` |
-| [`fluent_community/lesson/create_data`](#fluent_communitylessoncreate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:917` |
+| [`fluent_community/is_allowed_to_complete_lesson`](#fluent_communityis_allowed_to_complete_lesson) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:408` |
+| [`fluent_community/lesson/create_data`](#fluent_communitylessoncreate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:918` |
 | [`fluent_community/lesson/get_public_meta`](#fluent_communitylessonget_public_meta) | Core | 1 | `fluent-community/Modules/Course/Model/CourseLesson.php:307` |
 | [`fluent_community/lesson/sanitize_meta`](#fluent_communitylessonsanitize_meta) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:429` |
-| [`fluent_community/lesson/update_data`](#fluent_communitylessonupdate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:985` |
+| [`fluent_community/lesson/update_data`](#fluent_communitylessonupdate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:986` |
 | [`fluent_community/quiz/exportable_result_row`](#fluent_communityquizexportable_result_row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:218` |
 | [`fluent_community/quiz/exportable_result_rows`](#fluent_communityquizexportable_result_rows) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:230` |
-| [`fluent_community/section/update_data`](#fluent_communitysectionupdate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:755` |
+| [`fluent_community/section/update_data`](#fluent_communitysectionupdate_data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:756` |
 
 <a id="fluent_communityadmin_course_exportable_students_api_response"></a>
 
@@ -54,7 +56,7 @@ description: Courses filter hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:863` | `[ 'students' => $rows ]` (array)<br>`$request->all()` (array)<br>`$courseId` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:904` | `[ 'students' => $rows ]` (array)<br>`$request->all()` (array)<br>`$courseId` (mixed) |
 
 ### Example
 
@@ -77,7 +79,7 @@ add_filter('fluent_community/admin_course_exportable_students_api_response', fun
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:885` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:886` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -100,7 +102,7 @@ add_filter('fluent_community/admin_course_lesson_api_response', function ($data,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:869` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:870` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -123,7 +125,7 @@ add_filter('fluent_community/admin_course_lessons_api_response', function ($data
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1145` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1203` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -146,7 +148,7 @@ add_filter('fluent_community/admin_course_other_instructors_api_response', funct
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:612` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:613` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -169,7 +171,7 @@ add_filter('fluent_community/admin_course_section_api_response', function ($data
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:595` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:596` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -192,7 +194,7 @@ add_filter('fluent_community/admin_course_sections_api_response', function ($dat
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:511` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:512` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -238,7 +240,7 @@ add_filter('fluent_community/admin_courses_api_response', function ($data, $all)
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:472` | `[ 'courses' => $formattedCourses, 'total' => $courses->total() ]` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:476` | `[ 'courses' => $formattedCourses, 'total' => $courses->total() ]` (array)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -353,13 +355,36 @@ add_filter('fluent_community/course_smart_codes', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1066` | `[]` (array)<br>`$space` (Space|mixed)<br>`$data` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1077` | `[]` (array)<br>`$space` (Space|mixed)<br>`$data` (mixed) |
 
 ### Example
 
 ```php
 add_filter('fluent_community/course_view_json_ld', function ($param1, $space, $data) {
     return $param1;
+}, 10, 3);
+```
+
+<a id="fluent_communitycourse_welcome_banner"></a>
+
+## `fluent_community/course_welcome_banner`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Course Welcome Banner hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:236` | `$banner` (mixed)<br>`$view` (mixed)<br>`$course` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/course_welcome_banner', function ($banner, $view, $course) {
+    return $banner;
 }, 10, 3);
 ```
 
@@ -422,7 +447,7 @@ add_filter('fluent_community/course/can_view_lesson', function ($initialCanView,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:853` | `[ 'Name' => $student->display_name, 'Email' => $student->user->user_email, 'Username' => $student->username, 'Progress' => $progress . '%', 'Enrollment Date' => $student->space_pivot->created_at->format('Y-m-d H:i:s'), 'Last Activity' => $student->last_activity ?: '', ]` (array)<br>`$student` (mixed)<br>`$progress` (mixed)<br>`$courseId` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:894` | `[ 'Name' => $student->display_name, 'Email' => $student->user->user_email, 'Username' => $student->username, 'Progress' => $progress . '%', 'Enrollment Date' => $student->space_pivot->created_at->format('Y-m-d H:i:s'), 'Last Activity' => $student->last_activity ?: '', ]` (array)<br>`$student` (mixed)<br>`$progress` (mixed)<br>`$courseId` (mixed) |
 
 ### Example
 
@@ -468,7 +493,7 @@ add_filter('fluent_community/course/lesson_access_info', function ($canView, $le
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1117` | `[]` (array)<br>`$course` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1175` | `[]` (array)<br>`$course` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -476,6 +501,29 @@ add_filter('fluent_community/course/lesson_access_info', function ($canView, $le
 add_filter('fluent_community/course/meta_fields', function ($param1, $course, $all) {
     return $param1;
 }, 10, 3);
+```
+
+<a id="fluent_communitycourseprocessed"></a>
+
+## `fluent_community/course/processed`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Course/Processed hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:245` | `$course` (mixed)<br>`[ 'is_enrolled' => !!$enrollment, ]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/course/processed', function ($course, $enrollment) {
+    return $course;
+}, 10, 2);
 ```
 
 <a id="fluent_communitycourses_api_response"></a>
@@ -537,7 +585,7 @@ add_filter('fluent_community/get_course_api_response', function ($data, $all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:404` | `true` (mixed)<br>`$lesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:408` | `true` (mixed)<br>`$lesson` (mixed) |
 
 ### Example
 
@@ -560,7 +608,7 @@ add_filter('fluent_community/is_allowed_to_complete_lesson', function ($param1, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:917` | `$lessonData` (mixed)<br>`$request` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:918` | `$lessonData` (mixed)<br>`$request` (array) |
 
 ### Example
 
@@ -629,7 +677,7 @@ add_filter('fluent_community/lesson/sanitize_meta', function ($meta, $lesson) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:985` | `$updateData` (mixed)<br>`$lesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:986` | `$updateData` (mixed)<br>`$lesson` (mixed) |
 
 ### Example
 
@@ -698,7 +746,7 @@ add_filter('fluent_community/quiz/exportable_result_rows', function ($rows, $res
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:755` | `$topicData` (mixed)<br>`$course` (mixed)<br>`$topic` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:756` | `$topicData` (mixed)<br>`$course` (mixed)<br>`$topic` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 

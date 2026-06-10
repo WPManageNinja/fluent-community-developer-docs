@@ -27,7 +27,7 @@
       "put": {
         "operationId": "reschedulePost",
         "summary": "PUT Reschedule Post",
-        "description": "Reschedule Post for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@reschedulePost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:104`",
+        "description": "Reschedule Post for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@reschedulePost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:106`",
         "tags": [
           "Feeds"
         ],
