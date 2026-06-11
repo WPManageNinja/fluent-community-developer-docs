@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/students/bulk-import`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@bulkImportStudents`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:110`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:112`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 <OAOperation operationId="postBulkImportStudents" specUrl="/openapi/public/courses/post-bulk-import-students.json" />

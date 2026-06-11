@@ -12,9 +12,9 @@ description: Notifications filter hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/default_course_email_notification`](#fluent_communitydefault_course_email_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:192` |
-| [`fluent_community/digest_email_body`](#fluent_communitydigest_email_body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:118` |
-| [`fluent_community/digest_email_subject`](#fluent_communitydigest_email_subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:148` |
-| [`fluent_community/digest_notification/email_sections`](#fluent_communitydigest_notificationemail_sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:105` |
+| [`fluent_community/digest_email_body`](#fluent_communitydigest_email_body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
+| [`fluent_community/digest_email_subject`](#fluent_communitydigest_email_subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
+| [`fluent_community/digest_notification/email_sections`](#fluent_communitydigest_notificationemail_sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
 | [`fluent_community/notifications_api_response`](#fluent_communitynotifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
 | [`fluent_community/unread_notifications_api_response`](#fluent_communityunread_notifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:58` |
 
@@ -54,7 +54,7 @@ add_filter('fluent_community/default_course_email_notification', function ($para
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:118` | `$emailBody` (mixed)<br>`$this->user` (mixed) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:119` | `$emailBody` (mixed)<br>`$this->user` (mixed) |
 
 ### Example
 
@@ -77,7 +77,7 @@ add_filter('fluent_community/digest_email_body', function ($emailBody, $user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:148` | `$emailSubject` (mixed)<br>`$this->user` (mixed)<br>`$notificationCount` (mixed) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:149` | `$emailSubject` (mixed)<br>`$this->user` (mixed)<br>`$notificationCount` (mixed) |
 
 ### Example
 
@@ -100,7 +100,7 @@ add_filter('fluent_community/digest_email_subject', function ($emailSubject, $us
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:105` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$this->user` (mixed) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:106` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$this->user` (mixed) |
 
 ### Example
 

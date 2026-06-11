@@ -68,6 +68,7 @@
     "/openapi/public/courses/get-course-lesson.json",
     "/openapi/public/courses/get-course-meta-settings.json",
     "/openapi/public/courses/get-course-section.json",
+    "/openapi/public/courses/get-course-welcome-banner-settings.json",
     "/openapi/public/courses/get-course.json",
     "/openapi/public/courses/get-exportable-quiz-results.json",
     "/openapi/public/courses/get-lesson-by-slug.json",
@@ -84,7 +85,9 @@
     "/openapi/public/courses/patch-course-section.json",
     "/openapi/public/courses/post-bulk-add-students.json",
     "/openapi/public/courses/post-bulk-import-students.json",
+    "/openapi/public/courses/post-duplicate-lesson.json",
     "/openapi/public/courses/post-resolve-crm-tag-course.json",
+    "/openapi/public/courses/post-update-course-welcome-banner-settings.json",
     "/openapi/public/courses/reindex-course-lessons.json",
     "/openapi/public/courses/reindex-course-sections.json",
     "/openapi/public/courses/remove-course-student.json",
@@ -239,5 +242,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-05-21T06:02:47.769Z"
+  "generated": "2026-06-10T13:37:35.871Z"
 }

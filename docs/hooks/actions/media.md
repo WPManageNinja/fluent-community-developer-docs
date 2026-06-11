@@ -11,12 +11,12 @@ description: Media action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/check_rate_limit/media_upload`](#fluent_communitycheck_rate_limitmedia_upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:947` |
+| [`fluent_community/check_rate_limit/media_upload`](#fluent_communitycheck_rate_limitmedia_upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:956` |
 | [`fluent_community/delete_remote_media_{this}`](#fluent_communitydelete_remote_media_this) | Core | 1 | `fluent-community/app/Models/Media.php:132` |
 | [`fluent_community/document/local_file_access`](#fluent_communitydocumentlocal_file_access) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:263` |
-| [`fluent_community/lesson/additional_media_updated`](#fluent_communitylessonadditional_media_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:996` |
+| [`fluent_community/lesson/additional_media_updated`](#fluent_communitylessonadditional_media_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:997` |
 | [`fluent_community/maybe_delete_draft_medias`](#fluent_communitymaybe_delete_draft_medias) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:17` |
-| [`fluent_community/remove_medias_by_url`](#fluent_communityremove_medias_by_url) | Core + <span class="pro-badge">PRO</span> | 6 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:83` |
+| [`fluent_community/remove_medias_by_url`](#fluent_communityremove_medias_by_url) | Core + <span class="pro-badge">PRO</span> | 6 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:84` |
 
 <a id="fluent_communitycheck_rate_limitmedia_upload"></a>
 
@@ -31,7 +31,7 @@ description: Media action hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:947` | `$user` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:956` | `$user` (mixed) |
 
 ### Example
 
@@ -97,7 +97,7 @@ add_action('fluent_community/document/local_file_access', function ($document, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:996` | `$request->all()` (array)<br>`$lesson` (mixed)<br>`$updateData` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:997` | `$request->all()` (array)<br>`$lesson` (mixed)<br>`$updateData` (mixed) |
 
 ### Example
 
@@ -141,12 +141,12 @@ add_action('fluent_community/maybe_delete_draft_medias', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:83` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:84` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
 | Core | `fluent-community/app/Http/Controllers/ProfileController.php:234` | `$deletedMedias` (mixed)<br>`[ 'user_id' => $xprofile->user_id, 'object_sources' => ['user_avatar', 'user_cover_photo'] ]` (array) |
 | Core | `fluent-community/app/Models/BaseSpace.php:337` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Models/SpaceGroup.php:111` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Services/Helper.php:330` | `[$url]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |
-| Core | `fluent-community/app/Services/LockscreenService.php:188` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $spaceId, ]` (array) |
+| Core | `fluent-community/app/Services/LockscreenService.php:189` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $spaceId, ]` (array) |
 
 ### Example
 

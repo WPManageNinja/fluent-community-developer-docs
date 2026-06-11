@@ -57,6 +57,18 @@
                   "data": {
                     "type": "object",
                     "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "settings": {
+                        "type": "object",
+                        "properties": {
+                          "topic_required": {
+                            "type": "string"
+                          }
+                        },
+                        "required": []
+                      },
                       "topic_ids": {
                         "type": "array",
                         "items": {
@@ -76,6 +88,10 @@
               },
               "example": {
                 "data": {
+                  "title": "",
+                  "settings": {
+                    "topic_required": ""
+                  },
                   "topic_ids": []
                 },
                 "meta_settings": []

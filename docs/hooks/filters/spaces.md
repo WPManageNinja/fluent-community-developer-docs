@@ -13,11 +13,11 @@ description: Spaces filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/activity/after_contents_space`](#fluent_communityactivityafter_contents_space) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:94` |
 | [`fluent_community/activity/before_contents_space`](#fluent_communityactivitybefore_contents_space) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:95` |
-| [`fluent_community/all_space_courses_api_response`](#fluent_communityall_space_courses_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:551` |
-| [`fluent_community/all_spaces_api_response`](#fluent_communityall_spaces_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:225` |
+| [`fluent_community/all_space_courses_api_response`](#fluent_communityall_space_courses_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:541` |
+| [`fluent_community/all_spaces_api_response`](#fluent_communityall_spaces_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:231` |
 | [`fluent_community/can_access_portal`](#fluent_communitycan_access_portal) | Core | 7 | `fluent-community/app/Services/Helper.php:431` |
 | [`fluent_community/general_portal_vars`](#fluent_communitygeneral_portal_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:755` |
-| [`fluent_community/get_lockscreen_settings`](#fluent_communityget_lockscreen_settings) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:920` |
+| [`fluent_community/get_lockscreen_settings`](#fluent_communityget_lockscreen_settings) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:949` |
 | [`fluent_community/lockscreen_fields`](#fluent_communitylockscreen_fields) | Core | 1 | `fluent-community/app/Services/LockscreenService.php:80` |
 | [`fluent_community/lockscreen_formatted_field`](#fluent_communitylockscreen_formatted_field) | Core | 1 | `fluent-community/app/Services/LockscreenService.php:112` |
 | [`fluent_community/main_menu_items`](#fluent_communitymain_menu_items) | Core | 2 | `fluent-community/app/Functions/Utility.php:1194` |
@@ -26,7 +26,7 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/menu_items_api_response`](#fluent_communitymenu_items_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:31` |
 | [`fluent_community/menu_settings_api_response`](#fluent_communitymenu_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:96` |
 | [`fluent_community/mobile_menu`](#fluent_communitymobile_menu) | Core | 1 | `fluent-community/app/Services/Helper.php:1497` |
-| [`fluent_community/portal_data_vars`](#fluent_communityportal_data_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:997` |
+| [`fluent_community/portal_data_vars`](#fluent_communityportal_data_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1008` |
 | [`fluent_community/portal_page_headless`](#fluent_communityportal_page_headless) | Core | 1 | `fluent-community/app/Services/Helper.php:118` |
 | [`fluent_community/portal_route_type`](#fluent_communityportal_route_type) | Core | 1 | `fluent-community/app/Services/Helper.php:108` |
 | [`fluent_community/portal_settings_menu_items`](#fluent_communityportal_settings_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalSettingsHandler.php:68` |
@@ -37,18 +37,18 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/settings_menu`](#fluent_communitysettings_menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1189` |
 | [`fluent_community/sidebar_menu_groups_config`](#fluent_communitysidebar_menu_groups_config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1196` |
 | [`fluent_community/sidebar_menu_html_api_response`](#fluent_communitysidebar_menu_html_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:76` |
-| [`fluent_community/space_api_response`](#fluent_communityspace_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:252` |
+| [`fluent_community/space_api_response`](#fluent_communityspace_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:258` |
 | [`fluent_community/space_document_title_label`](#fluent_communityspace_document_title_label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:56` |
-| [`fluent_community/space_groups_api_response`](#fluent_communityspace_groups_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:778` |
-| [`fluent_community/space_header_links`](#fluent_communityspace_header_links) | Core | 1 | `fluent-community/app/Models/BaseSpace.php:626` |
-| [`fluent_community/space_members_api_response`](#fluent_communityspace_members_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:380` |
-| [`fluent_community/space_non_members_api_response`](#fluent_communityspace_non_members_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:702` |
-| [`fluent_community/space/create_data`](#fluent_communityspacecreate_data) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:73` |
-| [`fluent_community/space/join_status_for_private`](#fluent_communityspacejoin_status_for_private) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:436` |
-| [`fluent_community/space/meta_fields`](#fluent_communityspacemeta_fields) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:930` |
-| [`fluent_community/space/update_data`](#fluent_communityspaceupdate_data) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:302` |
+| [`fluent_community/space_groups_api_response`](#fluent_communityspace_groups_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:807` |
+| [`fluent_community/space_header_links`](#fluent_communityspace_header_links) | Core | 1 | `fluent-community/app/Models/BaseSpace.php:627` |
+| [`fluent_community/space_members_api_response`](#fluent_communityspace_members_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:408` |
+| [`fluent_community/space_non_members_api_response`](#fluent_communityspace_non_members_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:731` |
+| [`fluent_community/space/create_data`](#fluent_communityspacecreate_data) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:79` |
+| [`fluent_community/space/join_status_for_private`](#fluent_communityspacejoin_status_for_private) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:465` |
+| [`fluent_community/space/meta_fields`](#fluent_communityspacemeta_fields) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:959` |
+| [`fluent_community/space/update_data`](#fluent_communityspaceupdate_data) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:330` |
 | [`fluent_community/spaces_api_response`](#fluent_communityspaces_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:34` |
-| [`fluent_community/update_lockscreen_settings`](#fluent_communityupdate_lockscreen_settings) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:408` |
+| [`fluent_community/update_lockscreen_settings`](#fluent_communityupdate_lockscreen_settings) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:409` |
 | [`fluent_community/user/space/permissions`](#fluent_communityuserspacepermissions) | Core | 1 | `fluent-community/app/Models/User.php:602` |
 
 <a id="fluent_communityactivityafter_contents_space"></a>
@@ -110,7 +110,7 @@ add_filter('fluent_community/activity/before_contents_space', function ($param1,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:551` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:541` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -133,7 +133,7 @@ add_filter('fluent_community/all_space_courses_api_response', function ($data, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:225` | `[ 'spaces' => $spaces ]` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:231` | `[ 'spaces' => $spaces ]` (array)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -208,7 +208,7 @@ add_filter('fluent_community/general_portal_vars', function ($scope) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:920` | `$lockscreen` (mixed)<br>`$space` (Space|mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:949` | `$lockscreen` (mixed)<br>`$space` (Space|mixed) |
 
 ### Example
 
@@ -278,7 +278,7 @@ add_filter('fluent_community/lockscreen_formatted_field', function ($formattedFi
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Functions/Utility.php:1194` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1157` | `$items` (mixed)<br>`$scope` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1168` | `$items` (mixed)<br>`$scope` (mixed) |
 
 ### Example
 
@@ -416,7 +416,7 @@ add_filter('fluent_community/mobile_menu', function ($mobileMenuItems, $xprofile
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:997` | `$dataVars` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1008` | `$dataVars` (mixed) |
 
 ### Example
 
@@ -669,7 +669,7 @@ add_filter('fluent_community/sidebar_menu_html_api_response', function ($data, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:252` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:258` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -715,7 +715,7 @@ add_filter('fluent_community/space_document_title_label', function ($param1, $sp
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:778` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:807` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -738,7 +738,7 @@ add_filter('fluent_community/space_groups_api_response', function ($data, $all) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/BaseSpace.php:626` | `$headerLinks` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/BaseSpace.php:627` | `$headerLinks` (mixed)<br>`$this` (mixed) |
 
 ### Example
 
@@ -761,8 +761,8 @@ add_filter('fluent_community/space_header_links', function ($headerLinks, $param
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:380` | `[ 'members' => $pendingRequests, 'pending_count' => $pendingCount ]` (array)<br>`$pendingRequests` (array)<br>`$request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:399` | `[ 'members' => $spaceMembers, 'pending_count' => $pendingCount ]` (array)<br>`$spaceMembers` (Space|mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:408` | `[ 'members' => $pendingRequests, 'pending_count' => $pendingCount ]` (array)<br>`$pendingRequests` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:427` | `[ 'members' => $spaceMembers, 'pending_count' => $pendingCount ]` (array)<br>`$spaceMembers` (Space|mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -785,7 +785,7 @@ add_filter('fluent_community/space_members_api_response', function ($pendingRequ
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:702` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:731` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -808,7 +808,7 @@ add_filter('fluent_community/space_non_members_api_response', function ($data, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:73` | `[ 'title' => sanitize_text_field($data['title']), 'slug' => $data['slug'], 'privacy' => $data['privacy'], 'description' => sanitize_textarea_field(Arr::get($data, 'description', '')), 'settings' => $settings, 'parent_id' => $spaceGroup ? $spaceGroup->id : null, 'serial' => $serial ?: 1 ]` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:79` | `[ 'title' => sanitize_text_field($data['title']), 'slug' => $data['slug'], 'privacy' => $data['privacy'], 'description' => sanitize_textarea_field(Arr::get($data, 'description', '')), 'settings' => $settings, 'parent_id' => $spaceGroup ? $spaceGroup->id : null, 'serial' => $serial ?: 1 ]` (array) |
 
 ### Example
 
@@ -831,7 +831,7 @@ add_filter('fluent_community/space/create_data', function ($id) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:436` | `'pending'` (mixed)<br>`$space` (Space|mixed)<br>`$user` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:465` | `'pending'` (mixed)<br>`$space` (Space|mixed)<br>`$user` (mixed) |
 
 ### Example
 
@@ -854,7 +854,7 @@ add_filter('fluent_community/space/join_status_for_private', function ($param1, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:930` | `[]` (array)<br>`$space` (Space|mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:959` | `[]` (array)<br>`$space` (Space|mixed) |
 
 ### Example
 
@@ -877,7 +877,7 @@ add_filter('fluent_community/space/meta_fields', function ($param1, $space) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:302` | `$data` (mixed)<br>`$space` (Space|mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:330` | `$data` (mixed)<br>`$space` (Space|mixed) |
 
 ### Example
 
@@ -901,7 +901,7 @@ add_filter('fluent_community/space/update_data', function ($data, $space) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:34` | `$data` (mixed)<br>`$this->request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:200` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:206` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -924,8 +924,8 @@ add_filter('fluent_community/spaces_api_response', function ($data, $request) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:408` | `$formattedFields` (mixed)<br>`$course` (mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:426` | `$formattedFields` (mixed)<br>`$space` (Space|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:409` | `$formattedFields` (mixed)<br>`$course` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:427` | `$formattedFields` (mixed)<br>`$space` (Space|mixed) |
 
 ### Example
 

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleProfileNotification",
         "summary": "POST Toggle Profile Notification",
-        "description": "Toggle Profile Notification for the FluentCommunity Profile API.\n\nController: `FollowController@toggleNotification`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:130`",
+        "description": "Toggle Profile Notification for the FluentCommunity Profile API.\n\nController: `FollowController@toggleNotification`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:132`",
         "tags": [
           "Profile"
         ],

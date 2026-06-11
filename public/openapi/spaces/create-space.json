@@ -59,20 +59,23 @@
                       "settings": {
                         "type": "object",
                         "properties": {
+                          "topic_required": {
+                            "type": "string"
+                          },
                           "og_image": {
                             "type": "string"
                           }
                         },
                         "required": []
                       },
-                      "description": {
-                        "type": "string"
-                      },
                       "topic_ids": {
                         "type": "array",
                         "items": {
                           "type": "string"
                         }
+                      },
+                      "description": {
+                        "type": "string"
                       }
                     },
                     "required": [
@@ -88,10 +91,11 @@
                   "title": "",
                   "privacy": "",
                   "settings": {
+                    "topic_required": "",
                     "og_image": ""
                   },
-                  "description": "",
-                  "topic_ids": []
+                  "topic_ids": [],
+                  "description": ""
                 }
               }
             }

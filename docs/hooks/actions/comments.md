@@ -12,19 +12,19 @@ description: Comments action hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/before_comment_create`](#fluent_communitybefore_comment_create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:129` |
-| [`fluent_community/before_comment_delete`](#fluent_communitybefore_comment_delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:568` |
+| [`fluent_community/before_comment_delete`](#fluent_communitybefore_comment_delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:569` |
 | [`fluent_community/check_rate_limit/create_comment`](#fluent_communitycheck_rate_limitcreate_comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:68` |
 | [`fluent_community/comment_added`](#fluent_communitycomment_added) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:205` |
-| [`fluent_community/comment_deleted`](#fluent_communitycomment_deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:581` |
-| [`fluent_community/comment_updated`](#fluent_communitycomment_updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:255` |
-| [`fluent_community/comment/media_deleted`](#fluent_communitycommentmedia_deleted) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:249` |
+| [`fluent_community/comment_deleted`](#fluent_communitycomment_deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:582` |
+| [`fluent_community/comment_updated`](#fluent_communitycomment_updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:256` |
+| [`fluent_community/comment/media_deleted`](#fluent_communitycommentmedia_deleted) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:250` |
 | [`fluent_community/comment/new_comment_{comment}`](#fluent_communitycommentnew_comment_comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:161` |
-| [`fluent_community/comment/react_added`](#fluent_communitycommentreact_added) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:626` |
-| [`fluent_community/comment/react_removed`](#fluent_communitycommentreact_removed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:638` |
-| [`fluent_community/comment/updated`](#fluent_communitycommentupdated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:307` |
-| [`fluent_community/notification/comment/notifed_to_author`](#fluent_communitynotificationcommentnotifed_to_author) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:328` |
-| [`fluent_community/notification/comment/notifed_to_mentions`](#fluent_communitynotificationcommentnotifed_to_mentions) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:470` |
-| [`fluent_community/notification/comment/notifed_to_thread_commetenter`](#fluent_communitynotificationcommentnotifed_to_thread_commetenter) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:598` |
+| [`fluent_community/comment/react_added`](#fluent_communitycommentreact_added) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:627` |
+| [`fluent_community/comment/react_removed`](#fluent_communitycommentreact_removed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:639` |
+| [`fluent_community/comment/updated`](#fluent_communitycommentupdated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:308` |
+| [`fluent_community/notification/comment/notifed_to_author`](#fluent_communitynotificationcommentnotifed_to_author) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:331` |
+| [`fluent_community/notification/comment/notifed_to_mentions`](#fluent_communitynotificationcommentnotifed_to_mentions) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:473` |
+| [`fluent_community/notification/comment/notifed_to_thread_commetenter`](#fluent_communitynotificationcommentnotifed_to_thread_commetenter) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:604` |
 
 <a id="fluent_communitybefore_comment_create"></a>
 
@@ -61,7 +61,7 @@ add_action('fluent_community/before_comment_create', function ($commentData, $fe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:568` | `$comment` (Comment|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:569` | `$comment` (Comment|mixed) |
 
 ### Example
 
@@ -106,7 +106,7 @@ add_action('fluent_community/check_rate_limit/create_comment', function ($user) 
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:205` | `$content` (mixed)<br>`$feed` (Feed|mixed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:171` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed)<br>`Arr::get($mentions, 'users', [])` (array) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:172` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed)<br>`Arr::get($mentions, 'users', [])` (array) |
 
 ### Example
 
@@ -128,7 +128,7 @@ add_action('fluent_community/comment_added', function ($content, $feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:581` | `$commentId` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:582` | `$commentId` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -150,7 +150,7 @@ add_action('fluent_community/comment_deleted', function ($commentId, $feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:255` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:256` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -172,8 +172,8 @@ add_action('fluent_community/comment_updated', function ($comment, $feed) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:249` | `$otherMedias` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:571` | `$comment->media` (Comment|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:250` | `$otherMedias` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:572` | `$comment->media` (Comment|mixed) |
 
 ### Example
 
@@ -217,7 +217,7 @@ add_action('fluent_community/comment/new_comment_{comment}', function ($comment,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:626` | `$reaction` (mixed)<br>`$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:627` | `$reaction` (mixed)<br>`$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -239,7 +239,7 @@ add_action('fluent_community/comment/react_added', function ($reaction, $comment
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:638` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:639` | `$comment` (Comment|mixed)<br>`$feed` (Feed|mixed) |
 
 ### Example
 
@@ -261,7 +261,7 @@ add_action('fluent_community/comment/react_removed', function ($comment, $feed) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:307` | `$comment` (Comment|mixed)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:308` | `$comment` (Comment|mixed)<br>`$dirty` (mixed) |
 
 ### Example
 
@@ -283,8 +283,8 @@ add_action('fluent_community/comment/updated', function ($comment, $dirty) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:328` | `[ 'user_ids' => [$feed->user_id], 'notification' => $exist, 'key' => 'notifed_to_author', 'comment' => $comment, 'feed' => $feed, 'created' => false ]` (array) |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:354` | `[ 'user_ids' => [$feed->user_id], 'notification' => $notification, 'comment' => $comment, 'key' => 'notifed_to_author', 'feed' => $feed, 'created' => true ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:331` | `[ 'user_ids' => [$feed->user_id], 'notification' => $exist, 'key' => 'notifed_to_author', 'comment' => $comment, 'feed' => $feed, 'created' => false ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:357` | `[ 'user_ids' => [$feed->user_id], 'notification' => $notification, 'comment' => $comment, 'key' => 'notifed_to_author', 'feed' => $feed, 'created' => true ]` (array) |
 
 ### Example
 
@@ -306,7 +306,7 @@ add_action('fluent_community/notification/comment/notifed_to_author', function (
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:470` | `[ 'user_ids' => $mentionedUserIds, 'notification' => $mentionNotification, 'key' => 'notifed_to_mentions', 'comment' => $comment, 'feed' => $feed ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:473` | `[ 'user_ids' => $mentionedUserIds, 'notification' => $mentionNotification, 'key' => 'notifed_to_mentions', 'comment' => $comment, 'feed' => $feed ]` (array) |
 
 ### Example
 
@@ -328,8 +328,8 @@ add_action('fluent_community/notification/comment/notifed_to_mentions', function
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:598` | `[ 'user_ids' => $childCommentUserIds, 'notification' => $existingNotification, 'key' => 'notifed_to_thread_commetenter', 'comment' => $comment, 'feed' => $feed ]` (array) |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:635` | `[ 'user_ids' => $childCommentUserIds, 'notification' => $notification, 'key' => 'notifed_to_thread_commetenter', 'comment' => $comment, 'feed' => $feed ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:604` | `[ 'user_ids' => $childCommentUserIds, 'notification' => $existingNotification, 'key' => 'notifed_to_thread_commetenter', 'comment' => $comment, 'feed' => $feed ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:641` | `[ 'user_ids' => $childCommentUserIds, 'notification' => $notification, 'key' => 'notifed_to_thread_commetenter', 'comment' => $comment, 'feed' => $feed ]` (array) |
 
 ### Example
 

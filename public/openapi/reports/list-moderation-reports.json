@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listModerationReports",
         "summary": "GET List Moderation Reports",
-        "description": "List Moderation Reports for the FluentCommunity Reports API.\n\nController: `ModerationController@get`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:94`",
+        "description": "List Moderation Reports for the FluentCommunity Reports API.\n\nController: `ModerationController@get`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:96`",
         "tags": [
           "Reports"
         ],

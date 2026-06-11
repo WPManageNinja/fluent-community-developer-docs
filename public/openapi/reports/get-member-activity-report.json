@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMemberActivityReport",
         "summary": "GET Get Member Activity Report",
-        "description": "Get Member Activity Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@activity`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:74`",
+        "description": "Get Member Activity Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@activity`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:76`",
         "tags": [
           "Reports"
         ],

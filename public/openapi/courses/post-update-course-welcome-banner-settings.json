@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/spaces/{spaceSlug}/members/bulk-add": {
+    "/admin/courses/{course_id}/welcome-banner": {
       "post": {
-        "operationId": "postBulkAddMembers",
-        "summary": "POST Post Bulk Add Members",
-        "description": "Post Bulk Add Members for the FluentCommunity Members API.\n\nController: `BulkMembersController@bulkAddMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:117`",
+        "operationId": "postUpdateCourseWelcomeBannerSettings",
+        "summary": "POST Post Update Course Welcome Banner Settings",
+        "description": "Post Update Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@updateCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:63`",
         "tags": [
-          "Members"
+          "Courses"
         ],
         "security": [
           {
@@ -38,12 +38,12 @@
         ],
         "parameters": [
           {
-            "name": "spaceSlug",
+            "name": "course_id",
             "in": "path",
             "required": true,
-            "description": "SpaceSlug extracted from the URL path.",
+            "description": "Course ID extracted from the URL path.",
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -54,20 +54,44 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "role": {
-                    "type": "string"
-                  },
-                  "user_ids": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "$view ": {
+                        "type": "object",
+                        "properties": {
+                          " '": {
+                            "type": "object",
+                            "properties": {
+                              "description'": {
+                                "type": "string"
+                              }
+                            },
+                            "required": []
+                          }
+                        },
+                        "required": []
+                      },
+                      "$type": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": []
                   }
                 }
               },
               "example": {
-                "role": "",
-                "user_ids": []
+                "settings": {
+                  "$view ": {
+                    " '": {
+                      "description'": ""
+                    }
+                  },
+                  "$type": []
+                }
               }
             }
           }
@@ -78,33 +102,29 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
-                },
-                "example": null
-              }
-            }
-          },
-          "403": {
-            "description": "Permission denied",
-            "content": {
-              "application/json": {
-                "schema": {
                   "type": "object",
                   "properties": {
                     "message": {
-                      "type": "string"
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "example": {
-                  "message": "Permission denied"
+                  "message": "Welcome banner settings have been updated successfully.",
+                  "settings": {}
                 }
               }
             }
           },
-          "413": {
-            "description": "Too many user_ids in one request. Maximum 500 per chunk.",
+          "422": {
+            "description": "Request validation or permission error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -116,7 +136,7 @@
                   }
                 },
                 "example": {
-                  "message": "Too many user_ids in one request. Maximum 500 per chunk."
+                  "message": "Request validation or permission error."
                 }
               }
             }

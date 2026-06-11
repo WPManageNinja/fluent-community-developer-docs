@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postBulkImportStudents",
         "summary": "POST Post Bulk Import Students",
-        "description": "Post Bulk Import Students for the FluentCommunity Courses API.\n\nController: `BulkMembersController@bulkImportStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:110`",
+        "description": "Post Bulk Import Students for the FluentCommunity Courses API.\n\nController: `BulkMembersController@bulkImportStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:112`",
         "tags": [
           "Courses"
         ],

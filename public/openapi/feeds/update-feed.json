@@ -60,24 +60,6 @@
                   "move_to_profile": {
                     "type": "string"
                   },
-                  "status": {
-                    "type": "string"
-                  },
-                  "send_announcement_email": {
-                    "type": "string"
-                  },
-                  "content_type": {
-                    "type": "string"
-                  },
-                  "topic_ids": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "message": {
-                    "type": "string"
-                  },
                   "survey": {
                     "type": "object",
                     "properties": {
@@ -96,6 +78,24 @@
                     },
                     "required": []
                   },
+                  "status": {
+                    "type": "string"
+                  },
+                  "send_announcement_email": {
+                    "type": "string"
+                  },
+                  "content_type": {
+                    "type": "string"
+                  },
+                  "topic_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "message": {
+                    "type": "string"
+                  },
                   "title": {
                     "type": "string"
                   }
@@ -107,16 +107,16 @@
               "example": {
                 "new_space_id": "",
                 "move_to_profile": "",
-                "status": "",
-                "send_announcement_email": "",
-                "content_type": "",
-                "topic_ids": [],
-                "message": "",
                 "survey": {
                   "options": [],
                   "end_date": "",
                   "type": ""
                 },
+                "status": "",
+                "send_announcement_email": "",
+                "content_type": "",
+                "topic_ids": [],
+                "message": "",
                 "title": ""
               }
             }

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/students/resolve-crm-tag`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@resolveCrmTagCourse`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:111`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:113`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 <OAOperation operationId="postResolveCrmTagCourse" specUrl="/openapi/public/courses/post-resolve-crm-tag-course.json" />
