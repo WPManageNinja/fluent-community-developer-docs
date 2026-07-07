@@ -137,6 +137,7 @@
     "/openapi/public/leaderboard/list-leaderboard.json",
     "/openapi/public/leaderboard/save-leaderboard-levels.json",
     "/openapi/public/media/delete-media-preview.json",
+    "/openapi/public/media/get-index.json",
     "/openapi/public/media/get-video-content.json",
     "/openapi/public/media/post-handle-media-upload.json",
     "/openapi/public/media/upload-video.json",
@@ -244,5 +245,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-07-07T12:31:42.288Z"
+  "generated": "2026-07-07T12:53:09.024Z"
 }

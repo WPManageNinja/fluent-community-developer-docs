@@ -1495,6 +1495,9 @@ function classifyRoute(route) {
   if (route.groupPrefix === 'fluent-player') {
     return 'media'
   }
+  if (route.groupPrefix === 'media-gallery') {
+    return 'media'
+  }
   if (route.groupPrefix === 'documents') {
     return 'documents'
   }

@@ -106,7 +106,8 @@
     "post-handle-media-upload",
     "delete-media-preview",
     "upload-video",
-    "get-video-content"
+    "get-video-content",
+    "get-index"
   ],
   "settings": [
     "get-feature-settings",
