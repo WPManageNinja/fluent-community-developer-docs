@@ -84,6 +84,9 @@
                       "website": {
                         "type": "string"
                       },
+                      "headline": {
+                        "type": "string"
+                      },
                       "social_links": {
                         "type": "array",
                         "items": {
@@ -110,6 +113,7 @@
                   "last_name": "",
                   "short_description": "",
                   "website": "",
+                  "headline": "",
                   "social_links": [],
                   "email": ""
                 }

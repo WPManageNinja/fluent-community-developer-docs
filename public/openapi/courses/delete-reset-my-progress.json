@@ -23,11 +23,11 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/lessons/{lesson_id}": {
-      "get": {
-        "operationId": "getCourseLesson",
-        "summary": "GET Get Course Lesson",
-        "description": "Get Course Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:55`",
+    "/courses/{course_id}/progress": {
+      "delete": {
+        "operationId": "deleteResetMyProgress",
+        "summary": "DELETE Delete Reset My Progress",
+        "description": "Delete Reset My Progress for the FluentCommunity Courses API.\n\nController: `CourseController@resetMyProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:16`",
         "tags": [
           "Courses"
         ],
@@ -45,15 +45,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "lesson_id",
-            "in": "path",
-            "required": true,
-            "description": "Lesson ID extracted from the URL path.",
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -64,10 +55,24 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "lesson": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "track": {
                       "type": "object",
                       "properties": {
-                        "id": {
+                        "completed_lessons": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "isEnrolled": {
+                          "type": "boolean"
+                        },
+                        "progress": {
                           "type": "integer"
                         }
                       },
@@ -77,15 +82,18 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "lesson": {
-                    "id": 0
+                  "message": "Your course progress has been reset.",
+                  "track": {
+                    "completed_lessons": [],
+                    "isEnrolled": true,
+                    "progress": 0
                   }
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "Please enroll this course first",
             "content": {
               "application/json": {
                 "schema": {
@@ -97,7 +105,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Please enroll this course first"
                 }
               }
             }

@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteCourseLesson",
         "summary": "DELETE Delete Course Lesson",
-        "description": "Delete Course Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@deleteLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:55`",
+        "description": "Delete Course Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@deleteLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:58`",
         "tags": [
           "Courses"
         ],

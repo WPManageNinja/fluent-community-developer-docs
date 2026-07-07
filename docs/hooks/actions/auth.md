@@ -53,7 +53,7 @@ add_action('fluent_community/auth/before_auth_page_process', function ($currentU
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:3` | `'login'` (mixed) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:4` | `'signup'` (mixed) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:717` | `'login'` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:725` | `'login'` (mixed) |
 
 ### Example
 

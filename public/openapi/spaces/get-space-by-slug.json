@@ -588,8 +588,8 @@
               }
             }
           },
-          "422": {
-            "description": "You are not allowed to view this space",
+          "404": {
+            "description": "Space not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -601,7 +601,7 @@
                   }
                 },
                 "example": {
-                  "message": "You are not allowed to view this space"
+                  "message": "Space not found"
                 }
               }
             }

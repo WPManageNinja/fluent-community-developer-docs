@@ -58,6 +58,12 @@
                       },
                       "first_comment_approval": {
                         "type": "string"
+                      },
+                      "auto_flag_user_reject_threshold": {
+                        "type": "integer"
+                      },
+                      "auto_flag_user_report_threshold": {
+                        "type": "integer"
                       }
                     },
                     "required": []
@@ -69,7 +75,9 @@
                   "is_enabled": "",
                   "profanity_filter": "",
                   "flag_after_threshold": 0,
-                  "first_comment_approval": ""
+                  "first_comment_approval": "",
+                  "auto_flag_user_reject_threshold": 0,
+                  "auto_flag_user_report_threshold": 0
                 }
               }
             }

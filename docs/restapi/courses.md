@@ -21,6 +21,7 @@ Course routes are split between `PortalPolicy` and `CourseAdminPolicy` depending
 | `GET` | `/courses/{course_slug}/lessons/{lesson_slug}/by-slug` | Core | [Get Lesson By Slug](/restapi/operations/courses/get-lesson-by-slug) | `CourseController@getLessonBySlug` |
 | `POST` | `/courses/{course_id}/enroll` | Core | [Enroll Course](/restapi/operations/courses/enroll-course) | `CourseController@enrollCourse` |
 | `PUT` | `/courses/{course_id}/lessons/{lesson_id}/completion` | Core | [Update Lesson Completion](/restapi/operations/courses/update-lesson-completion) | `CourseController@updateCompletionLesson` |
+| `DELETE` | `/courses/{course_id}/progress` | Core | [Delete Reset My Progress](/restapi/operations/courses/delete-reset-my-progress) | `CourseController@resetMyProgress` |
 | `GET` | `/courses/all-courses` | Core | [List All Courses](/restapi/operations/courses/list-all-courses) | `CourseController@getAllCourses` |
 | `GET` | `/admin/courses` | Core | [List Admin Courses](/restapi/operations/courses/list-admin-courses) | `CourseAdminController@getCourses` |
 | `POST` | `/admin/courses` | Core | [Create Course](/restapi/operations/courses/create-course) | `CourseAdminController@createCourse` |
@@ -31,6 +32,7 @@ Course routes are split between `PortalPolicy` and `CourseAdminPolicy` depending
 | `GET` | `/admin/courses/{course_id}/students` | Core | [List Course Students](/restapi/operations/courses/list-course-students) | `CourseAdminController@getCourseStudents` |
 | `POST` | `/admin/courses/{course_id}/students` | Core | [Add Course Student](/restapi/operations/courses/add-course-student) | `CourseAdminController@addStudent` |
 | `DELETE` | `/admin/courses/{course_id}/students/{student_id}` | Core | [Remove Course Student](/restapi/operations/courses/remove-course-student) | `CourseAdminController@removeStudent` |
+| `DELETE` | `/admin/courses/{course_id}/students/{student_id}/progress` | Core | [Delete Reset Student Progress](/restapi/operations/courses/delete-reset-student-progress) | `CourseAdminController@resetStudentProgress` |
 | `GET` | `/admin/courses/{course_id}/users/search` | Core | [Search Course Users](/restapi/operations/courses/search-course-users) | `CourseAdminController@getOtherUsers` |
 | `POST` | `/admin/courses/{course_id}/links` | Core | [Update Course Links](/restapi/operations/courses/update-course-links) | `CourseAdminController@updateLinks` |
 | `GET` | `/admin/courses/{course_id}/meta-settings` | Core | [Get Course Meta Settings](/restapi/operations/courses/get-course-meta-settings) | `CourseAdminController@getMetaSettings` |

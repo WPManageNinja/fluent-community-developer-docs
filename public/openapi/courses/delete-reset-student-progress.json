@@ -23,11 +23,11 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/lessons/{lesson_id}": {
-      "get": {
-        "operationId": "getCourseLesson",
-        "summary": "GET Get Course Lesson",
-        "description": "Get Course Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:55`",
+    "/admin/courses/{course_id}/students/{student_id}/progress": {
+      "delete": {
+        "operationId": "deleteResetStudentProgress",
+        "summary": "DELETE Delete Reset Student Progress",
+        "description": "Delete Reset Student Progress for the FluentCommunity Courses API.\n\nController: `CourseAdminController@resetStudentProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:31`",
         "tags": [
           "Courses"
         ],
@@ -47,10 +47,10 @@
             }
           },
           {
-            "name": "lesson_id",
+            "name": "student_id",
             "in": "path",
             "required": true,
-            "description": "Lesson ID extracted from the URL path.",
+            "description": "Student ID extracted from the URL path.",
             "schema": {
               "type": "integer"
             }
@@ -64,28 +64,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "lesson": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        }
-                      },
-                      "additionalProperties": false
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "lesson": {
-                    "id": 0
-                  }
+                  "message": "Student's progress has been reset."
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "This student is not enrolled in this course.",
             "content": {
               "application/json": {
                 "schema": {
@@ -97,7 +90,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "This student is not enrolled in this course."
                 }
               }
             }

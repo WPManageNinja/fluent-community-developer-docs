@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/instructors/search`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@getOtherInstructors`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:37`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:40`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 <OAOperation operationId="searchCourseInstructors" specUrl="/openapi/public/courses/search-course-instructors.json" />

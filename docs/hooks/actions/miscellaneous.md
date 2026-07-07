@@ -13,13 +13,13 @@ description: Miscellaneous action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/after_header_logo`](#fluent_communityafter_header_logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:45` |
 | [`fluent_community/after_registration_form`](#fluent_communityafter_registration_form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:52` |
-| [`fluent_community/after_sidebar_wrap`](#fluent_communityafter_sidebar_wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:142` |
+| [`fluent_community/after_sidebar_wrap`](#fluent_communityafter_sidebar_wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:155` |
 | [`fluent_community/before_header_logo`](#fluent_communitybefore_header_logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:34` |
 | [`fluent_community/before_js_loaded`](#fluent_communitybefore_js_loaded) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:81` |
 | [`fluent_community/before_registration_form`](#fluent_communitybefore_registration_form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:16` |
-| [`fluent_community/block_editor_footer`](#fluent_communityblock_editor_footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:402` |
-| [`fluent_community/block_editor_head`](#fluent_communityblock_editor_head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:395` |
-| [`fluent_community/content_flagged`](#fluent_communitycontent_flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:284` |
+| [`fluent_community/block_editor_footer`](#fluent_communityblock_editor_footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:407` |
+| [`fluent_community/block_editor_head`](#fluent_communityblock_editor_head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:400` |
+| [`fluent_community/content_flagged`](#fluent_communitycontent_flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:223` |
 | [`fluent_community/enqueue_global_assets`](#fluent_communityenqueue_global_assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:186` |
 | [`fluent_community/headless/before_js_loaded`](#fluent_communityheadlessbefore_js_loaded) | Core | 1 | `fluent-community/app/Views/headless_page.php:95` |
 | [`fluent_community/headless/content`](#fluent_communityheadlesscontent) | Core | 2 | `fluent-community/app/Views/headless_page.php:79` |
@@ -97,7 +97,7 @@ add_action('fluent_community/after_registration_form', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:142` | `$context` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:155` | `$context` (mixed) |
 
 ### Example
 
@@ -186,7 +186,7 @@ add_action('fluent_community/before_registration_form', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:402` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:407` | No parameters |
 
 ### Example
 
@@ -208,7 +208,7 @@ add_action('fluent_community/block_editor_footer', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:395` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:400` | No parameters |
 
 ### Example
 
@@ -230,7 +230,7 @@ add_action('fluent_community/block_editor_head', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:284` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:223` | `$report` (mixed)<br>`$content` (mixed) |
 
 ### Example
 

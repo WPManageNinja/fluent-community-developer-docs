@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchCourseUsers",
         "summary": "GET Search Course Users",
-        "description": "Search Course Users for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getOtherUsers`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:31`",
+        "description": "Search Course Users for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getOtherUsers`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:34`",
         "tags": [
           "Courses"
         ],
