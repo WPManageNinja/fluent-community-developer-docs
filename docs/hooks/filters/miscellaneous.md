@@ -14,11 +14,11 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/activities_api_response`](#fluent_communityactivities_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/ActivityController.php:127` |
 | [`fluent_community/activity/after_contents`](#fluent_communityactivityafter_contents) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:100` |
 | [`fluent_community/activity/before_contents`](#fluent_communityactivitybefore_contents) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:101` |
-| [`fluent_community/allowed_block_types`](#fluent_communityallowed_block_types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:611` |
+| [`fluent_community/allowed_block_types`](#fluent_communityallowed_block_types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:621` |
 | [`fluent_community/allowed_html_tags`](#fluent_communityallowed_html_tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:377` |
 | [`fluent_community/app_route_paths`](#fluent_communityapp_route_paths) | Core | 1 | `fluent-community/app/Services/Helper.php:504` |
 | [`fluent_community/app_vars_api_response`](#fluent_communityapp_vars_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:25` |
-| [`fluent_community/asset_listed_slugs`](#fluent_communityasset_listed_slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:493` |
+| [`fluent_community/asset_listed_slugs`](#fluent_communityasset_listed_slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:503` |
 | [`fluent_community/autg/password_confirmation`](#fluent_communityautgpassword_confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:244` |
 | [`fluent_community/base_url`](#fluent_communitybase_url) | Core | 1 | `fluent-community/app/Services/Helper.php:220` |
 | [`fluent_community/bookmarks_api_response`](#fluent_communitybookmarks_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:361` |
@@ -26,19 +26,19 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/custom_order_by`](#fluent_communitycustom_order_by) | Core | 1 | `fluent-community/app/Models/Feed.php:348` |
 | [`fluent_community/default_avatar`](#fluent_communitydefault_avatar) | Core | 4 | `fluent-community/app/Models/User.php:98` |
 | [`fluent_community/default_redirect_url`](#fluent_communitydefault_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:710` |
-| [`fluent_community/editor_i18n_strings`](#fluent_communityeditor_i18n_strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:344` |
+| [`fluent_community/editor_i18n_strings`](#fluent_communityeditor_i18n_strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:354` |
 | [`fluent_community/error_page_custom_css`](#fluent_communityerror_page_custom_css) | Core | 1 | `fluent-community/app/Views/error_page.php:21` |
 | [`fluent_community/features_api_response`](#fluent_communityfeatures_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:22` |
 | [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1180` |
 | [`fluent_community/fluent_player/fallback_timings`](#fluent_communityfluent_playerfallback_timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:162` |
 | [`fluent_community/fluentform__defaults`](#fluent_communityfluentform__defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
 | [`fluent_community/header_vars`](#fluent_communityheader_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1201` |
-| [`fluent_community/image_size_names_choose`](#fluent_communityimage_size_names_choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:349` |
+| [`fluent_community/image_size_names_choose`](#fluent_communityimage_size_names_choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:359` |
 | [`fluent_community/is_rtl`](#fluent_communityis_rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:28` |
 | [`fluent_community/max_execution_time`](#fluent_communitymax_execution_time) | Core | 1 | `fluent-community/app/Functions/Utility.php:550` |
 | [`fluent_community/preview_metadata_pre_fetch`](#fluent_communitypreview_metadata_pre_fetch) | Core | 1 | `fluent-community/app/Services/RemoteUrlParser.php:127` |
 | [`fluent_community/question_types`](#fluent_communityquestion_types) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:12` |
-| [`fluent_community/skip_no_conflict`](#fluent_communityskip_no_conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:482` |
+| [`fluent_community/skip_no_conflict`](#fluent_communityskip_no_conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:492` |
 | [`fluent_community/smartcode_fallback`](#fluent_communitysmartcode_fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent_communitysmartcode_group_callback_dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
 | [`fluent_community/social_link_providers`](#fluent_communitysocial_link_providers) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:74` |
@@ -136,7 +136,7 @@ add_filter('fluent_community/activity/before_contents', function ($param1, $cont
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:611` | `[ 'core/audio', 'core/block', 'core/buttons', 'core/button', 'core/code', 'core/columns', 'core/column', 'core/cover', 'core/embed', 'core/footnotes', 'core/freeform', 'core/gallery', 'core/group', 'core/heading', 'core/html', 'core/image', 'core/latest-posts', 'core/list', 'core/list-item', 'core/media-text', 'core/missing', 'core/paragraph', 'core/preformatted', 'core/pullquote', 'core/quote', 'core/rss', 'core/separator', 'core/social-link', 'core/social-links', 'core/spacer', 'core/table', 'core/text-columns', 'core/verse', 'core/freeform' ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:621` | `[ 'core/audio', 'core/block', 'core/buttons', 'core/button', 'core/code', 'core/columns', 'core/column', 'core/cover', 'core/embed', 'core/footnotes', 'core/freeform', 'core/gallery', 'core/group', 'core/heading', 'core/html', 'core/image', 'core/latest-posts', 'core/list', 'core/list-item', 'core/media-text', 'core/missing', 'core/paragraph', 'core/preformatted', 'core/pullquote', 'core/quote', 'core/rss', 'core/separator', 'core/social-link', 'core/social-links', 'core/spacer', 'core/table', 'core/text-columns', 'core/verse', 'core/freeform' ]` (array) |
 
 ### Example
 
@@ -228,7 +228,7 @@ add_filter('fluent_community/app_vars_api_response', function ($data, $request) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:493` | `[ '\/gutenberg\/', ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:503` | `[ '\/gutenberg\/', ]` (array) |
 
 ### Example
 
@@ -416,7 +416,7 @@ add_filter('fluent_community/default_redirect_url', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:344` | `$strings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:354` | `$strings` (mixed) |
 
 ### Example
 
@@ -577,7 +577,7 @@ add_filter('fluent_community/header_vars', function ($username) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:349` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Medium', 'fluent-community'), 'large' => __('Large', 'fluent-community'), 'full' => __('Full Size', 'fluent-community'), )` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:359` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Medium', 'fluent-community'), 'large' => __('Large', 'fluent-community'), 'full' => __('Full Size', 'fluent-community'), )` (mixed) |
 
 ### Example
 
@@ -692,7 +692,7 @@ add_filter('fluent_community/question_types', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:482` | `false` (mixed)<br>`'styles'` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:492` | `false` (mixed)<br>`'styles'` (mixed) |
 
 ### Example
 

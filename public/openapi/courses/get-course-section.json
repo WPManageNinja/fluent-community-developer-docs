@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourseSection",
         "summary": "GET Get Course Section",
-        "description": "Get Course Section for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getSection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:45`",
+        "description": "Get Course Section for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getSection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:46`",
         "tags": [
           "Courses"
         ],

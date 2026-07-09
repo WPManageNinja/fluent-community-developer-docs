@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/comments`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@getCourseComments`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:27`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:28`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 <OAOperation operationId="getCourseComments" specUrl="/openapi/public/comments/get-course-comments.json" />

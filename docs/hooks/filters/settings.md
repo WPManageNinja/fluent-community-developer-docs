@@ -12,7 +12,7 @@ description: Settings filter hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/{scope}_color`](#fluent_communityscope_color) | Core | 1 | `fluent-community/app/Functions/Utility.php:1096` |
-| [`fluent_community/block_editor_settings`](#fluent_communityblock_editor_settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:699` |
+| [`fluent_community/block_editor_settings`](#fluent_communityblock_editor_settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:709` |
 | [`fluent_community/color_config_api_response`](#fluent_communitycolor_config_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:516` |
 | [`fluent_community/color_schmea_config`](#fluent_communitycolor_schmea_config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1040` |
 | [`fluent_community/crm_tagging_config_api_response`](#fluent_communitycrm_tagging_config_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:628` |
@@ -69,7 +69,7 @@ add_filter('fluent_community/{scope}_color', function ($color) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:699` | `$editor_settings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:709` | `$editor_settings` (mixed) |
 
 ### Example
 

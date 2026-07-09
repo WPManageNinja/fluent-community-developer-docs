@@ -31,7 +31,7 @@ description: Notifications filter hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:192` | `[ 'subject' => '{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'message' => 'Hi {&#8203;{user.display_name}&#8203;},' . PHP_EOL . PHP_EOL . '{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.' . PHP_EOL . 'To complete this section, please follow this link:' . PHP_EOL . '{&#8203;{section.url}&#8203;},' . PHP_EOL . PHP_EOL . 'Thanks,' . PHP_EOL .'{&#8203;{community.name_with_url}&#8203;}' ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:192` | `[ 'subject' => __('{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'fluent-community-pro'), 'message' => __("Hi {&#8203;{user.display_name}&#8203;},\n\n{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.\nTo complete this section, please follow this link:\n{&#8203;{section.url}&#8203;},\n\nThanks,\n{&#8203;{community.name_with_url}&#8203;}", 'fluent-community-pro') ]` (array) |
 
 ### Example
 

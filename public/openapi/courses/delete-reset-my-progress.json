@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteResetMyProgress",
         "summary": "DELETE Delete Reset My Progress",
-        "description": "Delete Reset My Progress for the FluentCommunity Courses API.\n\nController: `CourseController@resetMyProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:16`",
+        "description": "Delete Reset My Progress for the FluentCommunity Courses API.\n\nController: `CourseController@resetMyProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:17`",
         "tags": [
           "Courses"
         ],

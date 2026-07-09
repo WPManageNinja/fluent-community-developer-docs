@@ -31,7 +31,7 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/portal_route_type`](#fluent_communityportal_route_type) | Core | 1 | `fluent-community/app/Services/Helper.php:130` |
 | [`fluent_community/portal_settings_menu_items`](#fluent_communityportal_settings_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalSettingsHandler.php:68` |
 | [`fluent_community/portal_slug`](#fluent_communityportal_slug) | Core | 1 | `fluent-community/app/Services/Helper.php:101` |
-| [`fluent_community/portal_supported_query_params`](#fluent_communityportal_supported_query_params) | Core | 1 | `fluent-community/app/Services/Helper.php:2034` |
+| [`fluent_community/portal_supported_query_params`](#fluent_communityportal_supported_query_params) | Core | 1 | `fluent-community/app/Services/Helper.php:2035` |
 | [`fluent_community/portal_vars`](#fluent_communityportal_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:466` |
 | [`fluent_community/profile_spaces_api_response`](#fluent_communityprofile_spaces_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:507` |
 | [`fluent_community/settings_menu`](#fluent_communitysettings_menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1191` |
@@ -42,8 +42,8 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/space_groups_api_response`](#fluent_communityspace_groups_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:809` |
 | [`fluent_community/space_header_links`](#fluent_communityspace_header_links) | Core | 1 | `fluent-community/app/Models/BaseSpace.php:636` |
 | [`fluent_community/space_media_title_label`](#fluent_communityspace_media_title_label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:31` |
-| [`fluent_community/space_media/api_response`](#fluent_communityspace_mediaapi_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:56` |
-| [`fluent_community/space_media/query`](#fluent_communityspace_mediaquery) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:105` |
+| [`fluent_community/space_media/api_response`](#fluent_communityspace_mediaapi_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:62` |
+| [`fluent_community/space_media/query`](#fluent_communityspace_mediaquery) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:116` |
 | [`fluent_community/space_media/transform_item`](#fluent_communityspace_mediatransform_item) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:35` |
 | [`fluent_community/space_members_api_response`](#fluent_communityspace_members_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:410` |
 | [`fluent_community/space_non_members_api_response`](#fluent_communityspace_non_members_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:733` |
@@ -536,7 +536,7 @@ add_filter('fluent_community/portal_slug', function ($slug) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2034` | `[ 'customizer_panel', 'create_space' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2035` | `[ 'customizer_panel', 'create_space' ]` (array) |
 
 ### Example
 
@@ -789,7 +789,7 @@ add_filter('fluent_community/space_media_title_label', function ($param1, $space
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:56` | `[ 'items' => $transformed, 'has_more' => $hasMore, 'cursor' => $hasMore ? $lastId : null, ]` (array)<br>`$space` (Space|mixed)<br>`$type` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:62` | `[ 'items' => $transformed, 'has_more' => $hasMore, 'cursor' => $hasMore ? $lastId : null, ]` (array)<br>`$space` (Space|mixed)<br>`$type` (mixed) |
 
 ### Example
 
@@ -812,7 +812,7 @@ add_filter('fluent_community/space_media/api_response', function ($transformed, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:105` | `$query` (mixed)<br>`$space` (Space|mixed)<br>`$type` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:116` | `$query` (mixed)<br>`$space` (Space|mixed)<br>`$type` (mixed) |
 
 ### Example
 
@@ -835,7 +835,7 @@ add_filter('fluent_community/space_media/query', function ($query, $space, $type
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:35` | `[ 'id' => (int) $m->id, 'url' => $m->public_url, 'media_type' => $m->media_type, 'kind' => $kind, 'settings' => $m->settings ?: [], 'created_at' => $m->created_at, 'feed' => $m->feed ? [ 'id' => (int) $m->feed->id, 'slug' => $m->feed->slug, 'title' => $m->feed->title, 'permalink' => $m->feed->permalink, ] : null, ]` (array)<br>`$m` (mixed)<br>`$space` (Space|mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:35` | `[ 'id' => (int) $m->id, 'url' => $m->public_url, 'media_type' => $m->media_type, 'kind' => $kind, 'settings' => $m->settings ?: [], 'created_at' => $m->created_at, 'feed' => $m->feed ? [ 'id' => (int) $m->feed->id, 'slug' => $m->feed->slug, 'title' => $m->feed->title, 'permalink' => $m->feed->permalink, 'created_at' => $m->feed->created_at, 'author' => $m->feed->xprofile ? [ 'name' => $m->feed->xprofile->display_name, 'avatar' => $m->feed->xprofile->avatar, 'username' => $m->feed->xprofile->username, ] : null, ] : null, ]` (array)<br>`$m` (mixed)<br>`$space` (Space|mixed) |
 
 ### Example
 

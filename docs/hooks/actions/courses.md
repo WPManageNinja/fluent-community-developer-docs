@@ -5,7 +5,7 @@ description: Courses action hooks for FluentCommunity.
 
 # Courses Actions
 
-20 unique action hooks currently map to this category, across 28 call sites.
+22 unique action hooks currently map to this category, across 30 call sites.
 
 ## Hook Inventory
 
@@ -14,13 +14,14 @@ description: Courses action hooks for FluentCommunity.
 | [`fluent_community/course`](#fluent_communitycourse) | Core | 2 | `fluent-community/app/Http/Controllers/ProfileController.php:556` |
 | [`fluent_community/course/before_create`](#fluent_communitycoursebefore_create) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:147` |
 | [`fluent_community/course/before_delete`](#fluent_communitycoursebefore_delete) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:405` |
-| [`fluent_community/course/before_progress_reset`](#fluent_communitycoursebefore_progress_reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:301` |
-| [`fluent_community/course/completed`](#fluent_communitycoursecompleted) | Core | 2 | `fluent-community/Modules/Course/Services/CourseHelper.php:277` |
+| [`fluent_community/course/before_progress_reset`](#fluent_communitycoursebefore_progress_reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:302` |
+| [`fluent_community/course/completed`](#fluent_communitycoursecompleted) | Core | 2 | `fluent-community/Modules/Course/Services/CourseHelper.php:278` |
 | [`fluent_community/course/created`](#fluent_communitycoursecreated) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:182` |
 | [`fluent_community/course/deleted`](#fluent_communitycoursedeleted) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:438` |
 | [`fluent_community/course/enrolled`](#fluent_communitycourseenrolled) | Core | 2 | `fluent-community/app/Services/Helper.php:1642` |
-| [`fluent_community/course/lesson_completed`](#fluent_communitycourselesson_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:210` |
-| [`fluent_community/course/progress_reset`](#fluent_communitycourseprogress_reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:322` |
+| [`fluent_community/course/lesson_completed`](#fluent_communitycourselesson_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:211` |
+| [`fluent_community/course/lesson_marked_incomplete`](#fluent_communitycourselesson_marked_incomplete) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:195` |
+| [`fluent_community/course/progress_reset`](#fluent_communitycourseprogress_reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:323` |
 | [`fluent_community/course/published`](#fluent_communitycoursepublished) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:328` |
 | [`fluent_community/course/student_left`](#fluent_communitycoursestudent_left) | Core | 1 | `fluent-community/app/Services/Helper.php:1712` |
 | [`fluent_community/course/updated`](#fluent_communitycourseupdated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:326` |
@@ -28,6 +29,7 @@ description: Courses action hooks for FluentCommunity.
 | [`fluent_community/lesson/before_deleted`](#fluent_communitylessonbefore_deleted) | Core | 3 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:424` |
 | [`fluent_community/lesson/duplicated`](#fluent_communitylessonduplicated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1132` |
 | [`fluent_community/lesson/updated`](#fluent_communitylessonupdated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1021` |
+| [`fluent_community/lesson/video_watched`](#fluent_communitylessonvideo_watched) | Core | 1 | `fluent-community/Modules/Course/Services/LessonVideoGateService.php:158` |
 | [`fluent_community/quiz/submitted`](#fluent_communityquizsubmitted) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:164` |
 | [`fluent_community/section/before_deleted`](#fluent_communitysectionbefore_deleted) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:421` |
 | [`fluent_community/section/scheduled_at_updated`](#fluent_communitysectionscheduled_at_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:792` |
@@ -46,7 +48,7 @@ description: Courses action hooks for FluentCommunity.
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Http/Controllers/ProfileController.php:556` | `[&$course]` (array) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:76` | `[&$course]` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:77` | `[&$course]` (array) |
 
 ### Example
 
@@ -113,7 +115,7 @@ add_action('fluent_community/course/before_delete', function ($course) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:301` | `$course` (mixed)<br>`$userId` (mixed) |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:302` | `$course` (mixed)<br>`$userId` (mixed) |
 
 ### Example
 
@@ -135,8 +137,8 @@ add_action('fluent_community/course/before_progress_reset', function ($course, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:277` | `$course` (mixed)<br>`$userId` (mixed) |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:289` | `$course` (mixed)<br>`$userId` (mixed) |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:278` | `$course` (mixed)<br>`$userId` (mixed) |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:290` | `$course` (mixed)<br>`$userId` (mixed) |
 
 ### Example
 
@@ -226,12 +228,34 @@ add_action('fluent_community/course/enrolled', function ($space, $userId, $by) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:210` | `$lesson` (mixed)<br>`$userId` (mixed) |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:211` | `$lesson` (mixed)<br>`$userId` (mixed) |
 
 ### Example
 
 ```php
 add_action('fluent_community/course/lesson_completed', function ($lesson, $userId) {
+}, 10, 2);
+```
+
+<a id="fluent_communitycourselesson_marked_incomplete"></a>
+
+## `fluent_community/course/lesson_marked_incomplete`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Course/Lesson Marked Incomplete hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:195` | `$lesson` (mixed)<br>`$userId` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/course/lesson_marked_incomplete', function ($lesson, $userId) {
 }, 10, 2);
 ```
 
@@ -248,7 +272,7 @@ add_action('fluent_community/course/lesson_completed', function ($lesson, $userI
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:322` | `$course` (mixed)<br>`$userId` (mixed) |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:323` | `$course` (mixed)<br>`$userId` (mixed) |
 
 ### Example
 
@@ -411,6 +435,28 @@ add_action('fluent_community/lesson/duplicated', function ($newLesson, $lesson) 
 ```php
 add_action('fluent_community/lesson/updated', function ($lesson, $dirtyFields, $isNewlyPublished) {
 }, 10, 3);
+```
+
+<a id="fluent_communitylessonvideo_watched"></a>
+
+## `fluent_community/lesson/video_watched`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Lesson/Video Watched hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Course/Services/LessonVideoGateService.php:158` | `$lesson` (mixed)<br>`$userId` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/lesson/video_watched', function ($lesson, $userId) {
+}, 10, 2);
 ```
 
 <a id="fluent_communityquizsubmitted"></a>

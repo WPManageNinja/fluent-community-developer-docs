@@ -18,7 +18,7 @@ description: Spaces action hooks for FluentCommunity.
 | [`fluent_community/before_header_right_menu_items`](#fluent_communitybefore_header_right_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:246` |
 | [`fluent_community/before_portal_dom`](#fluent_communitybefore_portal_dom) | Core | 4 | `fluent-community/app/Views/portal_page.php:78` |
 | [`fluent_community/before_portal_rendered`](#fluent_communitybefore_portal_rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:878` |
-| [`fluent_community/course/topic_completed`](#fluent_communitycoursetopic_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:227` |
+| [`fluent_community/course/topic_completed`](#fluent_communitycoursetopic_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:228` |
 | [`fluent_community/portal_action_{action}`](#fluent_communityportal_action_action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:789` |
 | [`fluent_community/portal_footer`](#fluent_communityportal_footer) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:82` |
 | [`fluent_community/portal_head`](#fluent_communityportal_head) | Core | 1 | `fluent-community/app/Views/portal_page.php:74` |
@@ -213,7 +213,7 @@ add_action('fluent_community/before_portal_rendered', function ($data) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:227` | `$topic` (mixed)<br>`$userId` (mixed)<br>`$lesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:228` | `$topic` (mixed)<br>`$userId` (mixed)<br>`$lesson` (mixed) |
 
 ### Example
 

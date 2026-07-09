@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourseMetaSettings",
         "summary": "GET Get Course Meta Settings",
-        "description": "Get Course Meta Settings for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getMetaSettings`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:38`",
+        "description": "Get Course Meta Settings for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getMetaSettings`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:39`",
         "tags": [
           "Courses"
         ],

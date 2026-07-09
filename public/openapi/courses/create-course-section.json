@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createCourseSection",
         "summary": "POST Create Course Section",
-        "description": "Create Course Section for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createSection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:43`",
+        "description": "Create Course Section for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createSection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:44`",
         "tags": [
           "Courses"
         ],

@@ -88,6 +88,7 @@
     "/openapi/public/courses/post-bulk-add-students.json",
     "/openapi/public/courses/post-bulk-import-students.json",
     "/openapi/public/courses/post-duplicate-lesson.json",
+    "/openapi/public/courses/post-mark-lesson-video-watched.json",
     "/openapi/public/courses/post-resolve-crm-tag-course.json",
     "/openapi/public/courses/post-update-course-welcome-banner-settings.json",
     "/openapi/public/courses/reindex-course-lessons.json",
@@ -245,5 +246,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-07-07T12:53:09.024Z"
+  "generated": "2026-07-09T05:02:47.736Z"
 }

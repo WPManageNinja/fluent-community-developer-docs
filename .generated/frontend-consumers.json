@@ -1543,7 +1543,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewLesson.vue",
-    "line": 338
+    "line": 367
   },
   {
     "method": "POST",
@@ -1557,7 +1557,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewLesson.vue",
-    "line": 374
+    "line": 409
   },
   {
     "method": "GET",
@@ -3126,7 +3126,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Moderation/Moderation.vue",
-    "line": 231
+    "line": 232
   },
   {
     "method": "POST",
@@ -3143,7 +3143,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Moderation/Moderation.vue",
-    "line": 249
+    "line": 250
   },
   {
     "method": "PUT",
@@ -3159,7 +3159,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Moderation/Moderation.vue",
-    "line": 306
+    "line": 307
   },
   {
     "method": "PUT",
@@ -3175,7 +3175,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Moderation/Moderation.vue",
-    "line": 318
+    "line": 319
   },
   {
     "method": "DELETE",
@@ -3189,7 +3189,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Moderation/Moderation.vue",
-    "line": 344
+    "line": 345
   },
   {
     "method": "GET",
@@ -3698,7 +3698,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Media/SpaceMedia.vue",
-    "line": 300
+    "line": 163
   },
   {
     "method": "GET",
@@ -3712,7 +3712,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Media/SpaceMedia.vue",
-    "line": 348
+    "line": 205
   },
   {
     "method": "GET",

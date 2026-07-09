@@ -21,6 +21,7 @@ Course routes are split between `PortalPolicy` and `CourseAdminPolicy` depending
 | `GET` | `/courses/{course_slug}/lessons/{lesson_slug}/by-slug` | Core | [Get Lesson By Slug](/restapi/operations/courses/get-lesson-by-slug) | `CourseController@getLessonBySlug` |
 | `POST` | `/courses/{course_id}/enroll` | Core | [Enroll Course](/restapi/operations/courses/enroll-course) | `CourseController@enrollCourse` |
 | `PUT` | `/courses/{course_id}/lessons/{lesson_id}/completion` | Core | [Update Lesson Completion](/restapi/operations/courses/update-lesson-completion) | `CourseController@updateCompletionLesson` |
+| `POST` | `/courses/{course_id}/lessons/{lesson_id}/video-watched` | Core | [Post Mark Lesson Video Watched](/restapi/operations/courses/post-mark-lesson-video-watched) | `CourseController@markLessonVideoWatched` |
 | `DELETE` | `/courses/{course_id}/progress` | Core | [Delete Reset My Progress](/restapi/operations/courses/delete-reset-my-progress) | `CourseController@resetMyProgress` |
 | `GET` | `/courses/all-courses` | Core | [List All Courses](/restapi/operations/courses/list-all-courses) | `CourseController@getAllCourses` |
 | `GET` | `/admin/courses` | Core | [List Admin Courses](/restapi/operations/courses/list-admin-courses) | `CourseAdminController@getCourses` |

@@ -39,7 +39,7 @@ description: Feeds filter hooks for FluentCommunity.
 | [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent_communitynew_feed_everybody_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:471` |
 | [`fluent_community/new_feed_notification/email_sections`](#fluent_communitynew_feed_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:192` |
 | [`fluent_community/pinned_posts_api_response`](#fluent_communitypinned_posts_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:191` |
-| [`fluent_community/post_order_options`](#fluent_communitypost_order_options) | Core | 1 | `fluent-community/app/Services/Helper.php:2147` |
+| [`fluent_community/post_order_options`](#fluent_communitypost_order_options) | Core | 1 | `fluent-community/app/Services/Helper.php:2148` |
 | [`fluent_community/rate_limit/posts_per_5_minutes`](#fluent_communityrate_limitposts_per_5_minutes) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:31` |
 | [`fluent_community/rendering_feed_model`](#fluent_communityrendering_feed_model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:948` |
 | [`fluent_community/scheduled_posts_api_response`](#fluent_communityscheduled_posts_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:46` |
@@ -706,7 +706,7 @@ add_filter('fluent_community/pinned_posts_api_response', function ($formattedAct
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2147` | `$options` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2148` | `$options` (mixed)<br>`$context` (mixed) |
 
 ### Example
 

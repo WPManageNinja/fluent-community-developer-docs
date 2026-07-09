@@ -184,6 +184,7 @@
     "get-lesson-by-slug",
     "enroll-course",
     "update-lesson-completion",
+    "post-mark-lesson-video-watched",
     "delete-reset-my-progress",
     "list-all-courses",
     "list-admin-courses",

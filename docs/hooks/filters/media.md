@@ -15,7 +15,7 @@ description: Media filter hooks for FluentCommunity.
 | [`fluent_community/handle_remove_bulk_media`](#fluent_communityhandle_remove_bulk_media) | Core | 2 | `fluent-community/app/Hooks/Handlers/CleanupHandler.php:141` |
 | [`fluent_community/media_public_url_{this}`](#fluent_communitymedia_public_url_this) | Core | 1 | `fluent-community/app/Models/Media.php:117` |
 | [`fluent_community/media_signed_public_url_{this}`](#fluent_communitymedia_signed_public_url_this) | Core | 1 | `fluent-community/app/Models/Media.php:122` |
-| [`fluent_community/media_upload_data`](#fluent_communitymedia_upload_data) | Core + <span class="pro-badge">PRO</span> | 4 | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:254` |
+| [`fluent_community/media_upload_data`](#fluent_communitymedia_upload_data) | Core + <span class="pro-badge">PRO</span> | 4 | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:252` |
 | [`fluent_community/media_upload_max_file_size`](#fluent_communitymedia_upload_max_file_size) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:987` |
 | [`fluent_community/media_upload_max_file_unit`](#fluent_communitymedia_upload_max_file_unit) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:986` |
 | [`fluent_community/media_upload_max_width_{context}`](#fluent_communitymedia_upload_max_width_context) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1034` |
@@ -131,7 +131,7 @@ add_filter('fluent_community/media_signed_public_url_{this}', function ($media_u
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:254` | `$mediaData` (mixed)<br>`$file` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:252` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:1127` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:182` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:94` | `$mediaData` (mixed)<br>`$file` (mixed) |
