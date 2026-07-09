@@ -23,11 +23,11 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/links": {
+    "/courses/{course_id}/lessons/{lesson_id}/video-watched": {
       "post": {
-        "operationId": "updateCourseLinks",
-        "summary": "POST Update Course Links",
-        "description": "Update Course Links for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateLinks`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:37`",
+        "operationId": "postMarkLessonVideoWatched",
+        "summary": "POST Post Mark Lesson Video Watched",
+        "description": "Post Mark Lesson Video Watched for the FluentCommunity Courses API.\n\nController: `CourseController@markLessonVideoWatched`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:16`",
         "tags": [
           "Courses"
         ],
@@ -45,6 +45,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "lesson_id",
+            "in": "path",
+            "required": true,
+            "description": "Lesson ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "requestBody": {
@@ -54,16 +63,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "links": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "watched_percent": {
+                    "type": "string"
                   }
                 }
               },
               "example": {
-                "links": []
+                "watched_percent": ""
               }
             }
           }
@@ -80,25 +86,25 @@
                       "type": "string",
                       "nullable": false
                     },
-                    "links": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                    "is_gated": {
+                      "type": "boolean"
+                    },
+                    "watched": {
+                      "type": "boolean"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated for the course",
-                  "links": []
+                  "message": "Video watch progress has been recorded.",
+                  "is_gated": true,
+                  "watched": true
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "Please watch at least %d%% of the video.",
             "content": {
               "application/json": {
                 "schema": {
@@ -110,7 +116,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Please watch at least %d%% of the video."
                 }
               }
             }

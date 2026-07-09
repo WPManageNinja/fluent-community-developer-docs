@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/courses/all-courses`
 - **Edition:** Core
 - **Controller:** `CourseController@getAllCourses`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:16`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:18`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseController.php`
 
 <OAOperation operationId="listAllCourses" specUrl="/openapi/public/courses/list-all-courses.json" />

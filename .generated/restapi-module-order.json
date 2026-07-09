@@ -106,7 +106,8 @@
     "post-handle-media-upload",
     "delete-media-preview",
     "upload-video",
-    "get-video-content"
+    "get-video-content",
+    "get-index"
   ],
   "settings": [
     "get-feature-settings",
@@ -183,6 +184,8 @@
     "get-lesson-by-slug",
     "enroll-course",
     "update-lesson-completion",
+    "post-mark-lesson-video-watched",
+    "delete-reset-my-progress",
     "list-all-courses",
     "list-admin-courses",
     "create-course",
@@ -193,6 +196,7 @@
     "list-course-students",
     "add-course-student",
     "remove-course-student",
+    "delete-reset-student-progress",
     "search-course-users",
     "update-course-links",
     "get-course-meta-settings",

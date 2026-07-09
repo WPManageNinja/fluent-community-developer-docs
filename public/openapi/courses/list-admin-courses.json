@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAdminCourses",
         "summary": "GET List Admin Courses",
-        "description": "List Admin Courses for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getCourses`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:20`",
+        "description": "List Admin Courses for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getCourses`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:22`",
         "tags": [
           "Courses"
         ],

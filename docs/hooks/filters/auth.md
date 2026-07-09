@@ -5,7 +5,7 @@ description: Auth filter hooks for FluentCommunity.
 
 # Auth Filters
 
-18 unique filter hooks currently map to this category, across 19 call sites.
+19 unique filter hooks currently map to this category, across 20 call sites.
 
 ## Hook Inventory
 
@@ -13,19 +13,20 @@ description: Auth filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/allow_auto_login_by_url`](#fluent_communityallow_auto_login_by_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:51` |
 | [`fluent_community/auth/after_login_redirect_url`](#fluent_communityauthafter_login_redirect_url) | Core | 2 | `fluent-community/Modules/Auth/AuthModdule.php:40` |
-| [`fluent_community/auth/after_login_with_invitation`](#fluent_communityauthafter_login_with_invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:626` |
-| [`fluent_community/auth/after_signup_redirect_url`](#fluent_communityauthafter_signup_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:534` |
-| [`fluent_community/auth/disable_rate_limit`](#fluent_communityauthdisable_rate_limit) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:412` |
+| [`fluent_community/auth/after_login_with_invitation`](#fluent_communityauthafter_login_with_invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:634` |
+| [`fluent_community/auth/after_signup_redirect_url`](#fluent_communityauthafter_signup_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:542` |
+| [`fluent_community/auth/disable_rate_limit`](#fluent_communityauthdisable_rate_limit) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:415` |
 | [`fluent_community/auth/invitation`](#fluent_communityauthinvitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:87` |
 | [`fluent_community/auth/login_fields`](#fluent_communityauthlogin_fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:224` |
-| [`fluent_community/auth/login_url`](#fluent_communityauthlogin_url) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1273` |
+| [`fluent_community/auth/login_url`](#fluent_communityauthlogin_url) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1272` |
 | [`fluent_community/auth/lost_password_url`](#fluent_communityauthlost_password_url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:219` |
 | [`fluent_community/auth/pre_content`](#fluent_communityauthpre_content) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:234` |
 | [`fluent_community/auth/registration_enabled`](#fluent_communityauthregistration_enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:257` |
 | [`fluent_community/auth/settings`](#fluent_communityauthsettings) | Core | 1 | `fluent-community/app/Services/AuthenticationService.php:102` |
 | [`fluent_community/auth/signup_fields`](#fluent_communityauthsignup_fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:156` |
-| [`fluent_community/auth/signup_verification_email_body`](#fluent_communityauthsignup_verification_email_body) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:302` |
-| [`fluent_community/auth/signup_verification_mail_subject`](#fluent_communityauthsignup_verification_mail_subject) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:290` |
+| [`fluent_community/auth/signup_verification_email_body`](#fluent_communityauthsignup_verification_email_body) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:305` |
+| [`fluent_community/auth/signup_verification_mail_subject`](#fluent_communityauthsignup_verification_mail_subject) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:293` |
+| [`fluent_community/auth/two_factor_enabled`](#fluent_communityauthtwo_factor_enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:265` |
 | [`fluent_community/create_invitation_link`](#fluent_communitycreate_invitation_link) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationController.php:133` |
 | [`fluent_community/get_auth_settings`](#fluent_communityget_auth_settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:375` |
 | [`fluent_community/update_auth_settings`](#fluent_communityupdate_auth_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:386` |
@@ -67,7 +68,7 @@ add_filter('fluent_community/allow_auto_login_by_url', function ($tagetUser, $ta
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Auth/AuthModdule.php:40` | `$redirectUrl` (mixed)<br>`$user` (mixed) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:641` | `$redirectUrl` (mixed)<br>`$user` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:649` | `$redirectUrl` (mixed)<br>`$user` (mixed) |
 
 ### Example
 
@@ -90,7 +91,7 @@ add_filter('fluent_community/auth/after_login_redirect_url', function ($redirect
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:626` | `null` (mixed)<br>`$user` (mixed)<br>`$invitationToken` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:634` | `null` (mixed)<br>`$user` (mixed)<br>`$invitationToken` (mixed) |
 
 ### Example
 
@@ -113,7 +114,7 @@ add_filter('fluent_community/auth/after_login_with_invitation', function ($param
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:534` | `$redirectUrl` (mixed)<br>`$user` (mixed)<br>`$_REQUEST` (array) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:542` | `$redirectUrl` (mixed)<br>`$user` (mixed)<br>`$_REQUEST` (array) |
 
 ### Example
 
@@ -136,7 +137,7 @@ add_filter('fluent_community/auth/after_signup_redirect_url', function ($redirec
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:412` | `false` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:415` | `false` (mixed) |
 
 ### Example
 
@@ -205,7 +206,7 @@ add_filter('fluent_community/auth/login_fields', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1273` | `Helper::getAuthUrl()` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1272` | `Helper::getAuthUrl()` (mixed) |
 
 ### Example
 
@@ -343,7 +344,7 @@ add_filter('fluent_community/auth/signup_fields', function ($meta, $invitation) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:302` | `$message` (mixed)<br>`$verifcationCode` (mixed)<br>`$formData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:305` | `$message` (mixed)<br>`$verifcationCode` (mixed)<br>`$formData` (mixed) |
 
 ### Example
 
@@ -366,13 +367,36 @@ add_filter('fluent_community/auth/signup_verification_email_body', function ($me
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:290` | `sprintf(__('Your registration verification code for %s', 'fluent-community'), Arr::get($generalSettings, 'site_title'))` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:293` | `sprintf(__('Your registration verification code for %s', 'fluent-community'), Arr::get($generalSettings, 'site_title'))` (mixed) |
 
 ### Example
 
 ```php
 add_filter('fluent_community/auth/signup_verification_mail_subject', function ($generalSettings) {
     return $generalSettings;
+}, 10, 1);
+```
+
+<a id="fluent_communityauthtwo_factor_enabled"></a>
+
+## `fluent_community/auth/two_factor_enabled`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Auth/Two Factor Enabled hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:265` | `$enabled` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/auth/two_factor_enabled', function ($enabled) {
+    return $enabled;
 }, 10, 1);
 ```
 

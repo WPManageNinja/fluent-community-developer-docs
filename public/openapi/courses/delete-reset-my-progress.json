@@ -23,11 +23,11 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/links": {
-      "post": {
-        "operationId": "updateCourseLinks",
-        "summary": "POST Update Course Links",
-        "description": "Update Course Links for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateLinks`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:37`",
+    "/courses/{course_id}/progress": {
+      "delete": {
+        "operationId": "deleteResetMyProgress",
+        "summary": "DELETE Delete Reset My Progress",
+        "description": "Delete Reset My Progress for the FluentCommunity Courses API.\n\nController: `CourseController@resetMyProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:17`",
         "tags": [
           "Courses"
         ],
@@ -47,27 +47,6 @@
             }
           }
         ],
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "links": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "example": {
-                "links": []
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -80,25 +59,41 @@
                       "type": "string",
                       "nullable": false
                     },
-                    "links": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                    "track": {
+                      "type": "object",
+                      "properties": {
+                        "completed_lessons": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "isEnrolled": {
+                          "type": "boolean"
+                        },
+                        "progress": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated for the course",
-                  "links": []
+                  "message": "Your course progress has been reset.",
+                  "track": {
+                    "completed_lessons": [],
+                    "isEnrolled": true,
+                    "progress": 0
+                  }
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "Please enroll this course first",
             "content": {
               "application/json": {
                 "schema": {
@@ -110,7 +105,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Please enroll this course first"
                 }
               }
             }

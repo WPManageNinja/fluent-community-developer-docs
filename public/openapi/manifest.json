@@ -61,6 +61,8 @@
     "/openapi/public/courses/delete-course-lesson.json",
     "/openapi/public/courses/delete-course-section.json",
     "/openapi/public/courses/delete-course.json",
+    "/openapi/public/courses/delete-reset-my-progress.json",
+    "/openapi/public/courses/delete-reset-student-progress.json",
     "/openapi/public/courses/duplicate-course.json",
     "/openapi/public/courses/enroll-course.json",
     "/openapi/public/courses/get-admin-course.json",
@@ -86,6 +88,7 @@
     "/openapi/public/courses/post-bulk-add-students.json",
     "/openapi/public/courses/post-bulk-import-students.json",
     "/openapi/public/courses/post-duplicate-lesson.json",
+    "/openapi/public/courses/post-mark-lesson-video-watched.json",
     "/openapi/public/courses/post-resolve-crm-tag-course.json",
     "/openapi/public/courses/post-update-course-welcome-banner-settings.json",
     "/openapi/public/courses/reindex-course-lessons.json",
@@ -135,6 +138,7 @@
     "/openapi/public/leaderboard/list-leaderboard.json",
     "/openapi/public/leaderboard/save-leaderboard-levels.json",
     "/openapi/public/media/delete-media-preview.json",
+    "/openapi/public/media/get-index.json",
     "/openapi/public/media/get-video-content.json",
     "/openapi/public/media/post-handle-media-upload.json",
     "/openapi/public/media/upload-video.json",
@@ -242,5 +246,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-06-10T13:37:35.871Z"
+  "generated": "2026-07-09T05:02:47.736Z"
 }

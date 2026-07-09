@@ -23,51 +23,20 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/links": {
-      "post": {
-        "operationId": "updateCourseLinks",
-        "summary": "POST Update Course Links",
-        "description": "Update Course Links for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateLinks`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:37`",
+    "/media-gallery/{spaceSlug}": {
+      "get": {
+        "operationId": "getIndex",
+        "summary": "GET Get Index",
+        "description": "Get Index for the FluentCommunity Media API.\n\nController: `MediaGalleryController@index`\nRoute source: `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`",
         "tags": [
-          "Courses"
+          "Media"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [
-          {
-            "name": "course_id",
-            "in": "path",
-            "required": true,
-            "description": "Course ID extracted from the URL path.",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "links": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "example": {
-                "links": []
-              }
-            }
-          }
-        },
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -79,26 +48,18 @@
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "links": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated for the course",
-                  "links": []
+                  "message": "Success"
                 }
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "400": {
+            "description": "Request error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -110,7 +71,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Request error."
                 }
               }
             }

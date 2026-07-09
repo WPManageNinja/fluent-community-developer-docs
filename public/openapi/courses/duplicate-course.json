@@ -27,7 +27,7 @@
       "post": {
         "operationId": "duplicateCourse",
         "summary": "POST Duplicate Course",
-        "description": "Duplicate Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@duplicateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:24`",
+        "description": "Duplicate Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@duplicateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:26`",
         "tags": [
           "Courses"
         ],

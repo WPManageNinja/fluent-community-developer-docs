@@ -23,11 +23,11 @@
     }
   ],
   "paths": {
-    "/admin/courses/{course_id}/links": {
-      "post": {
-        "operationId": "updateCourseLinks",
-        "summary": "POST Update Course Links",
-        "description": "Update Course Links for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateLinks`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:37`",
+    "/admin/courses/{course_id}/students/{student_id}/progress": {
+      "delete": {
+        "operationId": "deleteResetStudentProgress",
+        "summary": "DELETE Delete Reset Student Progress",
+        "description": "Delete Reset Student Progress for the FluentCommunity Courses API.\n\nController: `CourseAdminController@resetStudentProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:32`",
         "tags": [
           "Courses"
         ],
@@ -45,29 +45,17 @@
             "schema": {
               "type": "integer"
             }
-          }
-        ],
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "links": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "example": {
-                "links": []
-              }
+          },
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "description": "Student ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -79,26 +67,18 @@
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "links": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated for the course",
-                  "links": []
+                  "message": "Student's progress has been reset."
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "This student is not enrolled in this course.",
             "content": {
               "application/json": {
                 "schema": {
@@ -110,7 +90,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "This student is not enrolled in this course."
                 }
               }
             }
