@@ -27,7 +27,7 @@
       "post": {
         "operationId": "deleteDocument",
         "summary": "POST Delete Document",
-        "description": "Delete Document for the FluentCommunity Documents API.\n\nController: `DocumentController@deleteDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`",
+        "description": "Delete Document for the FluentCommunity Documents API.\n\nController: `DocumentController@deleteDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:44`",
         "tags": [
           "Documents"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/fluent-player-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@getFluentPlayerSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:164`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:167`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="getFluentPlayerSettings" specUrl="/openapi/public/settings/get-fluent-player-settings.json" />

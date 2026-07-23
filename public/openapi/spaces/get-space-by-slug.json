@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceBySlug",
         "summary": "GET Get Space By Slug",
-        "description": "Get Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@getBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:9`",
+        "description": "Get Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@getBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:10`",
         "tags": [
           "Spaces"
         ],

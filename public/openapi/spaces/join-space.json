@@ -27,7 +27,7 @@
       "post": {
         "operationId": "joinSpace",
         "summary": "POST Join Space",
-        "description": "Join Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@join`\nRoute source: `fluent-community/app/Http/Routes/api.php:12`",
+        "description": "Join Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@join`\nRoute source: `fluent-community/app/Http/Routes/api.php:13`",
         "tags": [
           "Spaces"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/media-upload`
 - **Edition:** Core
 - **Controller:** `FeedsController@handleMediaUpload`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:45`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:46`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="postHandleMediaUpload" specUrl="/openapi/public/media/post-handle-media-upload.json" />

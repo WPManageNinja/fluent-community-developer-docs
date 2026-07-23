@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateComment",
         "summary": "POST Update Comment",
-        "description": "Update Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:53`",
+        "description": "Update Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:54`",
         "tags": [
           "Comments"
         ],

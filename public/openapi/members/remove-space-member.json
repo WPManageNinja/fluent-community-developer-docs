@@ -27,7 +27,7 @@
       "post": {
         "operationId": "removeSpaceMember",
         "summary": "POST Remove Space Member",
-        "description": "Remove Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@removeMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:22`",
+        "description": "Remove Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@removeMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:23`",
         "tags": [
           "Members"
         ],

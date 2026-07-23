@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/members/remove`
 - **Edition:** Core
 - **Controller:** `SpaceController@removeMember`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:22`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:23`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="removeSpaceMember" specUrl="/openapi/public/members/remove-space-member.json" />

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/all-spaces`
 - **Edition:** Core
 - **Controller:** `SpaceController@getAllSpaces`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:30`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:31`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="listAllSpaces" specUrl="/openapi/public/spaces/list-all-spaces.json" />

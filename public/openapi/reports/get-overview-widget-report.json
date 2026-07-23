@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOverviewWidgetReport",
         "summary": "GET Get Overview Widget Report",
-        "description": "Get Overview Widget Report for the FluentCommunity Reports API.\n\nController: `ReportsController@getOverviewWidget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:69`",
+        "description": "Get Overview Widget Report for the FluentCommunity Reports API.\n\nController: `ReportsController@getOverviewWidget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:71`",
         "tags": [
           "Reports"
         ],

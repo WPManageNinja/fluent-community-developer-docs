@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveTopicConfig",
         "summary": "POST Save Topic Config",
-        "description": "Save Topic Config for the FluentCommunity Admin API.\n\nController: `ProAdminController@updateTopicConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:45`",
+        "description": "Save Topic Config for the FluentCommunity Admin API.\n\nController: `ProAdminController@updateTopicConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:44`",
         "tags": [
           "Admin"
         ],

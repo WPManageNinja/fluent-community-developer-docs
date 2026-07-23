@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postHandleMediaUpload",
         "summary": "POST Post Handle Media Upload",
-        "description": "Post Handle Media Upload for the FluentCommunity Media API.\n\nController: `FeedsController@handleMediaUpload`\nRoute source: `fluent-community/app/Http/Routes/api.php:45`",
+        "description": "Post Handle Media Upload for the FluentCommunity Media API.\n\nController: `FeedsController@handleMediaUpload`\nRoute source: `fluent-community/app/Http/Routes/api.php:46`",
         "tags": [
           "Media"
         ],

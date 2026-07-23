@@ -18,6 +18,7 @@ Profile routes are portal routes. Mutating routes enforce ownership or moderatio
 | `GET` | `/profile/{username}` | Core | [Get Profile](/restapi/operations/profile/get-profile) | `ProfileController@getProfile` |
 | `POST` | `/profile/{username}` | Core | [Update Profile](/restapi/operations/profile/update-profile) | `ProfileController@updateProfile` |
 | `PUT` | `/profile/{username}` | Core | [Patch Profile](/restapi/operations/profile/patch-profile) | `ProfileController@patchProfile` |
+| `POST` | `/profile/{username}/change-password` | Core | [Post Change Password](/restapi/operations/profile/post-change-password) | `ProfileController@changePassword` |
 | `GET` | `/profile/{username}/spaces` | Core | [List Profile Spaces](/restapi/operations/profile/list-profile-spaces) | `ProfileController@getSpaces` |
 | `GET` | `/profile/{username}/courses` | Core | [Get Courses](/restapi/operations/profile/get-courses) | `ProfileController@getCourses` |
 | `GET` | `/profile/{username}/memberships` | Core | [List Profile Memberships](/restapi/operations/profile/list-profile-memberships) | `ProfileController@getAllMemberships` |

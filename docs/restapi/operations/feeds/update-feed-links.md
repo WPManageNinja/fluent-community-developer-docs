@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/links`
 - **Edition:** Core
 - **Controller:** `FeedsController@updateLinks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:70`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:71`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="updateFeedLinks" specUrl="/openapi/public/feeds/update-feed-links.json" />

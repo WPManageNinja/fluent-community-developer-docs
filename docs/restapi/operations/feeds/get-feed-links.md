@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/links`
 - **Edition:** Core
 - **Controller:** `FeedsController@getLinks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:69`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:70`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="getFeedLinks" specUrl="/openapi/public/feeds/get-feed-links.json" />

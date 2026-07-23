@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}`
 - **Edition:** Core
 - **Controller:** `SpaceController@deleteBySlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:20`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:21`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="deleteSpaceBySlug" specUrl="/openapi/public/spaces/delete-space-by-slug.json" />

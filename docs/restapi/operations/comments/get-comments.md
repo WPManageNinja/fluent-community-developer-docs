@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/comments`
 - **Edition:** Core
 - **Controller:** `ProfileController@getComments`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:90`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:93`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 <OAOperation operationId="getComments" specUrl="/openapi/public/comments/get-comments.json" />

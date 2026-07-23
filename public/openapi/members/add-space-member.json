@@ -27,7 +27,7 @@
       "post": {
         "operationId": "addSpaceMember",
         "summary": "POST Add Space Member",
-        "description": "Add Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@addMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
+        "description": "Add Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@addMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:19`",
         "tags": [
           "Members"
         ],

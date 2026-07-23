@@ -11,7 +11,7 @@ description: Reactions action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/section/reactions_count_updated`](#fluent_communitysectionreactions_count_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:795` |
+| [`fluent_community/section/reactions_count_updated`](#fluent_communitysectionreactions_count_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:805` |
 
 <a id="fluent_communitysectionreactions_count_updated"></a>
 
@@ -26,7 +26,7 @@ description: Reactions action hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:795` | `$course` (mixed)<br>`$topic` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:805` | `$course` (mixed)<br>`$topic` (mixed) |
 
 ### Example
 

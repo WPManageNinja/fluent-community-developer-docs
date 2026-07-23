@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/leave`
 - **Edition:** Core
 - **Controller:** `SpaceController@leave`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:13`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:14`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="leaveSpace" specUrl="/openapi/public/spaces/leave-space.json" />

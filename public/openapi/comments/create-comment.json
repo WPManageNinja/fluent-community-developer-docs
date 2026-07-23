@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createComment",
         "summary": "POST Create Comment",
-        "description": "Create Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:52`",
+        "description": "Create Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:53`",
         "tags": [
           "Comments"
         ],

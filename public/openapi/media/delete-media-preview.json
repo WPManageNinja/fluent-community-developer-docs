@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteMediaPreview",
         "summary": "DELETE Delete Media Preview",
-        "description": "Delete Media Preview for the FluentCommunity Media API.\n\nController: `FeedsController@deleteMediaPreview`\nRoute source: `fluent-community/app/Http/Routes/api.php:61`",
+        "description": "Delete Media Preview for the FluentCommunity Media API.\n\nController: `FeedsController@deleteMediaPreview`\nRoute source: `fluent-community/app/Http/Routes/api.php:62`",
         "tags": [
           "Media"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAuthSettings",
         "summary": "GET Get Auth Settings",
-        "description": "Get Auth Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getAuthSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:109`",
+        "description": "Get Auth Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getAuthSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:112`",
         "tags": [
           "Admin"
         ],

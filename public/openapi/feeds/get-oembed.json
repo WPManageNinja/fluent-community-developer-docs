@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOembed",
         "summary": "GET Get OEmbed",
-        "description": "Get OEmbed for the FluentCommunity Feeds API.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:67`",
+        "description": "Get OEmbed for the FluentCommunity Feeds API.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:68`",
         "tags": [
           "Feeds"
         ],

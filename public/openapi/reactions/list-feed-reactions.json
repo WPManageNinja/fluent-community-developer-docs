@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listFeedReactions",
         "summary": "GET List Feed Reactions",
-        "description": "List Feed Reactions for the FluentCommunity Reactions API.\n\nController: `ReactionController@getByFeedId`\nRoute source: `fluent-community/app/Http/Routes/api.php:74`",
+        "description": "List Feed Reactions for the FluentCommunity Reactions API.\n\nController: `ReactionController@getByFeedId`\nRoute source: `fluent-community/app/Http/Routes/api.php:75`",
         "tags": [
           "Reactions"
         ],

@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "reindexSpaces",
         "summary": "PATCH Reindex Spaces",
-        "description": "Reindex Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateSpaceIndexes`\nRoute source: `fluent-community/app/Http/Routes/api.php:36`",
+        "description": "Reindex Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateSpaceIndexes`\nRoute source: `fluent-community/app/Http/Routes/api.php:37`",
         "tags": [
           "Spaces"
         ],

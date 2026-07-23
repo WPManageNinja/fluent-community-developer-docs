@@ -69,8 +69,13 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "id": {
-                            "type": "integer"
+                          "ID": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "photo": {
+                            "type": "string",
+                            "nullable": false
                           }
                         },
                         "additionalProperties": false
@@ -82,7 +87,8 @@
                 "example": {
                   "instructors": [
                     {
-                      "id": 0
+                      "ID": "",
+                      "photo": ""
                     }
                   ]
                 }

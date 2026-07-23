@@ -27,7 +27,7 @@
       "post": {
         "operationId": "savePrivacySettings",
         "summary": "POST Save Privacy Settings",
-        "description": "Save Privacy Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updatePrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
+        "description": "Save Privacy Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updatePrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:162`",
         "tags": [
           "Settings"
         ],

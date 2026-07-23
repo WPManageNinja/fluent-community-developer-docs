@@ -81,8 +81,13 @@
                     "manager": {
                       "type": "object",
                       "properties": {
-                        "id": {
-                          "type": "integer"
+                        "ID": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "photo": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -93,14 +98,15 @@
                 "example": {
                   "message": "Manager has been added successfully",
                   "manager": {
-                    "id": 0
+                    "ID": "",
+                    "photo": ""
                   }
                 }
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "The selected user could not be found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -112,7 +118,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "The selected user could not be found."
                 }
               }
             }

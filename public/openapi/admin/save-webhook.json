@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveWebhook",
         "summary": "POST Save Webhook",
-        "description": "Save Webhook for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:49`",
+        "description": "Save Webhook for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:51`",
         "tags": [
           "Admin"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/members`
 - **Edition:** Core
 - **Controller:** `MembersController@getMembers`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:123`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:126`
 - **Controller source:** `fluent-community/app/Http/Controllers/MembersController.php`
 
 <OAOperation operationId="listMembers" specUrl="/openapi/public/members/list-members.json" />

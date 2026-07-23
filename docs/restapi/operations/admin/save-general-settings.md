@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/general`
 - **Edition:** Core
 - **Controller:** `AdminController@saveGeneralSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:98`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:101`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="saveGeneralSettings" specUrl="/openapi/public/admin/save-general-settings.json" />

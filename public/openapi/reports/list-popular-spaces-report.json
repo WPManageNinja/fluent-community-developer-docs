@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listPopularSpacesReport",
         "summary": "GET List Popular Spaces Report",
-        "description": "List Popular Spaces Report for the FluentCommunity Reports API.\n\nController: `SpacesReportsController@getTopSpaces`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:85`",
+        "description": "List Popular Spaces Report for the FluentCommunity Reports API.\n\nController: `SpacesReportsController@getTopSpaces`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:87`",
         "tags": [
           "Reports"
         ],

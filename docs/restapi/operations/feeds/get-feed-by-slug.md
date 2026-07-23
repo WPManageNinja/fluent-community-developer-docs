@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/{feed_slug}/by-slug`
 - **Edition:** Core
 - **Controller:** `FeedsController@getFeedBySlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:48`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:49`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="getFeedBySlug" specUrl="/openapi/public/feeds/get-feed-by-slug.json" />
