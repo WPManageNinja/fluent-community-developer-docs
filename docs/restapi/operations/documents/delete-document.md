@@ -10,6 +10,6 @@ aside: false
 - **Path:** `/documents/delete`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `DocumentController@deleteDocument`
-- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`
+- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:44`
 
 <OAOperation operationId="deleteDocument" specUrl="/openapi/public/documents/delete-document.json" />

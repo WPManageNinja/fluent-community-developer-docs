@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/analytics/members/top-commenters`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `MembersReportsController@topCommenters`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:79`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:81`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/MembersReportsController.php`
 
 <OAOperation operationId="listTopCommentersReport" specUrl="/openapi/public/reports/list-top-commenters-report.json" />

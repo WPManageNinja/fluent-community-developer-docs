@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postResolveCrmTagSpace",
         "summary": "POST Post Resolve CRM Tag Space",
-        "description": "Post Resolve CRM Tag Space for the FluentCommunity Members API.\n\nController: `BulkMembersController@resolveCrmTagSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:119`",
+        "description": "Post Resolve CRM Tag Space for the FluentCommunity Members API.\n\nController: `BulkMembersController@resolveCrmTagSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:123`",
         "tags": [
           "Members"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getTickerUpdates",
         "summary": "GET Get Ticker Updates",
-        "description": "Get Ticker Updates for the FluentCommunity Feeds API.\n\nController: `FeedsController@getTickerUpdates`\nRoute source: `fluent-community/app/Http/Routes/api.php:64`",
+        "description": "Get Ticker Updates for the FluentCommunity Feeds API.\n\nController: `FeedsController@getTickerUpdates`\nRoute source: `fluent-community/app/Http/Routes/api.php:65`",
         "tags": [
           "Feeds"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/courses/{course_id}/welcome-banner`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateCourseWelcomeBannerSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:63`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:65`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 <OAOperation operationId="postUpdateCourseWelcomeBannerSettings" specUrl="/openapi/public/courses/post-update-course-welcome-banner-settings.json" />

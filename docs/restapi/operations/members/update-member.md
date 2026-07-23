@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/members/{user_id}`
 - **Edition:** Core
 - **Controller:** `MembersController@patchMember`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:124`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:127`
 - **Controller source:** `fluent-community/app/Http/Controllers/MembersController.php`
 
 <OAOperation operationId="updateMember" specUrl="/openapi/public/members/update-member.json" />

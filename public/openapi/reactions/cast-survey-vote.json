@@ -27,7 +27,7 @@
       "post": {
         "operationId": "castSurveyVote",
         "summary": "POST Cast Survey Vote",
-        "description": "Cast Survey Vote for the FluentCommunity Reactions API.\n\nController: `ReactionController@castSurveyVote`\nRoute source: `fluent-community/app/Http/Routes/api.php:76`",
+        "description": "Cast Survey Vote for the FluentCommunity Reactions API.\n\nController: `ReactionController@castSurveyVote`\nRoute source: `fluent-community/app/Http/Routes/api.php:78`",
         "tags": [
           "Reactions"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getGeneralSettings",
         "summary": "GET Get General Settings",
-        "description": "Get General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:97`",
+        "description": "Get General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
         "tags": [
           "Admin"
         ],

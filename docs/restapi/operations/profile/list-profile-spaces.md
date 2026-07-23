@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/spaces`
 - **Edition:** Core
 - **Controller:** `ProfileController@getSpaces`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:87`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:90`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 <OAOperation operationId="listProfileSpaces" specUrl="/openapi/public/profile/list-profile-spaces.json" />

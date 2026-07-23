@@ -27,7 +27,7 @@
       "post": {
         "operationId": "batchFetchFeeds",
         "summary": "POST Batch Fetch Feeds",
-        "description": "Batch Fetch Feeds for the FluentCommunity Feeds API.\n\nController: `FeedsController@batchFetch`\nRoute source: `fluent-community/app/Http/Routes/api.php:65`",
+        "description": "Batch Fetch Feeds for the FluentCommunity Feeds API.\n\nController: `FeedsController@batchFetch`\nRoute source: `fluent-community/app/Http/Routes/api.php:66`",
         "tags": [
           "Feeds"
         ],

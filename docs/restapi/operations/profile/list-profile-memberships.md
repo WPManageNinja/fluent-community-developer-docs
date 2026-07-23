@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/memberships`
 - **Edition:** Core
 - **Controller:** `ProfileController@getAllMemberships`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:89`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:92`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 <OAOperation operationId="listProfileMemberships" specUrl="/openapi/public/profile/list-profile-memberships.json" />

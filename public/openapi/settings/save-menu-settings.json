@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveMenuSettings",
         "summary": "POST Save Menu Settings",
-        "description": "Save Menu Settings for the FluentCommunity Settings API.\n\nController: `SettingController@saveMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
+        "description": "Save Menu Settings for the FluentCommunity Settings API.\n\nController: `SettingController@saveMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:157`",
         "tags": [
           "Settings"
         ],

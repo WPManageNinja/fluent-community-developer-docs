@@ -173,6 +173,7 @@
     "/openapi/public/profile/list-profile-memberships.json",
     "/openapi/public/profile/list-profile-spaces.json",
     "/openapi/public/profile/patch-profile.json",
+    "/openapi/public/profile/post-change-password.json",
     "/openapi/public/profile/save-notification-preferences.json",
     "/openapi/public/profile/toggle-profile-follow.json",
     "/openapi/public/profile/toggle-profile-notification.json",
@@ -183,6 +184,7 @@
     "/openapi/public/reactions/list-comment-reactions.json",
     "/openapi/public/reactions/list-feed-reactions.json",
     "/openapi/public/reactions/list-survey-voters.json",
+    "/openapi/public/reactions/post-add-or-remove-post-react.json",
     "/openapi/public/reactions/toggle-comment-reaction.json",
     "/openapi/public/reactions/toggle-feed-reaction.json",
     "/openapi/public/reports/create-moderation-report.json",
@@ -220,7 +222,6 @@
     "/openapi/public/settings/save-followers-settings.json",
     "/openapi/public/settings/save-menu-settings.json",
     "/openapi/public/settings/save-privacy-settings.json",
-    "/openapi/public/settings/save-settings-moderation-config.json",
     "/openapi/public/settings/save-snippets-settings.json",
     "/openapi/public/spaces/create-space-group.json",
     "/openapi/public/spaces/create-space.json",
@@ -246,5 +247,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-07-09T05:02:47.736Z"
+  "generated": "2026-07-23T12:20:09.614Z"
 }

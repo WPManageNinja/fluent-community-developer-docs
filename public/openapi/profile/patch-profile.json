@@ -27,7 +27,7 @@
       "put": {
         "operationId": "patchProfile",
         "summary": "PUT Patch Profile",
-        "description": "Patch Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@patchProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
+        "description": "Patch Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@patchProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:88`",
         "tags": [
           "Profile"
         ],

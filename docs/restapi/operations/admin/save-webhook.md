@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/webhooks`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveWebhook`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:49`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:51`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 <OAOperation operationId="saveWebhook" specUrl="/openapi/public/admin/save-webhook.json" />

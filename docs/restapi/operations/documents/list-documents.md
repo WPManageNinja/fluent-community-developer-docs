@@ -10,6 +10,6 @@ aside: false
 - **Path:** `/documents`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `DocumentController@index`
-- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:39`
+- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:41`
 
 <OAOperation operationId="listDocuments" specUrl="/openapi/public/documents/list-documents.json" />

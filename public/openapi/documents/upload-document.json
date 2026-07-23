@@ -27,7 +27,7 @@
       "post": {
         "operationId": "uploadDocument",
         "summary": "POST Upload Document",
-        "description": "Upload Document for the FluentCommunity Documents API.\n\nController: `DocumentController@upload`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:40`",
+        "description": "Upload Document for the FluentCommunity Documents API.\n\nController: `DocumentController@upload`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`",
         "tags": [
           "Documents"
         ],

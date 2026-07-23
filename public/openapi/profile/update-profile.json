@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateProfile",
         "summary": "POST Update Profile",
-        "description": "Update Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@updateProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:85`",
+        "description": "Update Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@updateProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:87`",
         "tags": [
           "Profile"
         ],

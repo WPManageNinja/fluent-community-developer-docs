@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/join`
 - **Edition:** Core
 - **Controller:** `SpaceController@join`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:12`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:13`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="joinSpace" specUrl="/openapi/public/spaces/join-space.json" />

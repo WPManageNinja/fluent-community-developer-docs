@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getWelcomeBanner",
         "summary": "GET Get Welcome Banner",
-        "description": "Get Welcome Banner for the FluentCommunity Feeds API.\n\nController: `FeedsController@getWelcomeBanner`\nRoute source: `fluent-community/app/Http/Routes/api.php:72`",
+        "description": "Get Welcome Banner for the FluentCommunity Feeds API.\n\nController: `FeedsController@getWelcomeBanner`\nRoute source: `fluent-community/app/Http/Routes/api.php:73`",
         "tags": [
           "Feeds"
         ],

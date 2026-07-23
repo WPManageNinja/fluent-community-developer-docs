@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleFeedReaction",
         "summary": "POST Toggle Feed Reaction",
-        "description": "Toggle Feed Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:55`",
+        "description": "Toggle Feed Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:56`",
         "tags": [
           "Reactions"
         ],

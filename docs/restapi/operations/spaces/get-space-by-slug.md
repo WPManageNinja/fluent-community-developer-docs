@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/by-slug`
 - **Edition:** Core
 - **Controller:** `SpaceController@getBySlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:9`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:10`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="getSpaceBySlug" specUrl="/openapi/public/spaces/get-space-by-slug.json" />

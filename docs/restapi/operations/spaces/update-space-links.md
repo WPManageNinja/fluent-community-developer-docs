@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/links`
 - **Edition:** Core
 - **Controller:** `SpaceController@updateLinks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:26`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:27`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="updateSpaceLinks" specUrl="/openapi/public/spaces/update-space-links.json" />

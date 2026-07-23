@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/space_groups/{id}`
 - **Edition:** Core
 - **Controller:** `SpaceController@deleteSpaceGroup`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:34`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:35`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="deleteSpaceGroup" specUrl="/openapi/public/spaces/delete-space-group.json" />

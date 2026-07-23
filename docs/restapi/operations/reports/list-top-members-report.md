@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/analytics/members/top-members`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `MembersReportsController@getTopMembers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:77`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:79`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/MembersReportsController.php`
 
 <OAOperation operationId="listTopMembersReport" specUrl="/openapi/public/reports/list-top-members-report.json" />

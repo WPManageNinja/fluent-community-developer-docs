@@ -10,6 +10,6 @@ aside: false
 - **Path:** `/documents/upload`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `DocumentController@upload`
-- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:40`
+- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`
 
 <OAOperation operationId="uploadDocument" specUrl="/openapi/public/documents/upload-document.json" />

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAllSpaceCourses",
         "summary": "GET List All Space Courses",
-        "description": "List All Space Courses for the FluentCommunity Admin API.\n\nController: `AdminController@getAllSpaceCourses`\nRoute source: `fluent-community/app/Http/Routes/api.php:118`",
+        "description": "List All Space Courses for the FluentCommunity Admin API.\n\nController: `AdminController@getAllSpaceCourses`\nRoute source: `fluent-community/app/Http/Routes/api.php:121`",
         "tags": [
           "Admin"
         ],

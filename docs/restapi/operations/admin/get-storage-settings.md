@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/storage-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@getStorageSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:103`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:106`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="getStorageSettings" specUrl="/openapi/public/admin/get-storage-settings.json" />

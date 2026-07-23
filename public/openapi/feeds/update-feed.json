@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateFeed",
         "summary": "POST Update Feed",
-        "description": "Update Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:43`",
+        "description": "Update Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:44`",
         "tags": [
           "Feeds"
         ],

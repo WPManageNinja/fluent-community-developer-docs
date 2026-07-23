@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "patchComment",
         "summary": "PATCH Patch Comment",
-        "description": "Patch Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@patchComment`\nRoute source: `fluent-community/app/Http/Routes/api.php:54`",
+        "description": "Patch Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@patchComment`\nRoute source: `fluent-community/app/Http/Routes/api.php:55`",
         "tags": [
           "Comments"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listFeedComments",
         "summary": "GET List Feed Comments",
-        "description": "List Feed Comments for the FluentCommunity Comments API.\n\nController: `CommentsController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:51`",
+        "description": "List Feed Comments for the FluentCommunity Comments API.\n\nController: `CommentsController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:52`",
         "tags": [
           "Comments"
         ],
@@ -433,8 +433,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "Sorry, you do not have permission to view this post",
             "content": {
               "application/json": {
                 "schema": {
@@ -446,7 +446,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Sorry, you do not have permission to view this post"
                 }
               }
             }

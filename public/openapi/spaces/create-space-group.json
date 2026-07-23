@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createSpaceGroup",
         "summary": "POST Create Space Group",
-        "description": "Create Space Group for the FluentCommunity Spaces API.\n\nController: `SpaceController@createSpaceGroup`\nRoute source: `fluent-community/app/Http/Routes/api.php:32`",
+        "description": "Create Space Group for the FluentCommunity Spaces API.\n\nController: `SpaceController@createSpaceGroup`\nRoute source: `fluent-community/app/Http/Routes/api.php:33`",
         "tags": [
           "Spaces"
         ],

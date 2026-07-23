@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/{feed_id}/media-preview`
 - **Edition:** Core
 - **Controller:** `FeedsController@deleteMediaPreview`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:61`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:62`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="deleteMediaPreview" specUrl="/openapi/public/media/delete-media-preview.json" />

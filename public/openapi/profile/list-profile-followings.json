@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileFollowings",
         "summary": "GET List Profile Followings",
-        "description": "List Profile Followings for the FluentCommunity Profile API.\n\nController: `FollowController@getFollowings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:125`",
+        "description": "List Profile Followings for the FluentCommunity Profile API.\n\nController: `FollowController@getFollowings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:129`",
         "tags": [
           "Profile"
         ],

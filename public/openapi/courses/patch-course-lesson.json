@@ -56,6 +56,24 @@
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "message": ""
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",

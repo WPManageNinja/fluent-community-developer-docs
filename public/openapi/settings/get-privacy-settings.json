@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPrivacySettings",
         "summary": "GET Get Privacy Settings",
-        "description": "Get Privacy Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getPrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:158`",
+        "description": "Get Privacy Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getPrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:161`",
         "tags": [
           "Settings"
         ],

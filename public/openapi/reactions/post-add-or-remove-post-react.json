@@ -23,20 +23,52 @@
     }
   ],
   "paths": {
-    "/settings/moderation-config": {
+    "/feeds/{feed_id}/reactions/toggle": {
       "post": {
-        "operationId": "saveSettingsModerationConfig",
-        "summary": "POST Save Settings Moderation Config",
-        "description": "Save Settings Moderation Config for the FluentCommunity Settings API.\n\nController: `FluentCommunityPro\\App\\Http\\Controllers\\ModerationController@saveModerationConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:35`",
+        "operationId": "postAddOrRemovePostReact",
+        "summary": "POST Post Add Or Remove Post React",
+        "description": "Post Add Or Remove Post React for the FluentCommunity Reactions API.\n\nController: `ReactionController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:76`",
         "tags": [
-          "Settings"
+          "Reactions"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "feed_id",
+            "in": "path",
+            "required": true,
+            "description": "Feed ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "react_type": {
+                    "type": "string"
+                  },
+                  "remove": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "react_type": "",
+                "remove": ""
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -48,18 +80,22 @@
                     "message": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "new_count": {
+                      "type": "integer"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "message": "Reaction has been added",
+                  "new_count": 0
                 }
               }
             }
           },
-          "400": {
-            "description": "Request error.",
+          "422": {
+            "description": "You cannot react to your own post",
             "content": {
               "application/json": {
                 "schema": {
@@ -71,7 +107,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request error."
+                  "message": "You cannot react to your own post"
                 }
               }
             }

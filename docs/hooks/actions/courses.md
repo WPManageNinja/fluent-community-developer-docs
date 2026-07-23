@@ -11,28 +11,28 @@ description: Courses action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/course`](#fluent_communitycourse) | Core | 2 | `fluent-community/app/Http/Controllers/ProfileController.php:556` |
+| [`fluent_community/course`](#fluent_communitycourse) | Core | 2 | `fluent-community/app/Http/Controllers/ProfileController.php:644` |
 | [`fluent_community/course/before_create`](#fluent_communitycoursebefore_create) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:147` |
-| [`fluent_community/course/before_delete`](#fluent_communitycoursebefore_delete) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:405` |
+| [`fluent_community/course/before_delete`](#fluent_communitycoursebefore_delete) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:409` |
 | [`fluent_community/course/before_progress_reset`](#fluent_communitycoursebefore_progress_reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:302` |
 | [`fluent_community/course/completed`](#fluent_communitycoursecompleted) | Core | 2 | `fluent-community/Modules/Course/Services/CourseHelper.php:278` |
 | [`fluent_community/course/created`](#fluent_communitycoursecreated) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:182` |
-| [`fluent_community/course/deleted`](#fluent_communitycoursedeleted) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:438` |
-| [`fluent_community/course/enrolled`](#fluent_communitycourseenrolled) | Core | 2 | `fluent-community/app/Services/Helper.php:1642` |
+| [`fluent_community/course/deleted`](#fluent_communitycoursedeleted) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:442` |
+| [`fluent_community/course/enrolled`](#fluent_communitycourseenrolled) | Core | 2 | `fluent-community/app/Services/Helper.php:1732` |
 | [`fluent_community/course/lesson_completed`](#fluent_communitycourselesson_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:211` |
 | [`fluent_community/course/lesson_marked_incomplete`](#fluent_communitycourselesson_marked_incomplete) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:195` |
 | [`fluent_community/course/progress_reset`](#fluent_communitycourseprogress_reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:323` |
-| [`fluent_community/course/published`](#fluent_communitycoursepublished) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:328` |
-| [`fluent_community/course/student_left`](#fluent_communitycoursestudent_left) | Core | 1 | `fluent-community/app/Services/Helper.php:1712` |
-| [`fluent_community/course/updated`](#fluent_communitycourseupdated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:326` |
-| [`fluent_community/course/welcome_banner_updated`](#fluent_communitycoursewelcome_banner_updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:469` |
-| [`fluent_community/lesson/before_deleted`](#fluent_communitylessonbefore_deleted) | Core | 3 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:424` |
-| [`fluent_community/lesson/duplicated`](#fluent_communitylessonduplicated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1132` |
-| [`fluent_community/lesson/updated`](#fluent_communitylessonupdated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1021` |
+| [`fluent_community/course/published`](#fluent_communitycoursepublished) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:329` |
+| [`fluent_community/course/student_left`](#fluent_communitycoursestudent_left) | Core | 1 | `fluent-community/app/Services/Helper.php:1802` |
+| [`fluent_community/course/updated`](#fluent_communitycourseupdated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:327` |
+| [`fluent_community/course/welcome_banner_updated`](#fluent_communitycoursewelcome_banner_updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:483` |
+| [`fluent_community/lesson/before_deleted`](#fluent_communitylessonbefore_deleted) | Core | 3 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:428` |
+| [`fluent_community/lesson/duplicated`](#fluent_communitylessonduplicated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1152` |
+| [`fluent_community/lesson/updated`](#fluent_communitylessonupdated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1035` |
 | [`fluent_community/lesson/video_watched`](#fluent_communitylessonvideo_watched) | Core | 1 | `fluent-community/Modules/Course/Services/LessonVideoGateService.php:158` |
-| [`fluent_community/quiz/submitted`](#fluent_communityquizsubmitted) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:164` |
-| [`fluent_community/section/before_deleted`](#fluent_communitysectionbefore_deleted) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:421` |
-| [`fluent_community/section/scheduled_at_updated`](#fluent_communitysectionscheduled_at_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:792` |
+| [`fluent_community/quiz/submitted`](#fluent_communityquizsubmitted) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:177` |
+| [`fluent_community/section/before_deleted`](#fluent_communitysectionbefore_deleted) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:425` |
+| [`fluent_community/section/scheduled_at_updated`](#fluent_communitysectionscheduled_at_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:802` |
 
 <a id="fluent_communitycourse"></a>
 
@@ -47,7 +47,7 @@ description: Courses action hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:556` | `[&$course]` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:644` | `[&$course]` (array) |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:77` | `[&$course]` (array) |
 
 ### Example
@@ -71,7 +71,7 @@ add_action('fluent_community/course', function ($course) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:147` | `$courseData` (mixed) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:362` | `$courseData` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:363` | `$courseData` (mixed) |
 
 ### Example
 
@@ -93,7 +93,7 @@ add_action('fluent_community/course/before_create', function ($courseData) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:405` | `$course` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:409` | `$course` (mixed) |
 
 ### Example
 
@@ -161,7 +161,7 @@ add_action('fluent_community/course/completed', function ($course, $userId) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:182` | `$course` (mixed) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:393` | `$newCourse` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:397` | `$newCourse` (mixed) |
 
 ### Example
 
@@ -183,7 +183,7 @@ add_action('fluent_community/course/created', function ($course) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:438` | `$courseId` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:442` | `$courseId` (mixed) |
 
 ### Example
 
@@ -205,8 +205,8 @@ add_action('fluent_community/course/deleted', function ($courseId) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1642` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1663` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed)<br>`$created` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1732` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1753` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed)<br>`$created` (mixed) |
 
 ### Example
 
@@ -294,7 +294,7 @@ add_action('fluent_community/course/progress_reset', function ($course, $userId)
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:328` | `$course` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:329` | `$course` (mixed) |
 
 ### Example
 
@@ -316,7 +316,7 @@ add_action('fluent_community/course/published', function ($course) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1712` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1802` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed) |
 
 ### Example
 
@@ -338,7 +338,7 @@ add_action('fluent_community/course/student_left', function ($space, $userId, $b
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:326` | `$course` (mixed)<br>`$dirtyFields` (mixed)<br>`$prevCourse` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:327` | `$course` (mixed)<br>`$dirtyFields` (mixed)<br>`$prevCourse` (mixed) |
 
 ### Example
 
@@ -360,7 +360,7 @@ add_action('fluent_community/course/updated', function ($course, $dirtyFields, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:469` | `$course` (mixed)<br>`$settings` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:483` | `$course` (mixed)<br>`$settings` (mixed) |
 
 ### Example
 
@@ -382,9 +382,9 @@ add_action('fluent_community/course/welcome_banner_updated', function ($course, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:424` | `$courseLesson` (mixed) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:864` | `$lesson` (mixed) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1074` | `$lesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:428` | `$courseLesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:877` | `$lesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1093` | `$lesson` (mixed) |
 
 ### Example
 
@@ -406,7 +406,7 @@ add_action('fluent_community/lesson/before_deleted', function ($courseLesson) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1132` | `$newLesson` (mixed)<br>`$lesson` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1152` | `$newLesson` (mixed)<br>`$lesson` (mixed) |
 
 ### Example
 
@@ -428,7 +428,7 @@ add_action('fluent_community/lesson/duplicated', function ($newLesson, $lesson) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1021` | `$lesson` (mixed)<br>`$dirtyFields` (mixed)<br>`$isNewlyPublished` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1035` | `$lesson` (mixed)<br>`$dirtyFields` (mixed)<br>`$isNewlyPublished` (mixed) |
 
 ### Example
 
@@ -472,7 +472,7 @@ add_action('fluent_community/lesson/video_watched', function ($lesson, $userId) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:164` | `$quizResult` (mixed)<br>`$user` (mixed)<br>`$quiz` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:177` | `$quizResult` (mixed)<br>`$user` (mixed)<br>`$quiz` (mixed) |
 
 ### Example
 
@@ -494,8 +494,8 @@ add_action('fluent_community/quiz/submitted', function ($quizResult, $user, $qui
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:421` | `$courseTopic` (mixed) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:854` | `$topic` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:425` | `$courseTopic` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:867` | `$topic` (mixed) |
 
 ### Example
 
@@ -517,7 +517,7 @@ add_action('fluent_community/section/before_deleted', function ($courseTopic) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:792` | `$course` (mixed)<br>`$topic` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:802` | `$course` (mixed)<br>`$topic` (mixed) |
 
 ### Example
 

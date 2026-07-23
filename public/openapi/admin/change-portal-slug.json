@@ -27,7 +27,7 @@
       "post": {
         "operationId": "changePortalSlug",
         "summary": "POST Change Portal Slug",
-        "description": "Change Portal Slug for the FluentCommunity Admin API.\n\nController: `AdminController@changePortalSlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:113`",
+        "description": "Change Portal Slug for the FluentCommunity Admin API.\n\nController: `AdminController@changePortalSlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:116`",
         "tags": [
           "Admin"
         ],

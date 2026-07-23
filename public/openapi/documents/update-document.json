@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateDocument",
         "summary": "POST Update Document",
-        "description": "Update Document for the FluentCommunity Documents API.\n\nController: `DocumentController@updateDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:41`",
+        "description": "Update Document for the FluentCommunity Documents API.\n\nController: `DocumentController@updateDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:43`",
         "tags": [
           "Documents"
         ],

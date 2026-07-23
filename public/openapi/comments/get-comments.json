@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getComments",
         "summary": "GET Get Comments",
-        "description": "Get Comments for the FluentCommunity Comments API.\n\nController: `ProfileController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:90`",
+        "description": "Get Comments for the FluentCommunity Comments API.\n\nController: `ProfileController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:93`",
         "tags": [
           "Comments"
         ],

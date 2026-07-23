@@ -27,7 +27,7 @@
       "post": {
         "operationId": "leaveSpace",
         "summary": "POST Leave Space",
-        "description": "Leave Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@leave`\nRoute source: `fluent-community/app/Http/Routes/api.php:13`",
+        "description": "Leave Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@leave`\nRoute source: `fluent-community/app/Http/Routes/api.php:14`",
         "tags": [
           "Spaces"
         ],

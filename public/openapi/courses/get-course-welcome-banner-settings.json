@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourseWelcomeBannerSettings",
         "summary": "GET Get Course Welcome Banner Settings",
-        "description": "Get Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@getCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:62`",
+        "description": "Get Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@getCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:64`",
         "tags": [
           "Courses"
         ],

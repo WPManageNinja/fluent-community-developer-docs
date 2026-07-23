@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "patchFeed",
         "summary": "PATCH Patch Feed",
-        "description": "Patch Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@patchFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:44`",
+        "description": "Patch Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@patchFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:45`",
         "tags": [
           "Feeds"
         ],

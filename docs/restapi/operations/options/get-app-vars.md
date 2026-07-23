@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/options/app-vars`
 - **Edition:** Core
 - **Controller:** `OptionController@getAppVars`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:145`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:148`
 - **Controller source:** `fluent-community/app/Http/Controllers/OptionController.php`
 
 <OAOperation operationId="getAppVars" specUrl="/openapi/public/options/get-app-vars.json" />

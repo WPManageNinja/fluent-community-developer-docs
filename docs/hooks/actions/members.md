@@ -5,24 +5,25 @@ description: Members action hooks for FluentCommunity.
 
 # Members Actions
 
-12 unique action hooks currently map to this category, across 17 call sites.
+13 unique action hooks currently map to this category, across 18 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/after_sync_bp_users`](#fluent_communityafter_sync_bp_users) | Core | 2 | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:152` |
-| [`fluent_community/auth/show_invitation_for_user`](#fluent_communityauthshow_invitation_for_user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:269` |
+| [`fluent_community/after_sync_bp_users`](#fluent_communityafter_sync_bp_users) | Core | 2 | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:153` |
+| [`fluent_community/auth/show_invitation_for_user`](#fluent_communityauthshow_invitation_for_user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:270` |
 | [`fluent_community/before_unblocking_user`](#fluent_communitybefore_unblocking_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:205` |
 | [`fluent_community/before_unfollowing_user`](#fluent_communitybefore_unfollowing_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` |
 | [`fluent_community/blocked_user`](#fluent_communityblocked_user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
 | [`fluent_community/followed_user`](#fluent_communityfollowed_user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` |
 | [`fluent_community/members_query_ref`](#fluent_communitymembers_query_ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:114` |
-| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:544` |
-| [`fluent_community/profile_deactivated`](#fluent_communityprofile_deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:174` |
-| [`fluent_community/update_profile_link_providers`](#fluent_communityupdate_profile_link_providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:527` |
-| [`fluent_community/user_level_upgraded`](#fluent_communityuser_level_upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:110` |
+| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent_communitynotificationcommentnotifed_to_other_users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:521` |
+| [`fluent_community/profile_deactivated`](#fluent_communityprofile_deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:175` |
+| [`fluent_community/update_profile_link_providers`](#fluent_communityupdate_profile_link_providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:528` |
+| [`fluent_community/user_level_upgraded`](#fluent_communityuser_level_upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:111` |
 | [`fluent_community/user_points_updated`](#fluent_communityuser_points_updated) | Core + <span class="pro-badge">PRO</span> | 3 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` |
+| [`fluent_community/user/password_changed`](#fluent_communityuserpassword_changed) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:524` |
 
 <a id="fluent_communityafter_sync_bp_users"></a>
 
@@ -37,7 +38,7 @@ description: Members action hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:152` | `$users` (array) |
+| Core | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:153` | `$users` (array) |
 | Core | `fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php:162` | `$users` (array) |
 
 ### Example
@@ -60,7 +61,7 @@ add_action('fluent_community/after_sync_bp_users', function ($users) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:269` | `$inviation` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:270` | `$inviation` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 
@@ -194,7 +195,7 @@ add_action('fluent_community/members_query_ref', function ($all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:544` | `[ 'user_ids' => $sendingUserIds, 'key' => 'notifed_to_other_users', 'notification' => $notification, 'comment' => $comment, 'feed' => $feed ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:521` | `[ 'user_ids' => $sendingUserIds, 'key' => 'notifed_to_other_users', 'notification' => $notification, 'comment' => $comment, 'feed' => $feed ]` (array) |
 
 ### Example
 
@@ -216,7 +217,7 @@ add_action('fluent_community/notification/comment/notifed_to_other_users', funct
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:174` | `$xprofile` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:175` | `$xprofile` (mixed) |
 
 ### Example
 
@@ -238,7 +239,7 @@ add_action('fluent_community/profile_deactivated', function ($xprofile) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:527` | `$config` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:528` | `$config` (mixed) |
 
 ### Example
 
@@ -260,7 +261,7 @@ add_action('fluent_community/update_profile_link_providers', function ($config) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:110` | `$xprofile` (mixed)<br>`$newLevel` (mixed)<br>`$oldLevel` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:111` | `$xprofile` (mixed)<br>`$newLevel` (mixed)<br>`$oldLevel` (mixed) |
 
 ### Example
 
@@ -283,7 +284,7 @@ add_action('fluent_community/user_level_upgraded', function ($xprofile, $newLeve
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` | `$profileModel` (mixed)<br>`$oldPoints` (mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Services/LeaderBoardHelper.php:180` | `$xprofile` (mixed)<br>`$oldPoints` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Services/LeaderBoardHelper.php:189` | `$xprofile` (mixed)<br>`$oldPoints` (mixed) |
 | Core | `fluent-community/app/Hooks/CLI/Commands.php:153` | `$xProfile` (mixed)<br>`$oldPoints` (mixed) |
 
 ### Example
@@ -291,5 +292,27 @@ add_action('fluent_community/user_level_upgraded', function ($xprofile, $newLeve
 ```php
 add_action('fluent_community/user_points_updated', function ($profileModel, $oldPoints) {
 }, 10, 2);
+```
+
+<a id="fluent_communityuserpassword_changed"></a>
+
+## `fluent_community/user/password_changed`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** User/Password Changed hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:524` | `$user->ID` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/user/password_changed', function ($id) {
+}, 10, 1);
 ```
 

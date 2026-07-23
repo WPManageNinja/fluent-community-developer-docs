@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSidebarLink",
         "summary": "POST Save Sidebar Link",
-        "description": "Save Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:52`",
+        "description": "Save Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:54`",
         "tags": [
           "Admin"
         ],

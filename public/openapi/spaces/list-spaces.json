@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpaces",
         "summary": "GET List Spaces",
-        "description": "List Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:7`",
+        "description": "List Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:8`",
         "tags": [
           "Spaces"
         ],
