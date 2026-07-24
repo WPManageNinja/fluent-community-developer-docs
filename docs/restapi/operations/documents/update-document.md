@@ -10,6 +10,6 @@ aside: false
 - **Path:** `/documents/update`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `DocumentController@updateDocument`
-- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:41`
+- **Route source:** `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:43`
 
 <OAOperation operationId="updateDocument" specUrl="/openapi/public/documents/update-document.json" />

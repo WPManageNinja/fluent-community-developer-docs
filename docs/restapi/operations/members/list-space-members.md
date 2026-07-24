@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/members`
 - **Edition:** Core
 - **Controller:** `SpaceController@getMembers`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:17`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:18`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="listSpaceMembers" specUrl="/openapi/public/members/list-space-members.json" />

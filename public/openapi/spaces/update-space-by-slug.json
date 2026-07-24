@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceBySlug",
         "summary": "PUT Update Space By Slug",
-        "description": "Update Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@patchBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:10`",
+        "description": "Update Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@patchBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:11`",
         "tags": [
           "Spaces"
         ],

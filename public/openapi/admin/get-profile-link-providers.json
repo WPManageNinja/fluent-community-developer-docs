@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getProfileLinkProviders",
         "summary": "GET Get Profile Link Providers",
-        "description": "Get Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@getProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:115`",
+        "description": "Get Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@getProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:118`",
         "tags": [
           "Admin"
         ],

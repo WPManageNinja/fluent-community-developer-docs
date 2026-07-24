@@ -27,7 +27,7 @@
       "post": {
         "operationId": "renderMarkdownPreview",
         "summary": "POST Render Markdown Preview",
-        "description": "Render Markdown Preview for the FluentCommunity Feeds API.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:80`",
+        "description": "Render Markdown Preview for the FluentCommunity Feeds API.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:82`",
         "tags": [
           "Feeds"
         ],

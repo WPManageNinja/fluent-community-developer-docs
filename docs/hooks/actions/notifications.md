@@ -13,10 +13,10 @@ description: Notifications action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/course/{courseType}/unschedule_notification`](#fluent_communitycoursecourseTypeunschedule_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:124` |
 | [`fluent_community/course/{prevType}/unschedule_notification`](#fluent_communitycourseprevTypeunschedule_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:114` |
-| [`fluent_community/course/scheduled/init_notification`](#fluent_communitycoursescheduledinit_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:225` |
-| [`fluent_community/course/scheduled/unschedule_notification`](#fluent_communitycoursescheduledunschedule_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:224` |
-| [`fluent_community/course/structured/init_notification`](#fluent_communitycoursestructuredinit_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:235` |
-| [`fluent_community/course/structured/unschedule_notification`](#fluent_communitycoursestructuredunschedule_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:234` |
+| [`fluent_community/course/scheduled/init_notification`](#fluent_communitycoursescheduledinit_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:227` |
+| [`fluent_community/course/scheduled/unschedule_notification`](#fluent_communitycoursescheduledunschedule_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:226` |
+| [`fluent_community/course/structured/init_notification`](#fluent_communitycoursestructuredinit_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:237` |
+| [`fluent_community/course/structured/unschedule_notification`](#fluent_communitycoursestructuredunschedule_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:236` |
 | [`fluent_community/remove_old_notifications`](#fluent_communityremove_old_notifications) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:26` |
 
 <a id="fluent_communitycoursecourseTypeunschedule_notification"></a>
@@ -76,7 +76,7 @@ add_action('fluent_community/course/{prevType}/unschedule_notification', functio
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:225` | `$course` (mixed)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:227` | `$course` (mixed)<br>`$section` (mixed) |
 
 ### Example
 
@@ -98,7 +98,7 @@ add_action('fluent_community/course/scheduled/init_notification', function ($cou
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:224` | `$course` (mixed)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:226` | `$course` (mixed)<br>`$section` (mixed) |
 
 ### Example
 
@@ -120,7 +120,7 @@ add_action('fluent_community/course/scheduled/unschedule_notification', function
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:235` | `$course` (mixed)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:237` | `$course` (mixed)<br>`$section` (mixed) |
 
 ### Example
 
@@ -142,7 +142,7 @@ add_action('fluent_community/course/structured/init_notification', function ($co
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:234` | `$course` (mixed)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:236` | `$course` (mixed)<br>`$section` (mixed) |
 
 ### Example
 

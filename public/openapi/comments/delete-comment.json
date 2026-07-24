@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteComment",
         "summary": "DELETE Delete Comment",
-        "description": "Delete Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@deleteComment`\nRoute source: `fluent-community/app/Http/Routes/api.php:56`",
+        "description": "Delete Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@deleteComment`\nRoute source: `fluent-community/app/Http/Routes/api.php:57`",
         "tags": [
           "Comments"
         ],

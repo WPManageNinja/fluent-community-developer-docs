@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listFeeds",
         "summary": "GET List Feeds",
-        "description": "List Feeds for the FluentCommunity Feeds API.\n\nController: `FeedsController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:41`",
+        "description": "List Feeds for the FluentCommunity Feeds API.\n\nController: `FeedsController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:42`",
         "tags": [
           "Feeds"
         ],

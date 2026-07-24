@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/notification-preferences`
 - **Edition:** Core
 - **Controller:** `ProfileController@saveNotificationPreferance`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:93`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:96`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 <OAOperation operationId="saveNotificationPreferences" specUrl="/openapi/public/profile/save-notification-preferences.json" />

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceId}/by-id`
 - **Edition:** Core
 - **Controller:** `SpaceController@patchById`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:11`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:12`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="updateSpaceById" specUrl="/openapi/public/spaces/update-space-by-id.json" />

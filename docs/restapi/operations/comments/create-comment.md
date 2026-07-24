@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/{feed_id}/comments`
 - **Edition:** Core
 - **Controller:** `CommentsController@store`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:52`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:53`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 <OAOperation operationId="createComment" specUrl="/openapi/public/comments/create-comment.json" />

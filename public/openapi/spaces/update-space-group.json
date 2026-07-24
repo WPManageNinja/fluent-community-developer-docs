@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceGroup",
         "summary": "PUT Update Space Group",
-        "description": "Update Space Group for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateSpaceGroup`\nRoute source: `fluent-community/app/Http/Routes/api.php:33`",
+        "description": "Update Space Group for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateSpaceGroup`\nRoute source: `fluent-community/app/Http/Routes/api.php:34`",
         "tags": [
           "Spaces"
         ],

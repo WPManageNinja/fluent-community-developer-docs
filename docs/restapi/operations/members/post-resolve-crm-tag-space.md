@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/members/resolve-crm-tag`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@resolveCrmTagSpace`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:119`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:123`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 <OAOperation operationId="postResolveCrmTagSpace" specUrl="/openapi/public/members/post-resolve-crm-tag-space.json" />

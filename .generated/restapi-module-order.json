@@ -69,6 +69,7 @@
     "toggle-feed-reaction",
     "toggle-comment-reaction",
     "list-feed-reactions",
+    "post-add-or-remove-post-react",
     "cast-survey-vote",
     "list-survey-voters",
     "list-comment-reactions"
@@ -87,6 +88,7 @@
     "get-profile",
     "update-profile",
     "patch-profile",
+    "post-change-password",
     "list-profile-spaces",
     "get-courses",
     "list-profile-memberships",
@@ -127,7 +129,6 @@
     "save-crm-tagging-config",
     "get-snippets-settings",
     "save-snippets-settings",
-    "save-settings-moderation-config",
     "get-followers-settings",
     "save-followers-settings"
   ],

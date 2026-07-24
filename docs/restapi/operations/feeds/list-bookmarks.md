@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/bookmarks`
 - **Edition:** Core
 - **Controller:** `FeedsController@getBookmarks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:47`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:48`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="listBookmarks" specUrl="/openapi/public/feeds/list-bookmarks.json" />

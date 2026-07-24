@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/oembed`
 - **Edition:** Core
 - **Controller:** `FeedsController@getOembed`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:67`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:68`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="getOembed" specUrl="/openapi/public/feeds/get-oembed.json" />

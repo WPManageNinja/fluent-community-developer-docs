@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/space_groups/re-index`
 - **Edition:** Core
 - **Controller:** `SpaceController@updateSpaceGroupIndexes`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:35`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:36`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="reindexSpaceGroups" specUrl="/openapi/public/spaces/reindex-space-groups.json" />

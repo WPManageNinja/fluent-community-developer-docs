@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteFeed",
         "summary": "DELETE Delete Feed",
-        "description": "Delete Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@deleteFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:60`",
+        "description": "Delete Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@deleteFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:61`",
         "tags": [
           "Feeds"
         ],

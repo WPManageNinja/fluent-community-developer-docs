@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceLockscreens",
         "summary": "GET Get Space Lockscreens",
-        "description": "Get Space Lockscreens for the FluentCommunity Spaces API.\n\nController: `SpaceController@getLockScreenSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:24`",
+        "description": "Get Space Lockscreens for the FluentCommunity Spaces API.\n\nController: `SpaceController@getLockScreenSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:25`",
         "tags": [
           "Spaces"
         ],
@@ -68,8 +68,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "Space not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -81,7 +81,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Space not found"
                 }
               }
             }

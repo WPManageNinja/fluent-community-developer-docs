@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateSpaceLinks",
         "summary": "POST Update Space Links",
-        "description": "Update Space Links for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:26`",
+        "description": "Update Space Links for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:27`",
         "tags": [
           "Spaces"
         ],

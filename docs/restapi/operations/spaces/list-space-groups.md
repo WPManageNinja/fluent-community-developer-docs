@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/space_groups`
 - **Edition:** Core
 - **Controller:** `SpaceController@getSpaceGroups`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:31`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:32`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="listSpaceGroups" specUrl="/openapi/public/spaces/list-space-groups.json" />

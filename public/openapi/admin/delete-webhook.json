@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteWebhook",
         "summary": "DELETE Delete Webhook",
-        "description": "Delete Webhook for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:50`",
+        "description": "Delete Webhook for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:52`",
         "tags": [
           "Admin"
         ],

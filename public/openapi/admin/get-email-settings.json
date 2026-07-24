@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getEmailSettings",
         "summary": "GET Get Email Settings",
-        "description": "Get Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
+        "description": "Get Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:103`",
         "tags": [
           "Admin"
         ],

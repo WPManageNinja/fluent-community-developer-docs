@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopics",
         "summary": "GET List Topics",
-        "description": "List Topics for the FluentCommunity Admin API.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:43`",
+        "description": "List Topics for the FluentCommunity Admin API.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
         "tags": [
           "Admin"
         ],

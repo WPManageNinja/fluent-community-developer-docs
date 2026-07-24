@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceMetaSettings",
         "summary": "GET Get Space Meta Settings",
-        "description": "Get Space Meta Settings for the FluentCommunity Spaces API.\n\nController: `SpaceController@getMetaSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:15`",
+        "description": "Get Space Meta Settings for the FluentCommunity Spaces API.\n\nController: `SpaceController@getMetaSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:16`",
         "tags": [
           "Spaces"
         ],

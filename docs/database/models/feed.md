@@ -81,6 +81,7 @@ Represents community posts, announcements, scheduled posts, and other feed conte
 | `hasEditAccess()` | Checks whether the current user can edit the feed item. |
 | `updateCustomMeta()` | Persists a single custom meta value on the feed record. |
 | `getCustomMeta()` | Reads a single custom meta value from the serialized feed meta payload. |
+| `withPublicRelations()` | with Public Relations implemented on the model. |
 | `hasUserReact()` | has User React implemented on the model. |
 | `attachTopics()` | attach Topics implemented on the model. |
 | `recountStats()` | recount Stats implemented on the model. |

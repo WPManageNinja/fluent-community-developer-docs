@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/profile/{username}/courses`
 - **Edition:** Core
 - **Controller:** `ProfileController@getCourses`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:88`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:91`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 <OAOperation operationId="getCourses" specUrl="/openapi/public/profile/get-courses.json" />

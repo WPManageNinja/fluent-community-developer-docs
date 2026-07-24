@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/space_groups/move-space`
 - **Edition:** Core
 - **Controller:** `SpaceController@moveSpace`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:37`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:38`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="moveSpace" specUrl="/openapi/public/spaces/move-space.json" />

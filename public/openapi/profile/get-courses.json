@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourses",
         "summary": "GET Get Courses",
-        "description": "Get Courses for the FluentCommunity Profile API.\n\nController: `ProfileController@getCourses`\nRoute source: `fluent-community/app/Http/Routes/api.php:88`",
+        "description": "Get Courses for the FluentCommunity Profile API.\n\nController: `ProfileController@getCourses`\nRoute source: `fluent-community/app/Http/Routes/api.php:91`",
         "tags": [
           "Profile"
         ],

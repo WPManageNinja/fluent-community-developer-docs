@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeedLinks",
         "summary": "GET Get Feed Links",
-        "description": "Get Feed Links for the FluentCommunity Feeds API.\n\nController: `FeedsController@getLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:69`",
+        "description": "Get Feed Links for the FluentCommunity Feeds API.\n\nController: `FeedsController@getLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:70`",
         "tags": [
           "Feeds"
         ],

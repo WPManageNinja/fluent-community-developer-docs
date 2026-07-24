@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveModerationConfig",
         "summary": "POST Save Moderation Config",
-        "description": "Save Moderation Config for the FluentCommunity Reports API.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:101`",
+        "description": "Save Moderation Config for the FluentCommunity Reports API.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:105`",
         "tags": [
           "Reports"
         ],

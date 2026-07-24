@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/{feed_id}/apps/survey-voters/{option_slug}`
 - **Edition:** Core
 - **Controller:** `ReactionController@getSurveyVoters`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:78`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:80`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 <OAOperation operationId="listSurveyVoters" specUrl="/openapi/public/reactions/list-survey-voters.json" />

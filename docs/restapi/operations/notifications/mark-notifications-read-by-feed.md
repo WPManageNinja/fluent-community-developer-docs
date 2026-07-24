@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/notifications/mark-read/{feed_id}/by-feed-id`
 - **Edition:** Core
 - **Controller:** `NotificationsController@markAsReadByFeedId`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:131`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:134`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 <OAOperation operationId="markNotificationsReadByFeed" specUrl="/openapi/public/notifications/mark-notifications-read-by-feed.json" />

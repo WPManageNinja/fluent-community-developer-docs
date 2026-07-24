@@ -24,8 +24,8 @@ All admin endpoints are protected by `AdminPolicy`.
 | `GET` | `/admin/welcome-banner` | Core | [Get Admin Welcome Banner](/restapi/operations/admin/get-admin-welcome-banner) | `AdminController@getWelcomeBannerSettings` |
 | `POST` | `/admin/welcome-banner` | Core | [Save Admin Welcome Banner](/restapi/operations/admin/save-admin-welcome-banner) | `AdminController@updateWelcomeBannerSettings` |
 | `GET` | `/admin/auth-settings` | Core | [Get Auth Settings](/restapi/operations/admin/get-auth-settings) | `AdminController@getAuthSettings` |
-| `GET` | `/admin/on-boardings` | Core | [Get Onboarding Settings](/restapi/operations/admin/get-onboarding-settings) | `AdminController@getOnboardingSettings` |
-| `POST` | `/admin/on-boardings` | Core | [Save Onboarding Settings](/restapi/operations/admin/save-onboarding-settings) | `AdminController@saveOnboardingSettings` |
+| `GET` | `/admin/on-boardings` | Core | [Get Onboarding Settings](/restapi/operations/admin/get-onboarding-settings) | `AdminController@getOnBoardingSettings` |
+| `POST` | `/admin/on-boardings` | Core | [Save Onboarding Settings](/restapi/operations/admin/save-onboarding-settings) | `AdminController@saveOnBoardingSettings` |
 | `POST` | `/admin/on-boardings/change-slug` | Core | [Change Portal Slug](/restapi/operations/admin/change-portal-slug) | `AdminController@changePortalSlug` |
 | `GET` | `/admin/profile-link-providers` | Core | [Get Profile Link Providers](/restapi/operations/admin/get-profile-link-providers) | `AdminController@getProfileLinkProviders` |
 | `POST` | `/admin/profile-link-providers` | Core | [Save Profile Link Providers](/restapi/operations/admin/save-profile-link-providers) | `AdminController@updateProfileLinkProviders` |

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getProfile",
         "summary": "GET Get Profile",
-        "description": "Get Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:84`",
+        "description": "Get Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
         "tags": [
           "Profile"
         ],
@@ -315,7 +315,7 @@
               }
             }
           },
-          "422": {
+          "403": {
             "description": "This profile is not active",
             "content": {
               "application/json": {

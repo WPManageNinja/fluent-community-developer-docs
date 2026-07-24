@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateModerationReport",
         "summary": "PUT Update Moderation Report",
-        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:97`",
+        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
         "tags": [
           "Reports"
         ],

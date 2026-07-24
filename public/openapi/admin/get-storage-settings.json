@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getStorageSettings",
         "summary": "GET Get Storage Settings",
-        "description": "Get Storage Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:103`",
+        "description": "Get Storage Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:106`",
         "tags": [
           "Admin"
         ],

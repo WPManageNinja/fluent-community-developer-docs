@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceLockscreenSettings",
         "summary": "PUT Update Space Lockscreen Settings",
-        "description": "Update Space Lockscreen Settings for the FluentCommunity Spaces API.\n\nController: `ProAdminController@updateSpaceLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:57`",
+        "description": "Update Space Lockscreen Settings for the FluentCommunity Spaces API.\n\nController: `ProAdminController@updateSpaceLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:59`",
         "tags": [
           "Spaces"
         ],
@@ -346,8 +346,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "403": {
+            "description": "You do not have permission to manage this space.",
             "content": {
               "application/json": {
                 "schema": {
@@ -359,7 +359,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "You do not have permission to manage this space."
                 }
               }
             }

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/meta-settings`
 - **Edition:** Core
 - **Controller:** `SpaceController@getMetaSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:15`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:16`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="getSpaceMetaSettings" specUrl="/openapi/public/spaces/get-space-meta-settings.json" />

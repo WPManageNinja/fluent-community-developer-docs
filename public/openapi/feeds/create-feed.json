@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createFeed",
         "summary": "POST Create Feed",
-        "description": "Create Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:42`",
+        "description": "Create Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:43`",
         "tags": [
           "Feeds"
         ],

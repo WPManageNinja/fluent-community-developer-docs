@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/topics`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@getTopics`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:43`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:42`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 <OAOperation operationId="listTopics" specUrl="/openapi/public/admin/list-topics.json" />

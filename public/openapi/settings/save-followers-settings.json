@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveFollowersSettings",
         "summary": "POST Save Followers Settings",
-        "description": "Save Followers Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:38`",
+        "description": "Save Followers Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:37`",
         "tags": [
           "Settings"
         ],

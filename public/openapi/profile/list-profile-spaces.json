@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileSpaces",
         "summary": "GET List Profile Spaces",
-        "description": "List Profile Spaces for the FluentCommunity Profile API.\n\nController: `ProfileController@getSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:87`",
+        "description": "List Profile Spaces for the FluentCommunity Profile API.\n\nController: `ProfileController@getSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:90`",
         "tags": [
           "Profile"
         ],

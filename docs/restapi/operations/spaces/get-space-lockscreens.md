@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/lockscreens`
 - **Edition:** Core
 - **Controller:** `SpaceController@getLockScreenSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:24`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:25`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="getSpaceLockscreens" specUrl="/openapi/public/spaces/get-space-lockscreens.json" />

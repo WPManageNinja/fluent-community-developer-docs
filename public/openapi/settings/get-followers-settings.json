@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFollowersSettings",
         "summary": "GET Get Followers Settings",
-        "description": "Get Followers Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@getFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:37`",
+        "description": "Get Followers Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@getFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:36`",
         "tags": [
           "Settings"
         ],

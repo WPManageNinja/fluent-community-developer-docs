@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/spaces/discover`
 - **Edition:** Core
 - **Controller:** `SpaceController@discover`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:29`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:30`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 <OAOperation operationId="discoverSpaces" specUrl="/openapi/public/spaces/discover-spaces.json" />

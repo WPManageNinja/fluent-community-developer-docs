@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/customization-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@updateCustomizationSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:157`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:160`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="saveCustomizationSettings" specUrl="/openapi/public/settings/save-customization-settings.json" />

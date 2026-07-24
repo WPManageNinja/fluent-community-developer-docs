@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listBookmarks",
         "summary": "GET List Bookmarks",
-        "description": "List Bookmarks for the FluentCommunity Feeds API.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:47`",
+        "description": "List Bookmarks for the FluentCommunity Feeds API.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
         "tags": [
           "Feeds"
         ],

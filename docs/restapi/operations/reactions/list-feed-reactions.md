@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/{feed_id}/reactions`
 - **Edition:** Core
 - **Controller:** `ReactionController@getByFeedId`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:74`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:75`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 <OAOperation operationId="listFeedReactions" specUrl="/openapi/public/reactions/list-feed-reactions.json" />

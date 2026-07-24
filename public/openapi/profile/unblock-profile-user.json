@@ -27,7 +27,7 @@
       "post": {
         "operationId": "unblockProfileUser",
         "summary": "POST Unblock Profile User",
-        "description": "Unblock Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@unblock`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:131`",
+        "description": "Unblock Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@unblock`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:135`",
         "tags": [
           "Profile"
         ],

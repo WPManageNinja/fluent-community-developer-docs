@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFluentPlayerSettings",
         "summary": "GET Get Fluent Player Settings",
-        "description": "Get Fluent Player Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:164`",
+        "description": "Get Fluent Player Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:167`",
         "tags": [
           "Settings"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/admin/links`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveSidebarLink`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:52`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:54`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 <OAOperation operationId="saveSidebarLink" specUrl="/openapi/public/admin/save-sidebar-link.json" />

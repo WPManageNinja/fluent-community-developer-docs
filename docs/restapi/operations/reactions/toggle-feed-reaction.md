@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/{feed_id}/react`
 - **Edition:** Core
 - **Controller:** `CommentsController@addOrRemovePostReact`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:55`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:56`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 <OAOperation operationId="toggleFeedReaction" specUrl="/openapi/public/reactions/toggle-feed-reaction.json" />

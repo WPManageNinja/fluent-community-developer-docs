@@ -32,6 +32,5 @@ Settings routes are guarded by `AdminPolicy` and intended for administrators or 
 | `POST` | `/settings/crm-tagging-config` | <span class="pro-badge">PRO</span> | [Save CRM Tagging Config](/restapi/operations/settings/save-crm-tagging-config) | `ProAdminController@saveCrmTaggingConfig` |
 | `GET` | `/settings/snippets-settings` | <span class="pro-badge">PRO</span> | [Get Snippets Settings](/restapi/operations/settings/get-snippets-settings) | `ProAdminController@getSnippetsSettings` |
 | `POST` | `/settings/snippets-settings` | <span class="pro-badge">PRO</span> | [Save Snippets Settings](/restapi/operations/settings/save-snippets-settings) | `ProAdminController@updateSnippetsSettings` |
-| `POST` | `/settings/moderation-config` | <span class="pro-badge">PRO</span> | [Save Settings Moderation Config](/restapi/operations/settings/save-settings-moderation-config) | `FluentCommunityPro\App\Http\Controllers\ModerationController@saveModerationConfig` |
 | `GET` | `/settings/followers/config` | <span class="pro-badge">PRO</span> | [Get Followers Settings](/restapi/operations/settings/get-followers-settings) | `ProAdminController@getFollowersSettings` |
 | `POST` | `/settings/followers/config` | <span class="pro-badge">PRO</span> | [Save Followers Settings](/restapi/operations/settings/save-followers-settings) | `ProAdminController@saveFollowersSettings` |

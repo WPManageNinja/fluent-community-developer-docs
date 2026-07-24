@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listWebhooks",
         "summary": "GET List Webhooks",
-        "description": "List Webhooks for the FluentCommunity Admin API.\n\nController: `ProAdminController@getWebhooks`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:48`",
+        "description": "List Webhooks for the FluentCommunity Admin API.\n\nController: `ProAdminController@getWebhooks`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:50`",
         "tags": [
           "Admin"
         ],

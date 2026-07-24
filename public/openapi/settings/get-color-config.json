@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getColorConfig",
         "summary": "GET Get Color Config",
-        "description": "Get Color Config for the FluentCommunity Settings API.\n\nController: `SettingController@getColorConfig`\nRoute source: `fluent-community/app/Http/Routes/api.php:160`",
+        "description": "Get Color Config for the FluentCommunity Settings API.\n\nController: `SettingController@getColorConfig`\nRoute source: `fluent-community/app/Http/Routes/api.php:163`",
         "tags": [
           "Settings"
         ],

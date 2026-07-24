@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/markdown-preview`
 - **Edition:** Core
 - **Controller:** `FeedsController@markdownToHtml`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:80`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:82`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="renderMarkdownPreview" specUrl="/openapi/public/feeds/render-markdown-preview.json" />

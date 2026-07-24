@@ -11,12 +11,12 @@ description: Notifications filter hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/default_course_email_notification`](#fluent_communitydefault_course_email_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:192` |
+| [`fluent_community/default_course_email_notification`](#fluent_communitydefault_course_email_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:193` |
 | [`fluent_community/digest_email_body`](#fluent_communitydigest_email_body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
 | [`fluent_community/digest_email_subject`](#fluent_communitydigest_email_subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
 | [`fluent_community/digest_notification/email_sections`](#fluent_communitydigest_notificationemail_sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
 | [`fluent_community/notifications_api_response`](#fluent_communitynotifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
-| [`fluent_community/unread_notifications_api_response`](#fluent_communityunread_notifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:58` |
+| [`fluent_community/unread_notifications_api_response`](#fluent_communityunread_notifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:59` |
 
 <a id="fluent_communitydefault_course_email_notification"></a>
 
@@ -31,7 +31,7 @@ description: Notifications filter hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:192` | `[ 'subject' => __('{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'fluent-community-pro'), 'message' => __("Hi {&#8203;{user.display_name}&#8203;},\n\n{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.\nTo complete this section, please follow this link:\n{&#8203;{section.url}&#8203;},\n\nThanks,\n{&#8203;{community.name_with_url}&#8203;}", 'fluent-community-pro') ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:193` | `[ 'subject' => __('{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'fluent-community-pro'), 'message' => __("Hi {&#8203;{user.display_name}&#8203;},\n\n{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.\nTo complete this section, please follow this link:\n{&#8203;{section.url}&#8203;},\n\nThanks,\n{&#8203;{community.name_with_url}&#8203;}", 'fluent-community-pro') ]` (array) |
 
 ### Example
 
@@ -146,7 +146,7 @@ add_filter('fluent_community/notifications_api_response', function ($data, $all)
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/NotificationsController.php:58` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/NotificationsController.php:59` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 

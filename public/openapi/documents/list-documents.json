@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listDocuments",
         "summary": "GET List Documents",
-        "description": "List Documents for the FluentCommunity Documents API.\n\nController: `DocumentController@index`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:39`",
+        "description": "List Documents for the FluentCommunity Documents API.\n\nController: `DocumentController@index`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:41`",
         "tags": [
           "Documents"
         ],

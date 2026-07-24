@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchSpaceUsers",
         "summary": "GET Search Space Users",
-        "description": "Search Space Users for the FluentCommunity Spaces API.\n\nController: `SpaceController@getOtherUsers`\nRoute source: `fluent-community/app/Http/Routes/api.php:28`",
+        "description": "Search Space Users for the FluentCommunity Spaces API.\n\nController: `SpaceController@getOtherUsers`\nRoute source: `fluent-community/app/Http/Routes/api.php:29`",
         "tags": [
           "Spaces"
         ],
@@ -72,8 +72,13 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "id": {
-                                "type": "integer"
+                              "ID": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "photo": {
+                                "type": "string",
+                                "nullable": false
                               }
                             },
                             "additionalProperties": false
@@ -110,7 +115,8 @@
                   "users": {
                     "data": [
                       {
-                        "id": 0
+                        "ID": "",
+                        "photo": ""
                       }
                     ],
                     "current_page": 1,

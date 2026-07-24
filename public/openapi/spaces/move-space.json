@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "moveSpace",
         "summary": "PATCH Move Space",
-        "description": "Move Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@moveSpace`\nRoute source: `fluent-community/app/Http/Routes/api.php:37`",
+        "description": "Move Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@moveSpace`\nRoute source: `fluent-community/app/Http/Routes/api.php:38`",
         "tags": [
           "Spaces"
         ],

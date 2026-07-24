@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleCommentReaction",
         "summary": "POST Toggle Comment Reaction",
-        "description": "Toggle Comment Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:58`",
+        "description": "Toggle Comment Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
         "tags": [
           "Reactions"
         ],

@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/ticker`
 - **Edition:** Core
 - **Controller:** `FeedsController@getTicker`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:63`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:64`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="getFeedTicker" specUrl="/openapi/public/feeds/get-feed-ticker.json" />

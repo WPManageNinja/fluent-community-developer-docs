@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/settings/privacy-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@updatePrivacySettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:159`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:162`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 <OAOperation operationId="savePrivacySettings" specUrl="/openapi/public/settings/save-privacy-settings.json" />

@@ -9,8 +9,8 @@ aside: false
 - **Method:** `POST`
 - **Path:** `/admin/on-boardings`
 - **Edition:** Core
-- **Controller:** `AdminController@saveOnboardingSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:112`
+- **Controller:** `AdminController@saveOnBoardingSettings`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:115`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 <OAOperation operationId="saveOnboardingSettings" specUrl="/openapi/public/admin/save-onboarding-settings.json" />

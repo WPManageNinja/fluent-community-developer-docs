@@ -72,8 +72,13 @@
                           "items": {
                             "type": "object",
                             "properties": {
-                              "id": {
-                                "type": "integer"
+                              "ID": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "photo": {
+                                "type": "string",
+                                "nullable": false
                               }
                             },
                             "additionalProperties": false
@@ -110,7 +115,8 @@
                   "users": {
                     "data": [
                       {
-                        "id": 0
+                        "ID": "",
+                        "photo": ""
                       }
                     ],
                     "current_page": 1,

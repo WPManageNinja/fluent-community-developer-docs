@@ -10,7 +10,7 @@ aside: false
 - **Path:** `/feeds/welcome-banner`
 - **Edition:** Core
 - **Controller:** `FeedsController@getWelcomeBanner`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:72`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:73`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 <OAOperation operationId="getWelcomeBanner" specUrl="/openapi/public/feeds/get-welcome-banner.json" />
