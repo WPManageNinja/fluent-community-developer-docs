@@ -109,6 +109,7 @@
     "delete-media-preview",
     "upload-video",
     "get-video-content",
+    "post-update-audio-meta",
     "get-index"
   ],
   "settings": [

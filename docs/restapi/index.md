@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 245 routes registered in the FluentCommunity core and module route files.
+This reference covers 246 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -29,7 +29,7 @@ This reference covers 245 routes registered in the FluentCommunity core and modu
 | [Notifications API](/restapi/notifications) | Core | 5 | Read, unread, mark-as-read, and mark-all-read notification workflows. |
 | [Activity API](/restapi/activity) | Core | 1 | Activity feed retrieval, including support for pinned and trending content. |
 | [Profile API](/restapi/profile) | Core + <span class="pro-badge">PRO</span> | 18 | Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences. |
-| [Media API](/restapi/media) | Core + <span class="pro-badge">PRO</span> | 5 | Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints. |
+| [Media API](/restapi/media) | Core + <span class="pro-badge">PRO</span> | 6 | Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints. |
 | [Settings API](/restapi/settings) | Core + <span class="pro-badge">PRO</span> | 19 | Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings. |
 | [Admin API](/restapi/admin) | Core + <span class="pro-badge">PRO</span> | 39 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |
 | [Options API](/restapi/options) | Core | 3 | Portal bootstrap variables, server-rendered sidebar HTML, and menu item payloads. |
