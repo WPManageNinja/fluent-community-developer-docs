@@ -17,6 +17,20 @@
   {
     "method": "GET",
     "routePatterns": [
+      "feeds/{slug}/by-slug"
+    ],
+    "routeExpression": "'feeds/' + slug + '/by-slug'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "feed"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Bits/openPostMixin.js",
+    "line": 45
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
       "analytics/members/widget"
     ],
     "routeExpression": "'analytics/members/widget'",
@@ -297,7 +311,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/MediaEmbeder.vue",
-    "line": 175
+    "line": 157
   },
   {
     "method": "GET",
@@ -2075,6 +2089,23 @@
     "line": 75
   },
   {
+    "method": "POST",
+    "routePatterns": [
+      "fluent-player/audio-media/{media_id}"
+    ],
+    "routeExpression": "'fluent-player/audio-media/' + this.media.media_id",
+    "payloadKeys": [
+      "title",
+      "posterSrc"
+    ],
+    "responseKeys": [
+      "media"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/FluentPlayer/AudioEditModal.vue",
+    "line": 105
+  },
+  {
     "method": "GET",
     "routePatterns": [
       "fluent-player/video-content/{id}"
@@ -3713,26 +3744,11 @@
       "items",
       "has_more",
       "has_audio",
-      "cursor",
-      "feed"
+      "cursor"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Media/SpaceMedia.vue",
-    "line": 184
-  },
-  {
-    "method": "GET",
-    "routePatterns": [
-      "feeds/{slug}/by-slug"
-    ],
-    "routeExpression": "'feeds/' + slug + '/by-slug'",
-    "payloadKeys": [],
-    "responseKeys": [
-      "feed"
-    ],
-    "sourceId": "core",
-    "file": "fluent-community/src/Modules/Space/Media/SpaceMedia.vue",
-    "line": 241
+    "line": 191
   },
   {
     "method": "GET",

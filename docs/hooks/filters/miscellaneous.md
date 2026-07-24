@@ -30,7 +30,7 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/error_page_custom_css`](#fluent_communityerror_page_custom_css) | Core | 1 | `fluent-community/app/Views/error_page.php:21` |
 | [`fluent_community/features_api_response`](#fluent_communityfeatures_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:30` |
 | [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1223` |
-| [`fluent_community/fluent_player/fallback_timings`](#fluent_communityfluent_playerfallback_timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:221` |
+| [`fluent_community/fluent_player/fallback_timings`](#fluent_communityfluent_playerfallback_timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:214` |
 | [`fluent_community/fluentform__defaults`](#fluent_communityfluentform__defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
 | [`fluent_community/header_vars`](#fluent_communityheader_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1222` |
 | [`fluent_community/image_size_names_choose`](#fluent_communityimage_size_names_choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:363` |
@@ -44,8 +44,8 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent_communitysmartcode_group_callback_dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
 | [`fluent_community/social_link_providers`](#fluent_communitysocial_link_providers) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:74` |
 | [`fluent_community/support_attachment_types`](#fluent_communitysupport_attachment_types) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:848` |
-| [`fluent_community/support_audio_types`](#fluent_communitysupport_audio_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:185` |
-| [`fluent_community/support_video_types`](#fluent_communitysupport_video_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:175` |
+| [`fluent_community/support_audio_types`](#fluent_communitysupport_audio_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:177` |
+| [`fluent_community/support_video_types`](#fluent_communitysupport_video_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:167` |
 | [`fluent_community/terms_policy_url`](#fluent_communityterms_policy_url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:143` |
 | [`fluent_community/track_activity_throttle_seconds`](#fluent_communitytrack_activity_throttle_seconds) | Core | 1 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:116` |
 | [`fluent_community/use_editor_block`](#fluent_communityuse_editor_block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:160` |
@@ -511,7 +511,7 @@ add_filter('fluent_community/features/analytics', function ($defaultSettings) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:221` | `[ 'content_timeout_ms' => 10000, 'script_timeout_ms' => 12000, 'script_grace_ms' => 2000, 'init_timeout_ms' => 3000, 'stall_timeout_ms' => 12000 ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:214` | `[ 'content_timeout_ms' => 10000, 'script_timeout_ms' => 12000, 'script_grace_ms' => 2000, 'init_timeout_ms' => 3000, 'stall_timeout_ms' => 12000 ]` (array) |
 
 ### Example
 
@@ -836,7 +836,7 @@ add_filter('fluent_community/support_attachment_types', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:185` | `[ 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/aac', 'audio/ogg', 'audio/flac' ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:177` | `[ 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/aac', 'audio/ogg', 'audio/flac' ]` (array) |
 
 ### Example
 
@@ -859,7 +859,7 @@ add_filter('fluent_community/support_audio_types', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:175` | `[ 'video/mp4', 'video/webm', 'video/quicktime' ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:167` | `[ 'video/mp4', 'video/webm', 'video/quicktime' ]` (array) |
 
 ### Example
 

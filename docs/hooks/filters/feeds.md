@@ -5,7 +5,7 @@ description: Feeds filter hooks for FluentCommunity.
 
 # Feeds Filters
 
-32 unique filter hooks currently map to this category, across 38 call sites.
+33 unique filter hooks currently map to this category, across 39 call sites.
 
 ## Hook Inventory
 
@@ -15,7 +15,7 @@ description: Feeds filter hooks for FluentCommunity.
 | [`fluent_community/disable_duplicate_post_check`](#fluent_communitydisable_duplicate_post_check) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:761` |
 | [`fluent_community/disable_self_post_react`](#fluent_communitydisable_self_post_react) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:509` |
 | [`fluent_community/feed_api_response`](#fluent_communityfeed_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:157` |
-| [`fluent_community/feed_general_config`](#fluent_communityfeed_general_config) | Core | 2 | `fluent-community/app/Services/FeedsHelper.php:977` |
+| [`fluent_community/feed_general_config`](#fluent_communityfeed_general_config) | Core | 2 | `fluent-community/app/Services/FeedsHelper.php:986` |
 | [`fluent_community/feed_links_api_response`](#fluent_communityfeed_links_api_response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:710` |
 | [`fluent_community/feed_oembed_api_response`](#fluent_communityfeed_oembed_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1273` |
 | [`fluent_community/feed_ticker`](#fluent_communityfeed_ticker) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1135` |
@@ -29,19 +29,20 @@ description: Feeds filter hooks for FluentCommunity.
 | [`fluent_community/feed/update_feed_data_type_{newContentType}`](#fluent_communityfeedupdate_feed_data_type_newContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:512` |
 | [`fluent_community/feed/update_feed_response`](#fluent_communityfeedupdate_feed_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:630` |
 | [`fluent_community/feed/updated_survey_config`](#fluent_communityfeedupdated_survey_config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:428` |
-| [`fluent_community/feed/uploaded_feed_medias`](#fluent_communityfeeduploaded_feed_medias) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:914` |
+| [`fluent_community/feed/uploaded_feed_medias`](#fluent_communityfeeduploaded_feed_medias) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:923` |
 | [`fluent_community/feeds_api_response`](#fluent_communityfeeds_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:136` |
+| [`fluent_community/fluent_player/max_audios_per_post`](#fluent_communityfluent_playermax_audios_per_post) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:289` |
 | [`fluent_community/has_global_post`](#fluent_communityhas_global_post) | Core | 1 | `fluent-community/app/Services/Helper.php:511` |
 | [`fluent_community/has_post_title`](#fluent_communityhas_post_title) | Core | 1 | `fluent-community/app/Functions/Utility.php:490` |
 | [`fluent_community/last_activity_date_for_unread_feeds`](#fluent_communitylast_activity_date_for_unread_feeds) | Core | 1 | `fluent-community/app/Services/Helper.php:959` |
-| [`fluent_community/max_media_per_post`](#fluent_communitymax_media_per_post) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:872` |
+| [`fluent_community/max_media_per_post`](#fluent_communitymax_media_per_post) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:881` |
 | [`fluent_community/max_post_length`](#fluent_communitymax_post_length) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:590` |
 | [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent_communitynew_feed_everybody_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:471` |
 | [`fluent_community/new_feed_notification/email_sections`](#fluent_communitynew_feed_notificationemail_sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:192` |
 | [`fluent_community/pinned_posts_api_response`](#fluent_communitypinned_posts_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:191` |
 | [`fluent_community/post_order_options`](#fluent_communitypost_order_options) | Core | 1 | `fluent-community/app/Services/Helper.php:2238` |
 | [`fluent_community/rate_limit/posts_per_5_minutes`](#fluent_communityrate_limitposts_per_5_minutes) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:31` |
-| [`fluent_community/rendering_feed_model`](#fluent_communityrendering_feed_model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:970` |
+| [`fluent_community/rendering_feed_model`](#fluent_communityrendering_feed_model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:979` |
 | [`fluent_community/scheduled_posts_api_response`](#fluent_communityscheduled_posts_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:46` |
 
 <a id="fluent_communitycan_view_comments_feed"></a>
@@ -151,8 +152,8 @@ add_filter('fluent_community/feed_api_response', function ($data, $all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:977` | `[ 'user_id' => $userId, 'interactions' => [], 'comment_like_ids' => [], 'is_collection' => false ]` (array)<br>`$feed` (Feed|mixed)<br>`$userId` (mixed) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:1034` | `[ 'user_id' => $userId, 'interactions' => [], 'comment_like_ids' => $commentLikeIds, 'is_collection' => true ]` (array)<br>`$feeds` (Feed|mixed)<br>`$feedIds` (array) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:986` | `[ 'user_id' => $userId, 'interactions' => [], 'comment_like_ids' => [], 'is_collection' => false ]` (array)<br>`$feed` (Feed|mixed)<br>`$userId` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:1043` | `[ 'user_id' => $userId, 'interactions' => [], 'comment_like_ids' => $commentLikeIds, 'is_collection' => true ]` (array)<br>`$feeds` (Feed|mixed)<br>`$feedIds` (array) |
 
 ### Example
 
@@ -477,7 +478,7 @@ add_filter('fluent_community/feed/updated_survey_config', function ($surveyConfi
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:914` | `$uplaodedDocs` (mixed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:923` | `$uplaodedDocs` (mixed)<br>`$requestData` (array) |
 
 ### Example
 
@@ -508,6 +509,29 @@ add_filter('fluent_community/feed/uploaded_feed_medias', function ($uplaodedDocs
 add_filter('fluent_community/feeds_api_response', function ($data, $all) {
     return $data;
 }, 10, 2);
+```
+
+<a id="fluent_communityfluent_playermax_audios_per_post"></a>
+
+## `fluent_community/fluent_player/max_audios_per_post`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fluent Player/Max Audios Per Post hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:289` | `10` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/fluent_player/max_audios_per_post', function ($param1) {
+    return $param1;
+}, 10, 1);
 ```
 
 <a id="fluent_communityhas_global_post"></a>
@@ -592,7 +616,7 @@ add_filter('fluent_community/last_activity_date_for_unread_feeds', function ($la
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:872` | `Utility::getCustomizationSetting('max_media_per_post')` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:881` | `Utility::getCustomizationSetting('max_media_per_post')` (mixed) |
 
 ### Example
 
@@ -753,7 +777,7 @@ add_filter('fluent_community/rate_limit/posts_per_5_minutes', function ($param1)
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:970` | `$feed` (Feed|mixed)<br>`$config` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:979` | `$feed` (Feed|mixed)<br>`$config` (mixed) |
 
 ### Example
 

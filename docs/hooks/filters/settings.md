@@ -20,7 +20,7 @@ description: Settings filter hooks for FluentCommunity.
 | [`fluent_community/customization_settings_api_response`](#fluent_communitycustomization_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:332` |
 | [`fluent_community/default_theme_mode`](#fluent_communitydefault_theme_mode) | Core | 1 | `fluent-community/app/Services/Helper.php:166` |
 | [`fluent_community/email_settings_api_response`](#fluent_communityemail_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:161` |
-| [`fluent_community/fluentplayer_defaults_settings`](#fluent_communityfluentplayer_defaults_settings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:412` |
+| [`fluent_community/fluentplayer_defaults_settings`](#fluent_communityfluentplayer_defaults_settings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:604` |
 | [`fluent_community/general_settings_api_response`](#fluent_communitygeneral_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:38` |
 | [`fluent_community/get_course_welcome_banner_settings`](#fluent_communityget_course_welcome_banner_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:457` |
 | [`fluent_community/get_welcome_banner_settings`](#fluent_communityget_welcome_banner_settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:333` |
@@ -254,7 +254,7 @@ add_filter('fluent_community/email_settings_api_response', function ($data, $all
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:412` | `$settings` (mixed) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:604` | `$settings` (mixed) |
 
 ### Example
 

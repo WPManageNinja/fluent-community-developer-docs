@@ -141,6 +141,7 @@
     "/openapi/public/media/get-index.json",
     "/openapi/public/media/get-video-content.json",
     "/openapi/public/media/post-handle-media-upload.json",
+    "/openapi/public/media/post-update-audio-meta.json",
     "/openapi/public/media/upload-video.json",
     "/openapi/public/members/add-space-member.json",
     "/openapi/public/members/list-members.json",
@@ -247,5 +248,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-07-23T12:20:09.614Z"
+  "generated": "2026-07-24T13:12:07.769Z"
 }
