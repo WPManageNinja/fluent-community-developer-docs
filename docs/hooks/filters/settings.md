@@ -5,33 +5,35 @@ description: Settings filter hooks for FluentCommunity.
 
 # Settings Filters
 
-22 unique filter hooks currently map to this category, across 23 call sites.
+24 unique filter hooks currently map to this category, across 25 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/{scope}_color`](#fluent_communityscope_color) | Core | 1 | `fluent-community/app/Functions/Utility.php:1139` |
+| [`fluent_community/{scope}_color`](#fluent_communityscope_color) | Core | 1 | `fluent-community/app/Functions/Utility.php:1142` |
 | [`fluent_community/block_editor_settings`](#fluent_communityblock_editor_settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:736` |
-| [`fluent_community/color_config_api_response`](#fluent_communitycolor_config_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:417` |
-| [`fluent_community/color_schmea_config`](#fluent_communitycolor_schmea_config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1083` |
-| [`fluent_community/crm_tagging_config_api_response`](#fluent_communitycrm_tagging_config_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:529` |
-| [`fluent_community/customization_settings`](#fluent_communitycustomization_settings) | Core | 1 | `fluent-community/app/Functions/Utility.php:228` |
-| [`fluent_community/customization_settings_api_response`](#fluent_communitycustomization_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:332` |
+| [`fluent_community/color_config_api_response`](#fluent_communitycolor_config_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:418` |
+| [`fluent_community/color_schmea_config`](#fluent_communitycolor_schmea_config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1086` |
+| [`fluent_community/crm_tagging_config_api_response`](#fluent_communitycrm_tagging_config_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:530` |
+| [`fluent_community/customization_settings`](#fluent_communitycustomization_settings) | Core | 1 | `fluent-community/app/Functions/Utility.php:230` |
+| [`fluent_community/customization_settings_api_response`](#fluent_communitycustomization_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:333` |
 | [`fluent_community/default_theme_mode`](#fluent_communitydefault_theme_mode) | Core | 1 | `fluent-community/app/Services/Helper.php:166` |
 | [`fluent_community/email_settings_api_response`](#fluent_communityemail_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:161` |
-| [`fluent_community/fluentplayer_defaults_settings`](#fluent_communityfluentplayer_defaults_settings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:604` |
+| [`fluent_community/fluentplayer_defaults_settings`](#fluent_communityfluentplayer_defaults_settings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:597` |
 | [`fluent_community/general_settings_api_response`](#fluent_communitygeneral_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:38` |
-| [`fluent_community/get_course_welcome_banner_settings`](#fluent_communityget_course_welcome_banner_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:457` |
+| [`fluent_community/get_course_welcome_banner_settings`](#fluent_communityget_course_welcome_banner_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:463` |
 | [`fluent_community/get_welcome_banner_settings`](#fluent_communityget_welcome_banner_settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:333` |
 | [`fluent_community/has_color_scheme`](#fluent_communityhas_color_scheme) | Core | 1 | `fluent-community/app/Services/Helper.php:151` |
 | [`fluent_community/is_supported_theme`](#fluent_communityis_supported_theme) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:36` |
 | [`fluent_community/onboarding_settings_api_response`](#fluent_communityonboarding_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:409` |
-| [`fluent_community/privacy_settings_api_response`](#fluent_communityprivacy_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:394` |
+| [`fluent_community/privacy_settings_api_response`](#fluent_communityprivacy_settings_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:395` |
+| [`fluent_community/pwa/background_color`](#fluent_communitypwabackground_color) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:252` |
+| [`fluent_community/pwa/theme_color`](#fluent_communitypwatheme_color) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:226` |
 | [`fluent_community/storage_settings_response`](#fluent_communitystorage_settings_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:214` |
-| [`fluent_community/suggested_colors`](#fluent_communitysuggested_colors) | Core | 1 | `fluent-community/app/Functions/Utility.php:1193` |
+| [`fluent_community/suggested_colors`](#fluent_communitysuggested_colors) | Core | 1 | `fluent-community/app/Functions/Utility.php:1196` |
 | [`fluent_community/template_slug`](#fluent_communitytemplate_slug) | Core | 1 | `fluent-community/Modules/Theming/TemplateLoader.php:75` |
-| [`fluent_community/update_course_welcome_banner_settings`](#fluent_communityupdate_course_welcome_banner_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:479` |
+| [`fluent_community/update_course_welcome_banner_settings`](#fluent_communityupdate_course_welcome_banner_settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:485` |
 | [`fluent_community/update_welcome_banner_settings`](#fluent_communityupdate_welcome_banner_settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:357` |
 
 <a id="fluent_communityscope_color"></a>
@@ -47,7 +49,7 @@ description: Settings filter hooks for FluentCommunity.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1139` | `$color` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1142` | `$color` (mixed) |
 
 ### Example
 
@@ -93,7 +95,7 @@ add_filter('fluent_community/block_editor_settings', function ($editor_settings)
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:417` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:418` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -116,7 +118,7 @@ add_filter('fluent_community/color_config_api_response', function ($data, $all) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1083` | `[ 'light_schema' => 'default', 'dark_schema' => 'default', 'light_config' => [ 'body' => [], 'fcom_top_menu' => [], 'spaces' => [] ], 'dark_config' => [ 'body' => [], 'fcom_top_menu' => [], 'spaces' => [] ], 'version' => FLUENT_COMMUNITY_PLUGIN_VERSION ]` (array)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1086` | `[ 'light_schema' => 'default', 'dark_schema' => 'default', 'light_config' => [ 'body' => [], 'fcom_top_menu' => [], 'spaces' => [] ], 'dark_config' => [ 'body' => [], 'fcom_top_menu' => [], 'spaces' => [] ], 'version' => FLUENT_COMMUNITY_PLUGIN_VERSION ]` (array)<br>`$context` (mixed) |
 
 ### Example
 
@@ -139,7 +141,7 @@ add_filter('fluent_community/color_schmea_config', function ($param1, $context) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:529` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:530` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -162,7 +164,7 @@ add_filter('fluent_community/crm_tagging_config_api_response', function ($data, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:228` | `$settings` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:230` | `$settings` (mixed) |
 
 ### Example
 
@@ -185,7 +187,7 @@ add_filter('fluent_community/customization_settings', function ($settings) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:332` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:333` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -254,7 +256,7 @@ add_filter('fluent_community/email_settings_api_response', function ($data, $all
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:604` | `$settings` (mixed) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:597` | `$settings` (mixed) |
 
 ### Example
 
@@ -300,7 +302,7 @@ add_filter('fluent_community/general_settings_api_response', function ($data, $a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:457` | `$settings` (mixed)<br>`$course` (mixed)<br>`$request->all()` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:463` | `$settings` (mixed)<br>`$course` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -416,13 +418,59 @@ add_filter('fluent_community/onboarding_settings_api_response', function ($data,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:394` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:395` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
 ```php
 add_filter('fluent_community/privacy_settings_api_response', function ($data, $all) {
     return $data;
+}, 10, 2);
+```
+
+<a id="fluent_communitypwabackground_color"></a>
+
+## `fluent_community/pwa/background_color`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Pwa/Background Color hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:252` | `$color` (mixed)<br>`$mode` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/pwa/background_color', function ($color, $mode) {
+    return $color;
+}, 10, 2);
+```
+
+<a id="fluent_communitypwatheme_color"></a>
+
+## `fluent_community/pwa/theme_color`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Pwa/Theme Color hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:226` | `$color` (mixed)<br>`$mode` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/pwa/theme_color', function ($color, $mode) {
+    return $color;
 }, 10, 2);
 ```
 
@@ -462,7 +510,7 @@ add_filter('fluent_community/storage_settings_response', function ($config, $all
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1193` | `$colors` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1196` | `$colors` (mixed) |
 
 ### Example
 
@@ -508,7 +556,7 @@ add_filter('fluent_community/template_slug', function ($template_slug) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:479` | `$settings` (mixed)<br>`$course` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:485` | `$settings` (mixed)<br>`$course` (mixed) |
 
 ### Example
 

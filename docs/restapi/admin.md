@@ -52,5 +52,7 @@ All admin endpoints are protected by `AdminPolicy`.
 | `DELETE` | `/admin/webhooks/{id}` | <span class="pro-badge">PRO</span> | [Delete Webhook](/restapi/operations/admin/delete-webhook) | `ProAdminController@deleteWebhook` |
 | `POST` | `/admin/links` | <span class="pro-badge">PRO</span> | [Save Sidebar Link](/restapi/operations/admin/save-sidebar-link) | `ProAdminController@saveSidebarLink` |
 | `DELETE` | `/admin/links/{id}` | <span class="pro-badge">PRO</span> | [Delete Sidebar Link](/restapi/operations/admin/delete-sidebar-link) | `ProAdminController@deleteSidebarLink` |
+| `GET` | `/admin/pwa-settings` | <span class="pro-badge">PRO</span> | [Get Settings](/restapi/operations/admin/get-settings) | `PwaController@getSettings` |
+| `POST` | `/admin/pwa-settings` | <span class="pro-badge">PRO</span> | [Post Save Settings](/restapi/operations/admin/post-save-settings) | `PwaController@saveSettings` |
 | `GET` | `/admin/user-badges` | <span class="pro-badge">PRO</span> | [List User Badges](/restapi/operations/admin/list-user-badges) | `UserBadgeController@getBadges` |
 | `POST` | `/admin/user-badges` | <span class="pro-badge">PRO</span> | [Save User Badges](/restapi/operations/admin/save-user-badges) | `UserBadgeController@saveBadges` |

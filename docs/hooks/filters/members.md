@@ -13,31 +13,31 @@ description: Members filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/activity/after_contents_user`](#fluent_communityactivityafter_contents_user) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:97` |
 | [`fluent_community/activity/before_contents_user`](#fluent_communityactivitybefore_contents_user) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:98` |
-| [`fluent_community/admin_course_non_members_api_response`](#fluent_communityadmin_course_non_members_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1199` |
+| [`fluent_community/admin_course_non_members_api_response`](#fluent_communityadmin_course_non_members_api_response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1245` |
 | [`fluent_community/bulk_members/{filterTag}`](#fluent_communitybulk_membersfilterTag) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` |
 | [`fluent_community/bulk_members/add_members_response`](#fluent_communitybulk_membersadd_members_response) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:72` |
 | [`fluent_community/bulk_members/add_students_response`](#fluent_communitybulk_membersadd_students_response) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:30` |
 | [`fluent_community/bulk_members/import_members_response`](#fluent_communitybulk_membersimport_members_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:116` |
 | [`fluent_community/bulk_members/import_students_response`](#fluent_communitybulk_membersimport_students_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:102` |
-| [`fluent_community/can_view_leaderboard_members`](#fluent_communitycan_view_leaderboard_members) | Core | 3 | `fluent-community/app/Functions/Utility.php:310` |
-| [`fluent_community/can_view_members_page`](#fluent_communitycan_view_members_page) | Core | 3 | `fluent-community/app/Functions/Utility.php:295` |
-| [`fluent_community/can_view_user_profile`](#fluent_communitycan_view_user_profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:325` |
+| [`fluent_community/can_view_leaderboard_members`](#fluent_communitycan_view_leaderboard_members) | Core | 3 | `fluent-community/app/Functions/Utility.php:313` |
+| [`fluent_community/can_view_members_page`](#fluent_communitycan_view_members_page) | Core | 3 | `fluent-community/app/Functions/Utility.php:298` |
+| [`fluent_community/can_view_user_profile`](#fluent_communitycan_view_user_profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:328` |
 | [`fluent_community/created_user_role`](#fluent_communitycreated_user_role) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:331` |
 | [`fluent_community/custom_profile_field_types`](#fluent_communitycustom_profile_field_types) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProfileFieldsService.php:60` |
 | [`fluent_community/leaderboard_api_response`](#fluent_communityleaderboard_api_response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:109` |
-| [`fluent_community/max_profile_description_length`](#fluent_communitymax_profile_description_length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:360` |
-| [`fluent_community/max_profile_headline_length`](#fluent_communitymax_profile_headline_length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:371` |
-| [`fluent_community/members_api_response`](#fluent_communitymembers_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:118` |
+| [`fluent_community/max_profile_description_length`](#fluent_communitymax_profile_description_length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:361` |
+| [`fluent_community/max_profile_headline_length`](#fluent_communitymax_profile_headline_length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:372` |
+| [`fluent_community/members_api_response`](#fluent_communitymembers_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:128` |
 | [`fluent_community/mention_members_api_response`](#fluent_communitymention_members_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:75` |
-| [`fluent_community/profile_all_memberships_api_response`](#fluent_communityprofile_all_memberships_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:551` |
-| [`fluent_community/profile_comments_api_response`](#fluent_communityprofile_comments_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:700` |
-| [`fluent_community/profile_courses_api_response`](#fluent_communityprofile_courses_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:651` |
+| [`fluent_community/profile_all_memberships_api_response`](#fluent_communityprofile_all_memberships_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:558` |
+| [`fluent_community/profile_comments_api_response`](#fluent_communityprofile_comments_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:707` |
+| [`fluent_community/profile_courses_api_response`](#fluent_communityprofile_courses_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:658` |
 | [`fluent_community/profile_link_providers_api_response`](#fluent_communityprofile_link_providers_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:516` |
-| [`fluent_community/profile_notification_pref_api_response`](#fluent_communityprofile_notification_pref_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:861` |
-| [`fluent_community/profile_view_data`](#fluent_communityprofile_view_data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:150` |
+| [`fluent_community/profile_notification_pref_api_response`](#fluent_communityprofile_notification_pref_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:868` |
+| [`fluent_community/profile_view_data`](#fluent_communityprofile_view_data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:151` |
 | [`fluent_community/reserved_usernames`](#fluent_communityreserved_usernames) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:217` |
-| [`fluent_community/update_profile_data`](#fluent_communityupdate_profile_data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:271` |
-| [`fluent_community/user/permissions`](#fluent_communityuserpermissions) | Core | 2 | `fluent-community/app/Models/User.php:487` |
+| [`fluent_community/update_profile_data`](#fluent_communityupdate_profile_data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:272` |
+| [`fluent_community/user/permissions`](#fluent_communityuserpermissions) | Core | 2 | `fluent-community/app/Models/User.php:499` |
 | [`fluent_community/xprofile_public_fields`](#fluent_communityxprofile_public_fields) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:48` |
 | [`fluent_community/xprofile/badge`](#fluent_communityxprofilebadge) | Core | 1 | `fluent-community/app/Models/XProfile.php:235` |
 
@@ -100,7 +100,7 @@ add_filter('fluent_community/activity/before_contents_user', function ($param1, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1199` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1245` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -240,9 +240,9 @@ add_filter('fluent_community/bulk_members/import_students_response', function ($
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:310` | `true` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:314` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:317` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:313` | `true` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:317` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:320` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
 
 ### Example
 
@@ -265,9 +265,9 @@ add_filter('fluent_community/can_view_leaderboard_members', function ($param1, $
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:295` | `true` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:299` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:302` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:298` | `true` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:302` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:305` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
 
 ### Example
 
@@ -290,9 +290,9 @@ add_filter('fluent_community/can_view_members_page', function ($param1, $pageSta
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:325` | `true` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:329` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:334` | `($isOwn &#124;&#124; Helper::isModerator())` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:328` | `true` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:332` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:337` | `($isOwn &#124;&#124; Helper::isModerator())` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (mixed) |
 
 ### Example
 
@@ -384,7 +384,7 @@ add_filter('fluent_community/leaderboard_api_response', function ($leaderBoard, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:360` | `5000` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:361` | `5000` (mixed) |
 
 ### Example
 
@@ -407,7 +407,7 @@ add_filter('fluent_community/max_profile_description_length', function ($param1)
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:371` | `60` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:372` | `60` (mixed) |
 
 ### Example
 
@@ -430,7 +430,7 @@ add_filter('fluent_community/max_profile_headline_length', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:118` | `[ 'members' => $members, 'execution_time' => microtime(true) - $start ]` (array)<br>`$members` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:128` | `[ 'members' => $members, 'execution_time' => microtime(true) - $start ]` (array)<br>`$members` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -476,7 +476,7 @@ add_filter('fluent_community/mention_members_api_response', function ($data, $al
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:551` | `[ 'memberships' => $memberships ]` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:558` | `[ 'memberships' => $memberships ]` (array)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -499,7 +499,7 @@ add_filter('fluent_community/profile_all_memberships_api_response', function ($m
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:700` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:707` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -522,7 +522,7 @@ add_filter('fluent_community/profile_comments_api_response', function ($data, $a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:651` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:658` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -568,7 +568,7 @@ add_filter('fluent_community/profile_link_providers_api_response', function ($da
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:861` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:868` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -591,7 +591,7 @@ add_filter('fluent_community/profile_notification_pref_api_response', function (
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:150` | `$profile` (mixed)<br>`$xprofile` (mixed)<br>`$isAdmin` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:151` | `$profile` (mixed)<br>`$xprofile` (mixed)<br>`$isAdmin` (mixed) |
 
 ### Example
 
@@ -637,7 +637,7 @@ add_filter('fluent_community/reserved_usernames', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:271` | `$updateData` (mixed)<br>`$data` (mixed)<br>`$xProfile` (mixed)<br>`$currentUser` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:272` | `$updateData` (mixed)<br>`$data` (mixed)<br>`$xProfile` (mixed)<br>`$currentUser` (mixed) |
 
 ### Example
 
@@ -660,8 +660,8 @@ add_filter('fluent_community/update_profile_data', function ($updateData, $data,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/User.php:487` | `[ 'read' => true, ]` (array)<br>`$roles` (mixed)<br>`$this` (mixed) |
-| Core | `fluent-community/app/Models/User.php:514` | `$permissions` (mixed)<br>`$roles` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:499` | `[ 'read' => true, ]` (array)<br>`$roles` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:526` | `$permissions` (mixed)<br>`$roles` (mixed)<br>`$this` (mixed) |
 
 ### Example
 

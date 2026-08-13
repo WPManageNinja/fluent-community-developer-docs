@@ -5,7 +5,7 @@ description: Miscellaneous filter hooks for FluentCommunity.
 
 # Miscellaneous Filters
 
-44 unique filter hooks currently map to this category, across 52 call sites.
+49 unique filter hooks currently map to this category, across 57 call sites.
 
 ## Hook Inventory
 
@@ -15,45 +15,50 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | [`fluent_community/activity/after_contents`](#fluent_communityactivityafter_contents) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:100` |
 | [`fluent_community/activity/before_contents`](#fluent_communityactivitybefore_contents) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:101` |
 | [`fluent_community/allowed_block_types`](#fluent_communityallowed_block_types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:650` |
-| [`fluent_community/allowed_html_tags`](#fluent_communityallowed_html_tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:378` |
+| [`fluent_community/allowed_html_tags`](#fluent_communityallowed_html_tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:385` |
 | [`fluent_community/app_route_paths`](#fluent_communityapp_route_paths) | Core | 1 | `fluent-community/app/Services/Helper.php:577` |
 | [`fluent_community/app_vars_api_response`](#fluent_communityapp_vars_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:25` |
 | [`fluent_community/asset_listed_slugs`](#fluent_communityasset_listed_slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:532` |
-| [`fluent_community/autg/password_confirmation`](#fluent_communityautgpassword_confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:244` |
 | [`fluent_community/base_url`](#fluent_communitybase_url) | Core | 1 | `fluent-community/app/Services/Helper.php:293` |
-| [`fluent_community/bookmarks_api_response`](#fluent_communitybookmarks_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:249` |
-| [`fluent_community/convert_image_to_webp`](#fluent_communityconvert_image_to_webp) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:917` |
-| [`fluent_community/custom_order_by`](#fluent_communitycustom_order_by) | Core | 1 | `fluent-community/app/Models/Feed.php:378` |
+| [`fluent_community/bookmarks_api_response`](#fluent_communitybookmarks_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:266` |
+| [`fluent_community/convert_image_to_webp`](#fluent_communityconvert_image_to_webp) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:939` |
+| [`fluent_community/custom_order_by`](#fluent_communitycustom_order_by) | Core | 1 | `fluent-community/app/Models/Feed.php:377` |
 | [`fluent_community/default_avatar`](#fluent_communitydefault_avatar) | Core | 4 | `fluent-community/app/Models/User.php:112` |
 | [`fluent_community/default_redirect_url`](#fluent_communitydefault_redirect_url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:711` |
 | [`fluent_community/editor_i18n_strings`](#fluent_communityeditor_i18n_strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:358` |
 | [`fluent_community/error_page_custom_css`](#fluent_communityerror_page_custom_css) | Core | 1 | `fluent-community/app/Views/error_page.php:21` |
 | [`fluent_community/features_api_response`](#fluent_communityfeatures_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:30` |
-| [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1223` |
-| [`fluent_community/fluent_player/fallback_timings`](#fluent_communityfluent_playerfallback_timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:214` |
+| [`fluent_community/features/analytics`](#fluent_communityfeaturesanalytics) | Core | 1 | `fluent-community/app/Functions/Utility.php:1226` |
+| [`fluent_community/fluent_player/fallback_timings`](#fluent_communityfluent_playerfallback_timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:220` |
 | [`fluent_community/fluentform__defaults`](#fluent_communityfluentform__defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
 | [`fluent_community/header_vars`](#fluent_communityheader_vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1222` |
 | [`fluent_community/image_size_names_choose`](#fluent_communityimage_size_names_choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:363` |
 | [`fluent_community/is_rtl`](#fluent_communityis_rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:28` |
-| [`fluent_community/max_execution_time`](#fluent_communitymax_execution_time) | Core | 1 | `fluent-community/app/Functions/Utility.php:593` |
+| [`fluent_community/max_execution_time`](#fluent_communitymax_execution_time) | Core | 1 | `fluent-community/app/Functions/Utility.php:596` |
 | [`fluent_community/preview_metadata_pre_fetch`](#fluent_communitypreview_metadata_pre_fetch) | Core | 1 | `fluent-community/app/Services/RemoteUrlParser.php:180` |
-| [`fluent_community/pro_upgrade_base_url`](#fluent_communitypro_upgrade_base_url) | Core | 1 | `fluent-community/app/Functions/Utility.php:413` |
+| [`fluent_community/pro_upgrade_base_url`](#fluent_communitypro_upgrade_base_url) | Core | 1 | `fluent-community/app/Functions/Utility.php:416` |
+| [`fluent_community/public_display_name`](#fluent_communitypublic_display_name) | Core | 1 | `fluent-community/app/Models/User.php:313` |
+| [`fluent_community/pwa/description`](#fluent_communitypwadescription) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:118` |
+| [`fluent_community/pwa/install_button_icon`](#fluent_communitypwainstall_button_icon) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:198` |
+| [`fluent_community/pwa/install_button_text`](#fluent_communitypwainstall_button_text) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:175` |
+| [`fluent_community/pwa/orientation`](#fluent_communitypwaorientation) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:134` |
 | [`fluent_community/question_types`](#fluent_communityquestion_types) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:12` |
+| [`fluent_community/render_default_touch_icon`](#fluent_communityrender_default_touch_icon) | Core | 1 | `fluent-community/app/Views/portal_page.php:29` |
 | [`fluent_community/skip_no_conflict`](#fluent_communityskip_no_conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:521` |
 | [`fluent_community/smartcode_fallback`](#fluent_communitysmartcode_fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent_communitysmartcode_group_callback_dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
 | [`fluent_community/social_link_providers`](#fluent_communitysocial_link_providers) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:74` |
-| [`fluent_community/support_attachment_types`](#fluent_communitysupport_attachment_types) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:848` |
-| [`fluent_community/support_audio_types`](#fluent_communitysupport_audio_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:177` |
-| [`fluent_community/support_video_types`](#fluent_communitysupport_video_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:167` |
+| [`fluent_community/support_attachment_types`](#fluent_communitysupport_attachment_types) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:870` |
+| [`fluent_community/support_audio_types`](#fluent_communitysupport_audio_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:183` |
+| [`fluent_community/support_video_types`](#fluent_communitysupport_video_types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:173` |
 | [`fluent_community/terms_policy_url`](#fluent_communityterms_policy_url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:143` |
-| [`fluent_community/track_activity_throttle_seconds`](#fluent_communitytrack_activity_throttle_seconds) | Core | 1 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:116` |
+| [`fluent_community/track_activity_throttle_seconds`](#fluent_communitytrack_activity_throttle_seconds) | Core | 1 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:123` |
 | [`fluent_community/use_editor_block`](#fluent_communityuse_editor_block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:160` |
-| [`fluent_community/verified_email_senders`](#fluent_communityverified_email_senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1264` |
-| [`fluent_community/welcome_banner_api_response`](#fluent_communitywelcome_banner_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:698` |
-| [`fluent_community/welcome_banner_for_guests`](#fluent_communitywelcome_banner_for_guests) | Core | 1 | `fluent-community/app/Services/Helper.php:1551` |
-| [`fluent_community/welcome_banner_for_logged_in`](#fluent_communitywelcome_banner_for_logged_in) | Core | 1 | `fluent-community/app/Services/Helper.php:1548` |
-| [`fluent_community/will_render_default_sidebar_items`](#fluent_communitywill_render_default_sidebar_items) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:31` |
+| [`fluent_community/verified_email_senders`](#fluent_communityverified_email_senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1267` |
+| [`fluent_community/welcome_banner_api_response`](#fluent_communitywelcome_banner_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:720` |
+| [`fluent_community/welcome_banner_for_guests`](#fluent_communitywelcome_banner_for_guests) | Core | 1 | `fluent-community/app/Services/Helper.php:1574` |
+| [`fluent_community/welcome_banner_for_logged_in`](#fluent_communitywelcome_banner_for_logged_in) | Core | 1 | `fluent-community/app/Services/Helper.php:1571` |
+| [`fluent_community/will_render_default_sidebar_items`](#fluent_communitywill_render_default_sidebar_items) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:35` |
 | [`fluent_community/wppayform__defaults`](#fluent_communitywppayform__defaults) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Integrations/Paymattic/Bootstrap.php:65` |
 
 <a id="fluent_communityactivities_api_response"></a>
@@ -162,7 +167,7 @@ add_filter('fluent_community/allowed_block_types', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/CustomSanitizer.php:378` | `$tags` (mixed) |
+| Core | `fluent-community/app/Services/CustomSanitizer.php:385` | `$tags` (mixed) |
 
 ### Example
 
@@ -241,29 +246,6 @@ add_filter('fluent_community/asset_listed_slugs', function ($param1) {
 }, 10, 1);
 ```
 
-<a id="fluent_communityautgpassword_confirmation"></a>
-
-## `fluent_community/autg/password_confirmation`
-
-- **Type:** filter
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Autg/Password Confirmation hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:244` | `true` (mixed) |
-
-### Example
-
-```php
-add_filter('fluent_community/autg/password_confirmation', function ($param1) {
-    return $param1;
-}, 10, 1);
-```
-
 <a id="fluent_communitybase_url"></a>
 
 ## `fluent_community/base_url`
@@ -300,7 +282,7 @@ add_filter('fluent_community/base_url', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:249` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:266` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -323,7 +305,7 @@ add_filter('fluent_community/bookmarks_api_response', function ($data, $all) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:917` | `$willWebPConvert` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:939` | `$willWebPConvert` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:80` | `$willWebPConvert` (mixed)<br>`$file` (mixed) |
 
 ### Example
@@ -347,7 +329,7 @@ add_filter('fluent_community/convert_image_to_webp', function ($willWebPConvert,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/Feed.php:378` | `$query` (mixed)<br>`$type` (mixed) |
+| Core | `fluent-community/app/Models/Feed.php:377` | `$query` (mixed)<br>`$type` (mixed) |
 
 ### Example
 
@@ -488,7 +470,7 @@ add_filter('fluent_community/features_api_response', function ($data, $request) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1223` | `$defaultSettings` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1226` | `$defaultSettings` (mixed) |
 
 ### Example
 
@@ -511,7 +493,7 @@ add_filter('fluent_community/features/analytics', function ($defaultSettings) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:214` | `[ 'content_timeout_ms' => 10000, 'script_timeout_ms' => 12000, 'script_grace_ms' => 2000, 'init_timeout_ms' => 3000, 'stall_timeout_ms' => 12000 ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:220` | `[ 'content_timeout_ms' => 10000, 'script_timeout_ms' => 12000, 'script_grace_ms' => 2000, 'init_timeout_ms' => 3000, 'stall_timeout_ms' => 12000 ]` (array) |
 
 ### Example
 
@@ -626,7 +608,7 @@ add_filter('fluent_community/is_rtl', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:593` | `$maxRunTime` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:596` | `$maxRunTime` (mixed) |
 
 ### Example
 
@@ -672,12 +654,127 @@ add_filter('fluent_community/preview_metadata_pre_fetch', function ($param1, $ur
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:413` | `'https://fluentcommunity.co/pricing/'` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:416` | `'https://fluentcommunity.co/pricing/'` (mixed) |
 
 ### Example
 
 ```php
 add_filter('fluent_community/pro_upgrade_base_url', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
+<a id="fluent_communitypublic_display_name"></a>
+
+## `fluent_community/public_display_name`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Public Display Name hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Models/User.php:313` | `$name` (mixed)<br>`$this` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/public_display_name', function ($name, $param2) {
+    return $name;
+}, 10, 2);
+```
+
+<a id="fluent_communitypwadescription"></a>
+
+## `fluent_community/pwa/description`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Pwa/Description hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:118` | `$description` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/pwa/description', function ($description) {
+    return $description;
+}, 10, 1);
+```
+
+<a id="fluent_communitypwainstall_button_icon"></a>
+
+## `fluent_community/pwa/install_button_icon`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Pwa/Install Button Icon hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:198` | `$default` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/pwa/install_button_icon', function ($default) {
+    return $default;
+}, 10, 1);
+```
+
+<a id="fluent_communitypwainstall_button_text"></a>
+
+## `fluent_community/pwa/install_button_text`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Pwa/Install Button Text hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:175` | `__('Install App', 'fluent-community-pro')` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/pwa/install_button_text', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
+<a id="fluent_communitypwaorientation"></a>
+
+## `fluent_community/pwa/orientation`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Pwa/Orientation hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:134` | `'any'` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/pwa/orientation', function ($param1) {
     return $param1;
 }, 10, 1);
 ```
@@ -701,6 +798,29 @@ add_filter('fluent_community/pro_upgrade_base_url', function ($param1) {
 
 ```php
 add_filter('fluent_community/question_types', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
+<a id="fluent_communityrender_default_touch_icon"></a>
+
+## `fluent_community/render_default_touch_icon`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Render Default Touch Icon hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Views/portal_page.php:29` | `true` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/render_default_touch_icon', function ($param1) {
     return $param1;
 }, 10, 1);
 ```
@@ -812,7 +932,7 @@ add_filter('fluent_community/social_link_providers', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:848` | `[ 'image/jpeg', 'image/pjpeg', 'image/png', 'image/gif', 'image/webp', 'image/heic', ]` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:870` | `[ 'image/jpeg', 'image/pjpeg', 'image/png', 'image/gif', 'image/webp', 'image/heic', ]` (array) |
 | Core | `fluent-community/app/Services/UploadHelper.php:28` | `[ 'image/jpeg', 'image/pjpeg', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/gif', 'image/webp' ]` (array) |
 
 ### Example
@@ -836,7 +956,7 @@ add_filter('fluent_community/support_attachment_types', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:177` | `[ 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/aac', 'audio/ogg', 'audio/flac' ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:183` | `[ 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/aac', 'audio/ogg', 'audio/flac' ]` (array) |
 
 ### Example
 
@@ -859,7 +979,7 @@ add_filter('fluent_community/support_audio_types', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:167` | `[ 'video/mp4', 'video/webm', 'video/quicktime' ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:173` | `[ 'video/mp4', 'video/webm', 'video/quicktime' ]` (array) |
 
 ### Example
 
@@ -905,7 +1025,7 @@ add_filter('fluent_community/terms_policy_url', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:116` | `300` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:123` | `300` (mixed) |
 
 ### Example
 
@@ -951,7 +1071,7 @@ add_filter('fluent_community/use_editor_block', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1264` | `$verifiedSenders` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1267` | `$verifiedSenders` (mixed) |
 
 ### Example
 
@@ -974,7 +1094,7 @@ add_filter('fluent_community/verified_email_senders', function ($verifiedSenders
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:698` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:720` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -997,7 +1117,7 @@ add_filter('fluent_community/welcome_banner_api_response', function ($data, $all
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1551` | `$welcomeBanner` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1574` | `$welcomeBanner` (mixed) |
 
 ### Example
 
@@ -1020,7 +1140,7 @@ add_filter('fluent_community/welcome_banner_for_guests', function ($welcomeBanne
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1548` | `$welcomeBanner` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1571` | `$welcomeBanner` (mixed) |
 
 ### Example
 
@@ -1043,7 +1163,7 @@ add_filter('fluent_community/welcome_banner_for_logged_in', function ($welcomeBa
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:31` | `true` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:35` | `true` (mixed) |
 
 ### Example
 

@@ -54,6 +54,25 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort By read via `$request->getSafe()` in getCourseStudents().",
+            "schema": {
+              "type": "string",
+              "default": "created_at"
+            }
+          },
+          {
+            "name": "sort_dir",
+            "in": "query",
+            "required": false,
+            "description": "Sort Dir read via `$request->getSafe()` in getCourseStudents().",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -75,27 +94,13 @@
                               "user_id": {
                                 "type": "integer"
                               },
-                              "display_name": {
+                              "badge": {
                                 "type": "string",
                                 "nullable": false
                               },
-                              "username": {
+                              "permalink": {
                                 "type": "string",
                                 "nullable": false
-                              },
-                              "avatar": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "status": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "total_points": {
-                                "type": "integer"
-                              },
-                              "is_verified": {
-                                "type": "boolean"
                               },
                               "meta": {
                                 "type": "object",
@@ -183,26 +188,6 @@
                                   }
                                 },
                                 "additionalProperties": false
-                              },
-                              "created_at": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "short_description": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "last_activity": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "badge": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "permalink": {
-                                "type": "string",
-                                "nullable": false
                               }
                             },
                             "additionalProperties": false
@@ -240,12 +225,8 @@
                     "data": [
                       {
                         "user_id": 0,
-                        "display_name": "",
-                        "username": "",
-                        "avatar": "",
-                        "status": "",
-                        "total_points": 0,
-                        "is_verified": false,
+                        "badge": "",
+                        "permalink": "",
                         "meta": {
                           "website": "",
                           "cover_photo": "",
@@ -269,12 +250,7 @@
                             "github": "",
                             "mastodon": ""
                           }
-                        },
-                        "created_at": "2026-01-01 00:00:00",
-                        "short_description": "",
-                        "last_activity": "2026-01-01 00:00:00",
-                        "badge": "",
-                        "permalink": ""
+                        }
                       }
                     ],
                     "current_page": 1,

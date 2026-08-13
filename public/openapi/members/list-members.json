@@ -75,6 +75,15 @@
             }
           },
           {
+            "name": "sort_dir",
+            "in": "query",
+            "required": false,
+            "description": "Sort Dir read via `$request->getSafe()` in getMembers().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "search",
             "in": "query",
             "required": false,

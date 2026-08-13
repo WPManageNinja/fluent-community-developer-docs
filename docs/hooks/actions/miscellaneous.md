@@ -5,7 +5,7 @@ description: Miscellaneous action hooks for FluentCommunity.
 
 # Miscellaneous Actions
 
-28 unique action hooks currently map to this category, across 35 call sites.
+29 unique action hooks currently map to this category, across 36 call sites.
 
 ## Hook Inventory
 
@@ -13,10 +13,11 @@ description: Miscellaneous action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/after_header_logo`](#fluent_communityafter_header_logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:45` |
 | [`fluent_community/after_registration_form`](#fluent_communityafter_registration_form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:59` |
-| [`fluent_community/after_sidebar_wrap`](#fluent_communityafter_sidebar_wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:151` |
+| [`fluent_community/after_sidebar_wrap`](#fluent_communityafter_sidebar_wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:155` |
 | [`fluent_community/before_header_logo`](#fluent_communitybefore_header_logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:34` |
 | [`fluent_community/before_js_loaded`](#fluent_communitybefore_js_loaded) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:81` |
 | [`fluent_community/before_registration_form`](#fluent_communitybefore_registration_form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:23` |
+| [`fluent_community/before_sidebar_wrap`](#fluent_communitybefore_sidebar_wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:31` |
 | [`fluent_community/block_editor_footer`](#fluent_communityblock_editor_footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:424` |
 | [`fluent_community/block_editor_head`](#fluent_communityblock_editor_head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:417` |
 | [`fluent_community/content_flagged`](#fluent_communitycontent_flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:223` |
@@ -26,8 +27,8 @@ description: Miscellaneous action hooks for FluentCommunity.
 | [`fluent_community/headless/footer`](#fluent_communityheadlessfooter) | Core | 1 | `fluent-community/app/Views/headless_page.php:118` |
 | [`fluent_community/headless/head`](#fluent_communityheadlesshead) | Core | 1 | `fluent-community/app/Views/headless_page.php:66` |
 | [`fluent_community/headless/head_early`](#fluent_communityheadlesshead_early) | Core | 1 | `fluent-community/app/Views/headless_page.php:61` |
-| [`fluent_community/install_fluent_player_plugin`](#fluent_communityinstall_fluent_player_plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:316` |
-| [`fluent_community/install_messaging_plugin`](#fluent_communityinstall_messaging_plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:309` |
+| [`fluent_community/install_fluent_player_plugin`](#fluent_communityinstall_fluent_player_plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:317` |
+| [`fluent_community/install_messaging_plugin`](#fluent_communityinstall_messaging_plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:310` |
 | [`fluent_community/managed/after_remove`](#fluent_communitymanagedafter_remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:132` |
 | [`fluent_community/manager/added`](#fluent_communitymanageradded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:108` |
 | [`fluent_community/manager/before_remove`](#fluent_communitymanagerbefore_remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:128` |
@@ -36,9 +37,9 @@ description: Miscellaneous action hooks for FluentCommunity.
 | [`fluent_community/paywall_removed`](#fluent_communitypaywall_removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:128` |
 | [`fluent_community/reactivate_account`](#fluent_communityreactivate_account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:232` |
 | [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent_communityrendering_path_ssr_pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:814` |
-| [`fluent_community/sidebar_link/after_delete`](#fluent_communitysidebar_linkafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:811` |
-| [`fluent_community/sidebar_link/before_delete`](#fluent_communitysidebar_linkbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:807` |
-| [`fluent_community/track_activity`](#fluent_communitytrack_activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:80` |
+| [`fluent_community/sidebar_link/after_delete`](#fluent_communitysidebar_linkafter_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:817` |
+| [`fluent_community/sidebar_link/before_delete`](#fluent_communitysidebar_linkbefore_delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:813` |
+| [`fluent_community/track_activity`](#fluent_communitytrack_activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:87` |
 
 <a id="fluent_communityafter_header_logo"></a>
 
@@ -97,7 +98,7 @@ add_action('fluent_community/after_registration_form', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:151` | `$fluentCommunityContext` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:155` | `$fluentCommunityContext` (mixed) |
 
 ### Example
 
@@ -142,7 +143,7 @@ add_action('fluent_community/before_header_logo', function ($auth) {
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:81` | No parameters |
-| Core | `fluent-community/app/Views/portal_page.php:78` | No parameters |
+| Core | `fluent-community/app/Views/portal_page.php:83` | No parameters |
 
 ### Example
 
@@ -171,6 +172,28 @@ add_action('fluent_community/before_js_loaded', function () {
 ```php
 add_action('fluent_community/before_registration_form', function () {
 }, 10, 0);
+```
+
+<a id="fluent_communitybefore_sidebar_wrap"></a>
+
+## `fluent_community/before_sidebar_wrap`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Before Sidebar Wrap hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:31` | `$fluentCommunityContext` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/before_sidebar_wrap', function ($fluentCommunityContext) {
+}, 10, 1);
 ```
 
 <a id="fluent_communityblock_editor_footer"></a>
@@ -388,7 +411,7 @@ add_action('fluent_community/headless/head_early', function ($fluentCommunitySco
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:316` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:317` | No parameters |
 
 ### Example
 
@@ -410,7 +433,7 @@ add_action('fluent_community/install_fluent_player_plugin', function () {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:309` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:310` | No parameters |
 
 ### Example
 
@@ -608,7 +631,7 @@ add_action('fluent_community/rendering_path_ssr_{pathParts}', function ($pathPar
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:811` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:817` | `$link` (mixed) |
 
 ### Example
 
@@ -630,7 +653,7 @@ add_action('fluent_community/sidebar_link/after_delete', function ($link) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:807` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:813` | `$link` (mixed) |
 
 ### Example
 
@@ -652,9 +675,9 @@ add_action('fluent_community/sidebar_link/before_delete', function ($link) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:80` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:102` | No parameters |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1066` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:87` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:109` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1088` | No parameters |
 
 ### Example
 

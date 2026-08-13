@@ -74,6 +74,15 @@
             }
           },
           {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Status read via `$request->getSafe()` in get().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "per_page",
             "in": "query",
             "required": false,

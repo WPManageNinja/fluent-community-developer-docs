@@ -17,6 +17,7 @@
     "/openapi/public/admin/get-messaging-settings.json",
     "/openapi/public/admin/get-onboarding-settings.json",
     "/openapi/public/admin/get-profile-link-providers.json",
+    "/openapi/public/admin/get-settings.json",
     "/openapi/public/admin/get-storage-settings.json",
     "/openapi/public/admin/list-admin-managers.json",
     "/openapi/public/admin/list-all-space-courses.json",
@@ -24,6 +25,7 @@
     "/openapi/public/admin/list-user-badges.json",
     "/openapi/public/admin/list-webhooks.json",
     "/openapi/public/admin/post-save-custom-profile-fields.json",
+    "/openapi/public/admin/post-save-settings.json",
     "/openapi/public/admin/save-admin-manager.json",
     "/openapi/public/admin/save-admin-welcome-banner.json",
     "/openapi/public/admin/save-auth-settings.json",
@@ -248,5 +250,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-07-24T13:12:07.769Z"
+  "generated": "2026-08-13T13:12:41.985Z"
 }

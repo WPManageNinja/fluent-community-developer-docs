@@ -779,7 +779,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/_Giphy.vue",
-    "line": 74
+    "line": 75
   },
   {
     "method": "GET",
@@ -883,7 +883,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/CourseMembers.vue",
-    "line": 135
+    "line": 171
   },
   {
     "method": "DELETE",
@@ -897,7 +897,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/CourseMembers.vue",
-    "line": 179
+    "line": 215
   },
   {
     "method": "DELETE",
@@ -911,7 +911,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/CourseMembers.vue",
-    "line": 202
+    "line": 238
   },
   {
     "method": "GET",
@@ -922,7 +922,9 @@
     "payloadKeys": [
       "page",
       "per_page",
-      "search"
+      "search",
+      "sort_by",
+      "sort_dir"
     ],
     "responseKeys": [
       "students.data",
@@ -930,7 +932,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/CourseMembers.vue",
-    "line": 213
+    "line": 249
   },
   {
     "method": "GET",
@@ -1218,7 +1220,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/_ViewQuizResult.vue",
-    "line": 200
+    "line": 204
   },
   {
     "method": "PUT",
@@ -1583,11 +1585,12 @@
       "context"
     ],
     "responseKeys": [
-      "feed"
+      "feed",
+      "feed.status"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/EditFeed.vue",
-    "line": 115
+    "line": 117
   },
   {
     "method": "POST",
@@ -1615,7 +1618,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/EditFeed.vue",
-    "line": 157
+    "line": 162
   },
   {
     "method": "DELETE",
@@ -1695,7 +1698,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Comment/_CommentReactions.vue",
-    "line": 59
+    "line": 61
   },
   {
     "method": "POST",
@@ -1751,7 +1754,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Comment/_NestedReplyBox.vue",
-    "line": 98
+    "line": 102
   },
   {
     "method": "POST",
@@ -1768,7 +1771,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Comment/_NestedReplyBox.vue",
-    "line": 158
+    "line": 185
   },
   {
     "method": "GET",
@@ -1782,7 +1785,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Comment/__FeedComments.vue",
-    "line": 173
+    "line": 174
   },
   {
     "method": "GET",
@@ -1811,7 +1814,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Feed.vue",
-    "line": 443
+    "line": 446
   },
   {
     "method": "PATCH",
@@ -1827,7 +1830,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Feed.vue",
-    "line": 461
+    "line": 464
   },
   {
     "method": "POST",
@@ -1841,7 +1844,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Feed.vue",
-    "line": 474
+    "line": 477
   },
   {
     "method": "POST",
@@ -1857,7 +1860,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/FeedCard.vue",
-    "line": 191
+    "line": 194
   },
   {
     "method": "POST",
@@ -1873,7 +1876,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/FeedListItem.vue",
-    "line": 156
+    "line": 159
   },
   {
     "method": "GET",
@@ -2103,7 +2106,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/FluentPlayer/AudioEditModal.vue",
-    "line": 105
+    "line": 115
   },
   {
     "method": "GET",
@@ -2225,7 +2228,8 @@
       "page",
       "search",
       "status",
-      "sort_by"
+      "sort_by",
+      "sort_dir"
     ],
     "responseKeys": [
       "members.data",
@@ -2234,7 +2238,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Members/AllMembers.vue",
-    "line": 161
+    "line": 187
   },
   {
     "method": "PATCH",
@@ -2250,7 +2254,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Members/AllMembers.vue",
-    "line": 192
+    "line": 219
   },
   {
     "method": "PATCH",
@@ -2434,7 +2438,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/ScheduledPosts.vue",
-    "line": 277
+    "line": 279
   },
   {
     "method": "POST",
@@ -2448,7 +2452,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/ScheduledPosts.vue",
-    "line": 296
+    "line": 298
   },
   {
     "method": "PUT",
@@ -2465,7 +2469,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/ScheduledPosts.vue",
-    "line": 311
+    "line": 313
   },
   {
     "method": "GET",
@@ -2485,7 +2489,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/ScheduledPosts.vue",
-    "line": 329
+    "line": 331
   },
   {
     "method": "GET",
@@ -2841,7 +2845,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/AuthSettings/AuthSettings.vue",
-    "line": 74
+    "line": 75
   },
   {
     "method": "POST",
@@ -2964,7 +2968,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 434
+    "line": 462
   },
   {
     "method": "GET",
@@ -2979,7 +2983,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 449
+    "line": 477
   },
   {
     "method": "POST",
@@ -2996,7 +3000,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 466
+    "line": 494
   },
   {
     "method": "GET",
@@ -3336,7 +3340,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PrivacySettings.vue",
-    "line": 145
+    "line": 152
   },
   {
     "method": "POST",
@@ -3352,7 +3356,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PrivacySettings.vue",
-    "line": 158
+    "line": 165
   },
   {
     "method": "GET",
@@ -3500,6 +3504,37 @@
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_ManagerForm.vue",
     "line": 75
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/pwa-settings"
+    ],
+    "routeExpression": "'admin/pwa-settings'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "settings"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Settings/_PwaConfig.vue",
+    "line": 192
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/pwa-settings"
+    ],
+    "routeExpression": "'admin/pwa-settings'",
+    "payloadKeys": [
+      "settings"
+    ],
+    "responseKeys": [
+      "settings",
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Settings/_PwaConfig.vue",
+    "line": 220
   },
   {
     "method": "GET",
@@ -3748,7 +3783,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Media/SpaceMedia.vue",
-    "line": 191
+    "line": 206
   },
   {
     "method": "GET",
@@ -3760,7 +3795,9 @@
       "page",
       "per_page",
       "status",
-      "search"
+      "search",
+      "sort_by",
+      "sort_dir"
     ],
     "responseKeys": [
       "members.data",
@@ -3770,7 +3807,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Members.vue",
-    "line": 214
+    "line": 250
   },
   {
     "method": "POST",
@@ -3786,7 +3823,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Members.vue",
-    "line": 265
+    "line": 303
   },
   {
     "method": "POST",
@@ -3802,7 +3839,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Members.vue",
-    "line": 284
+    "line": 322
   },
   {
     "method": "PATCH",
@@ -4129,7 +4166,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 98
+    "line": 99
   },
   {
     "method": "POST",
@@ -4141,7 +4178,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 99
+    "line": 100
   },
   {
     "method": "PUT",
@@ -4153,7 +4190,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 100
+    "line": 101
   },
   {
     "method": "PATCH",
@@ -4165,7 +4202,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 101
+    "line": 102
   },
   {
     "method": "DELETE",
@@ -4177,7 +4214,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 102
+    "line": 103
   },
   {
     "method": "GET",
@@ -4299,7 +4336,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 306
+    "line": 313
   },
   {
     "method": "GET",
@@ -4312,12 +4349,11 @@
       "feed",
       "scheduled_at",
       "feed.id",
-      "feed.space_id",
-      "feed.user_id"
+      "feed.status"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 457
+    "line": 468
   },
   {
     "method": "POST",
@@ -4331,12 +4367,13 @@
       "scheduled_at",
       "last_fetched_timestamp",
       "feed.id",
+      "feed.status",
       "feed.space_id",
       "feed.user_id"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 490
+    "line": 518
   },
   {
     "method": "PATCH",
@@ -4346,11 +4383,12 @@
     "routeExpression": "`feeds/${feedId}`",
     "payloadKeys": [],
     "responseKeys": [
-      "feed"
+      "feed",
+      "feed.status"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 614
+    "line": 652
   },
   {
     "method": "DELETE",
@@ -4362,7 +4400,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 668
+    "line": 721
   },
   {
     "method": "GET",
@@ -4381,7 +4419,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 718
+    "line": 771
   },
   {
     "method": "GET",
@@ -4401,7 +4439,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 915
+    "line": 968
   },
   {
     "method": "GET",
@@ -4420,7 +4458,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 1037
+    "line": 1090
   },
   {
     "method": "POST",
@@ -4437,7 +4475,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 1185
+    "line": 1238
   },
   {
     "method": "GET",
@@ -4575,7 +4613,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/ticker.js",
-    "line": 195
+    "line": 214
   },
   {
     "method": "GET",
