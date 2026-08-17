@@ -164,12 +164,12 @@
                   "manager": {
                     "ID": 13097,
                     "community_role": {
-                      "created_at": "2026-08-17 22:39:21",
-                      "id": 25081,
+                      "created_at": "2026-08-17 22:41:10",
+                      "id": 25090,
                       "meta_key": "_user_community_roles",
                       "object_id": "13097",
                       "object_type": "user",
-                      "updated_at": "2026-08-17 22:39:21",
+                      "updated_at": "2026-08-17 22:41:10",
                       "value": []
                     },
                     "display_name": "Mei Tanaka",

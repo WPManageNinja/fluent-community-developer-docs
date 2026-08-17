@@ -297,19 +297,19 @@
                     "current_page": 1,
                     "data": [
                       {
-                        "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=97ff51d35db32647968ef3840275fb4d",
-                        "created_at": "2026-08-17 22:39:20",
-                        "id": 59802,
+                        "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=de3d1c342124b9ab9bcc152bfde82ec6",
+                        "created_at": "2026-08-17 22:41:09",
+                        "id": 59810,
                         "message": "Following. I would love to see a worked example of this.",
-                        "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
+                        "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
                         "meta": {
                           "invitee_name": "New Member"
                         },
-                        "post_id": "110",
+                        "post_id": "119",
                         "reactions_count": "1",
                         "status": "pending",
                         "type": "invitation",
-                        "updated_at": "2026-08-17 22:39:20",
+                        "updated_at": "2026-08-17 22:41:09",
                         "user_id": "1",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -317,7 +317,7 @@
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:35:43",
+                          "last_activity": "2026-08-17 22:41:08",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

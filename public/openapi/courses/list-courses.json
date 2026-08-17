@@ -338,10 +338,10 @@
                     "data": [
                       {
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
-                        "created_at": "2026-08-17 22:38:06",
+                        "created_at": "2026-08-17 22:39:56",
                         "created_by": "1",
                         "description": "Everything you need to get productive in your first week.",
-                        "id": 114,
+                        "id": 123,
                         "isEnrolled": false,
                         "lessonsCount": 3,
                         "logo": null,
@@ -376,14 +376,14 @@
                         "studentsCount": 2,
                         "title": "Getting Started with the Platform",
                         "type": "course",
-                        "updated_at": "2026-08-17 22:38:06"
+                        "updated_at": "2026-08-17 22:39:56"
                       },
                       {
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
-                        "created_at": "2026-08-17 22:38:06",
+                        "created_at": "2026-08-17 22:39:56",
                         "created_by": "1",
                         "description": "Deeper patterns for teams already using the basics.",
-                        "id": 115,
+                        "id": 124,
                         "isEnrolled": false,
                         "lessonsCount": 0,
                         "logo": null,
@@ -418,7 +418,7 @@
                         "studentsCount": 0,
                         "title": "Advanced Workflows",
                         "type": "course",
-                        "updated_at": "2026-08-17 22:38:06"
+                        "updated_at": "2026-08-17 22:39:56"
                       },
                       {
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

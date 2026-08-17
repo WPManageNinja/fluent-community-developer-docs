@@ -93,7 +93,7 @@
               "example": {
                 "lesson": {
                   "message": "Great point — I ran into the same thing last week.",
-                  "parent_id": 15051,
+                  "parent_id": 15070,
                   "status": "published",
                   "title": "Welcome to the course"
                 }
@@ -278,10 +278,10 @@
                   "lesson": {
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:38:06",
+                    "created_at": "2026-08-17 22:39:56",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15054,
+                    "id": 15073,
                     "is_sticky": "0",
                     "message": "Great point — I ran into the same thing last week.",
                     "message_rendered": null,
@@ -303,17 +303,17 @@
                       "video_completion_threshold": 0,
                       "video_length": 0
                     },
-                    "parent_id": "15051",
+                    "parent_id": "15070",
                     "priority": "1",
                     "privacy": "public",
                     "reactions_count": 0,
                     "scheduled_at": null,
-                    "slug": "welcome-to-the-course-1787006286",
-                    "space_id": "114",
+                    "slug": "welcome-to-the-course-1787006396",
+                    "space_id": "123",
                     "status": "published",
                     "title": "Welcome to the course",
                     "type": "course_lesson",
-                    "updated_at": "2026-08-17 22:38:06",
+                    "updated_at": "2026-08-17 22:39:56",
                     "user_id": "1"
                   },
                   "message": "Great point — I ran into the same thing last week."

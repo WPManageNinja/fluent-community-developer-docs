@@ -110,11 +110,11 @@
                 },
                 "spaceGroups": [
                   {
-                    "id": 109,
+                    "id": 118,
                     "spaces": [
                       {
                         "icon": "",
-                        "id": 110,
+                        "id": 119,
                         "privacy": "public",
                         "slug": "general-discussion",
                         "title": "General Discussion",
@@ -122,7 +122,7 @@
                       },
                       {
                         "icon": "",
-                        "id": 111,
+                        "id": 120,
                         "privacy": "public",
                         "slug": "announcements",
                         "title": "Announcements",

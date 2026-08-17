@@ -167,7 +167,7 @@
                   "message": "Following. I would love to see a worked example of this.",
                   "result": {
                     "content_type": "quiz",
-                    "id": 59801,
+                    "id": 59809,
                     "message": {
                       "q1": {
                         "is_correct": true,
@@ -186,12 +186,12 @@
                       "correct_answers": 2,
                       "total_questions": 2
                     },
-                    "parent_id": "114",
-                    "post_id": "15064",
+                    "parent_id": "123",
+                    "post_id": "15083",
                     "score": "100",
                     "status": "passed",
                     "type": "quiz",
-                    "updated_at": "2026-08-17 22:39:20",
+                    "updated_at": "2026-08-17 22:41:09",
                     "user_id": "13098"
                   }
                 }

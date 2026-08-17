@@ -449,10 +449,10 @@
                   "course": {
                     "can_self_enroll": true,
                     "cover_photo": null,
-                    "created_at": "2026-08-17 22:38:06",
+                    "created_at": "2026-08-17 22:39:56",
                     "created_by": "1",
                     "description": "Everything you need to get productive in your first week.",
-                    "id": 114,
+                    "id": 123,
                     "isEnrolled": false,
                     "is_course_admin": true,
                     "logo": null,
@@ -485,17 +485,17 @@
                     "status": "published",
                     "title": "Getting Started with the Platform",
                     "type": "course",
-                    "updated_at": "2026-08-17 22:38:06",
+                    "updated_at": "2026-08-17 22:39:56",
                     "welcome_banner": null
                   },
                   "sections": [
                     {
                       "created_at": {
-                        "date": "2026-08-17 22:38:06.000000",
+                        "date": "2026-08-17 22:39:56.000000",
                         "timezone": "+00:00",
                         "timezone_type": 1
                       },
-                      "id": 15051,
+                      "id": 15070,
                       "is_locked": false,
                       "lessons": [
                         {
@@ -503,10 +503,10 @@
                           "comments_count": 0,
                           "content": "",
                           "content_type": "text",
-                          "course_id": "114",
-                          "created_at": "2026-08-17 22:38:06",
+                          "course_id": "123",
+                          "created_at": "2026-08-17 22:39:56",
                           "featured_image": null,
-                          "id": 15054,
+                          "id": 15073,
                           "inline_css": "",
                           "is_locked": false,
                           "lazy_load": true,
@@ -532,8 +532,8 @@
                             "video_length": 0,
                             "video_watched": false
                           },
-                          "section_id": "15051",
-                          "slug": "welcome-to-the-course-1787006286",
+                          "section_id": "15070",
+                          "slug": "welcome-to-the-course-1787006396",
                           "title": "Welcome to the course",
                           "unlock_date": ""
                         },
@@ -542,10 +542,10 @@
                           "comments_count": 0,
                           "content": "",
                           "content_type": "text",
-                          "course_id": "114",
-                          "created_at": "2026-08-17 22:38:06",
+                          "course_id": "123",
+                          "created_at": "2026-08-17 22:39:56",
                           "featured_image": null,
-                          "id": 15055,
+                          "id": 15074,
                           "inline_css": "",
                           "is_locked": false,
                           "lazy_load": true,
@@ -566,8 +566,8 @@
                             "video_completion_threshold": 80,
                             "video_watched": false
                           },
-                          "section_id": "15051",
-                          "slug": "scratch-lesson-1787006286",
+                          "section_id": "15070",
+                          "slug": "scratch-lesson-1787006396",
                           "title": "Course Recap",
                           "unlock_date": ""
                         },
@@ -576,10 +576,10 @@
                           "comments_count": 0,
                           "content": "",
                           "content_type": "text",
-                          "course_id": "114",
-                          "created_at": "2026-08-17 22:38:06",
+                          "course_id": "123",
+                          "created_at": "2026-08-17 22:39:56",
                           "featured_image": null,
-                          "id": 15056,
+                          "id": 15075,
                           "inline_css": "",
                           "is_locked": false,
                           "lazy_load": true,
@@ -600,13 +600,13 @@
                             "video_completion_threshold": 80,
                             "video_watched": false
                           },
-                          "section_id": "15051",
-                          "slug": "movable-lesson-1787006286",
+                          "section_id": "15070",
+                          "slug": "movable-lesson-1787006396",
                           "title": "Next Steps",
                           "unlock_date": ""
                         }
                       ],
-                      "slug": "getting-started-1787006286",
+                      "slug": "getting-started-1787006396",
                       "title": "Getting Started",
                       "type": "section",
                       "unlock_date": ""

@@ -467,10 +467,10 @@
                   "feed": {
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:39:20",
+                    "created_at": "2026-08-17 22:41:08",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15050,
+                    "id": 15069,
                     "is_sticky": 0,
                     "message": "Just tried it and it works exactly as described.",
                     "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
@@ -486,12 +486,12 @@
                     "slug": "upcoming-announcement",
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:38:06",
+                      "created_at": "2026-08-17 22:39:56",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 110,
+                      "id": 119,
                       "logo": null,
-                      "parent_id": "109",
+                      "parent_id": "118",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -522,13 +522,13 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:38:06"
+                      "updated_at": "2026-08-17 22:39:56"
                     },
-                    "space_id": "110",
+                    "space_id": "119",
                     "status": "published",
                     "title": "Upcoming announcement",
                     "type": "text",
-                    "updated_at": "2026-08-17 22:39:20",
+                    "updated_at": "2026-08-17 22:41:08",
                     "user": {
                       "ID": 1,
                       "display_name": "Lucas Moreau",
@@ -546,7 +546,7 @@
                         "display_name": "Alex Rivera",
                         "id": "1",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:35:43",
+                        "last_activity": "2026-08-17 22:41:08",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -563,7 +563,7 @@
                         "short_description": "Community builder. Helping members get the most out of the platform.",
                         "status": "active",
                         "total_points": 20385,
-                        "updated_at": "2026-08-17 22:35:43",
+                        "updated_at": "2026-08-17 22:41:08",
                         "user_id": 1,
                         "username": "alex_rivera"
                       }

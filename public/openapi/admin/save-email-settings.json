@@ -69,7 +69,7 @@
                   "mention_mail": "yes",
                   "reply_my_com_mail": "yes",
                   "reply_to_email": "member@example.com",
-                  "reply_to_name": "Your Company Kenji",
+                  "reply_to_name": "Your Company Ruby",
                   "send_from_email": "member@example.com",
                   "send_from_name": "Your Community"
                 },
@@ -86,7 +86,7 @@
                   "mention_mail": "yes",
                   "reply_my_com_mail": "yes",
                   "reply_to_email": "member@example.com",
-                  "reply_to_name": "Your Company Kenji",
+                  "reply_to_name": "Your Company Ruby",
                   "send_from_email": "member@example.com",
                   "send_from_name": "Your Community"
                 }
@@ -184,7 +184,7 @@
                     "mention_mail": "yes",
                     "reply_my_com_mail": "yes",
                     "reply_to_email": "member@example.com",
-                    "reply_to_name": "Your Company Kenji",
+                    "reply_to_name": "Your Company Ruby",
                     "send_from_email": "member@example.com",
                     "send_from_name": "Your Community"
                   },

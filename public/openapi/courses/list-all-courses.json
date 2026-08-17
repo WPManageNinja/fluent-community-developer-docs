@@ -817,7 +817,7 @@
                                 "document_lists": [
                                   {
                                     "id": 6500,
-                                    "media_key": "0335eb0ba051fc9b84aeef5887b99b2d",
+                                    "media_key": "0000000000000000000000000000abcd",
                                     "title": "Share your workflow setup",
                                     "type": "image/png",
                                     "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=0335eb0ba051fc9b84aeef5887b99b2d&media_id=6500"
@@ -871,7 +871,7 @@
                                 "document_lists": [
                                   {
                                     "id": 6501,
-                                    "media_key": "5ecb6799d7cf315403eb02c909e612a5",
+                                    "media_key": "0000000000000000000000000000abcd",
                                     "title": "How we plan our release cycle",
                                     "type": "image/png",
                                     "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=5ecb6799d7cf315403eb02c909e612a5&media_id=6501"

@@ -193,10 +193,10 @@
                   "topic": {
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:38:06",
+                    "created_at": "2026-08-17 22:39:56",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15051,
+                    "id": 15070,
                     "is_sticky": "0",
                     "message": null,
                     "message_rendered": null,
@@ -208,12 +208,12 @@
                     "privacy": "public",
                     "reactions_count": 0,
                     "scheduled_at": null,
-                    "slug": "getting-started-1787006286",
-                    "space_id": "114",
+                    "slug": "getting-started-1787006396",
+                    "space_id": "123",
                     "status": "published",
                     "title": "Getting Started (updated)",
                     "type": "course_section",
-                    "updated_at": "2026-08-17 22:39:20",
+                    "updated_at": "2026-08-17 22:41:09",
                     "user_id": "1"
                   }
                 }

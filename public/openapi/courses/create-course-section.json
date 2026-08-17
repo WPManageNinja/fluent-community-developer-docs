@@ -146,19 +146,19 @@
                 "example": {
                   "message": "Just tried it and it works exactly as described.",
                   "section": {
-                    "created_at": "2026-08-17 22:38:06",
-                    "id": 15051,
+                    "created_at": "2026-08-17 22:39:56",
+                    "id": 15070,
                     "lessons": [],
                     "meta": {
                       "preview_data": null
                     },
                     "priority": 1,
-                    "slug": "getting-started-1787006286",
-                    "space_id": "114",
+                    "slug": "getting-started-1787006396",
+                    "space_id": "123",
                     "status": "published",
                     "title": "Getting Started",
                     "type": "course_section",
-                    "updated_at": "2026-08-17 22:38:06",
+                    "updated_at": "2026-08-17 22:39:56",
                     "user_id": 1
                   }
                 }

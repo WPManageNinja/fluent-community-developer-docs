@@ -84,11 +84,11 @@
               },
               "example": {
                 "course_ids": [
-                  114
+                  123
                 ],
                 "send_wp_welcome_email": "no",
                 "space_ids": [
-                  110
+                  119
                 ],
                 "title": "CRM Sync"
               }
@@ -182,24 +182,24 @@
                 "example": {
                   "message": "Great point — I ran into the same thing last week.",
                   "webhook": {
-                    "created_at": "2026-08-17 22:39:21",
-                    "id": 25080,
-                    "meta_key": "4547ccbda00ecfc3fc9d7fe448602ad039c6ea682b880a18f30c101f6b1054f7",
+                    "created_at": "2026-08-17 22:41:10",
+                    "id": 25089,
+                    "meta_key": "0000000000000000000000000000000000000000000000000000000000abcdef",
                     "object_type": "webhook",
-                    "updated_at": "2026-08-17 22:39:21",
+                    "updated_at": "2026-08-17 22:41:10",
                     "value": {
                       "course_ids": [
-                        114
+                        123
                       ],
                       "remove_course_ids": [],
                       "remove_space_ids": [],
                       "send_wp_welcome_email": "no",
                       "space_ids": [
-                        110
+                        119
                       ],
                       "title": "CRM Sync"
                     },
-                    "webhook_url": "https://yourwebsite.com/portal/?fcom_action=incoming_webhook&webhook=4547ccbda00ecfc3fc9d7fe448602ad039c6ea682b880a18f30c101f6b1054f7"
+                    "webhook_url": "https://yourwebsite.com/portal/?fcom_action=incoming_webhook&webhook=6d8c76a0b547f12afd2a5c3b17c0a8bfa739ee6e7038611d985b438ab0c6d6a8"
                   }
                 }
               }

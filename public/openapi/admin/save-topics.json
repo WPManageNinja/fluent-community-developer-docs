@@ -72,7 +72,7 @@
                 "description": "News and release notes.",
                 "slug": "product-updates",
                 "space_ids": [
-                  110
+                  119
                 ],
                 "title": "Product Updates"
               }
@@ -140,16 +140,16 @@
                 "example": {
                   "message": "Great point — I ran into the same thing last week.",
                   "topic": {
-                    "created_at": "2026-08-17 22:38:06",
+                    "created_at": "2026-08-17 22:39:56",
                     "description": "News and release notes.",
-                    "id": 1133,
+                    "id": 1135,
                     "settings": {
                       "admin_only": "no"
                     },
                     "slug": "product-updates",
                     "taxonomy_name": "post_topic",
                     "title": "Product Updates",
-                    "updated_at": "2026-08-17 22:38:06"
+                    "updated_at": "2026-08-17 22:39:56"
                   }
                 }
               }

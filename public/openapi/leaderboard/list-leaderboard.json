@@ -321,7 +321,7 @@
                           }
                         }
                       ],
-                      "key": "7_days",
+                      "key": "app_xxxxxxxxxxxxxxxx",
                       "title": "Welcome to the community"
                     },
                     {
@@ -409,7 +409,7 @@
                           }
                         }
                       ],
-                      "key": "30_days",
+                      "key": "app_xxxxxxxxxxxxxxxx",
                       "title": "Share your workflow setup"
                     },
                     {
@@ -502,7 +502,7 @@
                           }
                         }
                       ],
-                      "key": "all_time",
+                      "key": "app_xxxxxxxxxxxxxxxx",
                       "title": "How we plan our release cycle"
                     }
                   ]

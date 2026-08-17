@@ -653,18 +653,18 @@
                       {
                         "comment": null,
                         "content_type": "post",
-                        "created_at": "2026-08-17 22:39:20",
+                        "created_at": "2026-08-17 22:41:08",
                         "explanation": "This post looks like spam.",
-                        "id": 59800,
+                        "id": 59808,
                         "meta": null,
                         "parent_id": null,
                         "post": {
                           "comments_count": 0,
                           "content_type": "text",
-                          "created_at": "2026-08-17 22:38:06",
+                          "created_at": "2026-08-17 22:39:56",
                           "expired_at": null,
                           "featured_image": null,
-                          "id": 15048,
+                          "id": 15067,
                           "is_sticky": 0,
                           "message": "Great point — I ran into the same thing last week.",
                           "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
@@ -684,12 +684,12 @@
                           "slug": "second-scratch-post",
                           "space": {
                             "cover_photo": null,
-                            "created_at": "2026-08-17 22:38:06",
+                            "created_at": "2026-08-17 22:39:56",
                             "created_by": "1",
                             "description": "A place to introduce yourself and meet other members.",
-                            "id": 110,
+                            "id": 119,
                             "logo": null,
-                            "parent_id": "109",
+                            "parent_id": "118",
                             "privacy": "public",
                             "serial": "1",
                             "settings": {
@@ -720,13 +720,13 @@
                             "status": "published",
                             "title": "General Discussion",
                             "type": "community",
-                            "updated_at": "2026-08-17 22:38:06"
+                            "updated_at": "2026-08-17 22:39:56"
                           },
-                          "space_id": "110",
+                          "space_id": "119",
                           "status": "pending",
                           "title": "Community poll results",
                           "type": "text",
-                          "updated_at": "2026-08-17 22:39:20",
+                          "updated_at": "2026-08-17 22:41:08",
                           "user_id": "13096",
                           "xprofile": {
                             "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
@@ -752,7 +752,7 @@
                             "username": "mei_tanaka_3"
                           }
                         },
-                        "post_id": "15048",
+                        "post_id": "15067",
                         "reason": "spam",
                         "reporter": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
@@ -783,9 +783,9 @@
                       {
                         "comment": null,
                         "content_type": "post",
-                        "created_at": "2026-08-17 22:38:06",
+                        "created_at": "2026-08-17 22:39:56",
                         "explanation": "Following. I would love to see a worked example of this.",
-                        "id": 59796,
+                        "id": 59804,
                         "meta": {
                           "flagged_by": "auto"
                         },
@@ -793,10 +793,10 @@
                         "post": {
                           "comments_count": 0,
                           "content_type": "text",
-                          "created_at": "2026-08-17 22:38:06",
+                          "created_at": "2026-08-17 22:39:56",
                           "expired_at": null,
                           "featured_image": null,
-                          "id": 15048,
+                          "id": 15067,
                           "is_sticky": 0,
                           "message": "Great point — I ran into the same thing last week.",
                           "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
@@ -816,12 +816,12 @@
                           "slug": "second-scratch-post",
                           "space": {
                             "cover_photo": null,
-                            "created_at": "2026-08-17 22:38:06",
+                            "created_at": "2026-08-17 22:39:56",
                             "created_by": "1",
                             "description": "A place to introduce yourself and meet other members.",
-                            "id": 110,
+                            "id": 119,
                             "logo": null,
-                            "parent_id": "109",
+                            "parent_id": "118",
                             "privacy": "public",
                             "serial": "1",
                             "settings": {
@@ -852,13 +852,13 @@
                             "status": "published",
                             "title": "General Discussion",
                             "type": "community",
-                            "updated_at": "2026-08-17 22:38:06"
+                            "updated_at": "2026-08-17 22:39:56"
                           },
-                          "space_id": "110",
+                          "space_id": "119",
                           "status": "pending",
                           "title": "Community poll results",
                           "type": "text",
-                          "updated_at": "2026-08-17 22:39:20",
+                          "updated_at": "2026-08-17 22:41:08",
                           "user_id": "13096",
                           "xprofile": {
                             "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
@@ -884,7 +884,7 @@
                             "username": "mei_tanaka_3"
                           }
                         },
-                        "post_id": "15048",
+                        "post_id": "15067",
                         "reason": "first_post_approval",
                         "reporter": null,
                         "reports_count": "2",

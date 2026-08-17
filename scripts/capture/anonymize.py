@@ -194,6 +194,25 @@ GENERIC_USERNAMES = {
 # Values that vary run to run and add noise to a published example.
 VOLATILE_NUMERIC_KEYS = {'execution_time', 'query_time', 'duration', 'elapsed'}
 
+# Opaque identifiers and credentials. Some are genuinely sensitive (a realtime app
+# key, a webhook token); the media keys are production file identifiers that appear
+# in download URLs. None of them teach a reader anything, so all are replaced with
+# obvious placeholders that keep the shape.
+OPAQUE_KEYS = {
+    'key': 'app_xxxxxxxxxxxxxxxx',
+    'secret': 'xxxxxxxxxxxxxxxxxxxx',
+    'app_key': 'app_xxxxxxxxxxxxxxxx',
+    'app_secret': 'xxxxxxxxxxxxxxxxxxxx',
+    'media_key': '0000000000000000000000000000abcd',
+    'meta_key': None,          # only when it looks like a generated token
+    'token': 'xxxxxxxxxxxxxxxxxxxx',
+    'access_token': 'xxxxxxxxxxxxxxxxxxxx',
+    'api_key': 'xxxxxxxxxxxxxxxxxxxx',
+    'license_key': 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+}
+PASSWORD_KEYS = {'password', 'current_password', 'new_password', 'confirm_password', 'user_pass'}
+GENERATED_TOKEN = re.compile(r'^[0-9a-f]{32,}$', re.I)
+
 MAX_LIST_ITEMS = 3
 MAX_STRING_CHARS = 400
 MAX_DICT_KEYS = 24
@@ -365,6 +384,17 @@ class Anonymiser:
 
         if isinstance(v, float) and k in VOLATILE_NUMERIC_KEYS:
             return round(v, 3)
+
+        if isinstance(v, str) and k in PASSWORD_KEYS and v.strip():
+            return 'your-password-here'
+
+        if isinstance(v, str) and k in OPAQUE_KEYS and v.strip():
+            replacement = OPAQUE_KEYS[k]
+            if replacement is not None:
+                return replacement
+            # meta_key doubles as a real column name; only mask generated tokens.
+            if GENERATED_TOKEN.match(v):
+                return '0000000000000000000000000000000000000000000000000000000000abcdef'[: len(v)]
 
         if not isinstance(v, str):
             return v

@@ -381,7 +381,7 @@
                 "example": {
                   "courses": [
                     {
-                      "id": 114,
+                      "id": 123,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -409,7 +409,7 @@
                       "title": "Getting Started with the Platform"
                     },
                     {
-                      "id": 115,
+                      "id": 124,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -467,7 +467,7 @@
                   ],
                   "spaces": [
                     {
-                      "id": 110,
+                      "id": 119,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -498,7 +498,7 @@
                       "title": "General Discussion"
                     },
                     {
-                      "id": 111,
+                      "id": 120,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -529,7 +529,7 @@
                       "title": "Announcements"
                     },
                     {
-                      "id": 112,
+                      "id": 121,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",

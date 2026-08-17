@@ -296,10 +296,10 @@
                 "example": {
                   "course": {
                     "cover_photo": null,
-                    "created_at": "2026-08-17 22:38:06",
+                    "created_at": "2026-08-17 22:39:56",
                     "created_by": "1",
                     "description": "Everything you need to get productive in your first week.",
-                    "id": 114,
+                    "id": 123,
                     "logo": null,
                     "parent_id": null,
                     "privacy": "public",
@@ -337,7 +337,7 @@
                     "status": "published",
                     "title": "Getting Started with the Platform",
                     "type": "course",
-                    "updated_at": "2026-08-17 22:39:20"
+                    "updated_at": "2026-08-17 22:41:09"
                   },
                   "message": "Just tried it and it works exactly as described."
                 }

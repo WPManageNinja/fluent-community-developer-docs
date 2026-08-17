@@ -275,10 +275,10 @@
                         "created_at": "2026-08-07 13:05:59",
                         "followed_id": "1",
                         "follower": {
-                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/marcus_hale_7.png",
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/priya_nair_7.png",
                           "badge": null,
                           "created_at": "2024-04-30 20:51:05",
-                          "display_name": "Marcus Hale",
+                          "display_name": "Priya Nair",
                           "follow": null,
                           "id": "382",
                           "is_follower": true,
@@ -287,18 +287,18 @@
                           "meta": {
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
                             "social_links": {
-                              "instagram": "marcushale7",
-                              "twitter": "marcushale7"
+                              "instagram": "priyanair7",
+                              "twitter": "priyanair7"
                             },
                             "website": ""
                           },
-                          "permalink": "https://yourwebsite.com/portal/u/marcus_hale_7",
-                          "short_description": "Moderator. Ask me about the community guidelines.",
+                          "permalink": "https://yourwebsite.com/portal/u/priya_nair_7",
+                          "short_description": "Course creator focused on practical, hands-on lessons.",
                           "status": "active",
                           "total_points": 87,
                           "updated_at": "2026-08-14 03:44:17",
                           "user_id": 382,
-                          "username": "marcus_hale_7"
+                          "username": "priya_nair_7"
                         },
                         "follower_id": "382",
                         "id": 1699,
@@ -309,10 +309,10 @@
                         "created_at": "2026-08-06 10:40:48",
                         "followed_id": "1",
                         "follower": {
-                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/elena_duarte_7.png",
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/marcus_hale_7.png",
                           "badge": null,
                           "created_at": "2024-10-14 16:32:02",
-                          "display_name": "Elena Duarte",
+                          "display_name": "Marcus Hale",
                           "follow": null,
                           "id": "2336",
                           "is_follower": true,
@@ -321,22 +321,22 @@
                           "meta": {
                             "cover_photo": "",
                             "headline": "EAT - SLEEP - CODE - REPEAT",
-                            "short_description_rendered": "<p>Marketing lead. I share what works and what does not.</p>",
+                            "short_description_rendered": "<p>Moderator. Ask me about the community guidelines.</p>",
                             "social_links": {
-                              "fb": "elenaduarte7",
-                              "instagram": "elenaduarte7",
-                              "linkedin": "elenaduarte7",
-                              "twitter": "elenaduarte7"
+                              "fb": "marcushale7",
+                              "instagram": "marcushale7",
+                              "linkedin": "marcushale7",
+                              "twitter": "marcushale7"
                             },
                             "website": "https://example.com"
                           },
-                          "permalink": "https://yourwebsite.com/portal/u/elena_duarte_7",
-                          "short_description": "Marketing lead. I share what works and what does not.",
+                          "permalink": "https://yourwebsite.com/portal/u/marcus_hale_7",
+                          "short_description": "Moderator. Ask me about the community guidelines.",
                           "status": "active",
                           "total_points": 4,
                           "updated_at": "2026-08-13 11:32:52",
                           "user_id": 2516,
-                          "username": "elena_duarte_7"
+                          "username": "marcus_hale_7"
                         },
                         "follower_id": "2516",
                         "id": 1697,
@@ -347,10 +347,10 @@
                         "created_at": "2026-08-04 15:04:33",
                         "followed_id": "1",
                         "follower": {
-                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/tomas_novak_7.png",
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/elena_duarte_7.png",
                           "badge": null,
                           "created_at": "2026-08-04 21:00:37",
-                          "display_name": "Tomas Novak",
+                          "display_name": "Elena Duarte",
                           "follow": null,
                           "id": "12334",
                           "is_follower": true,
@@ -359,19 +359,19 @@
                           "meta": {
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
                             "headline": "",
-                            "short_description_rendered": "<p>Backend engineer. Long-time member, occasional lurker.</p>",
+                            "short_description_rendered": "<p>Marketing lead. I share what works and what does not.</p>",
                             "social_links": {
-                              "instagram": "tomasnovak7"
+                              "instagram": "elenaduarte7"
                             },
                             "website": "https://example.com"
                           },
-                          "permalink": "https://yourwebsite.com/portal/u/tomas_novak_7",
-                          "short_description": "Backend engineer. Long-time member, occasional lurker.",
+                          "permalink": "https://yourwebsite.com/portal/u/elena_duarte_7",
+                          "short_description": "Marketing lead. I share what works and what does not.",
                           "status": "active",
                           "total_points": 0,
                           "updated_at": "2026-08-12 19:18:21",
                           "user_id": 13034,
-                          "username": "tomas_novak_7"
+                          "username": "elena_duarte_7"
                         },
                         "follower_id": "13034",
                         "id": 1637,

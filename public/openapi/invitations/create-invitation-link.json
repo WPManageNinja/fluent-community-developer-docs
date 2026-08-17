@@ -65,7 +65,7 @@
               "example": {
                 "expire_date": "",
                 "limit": 0,
-                "space_id": 110,
+                "space_id": 119,
                 "title": "Share your workflow setup"
               }
             }
@@ -137,17 +137,17 @@
                 },
                 "example": {
                   "invitation": {
-                    "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=282dff72c08e4b3b60c78a21807ebd17",
-                    "created_at": "2026-08-17 22:39:20",
-                    "id": 59803,
-                    "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
+                    "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=f32e82d04c825dd17ebe785948acfa33",
+                    "created_at": "2026-08-17 22:41:09",
+                    "id": 59811,
+                    "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                     "meta": {
                       "title": "Share your workflow setup"
                     },
-                    "post_id": 110,
+                    "post_id": 119,
                     "status": "active",
                     "type": "invitation",
-                    "updated_at": "2026-08-17 22:39:20",
+                    "updated_at": "2026-08-17 22:41:09",
                     "user_id": 1
                   },
                   "message": "Great point — I ran into the same thing last week."

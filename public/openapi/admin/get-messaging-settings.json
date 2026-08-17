@@ -138,7 +138,7 @@
                     "appId": "2",
                     "cluster": "mt1",
                     "is_defined": false,
-                    "key": "app_vU7s3UBkx0yuykc5",
+                    "key": "app_xxxxxxxxxxxxxxxx",
                     "options": {
                       "host": "ws.fluentsocket.com",
                       "port": 443,

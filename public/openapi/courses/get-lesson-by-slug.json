@@ -215,10 +215,10 @@
                     "comments_count": 0,
                     "content": "Great point — I ran into the same thing last week.",
                     "content_type": "text",
-                    "course_id": "114",
-                    "created_at": "2026-08-17 22:38:06",
+                    "course_id": "123",
+                    "created_at": "2026-08-17 22:39:56",
                     "featured_image": null,
-                    "id": 15054,
+                    "id": 15073,
                     "inline_css": "",
                     "is_locked": false,
                     "lock_type": "",
@@ -243,8 +243,8 @@
                       "video_length": 0,
                       "video_watched": false
                     },
-                    "section_id": "15051",
-                    "slug": "welcome-to-the-course-1787006286",
+                    "section_id": "15070",
+                    "slug": "welcome-to-the-course-1787006396",
                     "title": "Welcome to the course",
                     "unlock_date": ""
                   }

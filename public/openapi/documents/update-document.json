@@ -55,7 +55,7 @@
                 "additionalProperties": false
               },
               "example": {
-                "id": 13236,
+                "id": 13237,
                 "title": "Feature request round-up"
               }
             }
@@ -103,11 +103,11 @@
                 },
                 "example": {
                   "file": {
-                    "id": 13236,
-                    "media_key": "9de19ed5186c224b6e61057a5e61a2f6",
+                    "id": 13237,
+                    "media_key": "0000000000000000000000000000abcd",
                     "title": "Feature request round-up",
                     "type": "document",
-                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=9de19ed5186c224b6e61057a5e61a2f6&media_id=13236"
+                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=6e90d97d84c320dea1353bd837e2d778&media_id=13237"
                   },
                   "message": "Great point — I ran into the same thing last week."
                 }

@@ -167,12 +167,12 @@
                 },
                 "example": {
                   "follow": {
-                    "created_at": "2026-08-17 22:39:20",
+                    "created_at": "2026-08-17 22:41:08",
                     "followed_id": 13098,
                     "follower_id": 13096,
-                    "id": 1733,
+                    "id": 1735,
                     "level": 1,
-                    "updated_at": "2026-08-17 22:39:20"
+                    "updated_at": "2026-08-17 22:41:08"
                   },
                   "message": "Great point — I ran into the same thing last week.",
                   "xprofile": {
