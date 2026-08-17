@@ -5404,6 +5404,60 @@ function categorizeHook(hookName, filePath) {
   return 'miscellaneous'
 }
 
+/**
+ * Read a WordPress-style docblock sitting immediately above a hook call.
+ *
+ * Barely any call site has one today, so this is not the primary prose channel —
+ * HOOK_NOTES is. It exists so that documenting a hook at the source counts for
+ * something, which is the only way the coverage number improves on its own.
+ */
+function extractHookDocblock(content, matchIndex) {
+  const before = content.slice(0, matchIndex)
+  const lineStart = before.lastIndexOf('\n') + 1
+  const preceding = before.slice(0, lineStart).replace(/\s+$/, '')
+  if (!preceding.endsWith('*/')) {
+    return null
+  }
+  const open = preceding.lastIndexOf('/**')
+  if (open === -1) {
+    return null
+  }
+
+  const body = preceding
+    .slice(open + 3, preceding.length - 2)
+    .split('\n')
+    .map((line) => line.replace(/^\s*\*ted?\s?/, '').replace(/^\s*\*\s?/, '').trim())
+
+  const summary = []
+  const params = []
+  let since = null
+
+  for (const line of body) {
+    const paramMatch = line.match(/^@param\s+(\S+)\s+\$(\w+)\s*(.*)$/)
+    if (paramMatch) {
+      params.push({ type: paramMatch[1], name: paramMatch[2], desc: paramMatch[3].trim() })
+      continue
+    }
+    const sinceMatch = line.match(/^@since\s+(\S+)/)
+    if (sinceMatch) {
+      since = sinceMatch[1]
+      continue
+    }
+    if (line.startsWith('@')) {
+      continue
+    }
+    if (line || summary.length) {
+      summary.push(line)
+    }
+  }
+
+  const text = summary.join(' ').replace(/\s+/g, ' ').trim()
+  if (!text && !params.length && !since) {
+    return null
+  }
+  return { summary: text || null, params, since }
+}
+
 function extractHookCalls() {
   const files = [
     ...collectFilesFromSources(['app'], (file) => file.endsWith('.php')),
@@ -5485,6 +5539,7 @@ function extractHookCalls() {
         file: displaySourcePath(file),
         line: getLineNumber(content, match.index),
         category: categorizeHook(hookName, file),
+        docblock: extractHookDocblock(content, match.index),
         params,
       })
     }
@@ -6201,7 +6256,9 @@ ${categoryGroups.map((group) => renderHookSection(group, kind)).join('\n')}
 function renderHookSection(group, kind) {
   const note = HOOK_NOTES[group.name] || {}
   const summary = describeHook(group)
-  const params = note.params || mergeHookParamNames(group)
+  const documentedParamList = hookParamsFrom(group)
+  const params = documentedParamList || mergeHookParamNames(group)
+  const since = hookSinceFrom(group)
   const isDeprecated = group.callSites.some((hook) => hook.deprecated)
   const deprecatedSite = group.callSites.find((hook) => hook.deprecated)
 
@@ -6210,8 +6267,8 @@ function renderHookSection(group, kind) {
     `- **Edition:** ${renderSourceLabel(group.sourceIds, 'also fired by Pro')}`,
     `- **Call sites:** ${group.callSites.length}`,
   ]
-  if (note.since) {
-    meta.push(`- **Since:** ${note.since}`)
+  if (since) {
+    meta.push(`- **Since:** ${since}`)
   }
   if (summary) {
     meta.push(`- **When it fires:** ${summary}`)
@@ -6236,13 +6293,13 @@ This hook is fired through \`${kind === 'action' ? 'do_action_deprecated' : 'app
   const detailsBlock = note.details ? `\n${note.details}\n` : ''
 
   const documentedParams =
-    note.params && note.params.length
+    documentedParamList && documentedParamList.length
       ? `
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-${note.params
+${documentedParamList
   .map(
     (param, index) =>
       `| ${index + 1} | \`$${param.name}\` | \`${escapeMarkdownCode(param.type || 'mixed')}\` | ${param.desc || '—'} |`,
@@ -6320,9 +6377,38 @@ function mergeHookParamNames(group) {
   })
 }
 
+/**
+ * Prefer a hand-written note, fall back to a source docblock, and print nothing at
+ * all when neither exists — the old fallback rendered the same filler sentence 412
+ * times, which is strictly worse than an absent bullet.
+ */
 function describeHook(group) {
   const note = HOOK_NOTES[group.name]
-  return note && note.summary ? note.summary : null
+  if (note && note.summary) {
+    return note.summary
+  }
+  const documented = group.callSites.find((hook) => hook.docblock && hook.docblock.summary)
+  return documented ? documented.docblock.summary : null
+}
+
+function hookParamsFrom(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.params) {
+    return note.params
+  }
+  const documented = group.callSites.find(
+    (hook) => hook.docblock && hook.docblock.params && hook.docblock.params.length,
+  )
+  return documented ? documented.docblock.params : null
+}
+
+function hookSinceFrom(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.since) {
+    return note.since
+  }
+  const documented = group.callSites.find((hook) => hook.docblock && hook.docblock.since)
+  return documented ? documented.docblock.since : null
 }
 
 function buildHookExampleArgs(params) {
@@ -6358,9 +6444,10 @@ function buildHookExample(group) {
   }
 
   const site = pickExampleCallSite(group)
-  const params = note && note.params ? note.params : mergeHookParamNames(group)
+  const documented = hookParamsFrom(group)
+  const params = documented || mergeHookParamNames(group)
   const fn = site.kind === 'action' ? 'add_action' : 'add_filter'
-  const args = note && note.params ? note.params.map((param) => param.name) : buildHookExampleArgs(params)
+  const args = documented ? documented.map((param) => param.name) : buildHookExampleArgs(params)
   const signature = args
     .map((name, index) => `${params[index] && params[index].byRef ? '&' : ''}$${name}`)
     .join(', ')

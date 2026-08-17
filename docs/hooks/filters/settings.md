@@ -349,6 +349,14 @@ add_filter('fluent_community/privacy_settings_api_response', function ($data, $a
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filter the PWA splash screen background color for a color mode.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$color` | `string` | — |
+| 2 | `$mode` | `string` | light|dark |
 
 ### Call Sites
 
@@ -371,6 +379,13 @@ add_filter('fluent_community/pwa/background_color', function ($color, $mode) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filter the PWA manifest description.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$description` | `string` | — |
 
 ### Call Sites
 
@@ -393,6 +408,13 @@ add_filter('fluent_community/pwa/description', function ($description) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filter the portal install entry button icon markup. follows the portal color mode.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$icon` | `string` | Inline svg. Use stroke="currentColor" so the glyph |
 
 ### Call Sites
 
@@ -403,8 +425,8 @@ add_filter('fluent_community/pwa/description', function ($description) {
 ### Example
 
 ```php
-add_filter('fluent_community/pwa/install_button_icon', function ($default) {
-    return $default;
+add_filter('fluent_community/pwa/install_button_icon', function ($icon) {
+    return $icon;
 }, 10, 1);
 ```
 
@@ -415,6 +437,13 @@ add_filter('fluent_community/pwa/install_button_icon', function ($default) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filter the portal install entry button text.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$buttonText` | `string` | — |
 
 ### Call Sites
 
@@ -425,8 +454,8 @@ add_filter('fluent_community/pwa/install_button_icon', function ($default) {
 ### Example
 
 ```php
-add_filter('fluent_community/pwa/install_button_text', function ($param1) {
-    return $param1;
+add_filter('fluent_community/pwa/install_button_text', function ($buttonText) {
+    return $buttonText;
 }, 10, 1);
 ```
 
@@ -437,6 +466,13 @@ add_filter('fluent_community/pwa/install_button_text', function ($param1) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filter the PWA manifest orientation lock.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$orientation` | `string` | — |
 
 ### Call Sites
 
@@ -447,8 +483,8 @@ add_filter('fluent_community/pwa/install_button_text', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/pwa/orientation', function ($param1) {
-    return $param1;
+add_filter('fluent_community/pwa/orientation', function ($orientation) {
+    return $orientation;
 }, 10, 1);
 ```
 
@@ -459,6 +495,14 @@ add_filter('fluent_community/pwa/orientation', function ($param1) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filter the PWA theme (title bar) color for a color mode.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$color` | `string` | — |
+| 2 | `$mode` | `string` | light|dark |
 
 ### Call Sites
 
