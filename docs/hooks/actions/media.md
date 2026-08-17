@@ -26,6 +26,15 @@ description: Media action hooks for FluentCommunity.
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs before an upload is validated so rate limiters can abort the request.
+
+Core attaches `RateLimitHandler::maybeLimitMediaUpload()`, which throws once the member has created more media rows than `fluent_community/rate_limit/media_upload_per_minute` allows in the last 60 seconds. It runs after the PHP upload-size sanity check but before MIME validation, so nothing about the file is available yet. Site administrators are exempted inside the callback.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$user` | `\FluentCommunity\App\Models\User` | The uploading member. |
 
 ### Call Sites
 
@@ -40,6 +49,8 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/rate_limit/media_upload_per_minute`](#fluent-community-rate-limit-media-upload-per-minute)
+
 <a id="fluent-community-delete-remote-media-this"></a>
 
 ## `fluent_community/delete_remote_media_{this}`
@@ -47,6 +58,15 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Asks the owning storage driver to delete a media file it holds, named after the driver.
+
+The suffix is `$media->driver`, so the live name is `fluent_community/delete_remote_media_s3` for Pro's cloud storage. It is the else-branch of `Media::deleteFile()`: local files are unlinked directly and never reach a hook. Nothing verifies that a handler exists, so a media row on an unhandled driver has its database row removed while the remote object is left behind.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$media` | `\FluentCommunity\App\Models\Media` | The media row whose remote file should be removed. |
 
 ### Call Sites
 
@@ -57,9 +77,11 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 ### Example
 
 ```php
-add_action('fluent_community/delete_remote_media_{this}', function ($param1) {
+add_action('fluent_community/delete_remote_media_{this}', function ($media) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/media_public_url_{this}`](#fluent-community-media-public-url-this) · [`fluent_community/handle_remove_bulk_media`](#fluent-community-handle-remove-bulk-media)
 
 <a id="fluent-community-document-local-file-access"></a>
 
@@ -135,6 +157,9 @@ add_action('fluent_community/feed/media_deleted', function ($media) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires hourly to clean up media that was uploaded but never attached to anything.
+
+Dispatched from the `fluent_community_scheduled_hour_jobs` handler. The core callback removes at most 30 inactive media rows older than two hours per run, so a large backlog drains over several hours. The two-hour grace period is what lets a member leave a composer open without losing their upload. It takes no arguments.
 
 ### Call Sites
 
@@ -148,6 +173,8 @@ add_action('fluent_community/feed/media_deleted', function ($media) {
 add_action('fluent_community/maybe_delete_draft_medias', function () {
 }, 10, 0);
 ```
+
+**Related:** [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs) · [`fluent_community/handle_remove_bulk_media`](#fluent-community-handle-remove-bulk-media)
 
 <a id="fluent-community-remove-medias-by-url"></a>
 

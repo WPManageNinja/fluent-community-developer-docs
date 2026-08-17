@@ -32,6 +32,18 @@ description: Comments filter hooks for FluentCommunity.
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the single-comment response.
+
+Serves the endpoint the portal calls when deep-linking to a comment and when opening one for editing. With `context=edit` the payload has been reshaped first: `meta` is unset and any attached images are lifted onto a `media_images` property, or a non-uploader preview is put back under `meta.media_preview`. Access is verified against the parent post before the filter runs.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a `comment` key. |
+| 2 | `$requestData` | `array` | The full request parameters, including `context`. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -42,10 +54,12 @@ description: Comments filter hooks for FluentCommunity.
 ### Example
 
 ```php
-add_filter('fluent_community/comment_api_response', function ($data, $all) {
+add_filter('fluent_community/comment_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comments_api_response`](#fluent-community-comments-api-response)
 
 <a id="fluent-community-comment-order-options"></a>
 
@@ -90,6 +104,18 @@ add_filter('fluent_community/comment_order_options', function ($options, $contex
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the attributes a new comment is about to be created from.
+
+The pre-save hook for comments, applied immediately after the read-only `fluent_community/before_comment_create` action. Setting `status` to something other than `published` here diverts the request into the held-comment branch — that is how Pro's moderation holds a comment back. There is no `WP_Error` contract: unlike the post-side filters, whatever you return is passed straight to `Comment::create()`, so throw if you need to abort.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$commentData` | `array` | The attributes to create the comment with: `post_id`, `message`, `message_rendered`, `parent_id`, `is_admin`, `meta`, `status`. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post being commented on. |
+
+**Return:** `array` — the attribute map. It is not validated, so unknown keys will reach the model.
 
 ### Call Sites
 
@@ -105,6 +131,8 @@ add_filter('fluent_community/comment/comment_data', function ($commentData, $fee
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment/update_comment_data`](#fluent-community-comment-update-comment-data) · [`fluent_community/before_comment_create`](#fluent-community-before-comment-create)
+
 <a id="fluent-community-comment-new-comment-response"></a>
 
 ## `fluent_community/comment/new_comment_response`
@@ -112,6 +140,18 @@ add_filter('fluent_community/comment/comment_data', function ($commentData, $fee
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the response returned when a new comment is not published.
+
+Only applied on the held-for-moderation branch. The success path returns its payload without any filter at all, so this is not a general "comment created" response hook — it exists so Pro can explain to the author why their comment is pending. The `comment` value is the raw model with its relations loaded.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Response payload: `comment` and `message`. |
+| 2 | `$comment` | `\FluentCommunity\App\Models\Comment` | The stored comment, in its non-published status. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -127,6 +167,8 @@ add_filter('fluent_community/comment/new_comment_response', function ($response,
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment/new_comment_{comment}`](#fluent-community-comment-new-comment-comment) · [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response)
+
 <a id="fluent-community-comment-patch-comment-response"></a>
 
 ## `fluent_community/comment/patch_comment_response`
@@ -134,6 +176,20 @@ add_filter('fluent_community/comment/new_comment_response', function ($response,
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the response of the comment patch endpoint.
+
+The patch endpoint handles the pin toggle only and is restricted to moderators and admins. The filter is applied whether or not anything changed, and receives four arguments — note that the request data is last, not second as in most response filters.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Response payload: `comment` and `message`. |
+| 2 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment after the patch. |
+| 3 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
+| 4 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -144,10 +200,12 @@ add_filter('fluent_community/comment/new_comment_response', function ($response,
 ### Example
 
 ```php
-add_filter('fluent_community/comment/patch_comment_response', function ($param1, $comment, $feed, $all) {
-    return $param1;
+add_filter('fluent_community/comment/patch_comment_response', function ($response, $comment, $feed, $requestData) {
+    return $response;
 }, 10, 4);
 ```
+
+**Related:** [`fluent_community/comment/updated`](#fluent-community-comment-updated)
 
 <a id="fluent-community-comment-update-comment-data"></a>
 
@@ -156,6 +214,20 @@ add_filter('fluent_community/comment/patch_comment_response', function ($param1,
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the attributes an edited comment is about to be saved with.
+
+The update-side twin of `fluent_community/comment/comment_data`, with two extra arguments. What you return is filled onto the model and determines the dirty check, so returning the attributes unchanged makes the edit a silent no-op that fires neither `fluent_community/comment_updated` nor its type-scoped twin. Pro uses it to re-flag an edited comment.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$commentData` | `array` | The attributes for the edit. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
+| 3 | `$requestData` | `array` | The full request payload; carries `is_admin`. |
+| 4 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment as currently stored. |
+
+**Return:** `array` — the attribute map.
 
 ### Call Sites
 
@@ -171,6 +243,8 @@ add_filter('fluent_community/comment/update_comment_data', function ($commentDat
 }, 10, 4);
 ```
 
+**Related:** [`fluent_community/comment/comment_data`](#fluent-community-comment-comment-data)
+
 <a id="fluent-community-comments-api-response"></a>
 
 ## `fluent_community/comments_api_response`
@@ -178,6 +252,18 @@ add_filter('fluent_community/comment/update_comment_data', function ($commentDat
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the comment listing response for one post.
+
+The endpoint returns every comment on the post in one go — there is no paging, and sorting is done client side — so on a busy thread the payload can be large. Replies are flat in the list, distinguished by `parent_id`. When `fluent_community/can_view_comments_{type}` denies access the endpoint returns an empty list early and this filter never runs.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a `comments` collection. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -188,10 +274,12 @@ add_filter('fluent_community/comment/update_comment_data', function ($commentDat
 ### Example
 
 ```php
-add_filter('fluent_community/comments_api_response', function ($data, $all) {
+add_filter('fluent_community/comments_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comments_query_response`](#fluent-community-comments-query-response) · [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed)
 
 <a id="fluent-community-comments-query-response"></a>
 
@@ -200,6 +288,18 @@ add_filter('fluent_community/comments_api_response', function ($data, $all) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the comment collection for a post before the viewer's likes are marked on it.
+
+Receives an Eloquent collection of `Comment` models, not an array and not a response payload — return a collection or the `each()` call that follows will fail. It runs after moderation-status scoping and after inactive-profile comments have been excluded, which makes it the right place to drop or reorder comments; `fluent_community/comments_api_response` is the place to reshape the response.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comments` | `\FluentCommunity\Framework\Database\Orm\Collection` | The post's comments, with `xprofile` eager-loaded. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The comment collection.
 
 ### Call Sites
 
@@ -210,10 +310,12 @@ add_filter('fluent_community/comments_api_response', function ($data, $all) {
 ### Example
 
 ```php
-add_filter('fluent_community/comments_query_response', function ($comments, $all) {
+add_filter('fluent_community/comments_query_response', function ($comments, $requestData) {
     return $comments;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comments_api_response`](#fluent-community-comments-api-response)
 
 <a id="fluent-community-disable-duplicate-comment-check"></a>
 
@@ -328,6 +430,18 @@ add_filter('fluent_community/max_comment_char_length', function ($maxLength) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the comment listing shown on a member profile.
+
+Scoped to comments on plain `text` posts the viewer may access, newest first, and paginated. The payload carries the paginator plus the profile itself. The parent posts of the listed comments have already been run through `FeedsHelper::transformFeedsCollection()`, so they are hydrated in place on each comment's `post` relation.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload: `comments` paginator and `xprofile`. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -338,10 +452,12 @@ add_filter('fluent_community/max_comment_char_length', function ($maxLength) {
 ### Example
 
 ```php
-add_filter('fluent_community/profile_comments_api_response', function ($data, $all) {
+add_filter('fluent_community/profile_comments_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comments_api_response`](#fluent-community-comments-api-response)
 
 <a id="fluent-community-rate-limit-comments-per-minute"></a>
 

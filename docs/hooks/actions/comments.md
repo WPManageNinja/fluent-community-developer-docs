@@ -38,6 +38,16 @@ description: Comments action hooks for FluentCommunity.
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires with the prepared comment attributes just before the row is inserted.
+
+Read-only: the attributes are passed by value, so mutating them changes nothing. The filter that runs on the very next line, `fluent_community/comment/comment_data`, is the one that can alter them. Everything is already resolved at this point — rendered HTML, media, `parent_id` for replies, `is_admin`, and `meta.mentioned_user_ids` — which makes this a convenient point for validation logging or for throwing to abort the request.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$commentData` | `array` | The attributes the comment will be created with. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post being commented on. |
 
 ### Call Sites
 
@@ -52,6 +62,8 @@ add_action('fluent_community/before_comment_create', function ($commentData, $fe
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment/comment_data`](#fluent-community-comment-comment-data) · [`fluent_community/comment_added`](#fluent-community-comment-added)
+
 <a id="fluent-community-before-comment-delete"></a>
 
 ## `fluent_community/before_comment_delete`
@@ -59,6 +71,15 @@ add_action('fluent_community/before_comment_create', function ($commentData, $fe
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs immediately before a comment row is deleted, while it and its relations are still readable.
+
+The only place to capture a comment before it disappears — `fluent_community/comment_deleted` receives just the ID. Attached media is announced separately through `fluent_community/comment/media_deleted` right after this hook, and the post's comment count is recalculated after the delete, so the count on `$comment->post` is still the pre-delete value here.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment about to be deleted. |
 
 ### Call Sites
 
@@ -73,6 +94,8 @@ add_action('fluent_community/before_comment_delete', function ($comment) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) · [`fluent_community/comment/media_deleted`](#fluent-community-comment-media-deleted)
+
 <a id="fluent-community-check-rate-limit-create-comment"></a>
 
 ## `fluent_community/check_rate_limit/create_comment`
@@ -80,6 +103,15 @@ add_action('fluent_community/before_comment_delete', function ($comment) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs at the top of the create-comment endpoint so rate limiters can abort the request.
+
+Core attaches `RateLimitHandler::maybeLimitComment()`, which throws once the member has exceeded `fluent_community/rate_limit/comments_per_minute` within the last 60 seconds. It fires before the comment text is validated and before the target post is even loaded, so the user is all you get. Throw to refuse; there is no return value.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$user` | `\FluentCommunity\App\Models\User` | The authenticated commenter. |
 
 ### Call Sites
 
@@ -93,6 +125,8 @@ add_action('fluent_community/before_comment_delete', function ($comment) {
 add_action('fluent_community/check_rate_limit/create_comment', function ($user) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/rate_limit/comments_per_minute`](#fluent-community-rate-limit-comments-per-minute) · [`fluent_community/check_rate_limit/create_post`](#fluent-community-check-rate-limit-create-post)
 
 <a id="fluent-community-comment-added"></a>
 
@@ -136,6 +170,16 @@ add_action('fluent_community/comment_added', function ($comment, $feed, $mention
 - **Type:** action
 - **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 2
+- **When it fires:** Post-type-scoped twin of `fluent_community/comment_added`, suffixed with the parent post's type.
+
+The suffix is `$feed->type`, so the live names are `fluent_community/comment_added_text` for ordinary posts and `fluent_community/comment_added_document` for course lessons. It fires immediately before the generic `fluent_community/comment_added`, so listening to both double-handles the same comment. Pro fires it a second time from the moderation-approval path when a held comment is published.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The stored comment, with relations loaded. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post or lesson the comment belongs to. |
 
 ### Call Sites
 
@@ -151,6 +195,8 @@ add_action('fluent_community/comment_added_{feed}', function ($comment, $feed) {
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment_added`](#fluent-community-comment-added)
+
 <a id="fluent-community-comment-added-async"></a>
 
 ## `fluent_community/comment_added_async`
@@ -158,12 +204,22 @@ add_action('fluent_community/comment_added_{feed}', function ($comment, $feed) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 4
+- **When it fires:** Action Scheduler task that sends the comment notification emails for one comment.
 
 ::: info Scheduled job
 This action is not fired inline. It is registered as a recurring background job
 and runs on a schedule, so the source below is where the job is *scheduled*, not
 where it fires. Hook it with `add_action()` as usual.
 :::
+
+Queued for immediate execution from `EmailNotificationHandler::handleNewCommentEvent()` whenever the comment mentions somebody, the post author wants comment mail, or a thread participant wants reply mail. The handler re-queues this same action when it approaches its run-time budget, passing the last notified user ID as the cursor, so it fires repeatedly for a busy thread.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$commentId` | `int` | ID of the comment to notify about. |
+| 2 | `$lastUserId` | `int` | Highest recipient ID already mailed; 0 on the first batch. |
 
 ### Call Sites
 
@@ -177,9 +233,11 @@ where it fires. Hook it with `add_action()` as usual.
 ### Example
 
 ```php
-add_action('fluent_community/comment_added_async', function () {
-}, 10, 0);
+add_action('fluent_community/comment_added_async', function ($commentId, $lastUserId) {
+}, 10, 2);
 ```
+
+**Related:** [`fluent_community/comment_added`](#fluent-community-comment-added) · [`fluent_community/email_notify_new_posts`](#fluent-community-email-notify-new-posts)
 
 <a id="fluent-community-comment-deleted"></a>
 
@@ -221,6 +279,16 @@ add_action('fluent_community/comment_deleted', function ($commentId, $feed) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Post-type-scoped twin of `fluent_community/comment_deleted`.
+
+Suffixed with `$feed->type`, and fired immediately before the generic hook, so both run for every deletion. As with the generic hook the first argument is an ID, not a model — the row is already gone. The post's `comments_count` has been recounted and saved without bumping `updated_at`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$commentId` | `int` | ID of the deleted comment. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belonged to. |
 
 ### Call Sites
 
@@ -234,6 +302,8 @@ add_action('fluent_community/comment_deleted', function ($commentId, $feed) {
 add_action('fluent_community/comment_deleted_{feed}', function ($commentId, $feed) {
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) · [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete)
 
 <a id="fluent-community-comment-updated"></a>
 
@@ -275,6 +345,16 @@ add_action('fluent_community/comment_updated', function ($comment, $feed) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Post-type-scoped twin of `fluent_community/comment_updated`.
+
+Suffixed with `$feed->type` and fired immediately after the generic hook, under the same dirty-check guard — an edit that changed nothing fires neither. Media dropped by the edit has already been announced through `fluent_community/comment/media_deleted`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment after saving, with relations loaded. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
 
 ### Call Sites
 
@@ -289,6 +369,8 @@ add_action('fluent_community/comment_updated_{feed}', function ($comment, $feed)
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment_updated`](#fluent-community-comment-updated)
+
 <a id="fluent-community-comment-media-deleted"></a>
 
 ## `fluent_community/comment/media_deleted`
@@ -296,6 +378,15 @@ add_action('fluent_community/comment_updated_{feed}', function ($comment, $feed)
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Signals that media attached to a comment should be detached and cleaned up.
+
+A request to clean up rather than a report that a delete happened: core's `CleanupHandler::queueMediaDelete()` is what removes local files and deactivates remote ones. Two call sites, and they pass different things — editing a comment passes only the media rows the edit dropped, whereas deleting a comment passes the whole `media` relation. It is not fired at all when an edit drops no media.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$media` | `\FluentCommunity\Framework\Database\Orm\Collection` | The `Media` rows to clean up. |
 
 ### Call Sites
 
@@ -307,9 +398,11 @@ add_action('fluent_community/comment_updated_{feed}', function ($comment, $feed)
 ### Example
 
 ```php
-add_action('fluent_community/comment/media_deleted', function ($otherMedias) {
+add_action('fluent_community/comment/media_deleted', function ($media) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/feed/media_deleted`](#fluent-community-feed-media-deleted) · [`fluent_community/handle_remove_bulk_media`](#fluent-community-handle-remove-bulk-media)
 
 <a id="fluent-community-comment-new-comment-comment"></a>
 
@@ -318,6 +411,16 @@ add_action('fluent_community/comment/media_deleted', function ($otherMedias) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Status-scoped action for a comment that was not published, where the suffix is the comment status.
+
+In practice the live name is `fluent_community/comment/new_comment_pending`, fired when moderation holds a comment back; Pro listens there to attach the flag record. A held comment fires neither `fluent_community/comment_added` nor its type-scoped twin, so if you are counting comments you must handle this branch as well.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The stored comment, in its non-published status. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
 
 ### Call Sites
 
@@ -332,6 +435,8 @@ add_action('fluent_community/comment/new_comment_{comment}', function ($comment,
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment_added`](#fluent-community-comment-added) · [`fluent_community/comment/new_comment_response`](#fluent-community-comment-new-comment-response)
+
 <a id="fluent-community-comment-react-added"></a>
 
 ## `fluent_community/comment/react_added`
@@ -339,6 +444,17 @@ add_action('fluent_community/comment/new_comment_{comment}', function ($comment,
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires when a member likes a comment.
+
+Guarded by `wasRecentlyCreated`, so re-sending the same like is a no-op that does not fire again. The comment's incremented `reactions_count` is already saved. Comment reactions have no type dimension — unlike post reactions there is no bookmark variant. Core uses it to raise the reply-liked notification.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$reaction` | `\FluentCommunity\App\Models\Reaction` | The stored reaction row. |
+| 2 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment that was liked. |
+| 3 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
 
 ### Call Sites
 
@@ -353,6 +469,8 @@ add_action('fluent_community/comment/react_added', function ($reaction, $comment
 }, 10, 3);
 ```
 
+**Related:** [`fluent_community/comment/react_removed`](#fluent-community-comment-react-removed) · [`fluent_community/feed/react_added`](#fluent-community-feed-react-added)
+
 <a id="fluent-community-comment-react-removed"></a>
 
 ## `fluent_community/comment/react_removed`
@@ -360,6 +478,16 @@ add_action('fluent_community/comment/react_added', function ($reaction, $comment
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires when a member withdraws a like from a comment.
+
+Only fires when a row was actually deleted, so a stray un-like is silent. The reaction is gone by then, and unlike the add side no reaction model is passed, so the acting user is not available from the arguments.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment, with the decremented count already saved. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
 
 ### Call Sites
 
@@ -374,6 +502,8 @@ add_action('fluent_community/comment/react_removed', function ($comment, $feed) 
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment/react_added`](#fluent-community-comment-react-added)
+
 <a id="fluent-community-comment-updated"></a>
 
 ## `fluent_community/comment/updated`
@@ -381,6 +511,16 @@ add_action('fluent_community/comment/react_removed', function ($comment, $feed) 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires after a comment is changed through the moderator patch endpoint.
+
+A different event from `fluent_community/comment_updated`, which covers author edits to the body. This one only ever runs for the pin toggle: the patch endpoint accepts `is_sticky` alone, requires moderator or admin rights, and refuses to pin a reply. Pinning a comment un-pins every other comment on the post first, and those bulk un-pins do not fire the hook.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment after saving. |
+| 2 | `$dirty` | `array` | The changed attributes as returned by `getDirty()`; in practice just `is_sticky`. |
 
 ### Call Sites
 
@@ -395,6 +535,8 @@ add_action('fluent_community/comment/updated', function ($comment, $dirty) {
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/comment_updated`](#fluent-community-comment-updated) · [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response)
+
 <a id="fluent-community-notification-comment-notifed-to-author"></a>
 
 ## `fluent_community/notification/comment/notifed_to_author`
@@ -402,6 +544,15 @@ add_action('fluent_community/comment/updated', function ($comment, $dirty) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Fires after the post author has been notified about a new comment.
+
+Takes a single associative array rather than positional arguments — the shape is shared by all four `notification/comment/*` hooks, and `key` repeats the hook name so one callback can serve several. Skipped when the commenter is the author, and skipped when the author was @-mentioned, in which case `fluent_community/notification/comment/notifed_to_mentions` covers them instead. `created` distinguishes a new notification row from an existing one that was updated and marked unread again. The bundled push notification module listens here.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$eventData` | `array` | Keys: `user_ids`, `notification` (a `Notification` model), `key`, `comment`, `feed`, `created`. |
 
 ### Call Sites
 
@@ -413,9 +564,11 @@ add_action('fluent_community/comment/updated', function ($comment, $dirty) {
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_author', function ($param1) {
+add_action('fluent_community/notification/comment/notifed_to_author', function ($eventData) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/notification/comment/notifed_to_mentions`](#fluent-community-notification-comment-notifed-to-mentions) · [`fluent_community/notification/comment/notifed_to_thread_commetenter`](#fluent-community-notification-comment-notifed-to-thread-commetenter)
 
 <a id="fluent-community-notification-comment-notifed-to-mentions"></a>
 
@@ -424,6 +577,15 @@ add_action('fluent_community/notification/comment/notifed_to_author', function (
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires after the users @-mentioned in a comment have been notified.
+
+Runs for both top-level comments and replies, and always creates a fresh notification rather than updating an existing one, so there is no `created` key in the payload. It runs before the author and thread notifications, and mentioned users are then subtracted from those recipient lists, so a mentioned reader gets exactly one notification.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$eventData` | `array` | Keys: `user_ids`, `notification` (a `Notification` model), `key`, `comment`, `feed`. |
 
 ### Call Sites
 
@@ -434,9 +596,11 @@ add_action('fluent_community/notification/comment/notifed_to_author', function (
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_mentions', function ($param1) {
+add_action('fluent_community/notification/comment/notifed_to_mentions', function ($eventData) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/notification/comment/notifed_to_author`](#fluent-community-notification-comment-notifed-to-author)
 
 <a id="fluent-community-notification-comment-notifed-to-other-users"></a>
 
@@ -445,6 +609,15 @@ add_action('fluent_community/notification/comment/notifed_to_mentions', function
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires after other participants on a post have been notified about a new top-level comment.
+
+The odd one out of the four. Its `notification` value is the raw attribute array used as a template, not a `Notification` model — a separate row is created per recipient — so code that reads `$notification->content` will fatal here. It only runs for top-level comments, never replies, and the bundled push notification module deliberately leaves it unsubscribed. `user_ids` merges freshly notified users with subscribers of pre-existing notifications that were refreshed.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$eventData` | `array` | Keys: `user_ids`, `key`, `notification` (a plain attribute array, not a model), `comment`, `feed`. |
 
 ### Call Sites
 
@@ -455,9 +628,11 @@ add_action('fluent_community/notification/comment/notifed_to_mentions', function
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_other_users', function ($param1) {
+add_action('fluent_community/notification/comment/notifed_to_other_users', function ($eventData) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/notification/comment/notifed_to_author`](#fluent-community-notification-comment-notifed-to-author)
 
 <a id="fluent-community-notification-comment-notifed-to-thread-commetenter"></a>
 
@@ -466,6 +641,15 @@ add_action('fluent_community/notification/comment/notifed_to_other_users', funct
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Fires after participants in a reply thread have been notified of a new reply.
+
+Note the misspelling in the hook name; it is part of the public surface and is documented as written. Only reached for replies, that is comments with a `parent_id`. Two call sites: one updates an existing `child_comment_added` notification and re-marks it unread, the other creates a new one. Neither passes a `created` key, so compare `$notification->wasRecentlyCreated` if you need to tell them apart.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$eventData` | `array` | Keys: `user_ids`, `notification` (a `Notification` model), `key`, `comment`, `feed`. |
 
 ### Call Sites
 
@@ -477,7 +661,9 @@ add_action('fluent_community/notification/comment/notifed_to_other_users', funct
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_thread_commetenter', function ($param1) {
+add_action('fluent_community/notification/comment/notifed_to_thread_commetenter', function ($eventData) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/notification/comment/notifed_to_author`](#fluent-community-notification-comment-notifed-to-author)
 

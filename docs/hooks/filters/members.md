@@ -56,6 +56,18 @@ description: Members filter hooks for FluentCommunity.
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Filters the recent-activity listing response.
+
+Applied at two call sites in the same method with slightly different payloads: the global and profile variant returns early and carries `pinned_posts` only when no member is selected, while the space variant adds `pinned_posts` and `pending_count` on request. Both always carry `activities`, `after_contents` and `before_contents`. Activities are deduplicated to the newest row per post and action, so the list is shorter than the raw activity table.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$returnData` | `array` | Response payload: `activities`, `after_contents`, `before_contents`, and sometimes `pinned_posts` and `pending_count`. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -67,10 +79,12 @@ description: Members filter hooks for FluentCommunity.
 ### Example
 
 ```php
-add_filter('fluent_community/activities_api_response', function ($returnData, $all) {
+add_filter('fluent_community/activities_api_response', function ($returnData, $requestData) {
     return $returnData;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/pinned_posts_api_response`](#fluent-community-pinned-posts-api-response) · [`fluent_community/activity/after_contents`](#fluent-community-activity-after-contents)
 
 <a id="fluent-community-activity-after-contents"></a>
 
@@ -79,6 +93,18 @@ add_filter('fluent_community/activities_api_response', function ($returnData, $a
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters HTML appended below the activity list on the global activity feed.
+
+One of three mutually exclusive variants — this one is used only when neither a space nor a member is in scope, with `..._space` and `..._user` taking over otherwise. It defaults to an empty string and reaches the portal as `after_contents`, so the markup is rendered by the SPA rather than echoed; return HTML rather than printing it, and escape it yourself.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$afterContent` | `string` | HTML to render below the activity list. Empty by default. |
+| 2 | `$context` | `array` | The request `context` array; empty of `space_id` and `user_id` on this variant. |
+
+**Return:** `string` — HTML. It is not sanitised for you.
 
 ### Call Sites
 
@@ -89,10 +115,12 @@ add_filter('fluent_community/activities_api_response', function ($returnData, $a
 ### Example
 
 ```php
-add_filter('fluent_community/activity/after_contents', function ($param1, $context) {
-    return $param1;
+add_filter('fluent_community/activity/after_contents', function ($afterContent, $context) {
+    return $afterContent;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/activity/before_contents`](#fluent-community-activity-before-contents) · [`fluent_community/activity/after_contents_space`](#fluent-community-activity-after-contents-space)
 
 <a id="fluent-community-activity-after-contents-space"></a>
 
@@ -101,6 +129,19 @@ add_filter('fluent_community/activity/after_contents', function ($param1, $conte
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters HTML appended below the activity list on a space page.
+
+Used in place of `fluent_community/activity/after_contents` whenever the request carries a `space_id`; the space variant is checked first, so it also wins when both a space and a member are supplied. The second argument is the space ID, already cast to an integer.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$afterContent` | `string` | HTML to render below the activity list. Empty by default. |
+| 2 | `$spaceId` | `int` | The space in scope. |
+| 3 | `$context` | `array` | The request `context` array. |
+
+**Return:** `string` — HTML. It is not sanitised for you.
 
 ### Call Sites
 
@@ -111,10 +152,12 @@ add_filter('fluent_community/activity/after_contents', function ($param1, $conte
 ### Example
 
 ```php
-add_filter('fluent_community/activity/after_contents_space', function ($param1, $spaceId, $context) {
-    return $param1;
+add_filter('fluent_community/activity/after_contents_space', function ($afterContent, $spaceId, $context) {
+    return $afterContent;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/activity/before_contents_space`](#fluent-community-activity-before-contents-space) · [`fluent_community/activity/after_contents`](#fluent-community-activity-after-contents)
 
 <a id="fluent-community-activity-after-contents-user"></a>
 
@@ -123,6 +166,19 @@ add_filter('fluent_community/activity/after_contents_space', function ($param1, 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters HTML appended below the activity list on a member profile.
+
+Reached only when the request carries a `user_id` and no `space_id`. Pro's FluentCRM integration uses it to render the member's CRM profile card underneath their activity.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$afterContent` | `string` | HTML to render below the activity list. Empty by default. |
+| 2 | `$userId` | `int` | The member in scope. |
+| 3 | `$context` | `array` | The request `context` array. |
+
+**Return:** `string` — HTML. It is not sanitised for you.
 
 ### Call Sites
 
@@ -133,10 +189,12 @@ add_filter('fluent_community/activity/after_contents_space', function ($param1, 
 ### Example
 
 ```php
-add_filter('fluent_community/activity/after_contents_user', function ($param1, $userId, $context) {
-    return $param1;
+add_filter('fluent_community/activity/after_contents_user', function ($afterContent, $userId, $context) {
+    return $afterContent;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/activity/before_contents_user`](#fluent-community-activity-before-contents-user)
 
 <a id="fluent-community-activity-before-contents"></a>
 
@@ -145,6 +203,18 @@ add_filter('fluent_community/activity/after_contents_user', function ($param1, $
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters HTML rendered above the activity list on the global activity feed.
+
+The mirror of `fluent_community/activity/after_contents`, resolved in the same else-branch and returned to the portal as `before_contents`. Both variants are evaluated on every activity request, so keep the callback cheap.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$beforeContent` | `string` | HTML to render above the activity list. Empty by default. |
+| 2 | `$context` | `array` | The request `context` array. |
+
+**Return:** `string` — HTML. It is not sanitised for you.
 
 ### Call Sites
 
@@ -155,10 +225,12 @@ add_filter('fluent_community/activity/after_contents_user', function ($param1, $
 ### Example
 
 ```php
-add_filter('fluent_community/activity/before_contents', function ($param1, $context) {
-    return $param1;
+add_filter('fluent_community/activity/before_contents', function ($beforeContent, $context) {
+    return $beforeContent;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/activity/after_contents`](#fluent-community-activity-after-contents)
 
 <a id="fluent-community-activity-before-contents-space"></a>
 
@@ -167,6 +239,19 @@ add_filter('fluent_community/activity/before_contents', function ($param1, $cont
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters HTML rendered above the activity list on a space page.
+
+The space-scoped mirror of `fluent_community/activity/before_contents`. It wins over the generic and member-scoped variants whenever a `space_id` is present in the request context.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$beforeContent` | `string` | HTML to render above the activity list. Empty by default. |
+| 2 | `$spaceId` | `int` | The space in scope. |
+| 3 | `$context` | `array` | The request `context` array. |
+
+**Return:** `string` — HTML. It is not sanitised for you.
 
 ### Call Sites
 
@@ -177,10 +262,12 @@ add_filter('fluent_community/activity/before_contents', function ($param1, $cont
 ### Example
 
 ```php
-add_filter('fluent_community/activity/before_contents_space', function ($param1, $spaceId, $context) {
-    return $param1;
+add_filter('fluent_community/activity/before_contents_space', function ($beforeContent, $spaceId, $context) {
+    return $beforeContent;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/activity/after_contents_space`](#fluent-community-activity-after-contents-space)
 
 <a id="fluent-community-activity-before-contents-user"></a>
 
@@ -189,6 +276,19 @@ add_filter('fluent_community/activity/before_contents_space', function ($param1,
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters HTML rendered above the activity list on a member profile.
+
+The member-scoped mirror of `fluent_community/activity/before_contents`, reached only when a `user_id` is present and no `space_id` is.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$beforeContent` | `string` | HTML to render above the activity list. Empty by default. |
+| 2 | `$userId` | `int` | The member in scope. |
+| 3 | `$context` | `array` | The request `context` array. |
+
+**Return:** `string` — HTML. It is not sanitised for you.
 
 ### Call Sites
 
@@ -199,10 +299,12 @@ add_filter('fluent_community/activity/before_contents_space', function ($param1,
 ### Example
 
 ```php
-add_filter('fluent_community/activity/before_contents_user', function ($param1, $userId, $context) {
-    return $param1;
+add_filter('fluent_community/activity/before_contents_user', function ($beforeContent, $userId, $context) {
+    return $beforeContent;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/activity/after_contents_user`](#fluent-community-activity-after-contents-user)
 
 <a id="fluent-community-bulk-members-filterTag"></a>
 
@@ -211,6 +313,19 @@ add_filter('fluent_community/activity/before_contents_user', function ($param1, 
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** The runtime-assembled name behind the two FluentCRM tag-resolution response filters.
+
+The suffix is passed in by the caller, so a source scan for a literal hook name finds nothing here. It has exactly two live values, both from `BulkMembersController::runCrmTagResolve()`: `fluent_community/bulk_members/crm_tag_members_resolve_response` for spaces and `fluent_community/bulk_members/crm_tag_students_resolve_response` for courses. Hook those names rather than this one. Pro-only, and requires FluentCRM to be active.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Resolved `user_ids` plus failed and processed counters. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$contextId` | `mixed` | The space slug or the course ID, depending on which endpoint ran. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -221,10 +336,12 @@ add_filter('fluent_community/activity/before_contents_user', function ($param1, 
 ### Example
 
 ```php
-add_filter('fluent_community/bulk_members/{filterTag}', function ($response, $all, $contextId) {
+add_filter('fluent_community/bulk_members/{filterTag}', function ($response, $requestData, $contextId) {
     return $response;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/bulk_members/crm_tag_members_resolve_response`](#fluent-community-bulk-members-crm-tag-members-resolve-response) · [`fluent_community/bulk_members/crm_tag_students_resolve_response`](#fluent-community-bulk-members-crm-tag-students-resolve-response)
 
 <a id="fluent-community-bulk-members-add-members-response"></a>
 
@@ -467,6 +584,18 @@ add_filter('fluent_community/bulk_members/import_students_response', function ($
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the WordPress role given to accounts FluentCommunity creates for existing contacts.
+
+Narrower than the name suggests. It is only consulted by `ProfileHelper::createWpUser()`, which serves the FluentForms integration and Pro's bulk member and student imports. Portal signup goes through `Modules/Auth/AuthHelper` and does not reach this filter, so it is not the hook for changing the role new members register with. The value is passed straight to `wp_insert_user()` and is not validated against registered roles.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$role` | `string` | The role slug, `subscriber` by default. |
+| 2 | `$userData` | `array` | The supplied account data: `email`, `full_name`, `password`, `username`. |
+
+**Return:** `string` — a role slug. An unregistered slug leaves the user with no capabilities.
 
 ### Call Sites
 
@@ -477,8 +606,8 @@ add_filter('fluent_community/bulk_members/import_students_response', function ($
 ### Example
 
 ```php
-add_filter('fluent_community/created_user_role', function ($param1, $userData) {
-    return $param1;
+add_filter('fluent_community/created_user_role', function ($role, $userData) {
+    return $role;
 }, 10, 2);
 ```
 
@@ -631,6 +760,17 @@ add_filter('fluent_community/leaderboard_api_response', function ($response, $xP
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the maximum length of a member's profile bio.
+
+Defaults to 5000 and is measured with `strlen()` on the sanitised markdown, so it counts bytes rather than characters — multi-byte text hits the limit sooner than the number suggests. Note the headline limit next to it uses `mb_strlen()` instead. Exceeding it returns a validation error rather than truncating.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$maxDescriptionLength` | `int` | Maximum bio length in bytes, 5000 by default. |
+
+**Return:** `int` — the limit.
 
 ### Call Sites
 
@@ -641,10 +781,12 @@ add_filter('fluent_community/leaderboard_api_response', function ($response, $xP
 ### Example
 
 ```php
-add_filter('fluent_community/max_profile_description_length', function ($param1) {
-    return $param1;
+add_filter('fluent_community/max_profile_description_length', function ($maxDescriptionLength) {
+    return $maxDescriptionLength;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/max_profile_headline_length`](#fluent-community-max-profile-headline-length)
 
 <a id="fluent-community-max-profile-headline-length"></a>
 
@@ -653,6 +795,17 @@ add_filter('fluent_community/max_profile_description_length', function ($param1)
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the maximum length of a member's profile headline.
+
+Defaults to 60 and is measured with `mb_strlen()`, so it is a true character count — unlike the bio limit alongside it. Exceeding it returns a validation error rather than truncating. The headline is stored in `xprofile.meta`, so there is no column width forcing the value down.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$maxHeadlineLength` | `int` | Maximum headline length in characters, 60 by default. |
+
+**Return:** `int` — the limit.
 
 ### Call Sites
 
@@ -663,10 +816,12 @@ add_filter('fluent_community/max_profile_description_length', function ($param1)
 ### Example
 
 ```php
-add_filter('fluent_community/max_profile_headline_length', function ($param1) {
-    return $param1;
+add_filter('fluent_community/max_profile_headline_length', function ($maxHeadlineLength) {
+    return $maxHeadlineLength;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/max_profile_description_length`](#fluent-community-max-profile-description-length)
 
 <a id="fluent-community-members-api-response"></a>
 
@@ -675,6 +830,19 @@ add_filter('fluent_community/max_profile_headline_length', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the members-directory listing response.
+
+Reached only after the members page permission check passes and only on the non-mention branch — the @-mention autocomplete returns through `fluent_community/mention_members_api_response` instead. Moderators may additionally filter by status; everyone else is held to active profiles. Note the paginator is passed again as the second argument, and the request data is third.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload: `members` paginator and `execution_time`. |
+| 2 | `$members` | `mixed` | The paginated XProfile result, also present inside the payload. |
+| 3 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -685,10 +853,12 @@ add_filter('fluent_community/max_profile_headline_length', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/members_api_response', function ($param1, $members, $all) {
-    return $param1;
+add_filter('fluent_community/members_api_response', function ($data, $members, $requestData) {
+    return $data;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) · [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response)
 
 <a id="fluent-community-mention-members-api-response"></a>
 
@@ -697,6 +867,18 @@ add_filter('fluent_community/members_api_response', function ($param1, $members,
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the @-mention autocomplete results.
+
+A separate early-return branch of the members endpoint, triggered by a `mention` query parameter. It requires a logged-in viewer, is capped at ten active profiles, always excludes the viewer, and is scoped to the space when one is supplied — with membership of that space enforced first. It does not pass through `fluent_community/members_query_ref` or the members page permission check.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload: a `members.data` list and `execution_time`. |
+| 2 | `$requestData` | `array` | The full request parameters, including `mention` and the space. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -707,10 +889,12 @@ add_filter('fluent_community/members_api_response', function ($param1, $members,
 ### Example
 
 ```php
-add_filter('fluent_community/mention_members_api_response', function ($data, $all) {
+add_filter('fluent_community/mention_members_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/members_api_response`](#fluent-community-members-api-response)
 
 <a id="fluent-community-menu-groups-for-user"></a>
 
@@ -719,6 +903,18 @@ add_filter('fluent_community/mention_members_api_response', function ($data, $al
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the space groups and their spaces as shown in one member's sidebar.
+
+Runs after per-viewer visibility has been applied: secret spaces the viewer does not belong to are removed entirely, private spaces they are not in are marked `show_lock`, and groups left with no visible spaces are dropped unless the viewer moderates the space. Each group carries `id`, `title`, `slug`, `logo` and a `children` list. Adding an entry here bypasses those checks, so re-apply them yourself.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$formattedGroups` | `array` | The visible space groups, each with a `children` list of spaces. |
+| 2 | `$user` | `\FluentCommunity\App\Models\User` | The viewing member, or `null` for a guest. |
+
+**Return:** `array` — the group list.
 
 ### Call Sites
 
@@ -734,6 +930,8 @@ add_filter('fluent_community/menu_groups_for_user', function ($formattedGroups, 
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/menu_groups`](#fluent-community-menu-groups) · [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config)
+
 <a id="fluent-community-profile-all-memberships-api-response"></a>
 
 ## `fluent_community/profile_all_memberships_api_response`
@@ -741,6 +939,18 @@ add_filter('fluent_community/menu_groups_for_user', function ($formattedGroups, 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the list of space IDs a member actively belongs to.
+
+Returns bare IDs under a `memberships` key, not space models — the portal uses it to tick membership state in bulk. Only active memberships are counted, and secret spaces are included only when the viewer is the profile owner or a community moderator.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a `memberships` list of space IDs. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -751,10 +961,12 @@ add_filter('fluent_community/menu_groups_for_user', function ($formattedGroups, 
 ### Example
 
 ```php
-add_filter('fluent_community/profile_all_memberships_api_response', function ($param1, $all) {
-    return $param1;
+add_filter('fluent_community/profile_all_memberships_api_response', function ($data, $requestData) {
+    return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/profile_spaces_api_response`](#fluent-community-profile-spaces-api-response)
 
 <a id="fluent-community-profile-link-providers-api-response"></a>
 
@@ -763,6 +975,18 @@ add_filter('fluent_community/profile_all_memberships_api_response', function ($p
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the social link providers returned to the admin profile-links screen.
+
+Returns every registered provider, including the ones currently disabled, because the screen has to be able to switch them back on — `ProfileHelper::socialLinkProviders(true)` is the enabled-only variant used when rendering profiles. Each provider carries `title`, `icon_svg`, `placeholder`, `domain` and `enabled`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a `providers` map keyed by provider slug. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -773,10 +997,12 @@ add_filter('fluent_community/profile_all_memberships_api_response', function ($p
 ### Example
 
 ```php
-add_filter('fluent_community/profile_link_providers_api_response', function ($data, $all) {
+add_filter('fluent_community/profile_link_providers_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/social_link_providers`](#fluent-community-social-link-providers) · [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers)
 
 <a id="fluent-community-profile-spaces-api-response"></a>
 
@@ -785,6 +1011,18 @@ add_filter('fluent_community/profile_link_providers_api_response', function ($da
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the spaces listed on a member profile.
+
+Only active memberships appear, and secret spaces are shown only to the profile owner and to community moderators. Member counts are zeroed for spaces that hide them from viewers without `can_view_members`. Courses are excluded — they are served by the separate profile courses endpoint.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a `spaces` collection. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -795,10 +1033,12 @@ add_filter('fluent_community/profile_link_providers_api_response', function ($da
 ### Example
 
 ```php
-add_filter('fluent_community/profile_spaces_api_response', function ($data, $all) {
+add_filter('fluent_community/profile_spaces_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/profile_all_memberships_api_response`](#fluent-community-profile-all-memberships-api-response)
 
 <a id="fluent-community-profile-view-data"></a>
 
@@ -807,6 +1047,19 @@ add_filter('fluent_community/profile_spaces_api_response', function ($data, $all
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the assembled profile payload for the member profile page.
+
+The main extension point for profiles, and the busiest — Pro attaches follower counts, custom fields, scheduled posts and moderation flags here. The payload is trimmed by visibility before the filter runs: bio, website, social links and join date are absent when the viewer may not see the profile, and the account management keys only appear for the owner or a site admin. `profile_navs` is the tab list and `profile_nav_actions` an empty array left for extensions to fill.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$profile` | `array` | The profile payload, including `profile_navs` and `profile_nav_actions`. |
+| 2 | `$xprofile` | `\FluentCommunity\App\Models\XProfile` | The profile being viewed. |
+| 3 | `$isAdmin` | `bool` | Whether the viewer is a site administrator. Optional — several Pro callbacks register for two arguments only. |
+
+**Return:** `array` — the profile payload. Removing keys the portal expects will break the profile page.
 
 ### Call Sites
 
@@ -822,6 +1075,8 @@ add_filter('fluent_community/profile_view_data', function ($profile, $xprofile, 
 }, 10, 3);
 ```
 
+**Related:** [`fluent_community/update_profile_data`](#fluent-community-update-profile-data) · [`fluent_community/xprofile_public_fields`](#fluent-community-xprofile-public-fields)
+
 <a id="fluent-community-public-display-name"></a>
 
 ## `fluent_community/public_display_name`
@@ -829,6 +1084,18 @@ add_filter('fluent_community/profile_view_data', function ($profile, $xprofile, 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the name used for a member wherever the community refers to them publicly.
+
+Resolves to the community profile's `display_name`, falling back to the WordPress user's. It exists specifically to keep a legal name out of notifications and emails, so overriding it carelessly reintroduces that leak. It runs once per name lookup with no caching — on a notification digest or an activity list that is once per row, so keep the callback free of queries.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$name` | `string` | The resolved public name. |
+| 2 | `$user` | `\FluentCommunity\App\Models\User` | The member whose name is being resolved. |
+
+**Return:** `string` — the display name. It is escaped by callers, not here.
 
 ### Call Sites
 
@@ -839,7 +1106,7 @@ add_filter('fluent_community/profile_view_data', function ($profile, $xprofile, 
 ### Example
 
 ```php
-add_filter('fluent_community/public_display_name', function ($name, $param2) {
+add_filter('fluent_community/public_display_name', function ($name, $user) {
     return $name;
 }, 10, 2);
 ```
@@ -851,6 +1118,17 @@ add_filter('fluent_community/public_display_name', function ($name, $param2) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the list of usernames members are not allowed to claim.
+
+A large default list covering administrative, role-based and routing names. The check is a case-insensitive `in_array()` against a lowercased candidate, so add lowercase entries. It applies alongside a minimum length of three characters and a uniqueness check against existing WordPress logins. Removing entries is a real risk here: several of the defaults collide with portal route segments.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$reservedNames` | `array` | Lowercase reserved usernames. |
+
+**Return:** `array` — a flat list of lowercase strings.
 
 ### Call Sites
 
@@ -861,8 +1139,8 @@ add_filter('fluent_community/public_display_name', function ($name, $param2) {
 ### Example
 
 ```php
-add_filter('fluent_community/reserved_usernames', function ($param1) {
-    return $param1;
+add_filter('fluent_community/reserved_usernames', function ($reservedNames) {
+    return $reservedNames;
 }, 10, 1);
 ```
 
@@ -873,6 +1151,17 @@ add_filter('fluent_community/reserved_usernames', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the social link providers members can add to their profile.
+
+Keyed by provider slug, each entry carrying `title`, `icon_svg`, `placeholder`, `domain` and `enabled`. The keys are stored verbatim in `xprofile.meta.social_links`, so renaming one orphans links already saved under the old key. A separate stored option decides which providers are actually enabled, defaulting to Instagram, Twitter/X, YouTube, LinkedIn and Facebook when nothing has been saved, so adding a provider here does not by itself switch it on.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$links` | `array` | Provider definitions keyed by slug. |
+
+**Return:** `array` — the provider map. `icon_svg` is rendered as markup, so supply trusted SVG only.
 
 ### Call Sites
 
@@ -883,10 +1172,12 @@ add_filter('fluent_community/reserved_usernames', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/social_link_providers', function ($param1) {
-    return $param1;
+add_filter('fluent_community/social_link_providers', function ($links) {
+    return $links;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response) · [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers)
 
 <a id="fluent-community-space-members-api-response"></a>
 
@@ -895,6 +1186,19 @@ add_filter('fluent_community/social_link_providers', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Filters the member listing for one space.
+
+Two call sites with the same payload shape but different contents: requesting `status=pending` returns pending join requests, and only for a viewer with `can_add_member`, while the default path returns active members. Both carry `pending_count`, which stays 0 for viewers who cannot add members. Rows are `SpaceUserPivot` models with `xprofile` eager-loaded, not profiles. The paginator is repeated as the second argument, with the request data third.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload: `members` paginator and `pending_count`. |
+| 2 | `$members` | `mixed` | The paginated membership rows, also present inside the payload. |
+| 3 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -906,10 +1210,12 @@ add_filter('fluent_community/social_link_providers', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/space_members_api_response', function ($param1, $pendingRequests, $all) {
-    return $param1;
+add_filter('fluent_community/space_members_api_response', function ($data, $members, $requestData) {
+    return $data;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/space_non_members_api_response`](#fluent-community-space-non-members-api-response) · [`fluent_community/members_api_response`](#fluent-community-members-api-response)
 
 <a id="fluent-community-space-non-members-api-response"></a>
 
@@ -918,6 +1224,18 @@ add_filter('fluent_community/space_members_api_response', function ($param1, $pe
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the list of site users who are not yet in a given space.
+
+Backs the admin add-member picker. The result is doubly capped — an inner query takes at most 100 candidate IDs before the outer query paginates at 100 — so it is a search-as-you-type source rather than a complete directory, and an unsearched call returns an arbitrary hundred. On multisite it is narrowed to users with capabilities on the current blog. Rows are `User` models, not profiles.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a paginated `users` block. |
+| 2 | `$requestData` | `array` | The full request parameters, including `search`. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -928,10 +1246,12 @@ add_filter('fluent_community/space_members_api_response', function ($param1, $pe
 ### Example
 
 ```php
-add_filter('fluent_community/space_non_members_api_response', function ($data, $all) {
+add_filter('fluent_community/space_non_members_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/space_members_api_response`](#fluent-community-space-members-api-response)
 
 <a id="fluent-community-track-activity-throttle-seconds"></a>
 
@@ -940,6 +1260,17 @@ add_filter('fluent_community/space_non_members_api_response', function ($data, $
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters how long a member's last-seen timestamp is left alone before it is written again.
+
+Defaults to 300. The portal ticker polls every 45 to 75 seconds per session, and without this debounce every poll would issue a profile write, so lowering it materially increases database load on a busy community. Returning 0 disables the debounce entirely. The value also determines how stale `last_activity` may be, which in turn shifts the unread-post cut-off.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$throttleSeconds` | `int` | Minimum seconds between `last_activity` writes, 300 by default. |
+
+**Return:** `int` — seconds.
 
 ### Call Sites
 
@@ -950,10 +1281,12 @@ add_filter('fluent_community/space_non_members_api_response', function ($data, $
 ### Example
 
 ```php
-add_filter('fluent_community/track_activity_throttle_seconds', function ($param1) {
-    return $param1;
+add_filter('fluent_community/track_activity_throttle_seconds', function ($throttleSeconds) {
+    return $throttleSeconds;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/track_activity`](#fluent-community-track-activity) · [`fluent_community/last_activity_date_for_unread_feeds`](#fluent-community-last-activity-date-for-unread-feeds)
 
 <a id="fluent-community-update-profile-data"></a>
 
@@ -962,6 +1295,20 @@ add_filter('fluent_community/track_activity_throttle_seconds', function ($param1
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the profile attributes about to be saved from the profile edit form.
+
+Runs early, on a payload narrowed to `first_name`, `last_name`, `short_description` and `website`, and before the moderator-only fields, the username change and the display name are resolved. That ordering matters: `display_name` and `short_description` are both overwritten from the request after this filter, so setting them here is pointless, while extra keys you add survive to the save. Pro uses it for custom profile fields and user moderation flags.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$updateData` | `array` | The attributes to save: `first_name`, `last_name`, `short_description`, `website`. |
+| 2 | `$data` | `array` | The full submitted form data, including `headline` and `social_links`. |
+| 3 | `$xProfile` | `\FluentCommunity\App\Models\XProfile` | The profile being edited. |
+| 4 | `$currentUser` | `\FluentCommunity\App\Models\User` | The acting user, who may be a moderator editing someone else. Optional — some Pro callbacks register for three arguments. |
+
+**Return:** `array` — the attribute map.
 
 ### Call Sites
 
@@ -977,6 +1324,8 @@ add_filter('fluent_community/update_profile_data', function ($updateData, $data,
 }, 10, 4);
 ```
 
+**Related:** [`fluent_community/profile_view_data`](#fluent-community-profile-view-data)
+
 <a id="fluent-community-xprofile-public-fields"></a>
 
 ## `fluent_community/xprofile_public_fields`
@@ -984,6 +1333,17 @@ add_filter('fluent_community/update_profile_data', function ($updateData, $data,
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the profile columns selected whenever a member is embedded in another response.
+
+Used as the `select()` list for the `xprofile` relation across posts, comments, reactions, member listings and notifications, so every entry must be a real column on `fcom_xprofile` or the query fails. The default set already varies with the privacy settings: `created_at` and `short_description` are added when profiles are viewable, `last_activity` when last-seen display is on. Adding columns here widens what is exposed everywhere at once.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$fields` | `array` | Column names on `fcom_xprofile`. |
+
+**Return:** `array` — a flat list of column names. Non-existent columns produce SQL errors rather than being ignored.
 
 ### Call Sites
 
@@ -998,6 +1358,8 @@ add_filter('fluent_community/xprofile_public_fields', function ($fields) {
     return $fields;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/profile_view_data`](#fluent-community-profile-view-data)
 
 <a id="fluent-community-xprofile-badge"></a>
 

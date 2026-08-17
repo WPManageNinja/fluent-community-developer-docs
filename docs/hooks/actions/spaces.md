@@ -29,6 +29,15 @@ description: Spaces action hooks for FluentCommunity.
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 3
+- **When it fires:** Passes a formatted space by reference so its payload can be extended before it reaches the portal.
+
+Fired with `do_action_ref_array()`, so declare the parameter as `&$space` and mutate the model in place. It runs on three paths — the single-space fetch, the all-spaces listing, and the sidebar build during portal render — always immediately after `formatSpaceData()`, which is what attaches `permissions`, `membership`, `topics`, `header_links` and, for non-admins, `lockscreen_config`. Because it is a listing hook as well, it can run dozens of times per request; keep callbacks free of queries.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The formatted space, passed by reference. |
 
 ### Call Sites
 
@@ -41,9 +50,11 @@ description: Spaces action hooks for FluentCommunity.
 ### Example
 
 ```php
-add_action('fluent_community/space', function (&$space) {
+add_action('fluent_community/space', function ($space) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/space_api_response`](#fluent-community-space-api-response) · [`fluent_community/space_header_links`](#fluent-community-space-header-links)
 
 <a id="fluent-community-space-before-delete"></a>
 
@@ -52,6 +63,15 @@ add_action('fluent_community/space', function (&$space) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs immediately before a space and its content are deleted.
+
+The last point at which the space, its posts, comments, reactions and membership rows are all still queryable — the controller deletes them in bulk straight afterwards. Those bulk deletes bypass the per-item controllers, so no `fluent_community/feed/deleted` or `fluent_community/comment_deleted` fires for the content that goes with the space. Attached media is not cleaned up here either.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space about to be deleted. |
 
 ### Call Sites
 
@@ -65,6 +85,8 @@ add_action('fluent_community/space', function (&$space) {
 add_action('fluent_community/space/before_delete', function ($space) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/space/deleted`](#fluent-community-space-deleted)
 
 <a id="fluent-community-space-created"></a>
 
@@ -106,6 +128,15 @@ add_action('fluent_community/space/created', function ($space, $data) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs after a space row has been deleted, with only its ID.
+
+The model and all its content are gone, so capture anything you need from `fluent_community/space/before_delete`. Deleting by ID delegates to the slug endpoint, so both routes fire it exactly once.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$spaceId` | `int` | ID of the deleted space. |
 
 ### Call Sites
 
@@ -120,6 +151,8 @@ add_action('fluent_community/space/deleted', function ($spaceId) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/space/before_delete`](#fluent-community-space-before-delete)
+
 <a id="fluent-community-space-join-requested"></a>
 
 ## `fluent_community/space/join_requested`
@@ -127,6 +160,17 @@ add_action('fluent_community/space/deleted', function ($spaceId) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires when a member's request to join a non-public space is left pending approval.
+
+The membership row already exists with `status = pending`, so the member is attached but not yet active. Only self-service joins reach it: an admin adding a member creates an active row and fires `fluent_community/space/joined` instead, as does the later approval of this request. Secret spaces reject the join outright before the hook. Core emails the space admins from here. The third argument is always `self` at the only call site.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space that was requested. |
+| 2 | `$userId` | `int` | WordPress user ID of the requester. |
+| 3 | `$by` | `string` | How the request came about; `self` at the only current call site. |
 
 ### Call Sites
 
@@ -137,9 +181,11 @@ add_action('fluent_community/space/deleted', function ($spaceId) {
 ### Example
 
 ```php
-add_action('fluent_community/space/join_requested', function ($space, $id, $param3) {
+add_action('fluent_community/space/join_requested', function ($space, $userId, $by) {
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined) · [`fluent_community/space/join_status_for_private`](#fluent-community-space-join-status-for-private)
 
 <a id="fluent-community-space-joined"></a>
 
@@ -222,6 +268,16 @@ add_action('fluent_community/space/member/role_updated', function ($space, $pivo
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Delivers the submitted values for one extra settings section on a space.
+
+The suffix is the provider slug used when the section was registered through `fluent_community/space/meta_fields`, and the two must match or the values are never delivered. It fires once per provider present in the request, after the space itself has been saved and `fluent_community/space/updated` has run. The values arrive exactly as submitted — sanitise them yourself. `FluentExtendApi::addMetaBox()` wires both halves up for you.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$metaData` | `array` | The submitted values for this provider's section, unsanitised. |
+| 2 | `$space` | `\FluentCommunity\App\Models\Space` | The space that was updated. |
 
 ### Call Sites
 
@@ -235,6 +291,8 @@ add_action('fluent_community/space/member/role_updated', function ($space, $pivo
 add_action('fluent_community/space/update_meta_settings_{metaProvider}', function ($metaData, $space) {
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/space/meta_fields`](#fluent-community-space-meta-fields) · [`fluent_community/course/update_meta_settings_{metaProvider}`](#fluent-community-course-update-meta-settings-metaProvider)
 
 <a id="fluent-community-space-updated"></a>
 

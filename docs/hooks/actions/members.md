@@ -5,7 +5,7 @@ description: Members action hooks for FluentCommunity.
 
 # Members Actions
 
-18 unique action hooks currently map to this category, across 26 call sites.
+17 unique action hooks currently map to this category, across 24 call sites.
 
 ## Hook Inventory
 
@@ -16,7 +16,6 @@ description: Members action hooks for FluentCommunity.
 | [`fluent_community/before_unblocking_user`](#fluent-community-before-unblocking-user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:205` |
 | [`fluent_community/before_unfollowing_user`](#fluent-community-before-unfollowing-user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` |
 | [`fluent_community/blocked_user`](#fluent-community-blocked-user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
-| [`fluent_community/email_notify_users_everyone_tag`](#fluent-community-email-notify-users-everyone-tag) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:490` |
 | [`fluent_community/followed_user`](#fluent-community-followed-user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` |
 | [`fluent_community/managed/after_remove`](#fluent-community-managed-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:132` |
 | [`fluent_community/manager/added`](#fluent-community-manager-added) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:108` |
@@ -37,12 +36,15 @@ description: Members action hooks for FluentCommunity.
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Action Scheduler task that recalculates leaderboard points for a batch of members.
 
 ::: info Scheduled job
 This action is not fired inline. It is registered as a recurring background job
 and runs on a schedule, so the source below is where the job is *scheduled*, not
 where it fires. Hook it with `add_action()` as usual.
 :::
+
+Pro-only, part of the leaderboard module, and note the underscore-only naming — it does not use the `fluent_community/` prefix. The handler walks members in batches, storing its cursor in the `last_leaderboard_synced_user_id` option, and re-queues itself when it runs out of time, so it fires repeatedly for one logical sync. It takes no arguments. Each recalculation that changes a total fires `fluent_community/user_points_updated`.
 
 ### Call Sites
 
@@ -57,6 +59,8 @@ add_action('fluent_community_sync_user_points', function () {
 }, 10, 0);
 ```
 
+**Related:** [`fluent_community/user_points_updated`](#fluent-community-user-points-updated) · [`fluent_community_daily_jobs`](#fluent-community-daily-jobs)
+
 <a id="fluent-community-after-sync-bp-users"></a>
 
 ## `fluent_community/after_sync_bp_users`
@@ -64,6 +68,15 @@ add_action('fluent_community_sync_user_points', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Fires after a batch of BuddyPress users has been migrated into FluentCommunity.
+
+Two call sites — the WP-CLI migrator and the admin migration screen — both firing once per batch rather than once per migration, and the controller loops until every user is done, so expect many invocations. The profiles have already been created by `BPMigratorHelper::syncUser()`. Pro uses it to carry BuddyPress follower relationships across.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$users` | `\FluentCommunity\Framework\Database\Orm\Collection` | The `User` models synced in this batch. |
 
 ### Call Sites
 
@@ -178,34 +191,6 @@ add_action('fluent_community/blocked_user', function ($follow, $xProfile) {
 ```
 
 **Related:** [`fluent_community/before_unblocking_user`](#fluent-community-before-unblocking-user)
-
-<a id="fluent-community-email-notify-users-everyone-tag"></a>
-
-## `fluent_community/email_notify_users_everyone_tag`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 2
-
-::: info Scheduled job
-This action is not fired inline. It is registered as a recurring background job
-and runs on a schedule, so the source below is where the job is *scheduled*, not
-where it fires. Hook it with `add_action()` as usual.
-:::
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:490` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:730` | No parameters |
-
-### Example
-
-```php
-add_action('fluent_community/email_notify_users_everyone_tag', function () {
-}, 10, 0);
-```
 
 <a id="fluent-community-followed-user"></a>
 
@@ -378,6 +363,16 @@ add_action('fluent_community/manager/updated', function ($user, $roles) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Passes the members-directory query by reference before it is paginated.
+
+Fired with `do_action_ref_array()`, so take `&$query` and mutate it — a return value is ignored. It runs after sorting, search and status scoping, and immediately before `paginate()`. The mention-autocomplete branch of the same endpoint returns earlier and never reaches this hook, so anything you add here does not affect who can be @-mentioned.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$members` | `\FluentCommunity\Framework\Database\Orm\Builder` | The XProfile query, passed by reference. |
+| 2 | `$requestData` | `array` | The full request parameters. |
 
 ### Call Sites
 
@@ -388,9 +383,11 @@ add_action('fluent_community/manager/updated', function ($user, $roles) {
 ### Example
 
 ```php
-add_action('fluent_community/members_query_ref', function (&$members, $all) {
+add_action('fluent_community/members_query_ref', function ($members, $requestData) {
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/members_api_response`](#fluent-community-members-api-response) · [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response)
 
 <a id="fluent-community-profile-deactivated"></a>
 
@@ -399,6 +396,15 @@ add_action('fluent_community/members_query_ref', function (&$members, $all) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires when a member deactivates their community profile.
+
+Deactivation blanks `xprofile.status` to an empty string rather than setting a `deactivated` value, and stamps `_fcom_deactivated_at` on the WordPress user; the WordPress account itself is untouched. It requires either the `can_deactive_account` privacy setting or site-admin rights, and the profile is already saved by the time the hook runs. Reactivation fires `fluent_community/reactivate_account`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$xprofile` | `\FluentCommunity\App\Models\XProfile` | The profile, already saved with an empty status. |
 
 ### Call Sites
 
@@ -413,6 +419,8 @@ add_action('fluent_community/profile_deactivated', function ($xprofile) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/reactivate_account`](#fluent-community-reactivate-account)
+
 <a id="fluent-community-reactivate-account"></a>
 
 ## `fluent_community/reactivate_account`
@@ -420,6 +428,15 @@ add_action('fluent_community/profile_deactivated', function ($xprofile) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires when a member reactivates their previously deactivated profile.
+
+Reached through the portal action URL rather than the REST API, and only after a nonce check, a confirmed empty status, and the `can_deactive_account` privacy setting still being enabled — turn that setting off and deactivated members can no longer come back. The profile is already saved as `active`; the `_fcom_deactivated_at` user meta is deleted immediately after the hook, and the request then redirects to the portal home.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$xprofile` | `\FluentCommunity\App\Models\XProfile` | The profile, already saved as active. |
 
 ### Call Sites
 
@@ -433,6 +450,8 @@ add_action('fluent_community/profile_deactivated', function ($xprofile) {
 add_action('fluent_community/reactivate_account', function ($xprofile) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/profile_deactivated`](#fluent-community-profile-deactivated)
 
 <a id="fluent-community-track-activity"></a>
 
@@ -469,6 +488,15 @@ add_action('fluent_community/track_activity', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Delivers the set of social link providers an administrator has enabled.
+
+The free plugin does not persist this itself — the endpoint validates the submitted keys against the known providers, fires the hook and returns a success message, and it is Pro that writes the `enabled_profile_link_keys` option from a callback. Without Pro the setting appears to save but has no effect. The payload is a re-indexed list of provider keys, not a map.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$config` | `array` | The enabled provider keys, filtered against the registered providers. |
 
 ### Call Sites
 
@@ -482,6 +510,8 @@ add_action('fluent_community/track_activity', function () {
 add_action('fluent_community/update_profile_link_providers', function ($config) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/social_link_providers`](#fluent-community-social-link-providers) · [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response)
 
 <a id="fluent-community-user-level-upgraded"></a>
 
