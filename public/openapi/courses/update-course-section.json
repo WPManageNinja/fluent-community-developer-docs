@@ -76,8 +76,8 @@
                 ]
               },
               "example": {
-                "title": "",
-                "status": ""
+                "status": "published",
+                "title": "Getting Started (updated)"
               }
             }
           }
@@ -97,8 +97,96 @@
                     "topic": {
                       "type": "object",
                       "properties": {
+                        "comments_count": {
+                          "type": "integer"
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "expired_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "id": {
                           "type": "integer"
+                        },
+                        "is_sticky": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "message_rendered": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "preview_data": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "priority": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reactions_count": {
+                          "type": "integer"
+                        },
+                        "scheduled_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "space_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -107,9 +195,32 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Topic has been updated successfully.",
+                  "message": "Great point — I ran into the same thing last week.",
                   "topic": {
-                    "id": 0
+                    "comments_count": 0,
+                    "content_type": "text",
+                    "created_at": "2026-08-17 22:04:05",
+                    "expired_at": null,
+                    "featured_image": null,
+                    "id": 15013,
+                    "is_sticky": "0",
+                    "message": null,
+                    "message_rendered": null,
+                    "meta": {
+                      "preview_data": null
+                    },
+                    "parent_id": null,
+                    "priority": "1",
+                    "privacy": "public",
+                    "reactions_count": 0,
+                    "scheduled_at": null,
+                    "slug": "getting-started-1787004245",
+                    "space_id": "96",
+                    "status": "published",
+                    "title": "Getting Started (updated)",
+                    "type": "course_section",
+                    "updated_at": "2026-08-17 22:05:20",
+                    "user_id": "1"
                   }
                 }
               }

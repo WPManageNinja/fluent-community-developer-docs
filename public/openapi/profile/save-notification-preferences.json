@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveNotificationPreferences",
         "summary": "POST Save Notification Preferences",
-        "description": "Save Notification Preferences for the FluentCommunity Profile API.\n\nController: `ProfileController@saveNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:93`",
+        "description": "Save Notification Preferences for the FluentCommunity Profile API.\n\nController: `ProfileController@saveNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:96`",
         "tags": [
           "Profile"
         ],
@@ -72,10 +72,9 @@
                 }
               },
               "example": {
-                "user_globals": {
-                  "message_email_frequency": ""
-                },
-                "space_prefs": []
+                "preferences": {
+                  "email_notification": "yes"
+                }
               }
             }
           }
@@ -88,20 +87,23 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "prefs": {
-                      "type": "string",
-                      "nullable": true
-                    },
                     "message": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "prefs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "prefs": null,
-                  "message": "Email Notification preferences have been updated"
+                  "message": "Following. I would love to see a worked example of this.",
+                  "prefs": []
                 }
               }
             }

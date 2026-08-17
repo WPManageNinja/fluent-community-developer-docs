@@ -27,7 +27,7 @@
       "post": {
         "operationId": "uploadDocument",
         "summary": "POST Upload Document",
-        "description": "Upload Document for the FluentCommunity Documents API.\n\nController: `DocumentController@upload`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:40`",
+        "description": "Upload Document for the FluentCommunity Documents API.\n\nController: `DocumentController@upload`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`",
         "tags": [
           "Documents"
         ],
@@ -45,15 +45,42 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "file": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "media_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "file": {
+                    "id": 58,
+                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=1f0e2d3c4b5a69788796a5b4c3d2e1f0&media_id=58",
+                    "media_key": "1f0e2d3c4b5a69788796a5b4c3d2e1f0",
+                    "title": "onboarding-guide.pdf",
+                    "type": "application/pdf"
+                  }
                 }
               }
             }

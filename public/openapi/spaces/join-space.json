@@ -27,7 +27,7 @@
       "post": {
         "operationId": "joinSpace",
         "summary": "POST Join Space",
-        "description": "Join Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@join`\nRoute source: `fluent-community/app/Http/Routes/api.php:12`",
+        "description": "Join Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@join`\nRoute source: `fluent-community/app/Http/Routes/api.php:13`",
         "tags": [
           "Spaces"
         ],
@@ -55,20 +55,100 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "membership": {
+                      "type": "object",
+                      "properties": {
+                        "ID": {
+                          "type": "integer"
+                        },
+                        "display_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "photo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "pivot": {
+                          "type": "object",
+                          "properties": {
+                            "created_at": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "role": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "space_id": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_id": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "user_email": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_login": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_nicename": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_registered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "membership": {
-                      "type": "string",
-                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "You have joined this Space",
-                  "membership": null
+                  "membership": {
+                    "ID": 13098,
+                    "display_name": "Noah Fischer",
+                    "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                    "pivot": {
+                      "created_at": "2026-08-17T22:05:20+00:00",
+                      "role": "member",
+                      "space_id": "93",
+                      "status": "active",
+                      "user_id": "13098"
+                    },
+                    "user_email": "noah.fischer.3@example.com",
+                    "user_login": "noah_fischer_3",
+                    "user_nicename": "noah_fischer_3",
+                    "user_registered": "2026-08-17 21:31:53",
+                    "user_status": "0",
+                    "user_url": ""
+                  },
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

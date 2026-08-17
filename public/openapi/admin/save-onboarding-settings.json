@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveOnboardingSettings",
         "summary": "POST Save Onboarding Settings",
-        "description": "Save Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:112`",
+        "description": "Save Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveOnBoardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:115`",
         "tags": [
           "Admin"
         ],
@@ -87,17 +87,39 @@
               },
               "example": {
                 "settings": {
-                  "site_title": "",
-                  "logo": "",
-                  "slug": "",
-                  "subscribe_to_newsletter": "",
-                  "share_data": "",
-                  "user_full_name": "",
-                  "user_email_address": "",
+                  "access": {
+                    "acess_level": "public"
+                  },
+                  "auth_content": "Please login first to access this page",
+                  "auth_form_type": "default",
+                  "auth_redirect": "",
+                  "auth_url": "https://yourwebsite.com/",
+                  "custom_signup_url": "",
+                  "cutsom_auth_url": "https://yourwebsite.com/portal/?fcom_action=auth",
+                  "disable_global_posts": "yes",
+                  "explicit_registration": "no",
+                  "featured_image": "https://cdn.yourwebsite.com/uploads/Fluent-Community-Featured-image.png",
+                  "has_fluentcart": "yes",
+                  "has_fluentcrm": "yes",
+                  "has_fluentsmtp": "yes",
+                  "install_fluentcart": "yes",
+                  "install_fluentcrm": "yes",
+                  "install_fluentsmtp": "yes",
+                  "is_slug_defined": true,
+                  "logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp",
+                  "logo_permalink": "",
+                  "logo_permalink_type": "default",
+                  "notice_html": "",
+                  "restricted_role_content": "Sorry, you can not access to this page. Only authorized users can access this page.",
+                  "share_data": "no",
+                  "site_title": "Your Community",
+                  "slug": "portal",
+                  "subscribe_to_newsletter": "yes",
                   "template": "",
-                  "install_fluentcrm": "",
-                  "install_fluentsmtp": "",
-                  "install_fluentcart": ""
+                  "use_custom_signup_page": "no",
+                  "user_email_address": "member@example.com",
+                  "user_full_name": "Mei Tanaka",
+                  "white_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp"
                 }
               }
             }
@@ -119,7 +141,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Onboarding settings have been updated."
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

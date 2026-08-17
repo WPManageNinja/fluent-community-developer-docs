@@ -46,14 +46,27 @@
                   "type": "object",
                   "properties": {
                     "snippets": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "custom_css": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "custom_js": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "snippets": null
+                  "snippets": {
+                    "custom_css": ".chat_medias img {\n    max-width: 100%;\n}",
+                    "custom_js": ""
+                  }
                 }
               }
             }

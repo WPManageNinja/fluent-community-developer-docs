@@ -49,14 +49,34 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "logo": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "migrations": []
+                  "migrations": [
+                    {
+                      "key": "buddypress",
+                      "title": "BuddyPress",
+                      "logo": "https://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/buddypress.svg"
+                    }
+                  ]
                 }
               }
             }

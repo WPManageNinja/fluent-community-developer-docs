@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSurveyVoters",
         "summary": "GET List Survey Voters",
-        "description": "List Survey Voters for the FluentCommunity Reactions API.\n\nController: `ReactionController@getSurveyVoters`\nRoute source: `fluent-community/app/Http/Routes/api.php:78`",
+        "description": "List Survey Voters for the FluentCommunity Reactions API.\n\nController: `ReactionController@getSurveyVoters`\nRoute source: `fluent-community/app/Http/Routes/api.php:80`",
         "tags": [
           "Reactions"
         ],
@@ -68,14 +68,159 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "object_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "object_type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "parent_id": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "xprofile": {
+                            "type": "object",
+                            "properties": {
+                              "avatar": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "badge": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "display_name": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "is_verified": {
+                                "type": "integer"
+                              },
+                              "last_activity": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "badge_slug": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "cover_photo": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "headline": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description_rendered": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "website": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "permalink": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "short_description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "total_points": {
+                                "type": "integer"
+                              },
+                              "user_id": {
+                                "type": "integer"
+                              },
+                              "username": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "voters": []
+                  "voters": [
+                    {
+                      "created_at": "2026-08-17 22:05:20",
+                      "id": 102060,
+                      "object_id": "15011",
+                      "object_type": "better-search",
+                      "parent_id": null,
+                      "type": "survey_vote",
+                      "updated_at": "2026-08-17 22:05:20",
+                      "user_id": "13096",
+                      "xprofile": {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                        "badge": null,
+                        "created_at": "2026-08-17 21:31:52",
+                        "display_name": "Mei Tanaka",
+                        "is_verified": 0,
+                        "last_activity": null,
+                        "meta": {
+                          "badge_slug": [],
+                          "cover_photo": "",
+                          "headline": "Product Designer",
+                          "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                          "website": "https://example.com"
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                        "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                        "status": "active",
+                        "total_points": 0,
+                        "user_id": 13096,
+                        "username": "mei_tanaka_3"
+                      }
+                    }
+                  ]
                 }
               }
             }

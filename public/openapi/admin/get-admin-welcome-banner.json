@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAdminWelcomeBanner",
         "summary": "GET Get Admin Welcome Banner",
-        "description": "Get Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:106`",
+        "description": "Get Admin Welcome Banner for the FluentCommunity Admin API.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:109`",
         "tags": [
           "Admin"
         ],
@@ -51,11 +51,7 @@
                         "login": {
                           "type": "object",
                           "properties": {
-                            "enabled": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "mediaType": {
+                            "allowClose": {
                               "type": "string",
                               "nullable": false
                             },
@@ -66,15 +62,15 @@
                             "bannerVideo": {
                               "type": "object",
                               "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "url": {
+                                "author_name": {
                                   "type": "string",
                                   "nullable": false
                                 },
                                 "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
                                   "type": "string",
                                   "nullable": false
                                 },
@@ -86,11 +82,11 @@
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "author_name": {
+                                "type": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "html": {
+                                "url": {
                                   "type": "string",
                                   "nullable": false
                                 }
@@ -110,11 +106,11 @@
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "type": {
+                                  "newTab": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "newTab": {
+                                  "type": {
                                     "type": "string",
                                     "nullable": false
                                   }
@@ -126,7 +122,19 @@
                               "type": "string",
                               "nullable": false
                             },
-                            "allowClose": {
+                            "description_rendered": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enabled": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
                               "type": "string",
                               "nullable": false
                             }
@@ -136,14 +144,6 @@
                         "logout": {
                           "type": "object",
                           "properties": {
-                            "enabled": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "mediaType": {
-                              "type": "string",
-                              "nullable": false
-                            },
                             "bannerImage": {
                               "type": "string",
                               "nullable": false
@@ -151,15 +151,15 @@
                             "bannerVideo": {
                               "type": "object",
                               "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "url": {
+                                "author_name": {
                                   "type": "string",
                                   "nullable": false
                                 },
                                 "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
                                   "type": "string",
                                   "nullable": false
                                 },
@@ -171,11 +171,11 @@
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "author_name": {
+                                "type": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "html": {
+                                "url": {
                                   "type": "string",
                                   "nullable": false
                                 }
@@ -195,11 +195,11 @@
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "type": {
+                                  "newTab": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "newTab": {
+                                  "type": {
                                     "type": "string",
                                     "nullable": false
                                   }
@@ -211,7 +211,19 @@
                               "type": "string",
                               "nullable": false
                             },
-                            "useCustomUrl": {
+                            "description_rendered": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enabled": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
                               "type": "string",
                               "nullable": false
                             }
@@ -227,52 +239,55 @@
                 "example": {
                   "settings": {
                     "login": {
-                      "enabled": "no",
-                      "mediaType": "image",
+                      "allowClose": "yes",
                       "bannerImage": "",
                       "bannerVideo": {
+                        "author_name": "Your Company",
+                        "content_type": "video",
+                        "html": "<iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/2rucu31ckBY?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"FluentCart Features: A Quick View of the Experts&#39; Favourites\"></iframe>",
+                        "provider": "http://youtube",
+                        "title": "New tutorial: getting started with the API",
                         "type": "oembed",
-                        "url": "",
-                        "content_type": "",
-                        "provider": "",
-                        "title": "",
-                        "author_name": "",
-                        "html": ""
+                        "url": "https://www.youtube.com/watch?v=2rucu31ckBY"
                       },
                       "ctaButtons": [
                         {
-                          "label": "",
-                          "link": "",
-                          "type": "primary",
-                          "newTab": "no"
+                          "label": "Get FluentCart LTD",
+                          "link": "https://fluentcart.com/discount-deal/?utm_source=com&utm_medium=web&utm_campaign=banner",
+                          "newTab": "yes",
+                          "type": "primary"
                         }
                       ],
-                      "description": "",
-                      "allowClose": "no"
+                      "description": "Product announcements, release notes, and roadmap discussion.",
+                      "description_rendered": "<p>A place to introduce yourself and meet other members.</p>",
+                      "enabled": "yes",
+                      "mediaType": "image",
+                      "title": "Community guidelines refresh"
                     },
                     "logout": {
-                      "enabled": "no",
-                      "mediaType": "image",
                       "bannerImage": "",
                       "bannerVideo": {
+                        "author_name": "Your Company",
+                        "content_type": "video",
+                        "html": "<iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/2rucu31ckBY?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"FluentCart Features: A Quick View of the Experts&#39; Favourites\"></iframe>",
+                        "provider": "http://youtube",
+                        "title": "New tutorial: getting started with the API",
                         "type": "oembed",
-                        "url": "",
-                        "content_type": "",
-                        "provider": "",
-                        "title": "",
-                        "author_name": "",
-                        "html": ""
+                        "url": "https://www.youtube.com/watch?v=2rucu31ckBY"
                       },
                       "ctaButtons": [
                         {
-                          "label": "",
-                          "link": "",
-                          "type": "primary",
-                          "newTab": "no"
+                          "label": "Get FluentCart LTD",
+                          "link": "https://fluentcart.com/discount-deal/?utm_source=com&utm_medium=web&utm_campaign=banner",
+                          "newTab": "yes",
+                          "type": "primary"
                         }
                       ],
-                      "description": "",
-                      "useCustomUrl": "no"
+                      "description": "Product announcements, release notes, and roadmap discussion.",
+                      "description_rendered": "<p>A place to introduce yourself and meet other members.</p>",
+                      "enabled": "yes",
+                      "mediaType": "image",
+                      "title": "Community guidelines refresh"
                     }
                   }
                 }

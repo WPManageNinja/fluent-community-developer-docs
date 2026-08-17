@@ -82,7 +82,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Your course progress has been reset.",
+                  "message": "Following. I would love to see a worked example of this.",
                   "track": {
                     "completed_lessons": [],
                     "isEnrolled": true,

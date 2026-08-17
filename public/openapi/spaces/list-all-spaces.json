@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAllSpaces",
         "summary": "GET List All Spaces",
-        "description": "List All Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@getAllSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:30`",
+        "description": "List All Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@getAllSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:31`",
         "tags": [
           "Spaces"
         ],
@@ -48,107 +48,248 @@
                     "spaces": {
                       "type": "object",
                       "properties": {
-                        "id": {
+                        "current_page": {
                           "type": "integer"
                         },
-                        "created_by": {
-                          "type": "integer"
-                        },
-                        "parent_id": {
-                          "type": "integer"
-                        },
-                        "title": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "slug": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "description": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "logo": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "cover_photo": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "type": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "privacy": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "status": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "serial": {
-                          "type": "integer"
-                        },
-                        "settings": {
-                          "type": "object",
-                          "properties": {
-                            "restricted_post_only": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "emoji": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "shape_svg": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "custom_lock_screen": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "can_request_join": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "layout_style": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "disable_layout_style": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "show_sidebar": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "show_paywalls": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "og_image": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "links": {
-                              "type": "array",
-                              "items": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "cover_photo": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_by": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "description_rendered": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "header_links": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "route": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "title": {
+                                      "type": "string",
+                                      "nullable": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "logo": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "members_count": {
+                                "type": "integer"
+                              },
+                              "membership": {
                                 "type": "object",
                                 "properties": {
-                                  "title": {
+                                  "ID": {
+                                    "type": "integer"
+                                  },
+                                  "display_name": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "enabled": {
+                                  "photo": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "new_tab": {
+                                  "pivot": {
+                                    "type": "object",
+                                    "properties": {
+                                      "created_at": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "role": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "space_id": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "status": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "user_id": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "user_email": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_login": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_nicename": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_registered": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_url": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "parent_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "permissions": {
+                                "type": "object",
+                                "properties": {
+                                  "can_add_member": {
+                                    "type": "boolean"
+                                  },
+                                  "can_comment": {
+                                    "type": "boolean"
+                                  },
+                                  "can_create_post": {
+                                    "type": "boolean"
+                                  },
+                                  "can_remove_member": {
+                                    "type": "boolean"
+                                  },
+                                  "can_upload_documents": {
+                                    "type": "boolean"
+                                  },
+                                  "can_view_documents": {
+                                    "type": "boolean"
+                                  },
+                                  "can_view_info": {
+                                    "type": "boolean"
+                                  },
+                                  "can_view_media": {
+                                    "type": "boolean"
+                                  },
+                                  "can_view_members": {
+                                    "type": "boolean"
+                                  },
+                                  "can_view_posts": {
+                                    "type": "boolean"
+                                  },
+                                  "community_admin": {
+                                    "type": "boolean"
+                                  },
+                                  "community_moderator": {
+                                    "type": "boolean"
+                                  },
+                                  "delete_any_comment": {
+                                    "type": "boolean"
+                                  },
+                                  "delete_any_feed": {
+                                    "type": "boolean"
+                                  },
+                                  "edit_any_comment": {
+                                    "type": "boolean"
+                                  },
+                                  "edit_any_feed": {
+                                    "type": "boolean"
+                                  },
+                                  "is_member": {
+                                    "type": "boolean"
+                                  },
+                                  "read": {
+                                    "type": "boolean"
+                                  },
+                                  "registered": {
+                                    "type": "boolean"
+                                  },
+                                  "super_admin": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "privacy": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "serial": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "settings": {
+                                "type": "object",
+                                "properties": {
+                                  "can_request_join": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "custom_lock_screen": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "default_comment_sort_by": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "default_post_sort_by": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "disable_layout_style": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "disable_post_sort_by": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "document_access": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "document_library": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "document_upload": {
                                     "type": "string",
                                     "nullable": false
                                   },
@@ -156,7 +297,68 @@
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "icon_image": {
+                                  "hide_members_count": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "layout_style": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "links": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "emoji": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "enabled": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "new_tab": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "permalink": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "slug": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "title": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "media_access": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "media_gallery": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "members_page_status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "og_image": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "onboard_redirect_url": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "restricted_post_only": {
                                     "type": "string",
                                     "nullable": false
                                   },
@@ -164,274 +366,109 @@
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "permalink": {
+                                  "show_fetured_image": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "slug": {
+                                  "show_paywalls": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "privacy": {
+                                  "show_sidebar": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "membership_ids": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "additionalProperties": true
-                                    }
+                                  "topic_required": {
+                                    "type": "string",
+                                    "nullable": false
                                   }
                                 },
                                 "additionalProperties": false
-                              }
-                            },
-                            "document_library": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "document_access": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "disable_post_sort_by": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "default_post_sort_by": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "default_comment_sort_by": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "document_upload": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "topic_required": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "hide_members_count": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "onboard_redirect_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "members_page_status": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "cart_product_ids": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "updated_at": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "permissions": {
-                          "type": "object",
-                          "properties": {
-                            "can_view_info": {
-                              "type": "boolean"
-                            },
-                            "can_view_posts": {
-                              "type": "boolean"
-                            },
-                            "can_view_members": {
-                              "type": "boolean"
-                            },
-                            "can_create_post": {
-                              "type": "boolean"
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "description_rendered": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "membership": {
-                          "type": "object",
-                          "properties": {
-                            "ID": {
-                              "type": "integer"
-                            },
-                            "display_name": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "avatar": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "pivot": {
-                              "type": "object",
-                              "properties": {
-                                "role": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "status": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "created_at": {
-                                  "type": "string",
-                                  "nullable": false
-                                }
-                              },
-                              "additionalProperties": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "topics": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "integer"
-                              },
-                              "title": {
-                                "type": "string",
-                                "nullable": false
                               },
                               "slug": {
                                 "type": "string",
                                 "nullable": false
-                              }
-                            },
-                            "additionalProperties": false
-                          }
-                        },
-                        "header_links": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
                               "title": {
                                 "type": "string",
                                 "nullable": false
                               },
-                              "route": {
-                                "type": "object",
-                                "properties": {
-                                  "name": {
-                                    "type": "string",
-                                    "nullable": false
-                                  }
-                                },
-                                "additionalProperties": false
+                              "topics": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "nullable": false
                               }
                             },
                             "additionalProperties": false
                           }
                         },
-                        "lockscreen_config": {
-                          "type": "object",
-                          "properties": {
-                            "showCustom": {
-                              "type": "boolean"
-                            },
-                            "showPaywalls": {
-                              "type": "boolean"
-                            },
-                            "canSendRequest": {
-                              "type": "boolean"
-                            },
-                            "lockScreen": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "hidden": {
-                                    "type": "boolean"
-                                  },
-                                  "type": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "label": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "name": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "heading": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "heading_color": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "description": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "text_color": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "button_text": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "button_link": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "button_color": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "button_text_color": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "background_image": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "overlay_color": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "new_tab": {
-                                    "type": "string",
-                                    "nullable": false
-                                  }
-                                },
-                                "additionalProperties": false
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "from": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
                               }
                             },
-                            "redirect_url": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
+                            "additionalProperties": false
+                          }
                         },
-                        "members_count": {
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "to": {
+                          "type": "integer"
+                        },
+                        "total": {
                           "type": "integer"
                         }
                       },
@@ -442,141 +479,462 @@
                 },
                 "example": {
                   "spaces": {
-                    "id": 0,
-                    "created_by": 0,
-                    "parent_id": 0,
-                    "title": "",
-                    "slug": "",
-                    "description": "",
-                    "logo": "",
-                    "cover_photo": "",
-                    "type": "",
-                    "privacy": "",
-                    "status": "",
-                    "serial": 0,
-                    "settings": {
-                      "restricted_post_only": "no",
-                      "emoji": "",
-                      "shape_svg": "",
-                      "custom_lock_screen": "no",
-                      "can_request_join": "no",
-                      "layout_style": "timeline",
-                      "disable_layout_style": "no",
-                      "show_sidebar": "yes",
-                      "show_paywalls": "no",
-                      "og_image": "",
-                      "links": [
-                        {
-                          "title": "",
-                          "enabled": "yes",
-                          "new_tab": "no",
+                    "current_page": 1,
+                    "data": [
+                      {
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "created_at": "2024-03-05 16:51:45",
+                        "created_by": "1",
+                        "description": "A place to introduce yourself and meet other members.",
+                        "description_rendered": "<p>A place to introduce yourself and meet other members.</p>",
+                        "header_links": [
+                          {
+                            "route": {
+                              "name": "space_feeds"
+                            },
+                            "title": "How we plan our release cycle"
+                          },
+                          {
+                            "route": {
+                              "name": "space_members"
+                            },
+                            "title": "Weekly office hours are back"
+                          }
+                        ],
+                        "id": 1,
+                        "logo": "https://cdn.yourwebsite.com/uploads/fluent-boards-logo.webp",
+                        "members_count": 3257,
+                        "membership": {
+                          "ID": 1,
+                          "display_name": "Lucas Moreau",
+                          "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau.png",
+                          "pivot": {
+                            "created_at": "2024-03-27T01:14:35+00:00",
+                            "role": "jordan_blake_2",
+                            "space_id": "1",
+                            "status": "active",
+                            "user_id": "1"
+                          },
+                          "user_email": "lucas.moreau@example.com",
+                          "user_login": "lucas_moreau",
+                          "user_nicename": "lucas_moreau",
+                          "user_registered": "2024-03-05 10:37:02",
+                          "user_status": "0",
+                          "user_url": "https://example.com"
+                        },
+                        "parent_id": "5",
+                        "permissions": {
+                          "can_add_member": true,
+                          "can_comment": true,
+                          "can_create_post": true,
+                          "can_remove_member": true,
+                          "can_upload_documents": false,
+                          "can_view_documents": false,
+                          "can_view_info": true,
+                          "can_view_media": false,
+                          "can_view_members": true,
+                          "can_view_posts": true,
+                          "community_admin": true,
+                          "community_moderator": true,
+                          "delete_any_comment": true,
+                          "delete_any_feed": true,
+                          "edit_any_comment": true,
+                          "edit_any_feed": true,
+                          "is_member": true,
+                          "read": true,
+                          "registered": true,
+                          "super_admin": true
+                        },
+                        "privacy": "private",
+                        "serial": "7",
+                        "settings": {
+                          "can_request_join": "yes",
+                          "custom_lock_screen": "no",
+                          "default_comment_sort_by": "",
+                          "default_post_sort_by": "",
+                          "disable_layout_style": "no",
+                          "disable_post_sort_by": "no",
+                          "document_access": "members_only",
+                          "document_library": "no",
+                          "document_upload": "admin_only",
                           "emoji": "",
-                          "icon_image": "",
+                          "hide_members_count": "no",
+                          "layout_style": "timeline",
+                          "links": [
+                            {
+                              "emoji": "👉",
+                              "enabled": "yes",
+                              "new_tab": "yes",
+                              "permalink": "https://fluentboards.com/",
+                              "slug": "fcom_custom_website",
+                              "title": "Welcome to the community"
+                            },
+                            {
+                              "emoji": "🔗",
+                              "enabled": "yes",
+                              "new_tab": "yes",
+                              "permalink": "https://fluentboards.com/docs/",
+                              "slug": "fcom_custom_documentation",
+                              "title": "How we plan our release cycle"
+                            },
+                            {
+                              "emoji": "🔗",
+                              "enabled": "yes",
+                              "new_tab": "no",
+                              "permalink": "https://yourwebsite.com/road-maps/fluent-boards/#/8/",
+                              "slug": "fcom_custom_roadmap",
+                              "title": "Weekly office hours are back"
+                            }
+                          ],
+                          "media_access": "members_only",
+                          "media_gallery": "no",
+                          "members_page_status": "members_only",
+                          "og_image": "",
+                          "onboard_redirect_url": "",
+                          "restricted_post_only": "no",
                           "shape_svg": "",
-                          "permalink": "",
-                          "slug": "",
-                          "privacy": "public",
-                          "membership_ids": []
-                        }
-                      ],
-                      "document_library": "no",
-                      "document_access": "members_only",
-                      "disable_post_sort_by": "no",
-                      "default_post_sort_by": "",
-                      "default_comment_sort_by": "",
-                      "document_upload": "admin_only",
-                      "topic_required": "no",
-                      "hide_members_count": "no",
-                      "onboard_redirect_url": "",
-                      "members_page_status": "members_only",
-                      "cart_product_ids": [
-                        0
-                      ]
-                    },
-                    "created_at": "2026-01-01 00:00:00",
-                    "updated_at": "2026-01-01 00:00:00",
-                    "permissions": {
-                      "can_view_info": true,
-                      "can_view_posts": true,
-                      "can_view_members": false,
-                      "can_create_post": false
-                    },
-                    "description_rendered": "<p>...</p>",
-                    "membership": {
-                      "ID": 0,
-                      "display_name": "",
-                      "avatar": "",
-                      "pivot": {
-                        "role": "member",
-                        "status": "active",
-                        "created_at": "2026-01-01 00:00:00"
-                      }
-                    },
-                    "topics": [
+                          "show_fetured_image": "yes",
+                          "show_paywalls": "no",
+                          "show_sidebar": "yes",
+                          "topic_required": "no"
+                        },
+                        "slug": "fluent-boards",
+                        "status": "published",
+                        "title": "Three things I learned this month",
+                        "topics": [],
+                        "type": "community",
+                        "updated_at": "2026-07-09 19:51:57"
+                      },
                       {
-                        "id": 0,
-                        "title": "",
-                        "slug": ""
+                        "chat_thread_id": 1,
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "created_at": "2024-03-28 02:06:51",
+                        "created_by": "1",
+                        "description": "Questions, answers, and troubleshooting help from the community.",
+                        "description_rendered": "<p>A place to introduce yourself and meet other members.</p>",
+                        "header_links": [
+                          {
+                            "route": {
+                              "name": "space_feeds"
+                            },
+                            "title": "How we plan our release cycle"
+                          },
+                          {
+                            "route": {
+                              "name": "space_members"
+                            },
+                            "title": "Weekly office hours are back"
+                          },
+                          {
+                            "title": "How we plan our release cycle",
+                            "url": "https://yourwebsite.com/portal/chat?thread_id=1"
+                          }
+                        ],
+                        "id": 3,
+                        "logo": "https://cdn.yourwebsite.com/uploads/cropped-fluent-community-siteicon-180x180-1.webp",
+                        "members_count": 11659,
+                        "membership": {
+                          "ID": 1,
+                          "display_name": "Lucas Moreau",
+                          "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau.png",
+                          "pivot": {
+                            "created_at": "2024-03-28T02:06:51+00:00",
+                            "role": "jordan_blake_2",
+                            "space_id": "3",
+                            "status": "active",
+                            "user_id": "1"
+                          },
+                          "user_email": "lucas.moreau@example.com",
+                          "user_login": "lucas_moreau",
+                          "user_nicename": "lucas_moreau",
+                          "user_registered": "2024-03-05 10:37:02",
+                          "user_status": "0",
+                          "user_url": "https://example.com"
+                        },
+                        "parent_id": "5",
+                        "permissions": {
+                          "can_add_member": true,
+                          "can_comment": true,
+                          "can_create_post": true,
+                          "can_remove_member": true,
+                          "can_upload_documents": false,
+                          "can_view_documents": false,
+                          "can_view_info": true,
+                          "can_view_media": false,
+                          "can_view_members": true,
+                          "can_view_posts": true,
+                          "community_admin": true,
+                          "community_moderator": true,
+                          "delete_any_comment": true,
+                          "delete_any_feed": true,
+                          "edit_any_comment": true,
+                          "edit_any_feed": true,
+                          "is_member": true,
+                          "read": true,
+                          "registered": true,
+                          "super_admin": true
+                        },
+                        "privacy": "public",
+                        "serial": "2",
+                        "settings": {
+                          "can_request_join": "yes",
+                          "custom_lock_screen": "no",
+                          "default_comment_sort_by": "",
+                          "default_post_sort_by": "",
+                          "disable_layout_style": "no",
+                          "disable_post_sort_by": "no",
+                          "document_access": "members_only",
+                          "document_library": "no",
+                          "document_upload": "admin_only",
+                          "emoji": "",
+                          "hide_members_count": "no",
+                          "layout_style": "timeline",
+                          "links": [
+                            {
+                              "emoji": "👉",
+                              "enabled": "yes",
+                              "new_tab": "yes",
+                              "permalink": "https://fluentcommunity.co/",
+                              "slug": "fcom_custom_website",
+                              "title": "Welcome to the community"
+                            },
+                            {
+                              "enabled": "yes",
+                              "new_tab": "yes",
+                              "permalink": "https://fluentcommunity.co/discount-deal",
+                              "shape_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" color=\"currentColor\" fill=\"none\">\n    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V12.5H9.50003C9.09557 …",
+                              "slug": "fcom_custom_download_beta",
+                              "title": "Welcome to the community"
+                            },
+                            {
+                              "enabled": "yes",
+                              "new_tab": "yes",
+                              "permalink": "https://dev.fluentcommunity.co/",
+                              "privacy": "public",
+                              "shape_svg": "<svg width=\"800px\" height=\"800px\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M7.90451 6.92144C8.41341 6.45495 8.44779 5.66424 7.9813 5.15534C7.51481 4.64645 6.7241 4.61207 6.2152 5.07856L7.90451 6.92144ZM1.46194 11.1314L2.3066 12.0529L2.3066 12.0529L1.46194 11.1314ZM1.46194 11.8686L2.3066 10.9471L2.3066 10.9471L1.46194 11.8686ZM6.2152 17.9214C6.7241 18.3879 7.5148 …",
+                              "slug": "fcom_custom_https___dev_fluentcommunity_co_",
+                              "title": "Feature request round-up"
+                            }
+                          ],
+                          "media_access": "members_only",
+                          "media_gallery": "no",
+                          "members_page_status": "members_only",
+                          "og_image": "",
+                          "onboard_redirect_url": "",
+                          "restricted_post_only": "no",
+                          "shape_svg": "",
+                          "show_fetured_image": "yes",
+                          "show_paywalls": "no",
+                          "show_sidebar": "yes",
+                          "topic_required": "yes"
+                        },
+                        "slug": "community-meta",
+                        "status": "published",
+                        "title": "Weekly office hours are back",
+                        "topics": [
+                          {
+                            "admin_only": "yes",
+                            "description": null,
+                            "id": 1082,
+                            "slug": "announcements",
+                            "space_ids": [
+                              "3",
+                              "13",
+                              "11"
+                            ],
+                            "title": "Share your workflow setup"
+                          },
+                          {
+                            "admin_only": "no",
+                            "description": "",
+                            "id": 1109,
+                            "slug": "bug-report",
+                            "space_ids": [
+                              "3",
+                              "13",
+                              "16"
+                            ],
+                            "title": "Weekly office hours are back"
+                          },
+                          {
+                            "admin_only": "no",
+                            "description": "",
+                            "id": 1110,
+                            "slug": "feature-request",
+                            "space_ids": [
+                              "3",
+                              "11",
+                              "13"
+                            ],
+                            "title": "New tutorial: getting started with the API"
+                          }
+                        ],
+                        "type": "community",
+                        "updated_at": "2025-11-25 14:20:07"
+                      },
+                      {
+                        "cover_photo": null,
+                        "created_at": "2024-09-02 21:03:12",
+                        "created_by": "1",
+                        "description": "Product announcements, release notes, and roadmap discussion.",
+                        "description_rendered": "<p>A place to introduce yourself and meet other members.</p>",
+                        "header_links": [
+                          {
+                            "route": {
+                              "name": "space_feeds"
+                            },
+                            "title": "How we plan our release cycle"
+                          },
+                          {
+                            "route": {
+                              "name": "space_members"
+                            },
+                            "title": "Weekly office hours are back"
+                          }
+                        ],
+                        "id": 7,
+                        "logo": null,
+                        "members_count": 11689,
+                        "membership": {
+                          "ID": 1,
+                          "display_name": "Lucas Moreau",
+                          "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau.png",
+                          "pivot": {
+                            "created_at": "2024-09-02T21:03:12+00:00",
+                            "role": "jordan_blake_2",
+                            "space_id": "7",
+                            "status": "active",
+                            "user_id": "1"
+                          },
+                          "user_email": "lucas.moreau@example.com",
+                          "user_login": "lucas_moreau",
+                          "user_nicename": "lucas_moreau",
+                          "user_registered": "2024-03-05 10:37:02",
+                          "user_status": "0",
+                          "user_url": "https://example.com"
+                        },
+                        "parent_id": "6",
+                        "permissions": {
+                          "can_add_member": true,
+                          "can_comment": true,
+                          "can_create_post": true,
+                          "can_remove_member": true,
+                          "can_upload_documents": false,
+                          "can_view_documents": false,
+                          "can_view_info": true,
+                          "can_view_media": false,
+                          "can_view_members": true,
+                          "can_view_posts": true,
+                          "community_admin": true,
+                          "community_moderator": true,
+                          "delete_any_comment": true,
+                          "delete_any_feed": true,
+                          "edit_any_comment": true,
+                          "edit_any_feed": true,
+                          "is_member": true,
+                          "read": true,
+                          "registered": true,
+                          "super_admin": true
+                        },
+                        "privacy": "public",
+                        "serial": "1",
+                        "settings": {
+                          "can_request_join": "no",
+                          "custom_lock_screen": "no",
+                          "default_comment_sort_by": "",
+                          "default_post_sort_by": "",
+                          "disable_layout_style": "no",
+                          "disable_post_sort_by": "no",
+                          "document_access": "members_only",
+                          "document_library": "no",
+                          "document_upload": "admin_only",
+                          "emoji": "👋",
+                          "hide_members_count": "no",
+                          "layout_style": "timeline",
+                          "links": [],
+                          "media_access": "members_only",
+                          "media_gallery": "no",
+                          "members_page_status": "members_only",
+                          "og_image": "",
+                          "onboard_redirect_url": "",
+                          "restricted_post_only": "no",
+                          "shape_svg": "",
+                          "show_paywalls": "no",
+                          "show_sidebar": "yes",
+                          "topic_required": "no"
+                        },
+                        "slug": "say-hello",
+                        "status": "published",
+                        "title": "Welcome to the community",
+                        "topics": [
+                          {
+                            "admin_only": "yes",
+                            "description": null,
+                            "id": 1082,
+                            "slug": "announcements",
+                            "space_ids": [
+                              "3",
+                              "13",
+                              "11"
+                            ],
+                            "title": "Share your workflow setup"
+                          },
+                          {
+                            "admin_only": "no",
+                            "description": null,
+                            "id": 1102,
+                            "slug": "general",
+                            "space_ids": [
+                              "3",
+                              "11",
+                              "13"
+                            ],
+                            "title": "Weekly office hours are back"
+                          },
+                          {
+                            "admin_only": "no",
+                            "description": "",
+                            "id": 1111,
+                            "slug": "tips",
+                            "space_ids": [
+                              "11",
+                              "3",
+                              "13"
+                            ],
+                            "title": "Community guidelines refresh"
+                          }
+                        ],
+                        "type": "community",
+                        "updated_at": "2025-09-02 20:06:38"
                       }
                     ],
-                    "header_links": [
+                    "first_page_url": "https://yourwebsite.com/?page=1",
+                    "from": 1,
+                    "last_page": 2,
+                    "last_page_url": "https://yourwebsite.com/?page=2",
+                    "links": [
                       {
-                        "title": "",
-                        "route": {
-                          "name": ""
-                        }
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "2",
+                        "url": "https://yourwebsite.com/?page=2"
                       }
                     ],
-                    "lockscreen_config": {
-                      "showCustom": true,
-                      "showPaywalls": false,
-                      "canSendRequest": false,
-                      "lockScreen": [
-                        {
-                          "hidden": false,
-                          "type": "image",
-                          "label": "Banner",
-                          "name": "banner",
-                          "heading": "Banner Heading",
-                          "heading_color": "#FFFFFF",
-                          "description": "Banner Description",
-                          "text_color": "#FFFFFF",
-                          "button_text": "Buy Now",
-                          "button_link": "",
-                          "button_color": "#2B2E33",
-                          "button_text_color": "#FFFFFF",
-                          "background_image": "",
-                          "overlay_color": "#798398",
-                          "new_tab": "no"
-                        },
-                        {
-                          "hidden": false,
-                          "type": "block",
-                          "label": "Description",
-                          "name": "description",
-                          "content": "<p>Description</p>"
-                        },
-                        {
-                          "hidden": false,
-                          "type": "image",
-                          "label": "Call to action",
-                          "name": "action",
-                          "heading": "Call to Action Heading",
-                          "heading_color": "#FFFFFF",
-                          "description": "Call to Action Description",
-                          "text_color": "#FFFFFF",
-                          "button_text": "Buy Now",
-                          "button_link": "",
-                          "button_color": "#2B2E33",
-                          "button_text_color": "#FFFFFF",
-                          "background_image": "",
-                          "overlay_color": "#798398",
-                          "new_tab": "no"
-                        }
-                      ],
-                      "redirect_url": ""
-                    },
-                    "members_count": 0
+                    "next_page_url": "https://yourwebsite.com/?page=2",
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": 15,
+                    "total": 17
                   }
                 }
               }

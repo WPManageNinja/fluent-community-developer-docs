@@ -63,7 +63,10 @@
                 }
               },
               "example": {
-                "indexes": []
+                "section_ids": [
+                  15013,
+                  15015
+                ]
               }
             }
           }
@@ -76,32 +79,23 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
                     "sections": {
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          }
-                        },
-                        "additionalProperties": false
+                        "additionalProperties": true
                       }
-                    },
-                    "message": {
-                      "type": "string",
-                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "sections": [
-                    {
-                      "id": 0
-                    }
-                  ],
-                  "message": "Section indexes have been updated successfully."
+                  "message": "This is really helpful, thanks for writing it up.",
+                  "sections": []
                 }
               }
             }

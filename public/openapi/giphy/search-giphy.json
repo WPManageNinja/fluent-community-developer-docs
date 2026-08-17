@@ -45,15 +45,119 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "gifs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "images": {
+                            "type": "object",
+                            "properties": {
+                              "downsized_medium": {
+                                "type": "object",
+                                "properties": {
+                                  "height": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "size": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "width": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "preview_gif": {
+                                "type": "object",
+                                "properties": {
+                                  "height": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "size": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "width": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "gifs": [
+                    {
+                      "images": {
+                        "downsized_medium": {
+                          "height": "277",
+                          "size": "659701",
+                          "url": "https://media2.giphy.com/media/v1.Y2lkPTQ3ZDA4Y2UwNzM1anNlNW9yMWhwNmg3Y3c0anAzdHJmM2drZHV0bDRib2RiOWRmMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYC0LajbaPoEADu/giphy.gif",
+                          "width": "480"
+                        },
+                        "preview_gif": {
+                          "height": "58",
+                          "size": "46563",
+                          "url": "https://media2.giphy.com/media/v1.Y2lkPTQ3ZDA4Y2UwNzM1anNlNW9yMWhwNmg3Y3c0anAzdHJmM2drZHV0bDRib2RiOWRmMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYC0LajbaPoEADu/giphy-preview.gif",
+                          "width": "100"
+                        }
+                      }
+                    },
+                    {
+                      "images": {
+                        "downsized_medium": {
+                          "height": "320",
+                          "size": "1419765",
+                          "url": "https://media3.giphy.com/media/v1.Y2lkPTQ3ZDA4Y2UwNzM1anNlNW9yMWhwNmg3Y3c0anAzdHJmM2drZHV0bDRib2RiOWRmMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ae7SI3LoPYj8Q/giphy.gif",
+                          "width": "530"
+                        },
+                        "preview_gif": {
+                          "height": "62",
+                          "size": "37187",
+                          "url": "https://media3.giphy.com/media/v1.Y2lkPTQ3ZDA4Y2UwNzM1anNlNW9yMWhwNmg3Y3c0anAzdHJmM2drZHV0bDRib2RiOWRmMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ae7SI3LoPYj8Q/giphy-preview.gif",
+                          "width": "100"
+                        }
+                      }
+                    },
+                    {
+                      "images": {
+                        "downsized_medium": {
+                          "height": "282",
+                          "size": "9713",
+                          "url": "https://media4.giphy.com/media/v1.Y2lkPTQ3ZDA4Y2UwNzM1anNlNW9yMWhwNmg3Y3c0anAzdHJmM2drZHV0bDRib2RiOWRmMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/hVEBWRInEvNOEVS18i/giphy.gif",
+                          "width": "480"
+                        },
+                        "preview_gif": {
+                          "height": "60",
+                          "size": "3646",
+                          "url": "https://media4.giphy.com/media/v1.Y2lkPTQ3ZDA4Y2UwNzM1anNlNW9yMWhwNmg3Y3c0anAzdHJmM2drZHV0bDRib2RiOWRmMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/hVEBWRInEvNOEVS18i/100w.gif",
+                          "width": "100"
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }

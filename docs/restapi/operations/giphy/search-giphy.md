@@ -12,4 +12,8 @@ aside: false
 - **Controller:** `GiphyController@index`
 - **Route source:** `fluent-community-pro/app/Modules/Giphy/Http/giphy_api.php:8`
 
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
+
 <OAOperation operationId="searchGiphy" specUrl="/openapi/public/giphy/search-giphy.json" />

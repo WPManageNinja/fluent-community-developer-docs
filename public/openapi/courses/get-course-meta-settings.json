@@ -56,17 +56,14 @@
                   "type": "object",
                   "properties": {
                     "meta_settings": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "meta_settings": []
+                  "meta_settings": null
                 }
               }
             }

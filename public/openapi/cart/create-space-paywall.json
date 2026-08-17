@@ -60,7 +60,8 @@
                 }
               },
               "example": {
-                "cart_product_id": ""
+                "cart_product_id": 125,
+                "space_id": 12
               }
             }
           }
@@ -81,13 +82,22 @@
                       "type": "object",
                       "properties": {
                         "ID": {
-                          "type": "integer"
-                        },
-                        "post_title": {
                           "type": "string",
                           "nullable": false
                         },
-                        "post_status": {
+                        "post_date": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_date_gmt": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_content": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_title": {
                           "type": "string",
                           "nullable": false
                         },
@@ -95,11 +105,39 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "thumbnail": {
+                        "post_status": {
                           "type": "string",
                           "nullable": false
                         },
-                        "view_url": {
+                        "comment_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "ping_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_modified": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_modified_gmt": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "guid": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "thumbnail": {
                           "type": "string",
                           "nullable": false
                         }
@@ -112,12 +150,21 @@
                 "example": {
                   "message": "Paywall has been added",
                   "paywall": {
-                    "ID": 0,
-                    "post_title": "",
+                    "ID": "125",
+                    "post_date": "2026-01-15 09:30:00",
+                    "post_date_gmt": "2026-01-15 09:30:00",
+                    "post_content": "",
+                    "post_title": "Pro Membership",
+                    "post_excerpt": "Full access to every private space and course.",
                     "post_status": "publish",
-                    "post_excerpt": "",
-                    "thumbnail": "",
-                    "view_url": ""
+                    "comment_status": "closed",
+                    "ping_status": "closed",
+                    "post_name": "pro-membership",
+                    "post_modified": "2026-01-15 09:30:00",
+                    "post_modified_gmt": "2026-01-15 09:30:00",
+                    "guid": "https://yourwebsite.com/?post_type=fluent-products&p=125",
+                    "post_type": "fluent-products",
+                    "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png"
                   }
                 }
               }

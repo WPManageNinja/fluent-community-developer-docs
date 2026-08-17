@@ -27,7 +27,7 @@
       "put": {
         "operationId": "patchProfile",
         "summary": "PUT Patch Profile",
-        "description": "Patch Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@patchProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
+        "description": "Patch Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@patchProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:88`",
         "tags": [
           "Profile"
         ],
@@ -63,7 +63,12 @@
                 }
               },
               "example": {
-                "data": []
+                "data": {
+                  "first_name": "Mei",
+                  "last_name": "Mei",
+                  "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                  "username": "mei_tanaka_3"
+                }
               }
             }
           }
@@ -84,7 +89,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Profile updated"
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

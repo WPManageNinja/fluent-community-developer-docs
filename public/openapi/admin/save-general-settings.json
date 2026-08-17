@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveGeneralSettings",
         "summary": "POST Save General Settings",
-        "description": "Save General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:98`",
+        "description": "Save General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:101`",
         "tags": [
           "Admin"
         ],
@@ -108,23 +108,28 @@
               },
               "example": {
                 "settings": {
-                  "logo": "",
-                  "white_logo": "",
-                  "featured_image": "",
-                  "site_title": "",
-                  "disable_global_posts": "",
-                  "access": [],
-                  "auth_content": "",
+                  "access": {
+                    "acess_level": "public"
+                  },
+                  "auth_content": "Please login first to access this page",
+                  "auth_form_type": "default",
                   "auth_redirect": "",
-                  "restricted_role_content": "",
+                  "auth_url": "https://yourwebsite.com/",
+                  "custom_signup_url": "",
+                  "cutsom_auth_url": "https://yourwebsite.com/portal/?fcom_action=auth",
+                  "disable_global_posts": "yes",
+                  "explicit_registration": "no",
+                  "featured_image": "https://cdn.yourwebsite.com/uploads/Fluent-Community-Featured-image.png",
+                  "is_slug_defined": true,
+                  "logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp",
                   "logo_permalink": "",
-                  "logo_permalink_type": "",
-                  "auth_url": "",
-                  "cutsom_auth_url": "",
-                  "auth_form_type": "",
-                  "explicit_registration": "",
-                  "use_custom_signup_page": "",
-                  "custom_signup_url": ""
+                  "logo_permalink_type": "default",
+                  "notice_html": "",
+                  "restricted_role_content": "Sorry, you can not access to this page. Only authorized users can access this page.",
+                  "site_title": "Your Community",
+                  "slug": "portal",
+                  "use_custom_signup_page": "no",
+                  "white_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp"
                 }
               }
             }
@@ -150,7 +155,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Settings have been saved successfully.",
+                  "message": "This is really helpful, thanks for writing it up.",
                   "redirect_url": ""
                 }
               }

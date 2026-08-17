@@ -68,14 +68,57 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "Email": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Enrollment Date": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Last Activity": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Progress": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Username": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "students": []
+                  "students": [
+                    {
+                      "Email": "member@example.com",
+                      "Enrollment Date": "2026-08-17 22:04:05",
+                      "Last Activity": "",
+                      "Name": "Mei Tanaka",
+                      "Progress": "0%",
+                      "Username": "mei_tanaka_3"
+                    },
+                    {
+                      "Email": "member@example.com",
+                      "Enrollment Date": "2026-08-17 22:04:05",
+                      "Last Activity": "",
+                      "Name": "Mei Tanaka",
+                      "Progress": "0%",
+                      "Username": "mei_tanaka"
+                    }
+                  ]
                 }
               }
             }

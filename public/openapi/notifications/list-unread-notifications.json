@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUnreadNotifications",
         "summary": "GET List Unread Notifications",
-        "description": "List Unread Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:129`",
+        "description": "List Unread Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
         "tags": [
           "Notifications"
         ],
@@ -54,9 +54,191 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer"
+                  "type": "object",
+                  "properties": {
+                    "notifications": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "content": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "feed_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "object_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "route": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "params": {
+                                "type": "object",
+                                "properties": {
+                                  "feed_slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "space": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "src_object_type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "src_user_id": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "xprofile": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "unread_count": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": 0
+                "example": {
+                  "notifications": [
+                    {
+                      "action": "post_report_added",
+                      "content": "This is really helpful, thanks for writing it up.",
+                      "created_at": "2026-08-17 22:04:05",
+                      "feed_id": "15010",
+                      "id": 59552,
+                      "object_id": "59780",
+                      "route": {
+                        "name": "space_feed",
+                        "params": {
+                          "feed_slug": "second-scratch-post",
+                          "space": "general-discussion"
+                        }
+                      },
+                      "src_object_type": "report",
+                      "src_user_id": null,
+                      "title": null,
+                      "updated_at": "2026-08-17 22:04:05",
+                      "xprofile": null
+                    },
+                    {
+                      "action": "post_report_added",
+                      "content": "Office hours run every Thursday. Bring your questions — no topic is too small.",
+                      "created_at": "2026-08-17 21:55:03",
+                      "feed_id": "14953",
+                      "id": 59531,
+                      "object_id": "59760",
+                      "route": {
+                        "name": "space_feed",
+                        "params": {
+                          "feed_slug": "second-scratch-post",
+                          "space": "general-discussion"
+                        }
+                      },
+                      "src_object_type": "report",
+                      "src_user_id": "13098",
+                      "title": null,
+                      "updated_at": "2026-08-17 21:56:17",
+                      "xprofile": {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                        "badge": null,
+                        "created_at": "2026-08-17 21:31:53",
+                        "display_name": "Noah Fischer",
+                        "is_verified": 0,
+                        "last_activity": null,
+                        "meta": {
+                          "cover_photo": "",
+                          "short_description_rendered": "<p>Freelancer building sites for small businesses.</p>",
+                          "website": ""
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/noah_fischer_3",
+                        "short_description": "Freelancer building sites for small businesses.",
+                        "status": "active",
+                        "total_points": 0,
+                        "user_id": 13098,
+                        "username": "noah_fischer_3"
+                      }
+                    },
+                    {
+                      "action": "post_report_added",
+                      "content": "Office hours run every Thursday. Bring your questions — no topic is too small.",
+                      "created_at": "2026-08-17 21:48:13",
+                      "feed_id": "14935",
+                      "id": 59524,
+                      "object_id": "59754",
+                      "route": {
+                        "name": "space_feed",
+                        "params": {
+                          "feed_slug": "second-scratch-post",
+                          "space": "general-discussion"
+                        }
+                      },
+                      "src_object_type": "report",
+                      "src_user_id": "13098",
+                      "title": null,
+                      "updated_at": "2026-08-17 21:49:32",
+                      "xprofile": {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                        "badge": null,
+                        "created_at": "2026-08-17 21:31:53",
+                        "display_name": "Noah Fischer",
+                        "is_verified": 0,
+                        "last_activity": null,
+                        "meta": {
+                          "cover_photo": "",
+                          "short_description_rendered": "<p>Freelancer building sites for small businesses.</p>",
+                          "website": ""
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/noah_fischer_3",
+                        "short_description": "Freelancer building sites for small businesses.",
+                        "status": "active",
+                        "total_points": 0,
+                        "user_id": 13098,
+                        "username": "noah_fischer_3"
+                      }
+                    }
+                  ],
+                  "unread_count": 372
+                }
               }
             }
           },

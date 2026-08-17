@@ -27,7 +27,7 @@
       "post": {
         "operationId": "removeSpaceMember",
         "summary": "POST Remove Space Member",
-        "description": "Remove Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@removeMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:22`",
+        "description": "Remove Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@removeMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:23`",
         "tags": [
           "Members"
         ],
@@ -60,7 +60,7 @@
                 }
               },
               "example": {
-                "user_id": ""
+                "user_id": 13097
               }
             }
           }
@@ -81,7 +81,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "User has been removed from this community"
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

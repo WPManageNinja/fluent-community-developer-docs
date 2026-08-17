@@ -72,7 +72,10 @@
                 }
               },
               "example": {
-                "indexes": []
+                "lesson_ids": [
+                  15016,
+                  15018
+                ]
               }
             }
           }
@@ -89,12 +92,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          }
-                        },
-                        "additionalProperties": false
+                        "additionalProperties": true
                       }
                     },
                     "message": {
@@ -105,12 +103,8 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "lessons": [
-                    {
-                      "id": 0
-                    }
-                  ],
-                  "message": "Lesson indexes have been updated successfully."
+                  "lessons": [],
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

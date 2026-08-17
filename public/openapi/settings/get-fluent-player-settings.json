@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFluentPlayerSettings",
         "summary": "GET Get Fluent Player Settings",
-        "description": "Get Fluent Player Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:164`",
+        "description": "Get Fluent Player Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:167`",
         "tags": [
           "Settings"
         ],
@@ -48,13 +48,30 @@
                     "settings": {
                       "type": "object",
                       "properties": {
-                        "enable_fluent_player": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "skin": {
-                          "type": "string",
-                          "nullable": false
+                        "behaviors": {
+                          "type": "object",
+                          "properties": {
+                            "hide_bottom_controls": {
+                              "type": "boolean"
+                            },
+                            "hide_center_controls": {
+                              "type": "boolean"
+                            },
+                            "hide_top_controls": {
+                              "type": "boolean"
+                            },
+                            "load_strategy": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "muted_autoplay": {
+                              "type": "boolean"
+                            },
+                            "save_play_position": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
                         },
                         "brandColor": {
                           "type": "string",
@@ -67,76 +84,71 @@
                         "controls": {
                           "type": "object",
                           "properties": {
-                            "play": {
-                              "type": "boolean"
-                            },
-                            "volume": {
-                              "type": "boolean"
-                            },
-                            "progress_bar": {
-                              "type": "boolean"
-                            },
-                            "current_time": {
+                            "backward": {
                               "type": "boolean"
                             },
                             "captions_toggle": {
                               "type": "boolean"
                             },
-                            "playback_speed": {
+                            "current_time": {
                               "type": "boolean"
                             },
-                            "settings": {
-                              "type": "boolean"
-                            },
-                            "pip": {
+                            "forward": {
                               "type": "boolean"
                             },
                             "fullscreen": {
                               "type": "boolean"
                             },
-                            "backward": {
+                            "pip": {
                               "type": "boolean"
                             },
-                            "forward": {
+                            "play": {
+                              "type": "boolean"
+                            },
+                            "playback_speed": {
+                              "type": "boolean"
+                            },
+                            "progress_bar": {
+                              "type": "boolean"
+                            },
+                            "settings": {
+                              "type": "boolean"
+                            },
+                            "volume": {
                               "type": "boolean"
                             }
                           },
                           "additionalProperties": false
                         },
-                        "behaviors": {
-                          "type": "object",
-                          "properties": {
-                            "muted_autoplay": {
-                              "type": "boolean"
-                            },
-                            "save_play_position": {
-                              "type": "boolean"
-                            },
-                            "hide_top_controls": {
-                              "type": "boolean"
-                            },
-                            "hide_center_controls": {
-                              "type": "boolean"
-                            },
-                            "hide_bottom_controls": {
-                              "type": "boolean"
-                            },
-                            "load_strategy": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
+                        "enable_audio": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "enable_fluent_player": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "playButtonBgColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "playButtonColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "play_embedded_videos": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "skin": {
+                          "type": "string",
+                          "nullable": false
                         },
                         "video_upload": {
                           "type": "string",
                           "nullable": false
                         },
                         "video_upload_role": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "play_embedded_videos": {
                           "type": "string",
                           "nullable": false
                         }
@@ -148,34 +160,37 @@
                 },
                 "example": {
                   "settings": {
-                    "enable_fluent_player": "no",
-                    "skin": "modern",
-                    "brandColor": "#4a90e2",
+                    "behaviors": {
+                      "hide_bottom_controls": false,
+                      "hide_center_controls": false,
+                      "hide_top_controls": false,
+                      "load_strategy": "visible",
+                      "muted_autoplay": false,
+                      "save_play_position": false
+                    },
+                    "brandColor": "#FF2B2B",
                     "controlBarColor": "",
                     "controls": {
-                      "play": true,
-                      "volume": true,
-                      "progress_bar": true,
-                      "current_time": true,
-                      "captions_toggle": true,
-                      "playback_speed": true,
-                      "settings": true,
-                      "pip": true,
-                      "fullscreen": true,
                       "backward": true,
-                      "forward": true
+                      "captions_toggle": true,
+                      "current_time": true,
+                      "forward": true,
+                      "fullscreen": true,
+                      "pip": true,
+                      "play": true,
+                      "playback_speed": true,
+                      "progress_bar": true,
+                      "settings": true,
+                      "volume": true
                     },
-                    "behaviors": {
-                      "muted_autoplay": false,
-                      "save_play_position": false,
-                      "hide_top_controls": false,
-                      "hide_center_controls": false,
-                      "hide_bottom_controls": false,
-                      "load_strategy": "visible"
-                    },
+                    "enable_audio": "no",
+                    "enable_fluent_player": "yes",
+                    "playButtonBgColor": "",
+                    "playButtonColor": "",
+                    "play_embedded_videos": "yes",
+                    "skin": "classic",
                     "video_upload": "no",
-                    "video_upload_role": "admin",
-                    "play_embedded_videos": "yes"
+                    "video_upload_role": "admin_moderator"
                   }
                 }
               }

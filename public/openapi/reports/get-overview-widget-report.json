@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOverviewWidgetReport",
         "summary": "GET Get Overview Widget Report",
-        "description": "Get Overview Widget Report for the FluentCommunity Reports API.\n\nController: `ReportsController@getOverviewWidget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:69`",
+        "description": "Get Overview Widget Report for the FluentCommunity Reports API.\n\nController: `ReportsController@getOverviewWidget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:71`",
         "tags": [
           "Reports"
         ],
@@ -46,17 +46,105 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "comments": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "members": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "posts": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "spaces": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": {
+                    "comments": {
+                      "comparison": "+6",
+                      "title": "Three things I learned this month",
+                      "total_records": 1770
+                    },
+                    "members": {
+                      "comparison": "-24",
+                      "title": "Weekly office hours are back",
+                      "total_records": 168
+                    },
+                    "posts": {
+                      "comparison": "+7",
+                      "title": "How we plan our release cycle",
+                      "total_records": 354
+                    },
+                    "spaces": {
+                      "comparison": "+200",
+                      "title": "How we plan our release cycle",
+                      "total_records": 3
+                    }
+                  }
                 }
               }
             }

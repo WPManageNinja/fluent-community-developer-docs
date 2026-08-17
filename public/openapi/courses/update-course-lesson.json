@@ -92,11 +92,10 @@
               },
               "example": {
                 "lesson": {
-                  "meta": {},
-                  "title": "",
-                  "status": "",
-                  "message": "",
-                  "parent_id": ""
+                  "message": "Great point — I ran into the same thing last week.",
+                  "parent_id": 15013,
+                  "status": "published",
+                  "title": "Welcome to the course"
                 }
               }
             }
@@ -110,27 +109,214 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "lesson": {
                       "type": "object",
                       "properties": {
+                        "comments_count": {
+                          "type": "integer"
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "expired_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "id": {
                           "type": "integer"
+                        },
+                        "is_sticky": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message_rendered": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "auto_complete_on_video_end": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "document_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "document_lists": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "enable_comments": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enable_media": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enable_passing_score": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enforce_passing_score": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "free_preview_lesson": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_result": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "media": {
+                              "type": "object",
+                              "properties": {
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "passing_score": {
+                              "type": "integer"
+                            },
+                            "require_video_completion": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "video_completion_threshold": {
+                              "type": "integer"
+                            },
+                            "video_length": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "priority": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reactions_count": {
+                          "type": "integer"
+                        },
+                        "scheduled_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "space_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Lesson has been updated successfully.",
                   "lesson": {
-                    "id": 0
-                  }
+                    "comments_count": 0,
+                    "content_type": "text",
+                    "created_at": "2026-08-17 22:04:05",
+                    "expired_at": null,
+                    "featured_image": null,
+                    "id": 15016,
+                    "is_sticky": "0",
+                    "message": "Great point — I ran into the same thing last week.",
+                    "message_rendered": null,
+                    "meta": {
+                      "auto_complete_on_video_end": "no",
+                      "document_ids": [],
+                      "document_lists": [],
+                      "enable_comments": "no",
+                      "enable_media": "no",
+                      "enable_passing_score": "no",
+                      "enforce_passing_score": "no",
+                      "free_preview_lesson": "no",
+                      "hide_result": "no",
+                      "media": {
+                        "provider": ""
+                      },
+                      "passing_score": 0,
+                      "require_video_completion": "no",
+                      "video_completion_threshold": 0,
+                      "video_length": 0
+                    },
+                    "parent_id": "15013",
+                    "priority": "1",
+                    "privacy": "public",
+                    "reactions_count": 0,
+                    "scheduled_at": null,
+                    "slug": "welcome-to-the-course-1787004245",
+                    "space_id": "96",
+                    "status": "published",
+                    "title": "Welcome to the course",
+                    "type": "course_lesson",
+                    "updated_at": "2026-08-17 22:04:05",
+                    "user_id": "1"
+                  },
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

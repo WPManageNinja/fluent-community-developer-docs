@@ -12,4 +12,8 @@ aside: false
 - **Controller:** `FluentCommunityPro\App\Modules\Quiz\Http\Controllers\QuizController@getCourseQuizResults`
 - **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:13`
 
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
+
 <OAOperation operationId="listCourseQuizResults" specUrl="/openapi/public/courses/list-course-quiz-results.json" />

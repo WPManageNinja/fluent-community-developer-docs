@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCustomizationSettings",
         "summary": "POST Save Customization Settings",
-        "description": "Save Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updateCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:157`",
+        "description": "Save Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updateCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:160`",
         "tags": [
           "Settings"
         ],
@@ -50,7 +50,29 @@
                 }
               },
               "example": {
-                "settings": {}
+                "settings": {
+                  "a11y_enhancement_style": "yes",
+                  "affiliate_id": 69,
+                  "collapse_sidebar_groups": "no",
+                  "dark_mode": "yes",
+                  "default_feed_layout": "timeline",
+                  "default_feed_sort_by": "latest",
+                  "default_theme_mode": "light",
+                  "disable_feed_layout": "no",
+                  "disable_feed_sort_by": "no",
+                  "enable_sidebar_toggle": "no",
+                  "feed_link_on_sidebar": "yes",
+                  "fixed_page_header": "yes",
+                  "fixed_sidebar": "no",
+                  "hide_header_on_scroll": "no",
+                  "icon_on_header_menu": "no",
+                  "max_media_per_post": "4",
+                  "member_list_layout": "grid",
+                  "post_title_pref": "required",
+                  "rich_post_layout": "classic",
+                  "show_post_modal": "yes",
+                  "show_powered_by": "yes"
+                }
               }
             }
           }
@@ -71,7 +93,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Customization settings have been saved successfully."
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

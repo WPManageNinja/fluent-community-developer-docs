@@ -27,7 +27,7 @@
       "post": {
         "operationId": "addSpaceMember",
         "summary": "POST Add Space Member",
-        "description": "Add Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@addMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
+        "description": "Add Space Member for the FluentCommunity Members API.\n\nController: `SpaceController@addMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:19`",
         "tags": [
           "Members"
         ],
@@ -66,8 +66,8 @@
                 ]
               },
               "example": {
-                "user_id": "",
-                "role": ""
+                "role": "member",
+                "user_id": 13096
               }
             }
           }
@@ -88,7 +88,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "User has been added to this Space"
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

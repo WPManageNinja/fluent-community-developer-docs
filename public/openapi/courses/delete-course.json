@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Course has been deleted successfully along with all the associated data"
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

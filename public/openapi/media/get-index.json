@@ -45,15 +45,31 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "cursor": {
                       "type": "string",
-                      "nullable": false
+                      "nullable": true
+                    },
+                    "has_audio": {
+                      "type": "boolean"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "cursor": null,
+                  "has_audio": false,
+                  "has_more": false,
+                  "items": []
                 }
               }
             }

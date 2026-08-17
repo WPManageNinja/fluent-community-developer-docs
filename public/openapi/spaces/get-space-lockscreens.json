@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceLockscreens",
         "summary": "GET Get Space Lockscreens",
-        "description": "Get Space Lockscreens for the FluentCommunity Spaces API.\n\nController: `SpaceController@getLockScreenSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:24`",
+        "description": "Get Space Lockscreens for the FluentCommunity Spaces API.\n\nController: `SpaceController@getLockScreenSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:25`",
         "tags": [
           "Spaces"
         ],
@@ -56,20 +56,126 @@
                   "type": "object",
                   "properties": {
                     "lockscreen": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "background_image": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "button_color": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "button_link": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "button_text": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "button_text_color": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "description": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "heading": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "heading_color": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "hidden": {
+                            "type": "boolean"
+                          },
+                          "label": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "new_tab": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "overlay_color": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "text_color": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "type": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "lockscreen": null
+                  "lockscreen": [
+                    {
+                      "background_image": "",
+                      "button_color": "#2B2E33",
+                      "button_link": "",
+                      "button_text": "Buy Now",
+                      "button_text_color": "#FFFFFF",
+                      "description": "Share what you are building and get feedback from other members.",
+                      "heading": "Welcome to the community",
+                      "heading_color": "#FFFFFF",
+                      "hidden": false,
+                      "label": "Banner",
+                      "name": "banner",
+                      "new_tab": "no",
+                      "overlay_color": "#798398",
+                      "text_color": "#FFFFFF",
+                      "type": "image"
+                    },
+                    {
+                      "content": "Great point — I ran into the same thing last week.",
+                      "hidden": false,
+                      "label": "Description",
+                      "name": "description",
+                      "type": "block"
+                    },
+                    {
+                      "background_image": "",
+                      "button_color": "#2B2E33",
+                      "button_link": "",
+                      "button_text": "Buy Now",
+                      "button_text_color": "#FFFFFF",
+                      "description": "A place to introduce yourself and meet other members.",
+                      "heading": "Feature request round-up",
+                      "heading_color": "#FFFFFF",
+                      "hidden": false,
+                      "label": "Call to action",
+                      "name": "action",
+                      "new_tab": "no",
+                      "overlay_color": "#798398",
+                      "text_color": "#FFFFFF",
+                      "type": "image"
+                    }
+                  ]
                 }
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "Space not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -81,7 +187,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Space not found"
                 }
               }
             }

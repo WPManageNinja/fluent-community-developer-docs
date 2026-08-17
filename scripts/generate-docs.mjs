@@ -18,6 +18,92 @@ const proPluginRoot = resolve(pluginsRoot, 'fluent-community-pro')
 const docsRoot = join(repoRoot, 'docs')
 const openapiRoot = join(repoRoot, 'public', 'openapi')
 const generatedRoot = join(repoRoot, '.generated')
+const capturedExamplesFile = join(repoRoot, 'data', 'response-examples.json')
+const manualExamplesFile = join(repoRoot, 'data', 'manual-examples.json')
+
+/**
+ * Real request/response pairs recorded against a live FluentCommunity install
+ * and anonymised, keyed by `<module>/<operation-slug>`. See scripts/capture/.
+ *
+ * When an operation has a captured sample it replaces the shape inferred from
+ * static analysis: the response schema is derived from the example, so a real
+ * payload makes both the schema and the example accurate at once.
+ */
+const capturedExamples = loadExampleFixtures([
+  { file: capturedExamplesFile, origin: 'captured' },
+  { file: manualExamplesFile, origin: 'manual' },
+])
+
+function loadExampleFixtures(sources) {
+  const byModuleSlug = {}
+  const bySlug = {}
+  const ambiguousSlugs = new Set()
+
+  for (const { file, origin } of sources) {
+    if (!existsSync(file)) {
+      console.warn(`No example fixtures at ${relative(repoRoot, file)}`)
+      continue
+    }
+    let parsed
+    try {
+      parsed = JSON.parse(readFileSync(file, 'utf8'))
+    } catch (error) {
+      console.warn(`Could not read ${relative(repoRoot, file)}: ${error.message}`)
+      continue
+    }
+    for (const [module, operations] of Object.entries(parsed.modules || {})) {
+      for (const [slug, entry] of Object.entries(operations)) {
+        const record = { ...entry, origin }
+        byModuleSlug[`${module}/${slug}`] = record
+        if (bySlug[slug] && bySlug[slug] !== record) {
+          ambiguousSlugs.add(slug)
+        }
+        bySlug[slug] = record
+      }
+    }
+  }
+
+  for (const slug of ambiguousSlugs) {
+    delete bySlug[slug]
+  }
+  return { byModuleSlug, bySlug }
+}
+
+/**
+ * The capture harness groups operations by its own idea of a module, which
+ * occasionally differs from classifyRoute() — `get-exportable-students` is a
+ * course concern but lives under the admin route prefix, for instance. Fall
+ * back to the slug alone, which is unique across the generated operation set.
+ */
+function getCapturedExample(module, slug) {
+  return capturedExamples.byModuleSlug[`${module}/${slug}`] || capturedExamples.bySlug[slug] || null
+}
+
+/**
+ * Tell the reader where an operation's sample payload came from, so they know
+ * how much to trust the values as opposed to the field names.
+ */
+function renderExampleProvenance(origin) {
+  if (origin === 'captured') {
+    return `
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
+`
+  }
+  if (origin === 'manual') {
+    return `
+::: tip Reconstructed sample
+This endpoint belongs to a module that is not active on the reference install (or needs a file upload), so the payload below was reconstructed by reading the controller rather than recorded. Field names and types follow the source; values are illustrative.
+:::
+`
+  }
+  return `
+::: info Inferred sample
+No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
+:::
+`
+}
 
 const SOURCE_CONFIGS = [
   {
@@ -352,33 +438,68 @@ const XPROFILE_PUBLIC_FIELDS = [
   'last_activity',
 ]
 
+/**
+ * Both kinds share one page list. They used to diverge, which silently dropped
+ * every hook whose category had no page for its kind — all 15 comment filters and
+ * the theme-integration actions went missing that way. buildHookDocs() now fails
+ * the build if a category has no page, so the two must stay in step.
+ */
+const HOOK_PAGE_ORDER = [
+  'feeds',
+  'comments',
+  'reactions',
+  'spaces',
+  'members',
+  'courses',
+  'notifications',
+  'media',
+  'auth',
+  'permissions',
+  'moderation',
+  'integrations',
+  'rendering',
+  'settings',
+  'admin',
+  'miscellaneous',
+]
+
 const HOOK_PAGES = {
-  action: [
-    'feeds',
-    'spaces',
-    'members',
-    'comments',
-    'notifications',
-    'reactions',
-    'auth',
-    'admin',
-    'media',
-    'courses',
-    'miscellaneous',
-  ],
-  filter: [
-    'feeds',
-    'spaces',
-    'members',
-    'notifications',
-    'settings',
-    'permissions',
-    'auth',
-    'media',
-    'courses',
-    'miscellaneous',
-  ],
+  action: [...HOOK_PAGE_ORDER],
+  filter: [...HOOK_PAGE_ORDER],
 }
+
+/**
+ * Hand-written prose per hook, keyed by full hook name. Nothing here is derivable
+ * from source — the plugin has no `@since` tags and almost no hook docblocks — so
+ * this is the only channel for explaining what a hook is *for*.
+ *
+ * Every field is optional; fill entries in incrementally. Fields:
+ *   page     explicit category override, beats the path and name rules
+ *   summary  one sentence: when it fires / what it filters
+ *   details  longer prose, rendered under the summary
+ *   params   [{ name, type, desc }] — replaces the guessed parameter table
+ *   returns  filters only: what a callback must return
+ *   related  other hook names to cross-link
+ *   since    version string, if known
+ */
+const HOOK_NOTES = {}
+
+/**
+ * Where a hook lives is decided by its source file before its name, because names
+ * lie: `fluent_community/course/topic_completed` matched the `topic` rule and filed
+ * itself under spaces. First match wins; order matters.
+ */
+const HOOK_PATH_RULES = [
+  [/\/Modules\/Course\//, 'courses'],
+  [/\/app\/Modules\/Quiz\//, 'courses'],
+  [/\/Modules\/Auth\//, 'auth'],
+  [/\/Modules\/Integrations\/|\/app\/Modules\/Integrations\//, 'integrations'],
+  [/\/Modules\/Theming\/|\/Modules\/Gutenberg\/|\/app\/Views\//, 'rendering'],
+  [/Moderation(Handler|Controller)\.php/, 'moderation'],
+  [/\/app\/Modules\/Pwa\//, 'settings'],
+  [/\/app\/Modules\/LeaderBoard\//, 'members'],
+  [/\/app\/Modules\/DocumentLibrary\/|\/app\/Modules\/MediaGallery\//, 'media'],
+]
 
 const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
 
@@ -442,8 +563,10 @@ function renderSourceLabel(sourceIds) {
   const hasCore = normalized.includes('core')
   const hasPro = normalized.includes('pro')
 
+  // "Core + PRO" read as "you need Pro for this"; it actually means the hook is
+  // defined in core and also fired from Pro, which needs no licence to hook into.
   if (hasCore && hasPro) {
-    return `Core + ${renderProBadge()}`
+    return 'Core <span class="edition-note">(also fired by Pro)</span>'
   }
 
   if (hasPro) {
@@ -5087,14 +5210,19 @@ function buildRoutes(controllerIndex, classIndex, frontendConsumers, models) {
     const params = resolved
       ? parseRequestParams({ ...route, module }, resolved.method, resolved.controller, classIndex)
       : { path: [], query: [], body: [], hasFileUpload: false }
-    const responseExample = resolved
+    const inferredResponseExample = resolved
       ? extractResponseShape(resolved.method, models, { module, slug: operation.slug })
       : { message: 'Success' }
     const errors = resolved
       ? extractErrorResponses(resolved.method, supportMethods)
       : [{ status: 400, message: 'Request error.' }]
-    const requestBodyExample = buildRequestBodyExample(params.body)
+    const inferredRequestBodyExample = buildRequestBodyExample(params.body)
     const requestBodySchema = buildRequestBodySchemaFromParams(params.body)
+
+    // A recorded sample beats the statically inferred shape whenever we have one.
+    const captured = getCapturedExample(module, operation.slug)
+    const responseExample = captured?.response ?? inferredResponseExample
+    const requestBodyExample = captured?.request ?? inferredRequestBodyExample
 
     return {
       ...route,
@@ -5112,35 +5240,70 @@ function buildRoutes(controllerIndex, classIndex, frontendConsumers, models) {
       requestBodyContentType: params.hasFileUpload ? 'multipart/form-data' : 'application/json',
       frontendConsumers: findFrontendConsumersForRoute(route, frontendConsumers),
       errors,
+      exampleOrigin: captured?.origin || 'inferred',
+      isCapturedExample: captured?.origin === 'captured',
+      capturedQuery: captured?.query || null,
     }
   })
 }
 
+/**
+ * Best-effort type for a parameter expression. This is a guess from the variable
+ * name, so it returns a single concrete type when the name is unambiguous and plain
+ * `mixed` otherwise — the old `Feed|mixed` unions meant "unsure" while reading like
+ * a real union, and their pipes broke the Markdown tables they sat in.
+ *
+ * HOOK_NOTES[].params overrides this wherever a hook has been documented properly.
+ */
 function inferHookType(expr) {
   const normalized = expr.replace(/^&/, '').trim()
+
   if (normalized.startsWith('[') || normalized.endsWith(']')) {
     return 'array'
   }
   if (/->all\(\)/.test(normalized) || /toArray\(\)/.test(normalized)) {
     return 'array'
   }
-  if (/Ids\b/i.test(normalized) || /users\b/i.test(normalized)) {
+  if (/^'|^"/.test(normalized)) {
+    return 'string'
+  }
+  if (/^(true|false)$/i.test(normalized)) {
+    return 'bool'
+  }
+  if (/^-?\d+$/.test(normalized)) {
+    return 'int'
+  }
+  // Model checks come before the array-ish name checks: `$feedIds` is an array but
+  // `$feed` is a model, and testing `Ids` first mislabelled several model params.
+  if (/\bfeed\b|Feed$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Feed'
+  }
+  if (/\bcomment\b|Comment$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Comment'
+  }
+  if (/\bcourse\b|Course$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Course'
+  }
+  if (/\blesson\b|Lesson$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'CourseLesson'
+  }
+  if (/\bspace\b|Space$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Space'
+  }
+  if (/xprofile|XProfile/i.test(normalized)) {
+    return 'XProfile'
+  }
+  if (/Ids\b/i.test(normalized)) {
+    return 'int[]'
+  }
+  if (/Id\b/i.test(normalized)) {
+    return 'int'
+  }
+  if (/users\b/i.test(normalized)) {
     return 'array'
   }
-  if (/feed/i.test(normalized)) {
-    return 'Feed|mixed'
-  }
-  if (/space/i.test(normalized)) {
-    return 'Space|mixed'
-  }
-  if (/comment/i.test(normalized)) {
-    return 'Comment|mixed'
-  }
-  if (/course|lesson|topic/i.test(normalized)) {
-    return 'mixed'
-  }
-  if (/user|profile|subscriber/i.test(normalized)) {
-    return 'mixed'
+  if (/\buser\b|User$/i.test(normalized)) {
+    return 'User'
   }
   if (/request/i.test(normalized)) {
     return 'array'
@@ -5166,20 +5329,56 @@ function expressionToHookName(expression) {
 }
 
 function categorizeHook(hookName, filePath) {
-  const path = hookName.replace(/^fluent_community\//, '')
+  const path = hookName.replace(/^fluent_community[/_]?/, '')
 
-  if (/feed|ticker|post/.test(path)) return 'feeds'
-  if (/space|portal|menu|lockscreen|topic/.test(path)) return 'spaces'
-  if (/member|user|profile|xprofile|follow|leaderboard|badge/.test(path)) return 'members'
+  // 1. An explicit note wins over everything.
+  const note = HOOK_NOTES[hookName]
+  if (note && note.page) {
+    return note.page
+  }
+
+  // 2. The defining file is a better signal than the hook name.
+  const normalizedPath = toPosix(filePath || '')
+  for (const [pattern, page] of HOOK_PATH_RULES) {
+    if (pattern.test(normalizedPath)) {
+      return page
+    }
+  }
+
+  // 3. Name rules, most specific first.
+  if (/permission|capability|can_view|can_access|can_create|is_allowed/.test(path)) return 'permissions'
+  if (/moderation|report|content_flagged|block(ed|ing)_user/.test(path)) return 'moderation'
+  // Everything that shapes what the portal renders or how it boots, including the
+  // portal_vars bootstrap payload and its nested per-key defaults.
+  if (
+    /^portal|portal_vars|app_vars|before_portal|template_|theme_|headless|rendering_|block_editor|allowed_block_types|use_editor_block|allowed_html_tags|image_size_names_choose|app_route_paths|base_url|is_rtl|skip_no_conflict|date_time_i18n|on_wp_init|header|footer|sidebar|render_|enqueue_|asset_|editor_i18n/.test(
+      path,
+    ) &&
+    !/portal_slug/.test(path)
+  ) {
+    return 'rendering'
+  }
+  if (/course|lesson|section|quiz|question_types/.test(path)) return 'courses'
   if (/comment/.test(path)) return 'comments'
-  if (/notification|digest/.test(path)) return 'notifications'
   if (/reaction|survey/.test(path)) return 'reactions'
-  if (/auth|invitation|signup|login/.test(path)) return 'auth'
-  if (/permission|capability/.test(path)) return 'permissions'
-  if (/setting|config|color|theme|template|snippet/.test(path)) return 'settings'
-  if (/media|upload|file|document|giphy/.test(path)) return 'media'
-  if (/course|lesson|section|quiz/.test(path)) return 'courses'
-  if (/admin|report|moderation|webhook/.test(path) || filePath.includes('/Http/Controllers/AdminController.php')) return 'admin'
+  if (/feed|ticker|post|bookmark|welcome_banner/.test(path)) return 'feeds'
+  if (/notification|digest/.test(path)) return 'notifications'
+  if (/auth|invitation|signup|login|password|terms_policy|default_redirect/.test(path)) return 'auth'
+  if (/paywall|fluent_player|fluentform|wppayform|product_integration|install_/.test(path)) return 'integrations'
+  if (/smartcode|verified_email_senders/.test(path)) return 'notifications'
+  if (
+    /member|user|profile|xprofile|follow|leaderboard|badge|manage[rd]|activit|default_avatar|display_name|social_link_providers|reactivate_account/.test(
+      path,
+    )
+  ) {
+    return 'members'
+  }
+  if (/media|upload|file|document|giphy|image|webp|attachment|preview_metadata|embed/.test(path)) return 'media'
+  if (/space|menu|lockscreen|topic|sidebar_link/.test(path)) return 'spaces'
+  if (/setting|config|color|snippet|pwa|portal_slug|features?|pro_upgrade/.test(path)) return 'settings'
+  if (/admin|webhook/.test(path) || normalizedPath.includes('/Http/Controllers/AdminController.php')) {
+    return 'admin'
+  }
   return 'miscellaneous'
 }
 
@@ -5187,6 +5386,9 @@ function extractHookCalls() {
   const files = [
     ...collectFilesFromSources(['app'], (file) => file.endsWith('.php')),
     ...collectFilesFromSources(['Modules'], (file) => file.endsWith('.php')),
+    // Core fires portal_loaded / on_wp_init from its bootstrap; listFiles() tolerates
+    // the directory being absent, so Pro (which has no boot/) is unaffected.
+    ...collectFilesFromSources(['boot'], (file) => file.endsWith('.php')),
   ]
 
   const hooks = []
@@ -5194,7 +5396,8 @@ function extractHookCalls() {
   for (const file of files) {
     const content = read(file)
     const source = inferSourceConfig(file)
-    const regex = /(do_action_ref_array|do_action|apply_filters)\s*\(/g
+    const regex =
+      /(do_action_ref_array|do_action_deprecated|do_action|apply_filters_ref_array|apply_filters_deprecated|apply_filters)\s*\(/g
     let match
 
     while ((match = regex.exec(content))) {
@@ -5204,32 +5407,64 @@ function extractHookCalls() {
         continue
       }
 
+      // Resume just inside the call rather than past it: hooks nested in another
+      // call's arguments are real (nine of them live inside the portal_vars array)
+      // and jumping to callEnd made them invisible.
+      regex.lastIndex = callStart + 1
+
       const inner = content.slice(callStart + 1, callEnd)
       const args = splitTopLevel(inner)
       const hookName = expressionToHookName(args[0] || '')
-      if (!hookName.startsWith('fluent_community/')) {
-        regex.lastIndex = callEnd + 1
+      // Accept the underscore form too (fluent_community_send_daily_digest).
+      if (!hookName.startsWith('fluent_community')) {
         continue
       }
 
-      const kind = match[1] === 'apply_filters' ? 'filter' : 'action'
-      const params = args.slice(1).map((arg, index) => ({
-        name: normalizeWhitespace(arg.replace(/^&/, '')),
-        type: inferHookType(arg),
-        index: index + 1,
-      }))
+      const fn = match[1]
+      const kind = fn.startsWith('apply_filters') ? 'filter' : 'action'
+      const deprecated = fn.endsWith('_deprecated')
+      const byRefArray = fn.endsWith('_ref_array')
+
+      // do_action_ref_array() and the *_deprecated() variants pass one array of
+      // arguments; unwrap it so the documented arity and the `&$var` by-reference
+      // hint are both correct.
+      let paramExpressions = args.slice(1)
+      let deprecatedSince = null
+      let deprecatedReplacement = null
+      if (deprecated) {
+        deprecatedSince = stripQuotes(normalizeWhitespace(args[2] || '')) || null
+        deprecatedReplacement = stripQuotes(normalizeWhitespace(args[3] || '')) || null
+        paramExpressions = args.slice(1, 2)
+      }
+      if ((byRefArray || deprecated) && paramExpressions.length === 1) {
+        const literal = paramExpressions[0].trim()
+        if (literal.startsWith('[') && literal.endsWith(']')) {
+          paramExpressions = splitTopLevel(literal.slice(1, -1))
+        }
+      }
+
+      const params = paramExpressions
+        .map((arg) => arg.trim())
+        .filter(Boolean)
+        .map((arg, index) => ({
+          name: normalizeWhitespace(arg.replace(/^&/, '')),
+          type: inferHookType(arg),
+          byRef: arg.startsWith('&'),
+          index: index + 1,
+        }))
 
       hooks.push({
         name: hookName,
         kind,
+        deprecated,
+        deprecatedSince,
+        deprecatedReplacement,
         sourceId: source.id,
         file: displaySourcePath(file),
         line: getLineNumber(content, match.index),
         category: categorizeHook(hookName, file),
         params,
       })
-
-      regex.lastIndex = callEnd + 1
     }
   }
 
@@ -5716,7 +5951,9 @@ function mermaidRelation(item) {
 }
 
 function hookAnchor(name) {
-  return name.replace(/[{}$/]/g, '').replace(/\//g, '-')
+  // Keep the separators as dashes: stripping them made
+  // `fluent_community/space/joined` collide with a hypothetical `spacejoined`.
+  return name.replace(/[{}$]/g, '').replace(/[/_]/g, '-')
 }
 
 function escapeMarkdownCode(value) {
@@ -5752,23 +5989,116 @@ function groupHooksByName(collection) {
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
+/**
+ * Parameter expressions are inlined verbatim from source, and a few are whole array
+ * literals — the `portal_vars` default array is 13 KB on one line, which destroys the
+ * table it sits in. Collapse those to a summary of their keys.
+ */
+function condenseParamExpression(expression) {
+  const value = normalizeWhitespace(expression)
+  if (value.length <= 80) {
+    return value
+  }
+  if (value.startsWith('[') && value.endsWith(']')) {
+    const entries = splitTopLevel(value.slice(1, -1))
+    const keys = entries
+      .map((entry) => {
+        const key = entry.split('=>')[0]
+        return key && key !== entry ? stripQuotes(normalizeWhitespace(key)) : null
+      })
+      .filter(Boolean)
+    if (keys.length) {
+      const preview = keys.slice(0, 3).join(', ')
+      return `array (${keys.length} keys: ${preview}${keys.length > 3 ? ', …' : ''})`
+    }
+    return `array (${entries.length} items)`
+  }
+  return `${value.slice(0, 77)}…`
+}
+
 function formatHookParamSummary(params) {
   if (!params.length) {
     return 'No parameters'
   }
 
-  return params.map((param) => `\`${escapeMarkdownCode(param.name)}\` (${param.type})`).join('<br>')
+  return params
+    .map((param) => {
+      const name = escapeMarkdownCode(condenseParamExpression(param.name))
+      const type = escapeMarkdownCode(param.type)
+      return `\`${param.byRef ? '&' : ''}${name}\` (${type})`
+    })
+    .join('<br>')
 }
 
-function buildHookDocs(hooks) {
+/**
+ * categorizeHook() runs per call site, so a hook fired from two subsystems would be
+ * filed on two pages and counted twice. A hook name belongs on exactly one page:
+ * settle it once, by the category most of its call sites agree on, breaking ties
+ * toward the earliest page in HOOK_PAGE_ORDER (the most specific one).
+ */
+function settleHookCategories(hooks) {
+  const votesByName = new Map()
+  for (const hook of hooks) {
+    if (!votesByName.has(hook.name)) {
+      votesByName.set(hook.name, new Map())
+    }
+    const votes = votesByName.get(hook.name)
+    votes.set(hook.category, (votes.get(hook.category) || 0) + 1)
+  }
+
+  const settled = new Map()
+  for (const [name, votes] of votesByName) {
+    const override = HOOK_NOTES[name] && HOOK_NOTES[name].page
+    if (override) {
+      settled.set(name, override)
+      continue
+    }
+    const winner = [...votes.entries()].sort((a, b) => {
+      if (a[1] !== b[1]) return b[1] - a[1]
+      return HOOK_PAGE_ORDER.indexOf(a[0]) - HOOK_PAGE_ORDER.indexOf(b[0])
+    })[0][0]
+    settled.set(name, winner)
+  }
+
+  return hooks.map((hook) => ({ ...hook, category: settled.get(hook.name) }))
+}
+
+function buildHookDocs(rawHooks) {
+  const hooks = settleHookCategories(rawHooks)
   const actionHooks = hooks.filter((hook) => hook.kind === 'action')
   const filterHooks = hooks.filter((hook) => hook.kind === 'filter')
 
+  const coverage = {}
+  const writtenPages = { action: [], filter: [] }
+
   for (const kind of ['action', 'filter']) {
     const collection = kind === 'action' ? actionHooks : filterHooks
-    const groupedCollection = groupHooksByName(collection)
     const pageDir = join(docsRoot, 'hooks', kind === 'action' ? 'actions' : 'filters')
     const pageList = HOOK_PAGES[kind]
+
+    // Any category without a page silently loses its hooks, which is how every
+    // comment filter went missing. Fail the build rather than the docs.
+    const orphanCategories = [...new Set(collection.map((hook) => hook.category))].filter(
+      (category) => !pageList.includes(category),
+    )
+    if (orphanCategories.length) {
+      throw new Error(
+        `Hook categories with no ${kind} page: ${orphanCategories.join(', ')}. ` +
+          'Add them to HOOK_PAGE_ORDER or fix categorizeHook().',
+      )
+    }
+
+    // Totals are counted from what actually reaches a page, so the index can never
+    // disagree with the sum of its pages again. Empty pages are not written at all —
+    // there are no `admin` actions, for instance, and a stub page is just noise.
+    const pagedHooks = pageList
+      .map((page) => ({
+        page,
+        hooks: collection.filter((hook) => hook.category === page),
+      }))
+      .filter((entry) => entry.hooks.length > 0)
+    const writtenGroups = pagedHooks.reduce((sum, entry) => sum + groupHooksByName(entry.hooks).length, 0)
+    const writtenCallSites = pagedHooks.reduce((sum, entry) => sum + entry.hooks.length, 0)
 
     writeFile(
       join(pageDir, 'index.md'),
@@ -5779,23 +6109,36 @@ description: Source-verified ${kind} hook inventory for FluentCommunity.
 
 # ${kind === 'action' ? 'Action Hooks' : 'Filter Hooks'}
 
-This page is generated from ${kind === 'action' ? '`do_action()` and `do_action_ref_array()`' : '`apply_filters()`'} calls in the FluentCommunity core and Pro plugin source trees.
+This page is generated from ${kind === 'action' ? '`do_action()`, `do_action_ref_array()` and `do_action_deprecated()`' : '`apply_filters()`, `apply_filters_ref_array()` and `apply_filters_deprecated()`'} calls in the FluentCommunity core and Pro plugin source trees.
 
 ## Overview
 
-- **Unique ${kind}s:** ${groupedCollection.length}
-- **${humanizeSlug(kind)} call sites:** ${collection.length}
-- **Categories covered:** ${pageList.map((page) => `\`${page}\``).join(', ')}
+- **Unique ${kind}s:** ${writtenGroups}
+- **${humanizeSlug(kind)} call sites:** ${writtenCallSites}
+- **Categories covered:** ${pagedHooks.map((entry) => `\`${entry.page}\``).join(', ')}
 
 ## Categories
 
-${pageList.map((page) => `- [${humanizeSlug(page)}](/hooks/${kind === 'action' ? 'actions' : 'filters'}/${page})`).join('\n')}
+| Category | Hooks | Call sites |
+| --- | --- | --- |
+${pagedHooks
+  .map(
+    (entry) =>
+      `| [${humanizeSlug(entry.page)}](/hooks/${kind === 'action' ? 'actions' : 'filters'}/${entry.page}) | ${groupHooksByName(entry.hooks).length} | ${entry.hooks.length} |`,
+  )
+  .join('\n')}
 `,
     )
 
-    for (const page of pageList) {
-      const categoryHooks = collection.filter((hook) => hook.category === page)
+    writtenPages[kind] = pagedHooks.map((entry) => entry.page)
+
+    for (const { page, hooks: categoryHooks } of pagedHooks) {
       const categoryGroups = groupHooksByName(categoryHooks)
+      coverage[`${kind}/${page}`] = {
+        hooks: categoryGroups.length,
+        callSites: categoryHooks.length,
+        documented: categoryGroups.filter((group) => Boolean(HOOK_NOTES[group.name])).length,
+      }
       writeFile(
         join(pageDir, `${page}.md`),
         `---
@@ -5818,18 +6161,88 @@ ${categoryGroups
   )
   .join('\n') || '| — | — | — | No hooks found in this category. |'}
 
-${categoryGroups
+${categoryGroups.map((group) => renderHookSection(group, kind)).join('\n')}
+`,
+      )
+    }
+  }
+
+  ensureDir(generatedRoot)
+  // The sidebar in .vitepress/config.mts reads this instead of repeating the list,
+  // so a taxonomy change only has to be made here.
+  writeFile(join(generatedRoot, 'hook-page-order.json'), `${JSON.stringify(writtenPages, null, 2)}\n`)
+  writeFile(join(generatedRoot, 'hook-notes-coverage.json'), `${JSON.stringify(coverage, null, 2)}\n`)
+
+  return coverage
+}
+
+function renderHookSection(group, kind) {
+  const note = HOOK_NOTES[group.name] || {}
+  const summary = describeHook(group)
+  const params = note.params || mergeHookParamNames(group)
+  const isDeprecated = group.callSites.some((hook) => hook.deprecated)
+  const deprecatedSite = group.callSites.find((hook) => hook.deprecated)
+
+  const meta = [
+    `- **Type:** ${kind}`,
+    `- **Edition:** ${renderSourceLabel(group.sourceIds)}`,
+    `- **Call sites:** ${group.callSites.length}`,
+  ]
+  if (note.since) {
+    meta.push(`- **Since:** ${note.since}`)
+  }
+  if (summary) {
+    meta.push(`- **When it fires:** ${summary}`)
+  }
+
+  const deprecationNotice = isDeprecated
+    ? `
+::: warning Deprecated
+This hook is fired through \`${kind === 'action' ? 'do_action_deprecated' : 'apply_filters_deprecated'}()\`${
+        deprecatedSite && deprecatedSite.deprecatedSince
+          ? ` as of ${deprecatedSite.deprecatedSince}`
+          : ''
+      }.${
+        deprecatedSite && deprecatedSite.deprecatedReplacement
+          ? ` Use \`${deprecatedSite.deprecatedReplacement}\` instead.`
+          : ' Avoid it in new code.'
+      }
+:::
+`
+    : ''
+
+  const detailsBlock = note.details ? `\n${note.details}\n` : ''
+
+  const documentedParams =
+    note.params && note.params.length
+      ? `
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+${note.params
   .map(
-    (group) => `
+    (param, index) =>
+      `| ${index + 1} | \`$${param.name}\` | \`${escapeMarkdownCode(param.type || 'mixed')}\` | ${param.desc || '—'} |`,
+  )
+  .join('\n')}
+`
+      : ''
+
+  const returnsBlock =
+    kind === 'filter' && note.returns ? `\n**Return:** ${note.returns}\n` : ''
+
+  const relatedBlock = note.related && note.related.length
+    ? `\n**Related:** ${note.related.map((name) => `[\`${name}\`](#${hookAnchor(name)})`).join(' · ')}\n`
+    : ''
+
+  return `
 <a id="${hookAnchor(group.name)}"></a>
 
 ## \`${group.name}\`
 
-- **Type:** ${kind}
-- **Edition:** ${renderSourceLabel(group.sourceIds)}
-- **Call sites:** ${group.callSites.length}
-- **When it fires:** ${describeHook(group.callSites[0])}
-
+${meta.join('\n')}
+${deprecationNotice}${detailsBlock}${documentedParams}${returnsBlock}
 ### Call Sites
 
 | Edition | Source | Parameters |
@@ -5844,20 +6257,50 @@ ${group.callSites
 ### Example
 
 \`\`\`php
-${buildHookExample(group.callSites[0])}
+${buildHookExample(group)}
 \`\`\`
-`,
-  )
-  .join('\n')}
-`,
-      )
-    }
-  }
+${relatedBlock}`
 }
 
-function describeHook(hook) {
-  const clean = hook.name.replace(/^fluent_community\//, '')
-  return `${humanizeSlug(clean)} hook emitted from the current call site.`
+/**
+ * Pick the call site an example should be built from. The first site after sorting
+ * by path can be a Pro site that passes fewer arguments than Core does, which
+ * produced examples with the wrong arity — take the widest signature instead, and
+ * prefer Core when several sites tie.
+ */
+function pickExampleCallSite(group) {
+  return group.callSites.reduce((best, candidate) => {
+    if (candidate.params.length !== best.params.length) {
+      return candidate.params.length > best.params.length ? candidate : best
+    }
+    if (best.sourceId !== 'core' && candidate.sourceId === 'core') {
+      return candidate
+    }
+    return best
+  }, group.callSites[0])
+}
+
+/**
+ * A hook fired from several places may pass a variable at one site and a string
+ * literal at another; `'by_admin'` cannot be named, so borrow the name that another
+ * call site gives that position.
+ */
+function mergeHookParamNames(group) {
+  const site = pickExampleCallSite(group)
+  return site.params.map((param, index) => {
+    if (/\$[A-Za-z_]/.test(param.name) || /->[A-Za-z_]/.test(param.name)) {
+      return param
+    }
+    const named = group.callSites
+      .map((candidate) => candidate.params[index])
+      .find((candidate) => candidate && /\$[A-Za-z_]/.test(candidate.name))
+    return named ? { ...param, name: named.name } : param
+  })
+}
+
+function describeHook(group) {
+  const note = HOOK_NOTES[group.name]
+  return note && note.summary ? note.summary : null
 }
 
 function buildHookExampleArgs(params) {
@@ -5886,13 +6329,22 @@ function buildHookExampleArgs(params) {
   })
 }
 
-function buildHookExample(hook) {
-  const fn = hook.kind === 'action' ? 'add_action' : 'add_filter'
-  const args = buildHookExampleArgs(hook.params)
-  const functionSignature = args.length ? `$${args.join(', $')}` : ''
-  const returnLine = hook.kind === 'filter' ? `\n    return $${args[0] || 'value'};` : ''
+function buildHookExample(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.example) {
+    return note.example
+  }
 
-  return `${fn}('${hook.name}', function (${functionSignature}) {${returnLine}\n}, 10, ${hook.params.length});`
+  const site = pickExampleCallSite(group)
+  const params = note && note.params ? note.params : mergeHookParamNames(group)
+  const fn = site.kind === 'action' ? 'add_action' : 'add_filter'
+  const args = note && note.params ? note.params.map((param) => param.name) : buildHookExampleArgs(params)
+  const signature = args
+    .map((name, index) => `${params[index] && params[index].byRef ? '&' : ''}$${name}`)
+    .join(', ')
+  const returnLine = site.kind === 'filter' ? `\n    return $${args[0] || 'value'};` : ''
+
+  return `${fn}('${group.name}', function (${signature}) {${returnLine}\n}, 10, ${args.length});`
 }
 
 function buildRouteOverviewAndSpecs(routes) {
@@ -6016,6 +6468,7 @@ aside: false
 - **Controller:** \`${route.controllerClass}@${route.action}\`
 - **Route source:** \`${route.routeFile}:${route.routeLine}\`
 ${route.controllerFile ? `- **Controller source:** \`${route.controllerFile}\`` : ''}
+${renderExampleProvenance(route.exampleOrigin)}
 
 <OAOperation operationId="${route.operationId}" specUrl="/openapi/public/${module}/${route.slug}.json" />
 `,
@@ -6168,14 +6621,44 @@ function main() {
   const hookSummary = summarizeHooks(hooks)
 
   buildModelDocs(models, hooks, routes)
-  buildHookDocs(hooks)
+  const hookCoverage = buildHookDocs(hooks)
   buildRouteOverviewAndSpecs(routes)
+
+  const byOrigin = routes.reduce((carry, route) => {
+    carry[route.exampleOrigin] = (carry[route.exampleOrigin] || 0) + 1
+    return carry
+  }, {})
 
   console.log(
     `Generated docs for ${MODEL_ORDER.length} models, ${
       hookSummary.uniqueActionNames + hookSummary.uniqueFilterNames
     } unique hooks across ${hooks.length} call sites, and ${routes.length} routes.`,
   )
+  console.log(
+    `Response samples: ${byOrigin.captured || 0} recorded live, ${
+      byOrigin.manual || 0
+    } reconstructed from source, ${byOrigin.inferred || 0} inferred from static analysis.`,
+  )
+
+  const hookTotals = Object.values(hookCoverage).reduce(
+    (carry, entry) => ({
+      hooks: carry.hooks + entry.hooks,
+      documented: carry.documented + entry.documented,
+    }),
+    { hooks: 0, documented: 0 },
+  )
+  console.log(
+    `Hook prose: ${hookTotals.documented}/${hookTotals.hooks} hooks have a hand-written note (${Math.round(
+      (hookTotals.documented / hookTotals.hooks) * 100,
+    )}%). Add entries to HOOK_NOTES to raise it.`,
+  )
+
+  const inferred = routes.filter((route) => route.exampleOrigin === 'inferred')
+  if (inferred.length) {
+    console.log(
+      `  Still inferred: ${inferred.map((route) => `${route.module}/${route.slug}`).join(', ')}`,
+    )
+  }
 }
 
 main()

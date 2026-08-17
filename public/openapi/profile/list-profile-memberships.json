@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileMemberships",
         "summary": "GET List Profile Memberships",
-        "description": "List Profile Memberships for the FluentCommunity Profile API.\n\nController: `ProfileController@getAllMemberships`\nRoute source: `fluent-community/app/Http/Routes/api.php:89`",
+        "description": "List Profile Memberships for the FluentCommunity Profile API.\n\nController: `ProfileController@getAllMemberships`\nRoute source: `fluent-community/app/Http/Routes/api.php:92`",
         "tags": [
           "Profile"
         ],
@@ -58,15 +58,18 @@
                     "memberships": {
                       "type": "array",
                       "items": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "integer"
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "memberships": []
+                  "memberships": [
+                    1,
+                    3,
+                    7
+                  ]
                 }
               }
             }

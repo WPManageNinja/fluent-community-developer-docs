@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOnboardingSettings",
         "summary": "GET Get Onboarding Settings",
-        "description": "Get Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getOnboardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:111`",
+        "description": "Get Onboarding Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getOnBoardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:114`",
         "tags": [
           "Admin"
         ],
@@ -48,64 +48,21 @@
                     "settings": {
                       "type": "object",
                       "properties": {
-                        "site_title": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "slug": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "logo": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "white_logo": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "logo_permalink_type": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "logo_permalink": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "featured_image": {
-                          "type": "string",
-                          "nullable": false
-                        },
                         "access": {
                           "type": "object",
                           "properties": {
                             "acess_level": {
                               "type": "string",
                               "nullable": false
-                            },
-                            "access_roles": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                              }
                             }
                           },
                           "additionalProperties": false
                         },
-                        "auth_form_type": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "explicit_registration": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "disable_global_posts": {
-                          "type": "string",
-                          "nullable": false
-                        },
                         "auth_content": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_form_type": {
                           "type": "string",
                           "nullable": false
                         },
@@ -113,11 +70,11 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "restricted_role_content": {
+                        "auth_url": {
                           "type": "string",
                           "nullable": false
                         },
-                        "auth_url": {
+                        "custom_signup_url": {
                           "type": "string",
                           "nullable": false
                         },
@@ -125,11 +82,19 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "use_custom_signup_page": {
+                        "disable_global_posts": {
                           "type": "string",
                           "nullable": false
                         },
-                        "custom_signup_url": {
+                        "explicit_registration": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "has_fluentcart": {
                           "type": "string",
                           "nullable": false
                         },
@@ -141,11 +106,7 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "has_fluentcart": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "template": {
+                        "install_fluentcart": {
                           "type": "string",
                           "nullable": false
                         },
@@ -157,11 +118,26 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "install_fluentcart": {
+                        "is_slug_defined": {
+                          "type": "boolean"
+                        },
+                        "logo": {
                           "type": "string",
                           "nullable": false
                         },
-                        "subscribe_to_newsletter": {
+                        "logo_permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo_permalink_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "notice_html": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "restricted_role_content": {
                           "type": "string",
                           "nullable": false
                         },
@@ -169,11 +145,35 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "user_full_name": {
+                        "site_title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "subscribe_to_newsletter": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "template": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "use_custom_signup_page": {
                           "type": "string",
                           "nullable": false
                         },
                         "user_email_address": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_full_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "white_logo": {
                           "type": "string",
                           "nullable": false
                         }
@@ -185,38 +185,39 @@
                 },
                 "example": {
                   "settings": {
-                    "site_title": "",
-                    "slug": "portal",
-                    "logo": "",
-                    "white_logo": "",
-                    "logo_permalink_type": "default",
-                    "logo_permalink": "",
-                    "featured_image": "",
                     "access": {
-                      "acess_level": "public",
-                      "access_roles": []
+                      "acess_level": "public"
                     },
-                    "auth_form_type": "default",
-                    "explicit_registration": "no",
-                    "disable_global_posts": "yes",
                     "auth_content": "Please login first to access this page",
+                    "auth_form_type": "default",
                     "auth_redirect": "",
-                    "restricted_role_content": "Sorry, you cannot access this page. Only authorized users can access this page.",
-                    "auth_url": "",
-                    "cutsom_auth_url": "",
-                    "use_custom_signup_page": "no",
+                    "auth_url": "https://yourwebsite.com/",
                     "custom_signup_url": "",
-                    "has_fluentcrm": "no",
-                    "has_fluentsmtp": "no",
-                    "has_fluentcart": "no",
-                    "template": "",
+                    "cutsom_auth_url": "https://yourwebsite.com/portal/?fcom_action=auth",
+                    "disable_global_posts": "yes",
+                    "explicit_registration": "no",
+                    "featured_image": "https://cdn.yourwebsite.com/uploads/Fluent-Community-Featured-image.png",
+                    "has_fluentcart": "yes",
+                    "has_fluentcrm": "yes",
+                    "has_fluentsmtp": "yes",
+                    "install_fluentcart": "yes",
                     "install_fluentcrm": "yes",
                     "install_fluentsmtp": "yes",
-                    "install_fluentcart": "yes",
-                    "subscribe_to_newsletter": "yes",
+                    "is_slug_defined": true,
+                    "logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp",
+                    "logo_permalink": "",
+                    "logo_permalink_type": "default",
+                    "notice_html": "",
+                    "restricted_role_content": "Sorry, you can not access to this page. Only authorized users can access this page.",
                     "share_data": "no",
-                    "user_full_name": "",
-                    "user_email_address": ""
+                    "site_title": "Your Community",
+                    "slug": "portal",
+                    "subscribe_to_newsletter": "yes",
+                    "template": "",
+                    "use_custom_signup_page": "no",
+                    "user_email_address": "member@example.com",
+                    "user_full_name": "Mei Tanaka",
+                    "white_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp"
                   }
                 }
               }

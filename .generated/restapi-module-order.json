@@ -69,6 +69,7 @@
     "toggle-feed-reaction",
     "toggle-comment-reaction",
     "list-feed-reactions",
+    "post-add-or-remove-post-react",
     "cast-survey-vote",
     "list-survey-voters",
     "list-comment-reactions"
@@ -87,6 +88,7 @@
     "get-profile",
     "update-profile",
     "patch-profile",
+    "post-change-password",
     "list-profile-spaces",
     "get-courses",
     "list-profile-memberships",
@@ -107,6 +109,7 @@
     "delete-media-preview",
     "upload-video",
     "get-video-content",
+    "post-update-audio-meta",
     "get-index"
   ],
   "settings": [
@@ -127,7 +130,6 @@
     "save-crm-tagging-config",
     "get-snippets-settings",
     "save-snippets-settings",
-    "save-settings-moderation-config",
     "get-followers-settings",
     "save-followers-settings"
   ],
@@ -169,6 +171,8 @@
     "delete-webhook",
     "save-sidebar-link",
     "delete-sidebar-link",
+    "get-settings",
+    "post-save-settings",
     "list-user-badges",
     "save-user-badges"
   ],

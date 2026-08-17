@@ -1,0 +1,480 @@
+{
+  "_comment": "Hand-authored examples for endpoints that cannot be captured live. Derived from controller source; keep in sync when those controllers change.",
+  "modules": {
+    "cart": {
+      "search-cart-products": {
+        "method": "GET",
+        "path": "/cart/products/search",
+        "status": 200,
+        "source": "fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:162",
+        "query": {
+          "search": "membership"
+        },
+        "response": {
+          "products": [
+            {
+              "id": "125",
+              "title": "Pro Membership",
+              "image": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png",
+              "price": "$49.00"
+            },
+            {
+              "id": "131",
+              "title": "Founding Member Pass",
+              "image": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-member-pass.png",
+              "price": "$99.00 - $249.00"
+            }
+          ]
+        }
+      },
+      "create-cart-product": {
+        "method": "POST",
+        "path": "/cart/products/create",
+        "status": 200,
+        "source": "fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:247",
+        "request": {
+          "title": "Pro Membership",
+          "price": 49
+        },
+        "response": {
+          "product": {
+            "id": "125",
+            "title": "Pro Membership",
+            "image": "https://yourwebsite.com/wp-content/plugins/fluent-cart/assets/images/placeholder.svg",
+            "price": "$49.00"
+          }
+        }
+      },
+      "list-space-paywalls": {
+        "method": "GET",
+        "path": "/cart/spaces/{spaceId}/paywalls",
+        "status": 200,
+        "source": "fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:61",
+        "query": {
+          "space_id": 12
+        },
+        "response": {
+          "paywalls": [
+            {
+              "ID": "125",
+              "post_title": "Pro Membership",
+              "post_status": "publish",
+              "post_excerpt": "Full access to every private space and course.",
+              "view_url": "https://yourwebsite.com/fluent-products/pro-membership/",
+              "admin_url": "https://yourwebsite.com/wp-admin/admin.php?page=fluent-cart#/products/125",
+              "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png",
+              "detail": {
+                "id": "9",
+                "post_id": 125,
+                "fulfillment_type": "digital",
+                "min_price": 4900.0,
+                "max_price": 4900.0,
+                "default_variation_id": null,
+                "default_media": null,
+                "manage_stock": "0",
+                "stock_availability": "in-stock",
+                "variation_type": "simple",
+                "manage_downloadable": "0",
+                "other_info": null,
+                "created_at": "2026-01-15 09:30:00",
+                "updated_at": "2026-01-15 09:30:00",
+                "featured_media": {
+                  "url": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png"
+                },
+                "formatted_min_price": "$49.00",
+                "formatted_max_price": "$49.00"
+              },
+              "variants": [
+                {
+                  "id": "48",
+                  "post_id": 125,
+                  "item_price": 4900.0,
+                  "variation_title": "Pro Membership",
+                  "other_info": {
+                    "description": "",
+                    "payment_type": "onetime",
+                    "times": "",
+                    "repeat_interval": "",
+                    "trial_days": "",
+                    "billing_summary": "",
+                    "manage_setup_fee": "no",
+                    "signup_fee_name": "",
+                    "signup_fee": "",
+                    "setup_fee_per_item": "no"
+                  },
+                  "thumbnail": null,
+                  "photo": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png",
+                  "total_price": "$49.00",
+                  "checkout_url": "https://yourwebsite.com/?fluent-cart=instant_checkout&item_id=48&quantity=1&redirect_to=https%3A%2F%2Fyourwebsite.com%2Fportal%2Fcheckout%3Fspace_id%3D12"
+                }
+              ]
+            },
+            {
+              "ID": "131",
+              "post_title": "Founding Member Pass",
+              "post_status": "publish",
+              "post_excerpt": "Lifetime access with a private founders space.",
+              "view_url": "https://yourwebsite.com/fluent-products/founding-member-pass/",
+              "admin_url": "https://yourwebsite.com/wp-admin/admin.php?page=fluent-cart#/products/131",
+              "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-member-pass.png",
+              "detail": {
+                "id": "11",
+                "post_id": 131,
+                "fulfillment_type": "digital",
+                "min_price": 9900.0,
+                "max_price": 24900.0,
+                "default_variation_id": 52,
+                "default_media": null,
+                "manage_stock": "0",
+                "stock_availability": "in-stock",
+                "variation_type": "simple_variation",
+                "other_info": null,
+                "created_at": "2026-01-15 09:30:00",
+                "updated_at": "2026-01-15 09:30:00",
+                "featured_media": {
+                  "url": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-member-pass.png"
+                },
+                "formatted_min_price": "$99.00",
+                "formatted_max_price": "$249.00"
+              },
+              "variants": [
+                {
+                  "id": "52",
+                  "post_id": 131,
+                  "item_price": 9900.0,
+                  "variation_title": "Yearly",
+                  "other_info": {
+                    "description": "",
+                    "payment_type": "onetime",
+                    "times": "",
+                    "repeat_interval": "",
+                    "trial_days": "",
+                    "billing_summary": "",
+                    "manage_setup_fee": "no",
+                    "signup_fee_name": "",
+                    "signup_fee": "",
+                    "setup_fee_per_item": "no"
+                  },
+                  "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-yearly.png",
+                  "photo": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-yearly.png",
+                  "total_price": "$99.00",
+                  "checkout_url": "https://yourwebsite.com/?fluent-cart=instant_checkout&item_id=52&quantity=1&redirect_to=https%3A%2F%2Fyourwebsite.com%2Fportal%2Fcheckout%3Fspace_id%3D12"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "create-space-paywall": {
+        "method": "POST",
+        "path": "/cart/spaces/{spaceId}/paywalls",
+        "status": 200,
+        "source": "fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:95",
+        "request": {
+          "cart_product_id": 125,
+          "space_id": 12
+        },
+        "response": {
+          "message": "Paywall has been added",
+          "paywall": {
+            "ID": "125",
+            "post_date": "2026-01-15 09:30:00",
+            "post_date_gmt": "2026-01-15 09:30:00",
+            "post_content": "",
+            "post_title": "Pro Membership",
+            "post_excerpt": "Full access to every private space and course.",
+            "post_status": "publish",
+            "comment_status": "closed",
+            "ping_status": "closed",
+            "post_name": "pro-membership",
+            "post_modified": "2026-01-15 09:30:00",
+            "post_modified_gmt": "2026-01-15 09:30:00",
+            "guid": "https://yourwebsite.com/?post_type=fluent-products&p=125",
+            "post_type": "fluent-products",
+            "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png"
+          }
+        }
+      },
+      "delete-space-paywall": {
+        "method": "DELETE",
+        "path": "/cart/spaces/{spaceId}/paywalls",
+        "status": 200,
+        "source": "fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:130",
+        "request": {
+          "cart_product_id": 125,
+          "revoke_access": false
+        },
+        "response": {
+          "message": "Paywall has been removed"
+        }
+      }
+    },
+    "migrations": {
+      "list-available-migrations": {
+        "method": "GET",
+        "path": "/migrations",
+        "status": 200,
+        "source": "fluent-community/Modules/Migrations/Http/Controllers/MigrationController.php:28",
+        "response": {
+          "migrations": [
+            {
+              "key": "buddypress",
+              "title": "BuddyPress",
+              "logo": "https://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/buddypress.svg"
+            }
+          ]
+        }
+      },
+      "get-buddypress-migration-config": {
+        "method": "GET",
+        "path": "/migrations/buddypress/config",
+        "status": 200,
+        "source": "fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php:44",
+        "response": {
+          "groupItems": [
+            {
+              "id": "1",
+              "name": "Product Feedback",
+              "members_count": 42,
+              "is_migrated": true
+            },
+            {
+              "id": "2",
+              "name": "Beta Testers",
+              "members_count": 18,
+              "is_migrated": false
+            }
+          ],
+          "featureConfig": {
+            "has_groups": true
+          },
+          "stats": {
+            "groups": 2,
+            "total_posts": 184,
+            "total_comments": 312,
+            "total_reactions": 0,
+            "total_community_users": 57
+          },
+          "current_status": {
+            "migrated_groups": {
+              "1": 14
+            },
+            "last_activity_id": 0,
+            "migrated_posts_count": 0,
+            "last_migrated_user_id": 0,
+            "last_migrated_member_id": 0,
+            "current_stage": "groups"
+          },
+          "has_previous": true
+        }
+      },
+      "start-buddypress-migration": {
+        "method": "POST",
+        "path": "/migrations/buddypress/start",
+        "status": 200,
+        "source": "fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php:81",
+        "request": {
+          "reset_migration": "no",
+          "delete_current_data": "no",
+          "config": {
+            "1": 3,
+            "2": 3
+          }
+        },
+        "response": {
+          "current_status": {
+            "migrated_groups": {
+              "1": 14,
+              "2": 15
+            },
+            "last_activity_id": 0,
+            "last_migrated_member_id": 0,
+            "migrated_posts_count": 0,
+            "last_migrated_user_id": 0,
+            "current_stage": "group_members"
+          },
+          "max_ids": {
+            "group_member_max": "60",
+            "max_user_id": 57,
+            "max_activity_id": "496"
+          }
+        }
+      },
+      "get-buddypress-migration-status": {
+        "method": "GET",
+        "path": "/migrations/buddypress/status",
+        "status": 200,
+        "source": "fluent-community/Modules/Migrations/Http/Controllers/BPMigrationController.php:119",
+        "response": {
+          "migrated_groups": {
+            "1": 14,
+            "2": 15
+          },
+          "last_activity_id": "496",
+          "last_migrated_member_id": "60",
+          "migrated_posts_count": 0,
+          "last_migrated_user_id": 0,
+          "current_stage": "users"
+        }
+      }
+    },
+    "media": {
+      "post-handle-media-upload": {
+        "method": "POST",
+        "path": "/feeds/media-upload",
+        "status": 200,
+        "requestContentType": "multipart/form-data",
+        "source": "fluent-community/app/Http/Controllers/FeedsController.php:1073",
+        "request": {
+          "file": "<binary>",
+          "resize": true,
+          "max_width": 1400,
+          "context": "feed"
+        },
+        "response": {
+          "media": {
+            "url": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-a1b2c3d4e5f60718293a4b5c6d7e8f90-fluentcom-team-photo.webp?media_key=4d2f8b6a1c9e7d350a1b2c3d4e5f6071",
+            "media_key": "4d2f8b6a1c9e7d350a1b2c3d4e5f6071",
+            "type": "image/webp",
+            "width": 1400,
+            "height": 933
+          }
+        }
+      },
+      "upload-video": {
+        "method": "POST",
+        "path": "/fluent-player/video-upload",
+        "status": 200,
+        "requestContentType": "multipart/form-data",
+        "source": "fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:124",
+        "request": {
+          "file": "<binary>",
+          "context": "fluent_player",
+          "media_kind": "video"
+        },
+        "response": {
+          "media": {
+            "media_id": 412,
+            "url": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-0f1e2d3c4b5a69788796a5b4c3d2e1f0-fluentcom-welcome-lesson.mp4",
+            "media_key": "8c7b6a5948372615f4e3d2c1b0a99887",
+            "type": "fluent_player",
+            "settings": {
+              "src": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-0f1e2d3c4b5a69788796a5b4c3d2e1f0-fluentcom-welcome-lesson.mp4",
+              "title": "welcome-lesson.mp4",
+              "viewType": "video"
+            },
+            "html": ""
+          }
+        }
+      },
+      "post-update-audio-meta": {
+        "method": "POST",
+        "path": "/fluent-player/audio-media/{media_id}",
+        "status": 200,
+        "source": "fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:192",
+        "request": {
+          "title": "Episode 4 - Community Rituals",
+          "posterSrc": "https://yourwebsite.com/wp-content/uploads/fluent-community/podcast-cover.webp"
+        },
+        "response": {
+          "media": {
+            "media_id": "413",
+            "settings": {
+              "src": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-5a4b3c2d1e0f97867564534241302010-fluentcom-episode-4.mp3",
+              "title": "Episode 4 - Community Rituals",
+              "viewType": "audio",
+              "posterSrc": "https://yourwebsite.com/wp-content/uploads/fluent-community/podcast-cover.webp",
+              "poster_is_custom": true
+            }
+          }
+        }
+      }
+    },
+    "documents": {
+      "upload-document": {
+        "method": "POST",
+        "path": "/documents/upload",
+        "status": 200,
+        "requestContentType": "multipart/form-data",
+        "source": "fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:80",
+        "request": {
+          "file": "<binary>",
+          "space_id": 12
+        },
+        "response": {
+          "file": {
+            "id": 58,
+            "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=1f0e2d3c4b5a69788796a5b4c3d2e1f0&media_id=58",
+            "media_key": "1f0e2d3c4b5a69788796a5b4c3d2e1f0",
+            "title": "onboarding-guide.pdf",
+            "type": "application/pdf"
+          }
+        }
+      }
+    },
+    "admin": {
+      "save-license-key": {
+        "method": "POST",
+        "path": "/admin/license",
+        "status": 200,
+        "source": "fluent-community-pro/app/Http/Controllers/LicenseController.php:51",
+        "request": {
+          "license_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        },
+        "response": {
+          "license_data": {
+            "license_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "status": "valid",
+            "variation_id": "3",
+            "variation_title": "Agency",
+            "expires": "2027-01-15",
+            "activation_hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+          },
+          "message": "Your license key has been successfully updated"
+        }
+      },
+      "deactivate-license-key": {
+        "method": "DELETE",
+        "path": "/admin/license",
+        "status": 200,
+        "source": "fluent-community-pro/app/Http/Controllers/LicenseController.php:72",
+        "confidence": "low",
+        "confidence_note": "license_data is the raw remote licensing-server payload (FluentLicensing::deactivate -> apiRequest('deactivate_license')) minus license_key; the remote body is not defined in this codebase, so its exact keys are reconstructed.",
+        "response": {
+          "license_data": {
+            "status": "deactivated",
+            "message": "License has been deactivated for this site"
+          },
+          "message": "Your license key has been successfully deactivated"
+        }
+      },
+      "change-portal-slug": {
+        "method": "POST",
+        "path": "/admin/on-boardings/change-slug",
+        "status": 200,
+        "source": "fluent-community/app/Http/Controllers/AdminController.php:506",
+        "request": {
+          "new_slug": "community"
+        },
+        "response": {
+          "message": "Slug has been changed successfully"
+        }
+      }
+    },
+    "settings": {
+      "install-plugin": {
+        "method": "POST",
+        "path": "/settings/install_plugin",
+        "status": 200,
+        "source": "fluent-community/app/Http/Controllers/SettingController.php:321",
+        "request": {
+          "plugin": "fluent-cart"
+        },
+        "response": {
+          "message": "Plugin has been installed Successfully",
+          "is_installed": true
+        }
+      }
+    }
+  }
+}

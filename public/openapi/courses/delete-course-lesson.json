@@ -72,7 +72,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Lesson has been deleted successfully."
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

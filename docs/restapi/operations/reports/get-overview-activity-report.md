@@ -10,7 +10,11 @@ aside: false
 - **Path:** `/analytics/overview/activity`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ReportsController@activityReport`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:70`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:72`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ReportsController.php`
+
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
 
 <OAOperation operationId="getOverviewActivityReport" specUrl="/openapi/public/reports/get-overview-activity-report.json" />

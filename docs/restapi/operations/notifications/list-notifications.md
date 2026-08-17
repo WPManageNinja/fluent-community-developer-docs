@@ -10,7 +10,11 @@ aside: false
 - **Path:** `/notifications`
 - **Edition:** Core
 - **Controller:** `NotificationsController@getNotifications`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:128`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:131`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
+
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
 
 <OAOperation operationId="listNotifications" specUrl="/openapi/public/notifications/list-notifications.json" />

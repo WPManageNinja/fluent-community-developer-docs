@@ -69,7 +69,7 @@
                 }
               },
               "example": {
-                "state": ""
+                "state": "completed"
               }
             }
           }
@@ -82,24 +82,43 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "is_completed": {
+                      "type": "boolean"
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
                     },
                     "track": {
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "is_completed": {
-                      "type": "boolean"
+                      "type": "object",
+                      "properties": {
+                        "completed_lessons": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "isEnrolled": {
+                          "type": "boolean"
+                        },
+                        "progress": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Lesson completion state updated.",
-                  "track": null,
-                  "is_completed": false
+                  "is_completed": true,
+                  "message": "Great point — I ran into the same thing last week.",
+                  "track": {
+                    "completed_lessons": [],
+                    "isEnrolled": true,
+                    "progress": 100
+                  }
                 }
               }
             }

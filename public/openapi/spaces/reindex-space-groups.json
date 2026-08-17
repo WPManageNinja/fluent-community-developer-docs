@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "reindexSpaceGroups",
         "summary": "PATCH Reindex Space Groups",
-        "description": "Reindex Space Groups for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateSpaceGroupIndexes`\nRoute source: `fluent-community/app/Http/Routes/api.php:35`",
+        "description": "Reindex Space Groups for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateSpaceGroupIndexes`\nRoute source: `fluent-community/app/Http/Routes/api.php:36`",
         "tags": [
           "Spaces"
         ],
@@ -53,7 +53,9 @@
                 }
               },
               "example": {
-                "indexes": []
+                "group_ids": [
+                  91
+                ]
               }
             }
           }
@@ -74,7 +76,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Space group indexes have been updated."
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

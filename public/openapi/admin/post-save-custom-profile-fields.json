@@ -62,9 +62,18 @@
                 }
               },
               "example": {
-                "groups": [],
-                "fields": [],
-                "is_enabled": ""
+                "config": {
+                  "fields": [],
+                  "groups": [
+                    {
+                      "edit_description": "Fill in additional information about yourself.",
+                      "is_system": true,
+                      "label": "Additional Information",
+                      "slug": "_additional_info"
+                    }
+                  ],
+                  "is_enabled": "no"
+                }
               }
             }
           }
@@ -77,37 +86,68 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "config": {
                       "type": "object",
                       "properties": {
-                        "is_enabled": {
-                          "type": "boolean"
+                        "fields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
                         },
                         "groups": {
-                          "type": "string",
-                          "nullable": true
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "edit_description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "is_system": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         },
-                        "fields": {
+                        "is_enabled": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Custom profile fields have been saved successfully",
                   "config": {
-                    "is_enabled": false,
-                    "groups": null,
-                    "fields": null
-                  }
+                    "fields": [],
+                    "groups": [
+                      {
+                        "edit_description": "Fill in additional information about yourself.",
+                        "is_system": true,
+                        "label": "Additional Information",
+                        "slug": "_additional_info"
+                      }
+                    ],
+                    "is_enabled": "no"
+                  },
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

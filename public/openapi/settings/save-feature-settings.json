@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveFeatureSettings",
         "summary": "POST Save Feature Settings",
-        "description": "Save Feature Settings for the FluentCommunity Settings API.\n\nController: `SettingController@setFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:152`",
+        "description": "Save Feature Settings for the FluentCommunity Settings API.\n\nController: `SettingController@setFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
         "tags": [
           "Settings"
         ],
@@ -57,7 +57,19 @@
               },
               "example": {
                 "features": {
-                  "giphy_api_key": ""
+                  "cloud_storage": "yes",
+                  "content_moderation": "yes",
+                  "course_module": "yes",
+                  "custom_profile_fields": "no",
+                  "emoji_module": "yes",
+                  "followers_module": "yes",
+                  "giphy_api_key": "FCOM_ENCRYPTED_DATA_KEY",
+                  "giphy_module": "yes",
+                  "has_crm_sync": "yes",
+                  "invitation": "yes",
+                  "leader_board_module": "yes",
+                  "pwa_module": "no",
+                  "user_badge": "yes"
                 }
               }
             }
@@ -79,7 +91,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Features saved successfully."
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

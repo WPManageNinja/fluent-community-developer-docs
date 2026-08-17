@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateSpaceLinks",
         "summary": "POST Update Space Links",
-        "description": "Update Space Links for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:26`",
+        "description": "Update Space Links for the FluentCommunity Spaces API.\n\nController: `SpaceController@updateLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:27`",
         "tags": [
           "Spaces"
         ],
@@ -63,7 +63,13 @@
                 }
               },
               "example": {
-                "links": []
+                "links": [
+                  {
+                    "is_new_tab": "yes",
+                    "title": "Space guidelines",
+                    "url": "https://example.com/guidelines"
+                  }
+                ]
               }
             }
           }
@@ -76,23 +82,38 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "links": {
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated for the space",
-                  "links": []
+                  "links": [
+                    {
+                      "slug": "space-guidelines",
+                      "title": "Space guidelines"
+                    }
+                  ],
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

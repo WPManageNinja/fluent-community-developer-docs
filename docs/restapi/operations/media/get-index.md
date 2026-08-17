@@ -12,4 +12,8 @@ aside: false
 - **Controller:** `MediaGalleryController@index`
 - **Route source:** `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`
 
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
+
 <OAOperation operationId="getIndex" specUrl="/openapi/public/media/get-index.json" />

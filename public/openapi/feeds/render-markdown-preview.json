@@ -27,7 +27,7 @@
       "post": {
         "operationId": "renderMarkdownPreview",
         "summary": "POST Render Markdown Preview",
-        "description": "Render Markdown Preview for the FluentCommunity Feeds API.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:80`",
+        "description": "Render Markdown Preview for the FluentCommunity Feeds API.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:82`",
         "tags": [
           "Feeds"
         ],
@@ -59,9 +59,7 @@
                 }
               },
               "example": {
-                "text": "",
-                "with": [],
-                "feed": ""
+                "message": "Just tried it and it works exactly as described."
               }
             }
           }
@@ -77,12 +75,17 @@
                     "html": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "message_rendered": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "html": "<p>...</p>"
+                  "html": "",
+                  "message_rendered": ""
                 }
               }
             }

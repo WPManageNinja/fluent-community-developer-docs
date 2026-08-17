@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteModerationReport",
         "summary": "DELETE Delete Moderation Report",
-        "description": "Delete Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@delete`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:98`",
+        "description": "Delete Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@delete`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:100`",
         "tags": [
           "Reports"
         ],
@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Report deleted successfully"
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

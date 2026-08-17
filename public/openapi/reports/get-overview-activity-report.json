@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOverviewActivityReport",
         "summary": "GET Get Overview Activity Report",
-        "description": "Get Overview Activity Report for the FluentCommunity Reports API.\n\nController: `ReportsController@activityReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:70`",
+        "description": "Get Overview Activity Report for the FluentCommunity Reports API.\n\nController: `ReportsController@activityReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:72`",
         "tags": [
           "Reports"
         ],
@@ -57,17 +57,57 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "activity": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "integer"
+                              },
+                              "date": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": {
+                    "activity": "posts",
+                    "data": [
+                      {
+                        "data": 10,
+                        "date": "2026-07-18"
+                      },
+                      {
+                        "data": 5,
+                        "date": "2026-07-19"
+                      },
+                      {
+                        "data": 9,
+                        "date": "2026-07-20"
+                      }
+                    ],
+                    "title": "How we plan our release cycle"
+                  }
                 }
               }
             }

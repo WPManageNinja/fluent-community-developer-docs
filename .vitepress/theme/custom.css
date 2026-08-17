@@ -416,6 +416,14 @@ html:not(.dark) {
   vertical-align: middle;
 }
 
+/* Qualifier after an edition label, e.g. Core (also fired by Pro). Deliberately
+   quiet: it is a footnote about where a hook is called from, not a licence tier. */
+.edition-note {
+  color: var(--vp-c-text-3);
+  font-size: 0.78em;
+  white-space: nowrap;
+}
+
 /* Custom styling for code blocks */
 .vp-doc div[class*='language-'] {
   border-radius: 8px;

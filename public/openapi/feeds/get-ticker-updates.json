@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getTickerUpdates",
         "summary": "GET Get Ticker Updates",
-        "description": "Get Ticker Updates for the FluentCommunity Feeds API.\n\nController: `FeedsController@getTickerUpdates`\nRoute source: `fluent-community/app/Http/Routes/api.php:64`",
+        "description": "Get Ticker Updates for the FluentCommunity Feeds API.\n\nController: `FeedsController@getTickerUpdates`\nRoute source: `fluent-community/app/Http/Routes/api.php:65`",
         "tags": [
           "Feeds"
         ],
@@ -65,27 +65,27 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "has_changes": {
+                      "type": "boolean"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "nullable": false
+                    },
                     "updates": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "additionalProperties": true
                       }
-                    },
-                    "timestamp": {
-                      "type": "string",
-                      "nullable": false
-                    },
-                    "has_changes": {
-                      "type": "boolean"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "updates": [],
-                  "timestamp": "2026-01-01 00:00:00",
-                  "has_changes": false
+                  "has_changes": false,
+                  "timestamp": "2026-08-17 22:04:06",
+                  "updates": []
                 }
               }
             }

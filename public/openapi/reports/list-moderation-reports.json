@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listModerationReports",
         "summary": "GET List Moderation Reports",
-        "description": "List Moderation Reports for the FluentCommunity Reports API.\n\nController: `ModerationController@get`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:96`",
+        "description": "List Moderation Reports for the FluentCommunity Reports API.\n\nController: `ModerationController@get`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:98`",
         "tags": [
           "Reports"
         ],
@@ -85,38 +85,560 @@
                     "reports": {
                       "type": "object",
                       "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
                         "data": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
+                              "comment": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "content_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "explanation": {
+                                "type": "string",
+                                "nullable": false
+                              },
                               "id": {
                                 "type": "integer"
+                              },
+                              "meta": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "parent_id": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "post": {
+                                "type": "object",
+                                "properties": {
+                                  "comments_count": {
+                                    "type": "integer"
+                                  },
+                                  "content_type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "expired_at": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "featured_image": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "is_sticky": {
+                                    "type": "integer"
+                                  },
+                                  "message": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "message_rendered": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "auto_flagged": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "flagged_reason": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "media_preview": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "prevent_published": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "reports_count": {
+                                        "type": "integer"
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "parent_id": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "priority": {
+                                    "type": "integer"
+                                  },
+                                  "privacy": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "reactions_count": {
+                                    "type": "integer"
+                                  },
+                                  "scheduled_at": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "space": {
+                                    "type": "object",
+                                    "properties": {
+                                      "cover_photo": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "created_at": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "created_by": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "id": {
+                                        "type": "integer"
+                                      },
+                                      "logo": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "parent_id": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "privacy": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "serial": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "settings": {
+                                        "type": "object",
+                                        "properties": {
+                                          "can_request_join": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "custom_lock_screen": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "default_comment_sort_by": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "default_post_sort_by": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "disable_layout_style": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "disable_post_sort_by": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "document_access": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "document_library": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "document_upload": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "emoji": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "hide_members_count": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "layout_style": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "links": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "media_access": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "media_gallery": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "members_page_status": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "og_image": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "restricted_post_only": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "shape_svg": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "show_paywalls": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "show_sidebar": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "topic_required": {
+                                            "type": "string",
+                                            "nullable": false
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      },
+                                      "slug": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "status": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "updated_at": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "space_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "xprofile": {
+                                    "type": "object",
+                                    "properties": {
+                                      "avatar": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "badge": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "created_at": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "display_name": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "id": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "is_verified": {
+                                        "type": "integer"
+                                      },
+                                      "last_activity": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "meta": {
+                                        "type": "object",
+                                        "properties": {
+                                          "badge_slug": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "cover_photo": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "headline": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "short_description_rendered": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "website": {
+                                            "type": "string",
+                                            "nullable": false
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      },
+                                      "permalink": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "short_description": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "status": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "total_points": {
+                                        "type": "integer"
+                                      },
+                                      "updated_at": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "user_id": {
+                                        "type": "integer"
+                                      },
+                                      "username": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "post_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "reason": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "reporter": {
+                                "type": "object",
+                                "properties": {
+                                  "avatar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "badge": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "display_name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "is_verified": {
+                                    "type": "integer"
+                                  },
+                                  "last_activity": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "cover_photo": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "short_description_rendered": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "total_points": {
+                                    "type": "integer"
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "username": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "reports_count": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "user_id": {
+                                "type": "string",
+                                "nullable": false
                               }
                             },
                             "additionalProperties": false
                           }
                         },
-                        "current_page": {
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "from": {
                           "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
                         },
                         "per_page": {
                           "type": "integer"
                         },
-                        "from": {
-                          "type": "integer"
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
                         },
                         "to": {
                           "type": "integer"
                         },
                         "total": {
                           "type": "integer"
-                        },
-                        "last_page": {
-                          "type": "integer"
-                        },
-                        "has_more": {
-                          "type": "boolean"
                         }
                       },
                       "additionalProperties": false
@@ -126,18 +648,408 @@
                 },
                 "example": {
                   "reports": {
+                    "current_page": 1,
                     "data": [
                       {
-                        "id": 0
+                        "comment": null,
+                        "content_type": "post",
+                        "created_at": "2026-08-17 22:05:20",
+                        "explanation": "This post looks like spam.",
+                        "id": 59784,
+                        "meta": null,
+                        "parent_id": null,
+                        "post": {
+                          "comments_count": 0,
+                          "content_type": "text",
+                          "created_at": "2026-08-17 22:04:05",
+                          "expired_at": null,
+                          "featured_image": null,
+                          "id": 15010,
+                          "is_sticky": 0,
+                          "message": "Great point — I ran into the same thing last week.",
+                          "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                          "meta": {
+                            "auto_flagged": "yes",
+                            "flagged_reason": "first_post_approval",
+                            "media_preview": null,
+                            "prevent_published": "yes",
+                            "reports_count": 2
+                          },
+                          "parent_id": null,
+                          "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/second-scratch-post",
+                          "priority": 0,
+                          "privacy": "public",
+                          "reactions_count": 0,
+                          "scheduled_at": null,
+                          "slug": "second-scratch-post",
+                          "space": {
+                            "cover_photo": null,
+                            "created_at": "2026-08-17 22:04:05",
+                            "created_by": "1",
+                            "description": "A place to introduce yourself and meet other members.",
+                            "id": 92,
+                            "logo": null,
+                            "parent_id": "91",
+                            "privacy": "public",
+                            "serial": "1",
+                            "settings": {
+                              "can_request_join": "no",
+                              "custom_lock_screen": "no",
+                              "default_comment_sort_by": "",
+                              "default_post_sort_by": "",
+                              "disable_layout_style": "no",
+                              "disable_post_sort_by": "no",
+                              "document_access": "everybody",
+                              "document_library": "yes",
+                              "document_upload": "admin_only",
+                              "emoji": "",
+                              "hide_members_count": "no",
+                              "layout_style": "timeline",
+                              "links": [],
+                              "media_access": "everybody",
+                              "media_gallery": "yes",
+                              "members_page_status": "members_only",
+                              "og_image": "",
+                              "restricted_post_only": "no",
+                              "shape_svg": "",
+                              "show_paywalls": "no",
+                              "show_sidebar": "no",
+                              "topic_required": "no"
+                            },
+                            "slug": "general-discussion",
+                            "status": "published",
+                            "title": "General Discussion",
+                            "type": "community",
+                            "updated_at": "2026-08-17 22:04:05"
+                          },
+                          "space_id": "92",
+                          "status": "pending",
+                          "title": "Community poll results",
+                          "type": "text",
+                          "updated_at": "2026-08-17 22:05:20",
+                          "user_id": "13096",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                            "badge": null,
+                            "created_at": "2026-08-17 21:31:52",
+                            "display_name": "Mei Tanaka",
+                            "id": "12393",
+                            "is_verified": 0,
+                            "last_activity": null,
+                            "meta": {
+                              "badge_slug": [],
+                              "cover_photo": "",
+                              "headline": "Product Designer",
+                              "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                            "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                            "status": "active",
+                            "total_points": 0,
+                            "updated_at": "2026-08-17 21:56:17",
+                            "user_id": 13096,
+                            "username": "mei_tanaka_3"
+                          }
+                        },
+                        "post_id": "15010",
+                        "reason": "spam",
+                        "reporter": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                          "badge": null,
+                          "created_at": "2026-08-17 21:31:53",
+                          "display_name": "Noah Fischer",
+                          "id": "12395",
+                          "is_verified": 0,
+                          "last_activity": null,
+                          "meta": {
+                            "cover_photo": "",
+                            "short_description_rendered": "<p>Freelancer building sites for small businesses.</p>",
+                            "website": ""
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/noah_fischer_3",
+                          "short_description": "Freelancer building sites for small businesses.",
+                          "status": "active",
+                          "total_points": 0,
+                          "updated_at": "2026-08-17 21:37:21",
+                          "user_id": 13098,
+                          "username": "noah_fischer_3"
+                        },
+                        "reports_count": "2",
+                        "status": "pending",
+                        "type": "report",
+                        "user_id": "13098"
+                      },
+                      {
+                        "comment": null,
+                        "content_type": "post",
+                        "created_at": "2026-08-17 22:04:05",
+                        "explanation": "Following. I would love to see a worked example of this.",
+                        "id": 59780,
+                        "meta": {
+                          "flagged_by": "auto"
+                        },
+                        "parent_id": null,
+                        "post": {
+                          "comments_count": 0,
+                          "content_type": "text",
+                          "created_at": "2026-08-17 22:04:05",
+                          "expired_at": null,
+                          "featured_image": null,
+                          "id": 15010,
+                          "is_sticky": 0,
+                          "message": "Great point — I ran into the same thing last week.",
+                          "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                          "meta": {
+                            "auto_flagged": "yes",
+                            "flagged_reason": "first_post_approval",
+                            "media_preview": null,
+                            "prevent_published": "yes",
+                            "reports_count": 2
+                          },
+                          "parent_id": null,
+                          "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/second-scratch-post",
+                          "priority": 0,
+                          "privacy": "public",
+                          "reactions_count": 0,
+                          "scheduled_at": null,
+                          "slug": "second-scratch-post",
+                          "space": {
+                            "cover_photo": null,
+                            "created_at": "2026-08-17 22:04:05",
+                            "created_by": "1",
+                            "description": "A place to introduce yourself and meet other members.",
+                            "id": 92,
+                            "logo": null,
+                            "parent_id": "91",
+                            "privacy": "public",
+                            "serial": "1",
+                            "settings": {
+                              "can_request_join": "no",
+                              "custom_lock_screen": "no",
+                              "default_comment_sort_by": "",
+                              "default_post_sort_by": "",
+                              "disable_layout_style": "no",
+                              "disable_post_sort_by": "no",
+                              "document_access": "everybody",
+                              "document_library": "yes",
+                              "document_upload": "admin_only",
+                              "emoji": "",
+                              "hide_members_count": "no",
+                              "layout_style": "timeline",
+                              "links": [],
+                              "media_access": "everybody",
+                              "media_gallery": "yes",
+                              "members_page_status": "members_only",
+                              "og_image": "",
+                              "restricted_post_only": "no",
+                              "shape_svg": "",
+                              "show_paywalls": "no",
+                              "show_sidebar": "no",
+                              "topic_required": "no"
+                            },
+                            "slug": "general-discussion",
+                            "status": "published",
+                            "title": "General Discussion",
+                            "type": "community",
+                            "updated_at": "2026-08-17 22:04:05"
+                          },
+                          "space_id": "92",
+                          "status": "pending",
+                          "title": "Community poll results",
+                          "type": "text",
+                          "updated_at": "2026-08-17 22:05:20",
+                          "user_id": "13096",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                            "badge": null,
+                            "created_at": "2026-08-17 21:31:52",
+                            "display_name": "Mei Tanaka",
+                            "id": "12393",
+                            "is_verified": 0,
+                            "last_activity": null,
+                            "meta": {
+                              "badge_slug": [],
+                              "cover_photo": "",
+                              "headline": "Product Designer",
+                              "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                            "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                            "status": "active",
+                            "total_points": 0,
+                            "updated_at": "2026-08-17 21:56:17",
+                            "user_id": 13096,
+                            "username": "mei_tanaka_3"
+                          }
+                        },
+                        "post_id": "15010",
+                        "reason": "first_post_approval",
+                        "reporter": null,
+                        "reports_count": "2",
+                        "status": "flagged",
+                        "type": "report",
+                        "user_id": null
+                      },
+                      {
+                        "comment": null,
+                        "content_type": "post",
+                        "created_at": "2026-08-14 00:19:34",
+                        "explanation": "Following. I would love to see a worked example of this.",
+                        "id": 59718,
+                        "meta": {
+                          "flagged_by": "auto",
+                          "updated_by": 1
+                        },
+                        "parent_id": null,
+                        "post": {
+                          "comments_count": 1,
+                          "content_type": "text",
+                          "created_at": "2026-08-14 00:19:34",
+                          "expired_at": null,
+                          "featured_image": null,
+                          "id": 14880,
+                          "is_sticky": 0,
+                          "message": "This is really helpful, thanks for writing it up.",
+                          "message_rendered": "<p>Following. I would love to see a worked example of this.</p>",
+                          "meta": {
+                            "reports_count": 0
+                          },
+                          "parent_id": null,
+                          "permalink": "https://yourwebsite.com/portal/space/community-meta/post/post-title-optional",
+                          "priority": 0,
+                          "privacy": "public",
+                          "reactions_count": 1,
+                          "scheduled_at": null,
+                          "slug": "post-title-optional",
+                          "space": {
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "created_at": "2024-03-28 02:06:51",
+                            "created_by": "1",
+                            "description": "Questions, answers, and troubleshooting help from the community.",
+                            "id": 3,
+                            "logo": "https://cdn.yourwebsite.com/uploads/cropped-fluent-community-siteicon-180x180-1.webp",
+                            "parent_id": "5",
+                            "privacy": "public",
+                            "serial": "2",
+                            "settings": {
+                              "can_request_join": "yes",
+                              "custom_lock_screen": "no",
+                              "default_post_sort_by": "",
+                              "disable_post_sort_by": "no",
+                              "document_access": "members_only",
+                              "document_library": "no",
+                              "document_upload": "admin_only",
+                              "emoji": "",
+                              "hide_members_count": "no",
+                              "layout_style": "timeline",
+                              "links": [
+                                {
+                                  "emoji": "👉",
+                                  "enabled": "yes",
+                                  "new_tab": "yes",
+                                  "permalink": "https://fluentcommunity.co/",
+                                  "slug": "fcom_custom_website",
+                                  "title": "Welcome to the community"
+                                },
+                                {
+                                  "enabled": "yes",
+                                  "new_tab": "yes",
+                                  "permalink": "https://fluentcommunity.co/discount-deal",
+                                  "shape_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" color=\"currentColor\" fill=\"none\">\n    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V12.5H9.50003C9.09557 …",
+                                  "slug": "fcom_custom_download_beta",
+                                  "title": "Welcome to the community"
+                                },
+                                {
+                                  "enabled": "yes",
+                                  "new_tab": "yes",
+                                  "permalink": "https://dev.fluentcommunity.co/",
+                                  "privacy": "public",
+                                  "shape_svg": "<svg width=\"800px\" height=\"800px\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M7.90451 6.92144C8.41341 6.45495 8.44779 5.66424 7.9813 5.15534C7.51481 4.64645 6.7241 4.61207 6.2152 5.07856L7.90451 6.92144ZM1.46194 11.1314L2.3066 12.0529L2.3066 12.0529L1.46194 11.1314ZM1.46194 11.8686L2.3066 10.9471L2.3066 10.9471L1.46194 11.8686ZM6.2152 17.9214C6.7241 18.3879 7.5148 …",
+                                  "slug": "fcom_custom_https___dev_fluentcommunity_co_",
+                                  "title": "Feature request round-up"
+                                }
+                              ],
+                              "members_page_status": "members_only",
+                              "og_image": "",
+                              "onboard_redirect_url": "",
+                              "restricted_post_only": "no",
+                              "shape_svg": "",
+                              "show_fetured_image": "yes",
+                              "show_paywalls": "no",
+                              "show_sidebar": "yes",
+                              "topic_required": "yes"
+                            },
+                            "slug": "community-meta",
+                            "status": "published",
+                            "title": "Weekly office hours are back",
+                            "type": "community",
+                            "updated_at": "2025-11-25 14:20:07"
+                          },
+                          "space_id": "3",
+                          "status": "published",
+                          "title": "Share your workflow setup",
+                          "type": "text",
+                          "updated_at": "2026-08-14 01:47:19",
+                          "user_id": "3687",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/priya_nair_2.png",
+                            "badge": null,
+                            "created_at": "2024-12-06 20:51:30",
+                            "display_name": "Priya Nair",
+                            "id": "3589",
+                            "is_verified": 0,
+                            "last_activity": "2026-08-13 18:14:37",
+                            "meta": {
+                              "cover_photo": "",
+                              "website": ""
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/priya_nair_2",
+                            "short_description": "Course creator focused on practical, hands-on lessons.",
+                            "status": "active",
+                            "total_points": 1,
+                            "updated_at": "2026-08-15 09:09:19",
+                            "user_id": 3687,
+                            "username": "priya_nair_2"
+                          }
+                        },
+                        "post_id": "14880",
+                        "reason": "first_post_approval",
+                        "reporter": null,
+                        "reports_count": "1",
+                        "status": "ignored",
+                        "type": "report",
+                        "user_id": null
                       }
                     ],
-                    "current_page": 1,
-                    "per_page": 10,
+                    "first_page_url": "https://yourwebsite.com/?page=1",
                     "from": 1,
-                    "to": 1,
-                    "total": 1,
-                    "last_page": 1,
-                    "has_more": false
+                    "last_page": 63,
+                    "last_page_url": "https://yourwebsite.com/?page=63",
+                    "links": [
+                      {
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "2",
+                        "url": "https://yourwebsite.com/?page=2"
+                      }
+                    ],
+                    "next_page_url": "https://yourwebsite.com/?page=2",
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": 15,
+                    "total": 934
                   }
                 }
               }

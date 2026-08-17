@@ -45,6 +45,255 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "levels": {
+                      "type": "object",
+                      "properties": {
+                        "level_1": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_2": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_3": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_4": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_5": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_6": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_7": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_8": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_9": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
@@ -53,7 +302,81 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "levels": {
+                    "level_1": {
+                      "level": 1,
+                      "max_points": 4,
+                      "min_points": 0,
+                      "slug": "level_1",
+                      "tagline": "Taking the first steps into our vibrant world",
+                      "title": "Three things I learned this month"
+                    },
+                    "level_2": {
+                      "level": 2,
+                      "max_points": 19,
+                      "min_points": 5,
+                      "slug": "level_2",
+                      "tagline": "Uncovering the secrets of community mastery",
+                      "title": "Three things I learned this month"
+                    },
+                    "level_3": {
+                      "level": 3,
+                      "max_points": 64,
+                      "min_points": 20,
+                      "slug": "level_3",
+                      "tagline": "Igniting passion and fostering connections",
+                      "title": "Feature request round-up"
+                    },
+                    "level_4": {
+                      "level": 4,
+                      "max_points": 154,
+                      "min_points": 65,
+                      "slug": "level_4",
+                      "tagline": "Weaving the fabric of shared knowledge",
+                      "title": "Three things I learned this month"
+                    },
+                    "level_5": {
+                      "level": 5,
+                      "max_points": 499,
+                      "min_points": 155,
+                      "slug": "level_5",
+                      "tagline": "Championing the cause with unwavering spirit",
+                      "title": "Welcome to the community"
+                    },
+                    "level_6": {
+                      "level": 6,
+                      "max_points": 1999,
+                      "min_points": 500,
+                      "slug": "level_6",
+                      "tagline": "Exemplifying mastery and skill",
+                      "title": "Weekly office hours are back"
+                    },
+                    "level_7": {
+                      "level": 7,
+                      "max_points": 7999,
+                      "min_points": 2000,
+                      "slug": "level_7",
+                      "tagline": "Imparting wisdom and guiding the way",
+                      "title": "Three things I learned this month"
+                    },
+                    "level_8": {
+                      "level": 8,
+                      "max_points": 24999,
+                      "min_points": 8000,
+                      "slug": "level_8",
+                      "tagline": "Leading with bold innovation and vision",
+                      "title": "Weekly office hours are back"
+                    },
+                    "level_9": {
+                      "level": 9,
+                      "max_points": 9999999999,
+                      "min_points": 25000,
+                      "slug": "level_9",
+                      "tagline": "Eternally inspiring excellence and unity",
+                      "title": "How we plan our release cycle"
+                    }
+                  },
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listScheduledPosts",
         "summary": "GET List Scheduled Posts",
-        "description": "List Scheduled Posts for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@getScheduledPosts`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:105`",
+        "description": "List Scheduled Posts for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@getScheduledPosts`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:109`",
         "tags": [
           "Feeds"
         ],
@@ -58,6 +58,9 @@
                     "feeds": {
                       "type": "object",
                       "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
                         "data": {
                           "type": "array",
                           "items": {
@@ -65,26 +68,62 @@
                             "additionalProperties": true
                           }
                         },
-                        "current_page": {
-                          "type": "integer"
-                        },
-                        "per_page": {
-                          "type": "integer"
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
                         },
                         "from": {
-                          "type": "integer"
-                        },
-                        "to": {
-                          "type": "integer"
-                        },
-                        "total": {
-                          "type": "integer"
+                          "type": "string",
+                          "nullable": true
                         },
                         "last_page": {
                           "type": "integer"
                         },
-                        "has_more": {
-                          "type": "boolean"
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "to": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "total": {
+                          "type": "integer"
                         }
                       },
                       "additionalProperties": false
@@ -94,14 +133,35 @@
                 },
                 "example": {
                   "feeds": {
-                    "data": [],
                     "current_page": 1,
-                    "per_page": 10,
-                    "from": 0,
-                    "to": 0,
-                    "total": 0,
-                    "last_page": 0,
-                    "has_more": false
+                    "data": [],
+                    "first_page_url": "https://yourwebsite.com/?page=1",
+                    "from": null,
+                    "last_page": 1,
+                    "last_page_url": "https://yourwebsite.com/?page=1",
+                    "links": [
+                      {
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "pagination.next",
+                        "url": null
+                      }
+                    ],
+                    "next_page_url": null,
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": null,
+                    "total": 0
                   }
                 }
               }

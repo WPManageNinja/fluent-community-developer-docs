@@ -10,7 +10,11 @@ aside: false
 - **Path:** `/admin/profile-link-providers`
 - **Edition:** Core
 - **Controller:** `AdminController@updateProfileLinkProviders`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:116`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:119`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
+
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
 
 <OAOperation operationId="saveProfileLinkProviders" specUrl="/openapi/public/admin/save-profile-link-providers.json" />

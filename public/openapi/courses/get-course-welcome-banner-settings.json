@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourseWelcomeBannerSettings",
         "summary": "GET Get Course Welcome Banner Settings",
-        "description": "Get Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@getCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:62`",
+        "description": "Get Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@getCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:64`",
         "tags": [
           "Courses"
         ],
@@ -57,14 +57,194 @@
                   "properties": {
                     "settings": {
                       "type": "object",
-                      "properties": {},
+                      "properties": {
+                        "enrolled": {
+                          "type": "object",
+                          "properties": {
+                            "allowClose": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerImage": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerVideo": {
+                              "type": "object",
+                              "properties": {
+                                "author_name": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "ctaButtons": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enabled": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "not_enrolled": {
+                          "type": "object",
+                          "properties": {
+                            "allowClose": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerImage": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "bannerVideo": {
+                              "type": "object",
+                              "properties": {
+                                "author_name": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "html": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "ctaButtons": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enabled": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
                       "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "settings": {}
+                  "settings": {
+                    "enrolled": {
+                      "allowClose": "no",
+                      "bannerImage": "",
+                      "bannerVideo": {
+                        "author_name": "",
+                        "content_type": "",
+                        "html": "",
+                        "provider": "",
+                        "title": "",
+                        "type": "oembed",
+                        "url": ""
+                      },
+                      "ctaButtons": [],
+                      "description": "",
+                      "enabled": "no",
+                      "mediaType": "image",
+                      "title": ""
+                    },
+                    "not_enrolled": {
+                      "allowClose": "no",
+                      "bannerImage": "",
+                      "bannerVideo": {
+                        "author_name": "",
+                        "content_type": "",
+                        "html": "",
+                        "provider": "",
+                        "title": "",
+                        "type": "oembed",
+                        "url": ""
+                      },
+                      "ctaButtons": [],
+                      "description": "",
+                      "enabled": "no",
+                      "mediaType": "image",
+                      "title": ""
+                    }
+                  }
                 }
               }
             }

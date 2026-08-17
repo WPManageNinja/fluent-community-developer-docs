@@ -63,7 +63,7 @@
                 ]
               },
               "example": {
-                "user_id": ""
+                "user_id": 13096
               }
             }
           }
@@ -84,7 +84,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "User has been added to this course"
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

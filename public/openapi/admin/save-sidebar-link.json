@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSidebarLink",
         "summary": "POST Save Sidebar Link",
-        "description": "Save Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:52`",
+        "description": "Save Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:54`",
         "tags": [
           "Admin"
         ],
@@ -84,13 +84,15 @@
               },
               "example": {
                 "link": {
-                  "title": "",
-                  "parent_id": "",
-                  "privacy": "",
+                  "parent_id": 91,
+                  "privacy": "public",
                   "settings": {
-                    "permalink": "",
-                    "membership_ids": []
-                  }
+                    "emoji": "",
+                    "new_tab": "yes",
+                    "permalink": "https://example.com/docs",
+                    "shape_svg": ""
+                  },
+                  "title": "Help Centre"
                 }
               }
             }
@@ -107,8 +109,74 @@
                     "link": {
                       "type": "object",
                       "properties": {
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_by": {
+                          "type": "integer"
+                        },
                         "id": {
                           "type": "integer"
+                        },
+                        "parent_id": {
+                          "type": "integer"
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "serial": {
+                          "type": "integer"
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "emoji": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "membership_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "new_tab": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "permalink": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "shape_svg": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -122,9 +190,26 @@
                 },
                 "example": {
                   "link": {
-                    "id": 0
+                    "created_at": "2026-08-17 22:05:22",
+                    "created_by": 1,
+                    "id": 99,
+                    "parent_id": 91,
+                    "privacy": "public",
+                    "serial": 20,
+                    "settings": {
+                      "emoji": "",
+                      "membership_ids": [],
+                      "new_tab": "yes",
+                      "permalink": "https://example.com/docs",
+                      "shape_svg": ""
+                    },
+                    "slug": "custom_help-centre_1787004322",
+                    "status": "published",
+                    "title": "Help Centre",
+                    "type": "sidebar_link",
+                    "updated_at": "2026-08-17 22:05:22"
                   },
-                  "message": "The link has been saved successfully"
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

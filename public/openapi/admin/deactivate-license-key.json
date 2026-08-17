@@ -46,8 +46,18 @@
                   "type": "object",
                   "properties": {
                     "license_data": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "type": "string",
@@ -57,7 +67,10 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "license_data": null,
+                  "license_data": {
+                    "status": "deactivated",
+                    "message": "License has been deactivated for this site"
+                  },
                   "message": "Your license key has been successfully deactivated"
                 }
               }

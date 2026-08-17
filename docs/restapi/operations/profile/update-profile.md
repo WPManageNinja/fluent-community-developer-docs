@@ -10,7 +10,11 @@ aside: false
 - **Path:** `/profile/{username}`
 - **Edition:** Core
 - **Controller:** `ProfileController@updateProfile`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:85`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:87`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
+
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
 
 <OAOperation operationId="updateProfile" specUrl="/openapi/public/profile/update-profile.json" />

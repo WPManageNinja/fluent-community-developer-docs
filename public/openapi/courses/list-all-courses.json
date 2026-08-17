@@ -49,7 +49,463 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "course": {
+                            "type": "object",
+                            "properties": {
+                              "can_self_enroll": {
+                                "type": "boolean"
+                              },
+                              "cover_photo": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_by": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "creator": {
+                                "type": "object",
+                                "properties": {
+                                  "avatar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "badge": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "display_name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "is_verified": {
+                                    "type": "integer"
+                                  },
+                                  "laravel_through_key": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "last_activity": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "badge_slug": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "cover_photo": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "social_links": {
+                                        "type": "object",
+                                        "properties": {
+                                          "fb": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "instagram": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "linkedin": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "twitter": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "youtube": {
+                                            "type": "string",
+                                            "nullable": false
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description_rendered": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "total_courses": {
+                                    "type": "integer"
+                                  },
+                                  "total_points": {
+                                    "type": "integer"
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "username": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "isEnrolled": {
+                                "type": "boolean"
+                              },
+                              "is_course_admin": {
+                                "type": "boolean"
+                              },
+                              "lessonsCount": {
+                                "type": "integer"
+                              },
+                              "logo": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "parent_id": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "privacy": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "sectionsCount": {
+                                "type": "integer"
+                              },
+                              "serial": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "settings": {
+                                "type": "object",
+                                "properties": {
+                                  "can_request_join": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "course_type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "custom_lock_screen": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "emoji": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "hide_members_count": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "layout_style": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "links": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "members_page_status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "og_image": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "restricted_post_only": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "shape_svg": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "show_sidebar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "topic_required": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "studentsCount": {
+                                "type": "integer"
+                              },
+                              "title": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "welcome_banner": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "sections": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "created_at": {
+                                  "type": "object",
+                                  "properties": {
+                                    "date": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "timezone": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "timezone_type": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "is_locked": {
+                                  "type": "boolean"
+                                },
+                                "lessons": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "can_view": {
+                                        "type": "boolean"
+                                      },
+                                      "comments_count": {
+                                        "type": "integer"
+                                      },
+                                      "content": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "content_type": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "course_id": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "created_at": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "featured_image": {
+                                        "type": "string",
+                                        "nullable": true
+                                      },
+                                      "id": {
+                                        "type": "integer"
+                                      },
+                                      "inline_css": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "is_locked": {
+                                        "type": "boolean"
+                                      },
+                                      "lazy_load": {
+                                        "type": "boolean"
+                                      },
+                                      "lock_type": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "meta": {
+                                        "type": "object",
+                                        "properties": {
+                                          "document_ids": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "document_lists": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "additionalProperties": true
+                                            }
+                                          },
+                                          "enable_comments": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "enable_media": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "is_video_gated": {
+                                            "type": "boolean"
+                                          },
+                                          "media": {
+                                            "type": "object",
+                                            "properties": {
+                                              "content_type": {
+                                                "type": "string",
+                                                "nullable": false
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "nullable": false
+                                              }
+                                            },
+                                            "additionalProperties": false
+                                          },
+                                          "require_video_completion": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "video_auto_complete": {
+                                            "type": "boolean"
+                                          },
+                                          "video_completion_threshold": {
+                                            "type": "integer"
+                                          },
+                                          "video_length": {
+                                            "type": "integer"
+                                          },
+                                          "video_watched": {
+                                            "type": "boolean"
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      },
+                                      "section_id": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "slug": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "unlock_date": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "slug": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "unlock_date": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "track": {
+                            "type": "object",
+                            "properties": {
+                              "completed_lessons": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
+                              },
+                              "isEnrolled": {
+                                "type": "boolean"
+                              },
+                              "progress": {
+                                "type": "integer"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "total": {
@@ -59,8 +515,542 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "courses": [],
-                  "total": 0
+                  "courses": [
+                    {
+                      "course": {
+                        "can_self_enroll": true,
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "created_at": "2024-08-19 10:34:58",
+                        "created_by": "1",
+                        "creator": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "id": "1",
+                          "is_verified": 1,
+                          "laravel_through_key": "1",
+                          "last_activity": "2026-08-17 22:00:34",
+                          "meta": {
+                            "badge_slug": "jordan_blake_2",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "short_description_rendered": "<p>Community builder. Helping members get the most out of the platform.</p>",
+                          "status": "active",
+                          "total_courses": 9,
+                          "total_points": 20385,
+                          "updated_at": "2026-08-17 22:00:34",
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        },
+                        "description": "Share what you are building and get feedback from other members.",
+                        "id": 4,
+                        "isEnrolled": false,
+                        "is_course_admin": true,
+                        "lessonsCount": 4,
+                        "logo": null,
+                        "parent_id": null,
+                        "privacy": "public",
+                        "sectionsCount": 1,
+                        "serial": "1",
+                        "settings": {
+                          "can_request_join": "no",
+                          "course_type": "self_paced",
+                          "custom_lock_screen": "no",
+                          "emoji": "",
+                          "hide_members_count": "no",
+                          "layout_style": "timeline",
+                          "links": [],
+                          "members_page_status": "members_only",
+                          "og_image": "",
+                          "restricted_post_only": "no",
+                          "shape_svg": "",
+                          "show_sidebar": "yes",
+                          "topic_required": "no"
+                        },
+                        "slug": "test",
+                        "status": "draft",
+                        "studentsCount": 0,
+                        "title": "Feature request round-up",
+                        "type": "course",
+                        "updated_at": "2024-08-19 10:39:06",
+                        "welcome_banner": null
+                      },
+                      "sections": [
+                        {
+                          "created_at": {
+                            "date": "2024-08-19 10:35:57.000000",
+                            "timezone": "+00:00",
+                            "timezone_type": 1
+                          },
+                          "id": 742,
+                          "is_locked": false,
+                          "lessons": [
+                            {
+                              "can_view": true,
+                              "comments_count": 0,
+                              "content": "",
+                              "content_type": "text",
+                              "course_id": "4",
+                              "created_at": "2024-08-19 10:36:03",
+                              "featured_image": null,
+                              "id": 743,
+                              "inline_css": "",
+                              "is_locked": false,
+                              "lazy_load": true,
+                              "lock_type": "",
+                              "meta": {
+                                "document_ids": [],
+                                "document_lists": [],
+                                "enable_comments": "yes",
+                                "enable_media": "yes",
+                                "is_video_gated": false,
+                                "media": {
+                                  "content_type": "video",
+                                  "type": "oembed"
+                                },
+                                "require_video_completion": "no",
+                                "video_auto_complete": false,
+                                "video_completion_threshold": 80,
+                                "video_length": 0,
+                                "video_watched": false
+                              },
+                              "section_id": "742",
+                              "slug": "lesson-1",
+                              "title": "Feature request round-up",
+                              "unlock_date": ""
+                            },
+                            {
+                              "can_view": true,
+                              "comments_count": 0,
+                              "content": "",
+                              "content_type": "text",
+                              "course_id": "4",
+                              "created_at": "2024-11-18 19:43:12",
+                              "featured_image": null,
+                              "id": 2618,
+                              "inline_css": "",
+                              "is_locked": false,
+                              "lazy_load": true,
+                              "lock_type": "",
+                              "meta": {
+                                "document_ids": [],
+                                "document_lists": [],
+                                "enable_comments": "yes",
+                                "enable_media": "yes",
+                                "is_video_gated": false,
+                                "media": {
+                                  "content_type": "video",
+                                  "type": "oembed"
+                                },
+                                "require_video_completion": "no",
+                                "video_auto_complete": false,
+                                "video_completion_threshold": 80,
+                                "video_length": 0,
+                                "video_watched": false
+                              },
+                              "section_id": "742",
+                              "slug": "section-2",
+                              "title": "Weekly office hours are back",
+                              "unlock_date": ""
+                            },
+                            {
+                              "can_view": true,
+                              "comments_count": 0,
+                              "content": "",
+                              "content_type": "text",
+                              "course_id": "4",
+                              "created_at": "2025-04-08 12:04:46",
+                              "featured_image": null,
+                              "id": 5641,
+                              "inline_css": "",
+                              "is_locked": false,
+                              "lazy_load": true,
+                              "lock_type": "",
+                              "meta": {
+                                "document_ids": [],
+                                "document_lists": [],
+                                "enable_comments": "yes",
+                                "enable_media": "yes",
+                                "is_video_gated": false,
+                                "media": {
+                                  "content_type": "video",
+                                  "type": "oembed"
+                                },
+                                "require_video_completion": "no",
+                                "video_auto_complete": false,
+                                "video_completion_threshold": 80,
+                                "video_length": 0,
+                                "video_watched": false
+                              },
+                              "section_id": "742",
+                              "slug": "new-lesson",
+                              "title": "How we plan our release cycle",
+                              "unlock_date": ""
+                            }
+                          ],
+                          "slug": "section-1",
+                          "title": "Weekly office hours are back",
+                          "type": "section",
+                          "unlock_date": ""
+                        }
+                      ],
+                      "track": {
+                        "completed_lessons": [],
+                        "isEnrolled": false,
+                        "progress": 0
+                      }
+                    },
+                    {
+                      "course": {
+                        "can_self_enroll": true,
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "created_at": "2025-07-22 16:48:05",
+                        "created_by": "1",
+                        "creator": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "id": "1",
+                          "is_verified": 1,
+                          "laravel_through_key": "1",
+                          "last_activity": "2026-08-17 22:00:34",
+                          "meta": {
+                            "badge_slug": "jordan_blake_2",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "short_description_rendered": "<p>Community builder. Helping members get the most out of the platform.</p>",
+                          "status": "active",
+                          "total_courses": 9,
+                          "total_points": 20385,
+                          "updated_at": "2026-08-17 22:00:34",
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        },
+                        "description": "A place to introduce yourself and meet other members.",
+                        "id": 18,
+                        "isEnrolled": true,
+                        "is_course_admin": true,
+                        "lessonsCount": 7,
+                        "logo": null,
+                        "parent_id": "6",
+                        "privacy": "public",
+                        "sectionsCount": 1,
+                        "serial": "2",
+                        "settings": {
+                          "can_request_join": "no",
+                          "course_details": "Thinking about starting your own community or membership site? This course is for you!\n\nWe’ll walk you through everything. From setting up your space, engaging your audience, to turning your followers into loyal members who want to stick around and support you.\n\nWhether you're a creator, coach, or just figuring it out as you go, this course will help you build something meaningful (and yes, profit …",
+                          "course_details_rendered": "<p>Thinking about starting your own community or membership site? This course is for you!</p>\n<p>We’ll walk you through everything. From setting up your space, engaging your audience, to turning your followers into loyal members who want to stick around and support you.</p>\n<p>Whether you're a creator, coach, or just figuring it out as you go, this course will help you build something meaningful ( …",
+                          "course_layout": "modern",
+                          "course_type": "self_paced",
+                          "custom_lock_screen": "no",
+                          "disable_comments": "no",
+                          "emoji": "",
+                          "hide_instructor_view": "no",
+                          "hide_members_count": "yes",
+                          "layout_style": "timeline",
+                          "links": [],
+                          "members_page_status": "members_only",
+                          "og_image": "",
+                          "public_lesson_view": "yes",
+                          "restricted_post_only": "no",
+                          "shape_svg": "",
+                          "show_instructor_students_count": "no",
+                          "show_paywalls": "no",
+                          "show_sidebar": "yes",
+                          "topic_required": "no"
+                        },
+                        "slug": "fluentcommunity-101",
+                        "status": "draft",
+                        "studentsCount": 0,
+                        "title": "Share your workflow setup",
+                        "type": "course",
+                        "updated_at": "2026-02-20 02:50:52",
+                        "welcome_banner": null
+                      },
+                      "sections": [
+                        {
+                          "created_at": {
+                            "date": "2025-07-22 16:50:09.000000",
+                            "timezone": "+00:00",
+                            "timezone_type": 1
+                          },
+                          "id": 7689,
+                          "is_locked": false,
+                          "lessons": [
+                            {
+                              "can_view": true,
+                              "comments_count": 0,
+                              "content": "",
+                              "content_type": "text",
+                              "course_id": "18",
+                              "created_at": "2025-07-22 16:58:40",
+                              "featured_image": null,
+                              "id": 7697,
+                              "inline_css": "",
+                              "is_locked": false,
+                              "lazy_load": true,
+                              "lock_type": "",
+                              "meta": {
+                                "document_ids": [],
+                                "document_lists": [
+                                  {
+                                    "id": 6500,
+                                    "media_key": "0335eb0ba051fc9b84aeef5887b99b2d",
+                                    "title": "Share your workflow setup",
+                                    "type": "image/png",
+                                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=0335eb0ba051fc9b84aeef5887b99b2d&media_id=6500"
+                                  }
+                                ],
+                                "enable_comments": "yes",
+                                "enable_media": "yes",
+                                "enable_passing_score": "no",
+                                "enforce_passing_score": "no",
+                                "featured_image_id": 0,
+                                "free_preview_lesson": "yes",
+                                "hide_result": "no",
+                                "is_video_gated": false,
+                                "media": {
+                                  "author_name": "Your Company",
+                                  "content_type": "video",
+                                  "html": "<iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/HYFKUxaW9jU?list=PLXpD0vT4thWGtdp0eObH1BkaS6vI2GKy4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+                                  "image": "https://i.ytimg.com/vi/HYFKUxaW9jU/hqdefault.jpg",
+                                  "provider": "http://youtube",
+                                  "title": "Three things I learned this month",
+                                  "type": "oembed",
+                                  "url": "https://www.youtube.com/watch?v=HYFKUxaW9jU&list=PLXpD0vT4thWGtdp0eObH1BkaS6vI2GKy4&index=2&t=3s"
+                                },
+                                "passing_score": 0,
+                                "require_video_completion": "no",
+                                "video_auto_complete": false,
+                                "video_completion_threshold": 80,
+                                "video_length": 662,
+                                "video_watched": false
+                              },
+                              "section_id": "7689",
+                              "slug": "introducing-fluentcommunity",
+                              "title": "Community guidelines refresh",
+                              "unlock_date": null
+                            },
+                            {
+                              "can_view": true,
+                              "comments_count": 0,
+                              "content": "",
+                              "content_type": "text",
+                              "course_id": "18",
+                              "created_at": "2025-07-22 17:10:18",
+                              "featured_image": null,
+                              "id": 7698,
+                              "inline_css": "",
+                              "is_locked": false,
+                              "lazy_load": true,
+                              "lock_type": "",
+                              "meta": {
+                                "document_ids": [],
+                                "document_lists": [
+                                  {
+                                    "id": 6501,
+                                    "media_key": "5ecb6799d7cf315403eb02c909e612a5",
+                                    "title": "How we plan our release cycle",
+                                    "type": "image/png",
+                                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=5ecb6799d7cf315403eb02c909e612a5&media_id=6501"
+                                  }
+                                ],
+                                "enable_comments": "yes",
+                                "enable_media": "yes",
+                                "enable_passing_score": "no",
+                                "enforce_passing_score": "no",
+                                "featured_image_id": 0,
+                                "free_preview_lesson": "yes",
+                                "hide_result": "no",
+                                "is_video_gated": false,
+                                "media": {
+                                  "author_name": "Your Company",
+                                  "content_type": "video",
+                                  "html": "<iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/LZ7aDq1ASEk?list=PLXpD0vT4thWGtdp0eObH1BkaS6vI2GKy4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+                                  "image": "https://i.ytimg.com/vi/LZ7aDq1ASEk/hqdefault.jpg",
+                                  "provider": "http://youtube",
+                                  "title": "Three things I learned this month",
+                                  "type": "oembed",
+                                  "url": "https://www.youtube.com/watch?v=LZ7aDq1ASEk&list=PLXpD0vT4thWGtdp0eObH1BkaS6vI2GKy4&index=3&t=324s"
+                                },
+                                "passing_score": 0,
+                                "require_video_completion": "no",
+                                "video_auto_complete": false,
+                                "video_completion_threshold": 80,
+                                "video_length": 594,
+                                "video_watched": false
+                              },
+                              "section_id": "7689",
+                              "slug": "module-2-how-to-install-set-up-fluentcommunity-in-hannah_lindqvist_3",
+                              "title": "Weekly office hours are back",
+                              "unlock_date": null
+                            },
+                            {
+                              "can_view": true,
+                              "comments_count": 0,
+                              "content": "",
+                              "content_type": "text",
+                              "course_id": "18",
+                              "created_at": "2025-07-22 17:11:13",
+                              "featured_image": null,
+                              "id": 7699,
+                              "inline_css": "",
+                              "is_locked": false,
+                              "lazy_load": true,
+                              "lock_type": "",
+                              "meta": {
+                                "document_ids": [],
+                                "document_lists": [],
+                                "enable_comments": "yes",
+                                "enable_media": "yes",
+                                "enable_passing_score": "no",
+                                "enforce_passing_score": "no",
+                                "featured_image_id": 0,
+                                "free_preview_lesson": "no",
+                                "hide_result": "no",
+                                "is_video_gated": false,
+                                "media": {
+                                  "author_name": "Your Company",
+                                  "content_type": "video",
+                                  "html": "<iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/NVYoq0Q5W4E?list=PLXpD0vT4thWGtdp0eObH1BkaS6vI2GKy4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+                                  "image": "https://i.ytimg.com/vi/NVYoq0Q5W4E/hqdefault.jpg",
+                                  "provider": "http://youtube",
+                                  "title": "Welcome to the community",
+                                  "type": "oembed",
+                                  "url": "https://www.youtube.com/watch?v=NVYoq0Q5W4E&list=PLXpD0vT4thWGtdp0eObH1BkaS6vI2GKy4&index=5"
+                                },
+                                "passing_score": 0,
+                                "require_video_completion": "no",
+                                "video_auto_complete": false,
+                                "video_completion_threshold": 80,
+                                "video_length": 0,
+                                "video_watched": false
+                              },
+                              "section_id": "7689",
+                              "slug": "module-3-how-to-create-a-discussion-space-with-fluentcommunity",
+                              "title": "Weekly office hours are back",
+                              "unlock_date": null
+                            }
+                          ],
+                          "slug": "module-1-introducing-fluentcommunity",
+                          "title": "Three things I learned this month",
+                          "type": "section",
+                          "unlock_date": null
+                        }
+                      ],
+                      "track": {
+                        "completed_lessons": [],
+                        "isEnrolled": true,
+                        "progress": 0
+                      }
+                    },
+                    {
+                      "course": {
+                        "can_self_enroll": true,
+                        "cover_photo": null,
+                        "created_at": "2026-08-17 21:31:53",
+                        "created_by": "1",
+                        "creator": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "id": "1",
+                          "is_verified": 1,
+                          "laravel_through_key": "1",
+                          "last_activity": "2026-08-17 22:00:34",
+                          "meta": {
+                            "badge_slug": "jordan_blake_2",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "short_description_rendered": "<p>Community builder. Helping members get the most out of the platform.</p>",
+                          "status": "active",
+                          "total_courses": 9,
+                          "total_points": 20385,
+                          "updated_at": "2026-08-17 22:00:34",
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        },
+                        "description": "",
+                        "id": 23,
+                        "isEnrolled": false,
+                        "is_course_admin": true,
+                        "lessonsCount": 0,
+                        "logo": null,
+                        "parent_id": null,
+                        "privacy": null,
+                        "sectionsCount": 2,
+                        "serial": "12",
+                        "settings": {
+                          "can_request_join": "no",
+                          "course_details": "",
+                          "course_layout": "classic",
+                          "course_type": null,
+                          "custom_lock_screen": "no",
+                          "disable_comments": "no",
+                          "emoji": "",
+                          "hide_instructor_view": "no",
+                          "hide_members_count": "no",
+                          "layout_style": "timeline",
+                          "links": [],
+                          "members_page_status": "members_only",
+                          "og_image": "",
+                          "restricted_post_only": "no",
+                          "sequential_lesson_order": "no",
+                          "shape_svg": "",
+                          "show_instructor_students_count": "no",
+                          "show_sidebar": "yes",
+                          "topic_required": "no"
+                        },
+                        "slug": "sampleannouncementpost",
+                        "status": "draft",
+                        "studentsCount": 0,
+                        "title": "Welcome to the community",
+                        "type": "course",
+                        "updated_at": "2026-08-17 21:31:53",
+                        "welcome_banner": null
+                      },
+                      "sections": [],
+                      "track": {
+                        "completed_lessons": [],
+                        "isEnrolled": false,
+                        "progress": 0
+                      }
+                    }
+                  ],
+                  "total": 9
                 }
               }
             }

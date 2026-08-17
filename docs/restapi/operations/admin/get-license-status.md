@@ -13,4 +13,8 @@ aside: false
 - **Route source:** `fluent-community-pro/app/Http/Routes/api.php:17`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/LicenseController.php`
 
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
+
 <OAOperation operationId="getLicenseStatus" specUrl="/openapi/public/admin/get-license-status.json" />

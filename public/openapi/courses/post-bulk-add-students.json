@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postBulkAddStudents",
         "summary": "POST Post Bulk Add Students",
-        "description": "Post Bulk Add Students for the FluentCommunity Courses API.\n\nController: `BulkMembersController@bulkAddStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:111`",
+        "description": "Post Bulk Add Students for the FluentCommunity Courses API.\n\nController: `BulkMembersController@bulkAddStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:115`",
         "tags": [
           "Courses"
         ],
@@ -63,7 +63,10 @@
                 }
               },
               "example": {
-                "user_ids": []
+                "user_ids": [
+                  13096,
+                  13097
+                ]
               }
             }
           }
@@ -74,10 +77,42 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    },
+                    "failed": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "processed": {
+                      "type": "integer"
+                    },
+                    "skipped": {
+                      "type": "integer"
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "added": 2,
+                  "failed": 0,
+                  "has_more": false,
+                  "message": "Great point — I ran into the same thing last week.",
+                  "processed": 2,
+                  "skipped": 0,
+                  "total": 2
+                }
               }
             }
           },

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveProfileLinkProviders",
         "summary": "POST Save Profile Link Providers",
-        "description": "Save Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@updateProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:116`",
+        "description": "Save Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@updateProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:119`",
         "tags": [
           "Admin"
         ],
@@ -53,7 +53,113 @@
                 }
               },
               "example": {
-                "configs": []
+                "providers": {
+                  "blue_sky": {
+                    "domain": "https://bsky.app/profile/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path d=\"M12 11.4963C11.8936 11.2963 7.45492 3 3.50417 3C1.33647 3 2.00456 8 2.50443 10.5C2.70653 11.5108 3.50417 14.5 8.003 14C8.003 14 4.00404 14.5 4.00404 17C4.00404 18.5 6.50339 21 8.50287 21C10.4606 21 11.9391 16.6859 12 16.5058C12.0609 16.6859 13.5394 21 15.4971 21C17.4966 21 19.996 18.5 19.996 17C19.996 14.5 15 …",
+                    "placeholder": "bluesky_username",
+                    "title": "Feature request round-up"
+                  },
+                  "fb": {
+                    "domain": "https://facebook.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg width=\"7\" height=\"12\" viewBox=\"0 0 7 12\" fill=\"none\"><path d=\"M4.2 6.9H5.7L6.3 4.5H4.2V3.3C4.2 2.682 4.2 2.1 5.4 2.1H6.3V0.0840001C6.1044 0.0582001 5.3658 0 4.5858 0C2.9568 0 1.8 0.9942 1.8 2.82V4.5H0V6.9H1.8V12H4.2V6.9Z\" fill=\"currentColor\"/></svg>",
+                    "placeholder": "fb_username",
+                    "title": "Share your workflow setup"
+                  },
+                  "github": {
+                    "domain": "https://github.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg height=\"32\" viewBox=\"0 0 24 24\" version=\"1.1\" width=\"32\" color=\"currentColor\"><path d=\"M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.2 …",
+                    "placeholder": "github username",
+                    "title": "Three things I learned this month"
+                  },
+                  "instagram": {
+                    "domain": "https://instagram.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6 0C7.6302 0 7.8336 0.00599997 8.4732 0.036C9.1122 0.066 9.5472 0.1662 9.93 0.315C10.326 0.4674 10.6596 0.6738 10.9932 1.0068C11.2983 1.30674 11.5344 1.66955 11.685 2.07C11.8332 2.4522 11.934 2.8878 11.964 3.5268C11.9922 4.1664 12 4.3698 12 6C12 7.6302 11.994 7.8336 11.964 8.4732C11.934 9.1122 11.8332 9.5472 11.685 9 …",
+                    "placeholder": "instagram @username",
+                    "title": "Welcome to the community"
+                  },
+                  "linkedin": {
+                    "domain": "https://linkedin.com/in/",
+                    "enabled": "no",
+                    "icon_svg": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9.80061 9.8035H8.20161V7.2973C8.20161 6.6997 8.18961 5.9305 7.36761 5.9305C6.53421 5.9305 6.40701 6.5809 6.40701 7.2535V9.8035H4.80741V4.6501H6.34341V5.3521H6.36441C6.57921 4.9477 7.10121 4.5199 7.88121 4.5199C9.50121 4.5199 9.80121 5.5867 9.80121 6.9745V9.8035H9.80061ZM3.00141 3.9451C2.87934 3 …",
+                    "placeholder": "linkedin username",
+                    "title": "Community guidelines refresh"
+                  },
+                  "mastodon": {
+                    "domain": "https://mastodon.social/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path d=\"M17 13.5V8C17 6.61929 15.8807 5.5 14.5 5.5C13.1193 5.5 12 6.61929 12 8M12 8V11.5M12 8C12 6.61929 10.8807 5.5 9.5 5.5C8.11929 5.5 7 6.61929 7 8V13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M13 16.9954C15.0099 16.9954 16.89 16.6876 18.4949 16.1525C20.1 …",
+                    "placeholder": "@mastodon_username",
+                    "title": "Three things I learned this month"
+                  },
+                  "pinterest": {
+                    "domain": "https://pinterest.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 16.0389 3.47738 19.5576 6.77079 21.3947L11.0721 10.629C11.277 10.1162 11.8589 9.86654 12.3717 10.0714C12.8846 10.2764 13.1343 10.8582 12.9293 11.3711L11.1187 15.9028C11.4018 15.9664 11.6966 16 12 16C14.2091 16 16 14.2091 1 …",
+                    "placeholder": "pinterest_username",
+                    "title": "Welcome to the community"
+                  },
+                  "reddit": {
+                    "domain": "https://www.reddit.com/user/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><ellipse cx=\"12\" cy=\"15.5\" rx=\"9\" ry=\"6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M15.5 16.7803C14.5149 17.548 13.3062 18.0002 12 18.0002C10.6938 18.0002 9.48512 17.548 8.5 16.7803\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejo …",
+                    "placeholder": "reddit_username",
+                    "title": "Weekly office hours are back"
+                  },
+                  "snapchat": {
+                    "domain": "https://snapchat.com/add/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path d=\"M2 16.5C5.82356 14.0006 5.82356 11.5404 2.95589 8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M22 16.5C18.1764 14.0006 18.1764 11.5404 21.0441 8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M6.57556 …",
+                    "placeholder": "snapchat_username",
+                    "title": "How we plan our release cycle"
+                  },
+                  "telegram": {
+                    "domain": "https://telegram.me/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.7317 3.16269C22.792 2.89122 22.6972 2.60865 22.4853 2.42854C22.2734 2.24844 21.9792 2.20037 21.721 2.30366L1.72146 10.3037C1.45174 10.4115 1.26858 10.6655 1.25133 10.9555C1.23408 11.2455 1.38584 11.5193 1.64087 11.6584L6.82025 14.4836L7.76021 20.1233C7.8077 20.4083 …",
+                    "placeholder": "telegram_username",
+                    "title": "Community guidelines refresh"
+                  },
+                  "tiktok": {
+                    "domain": "https://tiktok.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M4.5 1.75C2.98122 1.75 1.75 2.98122 1.75 4.5V19.5C1.75 21.0188 2.98122 22.25 4.5 22.25H19.5C21.0188 22.25 22.25 21.0188 22.25 19.5V4.5C22.25 2.98122 21.0188 1.75 19.5 1.75H4.5ZM14.5 6C14.5 5.44772 14.0523 5 13.5 5C12.9477 5 12.5 5.44772 12.5 6V14.5C12.5 15.8807 11.3807 …",
+                    "placeholder": "@tiktok_username",
+                    "title": "Weekly office hours are back"
+                  },
+                  "twitch": {
+                    "domain": "https://www.twitch.tv/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path d=\"M16 7V11M12 7V11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M16 3H8C6.11438 3 5.17157 3 4.58579 3.58358C4 4.16716 4 5.10641 4 6.98492V13.56C4 13.9302 4 14.1153 4.02462 14.2702C4.16017 15.1228 4.83135 15.7914 5.68713 15.9265C5.8426 15.951 6.0284 15.951 6 …",
+                    "placeholder": "twitch_username",
+                    "title": "Feature request round-up"
+                  },
+                  "twitter": {
+                    "domain": "https://x.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 12 10\" fill=\"none\"><path d=\"M9.1024 0.125H10.7564L7.1429 4.255L11.3939 9.875H8.0654L5.4584 6.4665L2.47542 9.875H0.820422L4.68542 5.4575L0.607422 0.125H4.02042L6.3769 3.2405L9.1024 0.125ZM8.5219 8.885H9.4384L3.52242 1.063H2.53892L8.5219 8.885Z\" fill=\"currentColor\"/></svg>",
+                    "placeholder": "twitter/X @username",
+                    "title": "Welcome to the community"
+                  },
+                  "vk": {
+                    "domain": "https://vk.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\"><path d=\"M2.00053 5.5H5.50053C5.50053 13.5 10.0005 14.5 10.0005 14.5L10.0015 5.5H13.5015L13.4995 10.5C17.9995 8.5 18.4995 5.5 18.4995 5.5H21.9995C21.9995 5.5 20.9995 10 17.0926 12.1534C19.1115 13.3511 21.2684 15.3315 21.9995 18.5H18.4995C18.4995 18.5 17.4995 15.5 13.4995 14L13.5015 18.5C1.88755 18.5 2.00232 7.5 2.0005 …",
+                    "placeholder": "vk username",
+                    "title": "VK"
+                  },
+                  "youtube": {
+                    "domain": "https://youtube.com/",
+                    "enabled": "no",
+                    "icon_svg": "<svg viewBox=\"0 0 12 10\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11.7258 1.699C12 2.7682 12 5.0002 12 5.0002C12 5.0002 12 7.2322 11.7258 8.3014C11.5734 8.8924 11.1276 9.3574 10.563 9.5146C9.5376 9.8002 6 9.8002 6 9.8002C6 9.8002 2.4642 9.8002 1.437 9.5146C0.87 9.355 0.4248 8.8906 0.2742 8.3014C1.78814e-08 7.2322 0 5.0002 0 5.0002C0 5.0002 1.78814e-08 2.7682 0.2742 1.699C0.4266 1.1 …",
+                    "placeholder": "youtube @username",
+                    "title": "Welcome to the community"
+                  }
+                }
               }
             }
           }
@@ -74,7 +180,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Profile link providers have been updated successfully"
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

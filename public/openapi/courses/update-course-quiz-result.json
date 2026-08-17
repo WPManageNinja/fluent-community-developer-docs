@@ -48,12 +48,132 @@
                     "message": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "object",
+                          "properties": {
+                            "q1": {
+                              "type": "object",
+                              "properties": {
+                                "is_correct": {
+                                  "type": "boolean"
+                                },
+                                "user_answer": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "q2": {
+                              "type": "object",
+                              "properties": {
+                                "is_correct": {
+                                  "type": "boolean"
+                                },
+                                "user_answer": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "attempts": {
+                              "type": "integer"
+                            },
+                            "correct_answers": {
+                              "type": "integer"
+                            },
+                            "total_questions": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "score": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "message": "Following. I would love to see a worked example of this.",
+                  "result": {
+                    "content_type": "quiz",
+                    "id": 59785,
+                    "message": {
+                      "q1": {
+                        "is_correct": true,
+                        "user_answer": "POST"
+                      },
+                      "q2": {
+                        "is_correct": true,
+                        "user_answer": [
+                          "public",
+                          "private"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "attempts": 1,
+                      "correct_answers": 2,
+                      "total_questions": 2
+                    },
+                    "parent_id": "96",
+                    "post_id": "15026",
+                    "score": "100",
+                    "status": "passed",
+                    "type": "quiz",
+                    "updated_at": "2026-08-17 22:05:20",
+                    "user_id": "13098"
+                  }
                 }
               }
             }

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "castSurveyVote",
         "summary": "POST Cast Survey Vote",
-        "description": "Cast Survey Vote for the FluentCommunity Reactions API.\n\nController: `ReactionController@castSurveyVote`\nRoute source: `fluent-community/app/Http/Routes/api.php:76`",
+        "description": "Cast Survey Vote for the FluentCommunity Reactions API.\n\nController: `ReactionController@castSurveyVote`\nRoute source: `fluent-community/app/Http/Routes/api.php:78`",
         "tags": [
           "Reactions"
         ],
@@ -63,7 +63,9 @@
                 }
               },
               "example": {
-                "vote_indexes": []
+                "vote_indexes": [
+                  "better-search"
+                ]
               }
             }
           }
@@ -77,17 +79,66 @@
                   "type": "object",
                   "properties": {
                     "survey_config": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "end_date": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "options": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "vote_counts": {
+                                "type": "integer"
+                              },
+                              "voted": {
+                                "type": "boolean"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "survey_config": []
+                  "survey_config": {
+                    "end_date": "",
+                    "options": [
+                      {
+                        "label": "Better search",
+                        "slug": "better-search",
+                        "vote_counts": 1,
+                        "voted": true
+                      },
+                      {
+                        "label": "Dark mode",
+                        "slug": "dark-mode"
+                      },
+                      {
+                        "label": "Mobile app",
+                        "slug": "mobile-app"
+                      }
+                    ],
+                    "type": "single_choice"
+                  }
                 }
               }
             }

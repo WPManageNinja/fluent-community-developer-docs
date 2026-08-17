@@ -36,6 +36,25 @@ To change generated content, edit the generator itself — prose and metadata li
 
 Hand-written (safe to edit directly): `docs/guides/`, `docs/helpers/`, `docs/deployment/`.
 
+## REST API sample payloads
+
+Operation examples do **not** come from static analysis any more. Two checked-in
+fixture files feed the generator, and the response *schema* is derived from whichever
+example wins (`schemaFromExample()`), so a good example fixes both at once:
+
+- `data/response-examples.json` — real responses recorded from a live install and
+  anonymised. Produced by `scripts/capture/` (see its README). Never hand-edit;
+  re-run the harness instead.
+- `data/manual-examples.json` — hand-authored entries for the handful of endpoints
+  that cannot be recorded (module not installed, multipart upload, or would mutate
+  licensing/plugin state). Safe to edit; keep it in sync with the controllers.
+
+Both are keyed `modules.<module>.<operation-slug>`, matching
+`docs/restapi/operations/<module>/<slug>.md`. Lookup falls back to the slug alone when
+the harness's module differs from `classifyRoute()`'s. Each operation page is labelled
+with where its sample came from (`renderExampleProvenance()`), and the generator prints
+a per-origin count plus the list of operations still on inferred samples.
+
 Since generated output mirrors the checked-out plugin source, regenerating against a different plugin version produces large diffs — that is expected (see "Regenerate docs" commits in history).
 
 ## Architecture

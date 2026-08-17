@@ -63,9 +63,13 @@
               },
               "example": {
                 "settings": {
-                  "realtime_enabled": ""
-                },
-                "socket_config": []
+                  "messaging_email_frequency": "hourly",
+                  "messaging_email_status": "yes",
+                  "points_to_initiate_message": 20,
+                  "realtime_enabled": "yes",
+                  "socket_provider": "fluent-socket",
+                  "who_can_initiate_message": "everyone"
+                }
               }
             }
           }
@@ -84,15 +88,46 @@
                     },
                     "settings": {
                       "type": "object",
-                      "properties": {},
+                      "properties": {
+                        "messaging_email_frequency": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "messaging_email_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "points_to_initiate_message": {
+                          "type": "integer"
+                        },
+                        "realtime_enabled": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "socket_provider": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "who_can_initiate_message": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
                       "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Messaging settings have been updated successfully",
-                  "settings": {}
+                  "message": "Great point — I ran into the same thing last week.",
+                  "settings": {
+                    "messaging_email_frequency": "hourly",
+                    "messaging_email_status": "yes",
+                    "points_to_initiate_message": 20,
+                    "realtime_enabled": "yes",
+                    "socket_provider": "fluent-socket",
+                    "who_can_initiate_message": "everyone"
+                  }
                 }
               }
             }

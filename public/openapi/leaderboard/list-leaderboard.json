@@ -45,15 +45,467 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "current_user_follows": {
+                      "type": "object",
+                      "properties": {
+                        "10": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "148": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "166": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "242": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "1707": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "2813": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "3327": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "3952": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "6531": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "9933": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "leaderboard": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "total_points": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "user_id": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "xprofile": {
+                                  "type": "object",
+                                  "properties": {
+                                    "avatar": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "badge": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "created_at": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "display_name": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "is_verified": {
+                                      "type": "integer"
+                                    },
+                                    "last_activity": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "meta": {
+                                      "type": "object",
+                                      "properties": {
+                                        "badge_slug": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "cover_photo": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "social_links": {
+                                          "type": "object",
+                                          "properties": {
+                                            "fb": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "instagram": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "linkedin": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "twitter": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "youtube": {
+                                              "type": "string",
+                                              "nullable": false
+                                            }
+                                          },
+                                          "additionalProperties": false
+                                        },
+                                        "website": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "permalink": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "short_description": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "total_points": {
+                                      "type": "integer"
+                                    },
+                                    "user_id": {
+                                      "type": "integer"
+                                    },
+                                    "username": {
+                                      "type": "string",
+                                      "nullable": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "key": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "current_user_follows": {
+                    "10": "1",
+                    "148": "1",
+                    "166": "1",
+                    "242": "1",
+                    "1707": "1",
+                    "2813": "1",
+                    "3327": "1",
+                    "3952": "1",
+                    "6531": "1",
+                    "9933": "1"
+                  },
+                  "leaderboard": [
+                    {
+                      "items": [
+                        {
+                          "total_points": "217",
+                          "user_id": "1",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                            "badge": null,
+                            "created_at": "2024-03-05 16:37:02",
+                            "display_name": "Alex Rivera",
+                            "is_verified": 1,
+                            "last_activity": "2026-08-17 22:00:34",
+                            "meta": {
+                              "badge_slug": "jordan_blake_2",
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "social_links": {
+                                "fb": "alexrivera",
+                                "instagram": "alexrivera",
+                                "linkedin": "alexrivera",
+                                "twitter": "alexrivera",
+                                "youtube": "alexrivera"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                            "short_description": "Community builder. Helping members get the most out of the platform.",
+                            "status": "active",
+                            "total_points": 20385,
+                            "user_id": 1,
+                            "username": "alex_rivera"
+                          }
+                        },
+                        {
+                          "total_points": "28",
+                          "user_id": "9712",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/zara_ahmed_5.png",
+                            "badge": null,
+                            "created_at": "2025-07-09 16:41:33",
+                            "display_name": "Zara Ahmed",
+                            "is_verified": 1,
+                            "last_activity": "2026-08-14 06:56:49",
+                            "meta": {
+                              "badge_slug": [],
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "headline": "",
+                              "short_description_rendered": "<p>Content strategist and part-time course student.</p>",
+                              "social_links": {
+                                "linkedin": "zaraahmed5"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/zara_ahmed_5",
+                            "short_description": "Content strategist and part-time course student.",
+                            "status": "active",
+                            "total_points": 511,
+                            "user_id": 9712,
+                            "username": "zara_ahmed_5"
+                          }
+                        },
+                        {
+                          "total_points": "26",
+                          "user_id": "3952",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/sam_chen.png",
+                            "badge": null,
+                            "created_at": "2024-11-27 17:12:06",
+                            "display_name": "Sam Chen",
+                            "is_verified": 1,
+                            "last_activity": "2026-08-13 10:09:41",
+                            "meta": {
+                              "badge_slug": [],
+                              "cover_photo": "",
+                              "website": ""
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/sam_chen",
+                            "short_description": "Developer advocate. I write about APIs and automation.",
+                            "status": "active",
+                            "total_points": 122,
+                            "user_id": 3952,
+                            "username": "sam_chen"
+                          }
+                        }
+                      ],
+                      "key": "7_days",
+                      "title": "Welcome to the community"
+                    },
+                    {
+                      "items": [
+                        {
+                          "total_points": "708",
+                          "user_id": "1",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                            "badge": null,
+                            "created_at": "2024-03-05 16:37:02",
+                            "display_name": "Alex Rivera",
+                            "is_verified": 1,
+                            "last_activity": "2026-08-17 22:00:34",
+                            "meta": {
+                              "badge_slug": "jordan_blake_2",
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "social_links": {
+                                "fb": "alexrivera",
+                                "instagram": "alexrivera",
+                                "linkedin": "alexrivera",
+                                "twitter": "alexrivera",
+                                "youtube": "alexrivera"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                            "short_description": "Community builder. Helping members get the most out of the platform.",
+                            "status": "active",
+                            "total_points": 20385,
+                            "user_id": 1,
+                            "username": "alex_rivera"
+                          }
+                        },
+                        {
+                          "total_points": "406",
+                          "user_id": "2813",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau_2.png",
+                            "badge": null,
+                            "created_at": "2024-10-30 04:45:25",
+                            "display_name": "Lucas Moreau",
+                            "is_verified": 0,
+                            "last_activity": "2026-08-13 19:50:55",
+                            "meta": {
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "website": ""
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/lucas_moreau_2",
+                            "short_description": "Agency owner. Interested in workflow automation.",
+                            "status": "active",
+                            "total_points": 1273,
+                            "user_id": 2813,
+                            "username": "lucas_moreau_2"
+                          }
+                        },
+                        {
+                          "total_points": "236",
+                          "user_id": "166",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/grace_okafor_2.png",
+                            "badge": null,
+                            "created_at": "2024-03-28 06:39:48",
+                            "display_name": "Grace Okafor",
+                            "is_verified": 0,
+                            "last_activity": "2026-08-13 23:07:45",
+                            "meta": {
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "short_description_rendered": "<p>Community manager. I run the weekly office hours.</p>",
+                              "social_links": {
+                                "fb": "graceokafor2",
+                                "instagram": "graceokafor2",
+                                "linkedin": "graceokafor2",
+                                "twitter": "graceokafor2",
+                                "youtube": "graceokafor2"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/grace_okafor_2",
+                            "short_description": "Community manager. I run the weekly office hours.",
+                            "status": "active",
+                            "total_points": 2706,
+                            "user_id": 166,
+                            "username": "grace_okafor_2"
+                          }
+                        }
+                      ],
+                      "key": "30_days",
+                      "title": "Share your workflow setup"
+                    },
+                    {
+                      "items": [
+                        {
+                          "total_points": "20339",
+                          "user_id": "1",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                            "badge": null,
+                            "created_at": "2024-03-05 16:37:02",
+                            "display_name": "Alex Rivera",
+                            "is_verified": 1,
+                            "last_activity": "2026-08-17 22:00:34",
+                            "meta": {
+                              "badge_slug": "jordan_blake_2",
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "social_links": {
+                                "fb": "alexrivera",
+                                "instagram": "alexrivera",
+                                "linkedin": "alexrivera",
+                                "twitter": "alexrivera",
+                                "youtube": "alexrivera"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                            "short_description": "Community builder. Helping members get the most out of the platform.",
+                            "status": "active",
+                            "total_points": 20385,
+                            "user_id": 1,
+                            "username": "alex_rivera"
+                          }
+                        },
+                        {
+                          "total_points": "2706",
+                          "user_id": "166",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/grace_okafor_2.png",
+                            "badge": null,
+                            "created_at": "2024-03-28 06:39:48",
+                            "display_name": "Grace Okafor",
+                            "is_verified": 0,
+                            "last_activity": "2026-08-13 23:07:45",
+                            "meta": {
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "short_description_rendered": "<p>Community manager. I run the weekly office hours.</p>",
+                              "social_links": {
+                                "fb": "graceokafor2",
+                                "instagram": "graceokafor2",
+                                "linkedin": "graceokafor2",
+                                "twitter": "graceokafor2",
+                                "youtube": "graceokafor2"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/grace_okafor_2",
+                            "short_description": "Community manager. I run the weekly office hours.",
+                            "status": "active",
+                            "total_points": 2706,
+                            "user_id": 166,
+                            "username": "grace_okafor_2"
+                          }
+                        },
+                        {
+                          "total_points": "2612",
+                          "user_id": "148",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/diego_santos_5.png",
+                            "badge": null,
+                            "created_at": "2024-03-28 04:18:22",
+                            "display_name": "Diego Santos",
+                            "is_verified": 0,
+                            "last_activity": "2026-08-12 15:25:57",
+                            "meta": {
+                              "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                              "social_links": {
+                                "fb": "diegosantos5",
+                                "twitter": "diegosantos5",
+                                "youtube": "diegosantos5"
+                              },
+                              "website": "https://example.com"
+                            },
+                            "permalink": "https://yourwebsite.com/portal/u/diego_santos_5",
+                            "short_description": "Product manager. I lurk more than I post.",
+                            "status": "active",
+                            "total_points": 2653,
+                            "user_id": 148,
+                            "username": "diego_santos_5"
+                          }
+                        }
+                      ],
+                      "key": "all_time",
+                      "title": "How we plan our release cycle"
+                    }
+                  ]
                 }
               }
             }

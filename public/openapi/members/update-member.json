@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "updateMember",
         "summary": "PATCH Update Member",
-        "description": "Update Member for the FluentCommunity Members API.\n\nController: `MembersController@patchMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:124`",
+        "description": "Update Member for the FluentCommunity Members API.\n\nController: `MembersController@patchMember`\nRoute source: `fluent-community/app/Http/Routes/api.php:127`",
         "tags": [
           "Members"
         ],
@@ -60,7 +60,7 @@
                 }
               },
               "example": {
-                "status": ""
+                "status": "active"
               }
             }
           }
@@ -73,148 +73,126 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "member": {
                       "type": "object",
                       "properties": {
-                        "user_id": {
-                          "type": "integer"
+                        "avatar": {
+                          "type": "string",
+                          "nullable": false
                         },
                         "badge": {
                           "type": "string",
-                          "nullable": false
+                          "nullable": true
                         },
-                        "permalink": {
+                        "created_at": {
                           "type": "string",
                           "nullable": false
+                        },
+                        "display_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_verified": {
+                          "type": "integer"
+                        },
+                        "last_activity": {
+                          "type": "string",
+                          "nullable": true
                         },
                         "meta": {
                           "type": "object",
                           "properties": {
-                            "website": {
-                              "type": "string",
-                              "nullable": false
+                            "badge_slug": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
                             },
                             "cover_photo": {
                               "type": "string",
                               "nullable": false
                             },
-                            "badge_slug": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "nullable": false
-                              }
+                            "headline": {
+                              "type": "string",
+                              "nullable": false
                             },
-                            "social_links": {
-                              "type": "object",
-                              "properties": {
-                                "instagram": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "twitter": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "youtube": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "linkedin": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "fb": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "blue_sky": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "tiktok": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "pinterest": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "telegram": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "snapchat": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "reddit": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "twitch": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "vk": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "github": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "mastodon": {
-                                  "type": "string",
-                                  "nullable": false
-                                }
-                              },
-                              "additionalProperties": false
+                            "short_description_rendered": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "website": {
+                              "type": "string",
+                              "nullable": false
                             }
                           },
                           "additionalProperties": false
+                        },
+                        "permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "short_description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "total_points": {
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "username": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Member status has been updated",
                   "member": {
-                    "user_id": 0,
-                    "badge": "",
-                    "permalink": "",
+                    "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                    "badge": null,
+                    "created_at": "2026-08-17 21:31:52",
+                    "display_name": "Mei Tanaka",
+                    "id": "12393",
+                    "is_verified": 0,
+                    "last_activity": null,
                     "meta": {
-                      "website": "",
+                      "badge_slug": [],
                       "cover_photo": "",
-                      "badge_slug": [
-                        ""
-                      ],
-                      "social_links": {
-                        "instagram": "",
-                        "twitter": "",
-                        "youtube": "",
-                        "linkedin": "",
-                        "fb": "",
-                        "blue_sky": "",
-                        "tiktok": "",
-                        "pinterest": "",
-                        "telegram": "",
-                        "snapchat": "",
-                        "reddit": "",
-                        "twitch": "",
-                        "vk": "",
-                        "github": "",
-                        "mastodon": ""
-                      }
-                    }
-                  }
+                      "headline": "Product Designer",
+                      "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                      "website": "https://example.com"
+                    },
+                    "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                    "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                    "status": "active",
+                    "total_points": 0,
+                    "updated_at": "2026-08-17 21:56:17",
+                    "user_id": 13096,
+                    "username": "mei_tanaka_3"
+                  },
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

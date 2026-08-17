@@ -1,0 +1,34 @@
+{
+  "action": [
+    "feeds",
+    "comments",
+    "reactions",
+    "spaces",
+    "members",
+    "courses",
+    "notifications",
+    "media",
+    "auth",
+    "moderation",
+    "integrations",
+    "rendering",
+    "settings"
+  ],
+  "filter": [
+    "feeds",
+    "comments",
+    "reactions",
+    "spaces",
+    "members",
+    "courses",
+    "notifications",
+    "media",
+    "auth",
+    "permissions",
+    "moderation",
+    "integrations",
+    "rendering",
+    "settings",
+    "miscellaneous"
+  ]
+}

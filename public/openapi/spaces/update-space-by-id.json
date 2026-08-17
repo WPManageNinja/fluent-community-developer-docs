@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceById",
         "summary": "PUT Update Space By ID",
-        "description": "Update Space By ID for the FluentCommunity Spaces API.\n\nController: `SpaceController@patchById`\nRoute source: `fluent-community/app/Http/Routes/api.php:11`",
+        "description": "Update Space By ID for the FluentCommunity Spaces API.\n\nController: `SpaceController@patchById`\nRoute source: `fluent-community/app/Http/Routes/api.php:12`",
         "tags": [
           "Spaces"
         ],
@@ -53,10 +53,23 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "redirect_url": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "message": "Just tried it and it works exactly as described.",
+                  "redirect_url": ""
+                }
               }
             }
           },

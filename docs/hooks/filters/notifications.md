@@ -5,56 +5,34 @@ description: Notifications filter hooks for FluentCommunity.
 
 # Notifications Filters
 
-6 unique filter hooks currently map to this category, across 6 call sites.
+8 unique filter hooks currently map to this category, across 10 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/default_course_email_notification`](#fluent_communitydefault_course_email_notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:192` |
-| [`fluent_community/digest_email_body`](#fluent_communitydigest_email_body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
-| [`fluent_community/digest_email_subject`](#fluent_communitydigest_email_subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
-| [`fluent_community/digest_notification/email_sections`](#fluent_communitydigest_notificationemail_sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
-| [`fluent_community/notifications_api_response`](#fluent_communitynotifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
-| [`fluent_community/unread_notifications_api_response`](#fluent_communityunread_notifications_api_response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:58` |
+| [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
+| [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
+| [`fluent_community/notifications_api_response`](#fluent-community-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
+| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:874` |
+| [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
+| [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
+| [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:59` |
+| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1267` |
 
-<a id="fluent_communitydefault_course_email_notification"></a>
-
-## `fluent_community/default_course_email_notification`
-
-- **Type:** filter
-- **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
-- **When it fires:** Default Course Email Notification hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:192` | `[ 'subject' => __('{&#8203;{section.title}&#8203;} is now available for you in {&#8203;{course.title}&#8203;}', 'fluent-community-pro'), 'message' => __("Hi {&#8203;{user.display_name}&#8203;},\n\n{&#8203;{section.title}&#8203;} is now available to you in {&#8203;{course.title}&#8203;}.\nTo complete this section, please follow this link:\n{&#8203;{section.url}&#8203;},\n\nThanks,\n{&#8203;{community.name_with_url}&#8203;}", 'fluent-community-pro') ]` (array) |
-
-### Example
-
-```php
-add_filter('fluent_community/default_course_email_notification', function ($param1) {
-    return $param1;
-}, 10, 1);
-```
-
-<a id="fluent_communitydigest_email_body"></a>
+<a id="fluent-community-digest-email-body"></a>
 
 ## `fluent_community/digest_email_body`
 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Digest Email Body hook emitted from the current call site.
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:119` | `$emailBody` (mixed)<br>`$this->user` (mixed) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:119` | `$emailBody` (mixed)<br>`$this->user` (User) |
 
 ### Example
 
@@ -64,20 +42,19 @@ add_filter('fluent_community/digest_email_body', function ($emailBody, $user) {
 }, 10, 2);
 ```
 
-<a id="fluent_communitydigest_email_subject"></a>
+<a id="fluent-community-digest-email-subject"></a>
 
 ## `fluent_community/digest_email_subject`
 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Digest Email Subject hook emitted from the current call site.
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:149` | `$emailSubject` (mixed)<br>`$this->user` (mixed)<br>`$notificationCount` (mixed) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:149` | `$emailSubject` (mixed)<br>`$this->user` (User)<br>`$notificationCount` (mixed) |
 
 ### Example
 
@@ -87,37 +64,13 @@ add_filter('fluent_community/digest_email_subject', function ($emailSubject, $us
 }, 10, 3);
 ```
 
-<a id="fluent_communitydigest_notificationemail_sections"></a>
-
-## `fluent_community/digest_notification/email_sections`
-
-- **Type:** filter
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Digest Notification/Email Sections hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:106` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$this->user` (mixed) |
-
-### Example
-
-```php
-add_filter('fluent_community/digest_notification/email_sections', function ($param1, $user) {
-    return $param1;
-}, 10, 2);
-```
-
-<a id="fluent_communitynotifications_api_response"></a>
+<a id="fluent-community-notifications-api-response"></a>
 
 ## `fluent_community/notifications_api_response`
 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Notifications API Response hook emitted from the current call site.
 
 ### Call Sites
 
@@ -133,20 +86,87 @@ add_filter('fluent_community/notifications_api_response', function ($data, $all)
 }, 10, 2);
 ```
 
-<a id="fluent_communityunread_notifications_api_response"></a>
+<a id="fluent-community-profile-notification-pref-api-response"></a>
+
+## `fluent_community/profile_notification_pref_api_response`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:874` | `$data` (mixed)<br>`$request->all()` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/profile_notification_pref_api_response', function ($data, $all) {
+    return $data;
+}, 10, 2);
+```
+
+<a id="fluent-community-smartcode-fallback"></a>
+
+## `fluent_community/smartcode_fallback`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 3
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:89` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:97` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:105` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/smartcode_fallback', function ($matches, $store) {
+    return $matches;
+}, 10, 2);
+```
+
+<a id="fluent-community-smartcode-group-callback-dataKey"></a>
+
+## `fluent_community/smartcode_group_callback_{dataKey}`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:141` | `$matches[0]` (array)<br>`$valueKey` (mixed)<br>`$defaultValue` (mixed)<br>`static::$store['user']` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/smartcode_group_callback_{dataKey}', function ($matches, $valueKey, $defaultValue, $store) {
+    return $matches;
+}, 10, 4);
+```
+
+<a id="fluent-community-unread-notifications-api-response"></a>
 
 ## `fluent_community/unread_notifications_api_response`
 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Unread Notifications API Response hook emitted from the current call site.
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/NotificationsController.php:58` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/NotificationsController.php:59` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -154,5 +174,27 @@ add_filter('fluent_community/notifications_api_response', function ($data, $all)
 add_filter('fluent_community/unread_notifications_api_response', function ($data, $all) {
     return $data;
 }, 10, 2);
+```
+
+<a id="fluent-community-verified-email-senders"></a>
+
+## `fluent_community/verified_email_senders`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Functions/Utility.php:1267` | `$verifiedSenders` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/verified_email_senders', function ($verifiedSenders) {
+    return $verifiedSenders;
+}, 10, 1);
 ```
 

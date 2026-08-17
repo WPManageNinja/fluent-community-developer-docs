@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPopularDayTimeReport",
         "summary": "GET Get Popular Day Time Report",
-        "description": "Get Popular Day Time Report for the FluentCommunity Reports API.\n\nController: `ReportsController@popularDayTimeReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:71`",
+        "description": "Get Popular Day Time Report for the FluentCommunity Reports API.\n\nController: `ReportsController@popularDayTimeReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:73`",
         "tags": [
           "Reports"
         ],
@@ -46,17 +46,114 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "columns": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "prop": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Friday": {
+                                "type": "integer"
+                              },
+                              "Monday": {
+                                "type": "integer"
+                              },
+                              "Saturday": {
+                                "type": "integer"
+                              },
+                              "Sunday": {
+                                "type": "integer"
+                              },
+                              "Thursday": {
+                                "type": "integer"
+                              },
+                              "Tuesday": {
+                                "type": "integer"
+                              },
+                              "Wednesday": {
+                                "type": "integer"
+                              },
+                              "time_range": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": {
+                    "columns": [
+                      {
+                        "label": "Time Range",
+                        "prop": "time_range"
+                      },
+                      {
+                        "label": "Mon",
+                        "prop": "Monday"
+                      },
+                      {
+                        "label": "Tue",
+                        "prop": "Tuesday"
+                      }
+                    ],
+                    "data": [
+                      {
+                        "Friday": 47,
+                        "Monday": 32,
+                        "Saturday": 43,
+                        "Sunday": 52,
+                        "Thursday": 85,
+                        "Tuesday": 63,
+                        "Wednesday": 56,
+                        "time_range": "12:00 AM-3:59 AM"
+                      },
+                      {
+                        "Friday": 25,
+                        "Monday": 28,
+                        "Saturday": 39,
+                        "Sunday": 7,
+                        "Thursday": 49,
+                        "Tuesday": 28,
+                        "Wednesday": 28,
+                        "time_range": "4:00 AM-7:59 AM"
+                      },
+                      {
+                        "Friday": 37,
+                        "Monday": 21,
+                        "Saturday": 31,
+                        "Sunday": 8,
+                        "Thursday": 35,
+                        "Tuesday": 21,
+                        "Wednesday": 29,
+                        "time_range": "8:00 AM-11:59 AM"
+                      }
+                    ]
+                  }
                 }
               }
             }

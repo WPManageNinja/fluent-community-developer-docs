@@ -11,27 +11,26 @@ description: Reactions action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/section/reactions_count_updated`](#fluent_communitysectionreactions_count_updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:795` |
+| [`fluent_community/feed/cast_survey_vote`](#fluent-community-feed-cast-survey-vote) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:411` |
 
-<a id="fluent_communitysectionreactions_count_updated"></a>
+<a id="fluent-community-feed-cast-survey-vote"></a>
 
-## `fluent_community/section/reactions_count_updated`
+## `fluent_community/feed/cast_survey_vote`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Section/Reactions Count Updated hook emitted from the current call site.
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:795` | `$course` (mixed)<br>`$topic` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:411` | `$newSyncIndexes` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
 
 ### Example
 
 ```php
-add_action('fluent_community/section/reactions_count_updated', function ($course, $topic) {
-}, 10, 2);
+add_action('fluent_community/feed/cast_survey_vote', function ($newSyncIndexes, $feed, $userId) {
+}, 10, 3);
 ```
 

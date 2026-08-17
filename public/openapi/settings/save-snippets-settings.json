@@ -60,7 +60,7 @@
               },
               "example": {
                 "snippets": {
-                  "custom_css": "",
+                  "custom_css": ".chat_medias img {\n    max-width: 100%;\n}",
                   "custom_js": ""
                 }
               }
@@ -83,7 +83,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Snippets settings have been saved successfully."
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

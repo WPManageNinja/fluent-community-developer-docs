@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceLockscreenSettings",
         "summary": "PUT Update Space Lockscreen Settings",
-        "description": "Update Space Lockscreen Settings for the FluentCommunity Spaces API.\n\nController: `ProAdminController@updateSpaceLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:57`",
+        "description": "Update Space Lockscreen Settings for the FluentCommunity Spaces API.\n\nController: `ProAdminController@updateSpaceLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:59`",
         "tags": [
           "Spaces"
         ],
@@ -63,7 +63,11 @@
                 }
               },
               "example": {
-                "lockscreen": []
+                "lockscreen_config": {
+                  "button_text": "Join now",
+                  "description": "Join this space to see the discussions.",
+                  "title": "Members only"
+                }
               }
             }
           }
@@ -76,27 +80,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "community": {
                       "type": "object",
                       "properties": {
-                        "id": {
-                          "type": "integer"
+                        "cover_photo": {
+                          "type": "string",
+                          "nullable": true
                         },
-                        "created_by": {
-                          "type": "integer"
-                        },
-                        "parent_id": {
-                          "type": "integer"
-                        },
-                        "title": {
+                        "created_at": {
                           "type": "string",
                           "nullable": false
                         },
-                        "slug": {
+                        "created_by": {
                           "type": "string",
                           "nullable": false
                         },
@@ -104,15 +99,14 @@
                           "type": "string",
                           "nullable": false
                         },
+                        "id": {
+                          "type": "integer"
+                        },
                         "logo": {
                           "type": "string",
-                          "nullable": false
+                          "nullable": true
                         },
-                        "cover_photo": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "type": {
+                        "parent_id": {
                           "type": "string",
                           "nullable": false
                         },
@@ -120,25 +114,14 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "status": {
+                        "serial": {
                           "type": "string",
                           "nullable": false
-                        },
-                        "serial": {
-                          "type": "integer"
                         },
                         "settings": {
                           "type": "object",
                           "properties": {
-                            "restricted_post_only": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "emoji": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "shape_svg": {
+                            "can_request_join": {
                               "type": "string",
                               "nullable": false
                             },
@@ -146,11 +129,11 @@
                               "type": "string",
                               "nullable": false
                             },
-                            "can_request_join": {
+                            "default_comment_sort_by": {
                               "type": "string",
                               "nullable": false
                             },
-                            "layout_style": {
+                            "default_post_sort_by": {
                               "type": "string",
                               "nullable": false
                             },
@@ -158,15 +141,31 @@
                               "type": "string",
                               "nullable": false
                             },
-                            "show_sidebar": {
+                            "disable_post_sort_by": {
                               "type": "string",
                               "nullable": false
                             },
-                            "show_paywalls": {
+                            "document_access": {
                               "type": "string",
                               "nullable": false
                             },
-                            "og_image": {
+                            "document_library": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "document_upload": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "emoji": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_members_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "layout_style": {
                               "type": "string",
                               "nullable": false
                             },
@@ -175,86 +174,23 @@
                               "items": {
                                 "type": "object",
                                 "properties": {
-                                  "title": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "enabled": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "new_tab": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "emoji": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "icon_image": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "shape_svg": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "permalink": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
                                   "slug": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "privacy": {
+                                  "title": {
                                     "type": "string",
                                     "nullable": false
-                                  },
-                                  "membership_ids": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "additionalProperties": true
-                                    }
                                   }
                                 },
                                 "additionalProperties": false
                               }
                             },
-                            "document_library": {
+                            "media_access": {
                               "type": "string",
                               "nullable": false
                             },
-                            "document_access": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "disable_post_sort_by": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "default_post_sort_by": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "default_comment_sort_by": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "document_upload": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "topic_required": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "hide_members_count": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "onboard_redirect_url": {
+                            "media_gallery": {
                               "type": "string",
                               "nullable": false
                             },
@@ -262,16 +198,50 @@
                               "type": "string",
                               "nullable": false
                             },
-                            "cart_product_ids": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
+                            "og_image": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "onboard_redirect_url": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "restricted_post_only": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "shape_svg": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_paywalls": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_sidebar": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "topic_required": {
+                              "type": "string",
+                              "nullable": false
                             }
                           },
                           "additionalProperties": false
                         },
-                        "created_at": {
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
                           "type": "string",
                           "nullable": false
                         },
@@ -281,73 +251,68 @@
                         }
                       },
                       "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Lockscreen settings have been updated successfully.",
                   "community": {
-                    "id": 0,
-                    "created_by": 0,
-                    "parent_id": 0,
-                    "title": "",
-                    "slug": "",
-                    "description": "",
-                    "logo": "",
-                    "cover_photo": "",
-                    "type": "",
-                    "privacy": "",
-                    "status": "",
-                    "serial": 0,
+                    "cover_photo": null,
+                    "created_at": "2026-08-17 22:04:05",
+                    "created_by": "1",
+                    "description": "A place to introduce yourself and meet other members.",
+                    "id": 92,
+                    "logo": null,
+                    "parent_id": "91",
+                    "privacy": "public",
+                    "serial": "1",
                     "settings": {
-                      "restricted_post_only": "no",
-                      "emoji": "",
-                      "shape_svg": "",
-                      "custom_lock_screen": "no",
                       "can_request_join": "no",
-                      "layout_style": "timeline",
+                      "custom_lock_screen": "no",
+                      "default_comment_sort_by": "",
+                      "default_post_sort_by": "",
                       "disable_layout_style": "no",
-                      "show_sidebar": "yes",
-                      "show_paywalls": "no",
-                      "og_image": "",
+                      "disable_post_sort_by": "no",
+                      "document_access": "everybody",
+                      "document_library": "yes",
+                      "document_upload": "admin_only",
+                      "emoji": "",
+                      "hide_members_count": "no",
+                      "layout_style": "timeline",
                       "links": [
                         {
-                          "title": "",
-                          "enabled": "yes",
-                          "new_tab": "no",
-                          "emoji": "",
-                          "icon_image": "",
-                          "shape_svg": "",
-                          "permalink": "",
-                          "slug": "",
-                          "privacy": "public",
-                          "membership_ids": []
+                          "slug": "space-guidelines",
+                          "title": "Space guidelines"
                         }
                       ],
-                      "document_library": "no",
-                      "document_access": "members_only",
-                      "disable_post_sort_by": "no",
-                      "default_post_sort_by": "",
-                      "default_comment_sort_by": "",
-                      "document_upload": "admin_only",
-                      "topic_required": "no",
-                      "hide_members_count": "no",
-                      "onboard_redirect_url": "",
+                      "media_access": "everybody",
+                      "media_gallery": "yes",
                       "members_page_status": "members_only",
-                      "cart_product_ids": [
-                        0
-                      ]
+                      "og_image": "",
+                      "onboard_redirect_url": "",
+                      "restricted_post_only": "no",
+                      "shape_svg": "",
+                      "show_paywalls": "no",
+                      "show_sidebar": "no",
+                      "topic_required": "no"
                     },
-                    "created_at": "2026-01-01 00:00:00",
-                    "updated_at": "2026-01-01 00:00:00"
-                  }
+                    "slug": "general-discussion",
+                    "status": "published",
+                    "title": "General Discussion",
+                    "type": "community",
+                    "updated_at": "2026-08-17 22:05:20"
+                  },
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "403": {
+            "description": "You do not have permission to manage this space.",
             "content": {
               "application/json": {
                 "schema": {
@@ -359,7 +324,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "You do not have permission to manage this space."
                 }
               }
             }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getProfile",
         "summary": "GET Get Profile",
-        "description": "Get Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:84`",
+        "description": "Get Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
         "tags": [
           "Profile"
         ],
@@ -58,30 +58,9 @@
                     "profile": {
                       "type": "object",
                       "properties": {
-                        "user_id": {
-                          "type": "integer"
-                        },
-                        "is_verified": {
-                          "type": "boolean"
-                        },
-                        "display_name": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "username": {
-                          "type": "string",
-                          "nullable": false
-                        },
                         "avatar": {
                           "type": "string",
                           "nullable": false
-                        },
-                        "cover_photo": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "total_points": {
-                          "type": "integer"
                         },
                         "badge_slugs": {
                           "type": "array",
@@ -90,21 +69,22 @@
                             "nullable": false
                           }
                         },
-                        "status": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "is_restricted": {
-                          "type": "boolean"
-                        },
                         "canViewUserSpaces": {
                           "type": "boolean"
                         },
-                        "last_activity": {
-                          "type": "string",
-                          "nullable": false
+                        "can_change_email": {
+                          "type": "boolean"
                         },
-                        "website": {
+                        "can_change_password": {
+                          "type": "boolean"
+                        },
+                        "can_change_username": {
+                          "type": "boolean"
+                        },
+                        "compilation_score": {
+                          "type": "integer"
+                        },
+                        "cover_photo": {
                           "type": "string",
                           "nullable": false
                         },
@@ -112,76 +92,7 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "social_links": {
-                          "type": "object",
-                          "properties": {
-                            "instagram": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "twitter": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "youtube": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "linkedin": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "fb": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "blue_sky": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "tiktok": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "pinterest": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "telegram": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "snapchat": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "reddit": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "twitch": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "vk": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "github": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "mastodon": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "compilation_score": {
-                          "type": "integer"
-                        },
-                        "short_description_rendered": {
+                        "display_name": {
                           "type": "string",
                           "nullable": false
                         },
@@ -193,25 +104,59 @@
                           "type": "string",
                           "nullable": false
                         },
+                        "followers_count": {
+                          "type": "integer"
+                        },
+                        "followings_count": {
+                          "type": "integer"
+                        },
+                        "has_custom_avatar": {
+                          "type": "boolean"
+                        },
+                        "headline": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_moderator": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_restricted": {
+                          "type": "boolean"
+                        },
+                        "is_verified": {
+                          "type": "integer"
+                        },
+                        "last_activity": {
+                          "type": "string",
+                          "nullable": false
+                        },
                         "last_name": {
                           "type": "string",
                           "nullable": false
                         },
-                        "short_description": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "can_change_username": {
-                          "type": "boolean"
-                        },
-                        "can_change_email": {
-                          "type": "boolean"
+                        "profile_nav_actions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
                         },
                         "profile_navs": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
+                              "route": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
                               "slug": {
                                 "type": "string",
                                 "nullable": false
@@ -227,27 +172,65 @@
                               "wrapper_class": {
                                 "type": "string",
                                 "nullable": false
-                              },
-                              "route": {
-                                "type": "object",
-                                "properties": {
-                                  "name": {
-                                    "type": "string",
-                                    "nullable": false
-                                  }
-                                },
-                                "additionalProperties": false
                               }
                             },
                             "additionalProperties": false
                           }
                         },
-                        "profile_nav_actions": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
+                        "scheduled_posts_count": {
+                          "type": "integer"
+                        },
+                        "short_description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "short_description_rendered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "social_links": {
+                          "type": "object",
+                          "properties": {
+                            "fb": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "instagram": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "linkedin": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "twitter": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "youtube": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "total_points": {
+                          "type": "integer"
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "username": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "website": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -257,65 +240,80 @@
                 },
                 "example": {
                   "profile": {
-                    "user_id": 0,
-                    "is_verified": false,
-                    "display_name": "",
-                    "username": "",
-                    "avatar": "",
-                    "cover_photo": "",
-                    "total_points": 0,
+                    "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
                     "badge_slugs": [
-                      ""
+                      "jordan_blake_2"
                     ],
-                    "status": "",
+                    "canViewUserSpaces": true,
+                    "can_change_email": true,
+                    "can_change_password": true,
+                    "can_change_username": true,
+                    "compilation_score": 100,
+                    "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                    "created_at": "2024-03-05 16:37:02",
+                    "display_name": "Alex Rivera",
+                    "email": "alex.rivera@example.com",
+                    "first_name": "Mei",
+                    "followers_count": 173,
+                    "followings_count": 66,
+                    "has_custom_avatar": true,
+                    "headline": "",
+                    "is_moderator": "yes",
                     "is_restricted": false,
-                    "canViewUserSpaces": false,
-                    "last_activity": "2026-01-01 00:00:00",
-                    "website": "",
-                    "created_at": "2026-01-01 00:00:00",
-                    "social_links": {
-                      "instagram": "",
-                      "twitter": "",
-                      "youtube": "",
-                      "linkedin": "",
-                      "fb": "",
-                      "blue_sky": "",
-                      "tiktok": "",
-                      "pinterest": "",
-                      "telegram": "",
-                      "snapchat": "",
-                      "reddit": "",
-                      "twitch": "",
-                      "vk": "",
-                      "github": "",
-                      "mastodon": ""
-                    },
-                    "compilation_score": 0,
-                    "short_description_rendered": "<p>...</p>",
-                    "email": "",
-                    "first_name": "",
-                    "last_name": "",
-                    "short_description": "",
-                    "can_change_username": false,
-                    "can_change_email": false,
+                    "is_verified": 1,
+                    "last_activity": "2026-08-17 22:00:34",
+                    "last_name": "alex_rivera",
+                    "profile_nav_actions": [],
                     "profile_navs": [
                       {
-                        "slug": "",
-                        "title": "",
-                        "url": "",
-                        "wrapper_class": "",
                         "route": {
-                          "name": ""
-                        }
+                          "name": "Alex Rivera"
+                        },
+                        "slug": "user_profile",
+                        "title": "Share your workflow setup",
+                        "url": "https://yourwebsite.com/portal/u/alex_rivera/",
+                        "wrapper_class": "fcom_profile_about"
+                      },
+                      {
+                        "route": {
+                          "name": "Alex Rivera"
+                        },
+                        "slug": "user_profile_feeds",
+                        "title": "How we plan our release cycle",
+                        "url": "https://yourwebsite.com/portal/u/alex_rivera/posts",
+                        "wrapper_class": "fcom_profile_posts"
+                      },
+                      {
+                        "route": {
+                          "name": "Alex Rivera"
+                        },
+                        "slug": "user_spaces",
+                        "title": "How we plan our release cycle",
+                        "url": "https://yourwebsite.com/portal/u/alex_rivera/spaces",
+                        "wrapper_class": "fcom_profile_spaces"
                       }
                     ],
-                    "profile_nav_actions": []
+                    "scheduled_posts_count": 1,
+                    "short_description": "Community builder. Helping members get the most out of the platform.",
+                    "short_description_rendered": "<p>Community builder. Helping members get the most out of the platform.</p>",
+                    "social_links": {
+                      "fb": "alexrivera",
+                      "instagram": "alexrivera",
+                      "linkedin": "alexrivera",
+                      "twitter": "alexrivera",
+                      "youtube": "alexrivera"
+                    },
+                    "status": "active",
+                    "total_points": 20385,
+                    "user_id": 1,
+                    "username": "alex_rivera",
+                    "website": "https://example.com"
                   }
                 }
               }
             }
           },
-          "422": {
+          "403": {
             "description": "This profile is not active",
             "content": {
               "application/json": {

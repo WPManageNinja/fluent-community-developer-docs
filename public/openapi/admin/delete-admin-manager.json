@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Manager has been removed successfully"
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

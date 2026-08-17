@@ -45,15 +45,614 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "content_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "lesson": {
+                                "type": "object",
+                                "properties": {
+                                  "comments_count": {
+                                    "type": "integer"
+                                  },
+                                  "content_type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "expired_at": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "featured_image": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "is_sticky": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "message": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "message_rendered": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "auto_complete_on_video_end": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_ids": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "document_lists": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "enable_comments": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "enable_media": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "enable_passing_score": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "enforce_passing_score": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "free_preview_lesson": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "hide_result": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "media": {
+                                        "type": "object",
+                                        "properties": {
+                                          "provider": {
+                                            "type": "string",
+                                            "nullable": false
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      },
+                                      "passing_score": {
+                                        "type": "integer"
+                                      },
+                                      "quiz_questions": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "enabled": {
+                                              "type": "boolean"
+                                            },
+                                            "label": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "label_rendered": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "options": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "is_correct": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "label": {
+                                                    "type": "string",
+                                                    "nullable": false
+                                                  }
+                                                },
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "slug": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "nullable": false
+                                            }
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "require_video_completion": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "video_completion_threshold": {
+                                        "type": "integer"
+                                      },
+                                      "video_length": {
+                                        "type": "integer"
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "parent_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "priority": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "privacy": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "reactions_count": {
+                                    "type": "integer"
+                                  },
+                                  "scheduled_at": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "space_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "message": {
+                                "type": "object",
+                                "properties": {
+                                  "q1": {
+                                    "type": "object",
+                                    "properties": {
+                                      "is_correct": {
+                                        "type": "boolean"
+                                      },
+                                      "user_answer": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "q2": {
+                                    "type": "object",
+                                    "properties": {
+                                      "is_correct": {
+                                        "type": "boolean"
+                                      },
+                                      "user_answer": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "attempts": {
+                                    "type": "integer"
+                                  },
+                                  "correct_answers": {
+                                    "type": "integer"
+                                  },
+                                  "total_questions": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "parent_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "post_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "score": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "user_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "xprofile": {
+                                "type": "object",
+                                "properties": {
+                                  "avatar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "badge": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "display_name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "is_verified": {
+                                    "type": "integer"
+                                  },
+                                  "last_activity": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "cover_photo": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "short_description_rendered": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "total_points": {
+                                    "type": "integer"
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "username": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "from": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "to": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "results": {
+                    "current_page": 1,
+                    "data": [
+                      {
+                        "content_type": "quiz",
+                        "id": 59785,
+                        "lesson": {
+                          "comments_count": 0,
+                          "content_type": "quiz",
+                          "created_at": "2026-08-17 22:05:20",
+                          "expired_at": null,
+                          "featured_image": null,
+                          "id": 15026,
+                          "is_sticky": "0",
+                          "message": "Following. I would love to see a worked example of this.",
+                          "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
+                          "meta": {
+                            "auto_complete_on_video_end": "no",
+                            "document_ids": [],
+                            "document_lists": [],
+                            "enable_comments": "no",
+                            "enable_media": "no",
+                            "enable_passing_score": "yes",
+                            "enforce_passing_score": "no",
+                            "free_preview_lesson": "no",
+                            "hide_result": "no",
+                            "media": {
+                              "provider": ""
+                            },
+                            "passing_score": 60,
+                            "quiz_questions": [
+                              {
+                                "enabled": true,
+                                "label": "Which HTTP method creates a new feed post?",
+                                "label_rendered": "<p>Which HTTP method creates a new feed post?</p>",
+                                "options": [
+                                  {
+                                    "is_correct": false,
+                                    "label": "GET"
+                                  },
+                                  {
+                                    "is_correct": true,
+                                    "label": "POST"
+                                  },
+                                  {
+                                    "is_correct": false,
+                                    "label": "DELETE"
+                                  }
+                                ],
+                                "slug": "q1",
+                                "type": "single_choice"
+                              },
+                              {
+                                "enabled": true,
+                                "label": "Which of these are space privacy levels?",
+                                "label_rendered": "<p>Which of these are space privacy levels?</p>",
+                                "options": [
+                                  {
+                                    "is_correct": true,
+                                    "label": "public"
+                                  },
+                                  {
+                                    "is_correct": true,
+                                    "label": "private"
+                                  },
+                                  {
+                                    "is_correct": false,
+                                    "label": "hidden"
+                                  }
+                                ],
+                                "slug": "q2",
+                                "type": "multiple_choice"
+                              }
+                            ],
+                            "require_video_completion": "no",
+                            "video_completion_threshold": 0,
+                            "video_length": 0
+                          },
+                          "parent_id": "15013",
+                          "priority": "3",
+                          "privacy": "public",
+                          "reactions_count": 0,
+                          "scheduled_at": null,
+                          "slug": "module-1-quiz",
+                          "space_id": "96",
+                          "status": "published",
+                          "title": "Weekly office hours are back",
+                          "type": "course_lesson",
+                          "updated_at": "2026-08-17 22:05:20",
+                          "user_id": "1"
+                        },
+                        "message": {
+                          "q1": {
+                            "is_correct": true,
+                            "user_answer": "POST"
+                          },
+                          "q2": {
+                            "is_correct": true,
+                            "user_answer": [
+                              "public",
+                              "private"
+                            ]
+                          }
+                        },
+                        "meta": {
+                          "attempts": 1,
+                          "correct_answers": 2,
+                          "total_questions": 2
+                        },
+                        "parent_id": "96",
+                        "post_id": "15026",
+                        "score": "100",
+                        "status": "passed",
+                        "type": "quiz",
+                        "updated_at": "2026-08-17 22:05:20",
+                        "user_id": "13098",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                          "badge": null,
+                          "created_at": "2026-08-17 21:31:53",
+                          "display_name": "Noah Fischer",
+                          "id": "12395",
+                          "is_verified": 0,
+                          "last_activity": null,
+                          "meta": {
+                            "cover_photo": "",
+                            "short_description_rendered": "<p>Freelancer building sites for small businesses.</p>",
+                            "website": ""
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/noah_fischer_3",
+                          "short_description": "Freelancer building sites for small businesses.",
+                          "status": "active",
+                          "total_points": 0,
+                          "updated_at": "2026-08-17 21:37:21",
+                          "user_id": 13098,
+                          "username": "noah_fischer_3"
+                        }
+                      }
+                    ],
+                    "first_page_url": "https://yourwebsite.com/?page=1",
+                    "from": 1,
+                    "last_page": 1,
+                    "last_page_url": "https://yourwebsite.com/?page=1",
+                    "links": [
+                      {
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "pagination.next",
+                        "url": null
+                      }
+                    ],
+                    "next_page_url": null,
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": 1,
+                    "total": 1
+                  }
                 }
               }
             }

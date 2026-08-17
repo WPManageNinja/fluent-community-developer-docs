@@ -10,7 +10,11 @@ aside: false
 - **Path:** `/settings/menu-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@getMenuSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:153`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:156`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
+
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
 
 <OAOperation operationId="getMenuSettings" specUrl="/openapi/public/settings/get-menu-settings.json" />

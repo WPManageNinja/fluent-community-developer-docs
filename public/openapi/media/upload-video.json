@@ -44,6 +44,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "media_kind": {
+                    "type": "string"
+                  },
                   "file": {
                     "type": "string",
                     "format": "binary"
@@ -51,7 +54,9 @@
                 }
               },
               "example": {
-                "file": "(binary)"
+                "file": "<binary>",
+                "context": "fluent_player",
+                "media_kind": "video"
               }
             }
           }
@@ -93,39 +98,7 @@
                               "type": "string",
                               "nullable": false
                             },
-                            "original_name": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "width": {
-                              "type": "integer"
-                            },
-                            "height": {
-                              "type": "integer"
-                            },
-                            "provider": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "crossorigin": {
-                              "type": "boolean"
-                            },
-                            "posterSrc": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "playerWidth": {
-                              "type": "integer"
-                            },
-                            "brandColor": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "controlBarColor": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "aspectRatio": {
+                            "viewType": {
                               "type": "string",
                               "nullable": false
                             }
@@ -144,23 +117,14 @@
                 },
                 "example": {
                   "media": {
-                    "media_id": 0,
-                    "url": "",
-                    "media_key": "",
-                    "type": "",
+                    "media_id": 412,
+                    "url": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-0f1e2d3c4b5a69788796a5b4c3d2e1f0-fluentcom-welcome-lesson.mp4",
+                    "media_key": "8c7b6a5948372615f4e3d2c1b0a99887",
+                    "type": "fluent_player",
                     "settings": {
-                      "src": "",
-                      "title": "",
-                      "original_name": "",
-                      "width": 0,
-                      "height": 0,
-                      "provider": "uploader",
-                      "crossorigin": false,
-                      "posterSrc": "",
-                      "playerWidth": 0,
-                      "brandColor": "",
-                      "controlBarColor": "",
-                      "aspectRatio": ""
+                      "src": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-0f1e2d3c4b5a69788796a5b4c3d2e1f0-fluentcom-welcome-lesson.mp4",
+                      "title": "welcome-lesson.mp4",
+                      "viewType": "video"
                     },
                     "html": ""
                   }

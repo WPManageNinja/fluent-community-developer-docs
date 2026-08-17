@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleCommentReaction",
         "summary": "POST Toggle Comment Reaction",
-        "description": "Toggle Comment Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:58`",
+        "description": "Toggle Comment Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
         "tags": [
           "Reactions"
         ],
@@ -69,7 +69,7 @@
                 }
               },
               "example": {
-                "state": ""
+                "reaction_type": "like"
               }
             }
           }
@@ -82,27 +82,24 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "liked": {
+                      "type": "boolean"
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
                     },
                     "reactions_count": {
-                      "type": "integer"
-                    },
-                    "liked": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Reaction has been toggled",
-                  "reactions_count": 0,
-                  "liked": []
+                  "liked": false,
+                  "message": "Following. I would love to see a worked example of this.",
+                  "reactions_count": "0"
                 }
               }
             }

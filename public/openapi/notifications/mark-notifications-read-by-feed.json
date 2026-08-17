@@ -27,7 +27,7 @@
       "post": {
         "operationId": "markNotificationsReadByFeed",
         "summary": "POST Mark Notifications Read By Feed",
-        "description": "Mark Notifications Read By Feed for the FluentCommunity Notifications API.\n\nController: `NotificationsController@markAsReadByFeedId`\nRoute source: `fluent-community/app/Http/Routes/api.php:131`",
+        "description": "Mark Notifications Read By Feed for the FluentCommunity Notifications API.\n\nController: `NotificationsController@markAsReadByFeedId`\nRoute source: `fluent-community/app/Http/Routes/api.php:134`",
         "tags": [
           "Notifications"
         ],
@@ -55,19 +55,26 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "unread_feed_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "nullable": false
+                      }
+                    },
                     "unread_notification_count": {
                       "type": "integer"
-                    },
-                    "unread_feed_ids": {
-                      "type": "string",
-                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "unread_notification_count": 0,
-                  "unread_feed_ids": null
+                  "unread_feed_ids": [
+                    "15009",
+                    "15011",
+                    "15012"
+                  ],
+                  "unread_notification_count": 3
                 }
               }
             }

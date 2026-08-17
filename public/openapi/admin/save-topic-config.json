@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveTopicConfig",
         "summary": "POST Save Topic Config",
-        "description": "Save Topic Config for the FluentCommunity Admin API.\n\nController: `ProAdminController@updateTopicConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:45`",
+        "description": "Save Topic Config for the FluentCommunity Admin API.\n\nController: `ProAdminController@updateTopicConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:44`",
         "tags": [
           "Admin"
         ],
@@ -62,10 +62,8 @@
                 }
               },
               "example": {
-                "config": {
-                  "max_topics_per_post": 0,
-                  "max_topics_per_space": 0,
-                  "show_on_post_card": ""
+                "settings": {
+                  "show_topics_in_sidebar": "yes"
                 }
               }
             }
@@ -79,21 +77,36 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "max_topics_per_post": {
+                          "type": "integer"
+                        },
+                        "max_topics_per_space": {
+                          "type": "integer"
+                        },
+                        "show_on_post_card": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "config": {
-                      "type": "object",
-                      "properties": {},
-                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Topics configuration has been updated successfully",
-                  "config": {}
+                  "config": {
+                    "max_topics_per_post": 1,
+                    "max_topics_per_space": 10,
+                    "show_on_post_card": "no"
+                  },
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

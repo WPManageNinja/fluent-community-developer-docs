@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteSpaceById",
         "summary": "DELETE Delete Space By ID",
-        "description": "Delete Space By ID for the FluentCommunity Spaces API.\n\nController: `SpaceController@deleteById`\nRoute source: `fluent-community/app/Http/Routes/api.php:21`",
+        "description": "Delete Space By ID for the FluentCommunity Spaces API.\n\nController: `SpaceController@deleteById`\nRoute source: `fluent-community/app/Http/Routes/api.php:22`",
         "tags": [
           "Spaces"
         ],
@@ -53,10 +53,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "message": "This is really helpful, thanks for writing it up."
+                }
               }
             }
           },

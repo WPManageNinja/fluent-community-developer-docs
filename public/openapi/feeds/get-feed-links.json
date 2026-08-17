@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeedLinks",
         "summary": "GET Get Feed Links",
-        "description": "Get Feed Links for the FluentCommunity Feeds API.\n\nController: `FeedsController@getLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:69`",
+        "description": "Get Feed Links for the FluentCommunity Feeds API.\n\nController: `FeedsController@getLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:70`",
         "tags": [
           "Feeds"
         ],
@@ -59,14 +59,29 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "links": []
+                  "links": [
+                    {
+                      "slug": "community-handbook",
+                      "title": "Community handbook"
+                    }
+                  ]
                 }
               }
             }

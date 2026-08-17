@@ -1,0 +1,183 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/fluent-player/audio-media/{media_id}": {
+      "post": {
+        "operationId": "postUpdateAudioMeta",
+        "summary": "POST Post Update Audio Meta",
+        "description": "Post Update Audio Meta for the FluentCommunity Media API.\n\nController: `MediaController@updateAudioMeta`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:15`",
+        "tags": [
+          "Media"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "media_id",
+            "in": "path",
+            "required": true,
+            "description": "Media ID extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "posterSrc": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "title": "Episode 4 - Community Rituals",
+                "posterSrc": "https://yourwebsite.com/wp-content/uploads/fluent-community/podcast-cover.webp"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "media_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "src": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "viewType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "posterSrc": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "poster_is_custom": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "media": {
+                    "media_id": "413",
+                    "settings": {
+                      "src": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-5a4b3c2d1e0f97867564534241302010-fluentcom-episode-4.mp3",
+                      "title": "Episode 4 - Community Rituals",
+                      "viewType": "audio",
+                      "posterSrc": "https://yourwebsite.com/wp-content/uploads/fluent-community/podcast-cover.webp",
+                      "poster_is_custom": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You are not allowed to edit this audio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "You are not allowed to edit this audio"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "This media is not an editable audio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "This media is not an editable audio"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

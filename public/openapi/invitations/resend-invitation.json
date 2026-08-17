@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Invitation has been resent successfully"
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

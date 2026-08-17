@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMemberWidgetReport",
         "summary": "GET Get Member Widget Report",
-        "description": "Get Member Widget Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:75`",
+        "description": "Get Member Widget Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:77`",
         "tags": [
           "Reports"
         ],
@@ -46,17 +46,105 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "active_members": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "new_members": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "pending_members": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "total_members": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": {
+                    "active_members": {
+                      "comparison": "+77",
+                      "title": "Three things I learned this month",
+                      "total_records": 1465
+                    },
+                    "new_members": {
+                      "comparison": "-24",
+                      "title": "Three things I learned this month",
+                      "total_records": 168
+                    },
+                    "pending_members": {
+                      "comparison": "0",
+                      "title": "Feature request round-up",
+                      "total_records": 0
+                    },
+                    "total_members": {
+                      "comparison": "-24",
+                      "title": "New tutorial: getting started with the API",
+                      "total_records": 168
+                    }
+                  }
                 }
               }
             }

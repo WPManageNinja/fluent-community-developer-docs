@@ -82,12 +82,12 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "is_gated": {
+                      "type": "boolean"
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "is_gated": {
-                      "type": "boolean"
                     },
                     "watched": {
                       "type": "boolean"
@@ -96,9 +96,9 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Video watch progress has been recorded.",
-                  "is_gated": true,
-                  "watched": true
+                  "is_gated": false,
+                  "message": "Just tried it and it works exactly as described.",
+                  "watched": false
                 }
               }
             }

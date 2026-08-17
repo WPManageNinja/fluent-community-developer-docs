@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listMembers",
         "summary": "GET List Members",
-        "description": "List Members for the FluentCommunity Members API.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:123`",
+        "description": "List Members for the FluentCommunity Members API.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:126`",
         "tags": [
           "Members"
         ],
@@ -75,6 +75,15 @@
             }
           },
           {
+            "name": "sort_dir",
+            "in": "query",
+            "required": false,
+            "description": "Sort Dir read via `$request->getSafe()` in getMembers().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "search",
             "in": "query",
             "required": false,
@@ -102,58 +111,295 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "members": {
+                    "current_user_follows": {
                       "type": "object",
                       "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
+                        "76": {
+                          "type": "string",
+                          "nullable": false
                         },
-                        "current_page": {
-                          "type": "integer"
+                        "1628": {
+                          "type": "string",
+                          "nullable": false
                         },
-                        "per_page": {
-                          "type": "integer"
-                        },
-                        "from": {
-                          "type": "integer"
-                        },
-                        "to": {
-                          "type": "integer"
-                        },
-                        "total": {
-                          "type": "integer"
-                        },
-                        "last_page": {
-                          "type": "integer"
-                        },
-                        "has_more": {
-                          "type": "boolean"
+                        "6764": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
                     },
                     "execution_time": {
                       "type": "number"
+                    },
+                    "members": {
+                      "type": "object",
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "avatar": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "badge": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "display_name": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "is_verified": {
+                                "type": "integer"
+                              },
+                              "last_activity": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "badge_slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "cover_photo": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "social_links": {
+                                    "type": "object",
+                                    "properties": {
+                                      "fb": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "instagram": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "linkedin": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "twitter": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "youtube": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "website": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "permalink": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "short_description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "total_points": {
+                                "type": "integer"
+                              },
+                              "user_id": {
+                                "type": "integer"
+                              },
+                              "username": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "from": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "to": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "members": {
-                    "data": [],
-                    "current_page": 1,
-                    "per_page": 10,
-                    "from": 0,
-                    "to": 0,
-                    "total": 0,
-                    "last_page": 0,
-                    "has_more": false
+                  "current_user_follows": {
+                    "76": "1",
+                    "1628": "1",
+                    "6764": "1"
                   },
-                  "execution_time": 0.123
+                  "execution_time": 0.013069868087768555,
+                  "members": {
+                    "current_page": 1,
+                    "data": [
+                      {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                        "badge": null,
+                        "created_at": "2024-03-05 16:37:02",
+                        "display_name": "Alex Rivera",
+                        "is_verified": 1,
+                        "last_activity": "2026-08-17 22:00:34",
+                        "meta": {
+                          "badge_slug": "jordan_blake_2",
+                          "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                          "social_links": {
+                            "fb": "alexrivera",
+                            "instagram": "alexrivera",
+                            "linkedin": "alexrivera",
+                            "twitter": "alexrivera",
+                            "youtube": "alexrivera"
+                          },
+                          "website": "https://example.com"
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                        "short_description": "Community builder. Helping members get the most out of the platform.",
+                        "status": "active",
+                        "total_points": 20385,
+                        "user_id": 1,
+                        "username": "alex_rivera"
+                      },
+                      {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/sofia_rossi_5.png",
+                        "badge": null,
+                        "created_at": "2025-07-10 01:02:56",
+                        "display_name": "Sofia Rossi",
+                        "is_verified": 0,
+                        "last_activity": "2026-08-14 07:03:31",
+                        "meta": {
+                          "cover_photo": "",
+                          "website": ""
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/sofia_rossi_5",
+                        "short_description": "Founder. Building in public, learning in public.",
+                        "status": "active",
+                        "total_points": 10,
+                        "user_id": 9727,
+                        "username": "sofia_rossi_5"
+                      },
+                      {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera_6.png",
+                        "badge": null,
+                        "created_at": "2024-12-22 11:34:38",
+                        "display_name": "Alex Rivera",
+                        "is_verified": 0,
+                        "last_activity": "2026-08-14 07:03:07",
+                        "meta": {
+                          "cover_photo": "",
+                          "headline": "",
+                          "short_description_rendered": "<p>Community builder. Helping members get the most out of the platform.</p>",
+                          "website": "https://example.com"
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/alex_rivera_6",
+                        "short_description": "Community builder. Helping members get the most out of the platform.",
+                        "status": "active",
+                        "total_points": 59,
+                        "user_id": 5080,
+                        "username": "alex_rivera_6"
+                      }
+                    ],
+                    "first_page_url": "https://yourwebsite.com/?page=1",
+                    "from": 1,
+                    "last_page": 813,
+                    "last_page_url": "https://yourwebsite.com/?page=813",
+                    "links": [
+                      {
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "2",
+                        "url": "https://yourwebsite.com/?page=2"
+                      }
+                    ],
+                    "next_page_url": "https://yourwebsite.com/?page=2",
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": 15,
+                    "total": 12183
+                  }
                 }
               }
             }

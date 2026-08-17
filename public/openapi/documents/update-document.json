@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateDocument",
         "summary": "POST Update Document",
-        "description": "Update Document for the FluentCommunity Documents API.\n\nController: `DocumentController@updateDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:41`",
+        "description": "Update Document for the FluentCommunity Documents API.\n\nController: `DocumentController@updateDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:43`",
         "tags": [
           "Documents"
         ],
@@ -45,6 +45,31 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "file": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "media_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
@@ -53,7 +78,14 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "file": {
+                    "id": 13234,
+                    "media_key": "9feea435bae8ae1324a75d6f51987d4b",
+                    "title": "Feature request round-up",
+                    "type": "document",
+                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=9feea435bae8ae1324a75d6f51987d4b&media_id=13234"
+                  },
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

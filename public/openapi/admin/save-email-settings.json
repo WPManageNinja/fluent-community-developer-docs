@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveEmailSettings",
         "summary": "POST Save Email Settings",
-        "description": "Save Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:101`",
+        "description": "Save Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:104`",
         "tags": [
           "Admin"
         ],
@@ -57,7 +57,38 @@
               },
               "example": {
                 "email_settings": {
-                  "logo": ""
+                  "com_my_post_mail": "yes",
+                  "daily_digest_time": "09:00",
+                  "digest_email_status": "yes",
+                  "digest_mail_day": "tue",
+                  "disable_powered_by": "no",
+                  "email_footer": "You are getting this email because you are a member of {{site_name_with_url}}.\n\n{{manage_email_notification_url|Manage Your Email Notifications Preference}}.\n",
+                  "email_footer_rendered": "<p>You are getting this email because you are a member of {{site_name_with_url}}.</p>\n<p>{{manage_email_notification_url|Manage Your Email Notifications Preference}}.</p>",
+                  "global_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp",
+                  "logo": "",
+                  "mention_mail": "yes",
+                  "reply_my_com_mail": "yes",
+                  "reply_to_email": "member@example.com",
+                  "reply_to_name": "Your Company Mei",
+                  "send_from_email": "member@example.com",
+                  "send_from_name": "Your Community"
+                },
+                "settings": {
+                  "com_my_post_mail": "yes",
+                  "daily_digest_time": "09:00",
+                  "digest_email_status": "yes",
+                  "digest_mail_day": "tue",
+                  "disable_powered_by": "no",
+                  "email_footer": "You are getting this email because you are a member of {{site_name_with_url}}.\n\n{{manage_email_notification_url|Manage Your Email Notifications Preference}}.\n",
+                  "email_footer_rendered": "<p>You are getting this email because you are a member of {{site_name_with_url}}.</p>\n<p>{{manage_email_notification_url|Manage Your Email Notifications Preference}}.</p>",
+                  "global_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp",
+                  "logo": "",
+                  "mention_mail": "yes",
+                  "reply_my_com_mail": "yes",
+                  "reply_to_email": "member@example.com",
+                  "reply_to_name": "Your Company Mei",
+                  "send_from_email": "member@example.com",
+                  "send_from_name": "Your Community"
                 }
               }
             }
@@ -72,8 +103,66 @@
                   "type": "object",
                   "properties": {
                     "email_settings": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "com_my_post_mail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "daily_digest_time": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "digest_email_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "digest_mail_day": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "disable_powered_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "email_footer": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "email_footer_rendered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "mention_mail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reply_my_com_mail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reply_to_email": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reply_to_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "send_from_email": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "send_from_name": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "type": "string",
@@ -83,8 +172,23 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "email_settings": null,
-                  "message": "Email notification settings have been updated"
+                  "email_settings": {
+                    "com_my_post_mail": "yes",
+                    "daily_digest_time": "09:00",
+                    "digest_email_status": "yes",
+                    "digest_mail_day": "tue",
+                    "disable_powered_by": "no",
+                    "email_footer": "You are getting this email because you are a member of {{site_name_with_url}}.\n\n{{manage_email_notification_url|Manage Your Email Notifications Preference}}.\n",
+                    "email_footer_rendered": "<p>You are getting this email because you are a member of {{site_name_with_url}}.</p>\n<p>{{manage_email_notification_url|Manage Your Email Notifications Preference}}.</p>",
+                    "logo": "",
+                    "mention_mail": "yes",
+                    "reply_my_com_mail": "yes",
+                    "reply_to_email": "member@example.com",
+                    "reply_to_name": "Your Company Mei",
+                    "send_from_email": "member@example.com",
+                    "send_from_name": "Your Community"
+                  },
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }
