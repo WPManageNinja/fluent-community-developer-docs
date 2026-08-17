@@ -13,9 +13,45 @@ This reference covers 248 routes registered in the FluentCommunity core and modu
 
 ## Authentication
 
-- **Admin and settings routes:** typically used with WordPress Application Passwords.
-- **Portal routes:** typically use cookie authentication plus a nonce in browser contexts.
-- **Method override:** the FluentCommunity frontend sends PUT, PATCH, and DELETE requests as POST requests with `X-HTTP-Method-Override`.
+Every route runs behind a WordPress REST authentication check and then a
+FluentCommunity policy. Authenticate the request the way you would any WordPress
+REST call:
+
+- **Server to server:** a [WordPress Application Password](https://wordpress.org/documentation/article/application-passwords/) sent as HTTP Basic auth. The interactive examples on these pages use this.
+- **In the browser:** the logged-in cookie plus an `X-WP-Nonce` header carrying a `wp_rest` nonce. This is what the portal itself uses.
+
+## Authorization
+
+Authentication only establishes *who* you are. Each route group then applies a
+policy, and the policy is what decides whether the call is allowed:
+
+| Policy | Applies to | Requirement |
+| --- | --- | --- |
+| `PortalPolicy` | Feeds, comments, reactions, members, notifications, profile, activity, options | An active member profile with portal access. Anything other than `GET` also requires a logged-in user. |
+| `SpacePolicy` | Spaces | Portal access, plus per-space membership and role checks inside each method. |
+| `AdminPolicy` | Admin and settings routes | Community administrator. |
+| `CourseAdminPolicy` | Course administration | Course-creator access, and management rights over the course named in the path. |
+| `ModerationPolicy` | Moderation reports | Community moderator access; the `content_moderation` feature must also be enabled for the listing routes. |
+| `TopicPolicy` | Topic management | Space-manage access, with a narrow read-only exception for course creators fetching topic options. |
+| `InvitationPolicy` | Invitations | Any logged-in user with portal access; per-space moderator rights are then checked inside each method. |
+
+::: warning Community administrator is not a WordPress administrator
+`AdminPolicy` checks FluentCommunity's own `community_admin` permission (or a
+super admin), not the WordPress `manage_options` capability. A community
+administrator is a role FluentCommunity delegates, and it can be granted to users
+who have no elevated WordPress capabilities at all. Treat these routes as
+privileged, but do not assume the caller is a site administrator.
+:::
+
+A route may also be gated by a feature flag (`Helper::isFeatureEnabled('…')`) or
+by the Pro plugin being active. Where that applies it is called out on the
+operation's own page.
+
+## Conventions
+
+- **Method override:** the portal frontend sends `PUT`, `PATCH` and `DELETE` as `POST` with an `X-HTTP-Method-Override` header. Direct API clients can use the real verbs.
+- **Pagination:** list endpoints return a paginator object (`data`, `total`, `per_page`, `current_page`, `last_page`) and accept `page` and `per_page`.
+- **Errors:** most failures return a JSON body with a `message` key. Note that several endpoints report a *business* failure as HTTP 200 with only a `message` — check the body, not just the status.
 
 ## Modules
 
