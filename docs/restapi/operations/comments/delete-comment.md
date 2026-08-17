@@ -4,6 +4,7 @@ description: "Delete Comment for the FluentCommunity Comments API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `DELETE`

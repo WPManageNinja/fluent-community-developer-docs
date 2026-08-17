@@ -4,6 +4,7 @@ description: "Get Course Welcome Banner Settings for the FluentCommunity Courses
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

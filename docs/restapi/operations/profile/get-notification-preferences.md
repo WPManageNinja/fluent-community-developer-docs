@@ -4,6 +4,7 @@ description: "Get Notification Preferences for the FluentCommunity Profile API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

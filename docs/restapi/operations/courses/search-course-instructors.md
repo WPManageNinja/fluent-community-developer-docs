@@ -4,6 +4,7 @@ description: "Search Course Instructors for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

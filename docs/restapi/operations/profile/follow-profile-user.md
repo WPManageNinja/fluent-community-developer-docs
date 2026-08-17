@@ -4,6 +4,7 @@ description: "Follow Profile User for the FluentCommunity Profile API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

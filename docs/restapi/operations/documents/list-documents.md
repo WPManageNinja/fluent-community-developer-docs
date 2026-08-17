@@ -4,6 +4,7 @@ description: "List Documents for the FluentCommunity Documents API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

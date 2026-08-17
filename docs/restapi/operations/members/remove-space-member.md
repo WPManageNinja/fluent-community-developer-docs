@@ -4,6 +4,7 @@ description: "Remove Space Member for the FluentCommunity Members API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

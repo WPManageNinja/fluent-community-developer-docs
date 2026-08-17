@@ -4,6 +4,7 @@ description: "Update Lesson Completion for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `PUT`

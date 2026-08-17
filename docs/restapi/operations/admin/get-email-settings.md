@@ -4,6 +4,7 @@ description: "Get Email Settings for the FluentCommunity Admin API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

@@ -183,9 +183,24 @@ TITLE_KEYS = {'title', 'post_title', 'heading'}
 BODY_KEYS = {'message', 'message_rendered', 'content', 'post_content', 'excerpt',
              'description', 'description_rendered', 'explanation', 'note'}
 
+# Usernames that are ordinary words would, once added to the redaction table,
+# rewrite unrelated text ("admin" appearing as a badge slug, a role, a menu key).
+GENERIC_USERNAMES = {
+    'admin', 'administrator', 'user', 'users', 'test', 'tester', 'demo', 'guest',
+    'support', 'team', 'info', 'hello', 'contact', 'staff', 'moderator', 'mod',
+    'owner', 'member', 'members', 'editor', 'author', 'me', 'community', 'default',
+}
+
+# Values that vary run to run and add noise to a published example.
+VOLATILE_NUMERIC_KEYS = {'execution_time', 'query_time', 'duration', 'elapsed'}
+
 MAX_LIST_ITEMS = 3
 MAX_STRING_CHARS = 400
 MAX_DICT_KEYS = 24
+# A dict keyed by slug/id whose values are all objects is a collection, not a
+# settings blob — sample it like a list rather than printing every entry.
+MAX_KEYED_COLLECTION = 2
+KEYED_COLLECTION_MIN = 6
 TRUNCATION_MARKER = '__truncated__'
 
 
@@ -231,7 +246,7 @@ class Anonymiser:
     def build_redactions(self):
         pairs = []
         for uname, persona in self.by_username.items():
-            if len(uname) > 2:
+            if len(uname) > 2 and uname.lower() not in GENERIC_USERNAMES:
                 pairs.append((uname, persona['username'], False))
         for name, persona in self.real_names.items():
             pairs.append((name, persona['name'], False))
@@ -319,6 +334,11 @@ class Anonymiser:
             if len(items) > MAX_DICT_KEYS and all(isinstance(v, str) for _, v in items):
                 trimmed = len(items) - MAX_DICT_KEYS
                 items = items[:MAX_DICT_KEYS]
+            elif len(items) >= KEYED_COLLECTION_MIN and all(
+                isinstance(v, dict) and v for _, v in items
+            ):
+                trimmed = len(items) - MAX_KEYED_COLLECTION
+                items = items[:MAX_KEYED_COLLECTION]
             out = {}
             for k, v in items:
                 ok = self.rewrite_urls(k) if isinstance(k, str) else k
@@ -342,6 +362,9 @@ class Anonymiser:
                 return {sk: (handle if isinstance(sv, str) and sv.strip() else sv)
                         for sk, sv in v.items()}
             return self.walk(v, persona, k)
+
+        if isinstance(v, float) and k in VOLATILE_NUMERIC_KEYS:
+            return round(v, 3)
 
         if not isinstance(v, str):
             return v

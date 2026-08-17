@@ -4,6 +4,7 @@ description: "Get Welcome Banner for the FluentCommunity Feeds API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

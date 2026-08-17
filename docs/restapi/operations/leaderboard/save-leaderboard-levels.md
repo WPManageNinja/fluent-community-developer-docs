@@ -4,6 +4,7 @@ description: "Save Leaderboard Levels for the FluentCommunity Leaderboard API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

@@ -4,6 +4,7 @@ description: "Get Index for the FluentCommunity Media API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

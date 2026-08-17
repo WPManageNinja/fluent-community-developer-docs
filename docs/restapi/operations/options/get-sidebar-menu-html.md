@@ -4,6 +4,7 @@ description: "Get Sidebar Menu HTML for the FluentCommunity Options API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

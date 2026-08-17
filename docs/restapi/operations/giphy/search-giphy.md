@@ -4,6 +4,7 @@ description: "Search Giphy for the FluentCommunity Giphy API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

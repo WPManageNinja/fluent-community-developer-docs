@@ -4,6 +4,7 @@ description: "Post Handle Media Upload for the FluentCommunity Media API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

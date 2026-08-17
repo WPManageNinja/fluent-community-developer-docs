@@ -4,6 +4,7 @@ description: "List Activities for the FluentCommunity Activity API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

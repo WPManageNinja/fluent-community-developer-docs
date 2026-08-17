@@ -4,6 +4,7 @@ description: "Mark Notifications Read By Feed for the FluentCommunity Notificati
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

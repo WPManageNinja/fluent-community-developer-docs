@@ -4,6 +4,7 @@ description: "Search Space Users for the FluentCommunity Spaces API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

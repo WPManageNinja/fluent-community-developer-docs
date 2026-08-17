@@ -4,6 +4,7 @@ description: "List Leaderboard for the FluentCommunity Leaderboard API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

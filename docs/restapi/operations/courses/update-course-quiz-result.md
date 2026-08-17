@@ -4,6 +4,7 @@ description: "Update Course Quiz Result for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

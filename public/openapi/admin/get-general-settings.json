@@ -193,7 +193,7 @@
                     "use_custom_signup_page": "no",
                     "white_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp"
                   },
-                  "user_registration_enable_url": "https://yourwebsite.com/wp-jordan_blake_2/options-general.php",
+                  "user_registration_enable_url": "https://yourwebsite.com/wp-admin/options-general.php",
                   "user_roles": {
                     "author": "Author",
                     "contributor": "Contributor",

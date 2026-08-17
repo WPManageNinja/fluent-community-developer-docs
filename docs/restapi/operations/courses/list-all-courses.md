@@ -4,6 +4,7 @@ description: "List All Courses for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

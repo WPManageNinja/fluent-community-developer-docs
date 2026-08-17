@@ -4,6 +4,7 @@ description: "Search Report Spaces for the FluentCommunity Reports API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

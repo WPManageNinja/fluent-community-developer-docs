@@ -4,6 +4,7 @@ description: "List Invitations for the FluentCommunity Invitations API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

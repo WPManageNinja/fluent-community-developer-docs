@@ -4,6 +4,7 @@ description: "Update Space Lockscreen Settings for the FluentCommunity Spaces AP
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `PUT`

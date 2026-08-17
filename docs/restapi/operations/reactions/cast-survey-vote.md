@@ -4,6 +4,7 @@ description: "Cast Survey Vote for the FluentCommunity Reactions API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

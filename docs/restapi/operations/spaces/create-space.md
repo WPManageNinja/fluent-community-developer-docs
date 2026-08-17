@@ -4,6 +4,7 @@ description: "Create Space for the FluentCommunity Spaces API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

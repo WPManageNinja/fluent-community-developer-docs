@@ -4,6 +4,7 @@ description: "Get Buddypress Migration Status for the FluentCommunity Migrations
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

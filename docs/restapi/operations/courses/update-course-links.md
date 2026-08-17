@@ -4,6 +4,7 @@ description: "Update Course Links for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

@@ -4,6 +4,7 @@ description: "Update Course Lockscreen Settings for the FluentCommunity Courses 
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `PUT`

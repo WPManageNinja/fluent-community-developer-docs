@@ -4,6 +4,7 @@ description: "Batch Fetch Feeds for the FluentCommunity Feeds API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

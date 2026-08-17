@@ -4,6 +4,7 @@ description: "Get App Vars for the FluentCommunity Options API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

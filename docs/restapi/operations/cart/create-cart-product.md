@@ -4,6 +4,7 @@ description: "Create Cart Product for the FluentCommunity Cart Integration API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

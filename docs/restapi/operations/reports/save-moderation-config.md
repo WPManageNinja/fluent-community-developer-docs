@@ -4,6 +4,7 @@ description: "Save Moderation Config for the FluentCommunity Reports API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

@@ -4,6 +4,7 @@ description: "List Notifications for the FluentCommunity Notifications API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

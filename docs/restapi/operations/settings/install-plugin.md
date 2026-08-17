@@ -4,6 +4,7 @@ description: "Install Plugin for the FluentCommunity Settings API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

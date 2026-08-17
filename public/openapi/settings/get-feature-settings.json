@@ -48,77 +48,9 @@
                     "addOns": {
                       "type": "object",
                       "properties": {
-                        "fluent-cart": {
-                          "type": "object",
-                          "properties": {
-                            "action_text": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "description": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "is_installed": {
-                              "type": "boolean"
-                            },
-                            "is_repo": {
-                              "type": "boolean"
-                            },
-                            "learn_more_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "settings_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "title": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "fluent-crm": {
-                          "type": "object",
-                          "properties": {
-                            "action_text": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "description": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "is_installed": {
-                              "type": "boolean"
-                            },
-                            "is_repo": {
-                              "type": "boolean"
-                            },
-                            "learn_more_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "settings_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "title": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
+                        "__truncated__": {
+                          "type": "string",
+                          "nullable": false
                         },
                         "fluent-messaging": {
                           "type": "object",
@@ -178,150 +110,6 @@
                               "nullable": false
                             },
                             "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "title": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "fluent-smtp": {
-                          "type": "object",
-                          "properties": {
-                            "action_text": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "description": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "is_installed": {
-                              "type": "boolean"
-                            },
-                            "is_repo": {
-                              "type": "boolean"
-                            },
-                            "learn_more_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "settings_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "title": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "fluent-support": {
-                          "type": "object",
-                          "properties": {
-                            "action_text": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "description": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "is_installed": {
-                              "type": "boolean"
-                            },
-                            "is_repo": {
-                              "type": "boolean"
-                            },
-                            "learn_more_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "settings_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "title": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "fluentform": {
-                          "type": "object",
-                          "properties": {
-                            "action_text": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "description": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "is_installed": {
-                              "type": "boolean"
-                            },
-                            "is_repo": {
-                              "type": "boolean"
-                            },
-                            "learn_more_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "settings_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "title": {
-                              "type": "string",
-                              "nullable": false
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "wp-payment-form": {
-                          "type": "object",
-                          "properties": {
-                            "action_text": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "description": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "is_installed": {
-                              "type": "boolean"
-                            },
-                            "is_repo": {
-                              "type": "boolean"
-                            },
-                            "learn_more_url": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "logo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "settings_url": {
                               "type": "string",
                               "nullable": false
                             },
@@ -398,26 +186,7 @@
                 },
                 "example": {
                   "addOns": {
-                    "fluent-cart": {
-                      "action_text": "Active FluentCart",
-                      "description": "A place to introduce yourself and meet other members.",
-                      "is_installed": true,
-                      "is_repo": true,
-                      "learn_more_url": "https://wordpress.org/plugins/fluent-cart/",
-                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluent-cart.svg",
-                      "settings_url": "https://yourwebsite.com/wp-jordan_blake_2/jordan_blake_2.php?page=fluent-cart#/",
-                      "title": "Share your workflow setup"
-                    },
-                    "fluent-crm": {
-                      "action_text": "Active FluentCRM",
-                      "description": "Product announcements, release notes, and roadmap discussion.",
-                      "is_installed": true,
-                      "is_repo": true,
-                      "learn_more_url": "https://fluentcrm.com",
-                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluentcrm.svg",
-                      "settings_url": "https://yourwebsite.com/wp-jordan_blake_2/jordan_blake_2.php?page=fluentcrm-jordan_blake_2#/",
-                      "title": "Three things I learned this month"
-                    },
+                    "__truncated__": "6 further keys omitted from this sample",
                     "fluent-messaging": {
                       "action_text": "Active FluentCommunity Chat",
                       "description": "Product announcements, release notes, and roadmap discussion.",
@@ -436,46 +205,6 @@
                       "learn_more_url": "https://wordpress.org/plugins/fluent-player/",
                       "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluent-player.svg",
                       "title": "Three things I learned this month"
-                    },
-                    "fluent-smtp": {
-                      "action_text": "Active Fluent SMTP",
-                      "description": "Questions, answers, and troubleshooting help from the community.",
-                      "is_installed": true,
-                      "is_repo": true,
-                      "learn_more_url": "https://wordpress.org/plugins/fluent-smtp/",
-                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluent-smtp.svg",
-                      "settings_url": "https://yourwebsite.com/wp-jordan_blake_2/options-general.php?page=fluent-mail#/",
-                      "title": "New tutorial: getting started with the API"
-                    },
-                    "fluent-support": {
-                      "action_text": "Active Fluent Mei",
-                      "description": "Share what you are building and get feedback from other members.",
-                      "is_installed": true,
-                      "is_repo": true,
-                      "learn_more_url": "https://wordpress.org/plugins/fluent-support/",
-                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluent-support.svg",
-                      "settings_url": "https://yourwebsite.com/wp-jordan_blake_2/jordan_blake_2.php?page=fluent-support#/",
-                      "title": "Weekly office hours are back"
-                    },
-                    "fluentform": {
-                      "action_text": "Active Fluent Forms",
-                      "description": "Share what you are building and get feedback from other members.",
-                      "is_installed": false,
-                      "is_repo": true,
-                      "learn_more_url": "https://wordpress.org/plugins/fluentform/",
-                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluentform.png",
-                      "settings_url": "",
-                      "title": "New tutorial: getting started with the API"
-                    },
-                    "wp-payment-form": {
-                      "action_text": "Install Paymattic",
-                      "description": "A place to introduce yourself and meet other members.",
-                      "is_installed": false,
-                      "is_repo": true,
-                      "learn_more_url": "https://wordpress.org/plugins/wp-payment-form/",
-                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/paymattic.png",
-                      "settings_url": "",
-                      "title": "Community guidelines refresh"
                     }
                   },
                   "features": {

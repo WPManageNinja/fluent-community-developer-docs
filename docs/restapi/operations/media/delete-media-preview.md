@@ -4,6 +4,7 @@ description: "Delete Media Preview for the FluentCommunity Media API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `DELETE`

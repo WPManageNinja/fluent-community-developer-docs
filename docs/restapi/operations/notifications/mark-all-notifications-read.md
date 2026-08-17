@@ -4,6 +4,7 @@ description: "Mark All Notifications Read for the FluentCommunity Notifications 
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

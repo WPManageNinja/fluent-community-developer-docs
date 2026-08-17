@@ -4,6 +4,7 @@ description: "Get Ticker Updates for the FluentCommunity Feeds API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

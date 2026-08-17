@@ -4,6 +4,7 @@ description: "Resend Invitation for the FluentCommunity Invitations API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

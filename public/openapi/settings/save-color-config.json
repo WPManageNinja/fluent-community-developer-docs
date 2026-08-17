@@ -75,10 +75,7 @@
                 },
                 "schemas": {
                   "darkSkins": {
-                    "custom": {
-                      "selectors": [],
-                      "title": "Community guidelines refresh"
-                    },
+                    "__truncated__": "4 further keys omitted from this sample",
                     "default": {
                       "selectors": {
                         "body": {
@@ -121,132 +118,6 @@
                         }
                       },
                       "title": "Three things I learned this month"
-                    },
-                    "emerald_essence": {
-                      "selectors": {
-                        "body": {
-                          "active_bg": "#1E3A31",
-                          "deep_bg": "#E2E8F0",
-                          "highlight_bg": "#064E3B",
-                          "light_bg": "#2A3F48",
-                          "menu_text": "#A7BCBF",
-                          "primary_bg": "#1A2B32",
-                          "primary_border": "#2F4C41",
-                          "primary_button": "#10B981",
-                          "primary_button_text": "#1A2B32",
-                          "primary_text": "#E2E8F0",
-                          "secondary_bg": "#243B43",
-                          "secondary_border": "#3D5C52",
-                          "secondary_content_bg": "#2C464F",
-                          "secondary_text": "#A7BCBF",
-                          "text_link": "#34D399",
-                          "text_off": "#64748B"
-                        },
-                        "fcom_top_menu": {
-                          "active_bg": "#064E3B",
-                          "menu_bg_hover": "#064E3B",
-                          "menu_text": "#A7BCBF",
-                          "menu_text_active": "#34D399",
-                          "menu_text_hover": "#E2E8F0",
-                          "primary_bg": "#1A2B32",
-                          "primary_border": "#2F4C41"
-                        },
-                        "spaces": {
-                          "active_bg": "#10B981",
-                          "menu_bg_hover": "#064E3B",
-                          "menu_text": "#A7BCBF",
-                          "menu_text_active": "#FFFFFF",
-                          "menu_text_hover": "#34D399",
-                          "primary_bg": "#1A2B32",
-                          "primary_border": "#2F4C41"
-                        }
-                      },
-                      "title": "Three things I learned this month"
-                    },
-                    "ocean_blue": {
-                      "selectors": {
-                        "body": {
-                          "active_bg": "#263951",
-                          "deep_bg": "#E1E4EA",
-                          "highlight_bg": "#2c2c1a",
-                          "light_bg": "#2B303B",
-                          "menu_bg_hover": "#263951",
-                          "menu_text": "#B0B3B8",
-                          "menu_text_active": "#2D88FF",
-                          "menu_text_hover": "#2D88FF",
-                          "primary_bg": "#2B2E33",
-                          "primary_border": "#3E4042",
-                          "primary_button": "#FFFFFF",
-                          "primary_button_text": "#191B1F",
-                          "primary_text": "#F0F3F5",
-                          "secondary_bg": "#191B1F",
-                          "secondary_border": "#A5A9AD",
-                          "secondary_content_bg": "#42464D",
-                          "secondary_text": "#99A0AE",
-                          "text_link": "#2d88ff",
-                          "text_off": "#A5A9AD"
-                        },
-                        "fcom_top_menu": {
-                          "active_bg": "#263951",
-                          "menu_bg_hover": "#263951",
-                          "menu_text": "#B0B3B8",
-                          "menu_text_active": "#fff",
-                          "menu_text_hover": "#fff",
-                          "primary_bg": "#242526",
-                          "primary_border": "#3E4042"
-                        },
-                        "spaces": {
-                          "active_bg": "#2D88FF",
-                          "menu_bg_hover": "#263951",
-                          "menu_text": "#B0B3B8",
-                          "menu_text_active": "#FFFFFF",
-                          "menu_text_hover": "#2D88FF",
-                          "primary_bg": "#242526",
-                          "primary_border": "#3E4042"
-                        }
-                      },
-                      "title": "Three things I learned this month"
-                    },
-                    "sky_blue": {
-                      "selectors": {
-                        "body": {
-                          "active_bg": "#1D2F41",
-                          "deep_bg": "#E7E9EA",
-                          "highlight_bg": "#1D2F41",
-                          "light_bg": "#22303C",
-                          "menu_text": "#8B98A5",
-                          "primary_bg": "#15202B",
-                          "primary_border": "#38444D",
-                          "primary_button": "#1D9BF0",
-                          "primary_button_text": "#15202B",
-                          "primary_text": "#E7E9EA",
-                          "secondary_bg": "#1E2732",
-                          "secondary_border": "#536471",
-                          "secondary_content_bg": "#2C3640",
-                          "secondary_text": "#8B98A5",
-                          "text_link": "#1D9BF0",
-                          "text_off": "#536471"
-                        },
-                        "fcom_top_menu": {
-                          "active_bg": "#1D2F41",
-                          "menu_bg_hover": "#1D2F41",
-                          "menu_text": "#8B98A5",
-                          "menu_text_active": "#1D9BF0",
-                          "menu_text_hover": "#E7E9EA",
-                          "primary_bg": "#15202B",
-                          "primary_border": "#38444D"
-                        },
-                        "spaces": {
-                          "active_bg": "#1D9BF0",
-                          "menu_bg_hover": "#1D2F41",
-                          "menu_text": "#8B98A5",
-                          "menu_text_active": "#FFFFFF",
-                          "menu_text_hover": "#1D9BF0",
-                          "primary_bg": "#15202B",
-                          "primary_border": "#38444D"
-                        }
-                      },
-                      "title": "Share your workflow setup"
                     },
                     "sunset_sands": {
                       "selectors": {
@@ -291,10 +162,7 @@
                     }
                   },
                   "lightSkins": {
-                    "custom": {
-                      "selectors": [],
-                      "title": "Community guidelines refresh"
-                    },
+                    "__truncated__": "4 further keys omitted from this sample",
                     "default": {
                       "selectors": {
                         "body": {
@@ -335,129 +203,6 @@
                         }
                       },
                       "title": "Feature request round-up"
-                    },
-                    "emerald_essence": {
-                      "selectors": {
-                        "body": {
-                          "active_bg": "#E3F2ED",
-                          "deep_bg": "#1A2B32",
-                          "highlight_bg": "#ECFDF5",
-                          "light_bg": "#F7FAFA",
-                          "menu_text": "#4A5D5E",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#D1E7DD",
-                          "primary_button": "#10B981",
-                          "primary_button_text": "#FFFFFF",
-                          "primary_text": "#1F2937",
-                          "secondary_bg": "#F0F7F4",
-                          "secondary_border": "#A7C4BC",
-                          "secondary_content_bg": "#f0f3f5",
-                          "secondary_text": "#4B5563",
-                          "text_link": "#059669",
-                          "text_off": "#9CA3AF"
-                        },
-                        "fcom_top_menu": {
-                          "active_bg": "#ECFDF5",
-                          "menu_bg_hover": "#ECFDF5",
-                          "menu_text": "#4A5D5E",
-                          "menu_text_active": "#059669",
-                          "menu_text_hover": "#4A5D5E",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#D1E7DD"
-                        },
-                        "spaces": {
-                          "active_bg": "#10B981",
-                          "menu_bg_hover": "#ECFDF5",
-                          "menu_text": "#4A5D5E",
-                          "menu_text_active": "#FFFFFF",
-                          "menu_text_hover": "#059669",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#D1E7DD"
-                        }
-                      },
-                      "title": "Community guidelines refresh"
-                    },
-                    "ocean_blue": {
-                      "selectors": {
-                        "body": {
-                          "active_bg": "#E7F3FF",
-                          "deep_bg": "#18191A",
-                          "highlight_bg": "#E7F3FF",
-                          "light_bg": "#F6F9FA",
-                          "menu_text": "#65676B",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#DADDE1",
-                          "primary_button": "#1877F2",
-                          "primary_button_text": "#FFFFFF",
-                          "primary_text": "#050505",
-                          "secondary_bg": "#F0F2F5",
-                          "secondary_border": "#CED0D4",
-                          "secondary_content_bg": "#f0f3f5",
-                          "secondary_text": "#65676B",
-                          "text_link": "#216FDB",
-                          "text_off": "#8A8D91"
-                        },
-                        "fcom_top_menu": {
-                          "active_bg": "#E7F3FF",
-                          "menu_bg_hover": "#E7F3FF",
-                          "menu_text": "#65676B",
-                          "menu_text_active": "#1877F2",
-                          "menu_text_hover": "#1877F2",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#DADDE1"
-                        },
-                        "spaces": {
-                          "active_bg": "#1877F2",
-                          "menu_bg_hover": "#E7F3FF",
-                          "menu_text": "#65676B",
-                          "menu_text_active": "#FFFFFF",
-                          "menu_text_hover": "#1877F2",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#DADDE1"
-                        }
-                      },
-                      "title": "Welcome to the community"
-                    },
-                    "sky_blue": {
-                      "selectors": {
-                        "body": {
-                          "active_bg": "#E8F5FD",
-                          "deep_bg": "#15202B",
-                          "highlight_bg": "#E8F5FD",
-                          "light_bg": "#F7F9FA",
-                          "menu_text": "#536471",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#EFF3F4",
-                          "primary_button": "#1D9BF0",
-                          "primary_button_text": "#FFFFFF",
-                          "primary_text": "#0F1419",
-                          "secondary_bg": "#F7F9FA",
-                          "secondary_border": "#CFD9DE",
-                          "secondary_content_bg": "#f0f3f5",
-                          "secondary_text": "#536471",
-                          "text_link": "#1D9BF0",
-                          "text_off": "#8899A6"
-                        },
-                        "fcom_top_menu": {
-                          "active_bg": "#E8F5FD",
-                          "menu_bg_hover": "#E8F5FD",
-                          "menu_text": "#536471",
-                          "menu_text_active": "#1D9BF0",
-                          "menu_text_hover": "#536471",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#EFF3F4"
-                        },
-                        "spaces": {
-                          "active_bg": "#1D9BF0",
-                          "menu_bg_hover": "#E8F5FD",
-                          "menu_text": "#536471",
-                          "menu_text_active": "#FFFFFF",
-                          "menu_text_hover": "#1D9BF0",
-                          "primary_bg": "#FFFFFF",
-                          "primary_border": "#EFF3F4"
-                        }
-                      },
-                      "title": "Community guidelines refresh"
                     },
                     "sunset_sands": {
                       "selectors": {

@@ -4,6 +4,7 @@ description: "Save CRM Tagging Config for the FluentCommunity Settings API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

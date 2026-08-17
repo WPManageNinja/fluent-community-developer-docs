@@ -450,7 +450,7 @@
                       "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau.png",
                       "pivot": {
                         "created_at": "2026-08-17T22:04:05+00:00",
-                        "role": "jordan_blake_2",
+                        "role": "admin",
                         "space_id": "92",
                         "status": "active",
                         "user_id": "1"

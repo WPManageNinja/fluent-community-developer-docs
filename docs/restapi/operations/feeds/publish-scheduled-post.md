@@ -4,6 +4,7 @@ description: "Publish Scheduled Post for the FluentCommunity Feeds API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

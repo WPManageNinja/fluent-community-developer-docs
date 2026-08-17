@@ -4,6 +4,7 @@ description: "List Space Paywalls for the FluentCommunity Cart Integration API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

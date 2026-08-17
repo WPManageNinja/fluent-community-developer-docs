@@ -4,6 +4,7 @@ description: "Delete Feed for the FluentCommunity Feeds API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `DELETE`

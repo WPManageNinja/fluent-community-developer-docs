@@ -4,6 +4,7 @@ description: "Get Feed By ID for the FluentCommunity Feeds API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

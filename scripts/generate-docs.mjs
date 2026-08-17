@@ -485,6 +485,18 @@ const HOOK_PAGES = {
 const HOOK_NOTES = {}
 
 /**
+ * Hand-written prose per REST operation, keyed by `<module>/<operation-slug>` (the
+ * bare slug also works). Without an entry an operation's description just restates
+ * its title, which tells a reader nothing.
+ *
+ * Fields, all optional except summary:
+ *   summary   one sentence: what the endpoint does and for whom
+ *   details   permissions, side effects, pagination, gotchas — omit rather than pad
+ *   notes     array of short caveats rendered as a bullet list
+ */
+const OPERATION_NOTES = {}
+
+/**
  * Where a hook lives is decided by its source file before its name, because names
  * lie: `fluent_community/course/topic_completed` matched the `topic` rule and filed
  * itself under spaces. First match wins; order matters.
@@ -555,7 +567,13 @@ function renderProBadge() {
   return '<span class="pro-badge">PRO</span>'
 }
 
-function renderSourceLabel(sourceIds) {
+/**
+ * `mixedNote` explains what "core and Pro" means in the caller's context, because
+ * the old "Core + PRO" label read as "you need Pro for this" when it actually means
+ * the thing is defined in core and Pro also participates — no licence required to
+ * use it.
+ */
+function renderSourceLabel(sourceIds, mixedNote = 'extended by Pro') {
   const normalized = [...new Set(sourceIds)].sort()
   if (!normalized.length) {
     return '—'
@@ -563,10 +581,8 @@ function renderSourceLabel(sourceIds) {
   const hasCore = normalized.includes('core')
   const hasPro = normalized.includes('pro')
 
-  // "Core + PRO" read as "you need Pro for this"; it actually means the hook is
-  // defined in core and also fired from Pro, which needs no licence to hook into.
   if (hasCore && hasPro) {
-    return 'Core <span class="edition-note">(also fired by Pro)</span>'
+    return `Core <span class="edition-note">(${mixedNote})</span>`
   }
 
   if (hasPro) {
@@ -1910,11 +1926,17 @@ function buildOperationMeta(route) {
   const slug = buildOperationAlias(route)
   const title = humanizeSlug(slug)
   const operationId = kebabToCamel(slug)
+  const note = OPERATION_NOTES[`${route.module}/${slug}`] || OPERATION_NOTES[slug]
   return {
     slug,
     title,
     operationId,
-    description: `${title} for the FluentCommunity ${MODULE_META[route.module]?.title || route.module}.`,
+    // Without a note this restates the title, which tells the reader nothing —
+    // add entries to OPERATION_NOTES rather than leaving the fallback in place.
+    description:
+      (note && note.summary) ||
+      `${title} for the FluentCommunity ${MODULE_META[route.module]?.title || route.module}.`,
+    notes: note || null,
   }
 }
 
@@ -6157,7 +6179,7 @@ ${categoryGroups.length} unique ${kind} hook${categoryGroups.length === 1 ? '' :
 ${categoryGroups
   .map(
     (group) =>
-      `| [\`${group.name}\`](#${hookAnchor(group.name)}) | ${renderSourceLabel(group.sourceIds)} | ${group.callSites.length} | \`${group.callSites[0].file}:${group.callSites[0].line}\` |`,
+      `| [\`${group.name}\`](#${hookAnchor(group.name)}) | ${renderSourceLabel(group.sourceIds, 'also fired by Pro')} | ${group.callSites.length} | \`${group.callSites[0].file}:${group.callSites[0].line}\` |`,
   )
   .join('\n') || '| — | — | — | No hooks found in this category. |'}
 
@@ -6185,7 +6207,7 @@ function renderHookSection(group, kind) {
 
   const meta = [
     `- **Type:** ${kind}`,
-    `- **Edition:** ${renderSourceLabel(group.sourceIds)}`,
+    `- **Edition:** ${renderSourceLabel(group.sourceIds, 'also fired by Pro')}`,
     `- **Call sites:** ${group.callSites.length}`,
   ]
   if (note.since) {
@@ -6460,6 +6482,9 @@ description: "${route.description}"
 outline: false
 aside: false
 ---
+${route.notes && route.notes.summary ? `\n${route.notes.summary}\n` : ''}${
+          route.notes && route.notes.details ? `\n${route.notes.details}\n` : ''
+        }
 ## Endpoint
 
 - **Method:** \`${route.httpMethod}\`
@@ -6468,7 +6493,11 @@ aside: false
 - **Controller:** \`${route.controllerClass}@${route.action}\`
 - **Route source:** \`${route.routeFile}:${route.routeLine}\`
 ${route.controllerFile ? `- **Controller source:** \`${route.controllerFile}\`` : ''}
-${renderExampleProvenance(route.exampleOrigin)}
+${
+  route.notes && route.notes.notes && route.notes.notes.length
+    ? `\n${route.notes.notes.map((item) => `- ${item}`).join('\n')}\n`
+    : ''
+}${renderExampleProvenance(route.exampleOrigin)}
 
 <OAOperation operationId="${route.operationId}" specUrl="/openapi/public/${module}/${route.slug}.json" />
 `,
@@ -6638,6 +6667,13 @@ function main() {
     `Response samples: ${byOrigin.captured || 0} recorded live, ${
       byOrigin.manual || 0
     } reconstructed from source, ${byOrigin.inferred || 0} inferred from static analysis.`,
+  )
+
+  const describedRoutes = routes.filter((route) => route.notes && route.notes.summary).length
+  console.log(
+    `Endpoint prose: ${describedRoutes}/${routes.length} operations have a hand-written description (${Math.round(
+      (describedRoutes / routes.length) * 100,
+    )}%). Add entries to OPERATION_NOTES to raise it.`,
   )
 
   const hookTotals = Object.values(hookCoverage).reduce(

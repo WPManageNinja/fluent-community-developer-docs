@@ -4,6 +4,7 @@ description: "Get Menu Settings for the FluentCommunity Settings API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

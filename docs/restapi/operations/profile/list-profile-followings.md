@@ -4,6 +4,7 @@ description: "List Profile Followings for the FluentCommunity Profile API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

@@ -4,6 +4,7 @@ description: "List Available Migrations for the FluentCommunity Migrations API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

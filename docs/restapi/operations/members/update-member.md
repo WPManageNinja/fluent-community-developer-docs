@@ -4,6 +4,7 @@ description: "Update Member for the FluentCommunity Members API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `PATCH`

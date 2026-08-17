@@ -4,6 +4,7 @@ description: "Toggle Profile Follow for the FluentCommunity Profile API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

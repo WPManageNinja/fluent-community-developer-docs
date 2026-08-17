@@ -4,6 +4,7 @@ description: "Search Cart Products for the FluentCommunity Cart Integration API.
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `GET`

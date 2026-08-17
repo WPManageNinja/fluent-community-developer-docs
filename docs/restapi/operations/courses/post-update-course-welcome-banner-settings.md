@@ -4,6 +4,7 @@ description: "Post Update Course Welcome Banner Settings for the FluentCommunity
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`

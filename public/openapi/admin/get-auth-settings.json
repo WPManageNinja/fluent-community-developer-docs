@@ -302,30 +302,9 @@
                                 "fields": {
                                   "type": "object",
                                   "properties": {
-                                    "conf_password": {
-                                      "type": "object",
-                                      "properties": {
-                                        "label": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "placeholder": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "required": {
-                                          "type": "boolean"
-                                        },
-                                        "sanitize_callback": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
+                                    "__truncated__": {
+                                      "type": "string",
+                                      "nullable": false
                                     },
                                     "email": {
                                       "type": "object",
@@ -382,80 +361,6 @@
                                           "nullable": false
                                         },
                                         "value": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
-                                    },
-                                    "password": {
-                                      "type": "object",
-                                      "properties": {
-                                        "label": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "placeholder": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "required": {
-                                          "type": "boolean"
-                                        },
-                                        "sanitize_callback": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
-                                    },
-                                    "terms": {
-                                      "type": "object",
-                                      "properties": {
-                                        "disabled": {
-                                          "type": "boolean"
-                                        },
-                                        "inline_label": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "label": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "required": {
-                                          "type": "boolean"
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
-                                    },
-                                    "username": {
-                                      "type": "object",
-                                      "properties": {
-                                        "label": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "placeholder": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "required": {
-                                          "type": "boolean"
-                                        },
-                                        "sanitize_callback": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "type": {
                                           "type": "string",
                                           "nullable": false
                                         }
@@ -571,13 +476,7 @@
                         "description": "Share what you are building and get feedback from other members.",
                         "description_rendered": "<p>Questions, answers, and troubleshooting help from the community.</p>",
                         "fields": {
-                          "conf_password": {
-                            "label": "Re-type Account Password",
-                            "placeholder": "Password Confirmation",
-                            "required": true,
-                            "sanitize_callback": "sanitize_text_field",
-                            "type": "password"
-                          },
+                          "__truncated__": "4 further keys omitted from this sample",
                           "email": {
                             "label": "Email Address",
                             "placeholder": "Your email address",
@@ -594,27 +493,6 @@
                             "sanitize_callback": "sanitize_text_field",
                             "type": "text",
                             "value": ""
-                          },
-                          "password": {
-                            "label": "Account Password",
-                            "placeholder": "Password",
-                            "required": true,
-                            "sanitize_callback": "sanitize_text_field",
-                            "type": "password"
-                          },
-                          "terms": {
-                            "disabled": false,
-                            "inline_label": "<p>I agree to the terms and conditions</p>",
-                            "label": "I agree to the terms and conditions",
-                            "required": true,
-                            "type": "inline_checkbox"
-                          },
-                          "username": {
-                            "label": "Username",
-                            "placeholder": "No space or special characters",
-                            "required": true,
-                            "sanitize_callback": "sanitize_user",
-                            "type": "text"
                           }
                         },
                         "hidden": false,

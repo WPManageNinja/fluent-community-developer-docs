@@ -4,6 +4,7 @@ description: "Post Resolve CRM Tag Course for the FluentCommunity Courses API."
 outline: false
 aside: false
 ---
+
 ## Endpoint
 
 - **Method:** `POST`
