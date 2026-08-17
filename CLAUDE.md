@@ -32,7 +32,14 @@ Every run **deletes and rewrites** these paths (`cleanGeneratedOutput()`) — ne
 - `.generated/` (sidebar-ordering JSON consumed by `.vitepress/config.mts`)
 - `public/openapi/<module>/` spec directories
 
-To change generated content, edit the generator itself — prose and metadata live in constants near the top of `scripts/generate-docs.mjs` (`MODEL_SUMMARIES`, `MODEL_ORDER`/`MODEL_SLUGS`, `KEY_METHOD_SUMMARIES`, `MODULE_META`, `HOOK_PAGES`), and page templates live in the `writeFile(...)` sections near the bottom.
+To change generated content, edit the generator itself — prose and metadata live in constants near the top of `scripts/generate-docs.mjs` (`MODEL_SUMMARIES`, `MODEL_ORDER`/`MODEL_SLUGS`, `KEY_METHOD_SUMMARIES`, `MODULE_META`, `HOOK_PAGE_ORDER`, `HOOK_PATH_RULES`), and page templates live in the `writeFile(...)` sections near the bottom.
+
+The two largest prose sets live in their own modules under `data/` so the generator stays readable, and because they are the files most likely to be edited:
+
+- `data/hook-notes.mjs` — per-hook prose, keyed by full hook name
+- `data/operation-notes.mjs` — per-endpoint prose, keyed by `<module>/<operation-slug>`
+
+Both are plain data. A key that matches nothing is reported as a warning on every run, so typos surface rather than silently doing nothing. The generator prints prose coverage for both at the end of a run.
 
 Hand-written (safe to edit directly): `docs/guides/`, `docs/helpers/`, `docs/deployment/`.
 
