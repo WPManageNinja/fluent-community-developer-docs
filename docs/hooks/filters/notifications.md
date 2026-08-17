@@ -5,20 +5,61 @@ description: Notifications filter hooks for FluentCommunity.
 
 # Notifications Filters
 
-8 unique filter hooks currently map to this category, across 10 call sites.
+12 unique filter hooks currently map to this category, across 14 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
+| [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:353` |
 | [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
 | [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
+| [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
+| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:471` |
+| [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:192` |
 | [`fluent_community/notifications_api_response`](#fluent-community-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
 | [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:874` |
 | [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
 | [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:59` |
 | [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1267` |
+
+<a id="fluent-community-comment-notification-email-sections"></a>
+
+## `fluent_community/comment_notification/email_sections`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Filters extra HTML injected into the "new comment" notification email.
+
+Same marker mechanism as the post notifications, but the third argument is the comment rather than the post — reach the post through `$comment->post` if you need it. Applied once per recipient inside the batched send loop.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$sections` | `array` | `before_content` and `after_content`, both empty strings by default. |
+| 2 | `$user` | `\FluentCommunity\App\Models\User` | The recipient. |
+| 3 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment being announced. |
+
+**Return:** `array` — only `before_content` and `after_content` are read.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:353` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$comment` (Comment) |
+
+### Example
+
+```php
+add_filter('fluent_community/comment_notification/email_sections', function ($sections, $user, $comment) {
+    return $sections;
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections)
 
 <a id="fluent-community-digest-email-body"></a>
 
@@ -54,7 +95,7 @@ add_filter('fluent_community/digest_email_body', function ($emailBody, $user) {
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) · [`fluent_community/digest_notification/email_sections`](/hooks/filters/courses#fluent-community-digest-notification-email-sections)
+**Related:** [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) · [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections)
 
 <a id="fluent-community-digest-email-subject"></a>
 
@@ -92,6 +133,116 @@ add_filter('fluent_community/digest_email_subject', function ($emailSubject, $us
 ```
 
 **Related:** [`fluent_community/digest_email_body`](#fluent-community-digest-email-body)
+
+<a id="fluent-community-digest-notification-email-sections"></a>
+
+## `fluent_community/digest_notification/email_sections`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Filters extra HTML injected into a member's daily digest email.
+
+The only one of the four section filters with a two-argument signature — there is no single post or comment to pass, since a digest aggregates many. It is applied while composing one recipient's digest, after the logo and footer have been added, and immediately before `fluent_community/digest_email_body` sees the finished HTML.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$sections` | `array` | `before_content` and `after_content`, both empty strings by default. |
+| 2 | `$user` | `\FluentCommunity\App\Models\User` | The digest recipient. |
+
+**Return:** `array` — only `before_content` and `after_content` are read.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:106` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$this->user` (User) |
+
+### Example
+
+```php
+add_filter('fluent_community/digest_notification/email_sections', function ($sections, $user) {
+    return $sections;
+}, 10, 2);
+```
+
+**Related:** [`fluent_community/digest_email_body`](#fluent-community-digest-email-body)
+
+<a id="fluent-community-new-feed-everybody-notification-email-sections"></a>
+
+## `fluent_community/new_feed_everybody_notification/email_sections`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** The same email-section injection for posts announced to every member with the "everyone" tag.
+
+A separate call site from the space notification with an identical signature, because the two emails are assembled by different routines. A callback that should apply to both has to be attached to both hooks. Same marker substitution and the same per-recipient loop.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$sections` | `array` | `before_content` and `after_content`, both empty strings by default. |
+| 2 | `$user` | `\FluentCommunity\App\Models\User` | The recipient. |
+| 3 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post being announced. |
+
+**Return:** `array` — only `before_content` and `after_content` are read.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:471` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+
+### Example
+
+```php
+add_filter('fluent_community/new_feed_everybody_notification/email_sections', function ($sections, $user, $feed) {
+    return $sections;
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections)
+
+<a id="fluent-community-new-feed-notification-email-sections"></a>
+
+## `fluent_community/new_feed_notification/email_sections`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Filters extra HTML injected into the per-space "new post" notification email.
+
+The two strings are substituted into the `<!--email_content_before-->` and `<!--email_content_after-->` markers in the assembled template, so an empty value leaves the marker in place as an HTML comment. It is applied once per recipient inside the sending loop, with that recipient's user model, which makes per-user personalisation possible but also means the callback runs hundreds of times for a busy space — keep it cheap. The output is not escaped.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$sections` | `array` | `before_content` and `after_content`, both empty strings by default. |
+| 2 | `$user` | `\FluentCommunity\App\Models\User` | The recipient. |
+| 3 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post being announced. |
+
+**Return:** `array` — only the `before_content` and `after_content` keys are read, and only when non-empty.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:192` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+
+### Example
+
+```php
+add_filter('fluent_community/new_feed_notification/email_sections', function ($sections, $user, $feed) {
+    return $sections;
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) · [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections)
 
 <a id="fluent-community-notifications-api-response"></a>
 
@@ -210,7 +361,7 @@ add_filter('fluent_community/smartcode_fallback', function ($match, $user) {
 - **Call sites:** 1
 - **When it fires:** Resolves smart codes belonging to a group core does not handle.
 
-The suffix is the part before the first dot, so `{{crm.company}}` reaches `fluent_community/smartcode_group_callback_crm`. It is the default branch of the parser, so the built-in groups `site`, `user`, `community`, `section` and `course` never reach it. Note the first argument is the raw matched placeholder, not the default value — returning it unchanged leaves the code visible, and the supplied default arrives separately as the third argument. Any trailing transformer such as `ucfirst` is applied to whatever you return.
+The suffix is the part before the first dot, so `{​{crm.company}​}` reaches `fluent_community/smartcode_group_callback_crm`. It is the default branch of the parser, so the built-in groups `site`, `user`, `community`, `section` and `course` never reach it. Note the first argument is the raw matched placeholder, not the default value — returning it unchanged leaves the code visible, and the supplied default arrives separately as the third argument. Any trailing transformer such as `ucfirst` is applied to whatever you return.
 
 ### Parameters
 

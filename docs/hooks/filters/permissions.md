@@ -69,6 +69,18 @@ add_filter('fluent_community/can_access_portal', function ($canAccess) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Dynamic filter deciding whether the comment list for a post or lesson is returned at all.
+
+The placeholder is `$feed->type`, so in practice it is `fluent_community/can_view_comments_text` for ordinary posts and `fluent_community/can_view_comments_course_lesson` for lesson discussions — there is no un-suffixed variant to hook. Returning `false` makes the endpoint respond with an empty `comments` array rather than an error, so the client shows a post with no comments instead of a permission message. The post has already passed its own visibility check by then.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canViewComments` | `bool` | Whether to return the comments. `true` by default. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post or lesson the comments belong to. |
+
+**Return:** `bool` — a falsy value yields an empty comment list, not a 403.
 
 ### Call Sites
 
@@ -79,10 +91,12 @@ add_filter('fluent_community/can_access_portal', function ($canAccess) {
 ### Example
 
 ```php
-add_filter('fluent_community/can_view_comments_{feed}', function ($param1, $feed) {
-    return $param1;
+add_filter('fluent_community/can_view_comments_{feed}', function ($canViewComments, $feed) {
+    return $canViewComments;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/user/space/permissions`](#fluent-community-user-space-permissions)
 
 <a id="fluent-community-can-view-leaderboard-members"></a>
 
@@ -279,6 +293,20 @@ add_filter('fluent_community/user/permissions', function ($permissions, $roles, 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the permission map a user holds inside one particular space.
+
+Distinct from the site-wide `fluent_community/user/permissions`: this is resolved per space and per role, and it is what the front end receives on each space object. Two very different maps reach it — non-members get a short read-only set, while members and moderators get the full one with `community_admin`, the `*_any_feed` and `*_any_comment` keys and the membership flags — so check for a key before relying on it. `is_member` is added just before the filter and is the reliable way to tell the two apart. Several controllers read these keys directly for authorisation, so removing one denies access rather than merely hiding a control.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$permissions` | `array` | Permission keys mapped to booleans for this space. |
+| 2 | `$space` | `\FluentCommunity\App\Models\BaseSpace` | The space the permissions apply to. |
+| 3 | `$role` | `string` | The user's role in the space: `admin`, `moderator`, `member`, `student`, or empty for a non-member. |
+| 4 | `$user` | `\FluentCommunity\App\Models\User` | The user the permissions belong to. |
+
+**Return:** `array` — the permission map.
 
 ### Call Sites
 
@@ -289,8 +317,10 @@ add_filter('fluent_community/user/permissions', function ($permissions, $roles, 
 ### Example
 
 ```php
-add_filter('fluent_community/user/space/permissions', function ($permissions, $space, $role, $param4) {
+add_filter('fluent_community/user/space/permissions', function ($permissions, $space, $role, $user) {
     return $permissions;
 }, 10, 4);
 ```
+
+**Related:** [`fluent_community/user/permissions`](#fluent-community-user-permissions)
 

@@ -17,6 +17,26 @@
  *   since    version string, only if genuinely known
  */
 export const HOOK_NOTES = {
+  "fluent_community/' . $contentType . '_report_added_async": {
+    "summary": "The dynamic scheduling site behind the two report notification tasks.",
+    "details": "This entry documents the `as_schedule_single_action()` call in Pro's moderation handler, where the action name is built from the report's `content_type` — the extractor could not resolve the concatenation, which is why the name appears literally. In practice it only ever produces `fluent_community/comment_report_added_async` or `fluent_community/post_report_added_async`; hook those, not this. The task is queued immediately with the report ID and a starting user ID of 0.",
+    "params": [
+      {
+        "name": "reportId",
+        "type": "int",
+        "desc": "ID of the moderation record."
+      },
+      {
+        "name": "lastUserId",
+        "type": "int",
+        "desc": "The user ID to resume after; `0` on the first run."
+      }
+    ],
+    "related": [
+      "fluent_community/post_report_added_async",
+      "fluent_community/comment_report_added_async"
+    ]
+  },
   "fluent_community/activities_api_response": {
     "summary": "Filters the recent-activity listing response.",
     "details": "Applied at two call sites in the same method with slightly different payloads: the global and profile variant returns early and carries `pinned_posts` only when no member is selected, while the space variant adds `pinned_posts` and `pending_count` on request. Both always carry `activities`, `after_contents` and `before_contents`. Activities are deduplicated to the newest row per post and action, so the list is shorter than the raw activity table.",
@@ -180,6 +200,23 @@ export const HOOK_NOTES = {
       "fluent_community/activity/after_contents_user"
     ]
   },
+  "fluent_community/admin_course_comments_api_response": {
+    "summary": "Filters the comment list on the course admin screen.",
+    "details": "Comments come back paginated with their post and author profile loaded, `user_email` hidden on the user relation, and a `liked` flag set for comments the current administrator has reacted to. It covers comments left on the course's lessons.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `comments` key holding paginated comments."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body."
+  },
   "fluent_community/admin_course_exportable_students_api_response": {
     "summary": "Filters the whole course student export payload after every row has been built.",
     "details": "Runs once, after fluent_community/course/exportable_student_row has run for each student.",
@@ -205,6 +242,247 @@ export const HOOK_NOTES = {
       "fluent_community/course/exportable_student_row"
     ]
   },
+  "fluent_community/admin_course_lesson_api_response": {
+    "summary": "Filters a single lesson as returned to the course editor.",
+    "details": "The lesson comes back with its `topic` and `course` relations loaded and its meta unredacted — this is the editing view, so `fluent_community/lesson/get_public_meta` does not run on this path.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `lesson` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/course_lesson_api_response"
+    ]
+  },
+  "fluent_community/admin_course_lessons_api_response": {
+    "summary": "Filters the lesson list returned to the course editor.",
+    "details": "Ordered by `priority` then ID, and optionally narrowed to one section with a `topic_id` parameter. Every status is included, so drafts and archived lessons are in the list. The lessons are raw models — the student-facing formatting and meta redaction do not apply.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `lessons` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/admin_course_lesson_api_response"
+    ]
+  },
+  "fluent_community/admin_course_non_members_api_response": {
+    "summary": "Filters the list of users who could be enrolled in a course.",
+    "details": "Feeds the \"add student\" picker. `user_email` is only among the selected columns when the current user has the `list_users` capability, so do not assume it is present. The result is paginated at 100 per page.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `users` key holding paginated user models."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/admin_course_students_api_response"
+    ]
+  },
+  "fluent_community/admin_course_other_instructors_api_response": {
+    "summary": "Filters the candidate list for adding a co-instructor to a course.",
+    "details": "A plain search across WordPress users capped at 100 rows, with no filtering by role or existing course involvement — the name notwithstanding, the list is not restricted to people who are already instructors elsewhere. As with the non-member picker, `user_email` is only selected when the viewer has `list_users`.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `instructors` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/admin_course_non_members_api_response"
+    ]
+  },
+  "fluent_community/admin_course_section_api_response": {
+    "summary": "Filters a single section, with its lessons, as returned to the course editor.",
+    "details": "The section is looked up by course and ID together, so it cannot be fetched across courses. Every lesson is loaded regardless of status. The payload key is `topic`, not `section` — sections are `CourseTopic` models internally.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `topic` key holding the section and its lessons."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/admin_course_sections_api_response"
+    ]
+  },
+  "fluent_community/admin_course_sections_api_response": {
+    "summary": "Filters the section list returned to the course editor.",
+    "details": "Which lessons are eager-loaded depends on the request: with `conditions` set, only published lessons come back; otherwise every lesson does, drafts included. `lockscreen` is added only when `with_lock_screen` was requested.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`sections`, each with its `lessons`, and optionally `lockscreen`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/admin_course_section_api_response"
+    ]
+  },
+  "fluent_community/admin_course_students_api_response": {
+    "summary": "Filters the enrolled-student list on the course admin screen.",
+    "details": "Only rows whose membership role is `student` are joined in, so course admins and instructors do not appear. Each profile is limited to the public XProfile fields and carries a `progress` percentage resolved in one bulk query. Sorting is validated against a fixed column and direction list before the query runs.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `students` key holding paginated profiles."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/admin_course_non_members_api_response"
+    ]
+  },
+  "fluent_community/admin_courses_api_response": {
+    "summary": "Filters the paginated course list on the admin courses screen.",
+    "details": "Each course carries `students_count`, `sectionsCount`, `lessonsCount`, its owner and a placeholder cover photo where none is set. Drafts are included, and the `status` and `sortBy` request parameters have already been applied to the query. `course_categories` appears only when `with_categories` was requested.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`courses` (paginated) and `course_categories`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/course_info"
+    ]
+  },
+  "fluent_community/after_header_logo": {
+    "summary": "Prints inside the header's left group, immediately after the logo link.",
+    "details": "The closing counterpart of `fluent_community/before_header_logo`, in the same `.top_menu_left` container and with the same argument. Nothing in core or Pro listens, so it is a clean slot for a badge or a secondary brand mark.",
+    "params": [
+      {
+        "name": "auth",
+        "type": "\\FluentCommunity\\App\\Models\\XProfile",
+        "desc": "The current member's profile, or `null` for a guest."
+      }
+    ],
+    "related": [
+      "fluent_community/before_header_logo"
+    ]
+  },
+  "fluent_community/after_header_menu": {
+    "summary": "Prints in the centre group of the header, after the main navigation list.",
+    "details": "Unlike the logo hooks this one receives the render context rather than the profile. Core prints the \"Portal Settings\" heading here on admin routes, replacing the main menu that the same code path empties through `fluent_community/header_vars`. The surrounding `<nav>` is only emitted when there are menu items, so on an empty menu your output is the sole content of the centre group.",
+    "params": [
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Render context: `headless`, `wp`, or `block_editor`."
+      }
+    ],
+    "related": [
+      "fluent_community/header_vars",
+      "fluent_community/main_menu_items"
+    ]
+  },
+  "fluent_community/after_header_right_menu_items": {
+    "summary": "Prints as the last item of the header's right-hand menu list, after the account menu or login button.",
+    "details": "Emit `<li>` elements. Beyond rendering, core treats this hook as an ordering probe: the sidebar footer checks `did_action()` on it to decide whether the header has already been drawn, and lays the sidebar out differently when it has not. Firing it manually will therefore change how the sidebar renders.",
+    "params": [
+      {
+        "name": "auth",
+        "type": "\\FluentCommunity\\App\\Models\\XProfile",
+        "desc": "The current member's profile, or `null` for a guest."
+      }
+    ],
+    "related": [
+      "fluent_community/before_header_right_menu_items",
+      "fluent_community/after_portal_sidebar"
+    ]
+  },
+  "fluent_community/after_portal_sidebar": {
+    "summary": "Prints at the very bottom of the sidebar column, after the SPA mount point.",
+    "details": "Core attaches the sidebar footer here — the upgrade or wp-admin shortcut, the settings cog and the \"Powered by\" line — but only when the header has already rendered, which it detects with `did_action('fluent_community/after_header_right_menu_items')`. On a page where the header is suppressed, the core callback instead defers an admin cog into `fluent_community/before_header_menu_items` and prints nothing here. Also skipped for the `ajax` context.",
+    "params": [
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Render context: `headless`, `wp`, or `block_editor`."
+      }
+    ],
+    "related": [
+      "fluent_community/after_sidebar_wrap",
+      "fluent_community/after_header_right_menu_items"
+    ]
+  },
+  "fluent_community/after_registration_form": {
+    "summary": "Prints at the bottom of the signup card, below the \"Already have an account?\" link.",
+    "details": "Fires from `app/Views/auth/user_invitation.php`, the template used for both plain signup and invitation-accepting signup, so it does not run on the login or password-reset forms. It takes no arguments and nothing in core or Pro listens.",
+    "related": [
+      "fluent_community/before_registration_form"
+    ]
+  },
+  "fluent_community/after_sidebar_wrap": {
+    "summary": "Prints immediately after the `#fcom_sidebar_wrap` element closes, before the mobile menu mount point.",
+    "details": "The counterpart of `fluent_community/before_sidebar_wrap` and subject to the same `ajax` exclusion. Three things render in sequence at the foot of the sidebar: this hook, the empty `#fcom_menu_sidebar` div the SPA mounts into, and then `fluent_community/after_portal_sidebar`.",
+    "params": [
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Render context: `headless`, `wp`, or `block_editor`."
+      }
+    ],
+    "related": [
+      "fluent_community/before_sidebar_wrap",
+      "fluent_community/after_portal_sidebar"
+    ]
+  },
   "fluent_community/after_sync_bp_users": {
     "summary": "Fires after a batch of BuddyPress users has been migrated into FluentCommunity.",
     "details": "Two call sites — the WP-CLI migrator and the admin migration screen — both firing once per batch rather than once per migration, and the controller loops until every user is done, so expect many invocations. The profiles have already been created by `BPMigratorHelper::syncUser()`. Pro uses it to carry BuddyPress follower relationships across.",
@@ -215,6 +493,44 @@ export const HOOK_NOTES = {
         "desc": "The `User` models synced in this batch."
       }
     ]
+  },
+  "fluent_community/all_courses_api_response": {
+    "summary": "Filters the response of the endpoint that lists every course with its full detail payload.",
+    "details": "Unlike the directory listing, each entry here has been through `CourseController::processCourse()`, so sections, lessons and per-lesson access decisions are already resolved — an expensive response, and the reason `fluent_community/course/processed` fires once per course before this filter. `total` is the unpaginated count.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`courses` (fully processed) and `total`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/courses_api_response",
+      "fluent_community/course/processed"
+    ]
+  },
+  "fluent_community/all_space_courses_api_response": {
+    "summary": "Filters the flat list of every space and course used by admin pickers.",
+    "details": "Queried without global scopes and without any privacy or membership filtering, so secret spaces and unpublished courses are included — the endpoint is behind the admin policy for that reason. It is the data behind space and course selectors in the settings screens, ordered by `serial`.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `all_spaces` key holding every `community` and `course` row."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body."
   },
   "fluent_community/all_spaces_api_response": {
     "summary": "Filters the paginated all-spaces directory response.",
@@ -235,6 +551,496 @@ export const HOOK_NOTES = {
     "related": [
       "fluent_community/spaces_api_response",
       "fluent_community/space"
+    ]
+  },
+  "fluent_community/allow_auto_login_by_url": {
+    "summary": "Filters whether a signed URL may log its recipient in automatically.",
+    "details": "Signed links are what notification and digest emails use: they carry `fcom_action=signed_url` and a hashed, expiring token that resolves to a user. The default deliberately refuses accounts that can `delete_pages` — editors and administrators — so a forwarded email cannot hand over a privileged session. Returning `true` unconditionally removes that protection. The visitor is redirected with the parameters stripped whether or not the login happened.",
+    "params": [
+      {
+        "name": "willAutoLogin",
+        "type": "bool",
+        "desc": "Whether to sign the user in; `false` for users who can `delete_pages`."
+      },
+      {
+        "name": "targetUser",
+        "type": "\\WP_User",
+        "desc": "The user the signed URL resolved to."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_community/portal_action_{action}"
+    ]
+  },
+  "fluent_community/allowed_block_types": {
+    "summary": "Filters which block types may be inserted in the lesson editor.",
+    "details": "An explicit allowlist rather than a denylist, so a block that is not named is unavailable even if it is registered — third-party blocks have to be added here to appear in the lesson inserter. Removing a type hides it from the inserter but does not strip it from lessons that already contain it. The list is one key of the object `fluent_community/block_editor_settings` filters, so that hook can override this one.",
+    "params": [
+      {
+        "name": "blockTypes",
+        "type": "array",
+        "desc": "Flat list of block names such as `core/paragraph`, `core/image`, `core/embed`."
+      }
+    ],
+    "returns": "`array` — a flat list of block names.",
+    "related": [
+      "fluent_community/block_editor_settings"
+    ]
+  },
+  "fluent_community/allowed_html_tags": {
+    "summary": "Filters the `wp_kses` tag allowlist used for embed and rich media HTML.",
+    "details": "The base list is `wp_kses_allowed_html('post')` plus a deliberately narrow `iframe` entry. Two omissions are intentional and documented at the call site: no `<style>` element, because kses never filters the text inside one, and no `srcdoc` attribute on iframes, because a sandbox-less `srcdoc` iframe is same-origin with the portal. Re-adding either hands script or CSS injection to anyone who can author embed markup.",
+    "params": [
+      {
+        "name": "tags",
+        "type": "array",
+        "desc": "The kses allowlist: tag names mapped to allowed attribute maps."
+      }
+    ],
+    "returns": "`array` — a kses allowlist. It is passed straight to `wp_kses()`, so the nested shape must be preserved."
+  },
+  "fluent_community/app_route_paths": {
+    "summary": "Filters the first URL segments that are recognised as portal routes.",
+    "details": "Only consulted when the portal is mounted at the site root — with a portal slug in place the rewrite rules do the matching and this list is not reached. A segment missing from it will 404 through the theme instead of loading the SPA, so anything added through `fluent_community/rendering_path_ssr_{pathParts}` normally has to be registered here too; the FluentCart checkout does exactly that. The list is also published to the front end as `portal_vars.portal_paths` on root-mounted installs.",
+    "params": [
+      {
+        "name": "paths",
+        "type": "array",
+        "desc": "Flat list of first-segment slugs such as `members`, `courses`, `u`, `post`, `admin`."
+      }
+    ],
+    "returns": "`array` — a flat, non-associative list of segments. Removing a default segment makes that portal section unreachable.",
+    "related": [
+      "fluent_community/rendering_path_ssr_{pathParts}",
+      "fluent_community/portal_supported_query_params"
+    ]
+  },
+  "fluent_community/app_vars_api_response": {
+    "summary": "Filters the response of the endpoint the SPA uses to refresh its bootstrap data without a page reload.",
+    "details": "The `appVars` key is a fresh `PortalHandler::appVars()` run — the same payload as `fluent_community/portal_vars`, minus `rest`, which is stripped so the nonce is not re-issued over AJAX. Anything you add through `fluent_community/portal_vars` is already present here; use this filter only for keys that should exist on the refresh path but not in the initial page render.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`appVars` and `menu_links_groups`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/portal_vars",
+      "fluent_community/sidebar_menu_html_api_response"
+    ]
+  },
+  "fluent_community/asset_listed_slugs": {
+    "summary": "Filters the URL fragments that exempt a stylesheet from the lesson editor's no-conflict mode.",
+    "details": "Stylesheets are the only assets this affects. The list is joined into a regular expression and matched against every enqueued stylesheet URL under the plugins and themes directories; anything that does not match is dequeued so third-party CSS cannot break the editor. `\\/fluent-community\\/` is appended after the filter and cannot be removed. Note the script side is governed by a differently prefixed hook, `fluent_com_editor/asset_listed_slugs` — filtering this one does nothing for JavaScript.",
+    "params": [
+      {
+        "name": "approvedSlugs",
+        "type": "array",
+        "desc": "Regular-expression fragments matched against stylesheet URLs, for example `\\/gutenberg\\/`."
+      }
+    ],
+    "returns": "`array` — fragments that are deduplicated and joined with `|` into one pattern, so each entry must be regex-safe.",
+    "related": [
+      "fluent_community/skip_no_conflict"
+    ]
+  },
+  "fluent_community/autg/password_confirmation": {
+    "summary": "Deprecated misspelling of `fluent_community/auth/password_confirmation`.",
+    "details": "Kept alive through `apply_filters_deprecated()` and marked deprecated since 2.7.8, so a callback still runs but raises a deprecation notice when `WP_DEBUG` is on. Its return value becomes the input to the correctly spelled filter, which therefore has the final say. Move existing callbacks across.",
+    "params": [
+      {
+        "name": "isRequired",
+        "type": "bool",
+        "desc": "Whether password confirmation is required. `true` by default."
+      }
+    ],
+    "returns": "`bool` — passed on as the default for `fluent_community/auth/password_confirmation`.",
+    "related": [
+      "fluent_community/auth/password_confirmation"
+    ]
+  },
+  "fluent_community/auth/after_login_redirect_url": {
+    "summary": "Filters where a member lands after signing in through the community auth page.",
+    "details": "Applied at two call sites that reach different sign-in flows: the plugin's own AJAX login handler, and a bridge on `fluent_auth/login_redirect_url` that only fires when the request carries `is_fcom_auth` and `fcom_redirect`. Logins that happen anywhere else on the site never reach it. The incoming value has already been through `wp_validate_redirect()` against the portal base, but your return value is not re-validated on the AJAX path — it is handed to the browser as-is.",
+    "params": [
+      {
+        "name": "redirectUrl",
+        "type": "string",
+        "desc": "The resolved destination, the portal base by default."
+      },
+      {
+        "name": "user",
+        "type": "\\WP_User",
+        "desc": "The user who signed in."
+      }
+    ],
+    "returns": "`string` — an absolute URL.",
+    "related": [
+      "fluent_community/auth/after_signup_redirect_url",
+      "fluent_community/auth/after_login_with_invitation"
+    ]
+  },
+  "fluent_community/auth/after_login_with_invitation": {
+    "summary": "Filters where a member is sent after logging in with an invitation token attached.",
+    "details": "Core's handler does the real work here: it validates the token, adds the user to the invited space as `member` or `student`, marks the invitation accepted and returns the space permalink. The result is only adopted when it is truthy and not a `WP_Error`, so returning `null` leaves the ordinary redirect in place. It runs before `fluent_community/auth/after_login_redirect_url`, which sees the resulting URL and can still change it.",
+    "params": [
+      {
+        "name": "redirectUrl",
+        "type": "mixed",
+        "desc": "`null` on entry."
+      },
+      {
+        "name": "user",
+        "type": "\\WP_User",
+        "desc": "The user who just signed in."
+      },
+      {
+        "name": "invitationToken",
+        "type": "string",
+        "desc": "The submitted invitation token."
+      }
+    ],
+    "returns": "`string` — a URL, or `null`/`WP_Error` to fall back to the default redirect.",
+    "related": [
+      "fluent_community/auth/after_login_redirect_url",
+      "fluent_community/auth/invitation"
+    ]
+  },
+  "fluent_community/auth/after_signup_redirect_url": {
+    "summary": "Filters where a new member lands after completing registration.",
+    "details": "Core attaches the invitation handler here, which — when the request carried a valid `invitation_token` — enrols the new account in the invited space, marks the invitation accepted and redirects to the space instead. The third argument is the raw `$_REQUEST` array, unsanitised. The URL is returned to the front end both as `redirect_url` and inside the success HTML, so it is used twice.",
+    "params": [
+      {
+        "name": "redirectUrl",
+        "type": "string",
+        "desc": "The destination, the portal base or a validated `redirect_to`."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The newly registered user, with an XProfile already synced."
+      },
+      {
+        "name": "postedData",
+        "type": "array",
+        "desc": "The raw `$_REQUEST` payload, including `invitation_token` when present."
+      }
+    ],
+    "returns": "`string` — an absolute URL.",
+    "related": [
+      "fluent_community/auth/after_login_redirect_url"
+    ]
+  },
+  "fluent_community/auth/before_auth_page_process": {
+    "summary": "Fires on the auth page after the redirect shortcuts have been evaluated but before a form is chosen.",
+    "details": "By the time it runs, an already-signed-in visitor without an invitation has been redirected away and an auto-accepted invitation has been handled, so reaching this hook means a form is about to be rendered. It is the earliest place to short-circuit the auth page with a redirect and an `exit()` of your own. Both arguments can be empty: `$currentUserId` is `0` for a guest and `$invitation` is `null` unless a valid `invitation_token` was supplied.",
+    "params": [
+      {
+        "name": "currentUserId",
+        "type": "int",
+        "desc": "The signed-in user ID, or `0`."
+      },
+      {
+        "name": "invitation",
+        "type": "\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation",
+        "desc": "The resolved, still-valid invitation, or `null`."
+      }
+    ],
+    "related": [
+      "fluent_community/auth/pre_content",
+      "fluent_community/auth/invitation"
+    ]
+  },
+  "fluent_community/auth/disable_rate_limit": {
+    "summary": "Filters whether the login and signup rate limit is bypassed for this request.",
+    "details": "The limit is ten attempts per IP address per five minutes, tracked in a transient and shared between the login and registration endpoints. Returning `true` skips the check and the counter increment entirely, so it also stops the request contributing to a later limit. Nothing about the request is passed — inspect `$_SERVER` or the request yourself if you want to scope the exemption.",
+    "params": [
+      {
+        "name": "disabled",
+        "type": "bool",
+        "desc": "Whether to skip rate limiting. `false` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness."
+  },
+  "fluent_community/auth/invitation": {
+    "summary": "Resolves an invitation token from the URL into an invitation record.",
+    "details": "Starts as `null`; core's `InvitationHandler` answers it with the matching `pending` or `active` row. Whatever is returned must expose `isValid()` — the caller invokes it immediately and discards anything that fails, then reads `message` (the invited email) and `post_id` (the space) off it. This is the hook for backing invitations with your own storage.",
+    "params": [
+      {
+        "name": "invitation",
+        "type": "mixed",
+        "desc": "The resolved invitation, `null` before core answers."
+      },
+      {
+        "name": "token",
+        "type": "string",
+        "desc": "The raw `invitation_token` query parameter."
+      }
+    ],
+    "returns": "`\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation` or `null` — an object with an `isValid()` method, or `null` for an unknown token.",
+    "related": [
+      "fluent_community/auth/show_invitation_for_user",
+      "fluent_community/auth/after_login_with_invitation"
+    ]
+  },
+  "fluent_community/auth/login_fields": {
+    "summary": "Filters the field definitions for the plugin's own login form.",
+    "details": "Narrower than it looks: the built-in login form is only used when FluentAuth is not active, since otherwise the page renders the `[fluent_auth_login]` shortcode instead. The fields also reach the admin settings screen through `fluent_community/get_auth_settings`. Unlike the signup fields these are not used to derive validation — the handler validates `log` and `pwd` from the WordPress login form directly.",
+    "params": [
+      {
+        "name": "fields",
+        "type": "array",
+        "desc": "Field definitions keyed by name: `username` and `password`."
+      }
+    ],
+    "returns": "`array` — the field map.",
+    "related": [
+      "fluent_community/auth/signup_fields"
+    ]
+  },
+  "fluent_community/auth/login_url": {
+    "summary": "Filters the URL the portal's login and signup buttons point at.",
+    "details": "Wraps `Helper::getAuthUrl()`, which already honours the administrator-configured custom auth URL. It feeds the header login button, the header data and the logged-out redirect, so it changes where visitors are sent but not which pages are protected — the gate itself is `Helper::isPublicAccessible()`. Pointing it back into the portal risks a redirect loop; core guards against that only for the stored setting, not for this filter.",
+    "params": [
+      {
+        "name": "authUrl",
+        "type": "string",
+        "desc": "The resolved auth page URL."
+      }
+    ],
+    "returns": "`string` — an absolute URL.",
+    "related": [
+      "fluent_community/portal/not_logged_in",
+      "fluent_community/auth/lost_password_url"
+    ]
+  },
+  "fluent_community/auth/lost_password_url": {
+    "summary": "Filters the \"Lost your password?\" destination on the community login form.",
+    "details": "The default depends on FluentAuth: with it active the link stays on the community auth page with `form=reset_password`, otherwise it is `wp_lostpassword_url()` with a redirect back. Note the redirect argument is only applied on the WordPress branch — the FluentAuth URL carries no redirect. The native login template renders `wp_lostpassword_url()` directly and does not use this filter.",
+    "params": [
+      {
+        "name": "url",
+        "type": "string",
+        "desc": "The reset-password URL for the current configuration."
+      }
+    ],
+    "returns": "`string` — an absolute URL.",
+    "related": [
+      "fluent_community/auth/login_url"
+    ]
+  },
+  "fluent_community/auth/password_confirmation": {
+    "summary": "Filters whether the registration form asks for the password twice.",
+    "details": "Returning `false` drops the `conf_password` field from the form and relaxes the validation rule on `password` accordingly, so the two stay in step. The value passed in is itself the result of the deprecated `fluent_community/autg/password_confirmation` filter, which still runs first.",
+    "params": [
+      {
+        "name": "isRequired",
+        "type": "bool",
+        "desc": "Whether confirmation is required. `true` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_community/autg/password_confirmation",
+      "fluent_community/auth/signup_fields"
+    ]
+  },
+  "fluent_community/auth/pre_content": {
+    "summary": "Replaces the body of the auth page with your own rendering.",
+    "details": "The return value is never printed. The callback that renders the auth forms applies this filter first and, if the result is non-empty, returns without drawing anything — so a truthy return is a veto, and your markup has to be echoed from inside the filter callback itself. Returning an empty string leaves the built-in login, signup, reset and invitation screens in place.",
+    "params": [
+      {
+        "name": "preContent",
+        "type": "string",
+        "desc": "Empty string on entry."
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "The `$scope` from the headless page; `user_registration`."
+      },
+      {
+        "name": "targetForm",
+        "type": "string",
+        "desc": "The form about to render: `login`, `register`, `reset_password` or `accept_invitation`."
+      },
+      {
+        "name": "frameData",
+        "type": "array",
+        "desc": "Frame data: `logo`, `title`, `description`, `button_label`."
+      }
+    ],
+    "returns": "`string` — any non-empty value suppresses the default auth markup; the string itself is discarded, so echo your own output.",
+    "related": [
+      "fluent_community/headless/content"
+    ]
+  },
+  "fluent_community/auth/registration_enabled": {
+    "summary": "Filters whether members may register themselves.",
+    "details": "The base value is the WordPress `users_can_register` option, widened by the plugin's own `explicit_registration` setting when that option is off. It governs the signup form, the \"Login / Signup\" button label and the server-side guard in the registration endpoint alike. A valid invitation bypasses it on every one of those paths, so returning `false` closes public registration without breaking invitations.",
+    "params": [
+      {
+        "name": "enabled",
+        "type": "bool",
+        "desc": "Whether self-registration is open."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness; callers cast it with `!!`.",
+    "related": [
+      "fluent_community/auth/signup_fields"
+    ]
+  },
+  "fluent_community/auth/settings": {
+    "summary": "Filters the stored login and signup screen configuration.",
+    "details": "Applied in `AuthenticationService::getAuthSettings()`, which every consumer goes through, so this is the authoritative place to change the auth screens. The array has a `login` and a `signup` branch, each with a `banner` block (logo, title, description, colours, background) and a `form` block (title, description, button label and colours). The terms field is backfilled into `signup.form.fields.terms` before the filter runs if it is missing. For the admin editing screen only, `fluent_community/get_auth_settings` runs afterwards.",
+    "params": [
+      {
+        "name": "authSettings",
+        "type": "array",
+        "desc": "The full auth configuration, merged over the shipped defaults."
+      }
+    ],
+    "returns": "`array` — the configuration. Consumers read nested keys directly, so preserve the `login`/`signup` shape.",
+    "related": [
+      "fluent_community/get_auth_settings",
+      "fluent_community/auth/signup_fields"
+    ]
+  },
+  "fluent_community/auth/show_invitation_for_user": {
+    "summary": "Renders the accept-invitation screen for a signed-in user who arrived with a valid invitation.",
+    "details": "Reached only when the visitor is already logged in, the invitation is valid, and either it carries no email or its email matches the signed-in account. Core attaches `InvitationHandler::showCommunityOnBoard()`, so a callback of your own appends to that screen rather than replacing it. Output is echoed; it is drawn inside the auth page body from `fluent_community/headless/content`.",
+    "params": [
+      {
+        "name": "invitation",
+        "type": "\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation",
+        "desc": "The invitation being accepted."
+      },
+      {
+        "name": "frameData",
+        "type": "array",
+        "desc": "Auth page frame data: `logo`, `title`, `description`, `button_label`."
+      }
+    ],
+    "related": [
+      "fluent_community/auth/invitation",
+      "fluent_community/headless/content"
+    ]
+  },
+  "fluent_community/auth/signup_fields": {
+    "summary": "Filters the field definitions used to build and validate the registration form.",
+    "details": "Both sides of registration read this: the form builder renders it, and the AJAX handler derives the accepted request keys, the required-field rules and the per-field `sanitize_callback` from it — so a field added here is accepted by the endpoint, and one removed here is silently dropped from the request. Core already filters it in `app/Hooks/filters.php`. `conf_password` is unset afterwards when password confirmation is disabled, and the stored terms field overrides the `terms` entry. Do not rename `full_name`, `email`, `username` or `password`: the handler references them by name.",
+    "params": [
+      {
+        "name": "fields",
+        "type": "array",
+        "desc": "Field definitions keyed by name, each with `type`, `label`, `placeholder`, `required` and `sanitize_callback`."
+      },
+      {
+        "name": "invitation",
+        "type": "\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation",
+        "desc": "The invitation being accepted, or `null` for an ordinary signup."
+      }
+    ],
+    "returns": "`array` — the field map, rendered in order.",
+    "related": [
+      "fluent_community/auth/login_fields",
+      "fluent_community/auth/password_confirmation"
+    ]
+  },
+  "fluent_community/auth/signup_verification_email_body": {
+    "summary": "Filters the body of the registration verification code email.",
+    "details": "The filtered HTML is the inner content only; it is wrapped in the shared `email.template` view with the community logo and footer afterwards, so return a fragment rather than a whole document. The plain code is passed separately, which is the supported way to rebuild the message around it — the code itself is stored only as a hash in the signed token, so this is the one place it can be read.",
+    "params": [
+      {
+        "name": "message",
+        "type": "string",
+        "desc": "The default HTML body, already containing the code."
+      },
+      {
+        "name": "verificationCode",
+        "type": "string",
+        "desc": "The six-digit code, in clear."
+      },
+      {
+        "name": "formData",
+        "type": "array",
+        "desc": "The submitted registration data, including `email`, `first_name` and `last_name`."
+      }
+    ],
+    "returns": "`string` — an HTML fragment.",
+    "related": [
+      "fluent_community/auth/signup_verification_mail_subject",
+      "fluent_community/auth/two_factor_enabled"
+    ]
+  },
+  "fluent_community/auth/signup_verification_mail_subject": {
+    "summary": "Filters the subject line of the registration verification code email.",
+    "details": "Only fires when two-factor signup verification is active. It receives just the default subject — no user or form data — so anything dynamic has to be resolved in the callback. The matching body filter does get the form data.",
+    "params": [
+      {
+        "name": "subject",
+        "type": "string",
+        "desc": "The default subject, naming the site title."
+      }
+    ],
+    "returns": "`string` — the subject line, passed to the mailer unescaped.",
+    "related": [
+      "fluent_community/auth/signup_verification_email_body"
+    ]
+  },
+  "fluent_community/auth/two_factor_enabled": {
+    "summary": "Filters whether registration requires an emailed verification code.",
+    "details": "The value handed in is the result of `fluent_auth/verify_signup_email`, kept for compatibility with FluentAuth snippets, and defaults to on. When it is enabled the signup endpoint responds with a verification form instead of creating the account, and the account is only created once the code checks out. Core disables it for invitations that carry a fixed email address, on the grounds that the address is already proven.",
+    "params": [
+      {
+        "name": "enabled",
+        "type": "bool",
+        "desc": "Whether to require email verification during signup. `true` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_community/auth/signup_verification_mail_subject",
+      "fluent_community/auth/signup_verification_email_body"
+    ]
+  },
+  "fluent_community/base_url": {
+    "summary": "Filters the absolute base URL every portal link is built from.",
+    "details": "The default is `home_url()` joined with the portal slug, and the result is passed through `rtrim()` before the path is appended, so a trailing slash is harmless. `Helper::baseUrl()` is called on nearly every request path, so keep the callback cheap and side-effect free. When the routing type is `hash` the path is appended after a `#` instead. Changing the host here does not change the rewrite rules, so an off-site value produces links that no longer resolve.",
+    "params": [
+      {
+        "name": "baseUrl",
+        "type": "string",
+        "desc": "The portal base URL, `home_url()` plus the portal slug by default."
+      }
+    ],
+    "returns": "`string` — an absolute URL. Trailing slashes are trimmed.",
+    "related": [
+      "fluent_community/portal_slug",
+      "fluent_community/portal_route_type"
+    ]
+  },
+  "fluent_community/before_auth_form_header": {
+    "summary": "Prints above the heading of an auth form, with the form type as its argument.",
+    "details": "Three call sites, and their positions differ: on the signup template it fires as the first child of `#fcom_user_onboard_wrap`, above the header block; on the native login template likewise; on the FluentAuth login markup it fires inside `.fcom_onboard_header`, directly above the title. Core uses it to print the \"X has invited you…\" banner, registering a callback on the fly when an invitation is present, which means it can be attached after the page has already begun rendering.",
+    "params": [
+      {
+        "name": "formType",
+        "type": "string",
+        "desc": "`login` or `signup`. Note the invitation-accept and password-reset screens do not fire this hook."
+      }
+    ],
+    "related": [
+      "fluent_community/before_registration_form"
     ]
   },
   "fluent_community/before_comment_create": {
@@ -272,11 +1078,106 @@ export const HOOK_NOTES = {
       "fluent_community/comment/media_deleted"
     ]
   },
+  "fluent_community/before_header_logo": {
+    "summary": "Prints inside the header's left group, between the mobile menu button and the logo.",
+    "details": "Fires from `app/Views/portal/header.php`, so it applies to every surface that renders the standard header: the standalone portal, the two theme frame templates and the Gutenberg block. An empty `#fcom_before_logo` div sits just before it as a client-side mount point. Output is echoed raw into the markup — escape it yourself.",
+    "params": [
+      {
+        "name": "auth",
+        "type": "\\FluentCommunity\\App\\Models\\XProfile",
+        "desc": "The current member's profile, or `null` for a guest."
+      }
+    ],
+    "related": [
+      "fluent_community/after_header_logo"
+    ]
+  },
+  "fluent_community/before_header_menu_items": {
+    "summary": "Prints in the header's right-hand menu list, between the notification bell and the account menu.",
+    "details": "The name suggests the main navigation, but this fires inside `ul.fcom_user_context_menu_items` on the right of the header — for the main menu use `fluent_community/after_header_menu`. It is the only header hook that receives the render context as a second argument. Core hangs the admin settings cog here on pages where the sidebar footer is not drawn.",
+    "params": [
+      {
+        "name": "auth",
+        "type": "\\FluentCommunity\\App\\Models\\XProfile",
+        "desc": "The current member's profile, or `null` for a guest."
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Render context: `headless`, `wp`, or `block_editor`."
+      }
+    ],
+    "related": [
+      "fluent_community/before_header_right_menu_items",
+      "fluent_community/after_header_menu"
+    ]
+  },
+  "fluent_community/before_header_right_menu_items": {
+    "summary": "Prints as the first item of the header's right-hand `ul.fcom_user_context_menu_items`.",
+    "details": "You are inside a `<ul>`, so emit complete `<li>` elements. It runs before the dark-mode toggle, the search placeholder and the notification bell. Core uses it for the \"Customize Colors\" entry shown to site administrators on admin routes.",
+    "params": [
+      {
+        "name": "auth",
+        "type": "\\FluentCommunity\\App\\Models\\XProfile",
+        "desc": "The current member's profile, or `null` for a guest."
+      }
+    ],
+    "related": [
+      "fluent_community/after_header_right_menu_items",
+      "fluent_community/before_header_menu_items"
+    ]
+  },
+  "fluent_community/before_js_loaded": {
+    "summary": "Prints at the end of `<body>` on the standalone portal page, after the app wrapper and before the scripts.",
+    "details": "The last hook that runs before the SPA bundle is emitted, which makes it the place for JavaScript the app must find already defined — core prints the `fluentComAdmin` and `fcom_portal_general` variable blocks here in headless mode, and Pro's emoji module preloads its data. It fires immediately before `fluent_community/portal_footer`; use that one instead for anything that should run after the bundle.",
+    "related": [
+      "fluent_community/portal_footer",
+      "fluent_community/headless/before_js_loaded"
+    ]
+  },
   "fluent_community/before_portal_dom": {
     "summary": "Prints inside the portal wrapper, immediately before the app markup.",
     "details": "The one rendering hook shared by every portal surface: the standalone portal page, both WordPress frame templates, and the Gutenberg community block. Because it runs before the layout paints, it is the right place for pre-paint scripts — core uses it for the sidebar-collapse anti-flicker snippet.",
     "related": [
       "fluent_community/portal_header"
+    ]
+  },
+  "fluent_community/before_portal_rendered": {
+    "summary": "Fires in `PortalHandler::renderFullApp()` immediately before the portal page template is rendered.",
+    "details": "The last point before any markup is emitted: assets have been enqueued, dynamic meta data resolved and the collapsed-sidebar body class decided. `$data` is passed by value, so mutating it changes nothing — filter `fluent_community/portal_data_vars` if you need to alter the payload. Use it to register late output callbacks, which is what the colour customiser does.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "The full render payload: `title`, `css_files`, `js_files`, `js_vars`, `isHeadless`, `route_group`, `landing_route`."
+      }
+    ],
+    "related": [
+      "fluent_community/portal_data_vars",
+      "fluent_community/rendering_headless_portal"
+    ]
+  },
+  "fluent_community/before_registration_form": {
+    "summary": "Prints inside the signup card, above the registration form itself.",
+    "details": "Core renders the FluentAuth social login buttons here when FluentAuth is active. Note the mismatch at the call site: the core callback is declared with a `$frameData` parameter but `do_action()` is called with no arguments, so that parameter is always null — declare your own callback with none.",
+    "related": [
+      "fluent_community/after_registration_form",
+      "fluent_community/before_auth_form_header"
+    ]
+  },
+  "fluent_community/before_sidebar_wrap": {
+    "summary": "Prints immediately before the `#fcom_sidebar_wrap` element in the portal sidebar.",
+    "details": "Skipped entirely when the sidebar is being rendered for the AJAX refresh endpoint (`$context` of `ajax`), so anything printed here will be missing after a client-side sidebar reload. Pro's PWA module uses it as the `top` slot for install prompts. Echo directly.",
+    "params": [
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Render context: `headless`, `wp`, or `block_editor`. Never `ajax` — that context skips the hook."
+      }
+    ],
+    "related": [
+      "fluent_community/after_sidebar_wrap",
+      "fluent_community/portal_sidebar"
     ]
   },
   "fluent_community/before_unblocking_user": {
@@ -316,6 +1217,37 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/followed_user"
+    ]
+  },
+  "fluent_community/block_editor_footer": {
+    "summary": "Prints after the editor mount point and before `</body>` in the lesson block editor document.",
+    "details": "Core attaches the entire WordPress footer sequence here — footer scripts, script modules, media templates and global styles — because `wp_footer()` is never called on this document. Register at a later priority if your output depends on those having run.",
+    "related": [
+      "fluent_community/block_editor_head"
+    ]
+  },
+  "fluent_community/block_editor_head": {
+    "summary": "Prints as the last thing inside `<head>` of the standalone lesson block editor document.",
+    "details": "The lesson editor renders its own complete HTML document in an iframe rather than going through a theme, so `wp_head()` never runs on it; the WordPress head routines are dispatched from a private `fluent_block_editor/head` action just before this hook. Core uses it to link the editor stylesheets and inline the colour-scheme variables. The page only exists when the request carries `fluent_community_block_editor`.",
+    "related": [
+      "fluent_community/block_editor_footer",
+      "fluent_community/block_editor_settings"
+    ]
+  },
+  "fluent_community/block_editor_settings": {
+    "summary": "Filters the complete settings object handed to the isolated block editor used for lessons.",
+    "details": "Applied last, after the editor styles, resolved assets, default styles and image sizes have been merged in, so a callback sees the final object. The keys mirror the ones core Gutenberg expects — colour and font-size palettes, `allowedBlockTypes`, the placeholder strings, the various `disableCustom*` switches — and are consumed by `@wordpress/block-editor` in an iframe rather than by the WordPress editor, so standard `block_editor_settings_all` callbacks do not apply here.",
+    "params": [
+      {
+        "name": "editorSettings",
+        "type": "array",
+        "desc": "The editor settings object, including `styles`, `imageSizes`, `allowedBlockTypes` and the palettes."
+      }
+    ],
+    "returns": "`array` — the settings object, JSON-encoded into the editor page.",
+    "related": [
+      "fluent_community/allowed_block_types",
+      "fluent_community/editor_i18n_strings"
     ]
   },
   "fluent_community/blocked_user": {
@@ -549,6 +1481,26 @@ export const HOOK_NOTES = {
       "fluent_community/super_admin_capability"
     ]
   },
+  "fluent_community/can_view_comments_{feed}": {
+    "summary": "Dynamic filter deciding whether the comment list for a post or lesson is returned at all.",
+    "details": "The placeholder is `$feed->type`, so in practice it is `fluent_community/can_view_comments_text` for ordinary posts and `fluent_community/can_view_comments_course_lesson` for lesson discussions — there is no un-suffixed variant to hook. Returning `false` makes the endpoint respond with an empty `comments` array rather than an error, so the client shows a post with no comments instead of a permission message. The post has already passed its own visibility check by then.",
+    "params": [
+      {
+        "name": "canViewComments",
+        "type": "bool",
+        "desc": "Whether to return the comments. `true` by default."
+      },
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The post or lesson the comments belong to."
+      }
+    ],
+    "returns": "`bool` — a falsy value yields an empty comment list, not a 403.",
+    "related": [
+      "fluent_community/user/space/permissions"
+    ]
+  },
   "fluent_community/can_view_leaderboard_members": {
     "summary": "Filters whether the current user may see the member list on the leaderboard.",
     "details": "Reads the `leaderboard_members_visibility` privacy setting and otherwise mirrors the members-page check. It controls visibility of the ranked members, not whether the leaderboard feature itself is enabled.",
@@ -657,6 +1609,48 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/rate_limit/media_upload_per_minute"
+    ]
+  },
+  "fluent_community/color_config_api_response": {
+    "summary": "Filters the payload the colour customiser loads its state from.",
+    "details": "`config` is `fluent_community/color_schmea_config` resolved with the `edit` context, and `schemas` is the full set of built-in light and dark skins with every selector and property, which is what the customiser renders its controls from. Adding a skin here makes it selectable but does not make it generate CSS — that comes from `Utility::getColorSchemas()`, which this payload merely exposes.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`config` and `schemas`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/color_schmea_config",
+      "fluent_community/suggested_colors"
+    ]
+  },
+  "fluent_community/color_schmea_config": {
+    "summary": "Filters the stored colour scheme selection and per-selector overrides.",
+    "details": "The hook name contains a typo — \"schmea\" — that has to be reproduced exactly. Core supplies only the empty default: it is Pro that merges the saved `portal_color_config` option over it, so on a free install the portal always renders the default light and dark skins. A `cached_css` key, if present, short-circuits CSS generation entirely, and a `version` that no longer matches the plugin version triggers `fluent_community/recache_color_schema`. `$context` is `view` on every render path and `edit` only for the customiser endpoint.",
+    "params": [
+      {
+        "name": "config",
+        "type": "array",
+        "desc": "`light_schema`, `dark_schema`, `light_config`, `dark_config`, `version`, and optionally `cached_css`."
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "`view` when rendering, `edit` when the customiser is loading the config."
+      }
+    ],
+    "returns": "`array` — the colour configuration. Returning a `cached_css` string bypasses generation.",
+    "related": [
+      "fluent_community/recache_color_schema",
+      "fluent_community/color_config_api_response"
     ]
   },
   "fluent_community/comment/comment_data": {
@@ -983,6 +1977,32 @@ export const HOOK_NOTES = {
       "fluent_community/before_comment_delete"
     ]
   },
+  "fluent_community/comment_notification/email_sections": {
+    "page": "notifications",
+    "summary": "Filters extra HTML injected into the \"new comment\" notification email.",
+    "details": "Same marker mechanism as the post notifications, but the third argument is the comment rather than the post — reach the post through `$comment->post` if you need it. Applied once per recipient inside the batched send loop.",
+    "params": [
+      {
+        "name": "sections",
+        "type": "array",
+        "desc": "`before_content` and `after_content`, both empty strings by default."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The recipient."
+      },
+      {
+        "name": "comment",
+        "type": "\\FluentCommunity\\App\\Models\\Comment",
+        "desc": "The comment being announced."
+      }
+    ],
+    "returns": "`array` — only `before_content` and `after_content` are read.",
+    "related": [
+      "fluent_community/new_feed_notification/email_sections"
+    ]
+  },
   "fluent_community/comment_order_options": {
     "summary": "Filters the comment sort options a space administrator can choose from as that space's default.",
     "details": "Defaults to `oldest` (labelled \"Earliest\"), `latest`, `popular` and `most_replied`. It reaches the portal as `comment_order_by_options`, and the only consumer is the space settings form. The reader-facing sort dropdown is hard-coded in the Vue components and the sorting itself is done client-side, so adding a key here makes it selectable as a space default but nothing will know how to apply it. Removing keys is the safe direction. `$context` is `comment` at the only current call site.",
@@ -1001,6 +2021,25 @@ export const HOOK_NOTES = {
     "returns": "`array` — an associative map of sort key to label, preserving order.",
     "related": [
       "fluent_community/portal_vars"
+    ]
+  },
+  "fluent_community/comment_report_added_async": {
+    "summary": "Action Scheduler task that emails moderators about a reported or auto-flagged comment.",
+    "details": "The comment-side twin of `fluent_community/post_report_added_async`, with the same batching and resume behaviour and the same recipient rules. The email body is the rendered comment with a \"Review the comment\" button, and the link carries a `comment_id` query parameter so the portal scrolls to it. Pro-only.",
+    "params": [
+      {
+        "name": "reportId",
+        "type": "int",
+        "desc": "ID of the moderation record."
+      },
+      {
+        "name": "lastUserId",
+        "type": "int",
+        "desc": "Resume point: only users with a higher ID are mailed on this run. `0` first time."
+      }
+    ],
+    "related": [
+      "fluent_community/post_report_added_async"
     ]
   },
   "fluent_community/comment_updated": {
@@ -1147,6 +2186,21 @@ export const HOOK_NOTES = {
       "fluent_community/media_upload_max_width_{context}"
     ]
   },
+  "fluent_community/course": {
+    "summary": "Passes each course by reference while a course list is being prepared for the front end.",
+    "details": "Fired with `do_action_ref_array()`, so a callback declared as `function (&$course)` can attach or change properties in place — unusual for an action, and the reason it exists. It runs once per course in the course directory and in the profile \"Courses\" tab, after enrolment state, progress, cover photo fallback and the section, lesson and student counts have been set. Single-course responses take a different path and fire `fluent_community/course/processed` instead.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course, passed by reference."
+      }
+    ],
+    "related": [
+      "fluent_community/course/processed",
+      "fluent_community/courses_api_response"
+    ]
+  },
   "fluent_community/course/access_message_html": {
     "summary": "Filters the HTML shown in place of a lesson the current user cannot view.",
     "details": "The default markup is a `fcom_locker` block whose wording already varies by lock reason — sequential progression, a future unlock date, or plain lack of enrolment. `$config` carries `is_locked`, `lock_type` and `unlock_date`, which is the only way to tell those cases apart once the string is built. The return value is rendered as HTML, so escape any user-supplied text yourself.",
@@ -1177,6 +2231,54 @@ export const HOOK_NOTES = {
       "fluent_community/course/can_view_lesson"
     ]
   },
+  "fluent_community/course/before_create": {
+    "summary": "Fires with the assembled course attributes just before a course row is written.",
+    "details": "Two call sites behave differently. On the create endpoint the array is exactly what `Course::create()` is about to receive. On the duplicate endpoint the same hook fires with the source course's attributes plus the new title, slug, `draft` status and owner — but the copy is then made with `replicate()`, so the array you see is informational only. Since this is an action, not a filter, the attributes cannot be changed from here either way.",
+    "params": [
+      {
+        "name": "courseData",
+        "type": "array",
+        "desc": "Course attributes: `title`, `slug`, `privacy`, `description`, `status`, `settings`, `serial`."
+      }
+    ],
+    "related": [
+      "fluent_community/course/created"
+    ]
+  },
+  "fluent_community/course/before_delete": {
+    "summary": "Fires before a course and everything attached to it is removed.",
+    "details": "The last point at which the course's sections, lessons, comments, reactions and enrolments are all still readable. What follows is a cascade: reactions and comments are deleted, then each section fires `fluent_community/section/before_deleted` and each of its lessons fires `fluent_community/lesson/before_deleted`, then enrolments go, then the course row.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course about to be deleted."
+      }
+    ],
+    "related": [
+      "fluent_community/course/deleted",
+      "fluent_community/section/before_deleted"
+    ]
+  },
+  "fluent_community/course/before_progress_reset": {
+    "summary": "Fires before a student's progress in a course is wiped.",
+    "details": "The completion and course-completed rows still exist here, so this is the point at which a record of what the student had finished can be captured. It fires before the transaction opens and runs even if the reset then fails, in which case `fluent_community/course/progress_reset` never follows.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course being reset."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the student."
+      }
+    ],
+    "related": [
+      "fluent_community/course/progress_reset"
+    ]
+  },
   "fluent_community/course/can_view_lesson": {
     "summary": "Filters whether a user may view a particular lesson.",
     "details": "Applied inside `CourseHelper::resolveLessonAccess()` before the companion `fluent_community/course/lesson_access_info` filter, which can still override the decision and attach a lock reason — so returning `true` here is a strong hint, not the final word. Pro attaches a callback that grants access to any lesson marked `is_free_preview`. Note that only three of the four arguments are used by that callback; add the ones you need with the right `$accepted_args` count.",
@@ -1205,6 +2307,55 @@ export const HOOK_NOTES = {
     "returns": "`bool` — `true` to grant access.",
     "related": [
       "fluent_community/course/access_message_html"
+    ]
+  },
+  "fluent_community/course/completed": {
+    "summary": "Fires when a student's progress in a course reaches 100 per cent.",
+    "details": "Evaluated after each lesson completion and backed by a `course_completed` activity row, so it normally fires once per student per course. A second call site is meant to re-fire it when an already-completed course is finished again, but it gates on the lesson's `scheduled_at` being later than the activity timestamp — and nothing in the lesson editor ever writes that column — so in practice it does not trigger. It is registered as a FluentCRM automation trigger.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The completed course."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the student."
+      }
+    ],
+    "related": [
+      "fluent_community/course/lesson_completed",
+      "fluent_community/course/progress_reset"
+    ]
+  },
+  "fluent_community/course/created": {
+    "summary": "Fires after a new course row exists, its images claimed and its categories synced.",
+    "details": "Covers both a fresh course and a duplicated one; on the duplicate path every section, lesson and attached document has already been copied by the time it runs. A course created with `status` of `published` straight away does not additionally fire `fluent_community/course/published` — that hook only observes transitions made through the update endpoint.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The new course."
+      }
+    ],
+    "related": [
+      "fluent_community/course/before_create",
+      "fluent_community/course/published"
+    ]
+  },
+  "fluent_community/course/deleted": {
+    "summary": "Fires after a course row and its associated records have been deleted.",
+    "details": "Only the integer ID survives — the model is gone, so capture anything you need from `fluent_community/course/before_delete`. Enrolment rows are removed directly with a bulk delete on this path, so `fluent_community/course/student_left` does not fire for the students who lose access.",
+    "params": [
+      {
+        "name": "courseId",
+        "type": "int",
+        "desc": "ID of the deleted course."
+      }
+    ],
+    "related": [
+      "fluent_community/course/before_delete"
     ]
   },
   "fluent_community/course/enrolled": {
@@ -1267,6 +2418,82 @@ export const HOOK_NOTES = {
       "fluent_community/admin_course_exportable_students_api_response"
     ]
   },
+  "fluent_community/course/lesson_access_info": {
+    "summary": "Filters the final access decision for a lesson, together with the reason it is locked.",
+    "details": "Runs immediately after `fluent_community/course/can_view_lesson` and has the last word: whatever that filter decided arrives here as `can_view`, and a callback may overturn it. Set `lock_type` to explain why — the value reaches the front end and drives the locked-lesson wording — but note that `lock_type` is forcibly cleared whenever `can_view` ends up truthy. Pro's sequential-progression lock is implemented here. `$ctx` tells you how the initial decision was reached without re-querying.",
+    "params": [
+      {
+        "name": "access",
+        "type": "array",
+        "desc": "`can_view` (bool) and `lock_type` (string, empty by default)."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson being resolved."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course it belongs to."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The viewer, or `null` for a guest."
+      },
+      {
+        "name": "ctx",
+        "type": "array",
+        "desc": "How the base decision was reached: `enrollment`, `is_admin`, `has_section_access`, `has_public_access`."
+      }
+    ],
+    "returns": "`array` — must keep the `can_view` and `lock_type` keys; both are read straight off the result.",
+    "related": [
+      "fluent_community/course/can_view_lesson",
+      "fluent_community/course/access_message_html"
+    ]
+  },
+  "fluent_community/course/lesson_completed": {
+    "summary": "Fires the first time a student completes a lesson.",
+    "details": "Tied to the creation of the completion record, not to the act of marking complete: a lesson that was completed, marked incomplete and completed again reuses the existing row and takes an early return, so this hook fires once per student per lesson for the lifetime of that row. Only a progress reset, which deletes the rows, makes it fire again. It is registered as a FluentCRM automation trigger.",
+    "params": [
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The completed lesson."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the student."
+      }
+    ],
+    "related": [
+      "fluent_community/course/topic_completed",
+      "fluent_community/course/lesson_marked_incomplete"
+    ]
+  },
+  "fluent_community/course/lesson_marked_incomplete": {
+    "summary": "Fires when a student un-completes a lesson they had previously completed.",
+    "details": "The completion row is kept and its `type` flipped to `incomplete` rather than deleted, which is why completing the lesson again does not fire `fluent_community/course/lesson_completed`. Core listens to clear the video-watched record for gated lessons, so the student has to watch the video again before they can re-complete.",
+    "params": [
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson marked incomplete."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the student."
+      }
+    ],
+    "related": [
+      "fluent_community/course/lesson_completed",
+      "fluent_community/is_allowed_to_complete_lesson"
+    ]
+  },
   "fluent_community/course/meta_fields": {
     "summary": "Collects extra settings sections to render on a course's settings screen.",
     "details": "The course-side twin of `fluent_community/space/meta_fields`, with the same section shape and the same paired save action, `fluent_community/course/update_meta_settings_{provider}`. It differs in passing a third argument, the raw request payload; `FluentExtendApi::addMetaBox()` registers its callback with only two, so declare the argument count you actually need.",
@@ -1292,6 +2519,61 @@ export const HOOK_NOTES = {
       "fluent_community/space/meta_fields"
     ]
   },
+  "fluent_community/course/processed": {
+    "summary": "Filters a single course after it has been prepared for a detail response.",
+    "details": "Applied in `CourseController::processCourse()`, which serves the course page, the course-by-slug endpoint and each entry of the all-courses listing. It runs before the rendered course details and the section and lesson lists are attached, so those are not yet on the model. Pro uses it to add the welcome banner, choosing the enrolled or not-enrolled variant from the context array.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course, with `is_course_admin`, `can_self_enroll` and any lockscreen config already set."
+      },
+      {
+        "name": "context",
+        "type": "array",
+        "desc": "Currently just `is_enrolled`."
+      }
+    ],
+    "returns": "`\\FluentCommunity\\Modules\\Course\\Model\\Course` — the model. The caller keeps using it as an object, so do not return an array.",
+    "related": [
+      "fluent_community/course",
+      "fluent_community/course_api_response"
+    ]
+  },
+  "fluent_community/course/progress_reset": {
+    "summary": "Fires after a student's lesson completions and course-completion record have been deleted.",
+    "details": "Only reached when the delete transaction succeeded. Both `completed` and `incomplete` completion rows are removed, so the student is genuinely back to nothing — which also means `fluent_community/course/lesson_completed` will fire again for lessons they had already finished. Core listens to clear video-watched records for the whole course.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course that was reset."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the student."
+      }
+    ],
+    "related": [
+      "fluent_community/course/before_progress_reset",
+      "fluent_community/course/lesson_completed"
+    ]
+  },
+  "fluent_community/course/published": {
+    "summary": "Fires when a course changes to published status through the admin editor.",
+    "details": "Nested inside the dirty check, and fires immediately after `fluent_community/course/updated` for the same save. It observes a transition, so it only fires when the previous status was something other than `published`; re-saving an already published course is silent. A course created directly with a published status never reaches it.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The newly published course."
+      }
+    ],
+    "related": [
+      "fluent_community/course/updated"
+    ]
+  },
   "fluent_community/course/scheduled/init_notification": {
     "summary": "Fires when drip email notifications are armed for a section of a scheduled-drip course.",
     "details": "Only reached for courses whose course_type is `scheduled` and for sections whose meta has email_enabled set to yes. Paired with the unschedule action — a settings change fires unschedule then init, so callbacks must be idempotent.",
@@ -1309,6 +2591,20 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/course/scheduled/unschedule_notification"
+    ]
+  },
+  "fluent_community/course/scheduled/send_notification_async": {
+    "summary": "Action Scheduler task that emails a scheduled course's section-release notification.",
+    "details": "Queued in the `fluent-community` group for the section's release moment, converted to UTC, with the section ID as its only argument — one task per section, sent to every enrolled student. The handler walks recipients in batches and re-queues this same action when it nears its run-time budget, tracking its position in the section's `last_send_user_id` meta, so it can run many times for one release. Pro-only.",
+    "params": [
+      {
+        "name": "sectionId",
+        "type": "int",
+        "desc": "ID of the section being released."
+      }
+    ],
+    "related": [
+      "fluent_community/course/structured/send_notification_async"
     ]
   },
   "fluent_community/course/scheduled/unschedule_notification": {
@@ -1349,6 +2645,26 @@ export const HOOK_NOTES = {
       "fluent_community/course/structured/unschedule_notification"
     ]
   },
+  "fluent_community/course/structured/send_notification_async": {
+    "summary": "Action Scheduler task that emails one student the release notification for a structured section.",
+    "details": "Structured courses drip relative to each student's enrolment date, so unlike the scheduled variant this is queued per student — the arguments are the section ID and the user ID, and the pair is what `as_unschedule_all_actions()` matches on when an enrolment ends or a notification is switched off. Tasks are queued when a student enrols and when a section's notification is enabled. Pro-only.",
+    "params": [
+      {
+        "name": "sectionId",
+        "type": "int",
+        "desc": "ID of the section being released."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the enrolled student."
+      }
+    ],
+    "related": [
+      "fluent_community/course/scheduled/send_notification_async",
+      "fluent_community/course/enrolled"
+    ]
+  },
   "fluent_community/course/structured/unschedule_notification": {
     "summary": "Fires when drip email notifications are cancelled for a section of a structured course.",
     "details": "Fires on an explicit cancel, on a settings reset immediately before the matching init, and once per section when a course is switched away from the structured type.",
@@ -1366,6 +2682,31 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/course/structured/init_notification"
+    ]
+  },
+  "fluent_community/course/student_left": {
+    "summary": "Fires after a student's enrolment row is removed from a course.",
+    "details": "The course-side counterpart of `fluent_community/space/user_left`; courses never fire the space hook. Deleting the course itself does not fire it, because enrolments are then removed with a bulk query. Pro listens to unschedule drip emails and to sync the CRM, and it is registered as a FluentCRM automation trigger.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course the student left."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the departing student."
+      },
+      {
+        "name": "by",
+        "type": "string",
+        "desc": "What triggered the removal: `self`, `by_admin`, or `automation`."
+      }
+    ],
+    "related": [
+      "fluent_community/course/enrolled",
+      "fluent_community/space/user_left"
     ]
   },
   "fluent_community/course/topic_completed": {
@@ -1392,6 +2733,51 @@ export const HOOK_NOTES = {
       "fluent_community/course/enrolled"
     ]
   },
+  "fluent_community/course/update_meta_settings_{metaProvider}": {
+    "summary": "Dynamic action that hands a provider its slice of the course settings form back for saving.",
+    "details": "The placeholder is the provider slug used when the section was contributed through `fluent_community/course/meta_fields`, so registration and saving must agree on the key. It fires once per provider present in the request's `meta_settings` map, after the course itself has been saved, and the values arrive exactly as the form submitted them — sanitise before storing. `FluentExtendApi::addMetaBox()` wires both halves up for you.",
+    "params": [
+      {
+        "name": "metaData",
+        "type": "array",
+        "desc": "The submitted values for this provider, unsanitised."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course being saved."
+      }
+    ],
+    "related": [
+      "fluent_community/course/meta_fields",
+      "fluent_community/space/update_meta_settings_{metaProvider}"
+    ]
+  },
+  "fluent_community/course/updated": {
+    "summary": "Fires after a course is saved from the admin editor with at least one changed column.",
+    "details": "Guarded by a dirty check, so a no-op save is silent, and settings-only changes count because `settings` is a single column. The third argument is a `clone` of the model taken before the new values were filled, which is the only way to see what a value used to be — Pro compares `settings.course_type` across the two to unschedule drip notifications when the course type changes. Category syncing and the meta-settings actions run after this hook, not before.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course after saving."
+      },
+      {
+        "name": "dirtyFields",
+        "type": "array",
+        "desc": "Changed attributes keyed by column, from `getDirty()`."
+      },
+      {
+        "name": "prevCourse",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "A clone of the course as it was before the update."
+      }
+    ],
+    "related": [
+      "fluent_community/course/published",
+      "fluent_community/course/created"
+    ]
+  },
   "fluent_community/course/welcome_banner_updated": {
     "summary": "Fires after course welcome banner settings have been saved.",
     "details": "Runs once the settings are persisted, so it is the right place to bust a cache. The settings passed are the post-filter, post-sanitisation values.",
@@ -1409,6 +2795,108 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/update_course_welcome_banner_settings"
+    ]
+  },
+  "fluent_community/course/{courseType}/unschedule_notification": {
+    "summary": "Dynamic action asking the drip-email scheduler to drop any pending notification for a section.",
+    "details": "The placeholder is the course type — `self_paced`, `scheduled` or `structured` — resolved by `Course::getCourseType()`. Only the `scheduled` and `structured` variants have listeners, so on a self-paced course the action fires into the void. Pro fires it from three places: when a section is about to be deleted, when a section's notification is switched off, and as the first half of the unschedule-then-reschedule pair used when a release date changes. Everything here is Pro-only.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course the section belongs to."
+      },
+      {
+        "name": "section",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseTopic",
+        "desc": "The section whose notification should be cancelled."
+      }
+    ],
+    "related": [
+      "fluent_community/course/{prevType}/unschedule_notification",
+      "fluent_community/course/scheduled/send_notification_async"
+    ]
+  },
+  "fluent_community/course/{prevType}/unschedule_notification": {
+    "summary": "The same unschedule action, fired against a course's previous type after the type is changed.",
+    "details": "When a course switches between self-paced, scheduled and structured, the pending notifications belong to the old scheme, so Pro walks every section with notifications enabled, disables them, and fires the unschedule action with the *previous* type in the placeholder rather than the current one. Same signature and same listeners as `fluent_community/course/{courseType}/unschedule_notification` — a callback should handle both. Pro-only.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course whose type just changed."
+      },
+      {
+        "name": "section",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseTopic",
+        "desc": "A section that had notifications enabled; already saved with `email_enabled` set to `no`."
+      }
+    ],
+    "related": [
+      "fluent_community/course/{courseType}/unschedule_notification",
+      "fluent_community/course/updated"
+    ]
+  },
+  "fluent_community/course_api_response": {
+    "summary": "Filters the response for a course fetched by slug — the course landing page.",
+    "details": "The by-slug endpoint does more than the by-ID one: unless the course hides the instructor view it also loads the creator, their total course count, optionally their total student count, and their rendered bio. Everything else is the shared `processCourse()` payload, so `fluent_community/course/processed` has already run.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "The processed course payload: the course, its sections and lessons, and progress state."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/get_course_api_response",
+      "fluent_community/course/processed"
+    ]
+  },
+  "fluent_community/course_info": {
+    "summary": "Filters the course model returned to the admin course editor.",
+    "details": "Serves the admin single-course endpoint only, and the model has admin-only extras attached by then: `students_count`, `course_type` lifted out of settings, the lockscreen, `category_ids`, and — when there are students — the completed count and overall progress average. Pro's quiz module uses it to add the quiz route to the editor navigation.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course, with admin statistics attached."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`\\FluentCommunity\\Modules\\Course\\Model\\Course` — the model; it is returned to the client under a `course` key.",
+    "related": [
+      "fluent_community/admin_courses_api_response"
+    ]
+  },
+  "fluent_community/course_lesson_api_response": {
+    "summary": "Filters the response for a single lesson opened by slug.",
+    "details": "The lesson has already been resolved against the drip schedule, the enrolment and the access filters, and formatted accordingly — its body is only parsed when the viewer may see it, and `is_locked`, `lock_type` and `unlock_date` describe the outcome. To change access itself use `fluent_community/course/lesson_access_info`, not this filter, which runs far too late.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `lesson` key holding the formatted lesson."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/course/lesson_access_info",
+      "fluent_community/lesson/get_public_meta"
     ]
   },
   "fluent_community/course_lesson_fullscreen_default": {
@@ -1456,6 +2944,32 @@ export const HOOK_NOTES = {
       "fluent_community/default_course_email_notification"
     ]
   },
+  "fluent_community/course_view_json_ld": {
+    "summary": "Filters the JSON-LD block emitted on a course landing page.",
+    "details": "Starts empty, so no structured data is printed unless something fills it — Pro's sitemap module supplies a `Course` graph. It is only reached on the `course_view` route, only in headless rendering, and only when the space exists and is not `secret`. The result is encoded with `JSON_HEX_TAG` and friends, so markup in the values cannot break out of the script tag.",
+    "params": [
+      {
+        "name": "jsonLd",
+        "type": "array",
+        "desc": "The structured-data graph. Empty by default."
+      },
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace",
+        "desc": "The course, loaded as a base space."
+      },
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "The render payload so far, including the resolved title, description and featured image."
+      }
+    ],
+    "returns": "`array` — JSON-encoded into a `application/ld+json` script tag. An empty array prints nothing.",
+    "related": [
+      "fluent_community/feed_view_json_ld",
+      "fluent_community/portal_head_meta"
+    ]
+  },
   "fluent_community/course_welcome_banner": {
     "summary": "Filters the welcome banner shown on a course, per audience.",
     "details": "Returns null before the filter runs when the banner for that view is not enabled, so callbacks only see enabled banners. The raw markdown `description` has already been stripped in favour of the rendered version, and for the not_enrolled view the allowClose flag is stripped too — a guest-facing banner cannot be dismissed.",
@@ -1480,6 +2994,47 @@ export const HOOK_NOTES = {
     "related": [
       "fluent_community/get_course_welcome_banner_settings",
       "fluent_community/update_course_welcome_banner_settings"
+    ]
+  },
+  "fluent_community/courses_api_response": {
+    "summary": "Filters the course directory response shown to members.",
+    "details": "Each course in the list has already been through the by-reference `fluent_community/course` action, which is the better place to change individual courses. `course_categories` is only populated when the request asked for it with `with_categories`.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`courses` (a paginated set) and `course_categories`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/course",
+      "fluent_community/all_courses_api_response"
+    ]
+  },
+  "fluent_community/create_invitation_link": {
+    "summary": "Creates the invitation record behind a shareable space invite link.",
+    "details": "Core supplies no default — the filter starts at `null` and the free plugin has no callback, so the \"create invite link\" endpoint returns \"Something went wrong\" unless Pro is active. Pro answers at priority 1 with `InvitationService::createLinkInvite()`. Returning a `WP_Error` surfaces its message to the moderator; anything falsy produces the generic error. The controller then reads `getAccessUrl()` off whatever you return.",
+    "params": [
+      {
+        "name": "invitation",
+        "type": "mixed",
+        "desc": "The invitation to create; `null` on entry."
+      },
+      {
+        "name": "invitationData",
+        "type": "array",
+        "desc": "Sanitised payload: `email` (empty), `user_id`, `space_id`, `title`, `limit`, `expire_date`."
+      }
+    ],
+    "returns": "`\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation` — a saved record exposing `getAccessUrl()`. Return a `WP_Error` to fail with a message, or a falsy value to fail generically.",
+    "related": [
+      "fluent_community/invitation_link_created"
     ]
   },
   "fluent_community/create_post_default_space": {
@@ -1514,6 +3069,43 @@ export const HOOK_NOTES = {
     ],
     "returns": "`string` — a role slug. An unregistered slug leaves the user with no capabilities."
   },
+  "fluent_community/crm_tagging_config_api_response": {
+    "summary": "Filters the FluentCRM tagging configuration screen payload.",
+    "details": "`crm_tags` is an empty array when FluentCRM is not installed, and `has_fluentcrm` tells the form which case it is in. `settings.tagging_maps` and `settings.linked_maps` are cast to empty objects when they have no entries, so that they serialise as `{}` rather than `[]` and the Vue form can assign into them — preserve that if you rebuild them.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`settings`, `spaceGroups`, `crm_tags`, `has_fluentcrm`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body."
+  },
+  "fluent_community/custom_order_by": {
+    "summary": "Applies a custom sort to the post query for an order key the built-in sorts do not handle.",
+    "details": "Reachable only for keys you have added through `fluent_community/post_order_options`: the scope rejects anything outside that list before the filter, and each of the seven shipped keys is handled by an earlier branch and returns early. A callback receives the query builder and must return a builder — return nothing and the caller ends up with `null` where a query is expected. Apply ordering only; adding `where` clauses here silently changes which posts a viewer sees.",
+    "params": [
+      {
+        "name": "query",
+        "type": "mixed",
+        "desc": "The post query builder, with no ordering applied yet."
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "desc": "The requested sort key."
+      }
+    ],
+    "returns": "The query builder. Returning anything else breaks the caller, which continues to chain on it.",
+    "related": [
+      "fluent_community/post_order_options"
+    ]
+  },
   "fluent_community/custom_profile_field_types": {
     "summary": "Filters the field types available when building custom profile fields.",
     "details": "A map of type slug to label backing the admin field-type picker. Registering a type here only offers it in the picker — storage, validation and rendering for a new type have to be supplied separately.",
@@ -1525,6 +3117,42 @@ export const HOOK_NOTES = {
       }
     ],
     "returns": "The field type map."
+  },
+  "fluent_community/customization_settings": {
+    "summary": "Filters the portal customisation settings — layout, header, sidebar and post-composer preferences.",
+    "details": "Applied after the stored values are merged over the defaults, but before the free-edition lockdown: on a site without Pro, `show_powered_by`, `affiliate_id`, `rich_post_layout`, `member_list_layout` and `enable_sidebar_toggle` are overwritten immediately afterwards, so filtering those five has no effect there. The result is held in a static for the rest of the request, meaning the filter runs once and a callback registered late may never be reached.",
+    "params": [
+      {
+        "name": "settings",
+        "type": "array",
+        "desc": "Customisation values such as `dark_mode`, `default_theme_mode`, `fixed_page_header`, `fixed_sidebar`, `default_feed_layout`, `max_media_per_post`, `post_title_pref`."
+      }
+    ],
+    "returns": "`array` — the settings map; individual keys are read with `Arr::get()`, so a missing key reads as null.",
+    "related": [
+      "fluent_community/customization_settings_api_response",
+      "fluent_community/has_color_scheme"
+    ]
+  },
+  "fluent_community/customization_settings_api_response": {
+    "summary": "Filters the customisation settings as returned to the admin settings screen.",
+    "details": "A read-only view of what `fluent_community/customization_settings` produced, including the free-edition overrides — so what the administrator sees here is what the portal will actually use. Filtering it changes the settings form, not the behaviour; the save endpoint validates its own field list either way.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `settings` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/customization_settings"
+    ]
   },
   "fluent_community/date_time_i18n": {
     "summary": "Filters the date, time and UI localisation strings handed to the portal front end.",
@@ -1588,6 +3216,37 @@ export const HOOK_NOTES = {
       "fluent_community/portal_vars"
     ]
   },
+  "fluent_community/default_redirect_url": {
+    "summary": "Filters the fallback destination written into the FluentAuth login form.",
+    "details": "Narrow scope: it applies only when FluentAuth renders the login form and the request carries no `redirect_to`. The value is escaped into a hidden `fcom_redirect` field, which the login bridge later validates with `wp_validate_redirect()` against the portal base — so an off-site URL will be discarded downstream rather than honoured.",
+    "params": [
+      {
+        "name": "redirectUrl",
+        "type": "string",
+        "desc": "The default destination, the portal base URL."
+      }
+    ],
+    "returns": "`string` — a URL; it is validated against the portal base before use.",
+    "related": [
+      "fluent_community/auth/after_login_redirect_url"
+    ]
+  },
+  "fluent_community/default_theme_mode": {
+    "summary": "Filters the theme mode a visitor sees before making a choice of their own.",
+    "details": "The stored setting is validated against `light`, `dark` and `system` before the filter runs, but the returned value is not re-validated — return something else and it is passed to the front end as-is, where the pre-paint script falls through to light. Precedence at runtime is host-theme cookie, then the viewer's own stored pick, then this value, so it only affects first-time visitors.",
+    "params": [
+      {
+        "name": "mode",
+        "type": "string",
+        "desc": "`light`, `dark` or `system`. `light` by default."
+      }
+    ],
+    "returns": "`string` — one of `light`, `dark`, `system`. Unrecognised values behave as `light`.",
+    "related": [
+      "fluent_community/has_color_scheme",
+      "fluent_community/general_portal_vars"
+    ]
+  },
   "fluent_community/delete_remote_media_{this}": {
     "summary": "Asks the owning storage driver to delete a media file it holds, named after the driver.",
     "details": "The suffix is `$media->driver`, so the live name is `fluent_community/delete_remote_media_s3` for Pro's cloud storage. It is the else-branch of `Media::deleteFile()`: local files are unlinked directly and never reach a hook. Nothing verifies that a handler exists, so a media row on an unhandled driver has its database row removed while the remote object is left behind.",
@@ -1645,6 +3304,27 @@ export const HOOK_NOTES = {
       }
     ],
     "returns": "`string` — the subject line.",
+    "related": [
+      "fluent_community/digest_email_body"
+    ]
+  },
+  "fluent_community/digest_notification/email_sections": {
+    "page": "notifications",
+    "summary": "Filters extra HTML injected into a member's daily digest email.",
+    "details": "The only one of the four section filters with a two-argument signature — there is no single post or comment to pass, since a digest aggregates many. It is applied while composing one recipient's digest, after the logo and footer have been added, and immediately before `fluent_community/digest_email_body` sees the finished HTML.",
+    "params": [
+      {
+        "name": "sections",
+        "type": "array",
+        "desc": "`before_content` and `after_content`, both empty strings by default."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The digest recipient."
+      }
+    ],
+    "returns": "`array` — only `before_content` and `after_content` are read.",
     "related": [
       "fluent_community/digest_email_body"
     ]
@@ -1752,6 +3432,21 @@ export const HOOK_NOTES = {
       }
     ]
   },
+  "fluent_community/editor_i18n_strings": {
+    "summary": "Filters the translated strings handed to the lesson editor's JavaScript.",
+    "details": "An English-keyed map: each key is the source string and each value its translation through the `fluent-community` text domain. The editor looks strings up by the English key, so renaming a key breaks the lookup and the untranslated fallback is used — change values, not keys.",
+    "params": [
+      {
+        "name": "strings",
+        "type": "array",
+        "desc": "Source string mapped to translated string."
+      }
+    ],
+    "returns": "`array` — the string map, with the original keys intact.",
+    "related": [
+      "fluent_community/block_editor_settings"
+    ]
+  },
   "fluent_community/email_notify_new_posts": {
     "summary": "Action Scheduler task that emails a space's subscribers about one newly published post.",
     "details": "Scheduled two minutes after a space post is published, and only when the space actually has mail subscribers or the post mentions somebody. The handler walks recipients 60 at a time and re-schedules this same action when it runs out of time budget, tracking its position in the post's `_last_email_user_id` custom meta — so it fires repeatedly for one post. The single argument is the post ID, although the handler also accepts a `Feed` model because it calls itself recursively.",
@@ -1788,6 +3483,26 @@ export const HOOK_NOTES = {
       "fluent_community/email_notify_new_posts"
     ]
   },
+  "fluent_community/email_settings_api_response": {
+    "summary": "Filters the email notification settings screen payload.",
+    "details": "When no email logo has been set, the general site logo is added as `global_logo` so the form can preview a fallback — the two are distinct keys and only `logo` is saved. Note that changing the digest day or time through the save endpoint unschedules every pending digest run, so a callback that rewrites those values has a side effect on Action Scheduler.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `email_settings` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/verified_email_senders"
+    ]
+  },
   "fluent_community/enqueue_global_assets": {
     "summary": "Fires while the portal's shared stylesheet and script bundle are being enqueued.",
     "details": "Core's own callback does the enqueueing, so this is the hook to attach dependent assets to rather than a notification that assets are already registered — register at a later priority if you need to depend on `fluent_community_global` or `portal_general`. `$useDefaultTheme` is false only for the Gutenberg block when the author opted out of the built-in theme, in which case `theme-default.css` is skipped.",
@@ -1797,6 +3512,53 @@ export const HOOK_NOTES = {
         "type": "bool",
         "desc": "Whether the bundled default theme stylesheet is being loaded alongside the global one."
       }
+    ]
+  },
+  "fluent_community/error_page_custom_css": {
+    "summary": "Filters CSS injected into the standalone error page.",
+    "details": "The error page is the minimal document shown for a pending join request, a deactivated account or a denied role, and it loads none of the portal stylesheets — this filter is the only styling hook it has. The default is an empty string and the return value is passed through `wp_strip_all_tags()` before being printed inside a `<style>` block, so markup in it is dropped rather than escaped.",
+    "params": [
+      {
+        "name": "css",
+        "type": "string",
+        "desc": "CSS to inline. Empty by default."
+      }
+    ],
+    "returns": "`string` — CSS text. An empty or falsy value omits the `<style>` block entirely."
+  },
+  "fluent_community/features/analytics": {
+    "summary": "Filters whether the community analytics feature is available.",
+    "details": "The default is `['status' => 'no']` and Pro flips `status` to `yes`, so analytics is effectively a Pro feature that free installs can unlock by returning `yes`. Only the `status` key is read, and it is compared with a strict `=== 'yes'` — a boolean `true` leaves the feature switched off. The result surfaces to the front end as `features.has_analytics`.",
+    "params": [
+      {
+        "name": "settings",
+        "type": "array",
+        "desc": "Analytics configuration; only `status` is consumed."
+      }
+    ],
+    "returns": "`array` — must be an array with a `status` key; the comparison is strictly against the string `yes`.",
+    "related": [
+      "fluent_community/features_api_response"
+    ]
+  },
+  "fluent_community/features_api_response": {
+    "summary": "Filters the feature-flag screen payload.",
+    "details": "The Giphy API key is replaced with the placeholder `FCOM_ENCRYPTED_DATA_KEY` before the filter runs, so the real key never reaches the client — do not put it back. `addOns` describes the modules that can be switched on, several of which need Pro. Turning a flag off here only changes the form; the modules themselves read `Utility::getFeaturesConfig()` at bootstrap.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`features` (flag map, with the Giphy key masked) and `addOns`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/features/analytics"
     ]
   },
   "fluent_community/feed/before_deleted": {
@@ -2525,6 +4287,68 @@ export const HOOK_NOTES = {
       "fluent_community/feeds_api_response"
     ]
   },
+  "fluent_community/fluent_player/fallback_timings": {
+    "summary": "Filters the timeouts the front end uses to decide the FluentPlayer embed has failed.",
+    "details": "All five values are milliseconds and they govern the fallback path only — how long the portal waits for the player content, its script and its initialisation before giving up and rendering a plain link. They are only added to the payload when FluentPlayer is active and are read once at page load, so changes apply on the next render. Raising them hides genuine failures for longer; lowering them risks false negatives on slow connections.",
+    "params": [
+      {
+        "name": "timings",
+        "type": "array",
+        "desc": "`content_timeout_ms`, `script_timeout_ms`, `script_grace_ms`, `init_timeout_ms`, `stall_timeout_ms`."
+      }
+    ],
+    "returns": "`array` — the timing map; the front end reads each key by name.",
+    "related": [
+      "fluent_community/fluentplayer_defaults_settings"
+    ]
+  },
+  "fluent_community/fluent_player/max_audios_per_post": {
+    "summary": "Filters how many audio items may be attached to one post.",
+    "details": "Defaults to 10 and is clamped to 1–50 after the filter, so a callback cannot lift the ceiling above 50 or disable audio by returning 0 — the clamp exists to bound the sanitisation and database work, and is documented as such at the call site. The resolved figure both trims the submitted list server-side and reaches the composer as `features.fluent_player.max_audios_per_post`.",
+    "params": [
+      {
+        "name": "maxAudios",
+        "type": "int",
+        "desc": "Audio items allowed per post, 10 by default."
+      }
+    ],
+    "returns": "`int` — cast to an integer and clamped to between 1 and 50.",
+    "related": [
+      "fluent_community/support_audio_types"
+    ]
+  },
+  "fluent_community/fluentform__defaults": {
+    "summary": "Filters the default configuration of a Fluent Forms integration feed for FluentCommunity.",
+    "details": "Supplies the initial state of the feed form an administrator sees when connecting a Fluent Forms form to the community — it is the shape of a new, unsaved feed, not the settings of a saved one. Field mapping keys such as `Email` and `username` hold Fluent Forms shortcodes once configured. The double underscore in the hook name is not a typo.",
+    "params": [
+      {
+        "name": "fields",
+        "type": "array",
+        "desc": "Feed defaults: `name`, `space_ids`, `Email`, `username`, `enableAutoLogin`, `sendEmailToNewUser`, `conditionals`, `enabled`."
+      },
+      {
+        "name": "formId",
+        "type": "int",
+        "desc": "The Fluent Forms form being connected."
+      }
+    ],
+    "returns": "`array` — the feed defaults, rendered into the integration settings form."
+  },
+  "fluent_community/fluentplayer_defaults_settings": {
+    "summary": "Filters the default player settings applied to a FluentPlayer embed.",
+    "details": "Applied last, after the plugin defaults have been merged with the stored FluentPlayer settings and after the iOS Safari compatibility pass has forced `playsinline` and `preload` — so a callback can undo those corrections, which is rarely what you want. Note `loadStrategy` is deliberately set to `idle` because the portal is a single-page app; changing it can leave players uninitialised after client-side navigation.",
+    "params": [
+      {
+        "name": "settings",
+        "type": "array",
+        "desc": "Player settings such as `viewType`, `brandColor`, `aspectRatio`, `playsInline`, `loadStrategy`, and any stored overrides."
+      }
+    ],
+    "returns": "`array` — the settings map handed to the player.",
+    "related": [
+      "fluent_community/fluent_player/fallback_timings"
+    ]
+  },
   "fluent_community/followed_user": {
     "summary": "Fires immediately after one member starts following another.",
     "details": "Fired from two call sites — the explicit POST /profile/{username}/follow endpoint and the POST /profile/{userId}/toggle-follow endpoint when the toggle resolves to \"follow\". The Follow row has already been inserted with its default level of 1, so a callback can read $follow->id. It does not fire when an existing block is lifted, and it never fires for self-follows or for a user who already has any Follow row (including a block, which is a Follow row at level 0).",
@@ -2543,6 +4367,42 @@ export const HOOK_NOTES = {
     "related": [
       "fluent_community/before_unfollowing_user",
       "fluent_community/blocked_user"
+    ]
+  },
+  "fluent_community/general_portal_vars": {
+    "summary": "Filters the small configuration object shared by every non-SPA portal script.",
+    "details": "Localised as `fcom_portal_general` for the `portal_general.js` bundle, which handles the sidebar toggle, group collapsing and the dark-mode switch. It is applied at two very different call sites: `PortalHandler::getGlobalScriptVars()` builds the full array, while `Helper::renderColorSchemePrePaintScript()` applies it to a one-key array just to read `color_switch_cookie_name` — so a callback must not assume the other keys are present. Core uses it to adopt the Blocksy and Kadence dark-mode cookies, which is how the portal follows the host theme's theme switch.",
+    "params": [
+      {
+        "name": "vars",
+        "type": "array",
+        "desc": "Configuration keys such as `scope`, `theme`, `has_color_scheme`, `default_theme_mode`, `color_switch_cookie_name`. Only `color_switch_cookie_name` is guaranteed."
+      }
+    ],
+    "returns": "`array` — the configuration object.",
+    "related": [
+      "fluent_community/default_theme_mode",
+      "fluent_community/has_color_scheme"
+    ]
+  },
+  "fluent_community/general_settings_api_response": {
+    "summary": "Filters the general settings screen payload.",
+    "details": "The settings are re-read from the database rather than from cache. `user_roles` is every WordPress role except `administrator`, which is removed deliberately because administrators always have access and are not selectable as a restricted role. `users_can_register` reflects the WordPress option rather than the plugin's own registration setting.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`settings`, `user_roles`, `users_can_register`, `user_registration_enable_url`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/auth/registration_enabled"
     ]
   },
   "fluent_community/generated_upload_file_name": {
@@ -2566,6 +4426,41 @@ export const HOOK_NOTES = {
       }
     ],
     "returns": "`string` — the filename to write. It is not re-sanitised, so escape path separators yourself."
+  },
+  "fluent_community/get_auth_settings": {
+    "summary": "Filters the auth settings as returned to the admin settings screen.",
+    "details": "A thin wrapper over `fluent_community/auth/settings` that runs only in `AdminController::getAuthSettings()`, after the live login and signup field definitions have been injected into `login.form.fields` and `signup.form.fields`. Filter it to change what an administrator sees or can edit; filter `fluent_community/auth/settings` to change what is actually used at render time.",
+    "params": [
+      {
+        "name": "settings",
+        "type": "array",
+        "desc": "The auth configuration with `form.fields` populated for both branches."
+      }
+    ],
+    "returns": "`array` — returned to the admin app under a `settings` key.",
+    "related": [
+      "fluent_community/auth/settings"
+    ]
+  },
+  "fluent_community/get_course_api_response": {
+    "summary": "Filters the response for a course fetched by numeric ID.",
+    "details": "The same `processCourse()` payload as the by-slug endpoint, minus the instructor block that only the by-slug path assembles. Both endpoints refuse an unpublished course to anyone who is not a course admin, so the filter is never reached in that case.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "The processed course payload."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/course_api_response"
+    ]
   },
   "fluent_community/get_course_welcome_banner_settings": {
     "summary": "Filters the course welcome banner settings returned to the admin editor.",
@@ -2654,6 +4549,22 @@ export const HOOK_NOTES = {
       "fluent_community/comment/media_deleted"
     ]
   },
+  "fluent_community/has_color_scheme": {
+    "summary": "Filters whether the light/dark colour scheme is active for the current render.",
+    "details": "The base value is the `dark_mode` customisation setting. It controls three things at once: the pre-paint theme script in `<head>`, the dark-mode toggle in the header, and the `has_color_scheme` flag handed to the sidebar and the front-end scripts. Core turns it off with `__return_false` for the whole auth page, so the login screen never renders a toggle.",
+    "params": [
+      {
+        "name": "hasColorScheme",
+        "type": "bool",
+        "desc": "Whether the colour scheme is enabled, from the `dark_mode` customisation setting."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_community/default_theme_mode",
+      "fluent_community/color_schmea_config"
+    ]
+  },
   "fluent_community/has_global_post": {
     "summary": "Filters whether members may post outside a space, to their own profile feed.",
     "details": "The stored setting is inverted before the filter sees it: `disable_global_posts` set to `yes` arrives here as `false`. Returning `false` makes the composer reject a submission with no space and rejects the special `__self__post__` space slug, and it is also what the \"Post to profile\" option in the composer keys off.",
@@ -2709,6 +4620,214 @@ export const HOOK_NOTES = {
       "fluent_community/has_inline_image_upload"
     ]
   },
+  "fluent_community/header_vars": {
+    "summary": "Filters the data the portal header template is rendered with.",
+    "details": "Applied in `PortalHandler::getPortalHeader()` just before the `portal.header` view runs, so it is the way to swap the logo, its link target or the main menu without touching the template. Emptying `menuItems` suppresses the whole centre `<nav>`, which is what core does on admin routes. `auth` is the viewer's `XProfile` or `null`; the profile is only resolved when the viewer passes the portal access check.",
+    "params": [
+      {
+        "name": "vars",
+        "type": "array",
+        "desc": "Header data: `portal_url`, `logo`, `white_logo`, `logo_permalink`, `site_title`, `profile_url`, `auth`, `auth_url`, `menuItems`, `context`."
+      }
+    ],
+    "returns": "`array` — the header data. The template reads `logo`, `site_title` and `menuItems` directly, so keep them defined.",
+    "related": [
+      "fluent_community/main_menu_items",
+      "fluent_community/after_header_menu"
+    ]
+  },
+  "fluent_community/headless/before_js_loaded": {
+    "summary": "Prints on the auth page after the inline JavaScript variables and before the module script tags.",
+    "details": "The auth page ships no JavaScript variables of its own, so in practice the preceding `<script>` block is empty, and this is the last hook before the deferred module scripts. Nothing in core or Pro listens.",
+    "params": [
+      {
+        "name": "scope",
+        "type": "string",
+        "desc": "The page scope; `user_registration` at the only live call site."
+      }
+    ],
+    "related": [
+      "fluent_community/headless/footer"
+    ]
+  },
+  "fluent_community/headless/content": {
+    "summary": "Renders the body of the auth page, inside the `.fluent_com` wrapper.",
+    "details": "The whole login, signup, password-reset and invitation-acceptance UI is drawn from a single callback registered by `AuthModdule::viewAuthPage()`, which branches on the requested form. On the `signup` layout the wrapper sits in the right-hand column beside the branding panel; otherwise it is a plain full-width block. Adding your own callback appends below the form rather than replacing it — to replace it, return a non-empty string from `fluent_community/auth/pre_content` and print your own markup.",
+    "params": [
+      {
+        "name": "scope",
+        "type": "string",
+        "desc": "The page scope; `user_registration` at the only live call site."
+      }
+    ],
+    "related": [
+      "fluent_community/auth/pre_content",
+      "fluent_community/headless/footer"
+    ]
+  },
+  "fluent_community/headless/footer": {
+    "summary": "Prints as the last thing before `</body>` on the auth page, after `wp_footer()`.",
+    "details": "Because the auth page sets `load_wp`, `wp_footer()` has already run when this fires — anything enqueued the normal way is on the page by now. Nothing in core or Pro listens.",
+    "params": [
+      {
+        "name": "scope",
+        "type": "string",
+        "desc": "The page scope; `user_registration` at the only live call site."
+      }
+    ],
+    "related": [
+      "fluent_community/headless/head"
+    ]
+  },
+  "fluent_community/headless/head": {
+    "summary": "Prints as the last thing inside `<head>` of the auth page template, after the stylesheet links.",
+    "details": "Same scope caveat as `fluent_community/headless/head_early`: this is the auth page, not the portal. Use it for overrides that must beat the plugin stylesheets, and `head_early` for anything they should be able to override. `wp_head()` has already run on this template because the auth page sets `load_wp`.",
+    "params": [
+      {
+        "name": "scope",
+        "type": "string",
+        "desc": "The page scope; `user_registration` at the only live call site."
+      }
+    ],
+    "related": [
+      "fluent_community/headless/head_early",
+      "fluent_community/headless/content"
+    ]
+  },
+  "fluent_community/headless/head_early": {
+    "summary": "Prints inside `<head>` of `headless_page.php`, before the stylesheets are linked.",
+    "details": "This template is not the portal. Despite the name, `app/Views/headless_page.php` is rendered from exactly one place — `AuthModdule::viewAuthPage()` — so every `fluent_community/headless/*` hook fires only on the FluentCommunity login, signup, reset-password and accept-invitation screens, and `$scope` is always `user_registration`. Core uses this hook for the canonical link and the auth banner colour variables. The portal's own head hook is `fluent_community/portal_head`.",
+    "params": [
+      {
+        "name": "scope",
+        "type": "string",
+        "desc": "The page scope; `user_registration` at the only live call site."
+      }
+    ],
+    "related": [
+      "fluent_community/headless/head",
+      "fluent_community/portal_head"
+    ]
+  },
+  "fluent_community/image_size_names_choose": {
+    "summary": "Filters the image sizes offered in the lesson editor's image block.",
+    "details": "A FluentCommunity-scoped analogue of WordPress's own `image_size_names_choose`, and independent of it — sizes added to the core filter do not appear here. The map is reshaped into the `imageSizes` list the block editor expects, so keys must be registered image size slugs; a slug with no registered size yields an option that resolves to the full-size image.",
+    "params": [
+      {
+        "name": "sizeNames",
+        "type": "array",
+        "desc": "Image size slug mapped to display label: `thumbnail`, `medium`, `large`, `full`."
+      }
+    ],
+    "returns": "`array` — an associative map of size slug to label.",
+    "related": [
+      "fluent_community/block_editor_settings"
+    ]
+  },
+  "fluent_community/install_fluent_player_plugin": {
+    "summary": "Fires when an administrator asks to install the FluentPlayer plugin from the add-ons screen.",
+    "details": "Guarded by an explicit Pro check before it fires — a free install gets an error telling it to upgrade, so unlike the messaging hook this one is genuinely unreachable without Pro. Pro answers it with a direct background install from the vendor's S3 bucket. No arguments.",
+    "related": [
+      "fluent_community/install_messaging_plugin",
+      "fluent_community/fluentplayer_defaults_settings"
+    ]
+  },
+  "fluent_community/install_messaging_plugin": {
+    "summary": "Fires when an administrator asks to install the Fluent Messages plugin from the add-ons screen.",
+    "details": "Fluent Messages is not hosted on wordpress.org, so there is no default installer — Pro answers this hook with a direct background install from the vendor's S3 bucket. On a free site nothing is listening and the endpoint reports success without having installed anything. The action carries no arguments and no result: it runs synchronously inside the request and the response is fixed either way.",
+    "related": [
+      "fluent_community/install_fluent_player_plugin"
+    ]
+  },
+  "fluent_community/invitation_created": {
+    "summary": "Fires after an email invitation to a space or course has been stored.",
+    "details": "Fired from `InvitationService::invite()` once every duplicate and membership check has passed, and before the invitation email is sent — so a callback that throws will leave a stored invitation with no email behind it. The invitee's address is in `message` and the token in `message_rendered`. Link invitations take a different path and fire `fluent_community/invitation_link_created` instead.",
+    "params": [
+      {
+        "name": "invitation",
+        "type": "\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation",
+        "desc": "The stored invitation; `status` is `pending`."
+      }
+    ],
+    "related": [
+      "fluent_community/invitation_link_created",
+      "fluent_community/create_invitation_link"
+    ]
+  },
+  "fluent_community/invitation_link_created": {
+    "summary": "Fires after a shareable invitation link has been created for a space.",
+    "details": "Link invitations differ from email ones: `message` is empty, `status` is `active` rather than `pending`, and `meta` carries the `title`, `limit` and `expire_date` chosen by the moderator. No email is sent. The redemption counter is kept in the row's `reactions_count` column, which is incremented each time someone signs up through the link.",
+    "params": [
+      {
+        "name": "invitation",
+        "type": "\\FluentCommunity\\Modules\\Auth\\Classes\\Invitation",
+        "desc": "The stored link invitation."
+      }
+    ],
+    "related": [
+      "fluent_community/invitation_created",
+      "fluent_community/create_invitation_link"
+    ]
+  },
+  "fluent_community/is_allowed_to_complete_lesson": {
+    "summary": "Filters whether the current student may change a lesson's completion state.",
+    "details": "Covers both directions — the third argument is `completed` or `incomplete` — so a callback that only means to block completion must let `incomplete` through, as core's video gate does. Core attaches the video-watch gate at priority 11 and Pro attaches the quiz requirement at 10, both of which can veto. Returning `false` produces a 422; the controller adds a `video_watch_required` code and the threshold to the error when the video gate is the reason, so a custom refusal is reported generically.",
+    "params": [
+      {
+        "name": "isAllowed",
+        "type": "bool",
+        "desc": "Whether the change is permitted. `true` by default."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The published lesson being marked."
+      },
+      {
+        "name": "state",
+        "type": "string",
+        "desc": "`completed` or `incomplete`."
+      }
+    ],
+    "returns": "`bool` — `false` rejects the request with a 422.",
+    "related": [
+      "fluent_community/course/lesson_completed",
+      "fluent_community/lesson_video_gate/default_threshold"
+    ]
+  },
+  "fluent_community/is_rtl": {
+    "summary": "Filters whether FluentCommunity renders in right-to-left mode.",
+    "details": "Defaults to WordPress `is_rtl()`. It decides which build of every stylesheet is requested — the RTL builds are separate files, not a runtime flip — and adds a `direction: rtl` rule to the standalone portal page. Because it is read while assets are being resolved, filter it early; changing it after the head has rendered has no effect.",
+    "params": [
+      {
+        "name": "isRtl",
+        "type": "bool",
+        "desc": "Whether to use the RTL assets. WordPress `is_rtl()` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness."
+  },
+  "fluent_community/is_supported_theme": {
+    "summary": "Filters whether the active theme lays its own content out well enough inside the community frame.",
+    "details": "Only the boolean matters: `true` puts the `fcom_supported_wp_content` class on the content column, `false` uses `fcom_wp_content fcom_fallback_wp_content`, which adds the plugin's own padding and width handling. It defaults to `false` for every theme, including the ones `fluent_community/theme_content` has a dedicated renderer for, so declaring your theme supported is opt-in. Fires in both frame templates.",
+    "params": [
+      {
+        "name": "isSupported",
+        "type": "bool",
+        "desc": "Whether the theme handles the frame content area itself. `false` by default."
+      },
+      {
+        "name": "themeName",
+        "type": "string",
+        "desc": "The active theme's directory slug, from `get_option('template')`."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness; only the class name changes.",
+    "related": [
+      "fluent_community/theme_content",
+      "fluent_community/template_slug"
+    ]
+  },
   "fluent_community/last_activity_date_for_unread_feeds": {
     "summary": "Filters the cut-off date used to count unread posts per space in the sidebar.",
     "details": "Defaults to the viewer's `last_activity` minus five minutes, expressed as a UTC `Y-m-d H:i:s` string, and is compared directly against `fcom_posts.created_at`. Returning a `DateTime` or a timestamp will not work — the value goes straight into the query. Members with no recorded activity never reach the filter, and counts are capped for display at `10+`.",
@@ -2751,6 +4870,30 @@ export const HOOK_NOTES = {
       "fluent_community/user_level_upgraded"
     ]
   },
+  "fluent_community/lesson/additional_media_updated": {
+    "summary": "Fires at the end of a lesson save so integrations can persist media that is not a lesson column.",
+    "details": "Fires on every save of the lesson editor, including ones where nothing changed and `fluent_community/lesson/updated` stayed silent. The first argument is the entire unsanitised request payload — which is the point, since attached documents and other add-on media travel outside the lesson attributes — so sanitise anything you read from it. `$updateData` is what was actually filled onto the model.",
+    "params": [
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full, unsanitised request payload."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The saved lesson."
+      },
+      {
+        "name": "updateData",
+        "type": "array",
+        "desc": "The attributes that were filled onto the lesson: `title`, `status`, `meta`, and `message` when submitted."
+      }
+    ],
+    "related": [
+      "fluent_community/lesson/updated"
+    ]
+  },
   "fluent_community/lesson/before_deleted": {
     "summary": "Runs immediately before a lesson row is deleted, while its relations are still queryable.",
     "details": "Fires from three places: deleting a single lesson, deleting a section (once per contained lesson), and deleting a whole course (once per lesson in every section). Core uses it to drop lesson media and watched-video records, so a bulk course delete will fan this out across every lesson.",
@@ -2763,6 +4906,184 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/section/before_deleted"
+    ]
+  },
+  "fluent_community/lesson/create_data": {
+    "summary": "Filters the attributes a new lesson is created with.",
+    "details": "The default payload is deliberately thin — title, section, course and a `draft` status, plus a priority one past the current maximum in the section. The second argument is the whole request object, not an array, which is how Pro's quiz module detects that the new lesson should be a quiz and adds its own attributes. Anything you add must be fillable on `CourseLesson` or it is dropped by `create()`.",
+    "params": [
+      {
+        "name": "lessonData",
+        "type": "array",
+        "desc": "`title`, `parent_id`, `space_id`, `status`, `priority`."
+      },
+      {
+        "name": "request",
+        "type": "\\FluentCommunity\\Framework\\Http\\Request\\Request",
+        "desc": "The request object itself, not an array."
+      }
+    ],
+    "returns": "`array` — attributes passed to `CourseLesson::create()`.",
+    "related": [
+      "fluent_community/lesson/update_data"
+    ]
+  },
+  "fluent_community/lesson/duplicated": {
+    "summary": "Fires after a lesson has been copied within its section.",
+    "details": "The copy is a full `replicate()` with a fresh slug, a unique \"(Copy)\" title and a priority placing it immediately after the original; sibling priorities have already been re-indexed and attached documents copied across by the time it runs. Note the argument order — the new lesson comes first.",
+    "params": [
+      {
+        "name": "newLesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The duplicate, freshly reloaded from the database."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson it was copied from."
+      }
+    ],
+    "related": [
+      "fluent_community/lesson/create_data"
+    ]
+  },
+  "fluent_community/lesson/get_public_meta": {
+    "summary": "Filters the lesson meta exposed to a student viewing the lesson.",
+    "details": "The read-side counterpart of `fluent_community/lesson/sanitize_meta`. Core has already rewritten document entries into signed download URLs and — when the viewer may not see the lesson — emptied the document lists and removed the media block, so a callback must not put privileged data back without checking. Two callbacks ship: the video gate appends the watch state, and Pro's quiz module strips answers. Note the filter does not receive the `canView` flag, only the already-redacted array.",
+    "params": [
+      {
+        "name": "meta",
+        "type": "array",
+        "desc": "The lesson meta, redacted for the viewer."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson being rendered."
+      }
+    ],
+    "returns": "`array` — the meta sent to the front end. Do not add anything a locked-out viewer should not see.",
+    "related": [
+      "fluent_community/lesson/sanitize_meta",
+      "fluent_community/course/lesson_access_info"
+    ]
+  },
+  "fluent_community/lesson/sanitize_meta": {
+    "summary": "Filters the lesson meta payload after core has sanitised it and before it is saved.",
+    "details": "Core has already normalised the known keys by this point: the media block is emptied unless `enable_media` is `yes`, `video_length`, `passing_score` and `video_completion_threshold` are forced through `absint()`, and a non-zero threshold is clamped to 1–100. Unknown keys survive untouched, which is what makes this the hook for validating your own lesson meta — Pro's quiz module sanitises its question data here. Nothing downstream re-sanitises what you return.",
+    "params": [
+      {
+        "name": "meta",
+        "type": "array",
+        "desc": "The sanitised lesson meta."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson being saved."
+      }
+    ],
+    "returns": "`array` — merged over the lesson's existing meta by the caller.",
+    "related": [
+      "fluent_community/lesson/get_public_meta",
+      "fluent_community/lesson/update_data"
+    ]
+  },
+  "fluent_community/lesson/update_data": {
+    "summary": "Filters the attributes about to be written when a lesson is saved.",
+    "details": "The array has already been through `array_filter()`, so empty values were dropped — with one deliberate exception, `message`, which is added afterwards precisely so that clearing a lesson body still saves. The `meta` value has already passed through `fluent_community/lesson/sanitize_meta` and been merged over the lesson's existing meta. What you return determines the dirty check, and therefore whether `fluent_community/lesson/updated` fires at all.",
+    "params": [
+      {
+        "name": "updateData",
+        "type": "array",
+        "desc": "`title`, `status`, `meta`, and `message` when the request supplied one."
+      },
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson before the new values are filled."
+      }
+    ],
+    "returns": "`array` — attributes filled onto the model.",
+    "related": [
+      "fluent_community/lesson/sanitize_meta",
+      "fluent_community/lesson/updated"
+    ]
+  },
+  "fluent_community/lesson/updated": {
+    "summary": "Fires after a lesson is saved from the admin editor with at least one changed column.",
+    "details": "Guarded by a dirty check, so a save that changes nothing is silent — but note the companion action `fluent_community/lesson/additional_media_updated` fires unconditionally straight after, even on a no-op save. The third argument saves you comparing statuses yourself: it is `true` only when this save moved the lesson to `published` from something else.",
+    "params": [
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The lesson after saving."
+      },
+      {
+        "name": "dirtyFields",
+        "type": "array",
+        "desc": "Changed attributes keyed by column, from `getDirty()`."
+      },
+      {
+        "name": "isNewlyPublished",
+        "type": "bool",
+        "desc": "Whether this save published a previously unpublished lesson."
+      }
+    ],
+    "related": [
+      "fluent_community/lesson/update_data",
+      "fluent_community/lesson/additional_media_updated"
+    ]
+  },
+  "fluent_community/lesson/video_watched": {
+    "summary": "Fires the first time a student watches enough of a gated lesson video to unlock completion.",
+    "details": "Backed by a watched record, so it fires once per student per lesson; a student who re-watches, or whose existing record is merely reactivated, does not fire it again. Watching the video is not the same as completing the lesson — completion is a separate call that this hook only unblocks.",
+    "params": [
+      {
+        "name": "lesson",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The gated lesson."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID of the student."
+      }
+    ],
+    "related": [
+      "fluent_community/is_allowed_to_complete_lesson",
+      "fluent_community/lesson_video_gate/default_threshold"
+    ]
+  },
+  "fluent_community/lesson_video_gate/auto_complete_delay": {
+    "summary": "Filters how many seconds pass after a video ends before the lesson auto-completes.",
+    "details": "Defaults to 3 and only matters on lessons that both enable the media block with a FluentPlayer video and turn on `auto_complete_on_video_end`. The value is cast with `(int)`; a negative return reverts to the default, while `0` is honoured and completes the lesson immediately. It is consumed by the browser-side tracker, so changes take effect on the next page load.",
+    "params": [
+      {
+        "name": "delay",
+        "type": "int",
+        "desc": "Delay in seconds, 3 by default."
+      }
+    ],
+    "returns": "`int` — cast to an integer; negative values fall back to 3.",
+    "related": [
+      "fluent_community/lesson_video_gate/default_threshold"
+    ]
+  },
+  "fluent_community/lesson_video_gate/default_threshold": {
+    "summary": "Filters the percentage of a video a student must watch when a lesson sets no threshold of its own.",
+    "details": "Defaults to 80. The return value is cast with `(int)`, then clamped: anything at or below zero falls back to 80, and anything above 100 becomes 100. A per-lesson `video_completion_threshold` always wins over this. The resolved figure is used both by the server-side gate and by the front-end tracker, which reads it from the injected `fcomLessonVideoGate` variables.",
+    "params": [
+      {
+        "name": "threshold",
+        "type": "int",
+        "desc": "Watch percentage required, 80 by default."
+      }
+    ],
+    "returns": "`int` — cast and clamped to 1–100; non-positive values revert to the 80 default.",
+    "related": [
+      "fluent_community/lesson_video_gate/auto_complete_delay",
+      "fluent_community/is_allowed_to_complete_lesson"
     ]
   },
   "fluent_community/lockscreen_fields": {
@@ -2915,6 +5236,21 @@ export const HOOK_NOTES = {
       "fluent_community/max_post_length"
     ]
   },
+  "fluent_community/max_execution_time": {
+    "summary": "Filters the number of seconds a batched background job may run before re-scheduling itself.",
+    "details": "The default is derived from PHP's `max_execution_time`: unlimited or unreadable becomes 60, the value is capped at 58, and three seconds of headroom are subtracted — so a typical site sees 27 or 55. Email digests, post and comment notifications and the moderation mailers all compare their elapsed time against it and queue a fresh Action Scheduler task when they exceed it. Returning a value larger than the real PHP limit risks jobs being killed mid-batch, which loses the resume point.",
+    "params": [
+      {
+        "name": "maxRunTime",
+        "type": "int",
+        "desc": "Seconds of budget for a batch, already capped and reduced by three."
+      }
+    ],
+    "returns": "`int` — seconds. It is not re-clamped, so the cap and the headroom are yours to respect.",
+    "related": [
+      "fluent_community_send_daily_digest"
+    ]
+  },
   "fluent_community/max_media_per_post": {
     "summary": "Filters how many media items may be attached to a single post.",
     "details": "Applied twice with the same default from the customiser settings (4): once inside `portal_vars`, where the composer uses it to stop accepting further images, and once in `FeedsHelper` where surplus items are trimmed with `array_slice()`. Filter it unconditionally so both agree — raising only the client-side value results in silently discarded attachments. A value of `0` hides the attachment button altogether.",
@@ -2929,6 +5265,18 @@ export const HOOK_NOTES = {
     "related": [
       "fluent_community/portal_vars"
     ]
+  },
+  "fluent_community/max_per_page": {
+    "summary": "Filters the ceiling on how many items a paginated portal endpoint will return.",
+    "details": "Defaults to 100 and is applied identically in the feeds and activities endpoints, where the requested `per_page` is clamped with `min($maxPerPage, max(1, $perPage))`. The result is cast with `(int)` and an effective `0` falls back to 100, so the limit cannot be removed by returning nothing — return a large number instead. It bounds only these two endpoints; other list endpoints use the framework's own pagination defaults.",
+    "params": [
+      {
+        "name": "maxPerPage",
+        "type": "int",
+        "desc": "The per-page ceiling, 100 by default."
+      }
+    ],
+    "returns": "`int` — cast to an integer; a falsy result reverts to 100."
   },
   "fluent_community/max_post_length": {
     "summary": "Filters the maximum number of characters allowed in a post body.",
@@ -3290,6 +5638,59 @@ export const HOOK_NOTES = {
       "fluent_community/main_menu_items"
     ]
   },
+  "fluent_community/new_feed_everybody_notification/email_sections": {
+    "page": "notifications",
+    "summary": "The same email-section injection for posts announced to every member with the \"everyone\" tag.",
+    "details": "A separate call site from the space notification with an identical signature, because the two emails are assembled by different routines. A callback that should apply to both has to be attached to both hooks. Same marker substitution and the same per-recipient loop.",
+    "params": [
+      {
+        "name": "sections",
+        "type": "array",
+        "desc": "`before_content` and `after_content`, both empty strings by default."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The recipient."
+      },
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The post being announced."
+      }
+    ],
+    "returns": "`array` — only `before_content` and `after_content` are read.",
+    "related": [
+      "fluent_community/new_feed_notification/email_sections"
+    ]
+  },
+  "fluent_community/new_feed_notification/email_sections": {
+    "page": "notifications",
+    "summary": "Filters extra HTML injected into the per-space \"new post\" notification email.",
+    "details": "The two strings are substituted into the `<!--email_content_before-->` and `<!--email_content_after-->` markers in the assembled template, so an empty value leaves the marker in place as an HTML comment. It is applied once per recipient inside the sending loop, with that recipient's user model, which makes per-user personalisation possible but also means the callback runs hundreds of times for a busy space — keep it cheap. The output is not escaped.",
+    "params": [
+      {
+        "name": "sections",
+        "type": "array",
+        "desc": "`before_content` and `after_content`, both empty strings by default."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The recipient."
+      },
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The post being announced."
+      }
+    ],
+    "returns": "`array` — only the `before_content` and `after_content` keys are read, and only when non-empty.",
+    "related": [
+      "fluent_community/new_feed_everybody_notification/email_sections",
+      "fluent_community/comment_notification/email_sections"
+    ]
+  },
   "fluent_community/notification/comment/notifed_to_author": {
     "summary": "Fires after the post author has been notified about a new comment.",
     "details": "Takes a single associative array rather than positional arguments — the shape is shared by all four `notification/comment/*` hooks, and `key` repeats the hook name so one callback can serve several. Skipped when the commenter is the author, and skipped when the author was @-mentioned, in which case `fluent_community/notification/comment/notifed_to_mentions` covers them instead. `created` distinguishes a new notification row from an existing one that was updated and marked unread again. The bundled push notification module listens here.",
@@ -3400,6 +5801,68 @@ export const HOOK_NOTES = {
       "fluent_community/portal_loaded"
     ]
   },
+  "fluent_community/onboarding_settings_api_response": {
+    "summary": "Filters the payload of the first-run onboarding wizard.",
+    "details": "Built from the general settings plus a detection pass for the other Fluent plugins (`has_fluentcrm`, `has_fluentsmtp`, `has_fluentcart`) and matching `install_*` defaults of `yes`, so the wizard offers to install them. It also embeds the current administrator's name and email address for the newsletter opt-in, both of which default to being sent — filter them out if that is not wanted.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `settings` key holding the wizard state."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body."
+  },
+  "fluent_community/paywall_added": {
+    "summary": "Fires after a FluentCart product is attached to a space or course as a paywall.",
+    "details": "The product ID is already stored in the space's `settings.cart_product_ids` by the time it runs. Core answers by finding or creating the product's FluentCommunity integration feed so that a paid order grants access — which is why the paywall works at all. It requires FluentCart; without it the whole route group is absent.",
+    "params": [
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace",
+        "desc": "The space or course being paywalled."
+      },
+      {
+        "name": "productId",
+        "type": "int",
+        "desc": "The FluentCart product ID."
+      }
+    ],
+    "related": [
+      "fluent_community/paywall_removed",
+      "fluent_community/product_integration_feed_created"
+    ]
+  },
+  "fluent_community/paywall_removed": {
+    "summary": "Fires after a FluentCart product is detached from a space or course.",
+    "details": "The third argument is the raw request payload, and core reads one key from it: unless `revoke_access` is exactly `yes`, the core handler returns immediately and the product's integration feed keeps granting access to the space even though the paywall is gone. Detaching and revoking are separate decisions, in other words.",
+    "params": [
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace",
+        "desc": "The space or course the paywall was removed from."
+      },
+      {
+        "name": "productId",
+        "type": "int",
+        "desc": "The FluentCart product ID."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload; `revoke_access` decides whether the integration feed is updated."
+      }
+    ],
+    "related": [
+      "fluent_community/paywall_added",
+      "fluent_community/product_integration_feed_updated"
+    ]
+  },
   "fluent_community/pinned_posts_api_response": {
     "summary": "Filters the pinned or trending posts shown alongside the activity list.",
     "details": "The first argument is a flat list of at most five items, each with `id`, `message` (a 100-character excerpt), `permalink`, `xprofile` and `created_at` — not a wrapped payload. The same filter serves two different queries: with `$isTrending` true and no space it returns the last seven days ordered by engagement, otherwise it returns posts explicitly flagged with `priority = 1`. Both arguments can be `null`/`false` on the global activity feed.",
@@ -3425,6 +5888,59 @@ export const HOOK_NOTES = {
       "fluent_community/activities_api_response"
     ]
   },
+  "fluent_community/portal/not_logged_in": {
+    "summary": "Fires when a logged-out visitor hits a portal URL on a community that is not publicly accessible.",
+    "details": "The redirect happens on the next line and is followed by `exit()`, so a callback cannot cancel it or change the destination — this is a notification hook, useful for logging or for setting a cookie before the visitor leaves. `$authUrl` is either the administrator-configured external auth URL or the internal auth page with a `redirect_to` back to the requested path.",
+    "params": [
+      {
+        "name": "authUrl",
+        "type": "string",
+        "desc": "The URL the visitor is about to be sent to."
+      }
+    ],
+    "related": [
+      "fluent_community/portal/viewed",
+      "fluent_community/auth/login_url"
+    ]
+  },
+  "fluent_community/portal/viewed": {
+    "summary": "Fires once per portal page load, after access checks pass and before the app data is assembled.",
+    "details": "Takes no arguments and does not tell you who is viewing — resolve the current user yourself. It runs after the logged-out redirect, so a guest only reaches it on a publicly accessible portal, and after the pending, deactivated and role checks, which end the request on their own error page. REST API traffic from the SPA does not fire it; this is the full-page render only.",
+    "related": [
+      "fluent_community/portal/not_logged_in",
+      "fluent_community/portal_render_for_user"
+    ]
+  },
+  "fluent_community/portal_action_{action}": {
+    "summary": "Dynamic action fired for the value of the `fcom_action` query parameter on any portal URL.",
+    "details": "This is the plugin's front-controller extension point: `?fcom_action=my_thing` on a portal URL fires `fluent_community/portal_action_my_thing`. It runs at the very top of `renderFullApp()` — before the logged-out redirect, before the profile-status checks and before the role gate — so a handler receives completely unauthenticated requests and must do its own capability and nonce checks. Core registers `auth`, `signed_url` and `reactivate_account`; Pro adds `download_document` and `incoming_webhook`. The action name comes straight from the request and is sanitised with `sanitize_text_field()`.",
+    "params": [
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The raw `$_GET` superglobal, unsanitised."
+      }
+    ],
+    "related": [
+      "fluent_community/rendering_path_ssr_{pathParts}"
+    ]
+  },
+  "fluent_community/portal_data_vars": {
+    "summary": "Filters the render payload for a portal page: title, meta, asset lists and inline JavaScript variables.",
+    "details": "This is the server-side sibling of `fluent_community/portal_vars`, which it already contains under `js_vars.fluentComAdmin`. It is the supported way to add a stylesheet or module script to the portal, since headless rendering ignores `wp_enqueue_style()`; add entries to the `css_files` and `js_files` maps, each keyed by handle with a `url` (and `deps` for scripts). Core swaps the whole bundle for the admin application here when `route_group` is `admin`, and the lesson video gate injects its tracker at priority 11 — register later than that if you need to see the final list.",
+    "params": [
+      {
+        "name": "dataVars",
+        "type": "array",
+        "desc": "The render payload: `title`, `og_title`, `description`, `featured_image`, `css_files`, `js_files`, `header_js_files`, `js_vars`, `route_group`, `current_route`, `theme_color`."
+      }
+    ],
+    "returns": "`array` — the payload. `portal_page.php` reads several keys unconditionally, so merge rather than replace.",
+    "related": [
+      "fluent_community/portal_vars",
+      "fluent_community/before_portal_rendered"
+    ]
+  },
   "fluent_community/portal_footer": {
     "summary": "Prints near the end of `<body>` on the standalone portal page, after the SPA scripts.",
     "details": "Fires from `app/Views/portal_page.php` and from the Pro portal shortcode, and runs before `wp_footer()` on non-headless renders. Core hangs custom JS snippets and customiser output off it. The theme-framed portal uses `fluent_community/template_footer` instead.",
@@ -3441,6 +5957,21 @@ export const HOOK_NOTES = {
       "fluent_community/portal_footer"
     ]
   },
+  "fluent_community/portal_head_meta": {
+    "summary": "Prints inside `<head>` of the standalone portal page, among the SEO and Open Graph tags.",
+    "details": "Fires only on the branch that skips `wp_head()` — that is, when `fluent_community/portal_page_headless` is left at its default `true`. Switch to classic rendering and this hook never runs, so anything essential should also be attached to `fluent_community/portal_head`, which fires on both branches. It sits after the `og:` and `twitter:` tags and before the canonical link and the JSON-LD block, so it is the right place for robots directives. Pro's sitemap module emits the `noindex` tag here.",
+    "params": [
+      {
+        "name": "landingRoute",
+        "type": "string",
+        "desc": "The resolved route group for the request, for example `feed_view`, `course_view`, `user_profile`, or empty."
+      }
+    ],
+    "related": [
+      "fluent_community/portal_head",
+      "fluent_community/render_default_touch_icon"
+    ]
+  },
   "fluent_community/portal_header": {
     "summary": "Renders the portal header bar for a given render context.",
     "details": "As with the sidebar, core attaches the default header renderer, so callbacks add to it. `$context` is `headless`, `wp`, or `block_editor`; unlike the sidebar there is no `ajax` context. To add items inside the default header rather than around it, use the finer-grained `fluent_community/before_header_menu_items` and `fluent_community/after_header_right_menu_items` hooks.",
@@ -3453,6 +5984,14 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/portal_sidebar"
+    ]
+  },
+  "fluent_community/portal_html": {
+    "summary": "Renders the portal application markup inside the `.fluent_com` wrapper of the standalone portal page.",
+    "details": "Core attaches the `portal.portal` view at the default priority, which draws the header, the sidebar column and the `#fluent_com_portal` mount point the Vue app takes over. Adding a callback appends to that markup; to replace the app shell entirely, remove the core action first. It fires from `app/Views/portal_page.php` only — the WordPress frame templates and the Gutenberg block build the same structure inline and do not fire it.",
+    "related": [
+      "fluent_community/before_portal_dom",
+      "fluent_community/portal_header"
     ]
   },
   "fluent_community/portal_loaded": {
@@ -3484,6 +6023,67 @@ export const HOOK_NOTES = {
       "fluent_community/portal_vars"
     ]
   },
+  "fluent_community/portal_page_headless": {
+    "summary": "Filters whether the portal page renders without the WordPress theme head and footer.",
+    "details": "Returns `false` from core, but `Modules\\FeaturesHandler` immediately adds `__return_true`, so headless is the effective default on every install. When it is true, `portal_page.php` skips `wp_head()` and `wp_footer()`, emits its own meta tags, and the assets are printed by hand from `fluent_community/rendering_headless_portal`. Return `false` to fall back to classic rendering, where WordPress enqueueing applies and theme and plugin head output reaches the portal. The name is unrelated to `app/Views/headless_page.php`, which is the auth page template.",
+    "params": [
+      {
+        "name": "isHeadless",
+        "type": "bool",
+        "desc": "Whether to skip the WordPress head and footer. `false` in core, forced to `true` by `FeaturesHandler`."
+      }
+    ],
+    "returns": "`bool` — the value is used in a truthy test. Returning `false` switches the portal to classic rendering.",
+    "related": [
+      "fluent_community/rendering_headless_portal",
+      "fluent_community/portal_head_meta"
+    ]
+  },
+  "fluent_community/portal_render_for_user": {
+    "summary": "Fires on a full portal render for a signed-in member with an active profile.",
+    "details": "Reached only after the status and role gates pass, and only when an `XProfile` exists — guests and blocked, pending or deactivated members never reach it. Core uses it to re-register the daily and hourly Action Scheduler jobs for site administrators, so it doubles as the plugin's \"someone is here, keep cron alive\" signal. Runs on every page load, so keep the work cheap.",
+    "params": [
+      {
+        "name": "xprofile",
+        "type": "\\FluentCommunity\\App\\Models\\XProfile",
+        "desc": "The viewing member's profile."
+      }
+    ],
+    "related": [
+      "fluent_community/portal/viewed"
+    ]
+  },
+  "fluent_community/portal_route_type": {
+    "summary": "Filters whether portal routes are path-based or hash-based.",
+    "details": "Defaults to `WebHistory`, the HTML5 history mode; the only other value the code understands is `hash`, which makes `Helper::baseUrl()` build `#/path` URLs and switches the Vue router to hash mode. It reaches the SPA as `portal_vars.routing_system`. Nothing in the shipped code returns `hash` — Pro's shortcode renderer used to, but its `register()` method returns before that filter is added, so the shortcode path is dead code.",
+    "params": [
+      {
+        "name": "type",
+        "type": "string",
+        "desc": "`WebHistory` by default; `hash` for hash routing."
+      }
+    ],
+    "returns": "`string` — `WebHistory` or `hash`. Any other value is treated as `WebHistory` by `Helper::baseUrl()` but passed to the router unchanged.",
+    "related": [
+      "fluent_community/base_url",
+      "fluent_community/app_route_paths"
+    ]
+  },
+  "fluent_community/portal_settings_menu_items": {
+    "summary": "Filters the sections listed in the portal's admin settings navigation.",
+    "details": "The default list is empty for anyone who is not a site administrator, so a callback that appends unconditionally will expose its entry to moderators and course admins as well — check `Helper::isSiteAdmin()` yourself. Entries are keyed by slug and carry `label`, `route` and an `icon_svg` string that is rendered as raw markup. The result travels to the admin SPA as `portalSettingsMenus`; the route must also exist in the Vue router or the entry will lead nowhere. Core's migration module adds its importer this way.",
+    "params": [
+      {
+        "name": "menuItems",
+        "type": "array",
+        "desc": "Settings sections keyed by slug, each with `label`, `route` and `icon_svg`. Empty for non-administrators."
+      }
+    ],
+    "returns": "`array` — the sections map, order preserved.",
+    "related": [
+      "fluent_community/portal_data_vars"
+    ]
+  },
   "fluent_community/portal_sidebar": {
     "summary": "Renders the portal's left sidebar navigation for a given render context.",
     "details": "Core attaches the sidebar renderer itself, so adding a callback appends to the sidebar rather than replacing it. The `$context` argument distinguishes where the sidebar is being drawn: `headless` for the SPA, `wp` for the theme frame templates, `block_editor` for the Gutenberg block in edit mode, and `ajax` when `OptionController::getSidebarMenuHtml()` buffers the markup for a client-side refresh.",
@@ -3509,6 +6109,21 @@ export const HOOK_NOTES = {
       }
     ],
     "returns": "`string` — the slug, without leading or trailing slashes. An empty string serves the portal from the site root."
+  },
+  "fluent_community/portal_supported_query_params": {
+    "summary": "Filters which query parameters make a root-level request count as a portal request.",
+    "details": "Applies to one narrow case: a portal mounted at the site root, with an empty request path and a query string. Without a match the request falls through to the normal WordPress home page, which is what stops the portal swallowing every query-string URL on the site. Parameters beginning with `fcom_` are always accepted regardless of this list; the defaults add `customizer_panel` and `create_space`.",
+    "params": [
+      {
+        "name": "supportedParams",
+        "type": "array",
+        "desc": "Query parameter names that identify a portal request. Cast to an array before use."
+      }
+    ],
+    "returns": "`array` — a flat list of parameter names, compared with a strict `in_array()`.",
+    "related": [
+      "fluent_community/app_route_paths"
+    ]
   },
   "fluent_community/portal_vars": {
     "summary": "Filters the complete configuration payload handed to the portal Vue application.",
@@ -3548,6 +6163,26 @@ export const HOOK_NOTES = {
       "fluent_community/comment_order_options"
     ]
   },
+  "fluent_community/post_report_added_async": {
+    "summary": "Action Scheduler task that emails moderators about a reported or auto-flagged post.",
+    "details": "Queued in the `fluent-community` group as soon as the report is created, and re-queued by its own handler whenever the send loop approaches its run-time budget — so it can fire several times for one report, each time resuming after `$lastUserId`. Recipients are community admins and moderators with an active profile, and the reporting user is excluded. It returns silently if the report or its post has since been deleted. Pro-only.",
+    "params": [
+      {
+        "name": "reportId",
+        "type": "int",
+        "desc": "ID of the moderation record."
+      },
+      {
+        "name": "lastUserId",
+        "type": "int",
+        "desc": "Resume point: only users with a higher ID are mailed on this run. `0` first time."
+      }
+    ],
+    "related": [
+      "fluent_community/comment_report_added_async",
+      "fluent_community/content_moderation/created"
+    ]
+  },
   "fluent_community/preview_metadata_pre_fetch": {
     "summary": "Lets a callback supply link-preview metadata instead of fetching the remote page.",
     "details": "Returning an array short-circuits the HTTP request entirely, and the value is written into the same object-cache entry the real fetch would have populated, for an hour by default. Only arrays are honoured: anything else, including a `WP_Error`, is ignored and the fetch proceeds. Use the same shape the parser produces — `title`, `image`, `description`, `icon`, `type`, `url` — since it is stored verbatim as the post's `meta.media_preview`. The cache is checked before this filter, so it does not run for a URL already cached.",
@@ -3566,6 +6201,79 @@ export const HOOK_NOTES = {
     "returns": "An `array` of metadata to bypass the remote fetch, or `null` to let it proceed. Non-array values are ignored.",
     "related": [
       "fluent_community/feed_oembed_api_response"
+    ]
+  },
+  "fluent_community/privacy_settings_api_response": {
+    "summary": "Filters the privacy settings screen payload.",
+    "details": "Carries the visibility settings that the `fluent_community/can_view_*` filters read at runtime — profile page visibility, members page status, leaderboard member visibility and the self-deactivation switch. Changing values here changes the form, not the checks; filter the individual capability hooks to change behaviour.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `settings` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/can_view_members_page",
+      "fluent_community/can_view_user_profile"
+    ]
+  },
+  "fluent_community/pro_upgrade_base_url": {
+    "summary": "Filters the destination of every \"Upgrade to Pro\" link in the portal.",
+    "details": "Only the base URL passes through the filter; the UTM parameters are appended afterwards with `add_query_arg()`, so a query string of your own survives but the plugin's `utm_*` values are always added on top. Useful for pointing the links at a reseller or an internal page. Blank parameters are dropped before the URL is built.",
+    "params": [
+      {
+        "name": "baseUrl",
+        "type": "string",
+        "desc": "The upgrade page URL, `https://fluentcommunity.co/pricing/` by default."
+      }
+    ],
+    "returns": "`string` — an absolute URL. UTM parameters are appended to whatever you return."
+  },
+  "fluent_community/product_integration_feed_created": {
+    "summary": "Fires when a new FluentCommunity integration feed is created on a FluentCart product.",
+    "details": "Only reached when the product had no enabled FluentCommunity integration listening for `order_paid_done`; if one already existed, the space is appended to it and `fluent_community/product_integration_feed_updated` fires instead. Note the first argument can be `null` when the record could not be created, and that the arguments are IDs, not models — and that the second is the product ID here, where the update hook passes the space ID.",
+    "params": [
+      {
+        "name": "integrationId",
+        "type": "int",
+        "desc": "ID of the created `ProductMeta` integration row, or `null` if creation failed."
+      },
+      {
+        "name": "productId",
+        "type": "int",
+        "desc": "The FluentCart product the integration belongs to."
+      }
+    ],
+    "related": [
+      "fluent_community/product_integration_feed_updated",
+      "fluent_community/paywall_added"
+    ]
+  },
+  "fluent_community/product_integration_feed_updated": {
+    "summary": "Fires when a space or course is added to or removed from a product's integration feed.",
+    "details": "Both directions use this one hook, and nothing in the arguments says which happened — check the integration's `space_ids` or `course_ids` if you need to know. Courses are tracked under `course_ids` and community spaces under `space_ids`, chosen by the space type. The second argument is the space ID, unlike the create hook which passes the product ID.",
+    "params": [
+      {
+        "name": "integrationId",
+        "type": "int",
+        "desc": "ID of the `ProductMeta` integration row that was updated."
+      },
+      {
+        "name": "spaceId",
+        "type": "int",
+        "desc": "The space or course that was added or removed."
+      }
+    ],
+    "related": [
+      "fluent_community/product_integration_feed_created",
+      "fluent_community/paywall_removed"
     ]
   },
   "fluent_community/profile_all_memberships_api_response": {
@@ -3606,6 +6314,27 @@ export const HOOK_NOTES = {
     "returns": "The response payload array.",
     "related": [
       "fluent_community/comments_api_response"
+    ]
+  },
+  "fluent_community/profile_courses_api_response": {
+    "summary": "Filters the courses listed on a member's public profile.",
+    "details": "Scoped to public and private courses — secret ones are excluded by the query, so they cannot be added back by broadening the response. Enrolment and progress are computed for the profile owner rather than the viewer, and each course passes through the by-reference `fluent_community/course` action first.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "A single `courses` key."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body.",
+    "related": [
+      "fluent_community/course",
+      "fluent_community/courses_api_response"
     ]
   },
   "fluent_community/profile_deactivated": {
@@ -4014,6 +6743,13 @@ export const HOOK_NOTES = {
       "fluent_community/profile_deactivated"
     ]
   },
+  "fluent_community/recache_color_schema": {
+    "summary": "Signals that the cached portal colour CSS is stale and should be rebuilt.",
+    "details": "Fired from `Utility::getColorCssVariables()` when a `cached_css` value exists but was generated by a different plugin version — an upgrade, in other words. It is a request to rebuild rather than a notification: core does nothing with it, and Pro answers by clearing the cached option and regenerating the light and dark CSS. Note the stale CSS is still returned for the current request; the rebuild takes effect on the next one.",
+    "related": [
+      "fluent_community/color_schmea_config"
+    ]
+  },
   "fluent_community/remove_medias_by_url": {
     "summary": "Requests deletion of media records matching a set of public URLs.",
     "details": "This is an action rather than a filter, and the work is done by core's `CleanupHandler`, which resolves the URLs to media rows and queues the files for removal. Fire it yourself when you replace an image that FluentCommunity owns — spaces, space groups, profiles, lockscreens and Pro quizzes all do. The optional `$wheres` array currently understands only `sub_object_id`, which scopes the lookup to one owning record and prevents deleting an identical URL used elsewhere; omit it and every matching row is removed.",
@@ -4038,6 +6774,116 @@ export const HOOK_NOTES = {
     "details": "Dispatched from the `fluent_community_daily_jobs` handler. The core callback deletes at most 100 rows whose `updated_at` is over a month old per run, so a backlog is cleared gradually rather than in one pass. It takes no arguments and runs in an Action Scheduler request, so there is no current user.",
     "related": [
       "fluent_community_daily_jobs"
+    ]
+  },
+  "fluent_community/render_default_touch_icon": {
+    "summary": "Filters whether the portal emits an `apple-touch-icon` link pointing at the WordPress site icon.",
+    "details": "Nested inside two conditions: it is only reached in headless rendering (where `wp_head()` is skipped) and only when the site has a site icon set. Pro's PWA module returns `false` so its own manifest icons win — that is the usual reason to filter it.",
+    "params": [
+      {
+        "name": "render",
+        "type": "bool",
+        "desc": "Whether to print the touch icon link. `true` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_community/portal_head_meta"
+    ]
+  },
+  "fluent_community/rendering_feed_model": {
+    "summary": "Filters a post model after it has been prepared for output but before it is serialised.",
+    "details": "The final step of `FeedsHelper` post formatting, applied after the rendered HTML, reaction state, survey vote state and document download URLs have all been attached. It fires for every post in every list as well as for single posts, so it is a hot path. `$config` describes what the caller asked for, including the viewer's interaction map — read it rather than re-querying.",
+    "params": [
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The prepared post model."
+      },
+      {
+        "name": "config",
+        "type": "array",
+        "desc": "Formatting context, including `interactions` for the current viewer."
+      }
+    ],
+    "returns": "`\\FluentCommunity\\App\\Models\\Feed` — the model. Return the model itself, not an array; callers use it as an object."
+  },
+  "fluent_community/rendering_headless_portal": {
+    "summary": "Fires while a portal page is being prepared in headless mode, in place of the classic asset enqueue.",
+    "details": "Headless mode is the shipped default (`Modules\\FeaturesHandler` returns `true` from `fluent_community/portal_page_headless`), and in it WordPress asset enqueueing is skipped entirely: core answers this hook by registering callbacks on `fluent_community/portal_head`, `fluent_community/before_js_loaded` and `fluent_community/portal_footer` that print the stylesheet and module script tags by hand. If you replace the core callback, you must print those assets yourself. When the filter is switched off, `PortalHandler::loadClassicPortalAssets()` runs instead and this hook never fires. Despite the name it has nothing to do with `app/Views/headless_page.php`.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "The render payload, including `css_files`, `js_files`, `header_js_files` and `js_vars`."
+      }
+    ],
+    "related": [
+      "fluent_community/portal_page_headless",
+      "fluent_community/portal_head"
+    ]
+  },
+  "fluent_community/rendering_path_ssr_{pathParts}": {
+    "summary": "Dynamic action fired for the first segment of the requested portal path, before the SPA renders.",
+    "details": "The placeholder is `$pathParts[0]` — the segment straight after the portal slug — so `/portal/checkout/x` fires `fluent_community/rendering_path_ssr_checkout`. It is the hook for server-rendering a route instead of handing it to the Vue app; the FluentCart checkout and Pro's sitemap generator both use it and end the request themselves. Like `fluent_community/portal_action_{action}` it fires before every access check, and the segment must also be registered through `fluent_community/app_route_paths` or the URL will not route to the portal at all on a root-mounted install.",
+    "params": [
+      {
+        "name": "pathParts",
+        "type": "array",
+        "desc": "The requested path exploded on `/`, including the first segment."
+      }
+    ],
+    "related": [
+      "fluent_community/app_route_paths",
+      "fluent_community/portal_action_{action}"
+    ]
+  },
+  "fluent_community/report/after_delete": {
+    "summary": "Fires immediately after a moderation report row has been deleted.",
+    "details": "The model instance is still in memory and its attributes readable, but the row is gone, so relations will no longer resolve and nothing saved on it will persist. Only the report acted on is deleted; other reports filed against the same content remain. Pro-only.",
+    "params": [
+      {
+        "name": "report",
+        "type": "\\FluentCommunityPro\\App\\Models\\Moderation",
+        "desc": "The deleted report, still populated in memory."
+      }
+    ],
+    "related": [
+      "fluent_community/report/before_delete"
+    ]
+  },
+  "fluent_community/report/before_delete": {
+    "summary": "Fires immediately before a moderation report row is deleted.",
+    "details": "The last point at which the report and its relations can be read. Deleting a report does not touch the content it was filed against — an unpublished post stays unpublished — so this is purely about the moderation record. Pro-only.",
+    "params": [
+      {
+        "name": "report",
+        "type": "\\FluentCommunityPro\\App\\Models\\Moderation",
+        "desc": "The report about to be deleted."
+      }
+    ],
+    "related": [
+      "fluent_community/report/after_delete"
+    ]
+  },
+  "fluent_community/report/{status}": {
+    "summary": "Dynamic action fired after a moderator sets the status of a report.",
+    "details": "The placeholder is one of `published`, `unpublished`, `pending`, `rejected`, `flagged` or `ignored`, validated before the update. Only `unpublished` actually unpublishes the content — every other status publishes it — and Pro listens on `fluent_community/report/unpublished` to record a strike against the author. The status is applied to every report filed against the same content, not just the one being acted on. When approving content that had been held back, the ordinary creation hooks fire first, so a post can reach `fluent_community/feed/created` from here. This is Pro-only.",
+    "params": [
+      {
+        "name": "report",
+        "type": "\\FluentCommunityPro\\App\\Models\\Moderation",
+        "desc": "The moderation record, saved with the new status and an `updated_by` in its meta."
+      },
+      {
+        "name": "content",
+        "type": "mixed",
+        "desc": "The `Feed` or `Comment` the report is about. Can be `null` if the content has since been deleted."
+      }
+    ],
+    "related": [
+      "fluent_community/report/before_delete",
+      "fluent_community/content_flagged"
     ]
   },
   "fluent_community/report_reasons": {
@@ -4101,6 +6947,76 @@ export const HOOK_NOTES = {
       "fluent_community/lesson/before_deleted"
     ]
   },
+  "fluent_community/section/reactions_count_updated": {
+    "summary": "Fires when the drip offset of a section on a structured course changes.",
+    "details": "Nothing to do with reactions. Structured courses release each section a number of days after the student enrols, and that offset is stored in the section row's reused `reactions_count` column — hence the name. It is gated on `isDirty('reactions_count')` and the field is only accepted when the course type is `structured`. Setting a scheduled date clears this value and vice versa, so the two hooks rarely fire for the same save.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course the section belongs to."
+      },
+      {
+        "name": "section",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseTopic",
+        "desc": "The section, already saved with the new offset."
+      }
+    ],
+    "related": [
+      "fluent_community/section/scheduled_at_updated"
+    ]
+  },
+  "fluent_community/section/scheduled_at_updated": {
+    "summary": "Fires when a section's release date changes on a scheduled course.",
+    "details": "Gated on `isDirty('scheduled_at')`, so it only fires when the date actually moved. The field is only accepted at all when the course type is `scheduled`. Pro answers by unscheduling and re-scheduling the section's drip notification, but only if that section has email notifications enabled.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course the section belongs to."
+      },
+      {
+        "name": "section",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseTopic",
+        "desc": "The section, already saved with the new date."
+      }
+    ],
+    "related": [
+      "fluent_community/section/reactions_count_updated",
+      "fluent_community/section/update_data"
+    ]
+  },
+  "fluent_community/section/update_data": {
+    "summary": "Filters a section's attributes on save, and can reject the save outright.",
+    "details": "Only `title` and `status` are accepted by default, joined by `scheduled_at` on scheduled courses or `reactions_count` — the drip offset — on structured ones; a field the course type does not accept never reaches the filter. Returning a `WP_Error` aborts the save and its messages are returned to the moderator, which is how Pro refuses to enable a section email that has no release date. Pro also uses it to fold the email subject and body into `meta` and to fire the schedule and unschedule actions as a side effect, so run at a later priority if you need the final array.",
+    "params": [
+      {
+        "name": "sectionData",
+        "type": "array",
+        "desc": "The accepted fields: `title`, `status`, and `scheduled_at` or `reactions_count`."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course the section belongs to."
+      },
+      {
+        "name": "section",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseTopic",
+        "desc": "The section before the new values are filled."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload, including any `meta` the form submitted."
+      }
+    ],
+    "returns": "`array` — attributes to fill onto the section. Return a `WP_Error` to reject the save with a message.",
+    "related": [
+      "fluent_community/section/scheduled_at_updated",
+      "fluent_community/section/reactions_count_updated"
+    ]
+  },
   "fluent_community/seo/ld_comment_limit": {
     "summary": "Filters how many comments are embedded in a post's JSON-LD structured data.",
     "details": "Defaults to 100 and is cast to int. It caps the comments serialized into the schema.org graph for SEO only — it has no effect on the comments the portal or the REST API return. Replies are nested under their parent within whatever the limit returns, so a low limit can orphan replies whose parent fell outside it.",
@@ -4161,6 +7077,68 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/sidebar_link/after_delete"
+    ]
+  },
+  "fluent_community/sidebar_menu_groups_config": {
+    "summary": "Filters the complete data set the portal sidebar is rendered from.",
+    "details": "Applied by `Utility::getPortalSidebarData()`, which feeds both the server-rendered sidebar and the `menu_links_groups` payload in the app-vars endpoint, so a change here shows up in both. Several narrower filters have already run by this point — `fluent_community/main_menu_items` and `fluent_community/settings_menu` among them — and can be overridden from here. The second argument is the resolved user model and is `null` for guests.",
+    "params": [
+      {
+        "name": "config",
+        "type": "array",
+        "desc": "Sidebar data: `primaryItems`, `spaceGroups`, `settingsItems`, `topInlineLinks`, `bottomLinkGroups`, `is_admin`, `has_color_scheme`, `context`."
+      },
+      {
+        "name": "userModel",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The current user, or `null` for a guest."
+      }
+    ],
+    "returns": "`array` — the sidebar data. The template reads every key, so merge rather than replace.",
+    "related": [
+      "fluent_community/will_render_default_sidebar_items",
+      "fluent_community/main_menu_items"
+    ]
+  },
+  "fluent_community/sidebar_menu_html_api_response": {
+    "summary": "Filters the response of the endpoint that re-renders the sidebar HTML for the SPA.",
+    "details": "The `sidebar_html` string is produced by firing `fluent_community/portal_sidebar` with the `ajax` context into an output buffer, which is why the sidebar wrapper hooks are skipped on that path. `auth_spaces` is the viewer's spaces keyed by slug, each already carrying `permissions`, `membership`, rendered description and topics; it is an empty object for guests.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`sidebar_html` and `auth_spaces`."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body. The SPA replaces the sidebar with `sidebar_html` verbatim.",
+    "related": [
+      "fluent_community/portal_sidebar",
+      "fluent_community/app_vars_api_response"
+    ]
+  },
+  "fluent_community/skip_no_conflict": {
+    "summary": "Filters whether the lesson editor's stylesheet no-conflict pass is skipped.",
+    "details": "Return `true` and no stylesheet is dequeued on the editor page, which is the escape hatch when a theme or plugin's CSS is genuinely needed inside the editor. The second argument is always the literal string `styles`; there is no matching call for scripts, which are filtered unconditionally through `script_loader_src` and cannot be exempted this way.",
+    "params": [
+      {
+        "name": "isSkip",
+        "type": "bool",
+        "desc": "Whether to skip the dequeue pass. `false` by default."
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Always `styles` at the only call site."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_community/asset_listed_slugs"
     ]
   },
   "fluent_community/smartcode_fallback": {
@@ -4632,6 +7610,23 @@ export const HOOK_NOTES = {
       "fluent_community/all_spaces_api_response"
     ]
   },
+  "fluent_community/space_header_links": {
+    "summary": "Filters the tabs shown across the top of a space.",
+    "details": "Built in `BaseSpace::formatSpaceData()`, so it runs once per space in every payload that formats spaces — the app-vars bootstrap included — rather than only on the space page. The defaults are Posts, and Members when the viewer may see them; Pro appends the media gallery at priority 0 and the document library at priority 1, both ahead of the default filter order. Each entry is a `title` plus a `route` array naming a Vue route, so a tab pointing at an unregistered route silently fails to navigate.",
+    "params": [
+      {
+        "name": "headerLinks",
+        "type": "array",
+        "desc": "Ordered list of tabs, each with `title` and a `route` array."
+      },
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace",
+        "desc": "The space being formatted; permissions are already resolved on it."
+      }
+    ],
+    "returns": "`array` — the tab list, rendered in order."
+  },
   "fluent_community/space_media/api_response": {
     "summary": "Filters the media-gallery API response.",
     "details": "The payload always carries items, has_more and cursor; has_audio is present only on the first page (no cursor), because the audio tab visibility is resolved once rather than per page. Fires after fluent_community/space_media/viewed.",
@@ -4820,6 +7815,38 @@ export const HOOK_NOTES = {
       "fluent_community/space_api_response"
     ]
   },
+  "fluent_community/storage_settings_response": {
+    "summary": "Filters the media storage settings screen payload.",
+    "details": "On a free install `config` is hard-coded to `['driver' => 'local']` without consulting anything, and the matching save endpoint refuses outright — so adding driver options here produces a form that cannot be saved. With Pro active the config comes from the cloud storage module and Pro appends its `s3_locations` map through this same filter. Saving is also blocked when the `FLUENT_COMMUNITY_CLOUD_STORAGE` constant is defined.",
+    "params": [
+      {
+        "name": "response",
+        "type": "array",
+        "desc": "`config`, plus `s3_locations` when Pro is active."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The full request payload."
+      }
+    ],
+    "returns": "`array` — the response body."
+  },
+  "fluent_community/suggested_colors": {
+    "summary": "Filters the swatches offered in the portal colour customiser.",
+    "details": "The defaults come from the active theme's `editor-color-palette` support, with CSS variables resolved to their hex fallback and anything unparseable dropped; a hard-coded eleven-colour list is used when the theme declares no palette. The list is convenience only — the customiser still accepts arbitrary colours, so removing entries restricts nothing. It reaches the front end as `portal_vars.suggestedColors`.",
+    "params": [
+      {
+        "name": "colors",
+        "type": "array",
+        "desc": "A flat list of colour strings, normally six-digit hex."
+      }
+    ],
+    "returns": "`array` — a flat, non-associative list.",
+    "related": [
+      "fluent_community/color_config_api_response"
+    ]
+  },
   "fluent_community/super_admin_capability": {
     "summary": "Filters the WordPress capability that identifies a FluentCommunity super admin.",
     "details": "Defaults to `manage_options` and is checked with `user_can()`. Returning an empty or falsy value makes `Helper::isSuperAdmin()` return `false` for everyone, which disables the super-admin escape hatch across the plugin — that is the supported way to switch it off, not an error. This is distinct from the community `admin` role, which is stored per member rather than derived from WordPress capabilities.",
@@ -4848,6 +7875,38 @@ export const HOOK_NOTES = {
     "returns": "`array` — MIME type strings. They are joined into the validator's `mimetypes` rule, so return a flat, non-associative array.",
     "related": [
       "fluent_community/media_upload_data"
+    ]
+  },
+  "fluent_community/support_audio_types": {
+    "summary": "Filters the audio MIME types the FluentPlayer upload endpoint accepts.",
+    "details": "Only applied when audio uploads are switched on in the FluentPlayer settings — with `enable_audio` off the allowed list is emptied before the filter would run, so a callback cannot enable audio uploads on its own. Defaults cover MP3, WAV, MP4 audio, AAC, Ogg and FLAC.",
+    "params": [
+      {
+        "name": "audioTypes",
+        "type": "array",
+        "desc": "MIME type strings."
+      }
+    ],
+    "returns": "`array` — a flat list of MIME types.",
+    "related": [
+      "fluent_community/support_video_types",
+      "fluent_community/fluent_player/max_audios_per_post"
+    ]
+  },
+  "fluent_community/support_video_types": {
+    "summary": "Filters the video MIME types the FluentPlayer upload endpoint accepts.",
+    "details": "Defaults to MP4, WebM and QuickTime. The list is deduplicated, joined into the validator's `mimetypes` rule and also used to build the upload control's accept list, so it is both the client hint and the server-side check. Adding a type here does not make WordPress accept the extension elsewhere, and the browser still has to be able to play it.",
+    "params": [
+      {
+        "name": "videoTypes",
+        "type": "array",
+        "desc": "MIME type strings."
+      }
+    ],
+    "returns": "`array` — a flat list of MIME types.",
+    "related": [
+      "fluent_community/support_audio_types",
+      "fluent_community/video_upload_max_file_size"
     ]
   },
   "fluent_community/survey_config_response": {
@@ -4911,6 +7970,37 @@ export const HOOK_NOTES = {
       "fluent_community/template_footer"
     ]
   },
+  "fluent_community/template_slug": {
+    "summary": "Filters the page template slug used to decide whether a WordPress page renders the community frame.",
+    "details": "Applied in `TemplateLoader::maybeIncludeTemplate()` to the value from `get_page_template_slug()`, and matched against `fluent-community-frame.php` and `fluent-community-frame-full.php`. Returning one of those two names forces any page onto the frame; anything else falls through to the theme. It is skipped entirely on block themes, which take a separate branch keyed on `wp-custom-template-community-template`, and it only runs when a global `$post` is set.",
+    "params": [
+      {
+        "name": "templateSlug",
+        "type": "string",
+        "desc": "The page's assigned template slug, often empty."
+      }
+    ],
+    "returns": "`string` — a template file name. Only the two frame templates have any effect.",
+    "related": [
+      "fluent_community/is_supported_theme",
+      "fluent_community/theme_content"
+    ]
+  },
+  "fluent_community/terms_policy_url": {
+    "summary": "Filters the URL linked from the signup form's terms checkbox.",
+    "details": "Defaults to `get_privacy_policy_url()`, which is empty until a privacy page is set — and when it is empty the checkbox label degrades to plain unlinked text rather than linking nowhere. The URL is escaped into an `<a target=\"_blank\" rel=\"noopener\">`. It is only consulted when the administrator has not supplied a custom terms field in the auth settings, since a stored terms field replaces the generated label wholesale.",
+    "params": [
+      {
+        "name": "policyUrl",
+        "type": "string",
+        "desc": "The terms or privacy policy URL. `get_privacy_policy_url()` by default."
+      }
+    ],
+    "returns": "`string` — a URL, or an empty string to render the label without a link.",
+    "related": [
+      "fluent_community/auth/signup_fields"
+    ]
+  },
   "fluent_community/theme_body_atts": {
     "summary": "Prints extra attributes into the `<body>` tag of the theme frame templates.",
     "details": "Output is echoed raw into the opening tag directly after `body_class()`, so emit `key=\"value\"` pairs and escape them yourself; returning a value does nothing. Core uses it for Blocksy support, keyed off the theme name passed in.",
@@ -4942,6 +8032,21 @@ export const HOOK_NOTES = {
     ],
     "related": [
       "fluent_community/theme_body_atts"
+    ]
+  },
+  "fluent_community/top_menu_right_items": {
+    "summary": "Renders the right-hand group of the portal header — search, notifications, and the account menu.",
+    "details": "Core attaches `PortalHandler::renderTopMenuRightItems()` at the default priority, so a callback added here appends beside the default block rather than replacing it; remove the core action to take the region over. For additions inside the default list use the finer-grained `fluent_community/before_header_right_menu_items` and `fluent_community/after_header_right_menu_items` instead.",
+    "params": [
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "Render context: `headless`, `wp`, or `block_editor`. The `headless` context suppresses the server-rendered notification bell, since the SPA draws its own."
+      }
+    ],
+    "related": [
+      "fluent_community/before_header_right_menu_items",
+      "fluent_community/after_header_right_menu_items"
     ]
   },
   "fluent_community/track_activity": {
@@ -5109,6 +8214,32 @@ export const HOOK_NOTES = {
     ],
     "returns": "`string` — the folder path fragment. Existing media is not migrated, so changing it orphans previously uploaded files."
   },
+  "fluent_community/use_editor_block": {
+    "summary": "Filters whether the Gutenberg community block module is registered.",
+    "details": "Read once during module bootstrap, so it must be filtered from a plugin or a must-use file rather than from a theme. Returning `false` skips `Modules\\Gutenberg\\EditorBlock` entirely: the community block disappears from the block inserter and the block-based portal embed stops working. It does not affect the lesson block editor, which is wired up separately.",
+    "params": [
+      {
+        "name": "useEditorBlock",
+        "type": "bool",
+        "desc": "Whether to register the Gutenberg block module. `true` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness at bootstrap time.",
+    "related": [
+      "fluent_community/block_editor_settings"
+    ]
+  },
+  "fluent_community/user/password_changed": {
+    "summary": "Fires after a member changes their own password from the portal profile settings.",
+    "details": "Only the self-service change fires it; a password reset through WordPress or an administrator edit does not. It runs after `wp_set_password()` has destroyed every session and the controller has re-issued the auth cookie for the current one, so the user is still signed in and fresh REST and AJAX nonces are minted straight after. Only the user ID is passed.",
+    "params": [
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "WordPress user ID whose password changed."
+      }
+    ]
+  },
   "fluent_community/user/permissions": {
     "summary": "Filters the permission map derived from a user's community roles.",
     "details": "Applied at both ends of `User::getRolePermissions()`. Users with no community role reach the early branch and receive only `['read' => true]` with an empty `$roles` array, so a callback must cope with a map that has none of the usual keys. The result is cached per user for the request and is what the Vue app receives as `appVars.permissions`, so anything added here becomes visible to the front end.",
@@ -5132,6 +8263,36 @@ export const HOOK_NOTES = {
     "returns": "`array` — the permission map. Keep the existing keys unless you intend to revoke them; several controllers read them directly.",
     "related": [
       "fluent_community/super_admin_capability"
+    ]
+  },
+  "fluent_community/user/space/permissions": {
+    "summary": "Filters the permission map a user holds inside one particular space.",
+    "details": "Distinct from the site-wide `fluent_community/user/permissions`: this is resolved per space and per role, and it is what the front end receives on each space object. Two very different maps reach it — non-members get a short read-only set, while members and moderators get the full one with `community_admin`, the `*_any_feed` and `*_any_comment` keys and the membership flags — so check for a key before relying on it. `is_member` is added just before the filter and is the reliable way to tell the two apart. Several controllers read these keys directly for authorisation, so removing one denies access rather than merely hiding a control.",
+    "params": [
+      {
+        "name": "permissions",
+        "type": "array",
+        "desc": "Permission keys mapped to booleans for this space."
+      },
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace",
+        "desc": "The space the permissions apply to."
+      },
+      {
+        "name": "role",
+        "type": "string",
+        "desc": "The user's role in the space: `admin`, `moderator`, `member`, `student`, or empty for a non-member."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The user the permissions belong to."
+      }
+    ],
+    "returns": "`array` — the permission map.",
+    "related": [
+      "fluent_community/user/permissions"
     ]
   },
   "fluent_community/user_level_upgraded": {
@@ -5186,6 +8347,36 @@ export const HOOK_NOTES = {
     ],
     "returns": "`array` — a flat list of email addresses."
   },
+  "fluent_community/video_upload_max_file_size": {
+    "summary": "Filters the size ceiling for FluentPlayer media uploads, in the unit set by the companion filter.",
+    "details": "Defaults to 300 and is interpreted alongside `fluent_community/video_upload_max_file_unit`: with the default `MB` unit, the value is multiplied by 1024 into the kilobytes the validator expects. Any unit string other than `MB` or `GB` leaves the number unmultiplied, so it is read as kilobytes. This is only the plugin's own limit — PHP's `upload_max_filesize` and the web server still apply, and the endpoint checks for those separately.",
+    "params": [
+      {
+        "name": "maxFileSize",
+        "type": "int",
+        "desc": "The numeric ceiling, 300 by default."
+      }
+    ],
+    "returns": "`int` — a number in the configured unit; it also appears verbatim in the error message.",
+    "related": [
+      "fluent_community/video_upload_max_file_unit"
+    ]
+  },
+  "fluent_community/video_upload_max_file_unit": {
+    "summary": "Filters the unit the FluentPlayer upload size limit is expressed in.",
+    "details": "Compared case-insensitively against `MB` and `GB`; anything else means the size is used as kilobytes unchanged, which is a quiet way to shrink the limit by a factor of 1024. The string is also shown to the user in the \"file must be less than…\" message, so return something readable.",
+    "params": [
+      {
+        "name": "maxFileUnit",
+        "type": "string",
+        "desc": "`MB` by default; `GB` is also recognised."
+      }
+    ],
+    "returns": "`string` — a unit label. Unrecognised values are treated as kilobytes.",
+    "related": [
+      "fluent_community/video_upload_max_file_size"
+    ]
+  },
   "fluent_community/welcome_banner_api_response": {
     "summary": "Filters the welcome-banner payload the portal fetches at runtime.",
     "details": "The scope is chosen from the session, not the request: a logged-in visitor gets the `login` banner and a guest gets the `logout` one. `welcome_banner` is `null` when the relevant banner is disabled. The value has already passed through `fluent_community/welcome_banner_for_logged_in` or `..._for_guests`.",
@@ -5237,6 +8428,22 @@ export const HOOK_NOTES = {
       "fluent_community/welcome_banner_for_guests"
     ]
   },
+  "fluent_community/will_render_default_sidebar_items": {
+    "summary": "Filters whether the sidebar's built-in navigation is rendered at all.",
+    "details": "Return `false` and `#fcom_sidebar_wrap` is emitted empty — the home links, space groups, custom link groups and the \"# Manage\" block are all skipped, while the wrapper and the surrounding hooks still fire, leaving you a clean container to fill from `fluent_community/before_sidebar_wrap` or `fluent_community/after_sidebar_wrap`. Core switches it off on the portal settings routes.",
+    "params": [
+      {
+        "name": "willRender",
+        "type": "bool",
+        "desc": "Whether to draw the default sidebar contents. `true` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness by the template.",
+    "related": [
+      "fluent_community/sidebar_menu_groups_config",
+      "fluent_community/before_sidebar_wrap"
+    ]
+  },
   "fluent_community/wppayform__defaults": {
     "summary": "Filters the default settings for the Paymattic (WPPayForm) community integration on a form.",
     "details": "Supplies the starting values shown when the integration is first configured for a form — space and course assignment, auto-login, welcome email, the conditional-logic block, and the removal triggers for subscription cancellation and refund. Requires Paymattic to be active. It does not affect a form whose integration settings have already been saved.",
@@ -5284,6 +8491,22 @@ export const HOOK_NOTES = {
     "returns": "`array` — a flat list of column names. Non-existent columns produce SQL errors rather than being ignored.",
     "related": [
       "fluent_community/profile_view_data"
+    ]
+  },
+  "fluent_community/{scope}_color": {
+    "summary": "Dynamic filter for a single resolved colour from the active colour scheme.",
+    "details": "Two scopes are used in the shipped code: `theme`, which resolves the primary button colour and becomes the `<meta name=\"theme-color\">` value, and `theme_button_text`, the primary button text colour. Any other scope passed to `Utility::getThemeColor()` is treated as a direct key into the light skin's body selectors. The value is memoised in a static per scope, so the filter runs at most once per scope per request and later callbacks may not be reached. Only the light scheme is consulted — there is no dark variant of this hook.",
+    "params": [
+      {
+        "name": "color",
+        "type": "string",
+        "desc": "The resolved colour, or the scope's default if the skin does not define it."
+      }
+    ],
+    "returns": "`string` — a CSS colour value. It is escaped as an attribute where it is printed.",
+    "related": [
+      "fluent_community/color_schmea_config",
+      "fluent_community/suggested_colors"
     ]
   },
   "fluent_community_daily_jobs": {

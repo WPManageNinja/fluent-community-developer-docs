@@ -22,8 +22,8 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | [Reactions](/hooks/filters/reactions) | 4 | 5 |
 | [Spaces](/hooks/filters/spaces) | 18 | 21 |
 | [Members](/hooks/filters/members) | 37 | 44 |
-| [Courses](/hooks/filters/courses) | 47 | 47 |
-| [Notifications](/hooks/filters/notifications) | 8 | 10 |
+| [Courses](/hooks/filters/courses) | 43 | 43 |
+| [Notifications](/hooks/filters/notifications) | 12 | 14 |
 | [Media](/hooks/filters/media) | 21 | 32 |
 | [Auth](/hooks/filters/auth) | 23 | 24 |
 | [Permissions](/hooks/filters/permissions) | 8 | 22 |

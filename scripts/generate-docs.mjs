@@ -6376,6 +6376,19 @@ ${categoryGroups.map((group) => renderHookSection(group, kind)).join('\n')}
  * formatting when the name is not a hook we emit (a typo, or a hook that only
  * exists in a version we are not parsing).
  */
+/**
+ * Prose is rendered as Markdown inside a Vue SFC, so a literal `{{ … }}` in the
+ * text — smart-code placeholders like `{{crm.company}}`, dynamic hook name
+ * fragments — is parsed as an interpolation and crashes the build. Break the
+ * braces with a zero-width space, which renders identically.
+ */
+function sanitizeProse(value) {
+  if (typeof value !== 'string') {
+    return value
+  }
+  return value.replace(/{{/g, '{\u200b{').replace(/}}/g, '}\u200b}')
+}
+
 function renderRelatedHookLink(name, kind, sameCategory) {
   const target = HOOK_LOCATIONS.get(name)
   if (!target) {
@@ -6394,7 +6407,7 @@ const HOOK_LOCATIONS = new Map()
 
 function renderHookSection(group, kind) {
   const note = HOOK_NOTES[group.name] || {}
-  const summary = describeHook(group)
+  const summary = sanitizeProse(describeHook(group))
   const documentedParamList = hookParamsFrom(group)
   const params = documentedParamList || mergeHookParamNames(group)
   const since = hookSinceFrom(group)
@@ -6450,7 +6463,7 @@ This hook is fired through \`${kind === 'action' ? 'do_action_deprecated' : 'app
 `
     : ''
 
-  const detailsBlock = note.details ? `\n${note.details}\n` : ''
+  const detailsBlock = note.details ? `\n${sanitizeProse(note.details)}\n` : ''
 
   const documentedParams =
     documentedParamList && documentedParamList.length
@@ -6462,14 +6475,14 @@ This hook is fired through \`${kind === 'action' ? 'do_action_deprecated' : 'app
 ${documentedParamList
   .map(
     (param, index) =>
-      `| ${index + 1} | \`$${param.name}\` | \`${escapeMarkdownCode(param.type || 'mixed')}\` | ${param.desc || '—'} |`,
+      `| ${index + 1} | \`$${param.name}\` | \`${escapeMarkdownCode(param.type || 'mixed')}\` | ${sanitizeProse(param.desc) || '—'} |`,
   )
   .join('\n')}
 `
       : ''
 
   const returnsBlock =
-    kind === 'filter' && note.returns ? `\n**Return:** ${note.returns}\n` : ''
+    kind === 'filter' && note.returns ? `\n**Return:** ${sanitizeProse(note.returns)}\n` : ''
 
   const relatedBlock = note.related && note.related.length
     ? `\n**Related:** ${note.related.map((name) => renderRelatedHookLink(name, kind, group.category)).join(' · ')}\n`
@@ -6769,8 +6782,8 @@ description: "${route.description}"
 outline: false
 aside: false
 ---
-${route.notes && route.notes.summary ? `\n${route.notes.summary}\n` : ''}${
-          route.notes && route.notes.details ? `\n${route.notes.details}\n` : ''
+${route.notes && route.notes.summary ? `\n${sanitizeProse(route.notes.summary)}\n` : ''}${
+          route.notes && route.notes.details ? `\n${sanitizeProse(route.notes.details)}\n` : ''
         }
 ## Endpoint
 
@@ -6782,7 +6795,7 @@ ${route.notes && route.notes.summary ? `\n${route.notes.summary}\n` : ''}${
 ${route.controllerFile ? `- **Controller source:** \`${route.controllerFile}\`` : ''}
 ${
   route.notes && route.notes.notes && route.notes.notes.length
-    ? `\n${route.notes.notes.map((item) => `- ${item}`).join('\n')}\n`
+    ? `\n${route.notes.notes.map((item) => `- ${sanitizeProse(item)}`).join('\n')}\n`
     : ''
 }${renderExampleProvenance(route.exampleOrigin)}
 
@@ -6981,7 +6994,7 @@ function main() {
   console.log(
     `Hook prose: ${hookTotals.documented}/${hookTotals.hooks} hooks have a hand-written note (${Math.round(
       (hookTotals.documented / hookTotals.hooks) * 100,
-    )}%). Add entries to HOOK_NOTES to raise it.`,
+    )}%).${hookTotals.documented < hookTotals.hooks ? ' Add entries to HOOK_NOTES to raise it.' : ''}`,
   )
 
   const inferred = routes.filter((route) => route.exampleOrigin === 'inferred')
