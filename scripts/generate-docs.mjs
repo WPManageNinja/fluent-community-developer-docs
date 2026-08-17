@@ -5402,15 +5402,22 @@ function extractHookDocblock(content, matchIndex) {
   if (!preceding.endsWith('*/')) {
     return null
   }
+
   const open = preceding.lastIndexOf('/**')
   if (open === -1) {
+    return null
+  }
+  // A single-asterisk block comment also ends in `*/`. Without this check the
+  // scan walks back past it to the previous real docblock and swallows every
+  // line in between — one `/* translators: */` pulled in 265 lines of source.
+  if (preceding.slice(open + 3, preceding.length - 2).includes('*/')) {
     return null
   }
 
   const body = preceding
     .slice(open + 3, preceding.length - 2)
     .split('\n')
-    .map((line) => line.replace(/^\s*\*ted?\s?/, '').replace(/^\s*\*\s?/, '').trim())
+    .map((line) => line.replace(/^\s*\*\s?/, '').trim())
 
   const summary = []
   const params = []
@@ -5436,10 +5443,14 @@ function extractHookDocblock(content, matchIndex) {
   }
 
   const text = summary.join(' ').replace(/\s+/g, ' ').trim()
-  if (!text && !params.length && !since) {
+  // A docblock summary is a sentence, not code. Anything carrying statement
+  // punctuation came from a mis-scan, and anything this long is not a summary.
+  const looksLikeCode = /[;{}$]|apply_filters\(|do_action\(/.test(text)
+  const clean = !text || looksLikeCode || text.length > 400 ? null : text
+  if (!clean && !params.length && !since) {
     return null
   }
-  return { summary: text || null, params, since }
+  return { summary: clean, params, since }
 }
 
 /**
