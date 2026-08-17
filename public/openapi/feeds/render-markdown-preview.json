@@ -27,7 +27,7 @@
       "post": {
         "operationId": "renderMarkdownPreview",
         "summary": "POST Render Markdown Preview",
-        "description": "Render Markdown Preview for the FluentCommunity Feeds API.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:82`",
+        "description": "Renders submitted Markdown to the same sanitised HTML a saved post would produce, without creating anything.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:82`",
         "tags": [
           "Feeds"
         ],
@@ -59,7 +59,7 @@
                 }
               },
               "example": {
-                "message": "Just tried it and it works exactly as described."
+                "text": "## Heading\n\nSome **bold** text and a [link](https://fluentcommunity.co)."
               }
             }
           }
@@ -84,8 +84,8 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "html": "",
-                  "message_rendered": ""
+                  "html": "<h2>Heading</h2>\n<p>Some <strong>bold</strong> text and a <a href=\"https://fluentcommunity.co\" rel=\"nofollow\">link</a>.</p>",
+                  "message_rendered": "<p>Post a screenshot of your setup. I am always curious how other people organise their work.</p>"
                 }
               }
             }

@@ -1,9 +1,13 @@
 ---
 title: Update Lesson Completion
-description: "Update Lesson Completion for the FluentCommunity Courses API."
+description: "Marks a lesson complete or incomplete for the current user and returns the recalculated course progress track."
 outline: false
 aside: false
 ---
+
+Marks a lesson complete or incomplete for the current user and returns the recalculated course progress track.
+
+`state` must be `completed` or `incomplete`. The caller must already be enrolled, and both the course and the lesson must be published. When the update takes progress to 100 per cent the course completion routine runs and `is_completed` comes back true. A lesson gated behind a video watch threshold returns an error with a `video_watch_required` code and the required percentage.
 
 ## Endpoint
 

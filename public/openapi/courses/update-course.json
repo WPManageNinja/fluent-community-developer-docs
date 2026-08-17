@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateCourse",
         "summary": "PUT Update Course",
-        "description": "Update Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:25`",
+        "description": "Updates a course record and its settings block, firing the course-published hook the first time its status crosses into `published`.\n\nController: `CourseAdminController@updateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:25`",
         "tags": [
           "Courses"
         ],
@@ -337,10 +337,10 @@
                 "example": {
                   "course": {
                     "cover_photo": null,
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "created_by": "1",
                     "description": "Everything you need to get productive in your first week.",
-                    "id": 96,
+                    "id": 114,
                     "logo": null,
                     "parent_id": null,
                     "privacy": "public",
@@ -373,7 +373,7 @@
                     "status": "published",
                     "title": "Getting Started with the Platform",
                     "type": "course",
-                    "updated_at": "2026-08-17 22:05:20"
+                    "updated_at": "2026-08-17 22:39:20"
                   },
                   "message": "Great point — I ran into the same thing last week."
                 }

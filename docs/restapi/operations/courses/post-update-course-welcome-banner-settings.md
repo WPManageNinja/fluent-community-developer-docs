@@ -1,9 +1,13 @@
 ---
 title: Post Update Course Welcome Banner Settings
-description: "Post Update Course Welcome Banner Settings for the FluentCommunity Courses API."
+description: "Stores both course welcome banner variants and pre-renders their Markdown descriptions to HTML."
 outline: false
 aside: false
 ---
+
+Stores both course welcome banner variants and pre-renders their Markdown descriptions to HTML.
+
+Only the `enrolled` and `not_enrolled` views are recognised. The banner is displayed only while the course `show_welcome_banner` setting is on, which is saved through the course update endpoint rather than here.
 
 ## Endpoint
 
@@ -13,6 +17,9 @@ aside: false
 - **Controller:** `ProAdminController@updateCourseWelcomeBannerSettings`
 - **Route source:** `fluent-community-pro/app/Http/Routes/api.php:65`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
+
+- Requires a course admin for this course, or a WordPress user with `manage_options`.
+- Requires FluentCommunity Pro.
 
 ::: tip Live sample
 The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.

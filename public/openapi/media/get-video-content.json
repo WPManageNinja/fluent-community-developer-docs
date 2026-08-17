@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getVideoContent",
         "summary": "GET Get Video Content",
-        "description": "Get Video Content for the FluentCommunity Media API.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:14`",
+        "description": "Renders the FluentPlayer markup for one media item, including the scoped CSS that applies the portal theme colours to the player.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:14`",
         "tags": [
           "Media"
         ],

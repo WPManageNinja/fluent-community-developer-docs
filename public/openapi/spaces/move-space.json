@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "moveSpace",
         "summary": "PATCH Move Space",
-        "description": "Move Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@moveSpace`\nRoute source: `fluent-community/app/Http/Routes/api.php:38`",
+        "description": "Moves a space into a different space group.\n\nController: `SpaceController@moveSpace`\nRoute source: `fluent-community/app/Http/Routes/api.php:38`",
         "tags": [
           "Spaces"
         ],
@@ -53,8 +53,8 @@
                 }
               },
               "example": {
-                "group_id": 91,
-                "space_id": 93
+                "group_id": 109,
+                "space_id": 111
               }
             }
           }

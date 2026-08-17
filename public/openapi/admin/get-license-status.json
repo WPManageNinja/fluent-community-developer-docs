@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLicenseStatus",
         "summary": "GET Get License Status",
-        "description": "Get License Status for the FluentCommunity Admin API.\n\nController: `LicenseController@getStatus`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:17`",
+        "description": "Returns the current Pro licence state, including expiry and a renewal URL when the licence has lapsed.\n\nController: `LicenseController@getStatus`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:17`",
         "tags": [
           "Admin"
         ],

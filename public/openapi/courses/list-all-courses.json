@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAllCourses",
         "summary": "GET List All Courses",
-        "description": "List All Courses for the FluentCommunity Courses API.\n\nController: `CourseController@getAllCourses`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:18`",
+        "description": "Returns the paginated course catalogue with each course fully expanded — sections, per-lesson lock state and the current user progress track — in a single call.\n\nController: `CourseController@getAllCourses`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:18`",
         "tags": [
           "Courses"
         ],
@@ -530,7 +530,7 @@
                           "id": "1",
                           "is_verified": 1,
                           "laravel_through_key": "1",
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -549,7 +549,7 @@
                           "status": "active",
                           "total_courses": 9,
                           "total_points": 20385,
-                          "updated_at": "2026-08-17 22:00:34",
+                          "updated_at": "2026-08-17 22:35:43",
                           "user_id": 1,
                           "username": "alex_rivera"
                         },
@@ -725,7 +725,7 @@
                           "id": "1",
                           "is_verified": 1,
                           "laravel_through_key": "1",
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -744,7 +744,7 @@
                           "status": "active",
                           "total_courses": 9,
                           "total_points": 20385,
-                          "updated_at": "2026-08-17 22:00:34",
+                          "updated_at": "2026-08-17 22:35:43",
                           "user_id": 1,
                           "username": "alex_rivera"
                         },
@@ -980,7 +980,7 @@
                           "id": "1",
                           "is_verified": 1,
                           "laravel_through_key": "1",
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -999,7 +999,7 @@
                           "status": "active",
                           "total_courses": 9,
                           "total_points": 20385,
-                          "updated_at": "2026-08-17 22:00:34",
+                          "updated_at": "2026-08-17 22:35:43",
                           "user_id": 1,
                           "username": "alex_rivera"
                         },

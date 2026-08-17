@@ -27,7 +27,7 @@
       "post": {
         "operationId": "deleteDocument",
         "summary": "POST Delete Document",
-        "description": "Delete Document for the FluentCommunity Documents API.\n\nController: `DocumentController@deleteDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:44`",
+        "description": "Detaches a document from its post or lesson and hands the media record to the media cleanup hook.\n\nController: `DocumentController@deleteDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:44`",
         "tags": [
           "Documents"
         ],
@@ -37,6 +37,25 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "id": 13236
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSurveyVoters",
         "summary": "GET List Survey Voters",
-        "description": "List Survey Voters for the FluentCommunity Reactions API.\n\nController: `ReactionController@getSurveyVoters`\nRoute source: `fluent-community/app/Http/Routes/api.php:80`",
+        "description": "Returns the members who voted for one survey option, with their public profiles.\n\nController: `ReactionController@getSurveyVoters`\nRoute source: `fluent-community/app/Http/Routes/api.php:80`",
         "tags": [
           "Reactions"
         ],
@@ -190,13 +190,13 @@
                 "example": {
                   "voters": [
                     {
-                      "created_at": "2026-08-17 22:05:20",
-                      "id": 102060,
-                      "object_id": "15011",
+                      "created_at": "2026-08-17 22:39:19",
+                      "id": 102070,
+                      "object_id": "15049",
                       "object_type": "better-search",
                       "parent_id": null,
                       "type": "survey_vote",
-                      "updated_at": "2026-08-17 22:05:20",
+                      "updated_at": "2026-08-17 22:39:19",
                       "user_id": "13096",
                       "xprofile": {
                         "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",

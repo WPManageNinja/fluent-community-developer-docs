@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchSpaceUsers",
         "summary": "GET Search Space Users",
-        "description": "Search Space Users for the FluentCommunity Spaces API.\n\nController: `SpaceController@getOtherUsers`\nRoute source: `fluent-community/app/Http/Routes/api.php:29`",
+        "description": "Searches for WordPress users who are not yet members of a space, for the add-member picker.\n\nController: `SpaceController@getOtherUsers`\nRoute source: `fluent-community/app/Http/Routes/api.php:29`",
         "tags": [
           "Spaces"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopPostStartersReport",
         "summary": "GET List Top Post Starters Report",
-        "description": "List Top Post Starters Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@topPostStarter`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:80`",
+        "description": "Returns the ten members who published the most posts within the requested range, each with their post count.\n\nController: `MembersReportsController@topPostStarter`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:80`",
         "tags": [
           "Reports"
         ],
@@ -196,7 +196,7 @@
                       "display_name": "Alex Rivera",
                       "id": "1",
                       "is_verified": 1,
-                      "last_activity": "2026-08-17 22:00:34",
+                      "last_activity": "2026-08-17 22:35:43",
                       "meta": {
                         "badge_slug": "admin",
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -214,7 +214,7 @@
                       "short_description": "Community builder. Helping members get the most out of the platform.",
                       "status": "active",
                       "total_points": 20385,
-                      "updated_at": "2026-08-17 22:00:34",
+                      "updated_at": "2026-08-17 22:35:43",
                       "user_id": 1,
                       "username": "alex_rivera"
                     },

@@ -1,9 +1,11 @@
 ---
 title: Unfollow Profile User
-description: "Unfollow Profile User for the FluentCommunity Profile API."
+description: "Removes the follow relationship from the current user to the named member."
 outline: false
 aside: false
 ---
+
+Removes the follow relationship from the current user to the named member.
 
 ## Endpoint
 
@@ -13,6 +15,8 @@ aside: false
 - **Controller:** `FollowController@unfollow`
 - **Route source:** `fluent-community-pro/app/Http/Routes/api.php:132`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
+
+- Requires FluentCommunity Pro with the `followers_module` feature enabled.
 
 ::: tip Live sample
 The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.

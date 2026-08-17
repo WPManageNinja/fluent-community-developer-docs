@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listWebhooks",
         "summary": "GET List Webhooks",
-        "description": "List Webhooks for the FluentCommunity Admin API.\n\nController: `ProAdminController@getWebhooks`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:50`",
+        "description": "Returns the paginated list of inbound webhooks, and on the first page also the spaces and courses available as enrolment targets.\n\nController: `ProAdminController@getWebhooks`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:50`",
         "tags": [
           "Admin"
         ],
@@ -381,7 +381,7 @@
                 "example": {
                   "courses": [
                     {
-                      "id": 96,
+                      "id": 114,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -409,7 +409,7 @@
                       "title": "Getting Started with the Platform"
                     },
                     {
-                      "id": 97,
+                      "id": 115,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -467,7 +467,7 @@
                   ],
                   "spaces": [
                     {
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -498,7 +498,7 @@
                       "title": "General Discussion"
                     },
                     {
-                      "id": 93,
+                      "id": 111,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",
@@ -529,7 +529,7 @@
                       "title": "Announcements"
                     },
                     {
-                      "id": 94,
+                      "id": 112,
                       "logo": null,
                       "settings": {
                         "can_request_join": "no",

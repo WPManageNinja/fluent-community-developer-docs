@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleProfileFollow",
         "summary": "POST Toggle Profile Follow",
-        "description": "Toggle Profile Follow for the FluentCommunity Profile API.\n\nController: `FollowController@toggleFollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:133`",
+        "description": "Follows the named member if not already followed, and unfollows them if they are — addressed by numeric user id rather than username.\n\nController: `FollowController@toggleFollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:133`",
         "tags": [
           "Profile"
         ],
@@ -167,12 +167,12 @@
                 },
                 "example": {
                   "follow": {
-                    "created_at": "2026-08-17 22:05:20",
+                    "created_at": "2026-08-17 22:39:20",
                     "followed_id": 13098,
                     "follower_id": 13096,
-                    "id": 1729,
+                    "id": 1733,
                     "level": 1,
-                    "updated_at": "2026-08-17 22:05:20"
+                    "updated_at": "2026-08-17 22:39:20"
                   },
                   "message": "Great point — I ran into the same thing last week.",
                   "xprofile": {

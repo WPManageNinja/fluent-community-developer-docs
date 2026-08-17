@@ -50,6 +50,22 @@ foreach (['docs-sandbox-topic', 'docs-scratch-topic'] as $slug) {
     Term::where('slug', $slug)->delete();
 }
 
+// Early capture runs sent createSpaceGroup a nested `group` payload while the
+// controller reads flat fields, so it created untitled groups with a timestamp
+// slug. Clean those up; a real group always has a title and a word slug.
+$junkGroups = BaseSpace::withoutGlobalScopes()
+    ->where('type', 'space_group')
+    ->where(function ($q) {
+        $q->whereNull('title')->orWhere('title', '');
+    })
+    ->get();
+foreach ($junkGroups as $group) {
+    if (preg_match('/^\d+$/', (string)$group->slug)) {
+        $group->delete();
+        echo "removed untitled space group {$group->id}\n";
+    }
+}
+
 $db = \FluentCommunity\App\App::make('db');
 $db->table('fcom_meta')
     ->where('object_type', 'invitation')

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getProfile",
         "summary": "GET Get Profile",
-        "description": "Get Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
+        "description": "Returns one member public profile by username, with the navigation tabs the portal should render for that member.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
         "tags": [
           "Profile"
         ],
@@ -261,7 +261,7 @@
                     "is_moderator": "yes",
                     "is_restricted": false,
                     "is_verified": 1,
-                    "last_activity": "2026-08-17 22:00:34",
+                    "last_activity": "2026-08-17 22:35:43",
                     "last_name": "alex_rivera",
                     "profile_nav_actions": [],
                     "profile_navs": [

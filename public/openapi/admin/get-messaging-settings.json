@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMessagingSettings",
         "summary": "GET Get Messaging Settings",
-        "description": "Get Messaging Settings for the FluentCommunity Admin API.\n\nController: `ProAdminController@getMessagingSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:21`",
+        "description": "Returns the direct-messaging configuration alongside the realtime socket credentials used by the chat client.\n\nController: `ProAdminController@getMessagingSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:21`",
         "tags": [
           "Admin"
         ],

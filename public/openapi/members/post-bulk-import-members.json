@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postBulkImportMembers",
         "summary": "POST Post Bulk Import Members",
-        "description": "Post Bulk Import Members for the FluentCommunity Members API.\n\nController: `BulkMembersController@bulkImportMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:122`",
+        "description": "Imports members into a space from submitted rows, creating WordPress users for addresses that do not yet exist.\n\nController: `BulkMembersController@bulkImportMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:122`",
         "tags": [
           "Members"
         ],
@@ -47,6 +47,31 @@
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emails": {
+                    "type": "string",
+                    "nullable": false
+                  },
+                  "role": {
+                    "type": "string",
+                    "nullable": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "emails": "member@example.com\nmember@example.com",
+                "role": "member"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",

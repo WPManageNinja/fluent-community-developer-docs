@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateCourseLockscreenSettings",
         "summary": "PUT Update Course Lockscreen Settings",
-        "description": "Update Course Lockscreen Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@updateCourseLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:63`",
+        "description": "Stores the lock screen a private course shows to visitors who are not enrolled — its copy, imagery and call to action.\n\nController: `ProAdminController@updateCourseLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:63`",
         "tags": [
           "Courses"
         ],
@@ -63,11 +63,49 @@
                 }
               },
               "example": {
-                "lockscreen_config": {
-                  "button_text": "Enrol now",
-                  "description": "This course is available to enrolled students.",
-                  "title": "Enrol to continue"
-                }
+                "lockscreen": [
+                  {
+                    "background_image": "",
+                    "button_color": "#2B2E33",
+                    "button_link": "",
+                    "button_text": "Enrol now",
+                    "button_text_color": "#FFFFFF",
+                    "description": "This course is available to enrolled students.",
+                    "heading": "Enrol to continue",
+                    "heading_color": "#FFFFFF",
+                    "hidden": false,
+                    "label": "Banner",
+                    "name": "banner",
+                    "new_tab": "no",
+                    "overlay_color": "#798398",
+                    "text_color": "#FFFFFF",
+                    "type": "image"
+                  },
+                  {
+                    "content": "Great point — I ran into the same thing last week.",
+                    "hidden": false,
+                    "label": "Description",
+                    "name": "description",
+                    "type": "block"
+                  },
+                  {
+                    "background_image": "",
+                    "button_color": "#2B2E33",
+                    "button_link": "",
+                    "button_text": "Buy Now",
+                    "button_text_color": "#FFFFFF",
+                    "description": "A place to introduce yourself and meet other members.",
+                    "heading": "Feature request round-up",
+                    "heading_color": "#FFFFFF",
+                    "hidden": false,
+                    "label": "Call to action",
+                    "name": "action",
+                    "new_tab": "no",
+                    "overlay_color": "#798398",
+                    "text_color": "#FFFFFF",
+                    "type": "image"
+                  }
+                ]
               }
             }
           }
@@ -258,10 +296,10 @@
                 "example": {
                   "course": {
                     "cover_photo": null,
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "created_by": "1",
                     "description": "Everything you need to get productive in your first week.",
-                    "id": 96,
+                    "id": 114,
                     "logo": null,
                     "parent_id": null,
                     "privacy": "public",
@@ -299,7 +337,7 @@
                     "status": "published",
                     "title": "Getting Started with the Platform",
                     "type": "course",
-                    "updated_at": "2026-08-17 22:05:20"
+                    "updated_at": "2026-08-17 22:39:20"
                   },
                   "message": "Just tried it and it works exactly as described."
                 }

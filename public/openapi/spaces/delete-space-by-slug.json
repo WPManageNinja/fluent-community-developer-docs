@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteSpaceBySlug",
         "summary": "DELETE Delete Space By Slug",
-        "description": "Delete Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@deleteBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:21`",
+        "description": "Deletes a space along with everything posted in it and every membership record for it.\n\nController: `SpaceController@deleteBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:21`",
         "tags": [
           "Spaces"
         ],

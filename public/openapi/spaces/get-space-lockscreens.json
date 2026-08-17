@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceLockscreens",
         "summary": "GET Get Space Lockscreens",
-        "description": "Get Space Lockscreens for the FluentCommunity Spaces API.\n\nController: `SpaceController@getLockScreenSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:25`",
+        "description": "Returns the lock screen configuration a space shows to visitors who are not members — its copy, imagery and call to action.\n\nController: `SpaceController@getLockScreenSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:25`",
         "tags": [
           "Spaces"
         ],

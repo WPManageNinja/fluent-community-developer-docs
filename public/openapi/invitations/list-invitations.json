@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listInvitations",
         "summary": "GET List Invitations",
-        "description": "List Invitations for the FluentCommunity Invitations API.\n\nController: `InvitationController@getInvitations`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:23`",
+        "description": "Returns the paginated invitations the current user has issued for one space, newest first, with a ready-to-share access URL on each one that is still valid.\n\nController: `InvitationController@getInvitations`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:23`",
         "tags": [
           "Invitations"
         ],
@@ -297,19 +297,19 @@
                     "current_page": 1,
                     "data": [
                       {
-                        "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=31e9933cc485b961583312f26c60e18e",
-                        "created_at": "2026-08-17 22:05:20",
-                        "id": 59786,
+                        "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=97ff51d35db32647968ef3840275fb4d",
+                        "created_at": "2026-08-17 22:39:20",
+                        "id": 59802,
                         "message": "Following. I would love to see a worked example of this.",
-                        "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
+                        "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                         "meta": {
                           "invitee_name": "New Member"
                         },
-                        "post_id": "92",
+                        "post_id": "110",
                         "reactions_count": "1",
                         "status": "pending",
                         "type": "invitation",
-                        "updated_at": "2026-08-17 22:05:20",
+                        "updated_at": "2026-08-17 22:39:20",
                         "user_id": "1",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -317,7 +317,7 @@
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

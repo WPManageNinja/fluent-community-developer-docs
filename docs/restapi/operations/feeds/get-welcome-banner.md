@@ -1,9 +1,11 @@
 ---
 title: Get Welcome Banner
-description: "Get Welcome Banner for the FluentCommunity Feeds API."
+description: "Returns the welcome banner for the current audience — the signed-in variant for members, the logged-out variant for visitors."
 outline: false
 aside: false
 ---
+
+Returns the welcome banner for the current audience — the signed-in variant for members, the logged-out variant for visitors.
 
 ## Endpoint
 

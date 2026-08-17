@@ -1,9 +1,11 @@
 ---
 title: Save Followers Settings
-description: "Save Followers Settings for the FluentCommunity Settings API."
+description: "Stores the followers module configuration and returns the normalised result."
 outline: false
 aside: false
 ---
+
+Stores the followers module configuration and returns the normalised result.
 
 ## Endpoint
 
@@ -13,6 +15,9 @@ aside: false
 - **Controller:** `ProAdminController@saveFollowersSettings`
 - **Route source:** `fluent-community-pro/app/Http/Routes/api.php:37`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
+
+- Requires the FluentCommunity community-admin permission (or a WordPress super admin).
+- Requires FluentCommunity Pro; these values govern the follower and following list endpoints.
 
 ::: tip Live sample
 The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createCourse",
         "summary": "POST Create Course",
-        "description": "Create Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:23`",
+        "description": "Creates a course in draft state, with its type, privacy, layout and lock screen behaviour set from the submitted settings.\n\nController: `CourseAdminController@createCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:23`",
         "tags": [
           "Courses"
         ],
@@ -295,10 +295,10 @@
                 },
                 "example": {
                   "course": {
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "created_by": 1,
                     "description": "Everything you need to get productive in your first week.",
-                    "id": 96,
+                    "id": 114,
                     "parent_id": null,
                     "privacy": "public",
                     "serial": 21,
@@ -328,7 +328,7 @@
                     "status": "published",
                     "title": "Getting Started with the Platform",
                     "type": "course",
-                    "updated_at": "2026-08-17 22:04:05"
+                    "updated_at": "2026-08-17 22:38:06"
                   },
                   "message": "Just tried it and it works exactly as described."
                 }

@@ -1,9 +1,13 @@
 ---
 title: List Survey Voters
-description: "List Survey Voters for the FluentCommunity Reactions API."
+description: "Returns the members who voted for one survey option, with their public profiles."
 outline: false
 aside: false
 ---
+
+Returns the members who voted for one survey option, with their public profiles.
+
+Capped at 100 voters with no pagination. The option is identified by its slug in the path, so an unknown slug returns an empty list rather than an error.
 
 ## Endpoint
 

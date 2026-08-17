@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleCommentReaction",
         "summary": "POST Toggle Comment Reaction",
-        "description": "Toggle Comment Reaction for the FluentCommunity Reactions API.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
+        "description": "Sets or clears the current user like on a comment and returns the new reaction count with the resulting liked state.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
         "tags": [
           "Reactions"
         ],
@@ -69,7 +69,7 @@
                 }
               },
               "example": {
-                "reaction_type": "like"
+                "state": true
               }
             }
           }
@@ -90,16 +90,15 @@
                       "nullable": false
                     },
                     "reactions_count": {
-                      "type": "string",
-                      "nullable": false
+                      "type": "integer"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "liked": false,
+                  "liked": true,
                   "message": "Following. I would love to see a worked example of this.",
-                  "reactions_count": "0"
+                  "reactions_count": 1
                 }
               }
             }

@@ -1,9 +1,13 @@
 ---
 title: Get Feed By ID
-description: "Get Feed By ID for the FluentCommunity Feeds API."
+description: "Returns a single post by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint."
 outline: false
 aside: false
 ---
+
+Returns a single post by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint.
+
+Because it delegates, `context=edit` and the same access rules apply. Note that the id lookup happens before the access check, so an id that does not exist at all fails differently from one the caller may not read.
 
 ## Endpoint
 

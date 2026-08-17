@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listCourseStudents",
         "summary": "GET List Course Students",
-        "description": "List Course Students for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getCourseStudents`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:29`",
+        "description": "Returns the paginated roster of a course, each student carrying their enrolment pivot and their completion percentage.\n\nController: `CourseAdminController@getCourseStudents`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:29`",
         "tags": [
           "Courses"
         ],
@@ -298,13 +298,13 @@
                         "progress": 0,
                         "short_description": "Designer and illustrator. I post work-in-progress shots.",
                         "space_pivot": {
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 36462,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 36490,
                           "meta": [],
                           "role": "student",
-                          "space_id": "96",
+                          "space_id": "114",
                           "status": "active",
-                          "updated_at": "2026-08-17 22:04:05",
+                          "updated_at": "2026-08-17 22:38:06",
                           "user_id": "13096"
                         },
                         "status": "active",
@@ -328,13 +328,13 @@
                         "progress": 0,
                         "short_description": "Designer and illustrator. I post work-in-progress shots.",
                         "space_pivot": {
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 36463,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 36491,
                           "meta": [],
                           "role": "student",
-                          "space_id": "96",
+                          "space_id": "114",
                           "status": "active",
-                          "updated_at": "2026-08-17 22:04:05",
+                          "updated_at": "2026-08-17 22:38:06",
                           "user_id": "13097"
                         },
                         "status": "active",

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUserBadges",
         "summary": "GET List User Badges",
-        "description": "List User Badges for the FluentCommunity Admin API.\n\nController: `UserBadgeController@getBadges`\nRoute source: `fluent-community-pro/app/Modules/UserBadge/UserBadgeModule.php:19`",
+        "description": "Returns the badge definitions available to award to member profiles.\n\nController: `UserBadgeController@getBadges`\nRoute source: `fluent-community-pro/app/Modules/UserBadge/UserBadgeModule.php:19`",
         "tags": [
           "Admin"
         ],

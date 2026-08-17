@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpaceMembers",
         "summary": "GET List Space Members",
-        "description": "List Space Members for the FluentCommunity Members API.\n\nController: `SpaceController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
+        "description": "Returns the paginated active membership of a space, each entry carrying the member profile and their role, plus the count of outstanding join requests.\n\nController: `SpaceController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
         "tags": [
           "Members"
         ],
@@ -305,11 +305,11 @@
                     "current_page": 1,
                     "data": [
                       {
-                        "created_at": "2026-08-17 22:04:05",
-                        "id": 36456,
+                        "created_at": "2026-08-17 22:38:06",
+                        "id": 36484,
                         "meta": [],
                         "role": "admin",
-                        "space_id": "92",
+                        "space_id": "110",
                         "status": "active",
                         "updated_at": null,
                         "user_id": "1",
@@ -319,7 +319,7 @@
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -341,11 +341,11 @@
                         }
                       },
                       {
-                        "created_at": "2026-08-17 22:04:05",
-                        "id": 36459,
+                        "created_at": "2026-08-17 22:38:06",
+                        "id": 36487,
                         "meta": [],
                         "role": "member",
-                        "space_id": "92",
+                        "space_id": "110",
                         "status": "active",
                         "updated_at": null,
                         "user_id": "13096",
@@ -372,11 +372,11 @@
                         }
                       },
                       {
-                        "created_at": "2026-08-17 22:04:05",
-                        "id": 36460,
+                        "created_at": "2026-08-17 22:38:06",
+                        "id": 36488,
                         "meta": [],
                         "role": "moderator",
-                        "space_id": "92",
+                        "space_id": "110",
                         "status": "active",
                         "updated_at": null,
                         "user_id": "13097",

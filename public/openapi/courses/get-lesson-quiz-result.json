@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLessonQuizResult",
         "summary": "GET Get Lesson Quiz Result",
-        "description": "Get Lesson Quiz Result for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:9`",
+        "description": "Returns the current user stored result for one quiz lesson, or null if they have not attempted it.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:9`",
         "tags": [
           "Courses"
         ],
@@ -142,7 +142,7 @@
                 "example": {
                   "result": {
                     "content_type": "quiz",
-                    "id": 59785,
+                    "id": 59801,
                     "message": {
                       "q1": {
                         "is_correct": true,
@@ -161,12 +161,12 @@
                       "correct_answers": 2,
                       "total_questions": 2
                     },
-                    "parent_id": "96",
-                    "post_id": "15026",
+                    "parent_id": "114",
+                    "post_id": "15064",
                     "score": "100",
                     "status": "passed",
                     "type": "quiz",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user_id": "13098"
                   }
                 }

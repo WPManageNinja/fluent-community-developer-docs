@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createModerationReport",
         "summary": "POST Create Moderation Report",
-        "description": "Create Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@create`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:93`",
+        "description": "Files a moderation report against a post or a comment and returns the report together with the reported content.\n\nController: `ModerationController@create`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:93`",
         "tags": [
           "Reports"
         ],
@@ -73,7 +73,7 @@
               "example": {
                 "content_type": "post",
                 "explanation": "This post looks like spam.",
-                "post_id": 15010,
+                "post_id": 15048,
                 "reason": "spam"
               }
             }
@@ -464,10 +464,10 @@
                   "content": {
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15010,
+                    "id": 15048,
                     "is_sticky": 0,
                     "message": "Great point — I ran into the same thing last week.",
                     "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
@@ -487,12 +487,12 @@
                     "slug": "second-scratch-post",
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -523,13 +523,13 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
-                    "space_id": "92",
+                    "space_id": "110",
                     "status": "pending",
                     "title": "Community poll results",
                     "type": "text",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user": {
                       "ID": 13096,
                       "display_name": "Mei Tanaka",
@@ -546,12 +546,12 @@
                   "message": "Great point — I ran into the same thing last week.",
                   "report": {
                     "content_type": "post",
-                    "created_at": "2026-08-17 22:05:20",
+                    "created_at": "2026-08-17 22:39:20",
                     "explanation": "This post looks like spam.",
-                    "id": 59784,
+                    "id": 59800,
                     "meta": null,
                     "parent_id": null,
-                    "post_id": "15010",
+                    "post_id": "15048",
                     "reason": "spam",
                     "reports_count": "2",
                     "status": "pending",

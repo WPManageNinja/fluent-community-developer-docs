@@ -1,9 +1,13 @@
 ---
 title: Get OEmbed
-description: "Get OEmbed for the FluentCommunity Feeds API."
+description: "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved."
 outline: false
 aside: false
 ---
+
+Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved.
+
+Makes an outbound HTTP request to the target URL, so it is slower than other endpoints and fails with an error payload when the URL yields no usable metadata.
 
 ## Endpoint
 

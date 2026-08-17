@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchCartProducts",
         "summary": "GET Search Cart Products",
-        "description": "Search Cart Products for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@searchProduct`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:13`",
+        "description": "Searches published FluentCart products that have at least one variant, returning up to 20 with their formatted price range, for the paywall picker.\n\nController: `PaywallController@searchProduct`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:13`",
         "tags": [
           "Cart Integration"
         ],

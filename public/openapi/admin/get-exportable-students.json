@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getExportableStudents",
         "summary": "GET Get Exportable Students",
-        "description": "Get Exportable Students for the FluentCommunity Admin API.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
+        "description": "Returns a flattened, spreadsheet-shaped list of a course roster — name, email, username, progress percentage, enrolment date and last activity.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
         "tags": [
           "Admin"
         ],
@@ -104,7 +104,7 @@
                   "students": [
                     {
                       "Email": "member@example.com",
-                      "Enrollment Date": "2026-08-17 22:04:05",
+                      "Enrollment Date": "2026-08-17 22:38:06",
                       "Last Activity": "",
                       "Name": "Mei Tanaka",
                       "Progress": "0%",
@@ -112,7 +112,7 @@
                     },
                     {
                       "Email": "member@example.com",
-                      "Enrollment Date": "2026-08-17 22:04:05",
+                      "Enrollment Date": "2026-08-17 22:38:06",
                       "Last Activity": "",
                       "Name": "Mei Tanaka",
                       "Progress": "0%",

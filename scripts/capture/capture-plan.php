@@ -79,11 +79,10 @@ $sandboxSpaceSettings = [
 ];
 
 $sg = fc_cap('spaces/create-space-group', 'POST', 'spaces/space_groups', [], [
-    'group' => [
-        'title'       => 'Docs Sandbox Group',
-        'slug'        => 'docs-sandbox-group',
-        'description' => 'Temporary space group used to capture API documentation samples.',
-    ],
+    'title'       => 'Docs Sandbox Group',
+    'slug'        => 'docs-sandbox-group',
+    'description' => 'Temporary space group used to capture API documentation samples.',
+    'settings'    => ['always_show_spaces' => 'yes'],
 ]);
 $sgId = is_array($sg) ? (isset($sg['group']['id']) ? $sg['group']['id'] : (isset($sg['space_group']['id']) ? $sg['space_group']['id'] : null)) : null;
 if (!$sgId) {
@@ -143,10 +142,9 @@ if (!$scratchSpace2Id) {
 fc_set('scratch_space2_id', $scratchSpace2Id);
 
 $sg2 = fc_cap('spaces/_scratch-group', 'POST', 'spaces/space_groups', [], [
-    'group' => [
-        'title' => 'Docs Scratch Group',
-        'slug'  => 'docs-scratch-group',
-    ],
+    'title'       => 'Docs Scratch Group',
+    'slug'        => 'docs-scratch-group',
+    'description' => '',
 ], ['save' => false]);
 $scratchGroupId = is_array($sg2) ? (isset($sg2['group']['id']) ? $sg2['group']['id'] : (isset($sg2['space_group']['id']) ? $sg2['space_group']['id'] : null)) : null;
 if (!$scratchGroupId) {
@@ -530,9 +528,15 @@ fc_cap('media/get-index', 'GET', 'media-gallery/{{space_slug}}', ['type' => 'pho
 // ---------------------------------------------------------------------------
 
 // Reactions
-fc_cap('reactions/toggle-feed-reaction', 'POST', 'feeds/{{feed_id}}/react', [], ['reaction_type' => 'like']);
-fc_cap('reactions/post-add-or-remove-post-react', 'POST', 'feeds/{{feed_id}}/reactions/toggle', [], ['reaction_type' => 'like']);
-fc_cap('reactions/toggle-comment-reaction', 'POST', 'feeds/{{feed_id}}/comments/{{comment_id}}/reactions', [], ['reaction_type' => 'like']);
+fc_cap('reactions/toggle-feed-reaction', 'POST', 'feeds/{{feed_id}}/react', [], [
+    'react_type' => 'like',
+], ['as' => fc_ctx('user1_id')]);
+fc_cap('reactions/post-add-or-remove-post-react', 'POST', 'feeds/{{feed_id}}/reactions/toggle', [], [
+    'react_type' => 'like',
+], ['as' => fc_ctx('user2_id')]);
+fc_cap('reactions/toggle-comment-reaction', 'POST', 'feeds/{{feed_id}}/comments/{{comment_id}}/reactions', [], [
+    'state' => true,
+], ['as' => fc_ctx('user1_id')]);
 fc_cap('reactions/cast-survey-vote', 'POST', 'feeds/{{survey_feed_id}}/apps/survey-vote', [], [
     'vote_indexes' => array_values(array_filter([fc_ctx('survey_option_slug')])),
 ], ['as' => fc_ctx('user1_id')]);
@@ -547,7 +551,7 @@ fc_cap('feeds/update-feed', 'POST', 'feeds/{{feed_id}}', [], [
 ]);
 fc_cap('feeds/patch-feed', 'PATCH', 'feeds/{{feed_id}}', [], ['is_sticky' => 'yes']);
 fc_cap('feeds/render-markdown-preview', 'POST', 'feeds/markdown-preview', [], [
-    'message' => "## Heading\n\nSome **bold** text and a [link](https://fluentcommunity.co).",
+    'text' => "## Heading\n\nSome **bold** text and a [link](https://fluentcommunity.co).",
 ]);
 fc_cap('feeds/batch-fetch-feeds', 'POST', 'feeds/batch', [], ['feed_ids' => array_values(array_filter([fc_ctx('feed_id'), fc_ctx('scratch_feed_id')]))]);
 fc_cap('feeds/update-feed-links', 'POST', 'feeds/links', [], [
@@ -579,18 +583,16 @@ fc_cap('reports/list-moderation-reports', 'GET', 'moderation/reports');
 
 // Space mutations
 fc_cap('spaces/update-space-by-slug', 'PUT', 'spaces/{{space_slug}}/by-slug', [], [
-    'space' => [
+    'data' => [
         'title'       => 'Docs Sandbox Space',
-        'slug'        => 'docs-sandbox-space',
         'privacy'     => 'public',
         'description' => 'Temporary space used to capture API documentation samples (updated).',
         'settings'    => $sandboxSpaceSettings,
     ],
 ]);
 fc_cap('spaces/update-space-by-id', 'PUT', 'spaces/{{scratch_space2_id}}/by-id', [], [
-    'space' => [
+    'data' => [
         'title'    => 'Docs Scratch Space Two',
-        'slug'     => 'docs-scratch-space-2',
         'privacy'  => 'private',
         'settings' => $sandboxSpaceSettings,
     ],
@@ -600,30 +602,36 @@ fc_cap('spaces/update-space-links', 'POST', 'spaces/{{space_slug}}/links', [], [
         ['title' => 'Space guidelines', 'url' => 'https://example.com/guidelines', 'is_new_tab' => 'yes'],
     ],
 ]);
+$spaceLockscreen = fc_cap('spaces/_lockscreen-read', 'GET', 'spaces/{{space_slug}}/lockscreens', [], [], ['save' => false]);
+$spaceLockFields = is_array($spaceLockscreen) && isset($spaceLockscreen['lockscreen'])
+    ? $spaceLockscreen['lockscreen']
+    : [];
+if ($spaceLockFields) {
+    $spaceLockFields[0]['heading'] = 'Members only';
+    $spaceLockFields[0]['description'] = 'Join this space to see the discussions.';
+    $spaceLockFields[0]['button_text'] = 'Join now';
+}
 fc_cap('spaces/update-space-lockscreen-settings', 'PUT', 'spaces/{{space_slug}}/lockscreens', [], [
-    'lockscreen_config' => [
-        'title'       => 'Members only',
-        'description' => 'Join this space to see the discussions.',
-        'button_text' => 'Join now',
-    ],
+    'lockscreen' => $spaceLockFields,
 ]);
 fc_cap('spaces/update-space-group', 'PUT', 'spaces/space_groups/{{space_group_id}}', [], [
-    'group' => [
-        'title'       => 'Docs Sandbox Group',
-        'slug'        => 'docs-sandbox-group',
-        'description' => 'Temporary space group (updated).',
-    ],
+    'title'       => 'Docs Sandbox Group',
+    'description' => 'Temporary space group (updated).',
+    'settings'    => ['always_show_spaces' => 'yes'],
 ]);
 fc_cap('spaces/move-space', 'PATCH', 'spaces/space_groups/move-space', [], [
     'space_id' => fc_ctx('scratch_space_id'),
     'group_id' => fc_ctx('space_group_id'),
 ]);
+$groupIndexes = [];
+foreach (array_values(array_filter([fc_ctx('space_group_id'), fc_ctx('scratch_group_id')])) as $position => $groupId) {
+    $groupIndexes[(string)$groupId] = $position;
+}
 fc_cap('spaces/reindex-space-groups', 'PATCH', 'spaces/space_groups/re-index', [], [
-    'group_ids' => array_values(array_filter([fc_ctx('space_group_id')])),
+    'indexes' => $groupIndexes,
 ]);
 fc_cap('spaces/reindex-spaces', 'PATCH', 'spaces/space_groups/re-index-spaces', [], [
-    'parent_id' => fc_ctx('space_group_id'),
-    'space_ids' => array_values(array_filter([fc_ctx('space_id'), fc_ctx('scratch_space_id')])),
+    'indexes' => array_values(array_filter([fc_ctx('space_id'), fc_ctx('scratch_space_id')])),
 ]);
 fc_cap('spaces/join-space', 'POST', 'spaces/{{scratch_space_slug}}/join', [], [], ['as' => fc_ctx('user3_id')]);
 fc_cap('spaces/leave-space', 'POST', 'spaces/{{scratch_space_slug}}/leave', [], [], ['as' => fc_ctx('user3_id')]);
@@ -668,7 +676,8 @@ fc_cap('profile/patch-profile', 'PUT', 'profile/{{user1_username}}', [], [
     ],
 ]);
 fc_cap('profile/save-notification-preferences', 'POST', 'profile/{{user1_username}}/notification-preferences', [], [
-    'preferences' => ['email_notification' => 'yes'],
+    'user_globals' => ['email_notification' => 'yes'],
+    'space_prefs'  => [],
 ], ['as' => fc_ctx('user1_id')]);
 fc_cap('profile/follow-profile-user', 'POST', 'profile/{{user2_username}}/follow', [], [], ['as' => fc_ctx('user1_id')]);
 fc_cap('profile/toggle-profile-notification', 'POST', 'profile/{{user2_username}}/notification', [], [], ['as' => fc_ctx('user1_id')]);
@@ -696,11 +705,19 @@ fc_cap('courses/update-course-section', 'PUT', 'admin/courses/{{course_id}}/sect
 ]);
 fc_cap('courses/patch-course-section', 'PATCH', 'admin/courses/{{course_id}}/sections/{{section_id}}', [], ['status' => 'published']);
 fc_cap('courses/patch-course-lesson', 'PATCH', 'admin/courses/{{course_id}}/lessons/{{lesson_id}}', [], ['status' => 'published']);
+$sectionIndexes = [];
+foreach (array_values(array_filter([fc_ctx('section_id'), fc_ctx('scratch_section2_id')])) as $position => $sectionId) {
+    $sectionIndexes[(string)$sectionId] = $position + 1;
+}
 fc_cap('courses/reindex-course-sections', 'PATCH', 'admin/courses/{{course_id}}/sections/indexes', [], [
-    'section_ids' => array_values(array_filter([fc_ctx('section_id'), fc_ctx('scratch_section2_id')])),
+    'indexes' => $sectionIndexes,
 ]);
+$lessonIndexes = [];
+foreach (array_values(array_filter([fc_ctx('lesson_id'), fc_ctx('scratch_lesson2_id')])) as $position => $lessonId) {
+    $lessonIndexes[(string)$lessonId] = $position + 1;
+}
 fc_cap('courses/reindex-course-lessons', 'PATCH', 'admin/courses/{{course_id}}/sections/{{section_id}}/indexes', [], [
-    'lesson_ids' => array_values(array_filter([fc_ctx('lesson_id'), fc_ctx('scratch_lesson2_id')])),
+    'indexes' => $lessonIndexes,
 ]);
 fc_cap('courses/move-course-lesson', 'PUT', 'admin/courses/{{course_id}}/move-lesson', [], [
     'lesson_id'  => fc_ctx('scratch_lesson2_id'),
@@ -715,12 +732,17 @@ fc_cap('courses/duplicate-course', 'POST', 'admin/courses/{{scratch_course_id}}/
 fc_cap('courses/update-course-links', 'POST', 'admin/courses/{{course_id}}/links', [], [
     'links' => [['title' => 'Course syllabus', 'url' => 'https://example.com/syllabus', 'is_new_tab' => 'yes']],
 ]);
+$courseLockscreen = fc_cap('courses/_lockscreen-read', 'GET', 'spaces/{{space_slug}}/lockscreens', [], [], ['save' => false]);
+$courseLockFields = is_array($courseLockscreen) && isset($courseLockscreen['lockscreen'])
+    ? $courseLockscreen['lockscreen']
+    : [];
+if ($courseLockFields) {
+    $courseLockFields[0]['heading'] = 'Enrol to continue';
+    $courseLockFields[0]['description'] = 'This course is available to enrolled students.';
+    $courseLockFields[0]['button_text'] = 'Enrol now';
+}
 fc_cap('courses/update-course-lockscreen-settings', 'PUT', 'admin/courses/{{course_id}}/lockscreens', [], [
-    'lockscreen_config' => [
-        'title'       => 'Enrol to continue',
-        'description' => 'This course is available to enrolled students.',
-        'button_text' => 'Enrol now',
-    ],
+    'lockscreen' => $courseLockFields,
 ]);
 fc_cap('courses/post-update-course-welcome-banner-settings', 'POST', 'admin/courses/{{course_id}}/welcome-banner', [], [
     'settings' => [
@@ -851,7 +873,7 @@ if (is_array($featureGet) && isset($featureGet['features'])) {
 $menuGet = fc_cap('settings/_menu-read', 'GET', 'settings/menu-settings', [], [], ['save' => false]);
 if (is_array($menuGet)) {
     fc_cap('settings/save-menu-settings', 'POST', 'settings/menu-settings', [], [
-        'settings' => isset($menuGet['settings']) ? $menuGet['settings'] : $menuGet,
+        'menuSettings' => isset($menuGet['menuSettings']) ? $menuGet['menuSettings'] : (isset($menuGet['settings']) ? $menuGet['settings'] : $menuGet),
     ]);
 }
 
@@ -928,12 +950,18 @@ if (is_array($onboardGet) && isset($onboardGet['settings'])) {
 
 $providerGet = fc_cap('admin/_provider-read', 'GET', 'admin/profile-link-providers', [], [], ['save' => false]);
 if (is_array($providerGet)) {
-    fc_cap('admin/save-profile-link-providers', 'POST', 'admin/profile-link-providers', [], $providerGet);
+    fc_cap('admin/save-profile-link-providers', 'POST', 'admin/profile-link-providers', [], [
+        'configs' => isset($providerGet['configs']) ? $providerGet['configs'] : (isset($providerGet['providers']) ? $providerGet['providers'] : []),
+    ]);
 }
 
 $cpfGet = fc_cap('admin/_cpf-read', 'GET', 'admin/custom-profile-fields', [], [], ['save' => false]);
 if (is_array($cpfGet)) {
-    fc_cap('admin/post-save-custom-profile-fields', 'POST', 'admin/custom-profile-fields', [], $cpfGet);
+    fc_cap('admin/post-save-custom-profile-fields', 'POST', 'admin/custom-profile-fields', [], [
+        'groups'     => isset($cpfGet['groups']) ? $cpfGet['groups'] : [],
+        'fields'     => isset($cpfGet['fields']) ? $cpfGet['fields'] : [],
+        'is_enabled' => isset($cpfGet['is_enabled']) ? $cpfGet['is_enabled'] : 'no',
+    ]);
 }
 
 $msgGet = fc_cap('admin/_msg-read', 'GET', 'admin/messaging-setting', [], [], ['save' => false]);
@@ -958,7 +986,7 @@ if (is_array($levelGet) && isset($levelGet['levels'])) {
 
 // Topic config + sidebar link + webhook + manager (sandbox rows we then remove)
 fc_cap('admin/save-topic-config', 'POST', 'admin/topics/config', [], [
-    'settings' => ['show_topics_in_sidebar' => 'yes'],
+    'config' => ['show_topics_in_sidebar' => 'yes'],
 ]);
 $link = fc_cap('admin/save-sidebar-link', 'POST', 'admin/links', [], [
     'link' => [

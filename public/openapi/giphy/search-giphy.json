@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchGiphy",
         "summary": "GET Search Giphy",
-        "description": "Search Giphy for the FluentCommunity Giphy API.\n\nController: `GiphyController@index`\nRoute source: `fluent-community-pro/app/Modules/Giphy/Http/giphy_api.php:8`",
+        "description": "Proxies a Giphy search — or the trending feed when no query is given — and returns a trimmed list of GIFs carrying only the preview and medium renditions.\n\nController: `GiphyController@index`\nRoute source: `fluent-community-pro/app/Modules/Giphy/Http/giphy_api.php:8`",
         "tags": [
           "Giphy"
         ],

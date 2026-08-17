@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createFeed",
         "summary": "POST Create Feed",
-        "description": "Create Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:43`",
+        "description": "Creates a post, renders its Markdown, attaches media and topics, and returns the transformed post ready to prepend to the feed.\n\nController: `FeedsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:43`",
         "tags": [
           "Feeds"
         ],
@@ -643,12 +643,12 @@
                     "comments": [],
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "default_comment_sort_by": "",
                     "expired_at": null,
                     "featured_image": null,
                     "has_user_react": false,
-                    "id": 15008,
+                    "id": 15046,
                     "is_sticky": 0,
                     "message": "This is really helpful, thanks for writing it up.",
                     "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
@@ -664,12 +664,12 @@
                     "slug": "welcome-to-the-community",
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -700,13 +700,13 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
-                    "space_id": "92",
+                    "space_id": "110",
                     "status": "published",
                     "title": "Welcome to the community",
                     "type": "text",
-                    "updated_at": "2026-08-17 22:04:05",
+                    "updated_at": "2026-08-17 22:38:06",
                     "user": {
                       "ID": 1,
                       "display_name": "Lucas Moreau",
@@ -724,7 +724,7 @@
                         "display_name": "Alex Rivera",
                         "id": "1",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -741,7 +741,7 @@
                         "short_description": "Community builder. Helping members get the most out of the platform.",
                         "status": "active",
                         "total_points": 20385,
-                        "updated_at": "2026-08-17 22:00:34",
+                        "updated_at": "2026-08-17 22:35:43",
                         "user_id": 1,
                         "username": "alex_rivera"
                       }
@@ -754,7 +754,7 @@
                       "display_name": "Alex Rivera",
                       "id": "1",
                       "is_verified": 1,
-                      "last_activity": "2026-08-17 22:00:34",
+                      "last_activity": "2026-08-17 22:35:43",
                       "meta": {
                         "badge_slug": "admin",
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -771,12 +771,12 @@
                       "short_description": "Community builder. Helping members get the most out of the platform.",
                       "status": "active",
                       "total_points": 20385,
-                      "updated_at": "2026-08-17 22:00:34",
+                      "updated_at": "2026-08-17 22:35:43",
                       "user_id": 1,
                       "username": "alex_rivera"
                     }
                   },
-                  "last_fetched_timestamp": 1787004245,
+                  "last_fetched_timestamp": 1787006286,
                   "message": "Following. I would love to see a worked example of this."
                 }
               }

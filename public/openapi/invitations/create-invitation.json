@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createInvitation",
         "summary": "POST Create Invitation",
-        "description": "Create Invitation for the FluentCommunity Invitations API.\n\nController: `InvitationController@store`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:25`",
+        "description": "Invites one email address to join a space and sends the invitation email immediately.\n\nController: `InvitationController@store`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:25`",
         "tags": [
           "Invitations"
         ],
@@ -62,7 +62,7 @@
               "example": {
                 "email": "member@example.com",
                 "invitee_name": "New Member",
-                "space_id": 92
+                "space_id": 110
               }
             }
           }
@@ -452,23 +452,23 @@
                 },
                 "example": {
                   "invitation": {
-                    "created_at": "2026-08-17 22:05:20",
-                    "id": 59786,
+                    "created_at": "2026-08-17 22:39:20",
+                    "id": 59802,
                     "message": "Following. I would love to see a worked example of this.",
-                    "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
+                    "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                     "meta": {
                       "invitee_name": "New Member"
                     },
-                    "post_id": 92,
+                    "post_id": 110,
                     "reactions_count": 1,
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -505,11 +505,11 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:05:20"
+                      "updated_at": "2026-08-17 22:39:20"
                     },
                     "status": "pending",
                     "type": "invitation",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user": {
                       "ID": 1,
                       "display_name": "Lucas Moreau",
@@ -529,7 +529,7 @@
                       "display_name": "Alex Rivera",
                       "id": "1",
                       "is_verified": 1,
-                      "last_activity": "2026-08-17 22:00:34",
+                      "last_activity": "2026-08-17 22:35:43",
                       "meta": {
                         "badge_slug": "admin",
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -546,7 +546,7 @@
                       "short_description": "Community builder. Helping members get the most out of the platform.",
                       "status": "active",
                       "total_points": 20385,
-                      "updated_at": "2026-08-17 22:00:34",
+                      "updated_at": "2026-08-17 22:35:43",
                       "user_id": 1,
                       "username": "alex_rivera"
                     }

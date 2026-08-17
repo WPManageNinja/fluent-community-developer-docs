@@ -1,9 +1,13 @@
 ---
 title: Get Feed Links
-description: "Get Feed Links for the FluentCommunity Feeds API."
+description: "Returns the configurable link list shown alongside the main feed."
 outline: false
 aside: false
 ---
+
+Returns the configurable link list shown alongside the main feed.
+
+Pass `scope=view` to receive only the links that are currently enabled; without it the full stored list comes back, including disabled entries, which is what the editor needs.
 
 ## Endpoint
 

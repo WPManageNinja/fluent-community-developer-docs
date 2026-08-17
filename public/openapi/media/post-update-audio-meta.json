@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdateAudioMeta",
         "summary": "POST Post Update Audio Meta",
-        "description": "Post Update Audio Meta for the FluentCommunity Media API.\n\nController: `MediaController@updateAudioMeta`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:15`",
+        "description": "Updates the display title and poster thumbnail stored on an uploaded audio media item.\n\nController: `MediaController@updateAudioMeta`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:15`",
         "tags": [
           "Media"
         ],

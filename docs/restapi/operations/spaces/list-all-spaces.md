@@ -1,9 +1,13 @@
 ---
 title: List All Spaces
-description: "List All Spaces for the FluentCommunity Spaces API."
+description: "Returns the paginated list of spaces with each one formatted for display, including the current user permissions and membership within it."
 outline: false
 aside: false
 ---
+
+Returns the paginated list of spaces with each one formatted for display, including the current user permissions and membership within it.
+
+Community moderators receive every space; everyone else sees public and private spaces plus any secret space they actively belong to. Heavier than the discovery endpoint because every space is run through the full formatter.
 
 ## Endpoint
 

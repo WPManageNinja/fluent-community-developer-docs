@@ -1,9 +1,11 @@
 ---
 title: Unblock Profile User
-description: "Unblock Profile User for the FluentCommunity Profile API."
+description: "Lifts a block, deleting the relationship row entirely rather than reverting it to a follow."
 outline: false
 aside: false
 ---
+
+Lifts a block, deleting the relationship row entirely rather than reverting it to a follow.
 
 ## Endpoint
 
@@ -13,6 +15,8 @@ aside: false
 - **Controller:** `FollowController@unblock`
 - **Route source:** `fluent-community-pro/app/Http/Routes/api.php:135`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
+
+- Requires FluentCommunity Pro with the `followers_module` feature enabled.
 
 ::: tip Live sample
 The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.

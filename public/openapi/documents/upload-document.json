@@ -27,7 +27,7 @@
       "post": {
         "operationId": "uploadDocument",
         "summary": "POST Upload Document",
-        "description": "Upload Document for the FluentCommunity Documents API.\n\nController: `DocumentController@upload`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`",
+        "description": "Uploads a document file into a space document library, or — when `lesson_id` is given — attaches it directly to a course lesson.\n\nController: `DocumentController@upload`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:42`",
         "tags": [
           "Documents"
         ],
@@ -37,6 +37,30 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "nullable": false
+                  },
+                  "space_id": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "file": "<binary>",
+                "space_id": 12
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",

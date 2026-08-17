@@ -1,9 +1,13 @@
 ---
 title: Get Comment
-description: "Get Comment for the FluentCommunity Comments API."
+description: "Returns a single comment with its author profile, optionally in the shape the editor expects."
 outline: false
 aside: false
 ---
+
+Returns a single comment with its author profile, optionally in the shape the editor expects.
+
+Pass `context=edit` to receive `media_images` resolved from the stored media metadata instead of the raw `meta` blob. Access is checked against the parent post, so a comment on a post the caller cannot reach returns a 404.
 
 ## Endpoint
 

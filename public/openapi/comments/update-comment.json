@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateComment",
         "summary": "POST Update Comment",
-        "description": "Update Comment for the FluentCommunity Comments API.\n\nController: `CommentsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:54`",
+        "description": "Replaces the body of an existing comment, re-renders it, and reconciles its attached media with the submitted list.\n\nController: `CommentsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:54`",
         "tags": [
           "Comments"
         ],
@@ -56,6 +56,26 @@
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "nullable": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "comment": "Great to be here — edited to show the update payload."
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -235,19 +255,19 @@
                 "example": {
                   "comment": {
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:04:05",
-                    "id": 59781,
+                    "created_at": "2026-08-17 22:38:06",
+                    "id": 59797,
                     "is_sticky": 0,
                     "media": null,
                     "message": "Following. I would love to see a worked example of this.",
                     "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                     "meta": [],
                     "parent_id": null,
-                    "post_id": 15008,
-                    "reactions_count": "0",
+                    "post_id": 15046,
+                    "reactions_count": "1",
                     "status": "published",
                     "type": "comment",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user_id": "1",
                     "xprofile": {
                       "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -255,7 +275,7 @@
                       "created_at": "2024-03-05 16:37:02",
                       "display_name": "Alex Rivera",
                       "is_verified": 1,
-                      "last_activity": "2026-08-17 22:00:34",
+                      "last_activity": "2026-08-17 22:35:43",
                       "meta": {
                         "badge_slug": "admin",
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCrmTaggingConfig",
         "summary": "POST Save CRM Tagging Config",
-        "description": "Save CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:32`",
+        "description": "Stores the mapping between FluentCRM tags and spaces or courses, and keeps the `has_crm_sync` feature flag in step.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:32`",
         "tags": [
           "Settings"
         ],
@@ -110,6 +110,28 @@
                 },
                 "spaceGroups": [
                   {
+                    "id": 109,
+                    "spaces": [
+                      {
+                        "icon": "",
+                        "id": 110,
+                        "privacy": "public",
+                        "slug": "general-discussion",
+                        "title": "General Discussion",
+                        "type": "community"
+                      },
+                      {
+                        "icon": "",
+                        "id": 111,
+                        "privacy": "public",
+                        "slug": "announcements",
+                        "title": "Announcements",
+                        "type": "community"
+                      }
+                    ],
+                    "title": "Community"
+                  },
+                  {
                     "id": 10,
                     "spaces": [
                       {
@@ -160,20 +182,6 @@
                       }
                     ],
                     "title": "Share your workflow setup"
-                  },
-                  {
-                    "id": 6,
-                    "spaces": [
-                      {
-                        "icon": "<span class=\"fcom_emoji\">👋</span>",
-                        "id": 7,
-                        "privacy": "public",
-                        "slug": "say-hello",
-                        "title": "Welcome to the community",
-                        "type": "community"
-                      }
-                    ],
-                    "title": "Feature request round-up"
                   }
                 ]
               }

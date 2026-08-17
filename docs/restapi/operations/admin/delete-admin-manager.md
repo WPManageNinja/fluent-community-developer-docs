@@ -1,9 +1,11 @@
 ---
 title: Delete Admin Manager
-description: "Delete Admin Manager for the FluentCommunity Admin API."
+description: "Revokes every FluentCommunity management role from a user, leaving their WordPress account and community profile intact."
 outline: false
 aside: false
 ---
+
+Revokes every FluentCommunity management role from a user, leaving their WordPress account and community profile intact.
 
 ## Endpoint
 
@@ -13,6 +15,9 @@ aside: false
 - **Controller:** `ProAdminController@deleteManager`
 - **Route source:** `fluent-community-pro/app/Http/Routes/api.php:12`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
+
+- Requires the FluentCommunity community-admin permission (or a WordPress super admin).
+- Requires FluentCommunity Pro.
 
 ::: tip Live sample
 The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.

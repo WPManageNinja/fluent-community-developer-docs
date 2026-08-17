@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLessonBySlug",
         "summary": "GET Get Lesson By Slug",
-        "description": "Get Lesson By Slug for the FluentCommunity Courses API.\n\nController: `CourseController@getLessonBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:13`",
+        "description": "Returns a single lesson by course and lesson slug, with its access decision resolved and its body parsed only when the caller may read it.\n\nController: `CourseController@getLessonBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:13`",
         "tags": [
           "Courses"
         ],
@@ -215,10 +215,10 @@
                     "comments_count": 0,
                     "content": "Great point — I ran into the same thing last week.",
                     "content_type": "text",
-                    "course_id": "96",
-                    "created_at": "2026-08-17 22:04:05",
+                    "course_id": "114",
+                    "created_at": "2026-08-17 22:38:06",
                     "featured_image": null,
-                    "id": 15016,
+                    "id": 15054,
                     "inline_css": "",
                     "is_locked": false,
                     "lock_type": "",
@@ -243,8 +243,8 @@
                       "video_length": 0,
                       "video_watched": false
                     },
-                    "section_id": "15013",
-                    "slug": "welcome-to-the-course-1787004245",
+                    "section_id": "15051",
+                    "slug": "welcome-to-the-course-1787006286",
                     "title": "Welcome to the course",
                     "unlock_date": ""
                   }

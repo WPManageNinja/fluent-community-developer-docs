@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteAdminManager",
         "summary": "DELETE Delete Admin Manager",
-        "description": "Delete Admin Manager for the FluentCommunity Admin API.\n\nController: `ProAdminController@deleteManager`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:12`",
+        "description": "Revokes every FluentCommunity management role from a user, leaving their WordPress account and community profile intact.\n\nController: `ProAdminController@deleteManager`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:12`",
         "tags": [
           "Admin"
         ],

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveAuthSettings",
         "summary": "POST Save Auth Settings",
-        "description": "Save Auth Settings for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveAuthSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:15`",
+        "description": "Normalises and stores the login and signup configuration, then returns it with the recalculated form field definitions.\n\nController: `ProAdminController@saveAuthSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:15`",
         "tags": [
           "Admin"
         ],

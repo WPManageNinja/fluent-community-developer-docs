@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateFeed",
         "summary": "POST Update Feed",
-        "description": "Update Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:44`",
+        "description": "Replaces the body and metadata of an existing post, re-renders it, reconciles its media and topics, and records an edit history entry.\n\nController: `FeedsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:44`",
         "tags": [
           "Feeds"
         ],
@@ -685,18 +685,18 @@
                     "comments": [
                       {
                         "content_type": "text",
-                        "created_at": "2026-08-17 22:04:05",
-                        "id": 59781,
+                        "created_at": "2026-08-17 22:38:06",
+                        "id": 59797,
                         "is_sticky": 0,
                         "message": "This is really helpful, thanks for writing it up.",
                         "message_rendered": "<p>Following. I would love to see a worked example of this.</p>",
                         "meta": [],
                         "parent_id": null,
-                        "post_id": "15008",
-                        "reactions_count": "0",
+                        "post_id": "15046",
+                        "reactions_count": "1",
                         "status": "published",
                         "type": "comment",
-                        "updated_at": "2026-08-17 22:04:05",
+                        "updated_at": "2026-08-17 22:39:19",
                         "user_id": "1",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -705,7 +705,7 @@
                           "display_name": "Alex Rivera",
                           "id": "1",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -722,25 +722,25 @@
                           "short_description": "Community builder. Helping members get the most out of the platform.",
                           "status": "active",
                           "total_points": 20385,
-                          "updated_at": "2026-08-17 22:00:34",
+                          "updated_at": "2026-08-17 22:35:43",
                           "user_id": 1,
                           "username": "alex_rivera"
                         }
                       },
                       {
                         "content_type": "text",
-                        "created_at": "2026-08-17 22:04:05",
-                        "id": 59782,
+                        "created_at": "2026-08-17 22:38:06",
+                        "id": 59798,
                         "is_sticky": 0,
                         "message": "Just tried it and it works exactly as described.",
                         "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
                         "meta": [],
                         "parent_id": null,
-                        "post_id": "15008",
+                        "post_id": "15046",
                         "reactions_count": "0",
                         "status": "published",
                         "type": "comment",
-                        "updated_at": "2026-08-17 22:04:05",
+                        "updated_at": "2026-08-17 22:38:06",
                         "user_id": "1",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -749,7 +749,7 @@
                           "display_name": "Alex Rivera",
                           "id": "1",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -766,25 +766,25 @@
                           "short_description": "Community builder. Helping members get the most out of the platform.",
                           "status": "active",
                           "total_points": 20385,
-                          "updated_at": "2026-08-17 22:00:34",
+                          "updated_at": "2026-08-17 22:35:43",
                           "user_id": 1,
                           "username": "alex_rivera"
                         }
                       },
                       {
                         "content_type": "text",
-                        "created_at": "2026-08-17 22:04:05",
-                        "id": 59783,
+                        "created_at": "2026-08-17 22:38:06",
+                        "id": 59799,
                         "is_sticky": 0,
                         "message": "Great point — I ran into the same thing last week.",
                         "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
                         "meta": [],
                         "parent_id": null,
-                        "post_id": "15008",
+                        "post_id": "15046",
                         "reactions_count": "0",
                         "status": "published",
                         "type": "comment",
-                        "updated_at": "2026-08-17 22:04:05",
+                        "updated_at": "2026-08-17 22:38:06",
                         "user_id": "1",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -793,7 +793,7 @@
                           "display_name": "Alex Rivera",
                           "id": "1",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -810,7 +810,7 @@
                           "short_description": "Community builder. Helping members get the most out of the platform.",
                           "status": "active",
                           "total_points": 20385,
-                          "updated_at": "2026-08-17 22:00:34",
+                          "updated_at": "2026-08-17 22:35:43",
                           "user_id": 1,
                           "username": "alex_rivera"
                         }
@@ -818,18 +818,18 @@
                     ],
                     "comments_count": 3,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "default_comment_sort_by": "",
                     "expired_at": null,
                     "featured_image": null,
-                    "has_user_react": true,
-                    "id": 15008,
+                    "has_user_react": false,
+                    "id": 15046,
                     "is_sticky": 0,
                     "message": "Great point — I ran into the same thing last week.",
                     "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                     "meta": {
                       "last_edited": {
-                        "time": "2026-08-17 22:05:20",
+                        "time": "2026-08-17 22:39:19",
                         "user_id": 1
                       }
                     },
@@ -837,17 +837,17 @@
                     "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/welcome-to-the-community",
                     "priority": 0,
                     "privacy": "public",
-                    "reactions_count": 1,
+                    "reactions_count": 2,
                     "scheduled_at": null,
                     "slug": "welcome-to-the-community",
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -878,13 +878,13 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
-                    "space_id": "92",
+                    "space_id": "110",
                     "status": "published",
                     "title": "Welcome to the community",
                     "type": "text",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:19",
                     "user_id": "1",
                     "xprofile": {
                       "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -893,7 +893,7 @@
                       "display_name": "Alex Rivera",
                       "id": "1",
                       "is_verified": 1,
-                      "last_activity": "2026-08-17 22:00:34",
+                      "last_activity": "2026-08-17 22:35:43",
                       "meta": {
                         "badge_slug": "admin",
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -910,7 +910,7 @@
                       "short_description": "Community builder. Helping members get the most out of the platform.",
                       "status": "active",
                       "total_points": 20385,
-                      "updated_at": "2026-08-17 22:00:34",
+                      "updated_at": "2026-08-17 22:35:43",
                       "user_id": 1,
                       "username": "alex_rivera"
                     }

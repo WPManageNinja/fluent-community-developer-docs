@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postSaveCustomProfileFields",
         "summary": "POST Post Save Custom Profile Fields",
-        "description": "Post Save Custom Profile Fields for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:25`",
+        "description": "Replaces the whole custom profile field configuration and keeps the `custom_profile_fields` feature flag in step with the submitted `is_enabled` value.\n\nController: `ProAdminController@saveCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:25`",
         "tags": [
           "Admin"
         ],
@@ -62,18 +62,9 @@
                 }
               },
               "example": {
-                "config": {
-                  "fields": [],
-                  "groups": [
-                    {
-                      "edit_description": "Fill in additional information about yourself.",
-                      "is_system": true,
-                      "label": "Additional Information",
-                      "slug": "_additional_info"
-                    }
-                  ],
-                  "is_enabled": "no"
-                }
+                "fields": [],
+                "groups": [],
+                "is_enabled": "no"
               }
             }
           }

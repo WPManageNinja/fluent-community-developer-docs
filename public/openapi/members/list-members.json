@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listMembers",
         "summary": "GET List Members",
-        "description": "List Members for the FluentCommunity Members API.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:126`",
+        "description": "Returns a paginated directory of community members in the requested sort order, or the trimmed candidate list the mention autocomplete uses.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:126`",
         "tags": [
           "Members"
         ],
@@ -303,7 +303,7 @@
                     "1628": "1",
                     "6764": "1"
                   },
-                  "execution_time": 0.013,
+                  "execution_time": 0.023,
                   "members": {
                     "current_page": 1,
                     "data": [
@@ -313,7 +313,7 @@
                         "created_at": "2024-03-05 16:37:02",
                         "display_name": "Alex Rivera",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

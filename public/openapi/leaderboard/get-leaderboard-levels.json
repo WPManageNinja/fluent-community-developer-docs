@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLeaderboardLevels",
         "summary": "GET Get Leaderboard Levels",
-        "description": "Get Leaderboard Levels for the FluentCommunity Leaderboard API.\n\nController: `LeaderBoardController@getLevels`\nRoute source: `fluent-community-pro/app/Modules/LeaderBoard/Http/leaderboard_api.php:12`",
+        "description": "Returns the leaderboard level definitions with their point thresholds, plus the members excluded from ranking.\n\nController: `LeaderBoardController@getLevels`\nRoute source: `fluent-community-pro/app/Modules/LeaderBoard/Http/leaderboard_api.php:12`",
         "tags": [
           "Leaderboard"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileMemberships",
         "summary": "GET List Profile Memberships",
-        "description": "List Profile Memberships for the FluentCommunity Profile API.\n\nController: `ProfileController@getAllMemberships`\nRoute source: `fluent-community/app/Http/Routes/api.php:92`",
+        "description": "Returns only the space ids a member actively belongs to — the cheap lookup used to decide what to show on their profile.\n\nController: `ProfileController@getAllMemberships`\nRoute source: `fluent-community/app/Http/Routes/api.php:92`",
         "tags": [
           "Profile"
         ],

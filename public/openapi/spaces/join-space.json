@@ -27,7 +27,7 @@
       "post": {
         "operationId": "joinSpace",
         "summary": "POST Join Space",
-        "description": "Join Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@join`\nRoute source: `fluent-community/app/Http/Routes/api.php:13`",
+        "description": "Joins the current user to a space, or lodges a join request when the space requires approval, and returns the resulting membership.\n\nController: `SpaceController@join`\nRoute source: `fluent-community/app/Http/Routes/api.php:13`",
         "tags": [
           "Spaces"
         ],
@@ -135,9 +135,9 @@
                     "display_name": "Noah Fischer",
                     "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
                     "pivot": {
-                      "created_at": "2026-08-17T22:05:20+00:00",
+                      "created_at": "2026-08-17T22:39:20+00:00",
                       "role": "member",
-                      "space_id": "93",
+                      "space_id": "111",
                       "status": "active",
                       "user_id": "13098"
                     },

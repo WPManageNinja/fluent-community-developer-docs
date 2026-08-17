@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getIndex",
         "summary": "GET Get Index",
-        "description": "Get Index for the FluentCommunity Media API.\n\nController: `MediaGalleryController@index`\nRoute source: `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`",
+        "description": "Returns a cursor-paginated page of the photos, videos or audio shared in one space, each item carrying the post and author it came from.\n\nController: `MediaGalleryController@index`\nRoute source: `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`",
         "tags": [
           "Media"
         ],

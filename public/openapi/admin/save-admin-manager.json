@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveAdminManager",
         "summary": "POST Save Admin Manager",
-        "description": "Save Admin Manager for the FluentCommunity Admin API.\n\nController: `ProAdminController@addOrUpdateManager`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:11`",
+        "description": "Grants or replaces the FluentCommunity role set for one WordPress user, creating their community profile if they do not have one yet.\n\nController: `ProAdminController@addOrUpdateManager`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:11`",
         "tags": [
           "Admin"
         ],
@@ -164,12 +164,12 @@
                   "manager": {
                     "ID": 13097,
                     "community_role": {
-                      "created_at": "2026-08-17 22:05:22",
-                      "id": 25065,
+                      "created_at": "2026-08-17 22:39:21",
+                      "id": 25081,
                       "meta_key": "_user_community_roles",
                       "object_id": "13097",
                       "object_type": "user",
-                      "updated_at": "2026-08-17 22:05:22",
+                      "updated_at": "2026-08-17 22:39:21",
                       "value": []
                     },
                     "display_name": "Mei Tanaka",

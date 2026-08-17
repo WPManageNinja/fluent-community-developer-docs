@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createSpaceGroup",
         "summary": "POST Create Space Group",
-        "description": "Create Space Group for the FluentCommunity Spaces API.\n\nController: `SpaceController@createSpaceGroup`\nRoute source: `fluent-community/app/Http/Routes/api.php:33`",
+        "description": "Creates a space group to hold spaces in the sidebar.\n\nController: `SpaceController@createSpaceGroup`\nRoute source: `fluent-community/app/Http/Routes/api.php:33`",
         "tags": [
           "Spaces"
         ],
@@ -66,11 +66,12 @@
                 ]
               },
               "example": {
-                "group": {
-                  "description": "Spaces for everyday community conversation.",
-                  "slug": "community",
-                  "title": "Community"
-                }
+                "description": "Spaces for everyday community conversation.",
+                "settings": {
+                  "always_show_spaces": "yes"
+                },
+                "slug": "community",
+                "title": "Community"
               }
             }
           }
@@ -149,20 +150,20 @@
                 },
                 "example": {
                   "group": {
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "created_by": 1,
-                    "description": "",
-                    "id": 91,
-                    "serial": 14,
+                    "description": "Spaces for everyday community conversation.",
+                    "id": 109,
+                    "serial": 8,
                     "settings": {
                       "always_show_spaces": "yes",
                       "hide_members": "no"
                     },
-                    "slug": "1787004245",
+                    "slug": "community",
                     "status": "active",
-                    "title": "",
+                    "title": "Community",
                     "type": "space_group",
-                    "updated_at": "2026-08-17 22:04:05"
+                    "updated_at": "2026-08-17 22:38:06"
                   },
                   "message": "Just tried it and it works exactly as described."
                 }

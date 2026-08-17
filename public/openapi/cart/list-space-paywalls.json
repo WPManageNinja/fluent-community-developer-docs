@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpacePaywalls",
         "summary": "GET List Space Paywalls",
-        "description": "List Space Paywalls for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@getPaywalls`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:15`",
+        "description": "Returns the published FluentCart products attached to a space as paywalls, each variant carrying its price, thumbnail and a ready-made instant-checkout URL.\n\nController: `PaywallController@getPaywalls`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:15`",
         "tags": [
           "Cart Integration"
         ],

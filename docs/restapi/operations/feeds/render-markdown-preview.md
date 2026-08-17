@@ -1,9 +1,13 @@
 ---
 title: Render Markdown Preview
-description: "Render Markdown Preview for the FluentCommunity Feeds API."
+description: "Renders submitted Markdown to the same sanitised HTML a saved post would produce, without creating anything."
 outline: false
 aside: false
 ---
+
+Renders submitted Markdown to the same sanitised HTML a saved post would produce, without creating anything.
+
+Pass `text`. Adding `with[]=meta` together with a `feed` object also runs the post metadata processing, so link previews and media blocks come back resolved as they would after a save.
 
 ## Endpoint
 

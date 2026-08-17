@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveMenuSettings",
         "summary": "POST Save Menu Settings",
-        "description": "Save Menu Settings for the FluentCommunity Settings API.\n\nController: `SettingController@saveMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:157`",
+        "description": "Replaces the portal navigation configuration, preserving the protected attributes of built-in menu entries.\n\nController: `SettingController@saveMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:157`",
         "tags": [
           "Settings"
         ],
@@ -53,73 +53,71 @@
                 }
               },
               "example": {
-                "settings": {
-                  "menuSettings": {
-                    "afterCommunityLinkGroups": [],
-                    "beforeCommunityMenuItems": [],
-                    "mainMenuItems": [
-                      {
-                        "enabled": "yes",
-                        "is_locked": "yes",
-                        "is_system": "yes",
-                        "link_classes": "fcom_dashboard route_url",
-                        "permalink": "https://yourwebsite.com/portal/",
-                        "shape_svg": "<svg width=\"20\" height=\"18\" viewBox=\"0 0 20 18\" fill=\"none\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10 13.166H10.0075H10Z\" fill=\"currentColor\"/><path d=\"M10 13.166H10.0075\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M16.6666 6.08301V10.2497C16.6666 13.3924 16.6666 14.9637 15.6903 15.94C14.714 16.9163 13.1426 16.9163 9.99992 16.9163C6.8 …",
-                        "slug": "all_feeds",
-                        "title": "Community guidelines refresh"
-                      },
-                      {
-                        "enabled": "yes",
-                        "is_locked": "yes",
-                        "is_system": "yes",
-                        "link_classes": "fcom_spaces route_url",
-                        "permalink": "https://yourwebsite.com/portal/discover/spaces",
-                        "shape_svg": "<svg version=\"1.1\" viewBox=\"0 0 128 128\" xml:space=\"preserve\"><g><path d=\"M64,42c-13.2,0-24,10.8-24,24s10.8,24,24,24s24-10.8,24-24S77.2,42,64,42z M64,82c-8.8,0-16-7.2-16-16s7.2-16,16-16   s16,7.2,16,16S72.8,82,64,82z\"/><path d=\"M64,100.8c-14.9,0-29.2,6.2-39.4,17.1l-2.7,2.9l5.8,5.5l2.7-2.9c8.8-9.4,20.7-14.6,33.6-14.6s24.8,5.2,33.6,14.6l2.7,2.9   l5.8-5.5l-2.7-2.9C93.2,107.1,78.9,100.8,64,100.8z\"/>< …",
-                        "slug": "spaces",
-                        "title": "How we plan our release cycle"
-                      },
-                      {
-                        "enabled": "yes",
-                        "is_locked": "yes",
-                        "is_system": "yes",
-                        "is_unavailable": "no",
-                        "link_classes": "fcom_courses route_url",
-                        "permalink": "https://yourwebsite.com/portal/courses",
-                        "shape_svg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M10.734 5.84746L14.7114 6.9072M9.88139 9.01146L11.8701 9.54132M9.98031 14.9723L10.7758 15.1843C13.0258 15.7838 14.1508 16.0835 15.037 15.5747C15.9233 15.0659 16.2247 13.9473 16.8276 11.71L17.6802 8.54599C18.2831 6.3087 18.5845 5.19006 18.0728 4.30879C17.5611 3.42752 16.4362 3.12778 14.1862 2.52831L13.3907 2.31636C11.1407 1.71688 …",
-                        "slug": "all_courses",
-                        "title": "How we plan our release cycle"
-                      }
-                    ],
-                    "profileDropdownItems": [
-                      {
-                        "enabled": "yes",
-                        "is_locked": "yes",
-                        "is_system": "yes",
-                        "permalink": "#{{user_url}}/spaces",
-                        "shape_svg": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.5 16.5C0.5 14.9087 1.13214 13.3826 2.25736 12.2574C3.38258 11.1321 4.9087 10.5 6.5 10.5C8.0913 10.5 9.61742 11.1321 10.7426 12.2574C11.8679 13.3826 12.5 14.9087 12.5 16.5H11C11 15.3065 10.5259 14.1619 9.68198 13.318C8.83807 12.4741 7.69347 12 6.5 12C5.30653 12 4.16193 12.4741 3.31802 13.318C2 …",
-                        "slug": "my_spaces",
-                        "title": "How we plan our release cycle"
-                      },
-                      {
-                        "enabled": "yes",
-                        "is_locked": "yes",
-                        "is_system": "yes",
-                        "permalink": "https://yourwebsite.com/portal/bookmarks",
-                        "shape_svg": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.75 0.5H11.25C11.4489 0.5 11.6397 0.579018 11.7803 0.71967C11.921 0.860322 12 1.05109 12 1.25V15.6073C12.0001 15.6743 11.9822 15.7402 11.9482 15.7979C11.9142 15.8557 11.8653 15.9033 11.8066 15.9358C11.7479 15.9683 11.6816 15.9844 11.6146 15.9826C11.5476 15.9807 11.4823 15.9609 11.4255 15.9252L …",
-                        "slug": "bookmarks",
-                        "title": "Weekly office hours are back"
-                      },
-                      {
-                        "enabled": "yes",
-                        "is_locked": "yes",
-                        "is_system": "yes",
-                        "permalink": "#{{logout_url}}",
-                        "shape_svg": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.75 15.5C0.551088 15.5 0.360322 15.421 0.21967 15.2803C0.0790178 15.1397 0 14.9489 0 14.75V1.25C0 1.05109 0.0790178 0.860322 0.21967 0.71967C0.360322 0.579018 0.551088 0.5 0.75 0.5H11.25C11.4489 0.5 11.6397 0.579018 11.7803 0.71967C11.921 0.860322 12 1.05109 12 1.25V3.5H10.5V2H1.5V14H10.5V12.5 …",
-                        "slug": "logout",
-                        "title": "Community guidelines refresh"
-                      }
-                    ]
-                  }
+                "menuSettings": {
+                  "afterCommunityLinkGroups": [],
+                  "beforeCommunityMenuItems": [],
+                  "mainMenuItems": [
+                    {
+                      "enabled": "yes",
+                      "is_locked": "yes",
+                      "is_system": "yes",
+                      "link_classes": "fcom_dashboard route_url",
+                      "permalink": "https://yourwebsite.com/portal/",
+                      "shape_svg": "<svg width=\"20\" height=\"18\" viewBox=\"0 0 20 18\" fill=\"none\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10 13.166H10.0075H10Z\" fill=\"currentColor\"/><path d=\"M10 13.166H10.0075\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M16.6666 6.08301V10.2497C16.6666 13.3924 16.6666 14.9637 15.6903 15.94C14.714 16.9163 13.1426 16.9163 9.99992 16.9163C6.8 …",
+                      "slug": "all_feeds",
+                      "title": "Community guidelines refresh"
+                    },
+                    {
+                      "enabled": "yes",
+                      "is_locked": "yes",
+                      "is_system": "yes",
+                      "link_classes": "fcom_spaces route_url",
+                      "permalink": "https://yourwebsite.com/portal/discover/spaces",
+                      "shape_svg": "<svg version=\"1.1\" viewBox=\"0 0 128 128\" xml:space=\"preserve\"><g><path d=\"M64,42c-13.2,0-24,10.8-24,24s10.8,24,24,24s24-10.8,24-24S77.2,42,64,42z M64,82c-8.8,0-16-7.2-16-16s7.2-16,16-16   s16,7.2,16,16S72.8,82,64,82z\"/><path d=\"M64,100.8c-14.9,0-29.2,6.2-39.4,17.1l-2.7,2.9l5.8,5.5l2.7-2.9c8.8-9.4,20.7-14.6,33.6-14.6s24.8,5.2,33.6,14.6l2.7,2.9   l5.8-5.5l-2.7-2.9C93.2,107.1,78.9,100.8,64,100.8z\"/>< …",
+                      "slug": "spaces",
+                      "title": "How we plan our release cycle"
+                    },
+                    {
+                      "enabled": "yes",
+                      "is_locked": "yes",
+                      "is_system": "yes",
+                      "is_unavailable": "no",
+                      "link_classes": "fcom_courses route_url",
+                      "permalink": "https://yourwebsite.com/portal/courses",
+                      "shape_svg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M10.734 5.84746L14.7114 6.9072M9.88139 9.01146L11.8701 9.54132M9.98031 14.9723L10.7758 15.1843C13.0258 15.7838 14.1508 16.0835 15.037 15.5747C15.9233 15.0659 16.2247 13.9473 16.8276 11.71L17.6802 8.54599C18.2831 6.3087 18.5845 5.19006 18.0728 4.30879C17.5611 3.42752 16.4362 3.12778 14.1862 2.52831L13.3907 2.31636C11.1407 1.71688 …",
+                      "slug": "all_courses",
+                      "title": "How we plan our release cycle"
+                    }
+                  ],
+                  "profileDropdownItems": [
+                    {
+                      "enabled": "yes",
+                      "is_locked": "yes",
+                      "is_system": "yes",
+                      "permalink": "#{{user_url}}/spaces",
+                      "shape_svg": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.5 16.5C0.5 14.9087 1.13214 13.3826 2.25736 12.2574C3.38258 11.1321 4.9087 10.5 6.5 10.5C8.0913 10.5 9.61742 11.1321 10.7426 12.2574C11.8679 13.3826 12.5 14.9087 12.5 16.5H11C11 15.3065 10.5259 14.1619 9.68198 13.318C8.83807 12.4741 7.69347 12 6.5 12C5.30653 12 4.16193 12.4741 3.31802 13.318C2 …",
+                      "slug": "my_spaces",
+                      "title": "How we plan our release cycle"
+                    },
+                    {
+                      "enabled": "yes",
+                      "is_locked": "yes",
+                      "is_system": "yes",
+                      "permalink": "https://yourwebsite.com/portal/bookmarks",
+                      "shape_svg": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.75 0.5H11.25C11.4489 0.5 11.6397 0.579018 11.7803 0.71967C11.921 0.860322 12 1.05109 12 1.25V15.6073C12.0001 15.6743 11.9822 15.7402 11.9482 15.7979C11.9142 15.8557 11.8653 15.9033 11.8066 15.9358C11.7479 15.9683 11.6816 15.9844 11.6146 15.9826C11.5476 15.9807 11.4823 15.9609 11.4255 15.9252L …",
+                      "slug": "bookmarks",
+                      "title": "Weekly office hours are back"
+                    },
+                    {
+                      "enabled": "yes",
+                      "is_locked": "yes",
+                      "is_system": "yes",
+                      "permalink": "#{{logout_url}}",
+                      "shape_svg": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.75 15.5C0.551088 15.5 0.360322 15.421 0.21967 15.2803C0.0790178 15.1397 0 14.9489 0 14.75V1.25C0 1.05109 0.0790178 0.860322 0.21967 0.71967C0.360322 0.579018 0.551088 0.5 0.75 0.5H11.25C11.4489 0.5 11.6397 0.579018 11.7803 0.71967C11.921 0.860322 12 1.05109 12 1.25V3.5H10.5V2H1.5V14H10.5V12.5 …",
+                      "slug": "logout",
+                      "title": "Community guidelines refresh"
+                    }
+                  ]
                 }
               }
             }

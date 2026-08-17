@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listBookmarks",
         "summary": "GET List Bookmarks",
-        "description": "List Bookmarks for the FluentCommunity Feeds API.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
+        "description": "Returns a page of the published posts the current user has bookmarked, newest first and transformed for display.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
         "tags": [
           "Feeds"
         ],
@@ -714,7 +714,7 @@
                               "created_at": "2024-03-05 16:37:02",
                               "display_name": "Alex Rivera",
                               "is_verified": 1,
-                              "last_activity": "2026-08-17 22:00:34",
+                              "last_activity": "2026-08-17 22:35:43",
                               "meta": {
                                 "badge_slug": "admin",
                                 "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -805,7 +805,7 @@
                               "created_at": "2024-03-05 16:37:02",
                               "display_name": "Alex Rivera",
                               "is_verified": 1,
-                              "last_activity": "2026-08-17 22:00:34",
+                              "last_activity": "2026-08-17 22:35:43",
                               "meta": {
                                 "badge_slug": "admin",
                                 "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -976,7 +976,7 @@
                               "created_at": "2024-03-05 16:37:02",
                               "display_name": "Alex Rivera",
                               "is_verified": 1,
-                              "last_activity": "2026-08-17 22:00:34",
+                              "last_activity": "2026-08-17 22:35:43",
                               "meta": {
                                 "badge_slug": "admin",
                                 "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -1424,7 +1424,7 @@
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -1452,7 +1452,7 @@
                     "to": 3,
                     "total": 6
                   },
-                  "last_id": 15011
+                  "last_id": 15049
                 }
               }
             }

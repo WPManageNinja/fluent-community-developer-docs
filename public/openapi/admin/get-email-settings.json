@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getEmailSettings",
         "summary": "GET Get Email Settings",
-        "description": "Get Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:103`",
+        "description": "Returns the global email notification settings — digest schedule, sender details and template branding — falling back to the portal logo when no email-specific logo is set.\n\nController: `AdminController@getEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:103`",
         "tags": [
           "Admin"
         ],
@@ -128,7 +128,7 @@
                     "mention_mail": "yes",
                     "reply_my_com_mail": "yes",
                     "reply_to_email": "member@example.com",
-                    "reply_to_name": "Your Company Mei",
+                    "reply_to_name": "Your Company Kenji",
                     "send_from_email": "member@example.com",
                     "send_from_name": "Your Community"
                   }

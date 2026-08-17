@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveWebhook",
         "summary": "POST Save Webhook",
-        "description": "Save Webhook for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:51`",
+        "description": "Creates or updates an inbound webhook that adds or removes the resolved user from a set of spaces and courses when it is called.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:51`",
         "tags": [
           "Admin"
         ],
@@ -84,11 +84,11 @@
               },
               "example": {
                 "course_ids": [
-                  96
+                  114
                 ],
                 "send_wp_welcome_email": "no",
                 "space_ids": [
-                  92
+                  110
                 ],
                 "title": "CRM Sync"
               }
@@ -182,24 +182,24 @@
                 "example": {
                   "message": "Great point — I ran into the same thing last week.",
                   "webhook": {
-                    "created_at": "2026-08-17 22:05:22",
-                    "id": 25064,
-                    "meta_key": "19932c80b30c27b36ac830fe3b2fc09455915aaffe29ab9a62c338993c02d441",
+                    "created_at": "2026-08-17 22:39:21",
+                    "id": 25080,
+                    "meta_key": "4547ccbda00ecfc3fc9d7fe448602ad039c6ea682b880a18f30c101f6b1054f7",
                     "object_type": "webhook",
-                    "updated_at": "2026-08-17 22:05:22",
+                    "updated_at": "2026-08-17 22:39:21",
                     "value": {
                       "course_ids": [
-                        96
+                        114
                       ],
                       "remove_course_ids": [],
                       "remove_space_ids": [],
                       "send_wp_welcome_email": "no",
                       "space_ids": [
-                        92
+                        110
                       ],
                       "title": "CRM Sync"
                     },
-                    "webhook_url": "https://yourwebsite.com/portal/?fcom_action=incoming_webhook&webhook=19932c80b30c27b36ac830fe3b2fc09455915aaffe29ab9a62c338993c02d441"
+                    "webhook_url": "https://yourwebsite.com/portal/?fcom_action=incoming_webhook&webhook=4547ccbda00ecfc3fc9d7fe448602ad039c6ea682b880a18f30c101f6b1054f7"
                   }
                 }
               }

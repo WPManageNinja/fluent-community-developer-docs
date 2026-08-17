@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSettings",
         "summary": "GET Get Settings",
-        "description": "Get Settings for the FluentCommunity Admin API.\n\nController: `PwaController@getSettings`\nRoute source: `fluent-community-pro/app/Modules/Pwa/Http/pwa_api.php:8`",
+        "description": "Returns the Progressive Web App settings — app name, short name, icon source, theme colour and install prompt position.\n\nController: `PwaController@getSettings`\nRoute source: `fluent-community-pro/app/Modules/Pwa/Http/pwa_api.php:8`",
         "tags": [
           "Admin"
         ],

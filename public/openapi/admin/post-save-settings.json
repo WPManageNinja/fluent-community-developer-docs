@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postSaveSettings",
         "summary": "POST Post Save Settings",
-        "description": "Post Save Settings for the FluentCommunity Admin API.\n\nController: `PwaController@saveSettings`\nRoute source: `fluent-community-pro/app/Modules/Pwa/Http/pwa_api.php:9`",
+        "description": "Validates and stores the Progressive Web App settings, marking a custom icon as permanent media and recording its pixel dimensions.\n\nController: `PwaController@saveSettings`\nRoute source: `fluent-community-pro/app/Modules/Pwa/Http/pwa_api.php:9`",
         "tags": [
           "Admin"
         ],
@@ -37,6 +37,74 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "app_name": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "background_color": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "custom_icon": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "icon_sizes": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "icon_source": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "install_dismissible": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "install_entry": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "install_position": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "short_name": {
+                        "type": "string",
+                        "nullable": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "settings": {
+                  "app_name": "",
+                  "background_color": "",
+                  "custom_icon": "",
+                  "icon_sizes": "",
+                  "icon_source": "default",
+                  "install_dismissible": "no",
+                  "install_entry": "yes",
+                  "install_position": "bottom",
+                  "short_name": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",

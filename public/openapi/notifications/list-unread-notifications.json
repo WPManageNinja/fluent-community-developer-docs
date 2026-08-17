@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUnreadNotifications",
         "summary": "GET List Unread Notifications",
-        "description": "List Unread Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
+        "description": "Returns up to 50 unread notifications for the current user with the unread total, for the notification dropdown.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
         "tags": [
           "Notifications"
         ],
@@ -143,10 +143,10 @@
                     {
                       "action": "post_report_added",
                       "content": "This is really helpful, thanks for writing it up.",
-                      "created_at": "2026-08-17 22:04:05",
-                      "feed_id": "15010",
-                      "id": 59552,
-                      "object_id": "59780",
+                      "created_at": "2026-08-17 22:38:06",
+                      "feed_id": "15048",
+                      "id": 59568,
+                      "object_id": "59796",
                       "route": {
                         "name": "space_feed",
                         "params": {
@@ -157,87 +157,89 @@
                       "src_object_type": "report",
                       "src_user_id": null,
                       "title": null,
-                      "updated_at": "2026-08-17 22:04:05",
+                      "updated_at": "2026-08-17 22:38:06",
                       "xprofile": null
                     },
                     {
-                      "action": "post_report_added",
-                      "content": "Office hours run every Thursday. Bring your questions — no topic is too small.",
-                      "created_at": "2026-08-17 21:55:03",
-                      "feed_id": "14953",
-                      "id": 59531,
-                      "object_id": "59760",
+                      "action": "comment/react_added",
+                      "content": "Post a screenshot of your setup. I am always curious how other people organise their work.",
+                      "created_at": "2026-08-17 22:36:58",
+                      "feed_id": "15027",
+                      "id": 59562,
+                      "object_id": "59789",
                       "route": {
                         "name": "space_feed",
                         "params": {
-                          "feed_slug": "second-scratch-post",
+                          "feed_slug": "welcome-to-the-community",
                           "space": "general-discussion"
                         }
                       },
-                      "src_object_type": "report",
-                      "src_user_id": "13098",
+                      "src_object_type": "comment",
+                      "src_user_id": "13096",
                       "title": null,
-                      "updated_at": "2026-08-17 21:56:17",
+                      "updated_at": "2026-08-17 22:36:58",
                       "xprofile": {
-                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
                         "badge": null,
-                        "created_at": "2026-08-17 21:31:53",
-                        "display_name": "Noah Fischer",
+                        "created_at": "2026-08-17 21:31:52",
+                        "display_name": "Mei Tanaka",
                         "is_verified": 0,
                         "last_activity": null,
                         "meta": {
+                          "badge_slug": [],
                           "cover_photo": "",
-                          "short_description_rendered": "<p>Freelancer building sites for small businesses.</p>",
-                          "website": ""
+                          "headline": "Product Designer",
+                          "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                          "website": "https://example.com"
                         },
-                        "permalink": "https://yourwebsite.com/portal/u/noah_fischer_3",
-                        "short_description": "Freelancer building sites for small businesses.",
+                        "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                        "short_description": "Designer and illustrator. I post work-in-progress shots.",
                         "status": "active",
                         "total_points": 0,
-                        "user_id": 13098,
-                        "username": "noah_fischer_3"
+                        "user_id": 13096,
+                        "username": "mei_tanaka_3"
                       }
                     },
                     {
-                      "action": "post_report_added",
-                      "content": "Office hours run every Thursday. Bring your questions — no topic is too small.",
-                      "created_at": "2026-08-17 21:48:13",
-                      "feed_id": "14935",
-                      "id": 59524,
-                      "object_id": "59754",
+                      "action": "feed/react_added",
+                      "content": "A short write-up of what worked, what did not, and what I would do differently next time.",
+                      "created_at": "2026-08-17 22:36:58",
+                      "feed_id": "15027",
+                      "id": 59561,
+                      "object_id": null,
                       "route": {
                         "name": "space_feed",
                         "params": {
-                          "feed_slug": "second-scratch-post",
+                          "feed_slug": "welcome-to-the-community",
                           "space": "general-discussion"
                         }
                       },
-                      "src_object_type": "report",
-                      "src_user_id": "13098",
+                      "src_object_type": "feed",
+                      "src_user_id": "13097",
                       "title": null,
-                      "updated_at": "2026-08-17 21:49:32",
+                      "updated_at": "2026-08-17 22:36:58",
                       "xprofile": {
-                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/noah_fischer_3.png",
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka.png",
                         "badge": null,
                         "created_at": "2026-08-17 21:31:53",
-                        "display_name": "Noah Fischer",
+                        "display_name": "Mei Tanaka",
                         "is_verified": 0,
                         "last_activity": null,
                         "meta": {
                           "cover_photo": "",
-                          "short_description_rendered": "<p>Freelancer building sites for small businesses.</p>",
+                          "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
                           "website": ""
                         },
-                        "permalink": "https://yourwebsite.com/portal/u/noah_fischer_3",
-                        "short_description": "Freelancer building sites for small businesses.",
+                        "permalink": "https://yourwebsite.com/portal/u/mei_tanaka",
+                        "short_description": "Designer and illustrator. I post work-in-progress shots.",
                         "status": "active",
                         "total_points": 0,
-                        "user_id": 13098,
-                        "username": "noah_fischer_3"
+                        "user_id": 13097,
+                        "username": "mei_tanaka"
                       }
                     }
                   ],
-                  "unread_count": 372
+                  "unread_count": 374
                 }
               }
             }

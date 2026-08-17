@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopics",
         "summary": "GET List Topics",
-        "description": "List Topics for the FluentCommunity Admin API.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
+        "description": "Returns the post topics defined for the community, along with every space they can be attached to.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
         "tags": [
           "Admin"
         ],
@@ -288,65 +288,44 @@
                       "updated_at": "2025-09-02 20:06:38"
                     },
                     {
-                      "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
-                      "created_at": "2025-06-06 21:36:54",
+                      "cover_photo": null,
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
-                      "description": "Product announcements, release notes, and roadmap discussion.",
-                      "id": 16,
-                      "logo": "",
-                      "parent_id": "5",
+                      "description": "A place to introduce yourself and meet other members.",
+                      "id": 110,
+                      "logo": null,
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
-                        "can_request_join": "yes",
+                        "can_request_join": "no",
                         "custom_lock_screen": "no",
-                        "default_post_sort_by": "latest",
+                        "default_comment_sort_by": "",
+                        "default_post_sort_by": "",
+                        "disable_layout_style": "no",
                         "disable_post_sort_by": "no",
-                        "document_access": "members_only",
+                        "document_access": "everybody",
                         "document_library": "yes",
-                        "document_upload": "members_only",
+                        "document_upload": "admin_only",
                         "emoji": "",
-                        "hide_members_count": "yes",
+                        "hide_members_count": "no",
                         "layout_style": "timeline",
-                        "links": [
-                          {
-                            "enabled": "yes",
-                            "new_tab": "yes",
-                            "permalink": "https://fluentcart.com/discount-deal",
-                            "privacy": "public",
-                            "slug": "fcom_custom_get_fluentcart_ltd",
-                            "title": "New tutorial: getting started with the API"
-                          },
-                          {
-                            "enabled": "yes",
-                            "new_tab": "yes",
-                            "permalink": "https://docs.fluentcart.com/",
-                            "privacy": "public",
-                            "slug": "fcom_custom_documentation",
-                            "title": "How we plan our release cycle"
-                          },
-                          {
-                            "enabled": "yes",
-                            "new_tab": "yes",
-                            "permalink": "https://fluentcart.com/account/support",
-                            "privacy": "public",
-                            "slug": "fcom_custom_support",
-                            "title": "How we plan our release cycle"
-                          }
-                        ],
-                        "members_page_status": "admin_only",
+                        "links": [],
+                        "media_access": "everybody",
+                        "media_gallery": "yes",
+                        "members_page_status": "members_only",
                         "og_image": "",
-                        "onboard_redirect_url": "",
                         "restricted_post_only": "no",
-                        "shape_svg": "<svg width=\"300\" height=\"300\" viewBox=\"0 0 300 300\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect width=\"300\" height=\"300\" rx=\"30\" fill=\"#00009F\"/>\n<path d=\"M136.561 205.944H47.1367L61.1704 173.491C65.2906 163.963 74.6784 157.795 85.0589 157.795H191.584L184.338 174.551C176.098 193.607 157.322 205.944 136.561 205.944Z\" fill=\"white\"/>\n<path d=\"M210.643 142.439H84.8574L92.1035 125.683C100.344 …",
-                        "show_sidebar": "yes",
-                        "topic_required": "yes"
+                        "shape_svg": "",
+                        "show_paywalls": "no",
+                        "show_sidebar": "no",
+                        "topic_required": "no"
                       },
-                      "slug": "fluent-cart",
+                      "slug": "general-discussion",
                       "status": "published",
-                      "title": "Feature request round-up",
+                      "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2025-10-16 13:59:03"
+                      "updated_at": "2026-08-17 22:38:06"
                     }
                   ],
                   "topics": [
@@ -377,10 +356,10 @@
                     {
                       "admin_only": "no",
                       "description": "News and release notes.",
-                      "id": 1129,
+                      "id": 1133,
                       "slug": "product-updates",
                       "space_ids": [
-                        "92"
+                        "110"
                       ],
                       "title": "Product Updates"
                     }

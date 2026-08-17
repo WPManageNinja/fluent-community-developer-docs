@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSidebarLink",
         "summary": "POST Save Sidebar Link",
-        "description": "Save Sidebar Link for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:54`",
+        "description": "Creates or updates a custom sidebar link inside a space group, including its icon, target and visibility rule.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:54`",
         "tags": [
           "Admin"
         ],
@@ -84,7 +84,7 @@
               },
               "example": {
                 "link": {
-                  "parent_id": 91,
+                  "parent_id": 109,
                   "privacy": "public",
                   "settings": {
                     "emoji": "",
@@ -190,12 +190,12 @@
                 },
                 "example": {
                   "link": {
-                    "created_at": "2026-08-17 22:05:22",
+                    "created_at": "2026-08-17 22:39:21",
                     "created_by": 1,
-                    "id": 99,
-                    "parent_id": 91,
+                    "id": 117,
+                    "parent_id": 109,
                     "privacy": "public",
-                    "serial": 20,
+                    "serial": 3,
                     "settings": {
                       "emoji": "",
                       "membership_ids": [],
@@ -203,11 +203,11 @@
                       "permalink": "https://example.com/docs",
                       "shape_svg": ""
                     },
-                    "slug": "custom_help-centre_1787004322",
+                    "slug": "custom_help-centre_1787006361",
                     "status": "published",
                     "title": "Help Centre",
                     "type": "sidebar_link",
-                    "updated_at": "2026-08-17 22:05:22"
+                    "updated_at": "2026-08-17 22:39:21"
                   },
                   "message": "This is really helpful, thanks for writing it up."
                 }

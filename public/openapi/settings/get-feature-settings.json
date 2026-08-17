@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeatureSettings",
         "summary": "GET Get Feature Settings",
-        "description": "Get Feature Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
+        "description": "Returns the feature flag configuration together with the add-on catalogue and whether each companion plugin is installed.\n\nController: `SettingController@getFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
         "tags": [
           "Settings"
         ],

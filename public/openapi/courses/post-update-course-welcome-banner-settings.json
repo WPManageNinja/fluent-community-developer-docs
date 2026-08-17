@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdateCourseWelcomeBannerSettings",
         "summary": "POST Post Update Course Welcome Banner Settings",
-        "description": "Post Update Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@updateCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:65`",
+        "description": "Stores both course welcome banner variants and pre-renders their Markdown descriptions to HTML.\n\nController: `ProAdminController@updateCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:65`",
         "tags": [
           "Courses"
         ],

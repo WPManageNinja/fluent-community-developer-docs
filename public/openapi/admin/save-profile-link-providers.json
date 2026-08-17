@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveProfileLinkProviders",
         "summary": "POST Save Profile Link Providers",
-        "description": "Save Profile Link Providers for the FluentCommunity Admin API.\n\nController: `AdminController@updateProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:119`",
+        "description": "Records which social link providers are offered on the profile editor, discarding any submitted key that is not a known provider.\n\nController: `AdminController@updateProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:119`",
         "tags": [
           "Admin"
         ],
@@ -53,7 +53,7 @@
                 }
               },
               "example": {
-                "providers": {
+                "configs": {
                   "__truncated__": "13 further keys omitted from this sample",
                   "instagram": {
                     "domain": "https://instagram.com/",

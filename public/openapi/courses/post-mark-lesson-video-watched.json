@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postMarkLessonVideoWatched",
         "summary": "POST Post Mark Lesson Video Watched",
-        "description": "Post Mark Lesson Video Watched for the FluentCommunity Courses API.\n\nController: `CourseController@markLessonVideoWatched`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:16`",
+        "description": "Records that the current user has watched enough of a gated lesson video to be allowed to mark the lesson complete.\n\nController: `CourseController@markLessonVideoWatched`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:16`",
         "tags": [
           "Courses"
         ],

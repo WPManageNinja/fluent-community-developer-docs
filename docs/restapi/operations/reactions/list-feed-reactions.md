@@ -1,9 +1,13 @@
 ---
 title: List Feed Reactions
-description: "List Feed Reactions for the FluentCommunity Reactions API."
+description: "Returns the members who liked a post, with their public profiles, for the reaction list popover."
 outline: false
 aside: false
 ---
+
+Returns the members who liked a post, with their public profiles, for the reaction list popover.
+
+Capped at 100 distinct users with no pagination, so a very popular post shows a truncated list. Only `like` reactions are returned; bookmarks are stored in the same table but excluded.
 
 ## Endpoint
 

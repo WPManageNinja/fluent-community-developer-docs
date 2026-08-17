@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAdminCourses",
         "summary": "GET List Admin Courses",
-        "description": "List Admin Courses for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getCourses`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:22`",
+        "description": "Returns the paginated list of courses the current user may manage, each with its student count and its section and lesson totals.\n\nController: `CourseAdminController@getCourses`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:22`",
         "tags": [
           "Courses"
         ],
@@ -376,10 +376,10 @@
                     "data": [
                       {
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
-                        "created_at": "2026-08-17 22:04:05",
+                        "created_at": "2026-08-17 22:38:06",
                         "created_by": "1",
                         "description": "Everything you need to get productive in your first week.",
-                        "id": 96,
+                        "id": 114,
                         "lessonsCount": 3,
                         "logo": null,
                         "owner": {
@@ -424,14 +424,14 @@
                         "students_count": 2,
                         "title": "Getting Started with the Platform",
                         "type": "course",
-                        "updated_at": "2026-08-17 22:04:05"
+                        "updated_at": "2026-08-17 22:38:06"
                       },
                       {
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
-                        "created_at": "2026-08-17 22:04:05",
+                        "created_at": "2026-08-17 22:38:06",
                         "created_by": "1",
                         "description": "Deeper patterns for teams already using the basics.",
-                        "id": 97,
+                        "id": 115,
                         "lessonsCount": 0,
                         "logo": null,
                         "owner": {
@@ -476,7 +476,7 @@
                         "students_count": 0,
                         "title": "Advanced Workflows",
                         "type": "course",
-                        "updated_at": "2026-08-17 22:04:05"
+                        "updated_at": "2026-08-17 22:38:06"
                       },
                       {
                         "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

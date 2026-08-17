@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMenuSettings",
         "summary": "GET Get Menu Settings",
-        "description": "Get Menu Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:156`",
+        "description": "Returns the portal navigation configuration — the main menu, the profile dropdown, the pre-community items and the custom footer link groups.\n\nController: `SettingController@getMenuSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:156`",
         "tags": [
           "Settings"
         ],

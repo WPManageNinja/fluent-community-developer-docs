@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAdminManagers",
         "summary": "GET List Admin Managers",
-        "description": "List Admin Managers for the FluentCommunity Admin API.\n\nController: `ProAdminController@getManagers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:10`",
+        "description": "Returns the paginated list of members who hold a FluentCommunity management role, with their role set and profile attached.\n\nController: `ProAdminController@getManagers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:10`",
         "tags": [
           "Admin"
         ],

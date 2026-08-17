@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getBuddypressMigrationConfig",
         "summary": "GET Get Buddypress Migration Config",
-        "description": "Get Buddypress Migration Config for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@getMigrationConfig`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:14`",
+        "description": "Returns everything the migration wizard needs before it starts: the BuddyPress groups with their member counts and migrated state, the source data statistics, and any previously saved progress.\n\nController: `BPMigrationController@getMigrationConfig`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:14`",
         "tags": [
           "Migrations"
         ],

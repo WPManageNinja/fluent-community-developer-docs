@@ -5215,12 +5215,20 @@ function buildRoutes(controllerIndex, classIndex, frontendConsumers, models) {
       ? extractErrorResponses(resolved.method, supportMethods)
       : [{ status: 400, message: 'Request error.' }]
     const inferredRequestBodyExample = buildRequestBodyExample(params.body)
-    const requestBodySchema = buildRequestBodySchemaFromParams(params.body)
+    const inferredRequestBodySchema = buildRequestBodySchemaFromParams(params.body)
 
     // A recorded sample beats the statically inferred shape whenever we have one.
     const captured = getCapturedExample(module, operation.slug)
     const responseExample = captured?.response ?? inferredResponseExample
     const requestBodyExample = captured?.request ?? inferredRequestBodyExample
+
+    // Several controllers read their payload in ways the parameter parser cannot
+    // follow — a nested `data` array, a variable key, a helper method. Those routes
+    // ended up documenting no request body at all, even where a real one was
+    // recorded, so fall back to the shape of the recorded request.
+    const requestBodySchema =
+      inferredRequestBodySchema ||
+      (captured?.request ? schemaFromExample(captured.request) : null)
 
     return {
       ...route,
@@ -6911,8 +6919,16 @@ function main() {
   console.log(
     `Endpoint prose: ${describedRoutes}/${routes.length} operations have a hand-written description (${Math.round(
       (describedRoutes / routes.length) * 100,
-    )}%). Add entries to OPERATION_NOTES to raise it.`,
+    )}%).${describedRoutes < routes.length ? ' Add entries to OPERATION_NOTES to raise it.' : ''}`,
   )
+
+  const routeKeys = new Set(routes.flatMap((route) => [`${route.module}/${route.slug}`, route.slug]))
+  const orphanOperationNotes = Object.keys(OPERATION_NOTES).filter((key) => !routeKeys.has(key))
+  if (orphanOperationNotes.length) {
+    console.warn(
+      `  ${orphanOperationNotes.length} OPERATION_NOTES entries match no route: ${orphanOperationNotes.join(', ')}`,
+    )
+  }
 
   const hookTotals = Object.values(hookCoverage).reduce(
     (carry, entry) => ({

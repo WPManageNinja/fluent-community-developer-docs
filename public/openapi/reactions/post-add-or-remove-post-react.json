@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postAddOrRemovePostReact",
         "summary": "POST Post Add Or Remove Post React",
-        "description": "Post Add Or Remove Post React for the FluentCommunity Reactions API.\n\nController: `ReactionController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:76`",
+        "description": "Adds or removes the current user reaction on a post and returns the updated reaction count.\n\nController: `ReactionController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:76`",
         "tags": [
           "Reactions"
         ],
@@ -63,7 +63,7 @@
                 }
               },
               "example": {
-                "reaction_type": "like"
+                "react_type": "like"
               }
             }
           }
@@ -87,8 +87,8 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Just tried it and it works exactly as described.",
-                  "new_count": 1
+                  "message": "This is really helpful, thanks for writing it up.",
+                  "new_count": 2
                 }
               }
             }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchAdminUsers",
         "summary": "GET Search Admin Users",
-        "description": "Search Admin Users for the FluentCommunity Admin API.\n\nController: `ProAdminController@getUsers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:13`",
+        "description": "Searches WordPress users for the admin pickers, returning a paginated list matched on name, login and email.\n\nController: `ProAdminController@getUsers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:13`",
         "tags": [
           "Admin"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileFollowings",
         "summary": "GET List Profile Followings",
-        "description": "List Profile Followings for the FluentCommunity Profile API.\n\nController: `FollowController@getFollowings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:129`",
+        "description": "Returns the paginated list of members this profile follows, each annotated with whether the current user follows them too.\n\nController: `FollowController@getFollowings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:129`",
         "tags": [
           "Profile"
         ],
@@ -300,10 +300,10 @@
                       {
                         "created_at": "2026-01-23 18:22:21",
                         "followed": {
-                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera_8.png",
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/kenji_watanabe_7.png",
                           "badge": null,
                           "created_at": "2024-09-07 18:09:19",
-                          "display_name": "Alex Rivera",
+                          "display_name": "Kenji Watanabe",
                           "follow": "1",
                           "id": "1844",
                           "is_follower": true,
@@ -313,16 +313,16 @@
                             "badge_slug": [],
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
                             "headline": "",
-                            "short_description_rendered": "<p>Community builder. Helping members get the most out of the platform.</p>",
+                            "short_description_rendered": "<p>Data analyst. I like dashboards a little too much.</p>",
                             "website": "https://example.com"
                           },
-                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera_8",
-                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "permalink": "https://yourwebsite.com/portal/u/kenji_watanabe_7",
+                          "short_description": "Data analyst. I like dashboards a little too much.",
                           "status": "active",
                           "total_points": 334,
                           "updated_at": "2026-08-14 04:54:31",
                           "user_id": 1863,
-                          "username": "alex_rivera_8"
+                          "username": "kenji_watanabe_7"
                         },
                         "followed_id": "1863",
                         "follower_id": "1",

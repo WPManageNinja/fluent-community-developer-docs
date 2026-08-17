@@ -1,9 +1,13 @@
 ---
 title: Discover Spaces
-description: "Discover Spaces for the FluentCommunity Spaces API."
+description: "Returns the paginated set of spaces the current user could join or already belongs to, each with its active member count."
 outline: false
 aside: false
 ---
+
+Returns the paginated set of spaces the current user could join or already belongs to, each with its active member count.
+
+Public and private spaces are always listed; secret spaces appear only where the user holds an active membership. Filter with `search` and `type=joined`; sort with `sort_by` set to `alphabetical` (the default), `latest` or `oldest`. Spaces with `hide_members_count` report zero unless the caller may view their members.
 
 ## Endpoint
 

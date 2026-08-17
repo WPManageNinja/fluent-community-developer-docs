@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSidebarMenuHtml",
         "summary": "GET Get Sidebar Menu HTML",
-        "description": "Get Sidebar Menu HTML for the FluentCommunity Options API.\n\nController: `OptionController@getSidebarMenuHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:149`",
+        "description": "Returns the server-rendered sidebar HTML together with the spaces the current user can act in, each carrying its resolved permissions, membership and topics.\n\nController: `OptionController@getSidebarMenuHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:149`",
         "tags": [
           "Options"
         ],
@@ -665,20 +665,20 @@
                     "__truncated__": "15 further keys omitted from this sample",
                     "announcements": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "",
                       "description_rendered": "",
-                      "id": 93,
+                      "id": 111,
                       "logo": null,
                       "membership": {
                         "ID": "1",
                         "pivot": {
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 36457,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 36485,
                           "meta": [],
                           "role": "admin",
-                          "space_id": "93",
+                          "space_id": "111",
                           "status": "active",
                           "updated_at": null,
                           "user_id": "1"
@@ -738,30 +738,30 @@
                       "title": "Announcements",
                       "topics": [],
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
                     "general-discussion": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
                       "description_rendered": "<p>Questions, answers, and troubleshooting help from the community.</p>",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
                       "membership": {
                         "ID": "1",
                         "pivot": {
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 36456,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 36484,
                           "meta": [],
                           "role": "admin",
-                          "space_id": "92",
+                          "space_id": "110",
                           "status": "active",
                           "updated_at": null,
                           "user_id": "1"
                         }
                       },
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "permissions": {
                         "can_add_member": true,
                         "can_comment": true,
@@ -817,16 +817,16 @@
                         {
                           "admin_only": "no",
                           "description": "News and release notes.",
-                          "id": 1129,
+                          "id": 1133,
                           "slug": "product-updates",
                           "space_ids": [
-                            "92"
+                            "110"
                           ],
                           "title": "Product Updates"
                         }
                       ],
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     }
                   },
                   "sidebar_html": "<div id=\"fcom_sidebar_wrap\" class=\"fcom_sidebar_wrap\">\n            <nav aria-label=\"Main Sidebar Home menu\">\n            <ul class=\"fcom_sm_only fcom_general_menu fcom_home_link\">\n                            <li class=\"fcom_menu_item_all_feeds\">\n                        <a aria-label=\"Go to Feed page\"\n           data-fcom-tip=\"Feed\"\n           href=\"https://yourwebsite.com/portal/\"class=\"fcom_menu_ …"

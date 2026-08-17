@@ -27,7 +27,7 @@
       "post": {
         "operationId": "batchFetchFeeds",
         "summary": "POST Batch Fetch Feeds",
-        "description": "Batch Fetch Feeds for the FluentCommunity Feeds API.\n\nController: `FeedsController@batchFetch`\nRoute source: `fluent-community/app/Http/Routes/api.php:66`",
+        "description": "Returns the full transformed payload for a list of post ids in one request, for refreshing items a ticker call flagged as changed.\n\nController: `FeedsController@batchFetch`\nRoute source: `fluent-community/app/Http/Routes/api.php:66`",
         "tags": [
           "Feeds"
         ],
@@ -54,8 +54,8 @@
               },
               "example": {
                 "feed_ids": [
-                  15008,
-                  15009
+                  15046,
+                  15047
                 ]
               }
             }
@@ -77,9 +77,6 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "bookmarked": {
-                            "type": "boolean"
-                          },
                           "comments": {
                             "type": "array",
                             "items": {
@@ -263,9 +260,6 @@
                           "featured_image": {
                             "type": "string",
                             "nullable": true
-                          },
-                          "has_user_react": {
-                            "type": "boolean"
                           },
                           "id": {
                             "type": "integer"
@@ -646,22 +640,21 @@
                   "count": 2,
                   "feeds": [
                     {
-                      "bookmarked": false,
                       "comments": [
                         {
                           "content_type": "text",
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 59781,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 59797,
                           "is_sticky": 0,
                           "message": "This is really helpful, thanks for writing it up.",
                           "message_rendered": "<p>Following. I would love to see a worked example of this.</p>",
                           "meta": [],
                           "parent_id": null,
-                          "post_id": "15008",
-                          "reactions_count": "0",
+                          "post_id": "15046",
+                          "reactions_count": "1",
                           "status": "published",
                           "type": "comment",
-                          "updated_at": "2026-08-17 22:04:05",
+                          "updated_at": "2026-08-17 22:39:19",
                           "user_id": "1",
                           "xprofile": {
                             "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -669,7 +662,7 @@
                             "created_at": "2024-03-05 16:37:02",
                             "display_name": "Alex Rivera",
                             "is_verified": 1,
-                            "last_activity": "2026-08-17 22:00:34",
+                            "last_activity": "2026-08-17 22:35:43",
                             "meta": {
                               "badge_slug": "admin",
                               "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -692,18 +685,18 @@
                         },
                         {
                           "content_type": "text",
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 59782,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 59798,
                           "is_sticky": 0,
                           "message": "Just tried it and it works exactly as described.",
                           "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
                           "meta": [],
                           "parent_id": null,
-                          "post_id": "15008",
+                          "post_id": "15046",
                           "reactions_count": "0",
                           "status": "published",
                           "type": "comment",
-                          "updated_at": "2026-08-17 22:04:05",
+                          "updated_at": "2026-08-17 22:38:06",
                           "user_id": "1",
                           "xprofile": {
                             "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -711,7 +704,7 @@
                             "created_at": "2024-03-05 16:37:02",
                             "display_name": "Alex Rivera",
                             "is_verified": 1,
-                            "last_activity": "2026-08-17 22:00:34",
+                            "last_activity": "2026-08-17 22:35:43",
                             "meta": {
                               "badge_slug": "admin",
                               "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -734,18 +727,18 @@
                         },
                         {
                           "content_type": "text",
-                          "created_at": "2026-08-17 22:04:05",
-                          "id": 59783,
+                          "created_at": "2026-08-17 22:38:06",
+                          "id": 59799,
                           "is_sticky": 0,
                           "message": "Great point — I ran into the same thing last week.",
                           "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
                           "meta": [],
                           "parent_id": null,
-                          "post_id": "15008",
+                          "post_id": "15046",
                           "reactions_count": "0",
                           "status": "published",
                           "type": "comment",
-                          "updated_at": "2026-08-17 22:04:05",
+                          "updated_at": "2026-08-17 22:38:06",
                           "user_id": "1",
                           "xprofile": {
                             "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -753,7 +746,7 @@
                             "created_at": "2024-03-05 16:37:02",
                             "display_name": "Alex Rivera",
                             "is_verified": 1,
-                            "last_activity": "2026-08-17 22:00:34",
+                            "last_activity": "2026-08-17 22:35:43",
                             "meta": {
                               "badge_slug": "admin",
                               "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -777,18 +770,17 @@
                       ],
                       "comments_count": 3,
                       "content_type": "text",
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "default_comment_sort_by": "",
                       "expired_at": null,
                       "featured_image": null,
-                      "has_user_react": true,
-                      "id": 15008,
+                      "id": 15046,
                       "is_sticky": 0,
                       "message": "Great point — I ran into the same thing last week.",
                       "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                       "meta": {
                         "last_edited": {
-                          "time": "2026-08-17 22:05:20",
+                          "time": "2026-08-17 22:39:19",
                           "user_id": 1
                         }
                       },
@@ -798,28 +790,45 @@
                       "privacy": "public",
                       "reactions": [
                         {
-                          "created_at": "2026-08-17 22:05:20",
-                          "id": 102059,
-                          "object_id": "15008",
+                          "created_at": "2026-08-17 22:39:19",
+                          "id": 102067,
+                          "object_id": "15046",
                           "object_type": "feed",
                           "parent_id": null,
                           "type": "like",
-                          "updated_at": "2026-08-17 22:05:20",
-                          "user_id": "1",
+                          "updated_at": "2026-08-17 22:39:19",
+                          "user_id": "13096",
                           "xprofile": {
                             "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
                             "badge": null,
-                            "display_name": "Omar Haddad",
+                            "display_name": "Ivan Petrov",
                             "permalink": "https://yourwebsite.com/portal/u/",
-                            "user_id": 1
+                            "user_id": 13096
+                          }
+                        },
+                        {
+                          "created_at": "2026-08-17 22:39:19",
+                          "id": 102068,
+                          "object_id": "15046",
+                          "object_type": "feed",
+                          "parent_id": null,
+                          "type": "like",
+                          "updated_at": "2026-08-17 22:39:19",
+                          "user_id": "13097",
+                          "xprofile": {
+                            "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                            "badge": null,
+                            "display_name": "Aisha Bello",
+                            "permalink": "https://yourwebsite.com/portal/u/",
+                            "user_id": 13097
                           }
                         }
                       ],
-                      "reactions_count": 1,
+                      "reactions_count": 2,
                       "scheduled_at": null,
                       "slug": "welcome-to-the-community",
                       "space": {
-                        "id": 92,
+                        "id": 110,
                         "settings": {
                           "can_request_join": "no",
                           "custom_lock_screen": "no",
@@ -848,12 +857,12 @@
                         "title": "General Discussion",
                         "type": "community"
                       },
-                      "space_id": "92",
+                      "space_id": "110",
                       "status": "published",
                       "terms": [],
                       "title": "Welcome to the community",
                       "type": "text",
-                      "updated_at": "2026-08-17 22:05:20",
+                      "updated_at": "2026-08-17 22:39:19",
                       "user_id": "1",
                       "xprofile": {
                         "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -861,7 +870,7 @@
                         "created_at": "2024-03-05 16:37:02",
                         "display_name": "Alex Rivera",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -886,11 +895,11 @@
                       "comments": [],
                       "comments_count": 0,
                       "content_type": "text",
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "default_comment_sort_by": "",
                       "expired_at": null,
                       "featured_image": null,
-                      "id": 15009,
+                      "id": 15047,
                       "is_sticky": 0,
                       "message": "Following. I would love to see a worked example of this.",
                       "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
@@ -906,7 +915,7 @@
                       "scheduled_at": null,
                       "slug": "scratch-post",
                       "space": {
-                        "id": 92,
+                        "id": 110,
                         "settings": {
                           "can_request_join": "no",
                           "custom_lock_screen": "no",
@@ -935,12 +944,12 @@
                         "title": "General Discussion",
                         "type": "community"
                       },
-                      "space_id": "92",
+                      "space_id": "110",
                       "status": "published",
                       "terms": [],
                       "title": "Roadmap update",
                       "type": "text",
-                      "updated_at": "2026-08-17 22:04:05",
+                      "updated_at": "2026-08-17 22:38:06",
                       "user_id": "1",
                       "xprofile": {
                         "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
@@ -948,7 +957,7 @@
                         "created_at": "2024-03-05 16:37:02",
                         "display_name": "Alex Rivera",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

@@ -1,9 +1,11 @@
 ---
 title: Get Menu Items
-description: "Get Menu Items for the FluentCommunity Options API."
+description: "Returns the sidebar menu groups on their own, for refreshing navigation without refetching the full bootstrap payload."
 outline: false
 aside: false
 ---
+
+Returns the sidebar menu groups on their own, for refreshing navigation without refetching the full bootstrap payload.
 
 ## Endpoint
 

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveEmailSettings",
         "summary": "POST Save Email Settings",
-        "description": "Save Email Settings for the FluentCommunity Admin API.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:104`",
+        "description": "Merges the submitted email notification settings over the stored ones and saves the result.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:104`",
         "tags": [
           "Admin"
         ],
@@ -69,7 +69,7 @@
                   "mention_mail": "yes",
                   "reply_my_com_mail": "yes",
                   "reply_to_email": "member@example.com",
-                  "reply_to_name": "Your Company Mei",
+                  "reply_to_name": "Your Company Kenji",
                   "send_from_email": "member@example.com",
                   "send_from_name": "Your Community"
                 },
@@ -86,7 +86,7 @@
                   "mention_mail": "yes",
                   "reply_my_com_mail": "yes",
                   "reply_to_email": "member@example.com",
-                  "reply_to_name": "Your Company Mei",
+                  "reply_to_name": "Your Company Kenji",
                   "send_from_email": "member@example.com",
                   "send_from_name": "Your Community"
                 }
@@ -184,7 +184,7 @@
                     "mention_mail": "yes",
                     "reply_my_com_mail": "yes",
                     "reply_to_email": "member@example.com",
-                    "reply_to_name": "Your Company Mei",
+                    "reply_to_name": "Your Company Kenji",
                     "send_from_email": "member@example.com",
                     "send_from_name": "Your Community"
                   },

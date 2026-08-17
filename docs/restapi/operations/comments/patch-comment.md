@@ -1,9 +1,13 @@
 ---
 title: Patch Comment
-description: "Patch Comment for the FluentCommunity Comments API."
+description: "Pins or unpins a top-level comment so it sorts above the rest of the thread."
 outline: false
 aside: false
 ---
+
+Pins or unpins a top-level comment so it sorts above the rest of the thread.
+
+`is_sticky` is the only field accepted. Pinning first clears the sticky flag from every other comment on the same post, so a post can only ever have one pinned comment. Replies cannot be pinned.
 
 ## Endpoint
 
@@ -13,6 +17,8 @@ aside: false
 - **Controller:** `CommentsController@patchComment`
 - **Route source:** `fluent-community/app/Http/Routes/api.php:55`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
+
+- Requires a community moderator or community admin, either globally or within the post space.
 
 ::: tip Live sample
 The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.

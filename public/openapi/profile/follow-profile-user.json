@@ -27,7 +27,7 @@
       "post": {
         "operationId": "followProfileUser",
         "summary": "POST Follow Profile User",
-        "description": "Follow Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@follow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:131`",
+        "description": "Creates a follow relationship from the current user to the named member.\n\nController: `FollowController@follow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:131`",
         "tags": [
           "Profile"
         ],
@@ -167,12 +167,12 @@
                 },
                 "example": {
                   "follow": {
-                    "created_at": "2026-08-17 22:05:20",
+                    "created_at": "2026-08-17 22:39:20",
                     "followed_id": 13097,
                     "follower_id": 13096,
-                    "id": 1728,
+                    "id": 1732,
                     "level": 1,
-                    "updated_at": "2026-08-17 22:05:20"
+                    "updated_at": "2026-08-17 22:39:20"
                   },
                   "message": "Great point — I ran into the same thing last week.",
                   "xprofile": {

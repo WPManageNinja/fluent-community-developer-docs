@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveTopics",
         "summary": "POST Save Topics",
-        "description": "Save Topics for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:43`",
+        "description": "Creates a topic or updates an existing one, and reconciles which spaces the topic is available in.\n\nController: `ProAdminController@saveTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:43`",
         "tags": [
           "Admin"
         ],
@@ -72,7 +72,7 @@
                 "description": "News and release notes.",
                 "slug": "product-updates",
                 "space_ids": [
-                  92
+                  110
                 ],
                 "title": "Product Updates"
               }
@@ -140,16 +140,16 @@
                 "example": {
                   "message": "Great point — I ran into the same thing last week.",
                   "topic": {
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "description": "News and release notes.",
-                    "id": 1129,
+                    "id": 1133,
                     "settings": {
                       "admin_only": "no"
                     },
                     "slug": "product-updates",
                     "taxonomy_name": "post_topic",
                     "title": "Product Updates",
-                    "updated_at": "2026-08-17 22:04:05"
+                    "updated_at": "2026-08-17 22:38:06"
                   }
                 }
               }

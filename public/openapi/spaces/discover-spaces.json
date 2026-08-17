@@ -27,7 +27,7 @@
       "get": {
         "operationId": "discoverSpaces",
         "summary": "GET Discover Spaces",
-        "description": "Discover Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@discover`\nRoute source: `fluent-community/app/Http/Routes/api.php:30`",
+        "description": "Returns the paginated set of spaces the current user could join or already belongs to, each with its active member count.\n\nController: `SpaceController@discover`\nRoute source: `fluent-community/app/Http/Routes/api.php:30`",
         "tags": [
           "Spaces"
         ],
@@ -387,7 +387,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "execution_time": 0.054,
+                  "execution_time": 0.053,
                   "spaces": {
                     "current_page": 1,
                     "data": [

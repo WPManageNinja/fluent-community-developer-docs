@@ -27,7 +27,7 @@
       "post": {
         "operationId": "markNotificationsReadByFeed",
         "summary": "POST Mark Notifications Read By Feed",
-        "description": "Mark Notifications Read By Feed for the FluentCommunity Notifications API.\n\nController: `NotificationsController@markAsReadByFeedId`\nRoute source: `fluent-community/app/Http/Routes/api.php:134`",
+        "description": "Marks every notification about one post read for the current user and returns the new unread count together with the remaining unread post ids.\n\nController: `NotificationsController@markAsReadByFeedId`\nRoute source: `fluent-community/app/Http/Routes/api.php:134`",
         "tags": [
           "Notifications"
         ],
@@ -70,9 +70,9 @@
                 },
                 "example": {
                   "unread_feed_ids": [
-                    "15009",
-                    "15011",
-                    "15012"
+                    "15047",
+                    "15049",
+                    "15050"
                   ],
                   "unread_notification_count": 3
                 }

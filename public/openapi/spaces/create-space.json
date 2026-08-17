@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createSpace",
         "summary": "POST Create Space",
-        "description": "Create Space for the FluentCommunity Spaces API.\n\nController: `SpaceController@create`\nRoute source: `fluent-community/app/Http/Routes/api.php:9`",
+        "description": "Creates a space, makes the caller its first admin, and attaches the submitted cover photo, logo and topics.\n\nController: `SpaceController@create`\nRoute source: `fluent-community/app/Http/Routes/api.php:9`",
         "tags": [
           "Spaces"
         ],
@@ -88,7 +88,7 @@
               "example": {
                 "space": {
                   "description": "A place to introduce yourself and meet other members.",
-                  "parent_id": 91,
+                  "parent_id": 109,
                   "privacy": "public",
                   "settings": {
                     "can_create_post": "all",
@@ -275,11 +275,11 @@
                 "example": {
                   "message": "Great point — I ran into the same thing last week.",
                   "space": {
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "created_by": 1,
                     "description": "A place to introduce yourself and meet other members.",
-                    "id": 92,
-                    "parent_id": 91,
+                    "id": 110,
+                    "parent_id": 109,
                     "privacy": "public",
                     "serial": 1,
                     "settings": {
@@ -310,7 +310,7 @@
                     "slug": "general-discussion",
                     "title": "General Discussion",
                     "type": "community",
-                    "updated_at": "2026-08-17 22:04:05"
+                    "updated_at": "2026-08-17 22:38:06"
                   }
                 }
               }

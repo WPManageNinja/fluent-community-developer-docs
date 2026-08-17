@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveLicenseKey",
         "summary": "POST Save License Key",
-        "description": "Save License Key for the FluentCommunity Admin API.\n\nController: `LicenseController@saveLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:18`",
+        "description": "Activates a Pro licence key against the remote licensing service and stores the returned licence data.\n\nController: `LicenseController@saveLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:18`",
         "tags": [
           "Admin"
         ],

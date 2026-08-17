@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceBySlug",
         "summary": "PUT Update Space By Slug",
-        "description": "Update Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@patchBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:11`",
+        "description": "Updates a space record and its settings, and returns a redirect URL when the change altered its slug.\n\nController: `SpaceController@patchBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:11`",
         "tags": [
           "Spaces"
         ],
@@ -87,7 +87,7 @@
                 }
               },
               "example": {
-                "space": {
+                "data": {
                   "description": "A place to introduce yourself and meet other members.",
                   "privacy": "public",
                   "settings": {
@@ -103,7 +103,6 @@
                     "restricted_post_only": "no",
                     "shape_svg": ""
                   },
-                  "slug": "general-discussion",
                   "title": "General Discussion"
                 }
               }

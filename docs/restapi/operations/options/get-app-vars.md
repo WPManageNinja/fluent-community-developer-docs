@@ -1,9 +1,13 @@
 ---
 title: Get App Vars
-description: "Get App Vars for the FluentCommunity Options API."
+description: "Returns the bootstrap payload the portal SPA needs — current user, permissions, feature flags, branding and route configuration — together with the sidebar menu groups."
 outline: false
 aside: false
 ---
+
+Returns the bootstrap payload the portal SPA needs — current user, permissions, feature flags, branding and route configuration — together with the sidebar menu groups.
+
+The `rest` block is deliberately stripped, because the client already holds its own REST configuration. Content varies by caller: a signed-out visitor gets a much smaller payload than a community admin.
 
 ## Endpoint
 

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateCourseQuizResult",
         "summary": "POST Update Course Quiz Result",
-        "description": "Update Course Quiz Result for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@updateQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:14`",
+        "description": "Overrides the pass or fail grade recorded against one quiz attempt.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@updateQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:14`",
         "tags": [
           "Courses"
         ],
@@ -37,6 +37,26 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "nullable": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "status": "passed"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -147,7 +167,7 @@
                   "message": "Following. I would love to see a worked example of this.",
                   "result": {
                     "content_type": "quiz",
-                    "id": 59785,
+                    "id": 59801,
                     "message": {
                       "q1": {
                         "is_correct": true,
@@ -166,12 +186,12 @@
                       "correct_answers": 2,
                       "total_questions": 2
                     },
-                    "parent_id": "96",
-                    "post_id": "15026",
+                    "parent_id": "114",
+                    "post_id": "15064",
                     "score": "100",
                     "status": "passed",
                     "type": "quiz",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user_id": "13098"
                   }
                 }

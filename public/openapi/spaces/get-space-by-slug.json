@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceBySlug",
         "summary": "GET Get Space By Slug",
-        "description": "Get Space By Slug for the FluentCommunity Spaces API.\n\nController: `SpaceController@getBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:10`",
+        "description": "Returns one space with its settings, topics, the current user membership and the permissions they hold inside it.\n\nController: `SpaceController@getBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:10`",
         "tags": [
           "Spaces"
         ],
@@ -418,7 +418,7 @@
                 "example": {
                   "space": {
                     "cover_photo": null,
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "created_by": "1",
                     "description": "A place to introduce yourself and meet other members.",
                     "description_rendered": "<p>Questions, answers, and troubleshooting help from the community.</p>",
@@ -442,16 +442,16 @@
                         "title": "Share your workflow setup"
                       }
                     ],
-                    "id": 92,
+                    "id": 110,
                     "logo": null,
                     "membership": {
                       "ID": 1,
                       "display_name": "Lucas Moreau",
                       "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau.png",
                       "pivot": {
-                        "created_at": "2026-08-17T22:04:05+00:00",
+                        "created_at": "2026-08-17T22:38:06+00:00",
                         "role": "admin",
-                        "space_id": "92",
+                        "space_id": "110",
                         "status": "active",
                         "user_id": "1"
                       },
@@ -462,7 +462,7 @@
                       "user_status": "0",
                       "user_url": "https://example.com"
                     },
-                    "parent_id": "91",
+                    "parent_id": "109",
                     "permissions": {
                       "can_add_member": true,
                       "can_comment": true,
@@ -519,16 +519,16 @@
                       {
                         "admin_only": "no",
                         "description": "News and release notes.",
-                        "id": 1129,
+                        "id": 1133,
                         "slug": "product-updates",
                         "space_ids": [
-                          "92"
+                          "110"
                         ],
                         "title": "Product Updates"
                       }
                     ],
                     "type": "community",
-                    "updated_at": "2026-08-17 22:04:05"
+                    "updated_at": "2026-08-17 22:38:06"
                   }
                 }
               }

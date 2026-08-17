@@ -1,9 +1,13 @@
 ---
 title: Batch Fetch Feeds
-description: "Batch Fetch Feeds for the FluentCommunity Feeds API."
+description: "Returns the full transformed payload for a list of post ids in one request, for refreshing items a ticker call flagged as changed."
 outline: false
 aside: false
 ---
+
+Returns the full transformed payload for a list of post ids in one request, for refreshing items a ticker call flagged as changed.
+
+Send `feed_ids`; only the first 20 are honoured and the rest are dropped silently. Only published posts the caller may read come back, so the returned count can be lower than the number requested.
 
 ## Endpoint
 

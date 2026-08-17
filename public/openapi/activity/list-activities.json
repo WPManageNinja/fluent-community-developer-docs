@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listActivities",
         "summary": "GET List Activities",
-        "description": "List Activities for the FluentCommunity Activity API.\n\nController: `ActivityController@getActivities`\nRoute source: `fluent-community/app/Http/Routes/api.php:139`",
+        "description": "Returns the most recent post-published and comment-added events, collapsed to one entry per post per action, with a pre-rendered message and a portal route for each.\n\nController: `ActivityController@getActivities`\nRoute source: `fluent-community/app/Http/Routes/api.php:139`",
         "tags": [
           "Activity"
         ],
@@ -402,7 +402,7 @@
                     "current_page": 1,
                     "data": [
                       {
-                        "id": 72404,
+                        "id": 72420,
                         "message": "Post a screenshot of your setup. I am always curious how other people organise their work.",
                         "route": {
                           "name": "space_feed",
@@ -411,17 +411,17 @@
                             "space": "general-discussion"
                           },
                           "query": {
-                            "comment_id": "59783"
+                            "comment_id": "59799"
                           }
                         },
-                        "updated_at": "2026-08-17 22:04:05",
+                        "updated_at": "2026-08-17 22:38:06",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
                           "badge": null,
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -443,7 +443,7 @@
                         }
                       },
                       {
-                        "id": 72401,
+                        "id": 72417,
                         "message": "A step-by-step walkthrough covering authentication, pagination, and error handling.",
                         "route": {
                           "name": "space_feed",
@@ -452,14 +452,14 @@
                             "space": "general-discussion"
                           }
                         },
-                        "updated_at": "2026-08-17 22:04:05",
+                        "updated_at": "2026-08-17 22:38:06",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
                           "badge": null,
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -481,7 +481,7 @@
                         }
                       },
                       {
-                        "id": 72400,
+                        "id": 72416,
                         "message": "A short write-up of what worked, what did not, and what I would do differently next time.",
                         "route": {
                           "name": "space_feed",
@@ -490,14 +490,14 @@
                             "space": "general-discussion"
                           }
                         },
-                        "updated_at": "2026-08-17 22:04:05",
+                        "updated_at": "2026-08-17 22:38:06",
                         "xprofile": {
                           "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
                           "badge": null,
                           "created_at": "2024-03-05 16:37:02",
                           "display_name": "Alex Rivera",
                           "is_verified": 1,
-                          "last_activity": "2026-08-17 22:00:34",
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
                             "badge_slug": "admin",
                             "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -536,7 +536,7 @@
                         "created_at": "2024-03-05 16:37:02",
                         "display_name": "Alex Rivera",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -568,7 +568,7 @@
                         "created_at": "2024-03-05 16:37:02",
                         "display_name": "Alex Rivera",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
@@ -600,7 +600,7 @@
                         "created_at": "2024-03-05 16:37:02",
                         "display_name": "Alex Rivera",
                         "is_verified": 1,
-                        "last_activity": "2026-08-17 22:00:34",
+                        "last_activity": "2026-08-17 22:35:43",
                         "meta": {
                           "badge_slug": "admin",
                           "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",

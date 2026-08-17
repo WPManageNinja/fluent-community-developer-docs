@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createCourseSection",
         "summary": "POST Create Course Section",
-        "description": "Create Course Section for the FluentCommunity Courses API.\n\nController: `CourseAdminController@createSection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:44`",
+        "description": "Adds a published section to the end of a course outline.\n\nController: `CourseAdminController@createSection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:44`",
         "tags": [
           "Courses"
         ],
@@ -146,19 +146,19 @@
                 "example": {
                   "message": "Just tried it and it works exactly as described.",
                   "section": {
-                    "created_at": "2026-08-17 22:04:05",
-                    "id": 15013,
+                    "created_at": "2026-08-17 22:38:06",
+                    "id": 15051,
                     "lessons": [],
                     "meta": {
                       "preview_data": null
                     },
                     "priority": 1,
-                    "slug": "getting-started-1787004245",
-                    "space_id": "96",
+                    "slug": "getting-started-1787006286",
+                    "space_id": "114",
                     "status": "published",
                     "title": "Getting Started",
                     "type": "course_section",
-                    "updated_at": "2026-08-17 22:04:05",
+                    "updated_at": "2026-08-17 22:38:06",
                     "user_id": 1
                   }
                 }

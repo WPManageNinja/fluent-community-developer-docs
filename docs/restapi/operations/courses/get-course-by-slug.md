@@ -1,9 +1,13 @@
 ---
 title: Get Course By Slug
-description: "Get Course By Slug for the FluentCommunity Courses API."
+description: "Returns one course by slug with everything `get-course` returns, plus the instructor block — the creator profile, their total course count and optionally their total student count."
 outline: false
 aside: false
 ---
+
+Returns one course by slug with everything `get-course` returns, plus the instructor block — the creator profile, their total course count and optionally their total student count.
+
+The instructor block is omitted when the course has `hide_instructor_view` set, and the student total is only calculated when `show_instructor_students_count` is on. As with the id variant, pass `intended_lesson_slug` to have that one lesson body rendered eagerly.
 
 ## Endpoint
 

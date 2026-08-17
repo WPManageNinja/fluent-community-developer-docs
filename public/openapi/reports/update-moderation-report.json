@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateModerationReport",
         "summary": "PUT Update Moderation Report",
-        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
+        "description": "Resolves a moderation report by setting its status, and publishes or unpublishes the reported content to match.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
         "tags": [
           "Reports"
         ],
@@ -432,10 +432,10 @@
                   "content": {
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15010,
+                    "id": 15048,
                     "is_sticky": 0,
                     "message": "Great point — I ran into the same thing last week.",
                     "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
@@ -455,12 +455,12 @@
                     "slug": "second-scratch-post",
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -497,31 +497,31 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:05:20"
+                      "updated_at": "2026-08-17 22:39:20"
                     },
-                    "space_id": "92",
+                    "space_id": "110",
                     "status": "unpublished",
                     "title": "Community poll results",
                     "type": "text",
-                    "updated_at": "2026-08-17 22:05:22",
+                    "updated_at": "2026-08-17 22:39:21",
                     "user_id": "13096"
                   },
                   "message": "Just tried it and it works exactly as described.",
                   "report": {
                     "content_type": "post",
-                    "created_at": "2026-08-17 22:05:20",
+                    "created_at": "2026-08-17 22:39:20",
                     "explanation": "This post looks like spam.",
-                    "id": 59784,
+                    "id": 59800,
                     "meta": {
                       "updated_by": 1
                     },
                     "parent_id": null,
-                    "post_id": "15010",
+                    "post_id": "15048",
                     "reason": "spam",
                     "reports_count": "2",
                     "status": "pending",
                     "type": "report",
-                    "updated_at": "2026-08-17 22:05:22",
+                    "updated_at": "2026-08-17 22:39:21",
                     "user_id": "13098"
                   }
                 }

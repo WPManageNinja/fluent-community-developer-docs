@@ -27,7 +27,7 @@
       "put": {
         "operationId": "patchProfile",
         "summary": "PUT Patch Profile",
-        "description": "Patch Profile for the FluentCommunity Profile API.\n\nController: `ProfileController@patchProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:88`",
+        "description": "Applies a targeted profile change — swapping the avatar or cover photo, or deactivating the account.\n\nController: `ProfileController@patchProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:88`",
         "tags": [
           "Profile"
         ],

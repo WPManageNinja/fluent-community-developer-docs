@@ -27,7 +27,7 @@
       "put": {
         "operationId": "copyCourseSection",
         "summary": "PUT Copy Course Section",
-        "description": "Copy Course Section for the FluentCommunity Courses API.\n\nController: `CourseAdminController@copySection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:54`",
+        "description": "Copies a section, its lessons and their attached documents from one course into another, appended to the end of the destination outline.\n\nController: `CourseAdminController@copySection`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:54`",
         "tags": [
           "Courses"
         ],
@@ -63,8 +63,8 @@
                 }
               },
               "example": {
-                "from_course_id": 96,
-                "section_id": 15013
+                "from_course_id": 114,
+                "section_id": 15051
               }
             }
           }
@@ -344,19 +344,19 @@
                   "section": {
                     "comments_count": 0,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:05:20",
+                    "created_at": "2026-08-17 22:39:20",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15019,
+                    "id": 15057,
                     "is_sticky": "0",
                     "lessons": [
                       {
                         "comments_count": 0,
                         "content_type": "text",
-                        "created_at": "2026-08-17 22:05:20",
+                        "created_at": "2026-08-17 22:39:20",
                         "expired_at": null,
                         "featured_image": null,
-                        "id": 15020,
+                        "id": 15058,
                         "is_sticky": "0",
                         "message": "Great point — I ran into the same thing last week.",
                         "message_rendered": null,
@@ -378,26 +378,26 @@
                           "video_completion_threshold": 0,
                           "video_length": 0
                         },
-                        "parent_id": "15019",
+                        "parent_id": "15057",
                         "priority": "1",
                         "privacy": "public",
                         "reactions_count": 0,
                         "scheduled_at": null,
-                        "slug": "welcome-to-the-course-1787004245",
-                        "space_id": "97",
+                        "slug": "welcome-to-the-course-1787006286",
+                        "space_id": "115",
                         "status": "published",
                         "title": "Welcome to the course",
                         "type": "course_lesson",
-                        "updated_at": "2026-08-17 22:05:20",
+                        "updated_at": "2026-08-17 22:39:20",
                         "user_id": "1"
                       },
                       {
                         "comments_count": 0,
                         "content_type": "text",
-                        "created_at": "2026-08-17 22:05:20",
+                        "created_at": "2026-08-17 22:39:20",
                         "expired_at": null,
                         "featured_image": null,
-                        "id": 15021,
+                        "id": 15059,
                         "is_sticky": "0",
                         "message": "",
                         "message_rendered": null,
@@ -412,17 +412,17 @@
                             "url": ""
                           }
                         },
-                        "parent_id": "15019",
+                        "parent_id": "15057",
                         "priority": "2",
                         "privacy": "public",
                         "reactions_count": 0,
                         "scheduled_at": null,
-                        "slug": "scratch-lesson-1787004245",
-                        "space_id": "97",
+                        "slug": "scratch-lesson-1787006286",
+                        "space_id": "115",
                         "status": "draft",
                         "title": "Course Recap",
                         "type": "course_lesson",
-                        "updated_at": "2026-08-17 22:05:20",
+                        "updated_at": "2026-08-17 22:39:20",
                         "user_id": "1"
                       }
                     ],
@@ -436,12 +436,12 @@
                     "privacy": "public",
                     "reactions_count": 0,
                     "scheduled_at": null,
-                    "slug": "getting-started-1787004245",
-                    "space_id": 97,
+                    "slug": "getting-started-1787006286",
+                    "space_id": 115,
                     "status": "published",
                     "title": "Getting Started (updated)",
                     "type": "course_section",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user_id": 1
                   }
                 }

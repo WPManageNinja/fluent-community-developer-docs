@@ -1,9 +1,13 @@
 ---
 title: List Spaces
-description: "List Spaces for the FluentCommunity Spaces API."
+description: "Returns every space the current user has a membership row for, in alphabetical order, without pagination."
 outline: false
 aside: false
 ---
+
+Returns every space the current user has a membership row for, in alphabetical order, without pagination.
+
+The membership status is not checked, so a space the user has only requested to join is included alongside the ones they are active in. This is the lightweight lookup used to decide where a member may post; use the discovery endpoint for a browsable list.
 
 ## Endpoint
 

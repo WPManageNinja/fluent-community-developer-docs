@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveNotificationPreferences",
         "summary": "POST Save Notification Preferences",
-        "description": "Save Notification Preferences for the FluentCommunity Profile API.\n\nController: `ProfileController@saveNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:96`",
+        "description": "Stores the email notification preferences for a member, translating the per-space choices into the underlying subscription rows.\n\nController: `ProfileController@saveNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:96`",
         "tags": [
           "Profile"
         ],
@@ -72,7 +72,8 @@
                 }
               },
               "example": {
-                "preferences": {
+                "space_prefs": [],
+                "user_globals": {
                   "email_notification": "yes"
                 }
               }
@@ -92,18 +93,22 @@
                       "nullable": false
                     },
                     "prefs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "email_notification": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
                   "message": "Following. I would love to see a worked example of this.",
-                  "prefs": []
+                  "prefs": {
+                    "email_notification": 1
+                  }
                 }
               }
             }

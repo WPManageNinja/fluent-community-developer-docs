@@ -1,9 +1,13 @@
 ---
 title: Get Comments
-description: "Get Comments for the FluentCommunity Comments API."
+description: "Returns a paginated list of the comments one member has written, each with the full parent post eager-loaded so the post can open without a second request."
 outline: false
 aside: false
 ---
+
+Returns a paginated list of the comments one member has written, each with the full parent post eager-loaded so the post can open without a second request.
+
+Despite living under the comments group this is a profile endpoint, addressed by `{username}`. Viewing another member list is restricted to posts that member can see and to plain text posts; the profile owner and community moderators see everything.
 
 ## Endpoint
 

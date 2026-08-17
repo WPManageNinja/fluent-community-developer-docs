@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpaces",
         "summary": "GET List Spaces",
-        "description": "List Spaces for the FluentCommunity Spaces API.\n\nController: `SpaceController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:8`",
+        "description": "Returns every space the current user has a membership row for, in alphabetical order, without pagination.\n\nController: `SpaceController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:8`",
         "tags": [
           "Spaces"
         ],
@@ -217,12 +217,12 @@
                   "spaces": [
                     {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -254,14 +254,14 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
                     {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "",
-                      "id": 93,
+                      "id": 111,
                       "logo": null,
                       "parent_id": null,
                       "privacy": "public",
@@ -295,14 +295,14 @@
                       "status": "published",
                       "title": "Announcements",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
                     {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "",
-                      "id": 94,
+                      "id": 112,
                       "logo": null,
                       "parent_id": null,
                       "privacy": "public",
@@ -336,7 +336,7 @@
                       "status": "published",
                       "title": "Product Feedback",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     }
                   ]
                 }

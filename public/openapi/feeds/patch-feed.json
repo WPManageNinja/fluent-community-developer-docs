@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "patchFeed",
         "summary": "PATCH Patch Feed",
-        "description": "Patch Feed for the FluentCommunity Feeds API.\n\nController: `FeedsController@patchFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:45`",
+        "description": "Applies a small state change to a post — pinning it, changing its priority, or turning comments off.\n\nController: `FeedsController@patchFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:45`",
         "tags": [
           "Feeds"
         ],
@@ -47,6 +47,26 @@
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "is_sticky": {
+                    "type": "string",
+                    "nullable": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "is_sticky": "yes"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -332,16 +352,16 @@
                   "feed": {
                     "comments_count": 3,
                     "content_type": "text",
-                    "created_at": "2026-08-17 22:04:05",
+                    "created_at": "2026-08-17 22:38:06",
                     "expired_at": null,
                     "featured_image": null,
-                    "id": 15008,
+                    "id": 15046,
                     "is_sticky": 0,
                     "message": "Great point — I ran into the same thing last week.",
                     "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
                     "meta": {
                       "last_edited": {
-                        "time": "2026-08-17 22:05:20",
+                        "time": "2026-08-17 22:39:19",
                         "user_id": 1
                       }
                     },
@@ -349,17 +369,17 @@
                     "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/welcome-to-the-community",
                     "priority": 0,
                     "privacy": "public",
-                    "reactions_count": 1,
+                    "reactions_count": 2,
                     "scheduled_at": null,
                     "slug": "welcome-to-the-community",
                     "space": {
                       "cover_photo": null,
-                      "created_at": "2026-08-17 22:04:05",
+                      "created_at": "2026-08-17 22:38:06",
                       "created_by": "1",
                       "description": "A place to introduce yourself and meet other members.",
-                      "id": 92,
+                      "id": 110,
                       "logo": null,
-                      "parent_id": "91",
+                      "parent_id": "109",
                       "privacy": "public",
                       "serial": "1",
                       "settings": {
@@ -390,13 +410,13 @@
                       "status": "published",
                       "title": "General Discussion",
                       "type": "community",
-                      "updated_at": "2026-08-17 22:04:05"
+                      "updated_at": "2026-08-17 22:38:06"
                     },
-                    "space_id": "92",
+                    "space_id": "110",
                     "status": "published",
                     "title": "Welcome to the community",
                     "type": "text",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:19",
                     "user_id": "1"
                   },
                   "message": "Just tried it and it works exactly as described."

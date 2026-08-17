@@ -27,7 +27,7 @@
       "post": {
         "operationId": "submitLessonQuiz",
         "summary": "POST Submit Lesson Quiz",
-        "description": "Submit Lesson Quiz for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@submitQuiz`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:8`",
+        "description": "Grades a quiz lesson submission, stores the attempt and returns the per-question result with the score.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@submitQuiz`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:8`",
         "tags": [
           "Courses"
         ],
@@ -37,6 +37,45 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "answers": {
+                    "type": "object",
+                    "properties": {
+                      "q1": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "q2": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "answers": {
+                  "q1": "POST",
+                  "q2": [
+                    "public",
+                    "private"
+                  ]
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -147,7 +186,7 @@
                   "message": "This is really helpful, thanks for writing it up.",
                   "result": {
                     "content_type": "quiz",
-                    "id": 59785,
+                    "id": 59801,
                     "message": {
                       "q1": {
                         "is_correct": true,
@@ -166,12 +205,12 @@
                       "correct_answers": 2,
                       "total_questions": 2
                     },
-                    "parent_id": "96",
-                    "post_id": "15026",
+                    "parent_id": "114",
+                    "post_id": "15064",
                     "score": "100",
                     "status": "passed",
                     "type": "quiz",
-                    "updated_at": "2026-08-17 22:05:20",
+                    "updated_at": "2026-08-17 22:39:20",
                     "user_id": "13098"
                   }
                 }
