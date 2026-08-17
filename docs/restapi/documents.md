@@ -15,9 +15,9 @@ Document routes are portal routes and rely on `PortalPolicy` plus per-document a
 
 ## Endpoints
 
-| Method | Path | Edition | Operation | Controller |
+| Method | Path | Edition | Operation | What it does |
 | --- | --- | --- | --- | --- |
-| `GET` | `/documents` | <span class="pro-badge">PRO</span> | [List Documents](/restapi/operations/documents/list-documents) | `DocumentController@index` |
-| `POST` | `/documents/upload` | <span class="pro-badge">PRO</span> | [Upload Document](/restapi/operations/documents/upload-document) | `DocumentController@upload` |
-| `POST` | `/documents/update` | <span class="pro-badge">PRO</span> | [Update Document](/restapi/operations/documents/update-document) | `DocumentController@updateDocument` |
-| `POST` | `/documents/delete` | <span class="pro-badge">PRO</span> | [Delete Document](/restapi/operations/documents/delete-document) | `DocumentController@deleteDocument` |
+| `GET` | `/documents` | <span class="pro-badge">PRO</span> | [List Documents](/restapi/operations/documents/list-documents) | Returns the paginated document posts of one space, newest first, each with its author and topics attached. |
+| `POST` | `/documents/upload` | <span class="pro-badge">PRO</span> | [Upload Document](/restapi/operations/documents/upload-document) | Uploads a document file into a space document library, or — when \`lesson_id\` is given — attaches it directly to a course lesson. |
+| `POST` | `/documents/update` | <span class="pro-badge">PRO</span> | [Update Document](/restapi/operations/documents/update-document) | Renames a document, updating both the media record and the entry in the parent post or lesson document list. |
+| `POST` | `/documents/delete` | <span class="pro-badge">PRO</span> | [Delete Document](/restapi/operations/documents/delete-document) | Detaches a document from its post or lesson and hands the media record to the media cleanup hook. |

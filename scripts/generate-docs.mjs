@@ -6748,12 +6748,12 @@ ${meta.auth}
 
 ## Endpoints
 
-| Method | Path | Edition | Operation | Controller |
+| Method | Path | Edition | Operation | What it does |
 | --- | --- | --- | --- | --- |
 ${moduleRoutes
   .map(
     (route) =>
-      `| \`${route.httpMethod}\` | \`${route.routePath}\` | ${renderSourceLabel([route.sourceId])} | [${route.title}](/restapi/operations/${module}/${route.slug}) | \`${route.controllerClass}@${route.action}\` |`,
+      `| \`${route.httpMethod}\` | \`${route.routePath}\` | ${renderSourceLabel([route.sourceId])} | [${route.title}](/restapi/operations/${module}/${route.slug}) | ${escapeMarkdownCode(route.notes?.summary || route.description)} |`,
   )
   .join('\n')}
 `,
