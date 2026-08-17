@@ -65,7 +65,7 @@ add_action('fluent_community/check_rate_limit/create_post', function ($user) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/rate_limit/posts_per_5_minutes`](#fluent-community-rate-limit-posts-per-5-minutes) · [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment)
+**Related:** [`fluent_community/rate_limit/posts_per_5_minutes`](/hooks/filters/feeds#fluent-community-rate-limit-posts-per-5-minutes) · [`fluent_community/check_rate_limit/create_comment`](/hooks/actions/comments#fluent-community-check-rate-limit-create-comment)
 
 <a id="fluent-community-email-notify-new-posts"></a>
 
@@ -104,7 +104,7 @@ add_action('fluent_community/email_notify_new_posts', function ($feedId) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/space_feed/created`](#fluent-community-space-feed-created) · [`fluent_community/email_notify_users_everyone_tag`](#fluent-community-email-notify-users-everyone-tag)
+**Related:** [`fluent_community/space_feed/created`](#fluent-community-space-feed-created) · [`fluent_community/email_notify_users_everyone_tag`](/hooks/actions/notifications#fluent-community-email-notify-users-everyone-tag)
 
 <a id="fluent-community-feed-mentioned"></a>
 
@@ -203,7 +203,7 @@ add_action('fluent_community/feed/before_deleted', function ($feed) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/feed/media_deleted`](#fluent-community-feed-media-deleted)
+**Related:** [`fluent_community/feed/media_deleted`](/hooks/actions/media#fluent-community-feed-media-deleted)
 
 <a id="fluent-community-feed-created"></a>
 
@@ -304,7 +304,7 @@ add_action('fluent_community/feed/just_created_type_{formContentType}', function
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/feed/new_feed_data_type_{formContentType}`](#fluent-community-feed-new-feed-data-type-formContentType) · [`fluent_community/feed/updating_content_type_old_{existingContentType}`](#fluent-community-feed-updating-content-type-old-existingContentType)
+**Related:** [`fluent_community/feed/new_feed_data_type_{formContentType}`](/hooks/filters/feeds#fluent-community-feed-new-feed-data-type-formContentType) · [`fluent_community/feed/updating_content_type_old_{existingContentType}`](#fluent-community-feed-updating-content-type-old-existingContentType)
 
 <a id="fluent-community-feed-new-feed-feed"></a>
 
@@ -370,7 +370,7 @@ add_action('fluent_community/feed/react_added', function ($react, $feed) {
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/feed/react_removed`](#fluent-community-feed-react-removed) · [`fluent_community/comment/react_added`](#fluent-community-comment-react-added)
+**Related:** [`fluent_community/feed/react_removed`](#fluent-community-feed-react-removed) · [`fluent_community/comment/react_added`](/hooks/actions/comments#fluent-community-comment-react-added)
 
 <a id="fluent-community-feed-react-removed"></a>
 
@@ -435,7 +435,7 @@ add_action('fluent_community/feed/rescheduled', function ($feed) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/scheduled_posts_api_response`](#fluent-community-scheduled-posts-api-response)
+**Related:** [`fluent_community/scheduled_posts_api_response`](/hooks/filters/feeds#fluent-community-scheduled-posts-api-response)
 
 <a id="fluent-community-feed-scheduled"></a>
 
@@ -538,7 +538,7 @@ add_action('fluent_community/feed/scheduling_everyone_tag', function ($feed) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/email_notify_users_everyone_tag`](#fluent-community-email-notify-users-everyone-tag) · [`fluent_community/email_notify_new_posts`](#fluent-community-email-notify-new-posts)
+**Related:** [`fluent_community/email_notify_users_everyone_tag`](/hooks/actions/notifications#fluent-community-email-notify-users-everyone-tag) · [`fluent_community/email_notify_new_posts`](#fluent-community-email-notify-new-posts)
 
 <a id="fluent-community-feed-updated"></a>
 
@@ -606,7 +606,7 @@ add_action('fluent_community/feed/updating_content_type_old_{existingContentType
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/feed/update_feed_data_type_{newContentType}`](#fluent-community-feed-update-feed-data-type-newContentType)
+**Related:** [`fluent_community/feed/update_feed_data_type_{newContentType}`](/hooks/filters/feeds#fluent-community-feed-update-feed-data-type-newContentType)
 
 <a id="fluent-community-feeds-query"></a>
 
@@ -640,7 +640,7 @@ add_action('fluent_community/feeds_query', function ($query, $requestData, $quer
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/feeds_api_response`](#fluent-community-feeds-api-response)
+**Related:** [`fluent_community/feeds_api_response`](/hooks/filters/feeds#fluent-community-feeds-api-response)
 
 <a id="fluent-community-notify-profile-feed-new-post"></a>
 

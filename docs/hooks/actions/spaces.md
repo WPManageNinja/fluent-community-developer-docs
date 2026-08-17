@@ -54,7 +54,7 @@ add_action('fluent_community/space', function ($space) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/space_api_response`](#fluent-community-space-api-response) · [`fluent_community/space_header_links`](#fluent-community-space-header-links)
+**Related:** [`fluent_community/space_api_response`](/hooks/filters/spaces#fluent-community-space-api-response) · [`fluent_community/space_header_links`](/hooks/filters/rendering#fluent-community-space-header-links)
 
 <a id="fluent-community-space-before-delete"></a>
 
@@ -185,7 +185,7 @@ add_action('fluent_community/space/join_requested', function ($space, $userId, $
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined) · [`fluent_community/space/join_status_for_private`](#fluent-community-space-join-status-for-private)
+**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined) · [`fluent_community/space/join_status_for_private`](/hooks/filters/spaces#fluent-community-space-join-status-for-private)
 
 <a id="fluent-community-space-joined"></a>
 
@@ -225,7 +225,7 @@ add_action('fluent_community/space/joined', function ($space, $userId, $by, $cre
 }, 10, 4);
 ```
 
-**Related:** [`fluent_community/space/user_left`](#fluent-community-space-user-left) · [`fluent_community/course/enrolled`](#fluent-community-course-enrolled)
+**Related:** [`fluent_community/space/user_left`](#fluent-community-space-user-left) · [`fluent_community/course/enrolled`](/hooks/actions/courses#fluent-community-course-enrolled)
 
 <a id="fluent-community-space-member-role-updated"></a>
 
@@ -292,7 +292,7 @@ add_action('fluent_community/space/update_meta_settings_{metaProvider}', functio
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/space/meta_fields`](#fluent-community-space-meta-fields) · [`fluent_community/course/update_meta_settings_{metaProvider}`](#fluent-community-course-update-meta-settings-metaProvider)
+**Related:** [`fluent_community/space/meta_fields`](/hooks/filters/spaces#fluent-community-space-meta-fields) · [`fluent_community/course/update_meta_settings_{metaProvider}`](/hooks/actions/courses#fluent-community-course-update-meta-settings-metaProvider)
 
 <a id="fluent-community-space-updated"></a>
 

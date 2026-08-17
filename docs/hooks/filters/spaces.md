@@ -64,7 +64,7 @@ add_filter('fluent_community/all_spaces_api_response', function ($data, $request
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/spaces_api_response`](#fluent-community-spaces-api-response) · [`fluent_community/space`](#fluent-community-space)
+**Related:** [`fluent_community/spaces_api_response`](#fluent-community-spaces-api-response) · [`fluent_community/space`](/hooks/actions/spaces#fluent-community-space)
 
 <a id="fluent-community-get-lockscreen-settings"></a>
 
@@ -210,7 +210,7 @@ add_filter('fluent_community/main_menu_items', function ($items, $scope) {
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/mobile_menu`](#fluent-community-mobile-menu) · [`fluent_community/menu_groups`](#fluent-community-menu-groups) · [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config)
+**Related:** [`fluent_community/mobile_menu`](#fluent-community-mobile-menu) · [`fluent_community/menu_groups`](#fluent-community-menu-groups) · [`fluent_community/sidebar_menu_groups_config`](/hooks/filters/rendering#fluent-community-sidebar-menu-groups-config)
 
 <a id="fluent-community-menu-groups"></a>
 
@@ -281,7 +281,7 @@ add_filter('fluent_community/menu_items_api_response', function ($data, $request
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) · [`fluent_community/main_menu_items`](#fluent-community-main-menu-items)
+**Related:** [`fluent_community/sidebar_menu_groups_config`](/hooks/filters/rendering#fluent-community-sidebar-menu-groups-config) · [`fluent_community/main_menu_items`](#fluent-community-main-menu-items)
 
 <a id="fluent-community-menu-settings-api-response"></a>
 
@@ -390,7 +390,7 @@ add_filter('fluent_community/settings_menu', function ($settingsMenu, $userModel
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) · [`fluent_community/main_menu_items`](#fluent-community-main-menu-items)
+**Related:** [`fluent_community/sidebar_menu_groups_config`](/hooks/filters/rendering#fluent-community-sidebar-menu-groups-config) · [`fluent_community/main_menu_items`](#fluent-community-main-menu-items)
 
 <a id="fluent-community-space-api-response"></a>
 
@@ -426,7 +426,7 @@ add_filter('fluent_community/space_api_response', function ($data, $requestData)
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/space`](#fluent-community-space) · [`fluent_community/spaces_api_response`](#fluent-community-spaces-api-response)
+**Related:** [`fluent_community/space`](/hooks/actions/spaces#fluent-community-space) · [`fluent_community/spaces_api_response`](#fluent-community-spaces-api-response)
 
 <a id="fluent-community-space-groups-api-response"></a>
 
@@ -497,7 +497,7 @@ add_filter('fluent_community/space/create_data', function ($spaceData) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/space/created`](#fluent-community-space-created) · [`fluent_community/space/update_data`](#fluent-community-space-update-data)
+**Related:** [`fluent_community/space/created`](/hooks/actions/spaces#fluent-community-space-created) · [`fluent_community/space/update_data`](#fluent-community-space-update-data)
 
 <a id="fluent-community-space-join-status-for-private"></a>
 
@@ -534,7 +534,7 @@ add_filter('fluent_community/space/join_status_for_private', function ($status, 
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/space/join_requested`](#fluent-community-space-join-requested) · [`fluent_community/space/joined`](#fluent-community-space-joined)
+**Related:** [`fluent_community/space/join_requested`](/hooks/actions/spaces#fluent-community-space-join-requested) · [`fluent_community/space/joined`](/hooks/actions/spaces#fluent-community-space-joined)
 
 <a id="fluent-community-space-meta-fields"></a>
 
@@ -570,7 +570,7 @@ add_filter('fluent_community/space/meta_fields', function ($metaFields, $space) 
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/course/meta_fields`](#fluent-community-course-meta-fields)
+**Related:** [`fluent_community/course/meta_fields`](/hooks/filters/courses#fluent-community-course-meta-fields)
 
 <a id="fluent-community-space-update-data"></a>
 
@@ -606,7 +606,7 @@ add_filter('fluent_community/space/update_data', function ($data, $space) {
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/space/updated`](#fluent-community-space-updated) · [`fluent_community/space/create_data`](#fluent-community-space-create-data)
+**Related:** [`fluent_community/space/updated`](/hooks/actions/spaces#fluent-community-space-updated) · [`fluent_community/space/create_data`](#fluent-community-space-create-data)
 
 <a id="fluent-community-spaces-api-response"></a>
 

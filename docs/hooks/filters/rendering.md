@@ -592,7 +592,7 @@ add_filter('fluent_community/portal_vars', function ($portalVars) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/portal_notices`](#fluent-community-portal-notices) · [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) · [`fluent_community/max_media_per_post`](#fluent-community-max-media-per-post)
+**Related:** [`fluent_community/portal_notices`](#fluent-community-portal-notices) · [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) · [`fluent_community/max_media_per_post`](/hooks/filters/feeds#fluent-community-max-media-per-post)
 
 <a id="fluent-community-pro-upgrade-base-url"></a>
 

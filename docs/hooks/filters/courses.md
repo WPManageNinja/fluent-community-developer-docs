@@ -761,7 +761,7 @@ add_filter('fluent_community/course/meta_fields', function ($metaFields, $course
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/space/meta_fields`](#fluent-community-space-meta-fields)
+**Related:** [`fluent_community/space/meta_fields`](/hooks/filters/spaces#fluent-community-space-meta-fields)
 
 <a id="fluent-community-course-processed"></a>
 
@@ -1176,7 +1176,7 @@ add_filter('fluent_community/question_types', function ($types) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/quiz/submitted`](#fluent-community-quiz-submitted)
+**Related:** [`fluent_community/quiz/submitted`](/hooks/actions/courses#fluent-community-quiz-submitted)
 
 <a id="fluent-community-quiz-exportable-result-row"></a>
 
@@ -1308,5 +1308,5 @@ add_filter('fluent_community/update_course_welcome_banner_settings', function ($
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/course/welcome_banner_updated`](#fluent-community-course-welcome-banner-updated)
+**Related:** [`fluent_community/course/welcome_banner_updated`](/hooks/actions/courses#fluent-community-course-welcome-banner-updated)
 

@@ -46,5 +46,5 @@ add_filter('fluent_community/report_reasons', function ($reasons) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created)
+**Related:** [`fluent_community/content_moderation/created`](/hooks/actions/moderation#fluent-community-content-moderation-created)
 

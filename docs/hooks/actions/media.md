@@ -49,7 +49,7 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/rate_limit/media_upload_per_minute`](#fluent-community-rate-limit-media-upload-per-minute)
+**Related:** [`fluent_community/rate_limit/media_upload_per_minute`](/hooks/filters/media#fluent-community-rate-limit-media-upload-per-minute)
 
 <a id="fluent-community-delete-remote-media-this"></a>
 
@@ -81,7 +81,7 @@ add_action('fluent_community/delete_remote_media_{this}', function ($media) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/media_public_url_{this}`](#fluent-community-media-public-url-this) · [`fluent_community/handle_remove_bulk_media`](#fluent-community-handle-remove-bulk-media)
+**Related:** [`fluent_community/media_public_url_{this}`](/hooks/filters/media#fluent-community-media-public-url-this) · [`fluent_community/handle_remove_bulk_media`](/hooks/filters/media#fluent-community-handle-remove-bulk-media)
 
 <a id="fluent-community-document-local-file-access"></a>
 
@@ -174,7 +174,7 @@ add_action('fluent_community/maybe_delete_draft_medias', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs) · [`fluent_community/handle_remove_bulk_media`](#fluent-community-handle-remove-bulk-media)
+**Related:** [`fluent_community_scheduled_hour_jobs`](/hooks/actions/settings#fluent-community-scheduled-hour-jobs) · [`fluent_community/handle_remove_bulk_media`](/hooks/filters/media#fluent-community-handle-remove-bulk-media)
 
 <a id="fluent-community-remove-medias-by-url"></a>
 
@@ -246,5 +246,5 @@ add_action('fluent_community/space_media/viewed', function ($space, $user, $type
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/space_media/api_response`](#fluent-community-space-media-api-response)
+**Related:** [`fluent_community/space_media/api_response`](/hooks/filters/media#fluent-community-space-media-api-response)
 

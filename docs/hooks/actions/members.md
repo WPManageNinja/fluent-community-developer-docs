@@ -59,7 +59,7 @@ add_action('fluent_community_sync_user_points', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community/user_points_updated`](#fluent-community-user-points-updated) · [`fluent_community_daily_jobs`](#fluent-community-daily-jobs)
+**Related:** [`fluent_community/user_points_updated`](#fluent-community-user-points-updated) · [`fluent_community_daily_jobs`](/hooks/actions/settings#fluent-community-daily-jobs)
 
 <a id="fluent-community-after-sync-bp-users"></a>
 
@@ -387,7 +387,7 @@ add_action('fluent_community/members_query_ref', function ($members, $requestDat
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/members_api_response`](#fluent-community-members-api-response) · [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response)
+**Related:** [`fluent_community/members_api_response`](/hooks/filters/members#fluent-community-members-api-response) · [`fluent_community/mention_members_api_response`](/hooks/filters/members#fluent-community-mention-members-api-response)
 
 <a id="fluent-community-profile-deactivated"></a>
 
@@ -479,7 +479,7 @@ add_action('fluent_community/track_activity', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community/feed/created`](#fluent-community-feed-created) · [`fluent_community/comment_added`](#fluent-community-comment-added)
+**Related:** [`fluent_community/feed/created`](/hooks/actions/feeds#fluent-community-feed-created) · [`fluent_community/comment_added`](/hooks/actions/comments#fluent-community-comment-added)
 
 <a id="fluent-community-update-profile-link-providers"></a>
 
@@ -511,7 +511,7 @@ add_action('fluent_community/update_profile_link_providers', function ($config) 
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/social_link_providers`](#fluent-community-social-link-providers) · [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response)
+**Related:** [`fluent_community/social_link_providers`](/hooks/filters/members#fluent-community-social-link-providers) · [`fluent_community/profile_link_providers_api_response`](/hooks/filters/members#fluent-community-profile-link-providers-api-response)
 
 <a id="fluent-community-user-level-upgraded"></a>
 
@@ -545,7 +545,7 @@ add_action('fluent_community/user_level_upgraded', function ($xprofile, $newLeve
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/leaderboard_api_response`](#fluent-community-leaderboard-api-response)
+**Related:** [`fluent_community/leaderboard_api_response`](/hooks/filters/members#fluent-community-leaderboard-api-response)
 
 <a id="fluent-community-user-points-updated"></a>
 

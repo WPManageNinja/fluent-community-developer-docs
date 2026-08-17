@@ -273,7 +273,7 @@ add_action('fluent_community/course/enrolled', function ($course, $userId, $by, 
 }, 10, 4);
 ```
 
-**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined) · [`fluent_community/course/topic_completed`](#fluent-community-course-topic-completed)
+**Related:** [`fluent_community/space/joined`](/hooks/actions/spaces#fluent-community-space-joined) · [`fluent_community/course/topic_completed`](#fluent-community-course-topic-completed)
 
 <a id="fluent-community-course-lesson-completed"></a>
 
@@ -675,7 +675,7 @@ add_action('fluent_community/course/welcome_banner_updated', function ($course, 
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/update_course_welcome_banner_settings`](#fluent-community-update-course-welcome-banner-settings)
+**Related:** [`fluent_community/update_course_welcome_banner_settings`](/hooks/filters/courses#fluent-community-update-course-welcome-banner-settings)
 
 <a id="fluent-community-lesson-additional-media-updated"></a>
 
@@ -827,7 +827,7 @@ add_action('fluent_community/quiz/submitted', function ($quizResult, $user, $qui
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/question_types`](#fluent-community-question-types)
+**Related:** [`fluent_community/question_types`](/hooks/filters/courses#fluent-community-question-types)
 
 <a id="fluent-community-section-before-deleted"></a>
 

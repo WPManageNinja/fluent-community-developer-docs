@@ -51,7 +51,7 @@ add_filter('fluent_community/feed/updated_survey_config', function ($surveyConfi
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) · [`fluent_community/feed/cast_survey_vote`](#fluent-community-feed-cast-survey-vote)
+**Related:** [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) · [`fluent_community/feed/cast_survey_vote`](/hooks/actions/reactions#fluent-community-feed-cast-survey-vote)
 
 <a id="fluent-community-reactions-api-response"></a>
 

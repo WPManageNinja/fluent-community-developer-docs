@@ -81,7 +81,7 @@ add_action('fluent_community_scheduled_hour_jobs', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) · [`fluent_community_send_daily_digest`](#fluent-community-send-daily-digest)
+**Related:** [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) · [`fluent_community_send_daily_digest`](/hooks/actions/notifications#fluent-community-send-daily-digest)
 
 <a id="fluent-community-recache-color-schema"></a>
 

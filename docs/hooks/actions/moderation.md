@@ -143,7 +143,7 @@ add_action('fluent_community/content_moderation/created', function ($report, $co
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/content_flagged`](#fluent-community-content-flagged) · [`fluent_community/report_reasons`](#fluent-community-report-reasons)
+**Related:** [`fluent_community/content_flagged`](#fluent-community-content-flagged) · [`fluent_community/report_reasons`](/hooks/filters/moderation#fluent-community-report-reasons)
 
 <a id="fluent-community-post-report-added-async"></a>
 

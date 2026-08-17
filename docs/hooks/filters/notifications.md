@@ -54,7 +54,7 @@ add_filter('fluent_community/digest_email_body', function ($emailBody, $user) {
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) · [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections)
+**Related:** [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) · [`fluent_community/digest_notification/email_sections`](/hooks/filters/courses#fluent-community-digest-notification-email-sections)
 
 <a id="fluent-community-digest-email-subject"></a>
 

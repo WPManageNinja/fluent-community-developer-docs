@@ -95,7 +95,7 @@ add_filter('fluent_community/comment_order_options', function ($options, $contex
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
+**Related:** [`fluent_community/portal_vars`](/hooks/filters/rendering#fluent-community-portal-vars)
 
 <a id="fluent-community-comment-comment-data"></a>
 
@@ -131,7 +131,7 @@ add_filter('fluent_community/comment/comment_data', function ($commentData, $fee
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/comment/update_comment_data`](#fluent-community-comment-update-comment-data) · [`fluent_community/before_comment_create`](#fluent-community-before-comment-create)
+**Related:** [`fluent_community/comment/update_comment_data`](#fluent-community-comment-update-comment-data) · [`fluent_community/before_comment_create`](/hooks/actions/comments#fluent-community-before-comment-create)
 
 <a id="fluent-community-comment-new-comment-response"></a>
 
@@ -167,7 +167,7 @@ add_filter('fluent_community/comment/new_comment_response', function ($response,
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/comment/new_comment_{comment}`](#fluent-community-comment-new-comment-comment) · [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response)
+**Related:** [`fluent_community/comment/new_comment_{comment}`](/hooks/actions/comments#fluent-community-comment-new-comment-comment) · [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response)
 
 <a id="fluent-community-comment-patch-comment-response"></a>
 
@@ -205,7 +205,7 @@ add_filter('fluent_community/comment/patch_comment_response', function ($respons
 }, 10, 4);
 ```
 
-**Related:** [`fluent_community/comment/updated`](#fluent-community-comment-updated)
+**Related:** [`fluent_community/comment/updated`](/hooks/actions/comments#fluent-community-comment-updated)
 
 <a id="fluent-community-comment-update-comment-data"></a>
 
@@ -279,7 +279,7 @@ add_filter('fluent_community/comments_api_response', function ($data, $requestDa
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/comments_query_response`](#fluent-community-comments-query-response) · [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed)
+**Related:** [`fluent_community/comments_query_response`](#fluent-community-comments-query-response) · [`fluent_community/can_view_comments_{feed}`](/hooks/filters/permissions#fluent-community-can-view-comments-feed)
 
 <a id="fluent-community-comments-query-response"></a>
 
@@ -421,7 +421,7 @@ add_filter('fluent_community/max_comment_char_length', function ($maxLength) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/max_post_length`](#fluent-community-max-post-length)
+**Related:** [`fluent_community/max_post_length`](/hooks/filters/feeds#fluent-community-max-post-length)
 
 <a id="fluent-community-profile-comments-api-response"></a>
 

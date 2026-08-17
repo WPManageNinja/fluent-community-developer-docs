@@ -6240,6 +6240,14 @@ function settleHookCategories(hooks) {
 
 function buildHookDocs(rawHooks) {
   const hooks = settleHookCategories(rawHooks)
+
+  // Related-hook links have to know which page each hook ended up on, so record
+  // that before any page is rendered.
+  HOOK_LOCATIONS.clear()
+  for (const hook of hooks) {
+    HOOK_LOCATIONS.set(hook.name, { kind: hook.kind, category: hook.category })
+  }
+
   const actionHooks = hooks.filter((hook) => hook.kind === 'action')
   const filterHooks = hooks.filter((hook) => hook.kind === 'filter')
 
@@ -6362,6 +6370,28 @@ ${categoryGroups.map((group) => renderHookSection(group, kind)).join('\n')}
   return coverage
 }
 
+/**
+ * A related hook usually lives on a different page, so a bare `#anchor` would
+ * 404 — resolve it to the page that actually holds it. Falls back to plain code
+ * formatting when the name is not a hook we emit (a typo, or a hook that only
+ * exists in a version we are not parsing).
+ */
+function renderRelatedHookLink(name, kind, sameCategory) {
+  const target = HOOK_LOCATIONS.get(name)
+  if (!target) {
+    return `\`${name}\``
+  }
+  const anchor = `#${hookAnchor(name)}`
+  if (target.kind === kind && target.category === sameCategory) {
+    return `[\`${name}\`](${anchor})`
+  }
+  const segment = target.kind === 'action' ? 'actions' : 'filters'
+  return `[\`${name}\`](/hooks/${segment}/${target.category}${anchor})`
+}
+
+/** name -> { kind, category }, populated by buildHookDocs() before rendering. */
+const HOOK_LOCATIONS = new Map()
+
 function renderHookSection(group, kind) {
   const note = HOOK_NOTES[group.name] || {}
   const summary = describeHook(group)
@@ -6442,7 +6472,7 @@ ${documentedParamList
     kind === 'filter' && note.returns ? `\n**Return:** ${note.returns}\n` : ''
 
   const relatedBlock = note.related && note.related.length
-    ? `\n**Related:** ${note.related.map((name) => `[\`${name}\`](#${hookAnchor(name)})`).join(' · ')}\n`
+    ? `\n**Related:** ${note.related.map((name) => renderRelatedHookLink(name, kind, group.category)).join(' · ')}\n`
     : ''
 
   return `

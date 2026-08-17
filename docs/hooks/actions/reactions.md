@@ -45,5 +45,5 @@ add_action('fluent_community/feed/cast_survey_vote', function ($newSyncIndexes, 
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) · [`fluent_community/survey_config_response`](#fluent-community-survey-config-response)
+**Related:** [`fluent_community/feed/updated_survey_config`](/hooks/filters/reactions#fluent-community-feed-updated-survey-config) · [`fluent_community/survey_config_response`](/hooks/filters/reactions#fluent-community-survey-config-response)
 

@@ -140,7 +140,7 @@ add_filter('fluent_community/handle_remove_bulk_media', function ($handled, $med
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/delete_remote_media_{this}`](#fluent-community-delete-remote-media-this) · [`fluent_community/comment/media_deleted`](#fluent-community-comment-media-deleted)
+**Related:** [`fluent_community/delete_remote_media_{this}`](/hooks/actions/media#fluent-community-delete-remote-media-this) · [`fluent_community/comment/media_deleted`](/hooks/actions/comments#fluent-community-comment-media-deleted)
 
 <a id="fluent-community-has-inline-image-upload"></a>
 
@@ -175,7 +175,7 @@ add_filter('fluent_community/has_inline_image_upload', function ($hasInlineImage
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/max_media_per_post`](#fluent-community-max-media-per-post)
+**Related:** [`fluent_community/max_media_per_post`](/hooks/filters/feeds#fluent-community-max-media-per-post)
 
 <a id="fluent-community-has-video-embeder"></a>
 
@@ -210,7 +210,7 @@ add_filter('fluent_community/has_video_embeder', function ($hasVideoEmbeder) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars) · [`fluent_community/has_inline_image_upload`](#fluent-community-has-inline-image-upload)
+**Related:** [`fluent_community/portal_vars`](/hooks/filters/rendering#fluent-community-portal-vars) · [`fluent_community/has_inline_image_upload`](#fluent-community-has-inline-image-upload)
 
 <a id="fluent-community-media-public-url-this"></a>
 
@@ -504,7 +504,7 @@ add_filter('fluent_community/preview_metadata_pre_fetch', function ($preempted, 
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/feed_oembed_api_response`](#fluent-community-feed-oembed-api-response)
+**Related:** [`fluent_community/feed_oembed_api_response`](/hooks/filters/feeds#fluent-community-feed-oembed-api-response)
 
 <a id="fluent-community-rate-limit-media-upload-per-minute"></a>
 
@@ -539,7 +539,7 @@ add_filter('fluent_community/rate_limit/media_upload_per_minute', function ($lim
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) · [`fluent_community/rate_limit/posts_per_5_minutes`](#fluent-community-rate-limit-posts-per-5-minutes)
+**Related:** [`fluent_community/check_rate_limit/media_upload`](/hooks/actions/media#fluent-community-check-rate-limit-media-upload) · [`fluent_community/rate_limit/posts_per_5_minutes`](/hooks/filters/feeds#fluent-community-rate-limit-posts-per-5-minutes)
 
 <a id="fluent-community-space-document-title-label"></a>
 
@@ -648,7 +648,7 @@ add_filter('fluent_community/space_media/api_response', function ($response, $sp
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/space_media/query`](#fluent-community-space-media-query) · [`fluent_community/space_media/viewed`](#fluent-community-space-media-viewed)
+**Related:** [`fluent_community/space_media/query`](#fluent-community-space-media-query) · [`fluent_community/space_media/viewed`](/hooks/actions/media#fluent-community-space-media-viewed)
 
 <a id="fluent-community-space-media-query"></a>
 

@@ -84,7 +84,7 @@ add_filter('fluent_community/activities_api_response', function ($returnData, $r
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/pinned_posts_api_response`](#fluent-community-pinned-posts-api-response) · [`fluent_community/activity/after_contents`](#fluent-community-activity-after-contents)
+**Related:** [`fluent_community/pinned_posts_api_response`](/hooks/filters/feeds#fluent-community-pinned-posts-api-response) · [`fluent_community/activity/after_contents`](#fluent-community-activity-after-contents)
 
 <a id="fluent-community-activity-after-contents"></a>
 
@@ -714,7 +714,7 @@ add_filter('fluent_community/default_profile_tab_route', function ($tab) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
+**Related:** [`fluent_community/portal_vars`](/hooks/filters/rendering#fluent-community-portal-vars)
 
 <a id="fluent-community-leaderboard-api-response"></a>
 
@@ -751,7 +751,7 @@ add_filter('fluent_community/leaderboard_api_response', function ($response, $xP
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/user_level_upgraded`](#fluent-community-user-level-upgraded)
+**Related:** [`fluent_community/user_level_upgraded`](/hooks/actions/members#fluent-community-user-level-upgraded)
 
 <a id="fluent-community-max-profile-description-length"></a>
 
@@ -858,7 +858,7 @@ add_filter('fluent_community/members_api_response', function ($data, $members, $
 }, 10, 3);
 ```
 
-**Related:** [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) · [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response)
+**Related:** [`fluent_community/members_query_ref`](/hooks/actions/members#fluent-community-members-query-ref) · [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response)
 
 <a id="fluent-community-mention-members-api-response"></a>
 
@@ -930,7 +930,7 @@ add_filter('fluent_community/menu_groups_for_user', function ($formattedGroups, 
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/menu_groups`](#fluent-community-menu-groups) · [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config)
+**Related:** [`fluent_community/menu_groups`](/hooks/filters/spaces#fluent-community-menu-groups) · [`fluent_community/sidebar_menu_groups_config`](/hooks/filters/rendering#fluent-community-sidebar-menu-groups-config)
 
 <a id="fluent-community-profile-all-memberships-api-response"></a>
 
@@ -1002,7 +1002,7 @@ add_filter('fluent_community/profile_link_providers_api_response', function ($da
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/social_link_providers`](#fluent-community-social-link-providers) · [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers)
+**Related:** [`fluent_community/social_link_providers`](#fluent-community-social-link-providers) · [`fluent_community/update_profile_link_providers`](/hooks/actions/members#fluent-community-update-profile-link-providers)
 
 <a id="fluent-community-profile-spaces-api-response"></a>
 
@@ -1177,7 +1177,7 @@ add_filter('fluent_community/social_link_providers', function ($links) {
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response) · [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers)
+**Related:** [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response) · [`fluent_community/update_profile_link_providers`](/hooks/actions/members#fluent-community-update-profile-link-providers)
 
 <a id="fluent-community-space-members-api-response"></a>
 
@@ -1286,7 +1286,7 @@ add_filter('fluent_community/track_activity_throttle_seconds', function ($thrott
 }, 10, 1);
 ```
 
-**Related:** [`fluent_community/track_activity`](#fluent-community-track-activity) · [`fluent_community/last_activity_date_for_unread_feeds`](#fluent-community-last-activity-date-for-unread-feeds)
+**Related:** [`fluent_community/track_activity`](/hooks/actions/members#fluent-community-track-activity) · [`fluent_community/last_activity_date_for_unread_feeds`](/hooks/filters/feeds#fluent-community-last-activity-date-for-unread-feeds)
 
 <a id="fluent-community-update-profile-data"></a>
 

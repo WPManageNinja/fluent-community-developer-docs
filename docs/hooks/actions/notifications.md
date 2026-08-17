@@ -41,7 +41,7 @@ add_action('fluent_community_send_daily_digest', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs)
+**Related:** [`fluent_community_scheduled_hour_jobs`](/hooks/actions/settings#fluent-community-scheduled-hour-jobs)
 
 <a id="fluent-community-send-daily-digest-init"></a>
 
@@ -73,7 +73,7 @@ add_action('fluent_community_send_daily_digest_init', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community_send_daily_digest`](#fluent-community-send-daily-digest) · [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs)
+**Related:** [`fluent_community_send_daily_digest`](#fluent-community-send-daily-digest) · [`fluent_community_scheduled_hour_jobs`](/hooks/actions/settings#fluent-community-scheduled-hour-jobs)
 
 <a id="fluent-community-email-notify-users-everyone-tag"></a>
 
@@ -113,7 +113,7 @@ add_action('fluent_community/email_notify_users_everyone_tag', function ($feedId
 }, 10, 2);
 ```
 
-**Related:** [`fluent_community/feed/scheduling_everyone_tag`](#fluent-community-feed-scheduling-everyone-tag) · [`fluent_community/email_notify_new_posts`](#fluent-community-email-notify-new-posts)
+**Related:** [`fluent_community/feed/scheduling_everyone_tag`](/hooks/actions/feeds#fluent-community-feed-scheduling-everyone-tag) · [`fluent_community/email_notify_new_posts`](/hooks/actions/feeds#fluent-community-email-notify-new-posts)
 
 <a id="fluent-community-remove-old-notifications"></a>
 
@@ -139,5 +139,5 @@ add_action('fluent_community/remove_old_notifications', function () {
 }, 10, 0);
 ```
 
-**Related:** [`fluent_community_daily_jobs`](#fluent-community-daily-jobs)
+**Related:** [`fluent_community_daily_jobs`](/hooks/actions/settings#fluent-community-daily-jobs)
 
