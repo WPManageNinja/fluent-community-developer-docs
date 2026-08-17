@@ -204,6 +204,18 @@ add_filter('fluent_community/video_upload_max_file_unit', function ($param1) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the default settings for the Paymattic (WPPayForm) community integration on a form.
+
+Supplies the starting values shown when the integration is first configured for a form — space and course assignment, auto-login, welcome email, the conditional-logic block, and the removal triggers for subscription cancellation and refund. Requires Paymattic to be active. It does not affect a form whose integration settings have already been saved.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$fields` | `array` | The default integration settings. |
+| 2 | `$formId` | `int` | The Paymattic form id. |
+
+**Return:** The default settings array.
 
 ### Call Sites
 

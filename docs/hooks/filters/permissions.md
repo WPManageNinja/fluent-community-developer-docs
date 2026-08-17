@@ -27,6 +27,17 @@ description: Permissions filter hooks for FluentCommunity.
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 8
+- **When it fires:** Filters whether a user may access the community portal at all.
+
+Applied at every return point of `Helper::canAccessPortal()`, so a callback sees the decision but not the reason behind it — the access level, role check and active-profile check are all collapsed into one boolean by the time it runs. No user ID is passed, so resolve the subject yourself if you need it. A callback that unconditionally returns `true` opens the portal to logged-out visitors as well.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canAccess` | `bool` | The decision reached from the access level, role list and profile status. |
+
+**Return:** `bool` — `true` to allow portal access, `false` to deny. The value is used directly, so return a real boolean.
 
 ### Call Sites
 
@@ -44,10 +55,12 @@ description: Permissions filter hooks for FluentCommunity.
 ### Example
 
 ```php
-add_filter('fluent_community/can_access_portal', function ($result) {
-    return $result;
+add_filter('fluent_community/can_access_portal', function ($canAccess) {
+    return $canAccess;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/super_admin_capability`](#fluent-community-super-admin-capability)
 
 <a id="fluent-community-can-view-comments-feed"></a>
 
@@ -78,6 +91,18 @@ add_filter('fluent_community/can_view_comments_{feed}', function ($param1, $feed
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 3
+- **When it fires:** Filters whether the current user may see the member list on the leaderboard.
+
+Reads the `leaderboard_members_visibility` privacy setting and otherwise mirrors the members-page check. It controls visibility of the ranked members, not whether the leaderboard feature itself is enabled.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canView` | `bool` | The decision derived from the privacy setting. |
+| 2 | `$pageStatus` | `string` | The `leaderboard_members_visibility` setting: `everybody`, `logged_in`, or a moderator-only value. |
+
+**Return:** `bool` — `true` to allow viewing.
 
 ### Call Sites
 
@@ -90,10 +115,12 @@ add_filter('fluent_community/can_view_comments_{feed}', function ($param1, $feed
 ### Example
 
 ```php
-add_filter('fluent_community/can_view_leaderboard_members', function ($param1, $pageStatus) {
-    return $param1;
+add_filter('fluent_community/can_view_leaderboard_members', function ($canView, $pageStatus) {
+    return $canView;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page)
 
 <a id="fluent-community-can-view-members-page"></a>
 
@@ -102,6 +129,18 @@ add_filter('fluent_community/can_view_leaderboard_members', function ($param1, $
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 3
+- **When it fires:** Filters whether the current user may view the members directory.
+
+Driven by the `members_page_status` privacy setting, with the same three-way shape as the profile and leaderboard checks. It gates the directory page only; individual profiles are governed separately by `fluent_community/can_view_user_profile`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canView` | `bool` | The decision derived from the privacy setting. |
+| 2 | `$pageStatus` | `string` | The `members_page_status` setting: `everybody`, `logged_in`, or a moderator-only value. |
+
+**Return:** `bool` — `true` to allow viewing.
 
 ### Call Sites
 
@@ -114,10 +153,12 @@ add_filter('fluent_community/can_view_leaderboard_members', function ($param1, $
 ### Example
 
 ```php
-add_filter('fluent_community/can_view_members_page', function ($param1, $pageStatus) {
-    return $param1;
+add_filter('fluent_community/can_view_members_page', function ($canView, $pageStatus) {
+    return $canView;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) · [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members)
 
 <a id="fluent-community-can-view-user-profile"></a>
 
@@ -126,6 +167,19 @@ add_filter('fluent_community/can_view_members_page', function ($param1, $pageSta
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 3
+- **When it fires:** Filters whether the current user may view a member profile page.
+
+The base decision comes from the `profile_page_visibility` privacy setting: `everybody` yields `true`, `logged_in` yields the login state, and anything else falls back to "own profile or moderator". `$pageStatus` is passed so a callback can relax one visibility mode without hard-coding the others. `$targetUserId` is frequently `null` — the own-profile branch compares it with a strict `===`, so a string ID will not match.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canView` | `bool` | The decision derived from the privacy setting. |
+| 2 | `$pageStatus` | `string` | The `profile_page_visibility` setting: `everybody`, `logged_in`, or a moderator-only value. |
+| 3 | `$targetUserId` | `int` | The profile owner's user ID. May be `null` when the caller did not supply one. |
+
+**Return:** `bool` — `true` to allow viewing.
 
 ### Call Sites
 
@@ -138,10 +192,12 @@ add_filter('fluent_community/can_view_members_page', function ($param1, $pageSta
 ### Example
 
 ```php
-add_filter('fluent_community/can_view_user_profile', function ($isOwn, $pageStatus, $targetUserId) {
-    return $isOwn;
+add_filter('fluent_community/can_view_user_profile', function ($canView, $pageStatus, $targetUserId) {
+    return $canView;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page)
 
 <a id="fluent-community-super-admin-capability"></a>
 
@@ -150,6 +206,17 @@ add_filter('fluent_community/can_view_user_profile', function ($isOwn, $pageStat
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the WordPress capability that identifies a FluentCommunity super admin.
+
+Defaults to `manage_options` and is checked with `user_can()`. Returning an empty or falsy value makes `Helper::isSuperAdmin()` return `false` for everyone, which disables the super-admin escape hatch across the plugin — that is the supported way to switch it off, not an error. This is distinct from the community `admin` role, which is stored per member rather than derived from WordPress capabilities.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$capability` | `string` | The capability to test, `manage_options` by default. |
+
+**Return:** `string` — a WordPress capability name, or a falsy value to disable the super-admin check entirely.
 
 ### Call Sites
 
@@ -160,10 +227,12 @@ add_filter('fluent_community/can_view_user_profile', function ($isOwn, $pageStat
 ### Example
 
 ```php
-add_filter('fluent_community/super_admin_capability', function ($param1) {
-    return $param1;
+add_filter('fluent_community/super_admin_capability', function ($capability) {
+    return $capability;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/user/permissions`](#fluent-community-user-permissions)
 
 <a id="fluent-community-user-permissions"></a>
 
@@ -172,6 +241,19 @@ add_filter('fluent_community/super_admin_capability', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Filters the permission map derived from a user's community roles.
+
+Applied at both ends of `User::getRolePermissions()`. Users with no community role reach the early branch and receive only `['read' => true]` with an empty `$roles` array, so a callback must cope with a map that has none of the usual keys. The result is cached per user for the request and is what the Vue app receives as `appVars.permissions`, so anything added here becomes visible to the front end.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$permissions` | `array` | Permission keys mapped to booleans, for example `community_admin`, `delete_any_feed`, `course_creator`. |
+| 2 | `$roles` | `array` | The user's community role slugs. Empty for users with no community role. |
+| 3 | `$user` | `\FluentCommunity\App\Models\User` | The user the permissions belong to. |
+
+**Return:** `array` — the permission map. Keep the existing keys unless you intend to revoke them; several controllers read them directly.
 
 ### Call Sites
 
@@ -183,10 +265,12 @@ add_filter('fluent_community/super_admin_capability', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/user/permissions', function ($permissions, $roles, $param3) {
+add_filter('fluent_community/user/permissions', function ($permissions, $roles, $user) {
     return $permissions;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/super_admin_capability`](#fluent-community-super-admin-capability)
 
 <a id="fluent-community-user-space-permissions"></a>
 

@@ -5,7 +5,7 @@ description: Comments action hooks for FluentCommunity.
 
 # Comments Actions
 
-18 unique action hooks currently map to this category, across 23 call sites.
+19 unique action hooks currently map to this category, across 27 call sites.
 
 ## Hook Inventory
 
@@ -16,6 +16,7 @@ description: Comments action hooks for FluentCommunity.
 | [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:77` |
 | [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:211` |
 | [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:210` |
+| [`fluent_community/comment_added_async`](#fluent-community-comment-added-async) | Core | 4 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:231` |
 | [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:608` |
 | [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:607` |
 | [`fluent_community/comment_updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:272` |
@@ -100,6 +101,17 @@ add_action('fluent_community/check_rate_limit/create_comment', function ($user) 
 - **Type:** action
 - **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 2
+- **When it fires:** Runs after a published comment or reply has been stored and its media attached.
+
+Comments held for moderation never reach it — those fire `fluent_community/comment/new_comment_{status}` instead. A type-scoped twin, `fluent_community/comment_added_{feed->type}`, fires immediately before it, so listening to both double-handles the same comment. Note the third argument is only supplied by `CommentsController::store()`; the Pro moderation-approval path passes just two.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The stored comment, with relations loaded. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
+| 3 | `$mentionedUsers` | `array` | Mentioned user models parsed out of the comment body. Optional; absent on the moderation-approval path. |
 
 ### Call Sites
 
@@ -111,9 +123,11 @@ add_action('fluent_community/check_rate_limit/create_comment', function ($user) 
 ### Example
 
 ```php
-add_action('fluent_community/comment_added', function ($comment, $feed, $mentions) {
+add_action('fluent_community/comment_added', function ($comment, $feed, $mentionedUsers) {
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/comment_updated`](#fluent-community-comment-updated) · [`fluent_community/comment_deleted`](#fluent-community-comment-deleted)
 
 <a id="fluent-community-comment-added-feed"></a>
 
@@ -137,6 +151,36 @@ add_action('fluent_community/comment_added_{feed}', function ($comment, $feed) {
 }, 10, 2);
 ```
 
+<a id="fluent-community-comment-added-async"></a>
+
+## `fluent_community/comment_added_async`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 4
+
+::: info Scheduled job
+This action is not fired inline. It is registered as a recurring background job
+and runs on a schedule, so the source below is where the job is *scheduled*, not
+where it fires. Hook it with `add_action()` as usual.
+:::
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:231` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:245` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:260` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:372` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community/comment_added_async', function () {
+}, 10, 0);
+```
+
 <a id="fluent-community-comment-deleted"></a>
 
 ## `fluent_community/comment_deleted`
@@ -144,6 +188,16 @@ add_action('fluent_community/comment_added_{feed}', function ($comment, $feed) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs after a comment row has been deleted and the post's comment count recalculated.
+
+The first argument is the comment ID, not a model — the row is already gone by the time the hook runs, so anything you need from the comment must be captured earlier via `fluent_community/before_comment_delete`. Attached media is announced beforehand through `fluent_community/comment/media_deleted`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$commentId` | `int` | ID of the deleted comment. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belonged to. |
 
 ### Call Sites
 
@@ -157,6 +211,8 @@ add_action('fluent_community/comment_added_{feed}', function ($comment, $feed) {
 add_action('fluent_community/comment_deleted', function ($commentId, $feed) {
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comment_added`](#fluent-community-comment-added)
 
 <a id="fluent-community-comment-deleted-feed"></a>
 
@@ -186,6 +242,16 @@ add_action('fluent_community/comment_deleted_{feed}', function ($commentId, $fee
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Runs after an edited comment is saved, provided the save changed something.
+
+Guarded by a dirty check, so a no-op edit is silent. Media attached to the comment is reconciled first, and any media dropped by the edit is announced separately through `fluent_community/comment/media_deleted`. The type-scoped `fluent_community/comment_updated_{feed->type}` fires directly after this one.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$comment` | `\FluentCommunity\App\Models\Comment` | The comment after saving, with relations loaded. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to. |
 
 ### Call Sites
 
@@ -199,6 +265,8 @@ add_action('fluent_community/comment_deleted_{feed}', function ($commentId, $fee
 add_action('fluent_community/comment_updated', function ($comment, $feed) {
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/comment_added`](#fluent-community-comment-added)
 
 <a id="fluent-community-comment-updated-feed"></a>
 
@@ -345,7 +413,7 @@ add_action('fluent_community/comment/updated', function ($comment, $dirty) {
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_author', function ($authorId) {
+add_action('fluent_community/notification/comment/notifed_to_author', function ($param1) {
 }, 10, 1);
 ```
 
@@ -366,7 +434,7 @@ add_action('fluent_community/notification/comment/notifed_to_author', function (
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_mentions', function ($mentionedUserIds) {
+add_action('fluent_community/notification/comment/notifed_to_mentions', function ($param1) {
 }, 10, 1);
 ```
 
@@ -387,7 +455,7 @@ add_action('fluent_community/notification/comment/notifed_to_mentions', function
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_other_users', function ($sendingUserIds) {
+add_action('fluent_community/notification/comment/notifed_to_other_users', function ($param1) {
 }, 10, 1);
 ```
 
@@ -409,7 +477,7 @@ add_action('fluent_community/notification/comment/notifed_to_other_users', funct
 ### Example
 
 ```php
-add_action('fluent_community/notification/comment/notifed_to_thread_commetenter', function ($childCommentUserIds) {
+add_action('fluent_community/notification/comment/notifed_to_thread_commetenter', function ($param1) {
 }, 10, 1);
 ```
 

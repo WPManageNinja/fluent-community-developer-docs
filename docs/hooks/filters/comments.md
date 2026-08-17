@@ -5,7 +5,7 @@ description: Comments filter hooks for FluentCommunity.
 
 # Comments Filters
 
-14 unique filter hooks currently map to this category, across 14 call sites.
+13 unique filter hooks currently map to this category, across 13 call sites.
 
 ## Hook Inventory
 
@@ -24,7 +24,6 @@ description: Comments filter hooks for FluentCommunity.
 | [`fluent_community/max_comment_char_length`](#fluent-community-max-comment-char-length) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:448` |
 | [`fluent_community/profile_comments_api_response`](#fluent-community-profile-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:713` |
 | [`fluent_community/rate_limit/comments_per_minute`](#fluent-community-rate-limit-comments-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:49` |
-| [`fluent_community/seo/ld_comment_limit`](#fluent-community-seo-ld-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:471` |
 
 <a id="fluent-community-comment-api-response"></a>
 
@@ -55,6 +54,18 @@ add_filter('fluent_community/comment_api_response', function ($data, $all) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the comment sort options a space administrator can choose from as that space's default.
+
+Defaults to `oldest` (labelled "Earliest"), `latest`, `popular` and `most_replied`. It reaches the portal as `comment_order_by_options`, and the only consumer is the space settings form. The reader-facing sort dropdown is hard-coded in the Vue components and the sorting itself is done client-side, so adding a key here makes it selectable as a space default but nothing will know how to apply it. Removing keys is the safe direction. `$context` is `comment` at the only current call site.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$options` | `array` | Sort keys mapped to translated labels. |
+| 2 | `$context` | `string` | The list being sorted; `comment` today. |
+
+**Return:** `array` — an associative map of sort key to label, preserving order.
 
 ### Call Sites
 
@@ -69,6 +80,8 @@ add_filter('fluent_community/comment_order_options', function ($options, $contex
     return $options;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
 
 <a id="fluent-community-comment-comment-data"></a>
 
@@ -131,8 +144,8 @@ add_filter('fluent_community/comment/new_comment_response', function ($response,
 ### Example
 
 ```php
-add_filter('fluent_community/comment/patch_comment_response', function ($comment, $comment_2, $feed, $all) {
-    return $comment;
+add_filter('fluent_community/comment/patch_comment_response', function ($param1, $comment, $feed, $all) {
+    return $param1;
 }, 10, 4);
 ```
 
@@ -209,6 +222,19 @@ add_filter('fluent_community/comments_query_response', function ($comments, $all
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether the identical-comment guard is skipped for this submission.
+
+By default a comment whose body exactly matches an earlier comment by the same user on the same post is rejected with "No duplicate comment please!". The check only runs when the comment has text, so image-only replies bypass it regardless. Return `true` to skip it — useful for short affirmations such as "thanks" in busy spaces.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$skipCheck` | `bool` | Whether to skip the duplicate check. `false` by default. |
+| 2 | `$userId` | `int` | The commenting user's ID. |
+| 3 | `$feedId` | `int` | The post being commented on. |
+
+**Return:** `bool` — `true` to allow the duplicate through.
 
 ### Call Sites
 
@@ -219,10 +245,12 @@ add_filter('fluent_community/comments_query_response', function ($comments, $all
 ### Example
 
 ```php
-add_filter('fluent_community/disable_duplicate_comment_check', function ($param1, $param2, $id) {
-    return $param1;
+add_filter('fluent_community/disable_duplicate_comment_check', function ($skipCheck, $userId, $feedId) {
+    return $skipCheck;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/rate_limit/comments_per_minute`](#fluent-community-rate-limit-comments-per-minute)
 
 <a id="fluent-community-disable-self-comment-react"></a>
 
@@ -231,6 +259,18 @@ add_filter('fluent_community/disable_duplicate_comment_check', function ($param1
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether users are barred from reacting to their own comments.
+
+The name reads as a switch that is on by default, but it is not: it defaults to `false`, meaning self-reacting is permitted. Return `true` to block it, at which point the API responds with an error. It applies to comment reactions only — reactions on the user's own posts are unaffected.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$disabled` | `bool` | Whether to reject the reaction. `false` by default, so self-reacting is allowed. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post the comment belongs to, so the rule can be scoped per space. |
+
+**Return:** `bool` — `true` to reject a reaction on the user's own comment.
 
 ### Call Sites
 
@@ -241,8 +281,8 @@ add_filter('fluent_community/disable_duplicate_comment_check', function ($param1
 ### Example
 
 ```php
-add_filter('fluent_community/disable_self_comment_react', function ($param1, $feed) {
-    return $param1;
+add_filter('fluent_community/disable_self_comment_react', function ($disabled, $feed) {
+    return $disabled;
 }, 10, 2);
 ```
 
@@ -253,6 +293,17 @@ add_filter('fluent_community/disable_self_comment_react', function ($param1, $fe
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the maximum number of characters allowed in a comment or reply.
+
+Defaults to 10000 and, like the post limit, is measured with `strlen()` on the Markdown source, so it is a byte count. Exceeding it throws a 422 before the comment is stored. It applies to both new comments and edits, since both run through the same validation routine.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$maxLength` | `int` | The byte ceiling for a comment body, 10000 by default. |
+
+**Return:** `int` — the maximum length.
 
 ### Call Sites
 
@@ -263,10 +314,12 @@ add_filter('fluent_community/disable_self_comment_react', function ($param1, $fe
 ### Example
 
 ```php
-add_filter('fluent_community/max_comment_char_length', function ($param1) {
-    return $param1;
+add_filter('fluent_community/max_comment_char_length', function ($maxLength) {
+    return $maxLength;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/max_post_length`](#fluent-community-max-post-length)
 
 <a id="fluent-community-profile-comments-api-response"></a>
 
@@ -297,6 +350,17 @@ add_filter('fluent_community/profile_comments_api_response', function ($data, $a
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters how many comments a member may post in a rolling one-minute window.
+
+Defaults to 5. The comparison is `count > limit` against comments created in the last 60 seconds, so the effective allowance is one more than the number returned — the default lets six through before the sixth attempt is refused. Site administrators are exempt before the filter is reached, and exceeding the limit throws rather than returning a structured error.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$limitPerMinute` | `int` | Comments allowed per rolling minute, 5 by default. |
+
+**Return:** `int` — the limit. A very large value effectively disables comment rate limiting.
 
 ### Call Sites
 
@@ -307,30 +371,10 @@ add_filter('fluent_community/profile_comments_api_response', function ($data, $a
 ### Example
 
 ```php
-add_filter('fluent_community/rate_limit/comments_per_minute', function ($param1) {
-    return $param1;
+add_filter('fluent_community/rate_limit/comments_per_minute', function ($limitPerMinute) {
+    return $limitPerMinute;
 }, 10, 1);
 ```
 
-<a id="fluent-community-seo-ld-comment-limit"></a>
-
-## `fluent_community/seo/ld_comment_limit`
-
-- **Type:** filter
-- **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:471` | `100` (int) |
-
-### Example
-
-```php
-add_filter('fluent_community/seo/ld_comment_limit', function ($param1) {
-    return $param1;
-}, 10, 1);
-```
+**Related:** [`fluent_community/disable_duplicate_comment_check`](#fluent-community-disable-duplicate-comment-check)
 

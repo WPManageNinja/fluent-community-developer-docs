@@ -47,8 +47,8 @@ description: Spaces filter hooks for FluentCommunity.
 ### Example
 
 ```php
-add_filter('fluent_community/all_spaces_api_response', function ($spaces, $all) {
-    return $spaces;
+add_filter('fluent_community/all_spaces_api_response', function ($param1, $all) {
+    return $param1;
 }, 10, 2);
 ```
 
@@ -312,8 +312,8 @@ add_filter('fluent_community/space_groups_api_response', function ($data, $all) 
 ### Example
 
 ```php
-add_filter('fluent_community/space/create_data', function ($id) {
-    return $id;
+add_filter('fluent_community/space/create_data', function ($param1) {
+    return $param1;
 }, 10, 1);
 ```
 
@@ -346,6 +346,18 @@ add_filter('fluent_community/space/join_status_for_private', function ($param1, 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Collects extra settings sections to render on a space's settings screen.
+
+Starts as an empty array; each contributor adds one entry keyed by a provider slug, containing `section_title`, a `settings` array of current values and a `fields` array of form field definitions. Saving posts the values back through `fluent_community/space/update_meta_settings_{provider}`, so the two must use the same key. Rather than filtering directly, prefer `FluentExtendApi::addMetaBox()`, which wires both sides up for you and works for spaces and courses at once. If nothing is added, the screen shows no additional settings at all.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$metaFields` | `array` | Settings sections keyed by provider slug. Empty by default. |
+| 2 | `$space` | `\FluentCommunity\App\Models\Space` | The space whose settings are being rendered. |
+
+**Return:** `array` — the sections map. Returning an empty array suppresses the meta settings response entirely.
 
 ### Call Sites
 
@@ -356,10 +368,12 @@ add_filter('fluent_community/space/join_status_for_private', function ($param1, 
 ### Example
 
 ```php
-add_filter('fluent_community/space/meta_fields', function ($param1, $space) {
-    return $param1;
+add_filter('fluent_community/space/meta_fields', function ($metaFields, $space) {
+    return $metaFields;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/course/meta_fields`](#fluent-community-course-meta-fields)
 
 <a id="fluent-community-space-update-data"></a>
 
@@ -413,6 +427,18 @@ add_filter('fluent_community/spaces_api_response', function ($data, $request) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 2
+- **When it fires:** Filters lockscreen (paywall) settings just before they are saved to a space or course.
+
+Shared by both endpoints — PUT /spaces/{spaceSlug}/lockscreens and PUT /admin/courses/{course_id}/lockscreens — so the second argument is a Space on one path and a Course on the other. Branch on the model type if the two need different handling. Runs after LockscreenService::formatLockscreenFields().
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$settings` | `array` | The formatted lockscreen fields. |
+| 2 | `$target` | `\FluentCommunity\App\Models\BaseSpace` | The Space or Course the lockscreen belongs to. |
+
+**Return:** The lockscreen settings array to persist.
 
 ### Call Sites
 
@@ -424,8 +450,8 @@ add_filter('fluent_community/spaces_api_response', function ($data, $request) {
 ### Example
 
 ```php
-add_filter('fluent_community/update_lockscreen_settings', function ($formattedFields, $course) {
-    return $formattedFields;
+add_filter('fluent_community/update_lockscreen_settings', function ($settings, $target) {
+    return $settings;
 }, 10, 2);
 ```
 

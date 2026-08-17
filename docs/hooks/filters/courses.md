@@ -88,6 +88,19 @@ add_filter('fluent_community/admin_course_comments_api_response', function ($dat
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the whole course student export payload after every row has been built.
+
+Runs once, after fluent_community/course/exportable_student_row has run for each student.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload — a `students` key holding the list of rows. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$courseId` | `int` | Course the export was requested for. |
+
+**Return:** The export payload array.
 
 ### Call Sites
 
@@ -98,10 +111,12 @@ add_filter('fluent_community/admin_course_comments_api_response', function ($dat
 ### Example
 
 ```php
-add_filter('fluent_community/admin_course_exportable_students_api_response', function ($rows, $all, $courseId) {
-    return $rows;
+add_filter('fluent_community/admin_course_exportable_students_api_response', function ($data, $requestData, $courseId) {
+    return $data;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/course/exportable_student_row`](#fluent-community-course-exportable-student-row)
 
 <a id="fluent-community-admin-course-lesson-api-response"></a>
 
@@ -296,8 +311,8 @@ add_filter('fluent_community/admin_courses_api_response', function ($data, $all)
 ### Example
 
 ```php
-add_filter('fluent_community/all_courses_api_response', function ($total, $all) {
-    return $total;
+add_filter('fluent_community/all_courses_api_response', function ($param1, $all) {
+    return $param1;
 }, 10, 2);
 ```
 
@@ -418,6 +433,17 @@ add_filter('fluent_community/course_lesson_api_response', function ($data, $all)
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether the lesson view opens in fullscreen mode by default.
+
+Surfaces as `portal_vars.course_lesson_fullscreen` and is used only as the fallback for the viewer's stored `lesson_fs` preference — anyone who has already toggled fullscreen keeps their own setting, so this affects first-time viewers. Return the string `'yes'`; the comparison is against that literal.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$fullscreen` | `string` | `yes` to default to fullscreen, `no` otherwise. `no` by default. |
+
+**Return:** `string` — `'yes'` or `'no'`.
 
 ### Call Sites
 
@@ -428,10 +454,12 @@ add_filter('fluent_community/course_lesson_api_response', function ($data, $all)
 ### Example
 
 ```php
-add_filter('fluent_community/course_lesson_fullscreen_default', function ($param1) {
-    return $param1;
+add_filter('fluent_community/course_lesson_fullscreen_default', function ($fullscreen) {
+    return $fullscreen;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/course_section_collapse_default`](#fluent-community-course-section-collapse-default)
 
 <a id="fluent-community-course-section-collapse-default"></a>
 
@@ -440,6 +468,17 @@ add_filter('fluent_community/course_lesson_fullscreen_default', function ($param
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether course sections start collapsed in the course view.
+
+Surfaces as `portal_vars.course_sections_collapsed`. The course view compares it loosely against `'yes'`, so return the string rather than a boolean. It sets the initial state only — once a viewer expands or collapses a section, their interaction wins for the rest of the visit.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$collapsed` | `string` | `yes` to start collapsed, `no` to start expanded. `no` by default. |
+
+**Return:** `string` — `'yes'` or `'no'`.
 
 ### Call Sites
 
@@ -450,10 +489,12 @@ add_filter('fluent_community/course_lesson_fullscreen_default', function ($param
 ### Example
 
 ```php
-add_filter('fluent_community/course_section_collapse_default', function ($param1) {
-    return $param1;
+add_filter('fluent_community/course_section_collapse_default', function ($collapsed) {
+    return $collapsed;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/course_lesson_fullscreen_default`](#fluent-community-course-lesson-fullscreen-default)
 
 <a id="fluent-community-course-smart-codes"></a>
 
@@ -462,6 +503,17 @@ add_filter('fluent_community/course_section_collapse_default', function ($param1
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the smart codes available in course drip notification emails.
+
+A map of placeholder token to human label, used to populate the editor's insert menu. Registering a token here only advertises it — the replacement itself has to be wired separately, so an unresolved token will render literally in the email.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$smartCodes` | `array` | Map of "{{token}}" => label. |
+
+**Return:** The smart code map.
 
 ### Call Sites
 
@@ -472,10 +524,12 @@ add_filter('fluent_community/course_section_collapse_default', function ($param1
 ### Example
 
 ```php
-add_filter('fluent_community/course_smart_codes', function ($param1) {
-    return $param1;
+add_filter('fluent_community/course_smart_codes', function ($smartCodes) {
+    return $smartCodes;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/default_course_email_notification`](#fluent-community-default-course-email-notification)
 
 <a id="fluent-community-course-view-json-ld"></a>
 
@@ -506,6 +560,19 @@ add_filter('fluent_community/course_view_json_ld', function ($param1, $space, $d
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the welcome banner shown on a course, per audience.
+
+Returns null before the filter runs when the banner for that view is not enabled, so callbacks only see enabled banners. The raw markdown `description` has already been stripped in favour of the rendered version, and for the not_enrolled view the allowClose flag is stripped too — a guest-facing banner cannot be dismissed.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$banner` | `array` | The banner settings for this view. |
+| 2 | `$view` | `string` | Either "enrolled" or "not_enrolled". |
+| 3 | `$course` | `\FluentCommunity\Modules\Course\Model\Course` | The course. |
+
+**Return:** The banner settings array, or null to render no banner.
 
 ### Call Sites
 
@@ -521,6 +588,8 @@ add_filter('fluent_community/course_welcome_banner', function ($banner, $view, $
 }, 10, 3);
 ```
 
+**Related:** [`fluent_community/get_course_welcome_banner_settings`](#fluent-community-get-course-welcome-banner-settings) · [`fluent_community/update_course_welcome_banner_settings`](#fluent-community-update-course-welcome-banner-settings)
+
 <a id="fluent-community-course-access-message-html"></a>
 
 ## `fluent_community/course/access_message_html`
@@ -528,6 +597,20 @@ add_filter('fluent_community/course_welcome_banner', function ($banner, $view, $
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the HTML shown in place of a lesson the current user cannot view.
+
+The default markup is a `fcom_locker` block whose wording already varies by lock reason — sequential progression, a future unlock date, or plain lack of enrolment. `$config` carries `is_locked`, `lock_type` and `unlock_date`, which is the only way to tell those cases apart once the string is built. The return value is rendered as HTML, so escape any user-supplied text yourself.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$accessMessage` | `string` | The default locked-lesson HTML. |
+| 2 | `$course` | `\FluentCommunity\Modules\Course\Model\Course` | The course being viewed. |
+| 3 | `$lesson` | `\FluentCommunity\Modules\Course\Model\CourseLesson` | The locked lesson. |
+| 4 | `$config` | `array` | Lock context: `is_locked`, `lock_type` (for example `sequential`) and `unlock_date`. |
+
+**Return:** `string` — HTML to render in place of the lesson body.
 
 ### Call Sites
 
@@ -543,6 +626,8 @@ add_filter('fluent_community/course/access_message_html', function ($accessMessa
 }, 10, 4);
 ```
 
+**Related:** [`fluent_community/course/can_view_lesson`](#fluent-community-course-can-view-lesson)
+
 <a id="fluent-community-course-can-view-lesson"></a>
 
 ## `fluent_community/course/can_view_lesson`
@@ -550,6 +635,20 @@ add_filter('fluent_community/course/access_message_html', function ($accessMessa
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether a user may view a particular lesson.
+
+Applied inside `CourseHelper::resolveLessonAccess()` before the companion `fluent_community/course/lesson_access_info` filter, which can still override the decision and attach a lock reason — so returning `true` here is a strong hint, not the final word. Pro attaches a callback that grants access to any lesson marked `is_free_preview`. Note that only three of the four arguments are used by that callback; add the ones you need with the right `$accepted_args` count.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canView` | `bool` | The access decision computed from enrolment, drip schedule and sequential progress. |
+| 2 | `$lesson` | `\FluentCommunity\Modules\Course\Model\CourseLesson` | The lesson being requested. |
+| 3 | `$course` | `\FluentCommunity\Modules\Course\Model\Course` | The course the lesson belongs to. |
+| 4 | `$user` | `\FluentCommunity\App\Models\User` | The user requesting the lesson. |
+
+**Return:** `bool` — `true` to grant access.
 
 ### Call Sites
 
@@ -560,10 +659,12 @@ add_filter('fluent_community/course/access_message_html', function ($accessMessa
 ### Example
 
 ```php
-add_filter('fluent_community/course/can_view_lesson', function ($initialCanView, $lesson, $course, $user) {
-    return $initialCanView;
+add_filter('fluent_community/course/can_view_lesson', function ($canView, $lesson, $course, $user) {
+    return $canView;
 }, 10, 4);
 ```
+
+**Related:** [`fluent_community/course/access_message_html`](#fluent-community-course-access-message-html)
 
 <a id="fluent-community-course-exportable-student-row"></a>
 
@@ -572,6 +673,20 @@ add_filter('fluent_community/course/can_view_lesson', function ($initialCanView,
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters one row of the course student export.
+
+Runs once per student. Keys are human-readable column headings — Name, Email, Username, Progress, Enrollment Date, Last Activity — so adding a key adds a column. The export is capped at 5000 students and progress is pre-computed in bulk, so a callback should avoid re-querying it per row.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$row` | `array` | Column heading => value map for one student. |
+| 2 | `$student` | `\FluentCommunity\App\Models\XProfile` | The student profile, with user and space_pivot loaded. |
+| 3 | `$progress` | `int` | Completion percentage for this course. |
+| 4 | `$courseId` | `int` | Course the export was requested for. |
+
+**Return:** The row map to write to the export.
 
 ### Call Sites
 
@@ -582,10 +697,12 @@ add_filter('fluent_community/course/can_view_lesson', function ($initialCanView,
 ### Example
 
 ```php
-add_filter('fluent_community/course/exportable_student_row', function ($display_name, $student, $progress, $courseId) {
-    return $display_name;
+add_filter('fluent_community/course/exportable_student_row', function ($row, $student, $progress, $courseId) {
+    return $row;
 }, 10, 4);
 ```
+
+**Related:** [`fluent_community/admin_course_exportable_students_api_response`](#fluent-community-admin-course-exportable-students-api-response)
 
 <a id="fluent-community-course-lesson-access-info"></a>
 
@@ -604,8 +721,8 @@ add_filter('fluent_community/course/exportable_student_row', function ($display_
 ### Example
 
 ```php
-add_filter('fluent_community/course/lesson_access_info', function ($canView, $lesson, $course, $user, $ctx) {
-    return $canView;
+add_filter('fluent_community/course/lesson_access_info', function ($param1, $lesson, $course, $user, $ctx) {
+    return $param1;
 }, 10, 5);
 ```
 
@@ -616,6 +733,19 @@ add_filter('fluent_community/course/lesson_access_info', function ($canView, $le
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Collects extra settings sections to render on a course's settings screen.
+
+The course-side twin of `fluent_community/space/meta_fields`, with the same section shape and the same paired save action, `fluent_community/course/update_meta_settings_{provider}`. It differs in passing a third argument, the raw request payload; `FluentExtendApi::addMetaBox()` registers its callback with only two, so declare the argument count you actually need.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$metaFields` | `array` | Settings sections keyed by provider slug. Empty by default. |
+| 2 | `$course` | `\FluentCommunity\Modules\Course\Model\Course` | The course whose settings are being rendered. |
+| 3 | `$requestData` | `array` | The full request payload. Optional in practice — omit it unless you need it. |
+
+**Return:** `array` — the sections map.
 
 ### Call Sites
 
@@ -626,10 +756,12 @@ add_filter('fluent_community/course/lesson_access_info', function ($canView, $le
 ### Example
 
 ```php
-add_filter('fluent_community/course/meta_fields', function ($param1, $course, $all) {
-    return $param1;
+add_filter('fluent_community/course/meta_fields', function ($metaFields, $course, $requestData) {
+    return $metaFields;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/space/meta_fields`](#fluent-community-space-meta-fields)
 
 <a id="fluent-community-course-processed"></a>
 
@@ -648,7 +780,7 @@ add_filter('fluent_community/course/meta_fields', function ($param1, $course, $a
 ### Example
 
 ```php
-add_filter('fluent_community/course/processed', function ($course, $enrollment) {
+add_filter('fluent_community/course/processed', function ($course, $param2) {
     return $course;
 }, 10, 2);
 ```
@@ -682,6 +814,17 @@ add_filter('fluent_community/courses_api_response', function ($data, $all) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the default subject and body used for course drip notification emails.
+
+Supplies the starting template for a section that has no saved notification of its own; a section with its own saved copy is unaffected. The default text uses the smart codes from fluent_community/course_smart_codes.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$notification` | `array` | Default template with `subject` and `message` keys. |
+
+**Return:** The default notification array.
 
 ### Call Sites
 
@@ -692,10 +835,12 @@ add_filter('fluent_community/courses_api_response', function ($data, $all) {
 ### Example
 
 ```php
-add_filter('fluent_community/default_course_email_notification', function ($param1) {
-    return $param1;
+add_filter('fluent_community/default_course_email_notification', function ($notification) {
+    return $notification;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/course_smart_codes`](#fluent-community-course-smart-codes)
 
 <a id="fluent-community-digest-notification-email-sections"></a>
 
@@ -748,6 +893,19 @@ add_filter('fluent_community/get_course_api_response', function ($data, $all) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the course welcome banner settings returned to the admin editor.
+
+The admin read path, not the render path — both the enrolled and not_enrolled views are always present here, already merged over the defaults, including views that are disabled.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$settings` | `array` | Banner settings keyed by view. |
+| 2 | `$course` | `\FluentCommunity\Modules\Course\Model\Course` | The course. |
+| 3 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The settings array.
 
 ### Call Sites
 
@@ -758,10 +916,12 @@ add_filter('fluent_community/get_course_api_response', function ($data, $all) {
 ### Example
 
 ```php
-add_filter('fluent_community/get_course_welcome_banner_settings', function ($settings, $course, $all) {
+add_filter('fluent_community/get_course_welcome_banner_settings', function ($settings, $course, $requestData) {
     return $settings;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/course_welcome_banner`](#fluent-community-course-welcome-banner)
 
 <a id="fluent-community-is-allowed-to-complete-lesson"></a>
 
@@ -990,6 +1150,17 @@ add_filter('fluent_community/profile_courses_api_response', function ($data, $al
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the list of quiz question types offered in the lesson editor.
+
+The default list holds only single_choice and multiple_choice. This list drives the editor UI only — it is published to the portal as appVars.question_types and is never consulted when grading. The grader independently understands a third type, written_answer (with grading_mode of open or exact_match), so adding an entry here does not by itself teach the grader anything, and omitting one does not stop an already-saved question of that type from being graded.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$types` | `array` | List of [ value, label ] maps. |
+
+**Return:** The list of question types, each an array with `value` and `label` keys.
 
 ### Call Sites
 
@@ -1000,10 +1171,12 @@ add_filter('fluent_community/profile_courses_api_response', function ($data, $al
 ### Example
 
 ```php
-add_filter('fluent_community/question_types', function ($param1) {
-    return $param1;
+add_filter('fluent_community/question_types', function ($types) {
+    return $types;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/quiz/submitted`](#fluent-community-quiz-submitted)
 
 <a id="fluent-community-quiz-exportable-result-row"></a>
 
@@ -1012,6 +1185,19 @@ add_filter('fluent_community/question_types', function ($param1) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters one row of the course quiz-results export.
+
+Runs once per attempt in GET /admin/courses/{course_id}/export/quiz-results. Keys are human-readable column headings, not slugs — Student Name, Email, Username, Quiz, Score, Grade, Total Attempts, Submitted At — so adding a key adds a column. The export is capped at 5000 attempts.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$row` | `array` | Column heading => value map for one attempt. |
+| 2 | `$result` | `\FluentCommunityPro\App\Modules\Quiz\QuizModel` | The attempt, with xprofile, user and lesson eager-loaded. |
+| 3 | `$courseId` | `int` | Course the export was requested for. |
+
+**Return:** The row map to write to the export.
 
 ### Call Sites
 
@@ -1022,10 +1208,12 @@ add_filter('fluent_community/question_types', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/quiz/exportable_result_row', function ($display_name, $result, $courseId) {
-    return $display_name;
+add_filter('fluent_community/quiz/exportable_result_row', function ($row, $result, $courseId) {
+    return $row;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/quiz/exportable_result_rows`](#fluent-community-quiz-exportable-result-rows)
 
 <a id="fluent-community-quiz-exportable-result-rows"></a>
 
@@ -1034,6 +1222,19 @@ add_filter('fluent_community/quiz/exportable_result_row', function ($display_nam
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the whole quiz-results export payload after every row has been built.
+
+Runs once, after fluent_community/quiz/exportable_result_row has run for each attempt. Use this one to reorder, append or drop rows wholesale; use the singular filter to reshape a row.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload — a `results` key holding the list of rows. |
+| 2 | `$results` | `\FluentCommunity\Framework\Database\Orm\Collection` | The underlying QuizModel collection the rows were built from. |
+| 3 | `$courseId` | `int` | Course the export was requested for. |
+
+**Return:** The export payload array.
 
 ### Call Sites
 
@@ -1044,10 +1245,12 @@ add_filter('fluent_community/quiz/exportable_result_row', function ($display_nam
 ### Example
 
 ```php
-add_filter('fluent_community/quiz/exportable_result_rows', function ($rows, $results, $courseId) {
-    return $rows;
+add_filter('fluent_community/quiz/exportable_result_rows', function ($data, $results, $courseId) {
+    return $data;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/quiz/exportable_result_row`](#fluent-community-quiz-exportable-result-row)
 
 <a id="fluent-community-section-update-data"></a>
 
@@ -1078,6 +1281,18 @@ add_filter('fluent_community/section/update_data', function ($topicData, $course
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters course welcome banner settings on save, just before they are persisted.
+
+Runs after sanitisation and after each view's markdown description has been rendered into description_rendered. A callback that rewrites `description` here must render description_rendered itself, since that step has already happened.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$settings` | `array` | Sanitised banner settings keyed by view. |
+| 2 | `$course` | `\FluentCommunity\Modules\Course\Model\Course` | The course. |
+
+**Return:** The settings array to persist.
 
 ### Call Sites
 
@@ -1092,4 +1307,6 @@ add_filter('fluent_community/update_course_welcome_banner_settings', function ($
     return $settings;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/course/welcome_banner_updated`](#fluent-community-course-welcome-banner-updated)
 

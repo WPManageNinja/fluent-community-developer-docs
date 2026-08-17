@@ -56,8 +56,8 @@ add_filter('fluent_community/feed/updated_survey_config', function ($surveyConfi
 ### Example
 
 ```php
-add_filter('fluent_community/reactions_api_response', function ($reactions, $reactions_2, $all) {
-    return $reactions;
+add_filter('fluent_community/reactions_api_response', function ($param1, $reactions, $all) {
+    return $param1;
 }, 10, 3);
 ```
 

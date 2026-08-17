@@ -5,7 +5,7 @@ description: Rendering filter hooks for FluentCommunity.
 
 # Rendering Filters
 
-33 unique filter hooks currently map to this category, across 35 call sites.
+35 unique filter hooks currently map to this category, across 37 call sites.
 
 ## Hook Inventory
 
@@ -37,6 +37,7 @@ description: Rendering filter hooks for FluentCommunity.
 | [`fluent_community/pro_upgrade_base_url`](#fluent-community-pro-upgrade-base-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:416` |
 | [`fluent_community/render_default_touch_icon`](#fluent-community-render-default-touch-icon) | Core | 1 | `fluent-community/app/Views/portal_page.php:29` |
 | [`fluent_community/rendering_feed_model`](#fluent-community-rendering-feed-model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1053` |
+| [`fluent_community/seo/ld_comment_limit`](#fluent-community-seo-ld-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:471` |
 | [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1244` |
 | [`fluent_community/sidebar_menu_html_api_response`](#fluent-community-sidebar-menu-html-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:76` |
 | [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:521` |
@@ -44,6 +45,7 @@ description: Rendering filter hooks for FluentCommunity.
 | [`fluent_community/template_slug`](#fluent-community-template-slug) | Core | 1 | `fluent-community/Modules/Theming/TemplateLoader.php:75` |
 | [`fluent_community/use_editor_block`](#fluent-community-use-editor-block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:160` |
 | [`fluent_community/will_render_default_sidebar_items`](#fluent-community-will-render-default-sidebar-items) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:35` |
+| [`fluent_communuty/add_sitemap_provider`](#fluent-communuty-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:21` |
 
 <a id="fluent-community-allowed-block-types"></a>
 
@@ -206,6 +208,17 @@ add_filter('fluent_community/block_editor_settings', function ($editor_settings)
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the date, time and UI localisation strings handed to the portal front end.
+
+Surfaces as `portal_vars.dateTime18n` and mixes two consumers. The `weekdays`, `months`, `weekdaysShort`, `monthsShort` and `weekdaysMin` entries are underscore-joined lists that `src/app.js` splits on `_` to build the Day.js locale — keep both the separator and the element order or dates will be mislabelled. The `relativeTime` and `relativeTimeMobile` maps are Day.js relative-time formats, and the `pagination`, `table`, `image`, `upload`, `select` and `datepicker` blocks are the Element Plus locale. All values are already translated through the `fluent-community` text domain.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$strings` | `array` | The localisation payload, keyed as described above. |
+
+**Return:** `array` — the payload, with the existing keys preserved. Missing keys are not backfilled.
 
 ### Call Sites
 
@@ -216,10 +229,12 @@ add_filter('fluent_community/block_editor_settings', function ($editor_settings)
 ### Example
 
 ```php
-add_filter('fluent_community/date_time_i18n', function ($param1) {
-    return $param1;
+add_filter('fluent_community/date_time_i18n', function ($strings) {
+    return $strings;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
 
 <a id="fluent-community-default-theme-mode"></a>
 
@@ -305,8 +320,8 @@ add_filter('fluent_community/error_page_custom_css', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/general_portal_vars', function ($scope) {
-    return $scope;
+add_filter('fluent_community/general_portal_vars', function ($param1) {
+    return $param1;
 }, 10, 1);
 ```
 
@@ -327,8 +342,8 @@ add_filter('fluent_community/general_portal_vars', function ($scope) {
 ### Example
 
 ```php
-add_filter('fluent_community/header_vars', function ($username) {
-    return $username;
+add_filter('fluent_community/header_vars', function ($param1) {
+    return $param1;
 }, 10, 1);
 ```
 
@@ -428,6 +443,17 @@ add_filter('fluent_community/portal_data_vars', function ($dataVars) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the list of notice blocks shown above the main community feed.
+
+Part of the `portal_vars` payload and empty by default. The Vue app renders each entry with `v-html` at the top of the all-feeds route only — not on space, course or profile pages — so entries must be complete, trusted HTML fragments and any user-supplied content in them must be escaped before it reaches the filter.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$notices` | `array` | HTML fragments to render, one per notice. Empty by default. |
+
+**Return:** `array` — a flat list of HTML strings.
 
 ### Call Sites
 
@@ -438,10 +464,12 @@ add_filter('fluent_community/portal_data_vars', function ($dataVars) {
 ### Example
 
 ```php
-add_filter('fluent_community/portal_notices', function ($param1) {
-    return $param1;
+add_filter('fluent_community/portal_notices', function ($notices) {
+    return $notices;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
 
 <a id="fluent-community-portal-page-headless"></a>
 
@@ -538,6 +566,17 @@ add_filter('fluent_community/portal_supported_query_params', function ($param1) 
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the complete configuration payload handed to the portal Vue application.
+
+The main extension point for the front end: everything the SPA knows about the current user, enabled features, permissions, URLs and translated strings passes through here, and both core modules and Pro use it to bolt on their own keys. Several narrower filters are applied while this array is being built, so they run before any callback attached here and can be overridden from it. Two keys are added after the filter — `welcome_banner`, and `auth_url`/`allow_signup` for logged-out visitors — so they cannot be filtered here. The result is printed into the page, so do not add secrets.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$portalVars` | `array` | The portal configuration payload, including `auth`, `permissions`, `features`, `urls`, `i18n` and `rest`. |
+
+**Return:** `array` — the payload. Merge into it rather than replacing it; removing keys the SPA expects will break the portal.
 
 ### Call Sites
 
@@ -548,10 +587,12 @@ add_filter('fluent_community/portal_supported_query_params', function ($param1) 
 ### Example
 
 ```php
-add_filter('fluent_community/portal_vars', function ($getRestInfo) {
-    return $getRestInfo;
+add_filter('fluent_community/portal_vars', function ($portalVars) {
+    return $portalVars;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_notices`](#fluent-community-portal-notices) · [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) · [`fluent_community/max_media_per_post`](#fluent-community-max-media-per-post)
 
 <a id="fluent-community-pro-upgrade-base-url"></a>
 
@@ -619,6 +660,39 @@ add_filter('fluent_community/rendering_feed_model', function ($feed, $config) {
 }, 10, 2);
 ```
 
+<a id="fluent-community-seo-ld-comment-limit"></a>
+
+## `fluent_community/seo/ld_comment_limit`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Filters how many comments are embedded in a post's JSON-LD structured data.
+
+Defaults to 100 and is cast to int. It caps the comments serialized into the schema.org graph for SEO only — it has no effect on the comments the portal or the REST API return. Replies are nested under their parent within whatever the limit returns, so a low limit can orphan replies whose parent fell outside it.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$limit` | `int` | Maximum comments to embed, 100 by default. |
+
+**Return:** The comment limit as an integer.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:471` | `100` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/seo/ld_comment_limit', function ($limit) {
+    return $limit;
+}, 10, 1);
+```
+
 <a id="fluent-community-sidebar-menu-groups-config"></a>
 
 ## `fluent_community/sidebar_menu_groups_config`
@@ -636,8 +710,8 @@ add_filter('fluent_community/rendering_feed_model', function ($feed, $config) {
 ### Example
 
 ```php
-add_filter('fluent_community/sidebar_menu_groups_config', function ($primaryMenuItems, $userModel) {
-    return $primaryMenuItems;
+add_filter('fluent_community/sidebar_menu_groups_config', function ($param1, $userModel) {
+    return $param1;
 }, 10, 2);
 ```
 
@@ -770,6 +844,39 @@ add_filter('fluent_community/use_editor_block', function ($param1) {
 ```php
 add_filter('fluent_community/will_render_default_sidebar_items', function ($param1) {
     return $param1;
+}, 10, 1);
+```
+
+<a id="fluent-communuty-add-sitemap-provider"></a>
+
+## `fluent_communuty/add_sitemap_provider`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Filters whether FluentCommunity registers its WordPress sitemap provider.
+
+Returning false on this filter stops wp_register_sitemap_provider() from running, which removes the community entries from the core WordPress sitemap — useful when a dedicated SEO plugin is already emitting them. It runs on `init`, so a callback has to be attached before that. Note the hook prefix is misspelled `fluent_communuty` in the source; the name is part of the public surface and is documented as written.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$shouldRegister` | `bool` | True by default. |
+
+**Return:** Boolean — false to skip registering the sitemap provider.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:21` | `true` (bool) |
+
+### Example
+
+```php
+add_filter('fluent_communuty/add_sitemap_provider', function ($shouldRegister) {
+    return $shouldRegister;
 }, 10, 1);
 ```
 

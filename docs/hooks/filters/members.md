@@ -5,7 +5,7 @@ description: Members filter hooks for FluentCommunity.
 
 # Members Filters
 
-35 unique filter hooks currently map to this category, across 42 call sites.
+37 unique filter hooks currently map to this category, across 44 call sites.
 
 ## Hook Inventory
 
@@ -21,6 +21,8 @@ description: Members filter hooks for FluentCommunity.
 | [`fluent_community/bulk_members/{filterTag}`](#fluent-community-bulk-members-filterTag) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` |
 | [`fluent_community/bulk_members/add_members_response`](#fluent-community-bulk-members-add-members-response) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:72` |
 | [`fluent_community/bulk_members/add_students_response`](#fluent-community-bulk-members-add-students-response) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:30` |
+| [`fluent_community/bulk_members/crm_tag_members_resolve_response`](#fluent-community-bulk-members-crm-tag-members-resolve-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` |
+| [`fluent_community/bulk_members/crm_tag_students_resolve_response`](#fluent-community-bulk-members-crm-tag-students-resolve-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` |
 | [`fluent_community/bulk_members/import_members_response`](#fluent-community-bulk-members-import-members-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:116` |
 | [`fluent_community/bulk_members/import_students_response`](#fluent-community-bulk-members-import-students-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:102` |
 | [`fluent_community/created_user_role`](#fluent-community-created-user-role) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:331` |
@@ -231,6 +233,19 @@ add_filter('fluent_community/bulk_members/{filterTag}', function ($response, $al
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 2
+- **When it fires:** Filters the response of the bulk add-members-to-space endpoint.
+
+Applied on both branches of the endpoint — the explicit user_ids batch (capped at 500 ids per request) and the copy-from-another-source batch — so a callback sees the same counter payload either way.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Counters: added, skipped, failed, processed, total, has_more, message. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$spaceSlug` | `string` | Slug of the target space. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -242,10 +257,12 @@ add_filter('fluent_community/bulk_members/{filterTag}', function ($response, $al
 ### Example
 
 ```php
-add_filter('fluent_community/bulk_members/add_members_response', function ($result, $all, $spaceSlug) {
-    return $result;
+add_filter('fluent_community/bulk_members/add_members_response', function ($response, $requestData, $spaceSlug) {
+    return $response;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/bulk_members/import_members_response`](#fluent-community-bulk-members-import-members-response)
 
 <a id="fluent-community-bulk-members-add-students-response"></a>
 
@@ -254,6 +271,19 @@ add_filter('fluent_community/bulk_members/add_members_response', function ($resu
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 2
+- **When it fires:** Filters the response of the bulk enroll-students-in-course endpoint.
+
+Applied on both branches of the endpoint — the explicit user_ids batch (capped at 500 ids per request) and the copy-from-another-source batch.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Counters: added, skipped, failed, processed, total, has_more, message. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$courseId` | `int` | Target course id. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -265,10 +295,96 @@ add_filter('fluent_community/bulk_members/add_members_response', function ($resu
 ### Example
 
 ```php
-add_filter('fluent_community/bulk_members/add_students_response', function ($result, $all, $courseId) {
-    return $result;
+add_filter('fluent_community/bulk_members/add_students_response', function ($response, $requestData, $courseId) {
+    return $response;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/bulk_members/import_students_response`](#fluent-community-bulk-members-import-students-response)
+
+<a id="fluent-community-bulk-members-crm-tag-members-resolve-response"></a>
+
+## `fluent_community/bulk_members/crm_tag_members_resolve_response`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Filters the response of resolving a FluentCRM tag into space members.
+
+::: info Resolved name
+The source assembles this name at runtime from `fluent_community/bulk_members/{filterTag}`. This
+is the concrete name to hook; the pattern is documented under that placeholder.
+:::
+
+The hook name is assembled at runtime from a prefix and a suffix, so a source scan for the literal string will not find it — the call site is the shared runCrmTagResolve() helper. Requires FluentCRM to be active. The payload is a page of resolved user ids plus counters; the caller pages through with offset and per_page, and create_missing controls whether contacts without a WordPress user get one created.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Resolved user_ids plus failed / processed counters. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$spaceSlug` | `string` | Slug of the space the tag is being resolved for. |
+
+**Return:** The response payload array.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` | `$response` (mixed)<br>`$request->all()` (array)<br>`$contextId` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/bulk_members/crm_tag_members_resolve_response', function ($response, $requestData, $spaceSlug) {
+    return $response;
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/bulk_members/crm_tag_students_resolve_response`](#fluent-community-bulk-members-crm-tag-students-resolve-response)
+
+<a id="fluent-community-bulk-members-crm-tag-students-resolve-response"></a>
+
+## `fluent_community/bulk_members/crm_tag_students_resolve_response`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Filters the response of resolving a FluentCRM tag into course students.
+
+::: info Resolved name
+The source assembles this name at runtime from `fluent_community/bulk_members/{filterTag}`. This
+is the concrete name to hook; the pattern is documented under that placeholder.
+:::
+
+The course-side counterpart, from the same runtime-assembled hook name in runCrmTagResolve(). Requires FluentCRM to be active.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Resolved user_ids plus failed / processed counters. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$courseId` | `int` | Course the tag is being resolved for. |
+
+**Return:** The response payload array.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` | `$response` (mixed)<br>`$request->all()` (array)<br>`$contextId` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/bulk_members/crm_tag_students_resolve_response', function ($response, $requestData, $courseId) {
+    return $response;
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/bulk_members/crm_tag_members_resolve_response`](#fluent-community-bulk-members-crm-tag-members-resolve-response)
 
 <a id="fluent-community-bulk-members-import-members-response"></a>
 
@@ -277,6 +393,19 @@ add_filter('fluent_community/bulk_members/add_students_response', function ($res
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the response of the CSV/list import-members-into-space endpoint.
+
+This is the import path, which may create WordPress users that do not exist yet; the add path never does. Chunked — has_more and the counters describe the current chunk against the running total.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Counters: added, skipped, failed, processed, total, has_more, message. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$spaceSlug` | `string` | Slug of the target space. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -287,10 +416,12 @@ add_filter('fluent_community/bulk_members/add_students_response', function ($res
 ### Example
 
 ```php
-add_filter('fluent_community/bulk_members/import_members_response', function ($result, $all, $spaceSlug) {
-    return $result;
+add_filter('fluent_community/bulk_members/import_members_response', function ($response, $requestData, $spaceSlug) {
+    return $response;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/bulk_members/add_members_response`](#fluent-community-bulk-members-add-members-response)
 
 <a id="fluent-community-bulk-members-import-students-response"></a>
 
@@ -299,6 +430,19 @@ add_filter('fluent_community/bulk_members/import_members_response', function ($r
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the response of the CSV/list import-students-into-course endpoint.
+
+The course-side counterpart of the member import; may create WordPress users that do not exist yet, and is chunked the same way.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Counters: added, skipped, failed, processed, total, has_more, message. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+| 3 | `$courseId` | `int` | Target course id. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -309,10 +453,12 @@ add_filter('fluent_community/bulk_members/import_members_response', function ($r
 ### Example
 
 ```php
-add_filter('fluent_community/bulk_members/import_students_response', function ($result, $all, $courseId) {
-    return $result;
+add_filter('fluent_community/bulk_members/import_students_response', function ($response, $requestData, $courseId) {
+    return $response;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/bulk_members/add_students_response`](#fluent-community-bulk-members-add-students-response)
 
 <a id="fluent-community-created-user-role"></a>
 
@@ -343,6 +489,17 @@ add_filter('fluent_community/created_user_role', function ($param1, $userData) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the field types available when building custom profile fields.
+
+A map of type slug to label backing the admin field-type picker. Registering a type here only offers it in the picker — storage, validation and rendering for a new type have to be supplied separately.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$fieldTypes` | `array` | Map of type slug => label (text, textarea, number, date, select, radio, url, multiselect). |
+
+**Return:** The field type map.
 
 ### Call Sites
 
@@ -353,8 +510,8 @@ add_filter('fluent_community/created_user_role', function ($param1, $userData) {
 ### Example
 
 ```php
-add_filter('fluent_community/custom_profile_field_types', function ($param1) {
-    return $param1;
+add_filter('fluent_community/custom_profile_field_types', function ($fieldTypes) {
+    return $fieldTypes;
 }, 10, 1);
 ```
 
@@ -365,6 +522,18 @@ add_filter('fluent_community/custom_profile_field_types', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 4
+- **When it fires:** Filters the avatar URL used when a member has no usable profile image.
+
+The default value differs by call site: when Gravatar is disabled it is the bundled `placeholder.png`, and when Gravatar is enabled it is a `ui-avatars.com` URL passed to `get_avatar_url()` as the `default` parameter. Returning a falsy value is safe — every caller falls back to the bundled placeholder. Be aware that `XProfile::getAvatarAttribute()` caches the resolved URL per user for a week, so changes will not be visible immediately for existing members.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$avatarUrl` | `string` | The default avatar URL for this context. |
+| 2 | `$userId` | `int` | The user whose avatar is being resolved. |
+
+**Return:** `string` — an absolute image URL. A falsy return falls back to the bundled placeholder image.
 
 ### Call Sites
 
@@ -378,8 +547,8 @@ add_filter('fluent_community/custom_profile_field_types', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/default_avatar', function ($displayName, $id) {
-    return $displayName;
+add_filter('fluent_community/default_avatar', function ($avatarUrl, $userId) {
+    return $avatarUrl;
 }, 10, 2);
 ```
 
@@ -390,6 +559,17 @@ add_filter('fluent_community/default_avatar', function ($displayName, $id) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters which tab a member profile opens on.
+
+Surfaces as `portal_vars.default_profile_tab` and is matched against a fixed map of tab keys: `about`, `posts`, `spaces`, `comments` and `courses`. Anything outside that set is ignored and the profile opens on the default tab. The redirect happens client-side with `router.replace`, so the profile URL changes as the page settles.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$tab` | `string` | One of `about`, `posts`, `spaces`, `comments`, `courses`. Empty by default. |
+
+**Return:** `string` — a recognised tab key, or an empty string to keep the default tab.
 
 ### Call Sites
 
@@ -400,10 +580,12 @@ add_filter('fluent_community/default_avatar', function ($displayName, $id) {
 ### Example
 
 ```php
-add_filter('fluent_community/default_profile_tab_route', function ($param1) {
-    return $param1;
+add_filter('fluent_community/default_profile_tab_route', function ($tab) {
+    return $tab;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
 
 <a id="fluent-community-leaderboard-api-response"></a>
 
@@ -412,6 +594,19 @@ add_filter('fluent_community/default_profile_tab_route', function ($param1) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the GET /leaderboard response.
+
+The payload holds a leaderboard list of exactly three boards, keyed 7_days, 30_days and all_time, each with a title and up to ten items. Entries whose XProfile is missing or not active have already been dropped, and the all-time pass may have written back a corrected total_points before this filter runs. The boards themselves are served from a cache that is cleared when leaderboard levels are saved.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Response payload with a `leaderboard` key. |
+| 2 | `$xProfiles` | `\FluentCommunity\Framework\Database\Orm\Collection` | The XProfiles appearing on any board, keyed by user_id. |
+| 3 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -422,10 +617,12 @@ add_filter('fluent_community/default_profile_tab_route', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/leaderboard_api_response', function ($leaderBoard, $xProfiles, $all) {
-    return $leaderBoard;
+add_filter('fluent_community/leaderboard_api_response', function ($response, $xProfiles, $requestData) {
+    return $response;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/user_level_upgraded`](#fluent-community-user-level-upgraded)
 
 <a id="fluent-community-max-profile-description-length"></a>
 
@@ -488,8 +685,8 @@ add_filter('fluent_community/max_profile_headline_length', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/members_api_response', function ($members, $members_2, $all) {
-    return $members;
+add_filter('fluent_community/members_api_response', function ($param1, $members, $all) {
+    return $param1;
 }, 10, 3);
 ```
 
@@ -554,8 +751,8 @@ add_filter('fluent_community/menu_groups_for_user', function ($formattedGroups, 
 ### Example
 
 ```php
-add_filter('fluent_community/profile_all_memberships_api_response', function ($memberships, $all) {
-    return $memberships;
+add_filter('fluent_community/profile_all_memberships_api_response', function ($param1, $all) {
+    return $param1;
 }, 10, 2);
 ```
 
@@ -709,8 +906,8 @@ add_filter('fluent_community/social_link_providers', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/space_members_api_response', function ($pendingRequests, $pendingRequests_2, $all) {
-    return $pendingRequests;
+add_filter('fluent_community/space_members_api_response', function ($param1, $pendingRequests, $all) {
+    return $param1;
 }, 10, 3);
 ```
 
@@ -809,6 +1006,18 @@ add_filter('fluent_community/xprofile_public_fields', function ($fields) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the badge object exposed as XProfile::$badge.
+
+Backs a model accessor, so it runs every time $xprofile->badge is read — including once per profile in any serialized member list. Nothing in core or Pro attaches a callback, and the default is null: this is an unimplemented extension point. Note that the shipped Pro badge feature does not go through it — those badges are stored per profile in xprofile meta under badge_slug and published to the portal separately via the user_badges portal var.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$badge` | `mixed` | Null by default. |
+| 2 | `$xprofile` | `\FluentCommunity\App\Models\XProfile` | The profile whose badge is being resolved. |
+
+**Return:** The badge value to expose on the profile, or null for none. Keep it cheap — this runs per profile, per render.
 
 ### Call Sites
 
@@ -819,8 +1028,8 @@ add_filter('fluent_community/xprofile_public_fields', function ($fields) {
 ### Example
 
 ```php
-add_filter('fluent_community/xprofile/badge', function ($param1, $param2) {
-    return $param1;
+add_filter('fluent_community/xprofile/badge', function ($badge, $xprofile) {
+    return $badge;
 }, 10, 2);
 ```
 

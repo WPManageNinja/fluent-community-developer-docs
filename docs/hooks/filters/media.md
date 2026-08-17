@@ -108,6 +108,17 @@ add_filter('fluent_community/handle_remove_bulk_media', function ($param1, $medi
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether images can be uploaded inline from within the editor toolbar.
+
+A string flag, not a boolean: it surfaces as `features.has_inline_image_upload` and the Vue app compares it strictly against `'yes'`, so returning `true` disables the feature just as effectively as returning `'no'`. It controls the in-editor upload affordance only; the separate attachment control governed by `fluent_community/max_media_per_post` is unaffected.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$hasInlineImageUpload` | `string` | `yes` to allow inline uploads, anything else to disable. `yes` by default. |
+
+**Return:** `string` — return the literal string `'yes'` to keep the feature on.
 
 ### Call Sites
 
@@ -118,10 +129,12 @@ add_filter('fluent_community/handle_remove_bulk_media', function ($param1, $medi
 ### Example
 
 ```php
-add_filter('fluent_community/has_inline_image_upload', function ($param1) {
-    return $param1;
+add_filter('fluent_community/has_inline_image_upload', function ($hasInlineImageUpload) {
+    return $hasInlineImageUpload;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/max_media_per_post`](#fluent-community-max-media-per-post)
 
 <a id="fluent-community-has-video-embeder"></a>
 
@@ -130,6 +143,17 @@ add_filter('fluent_community/has_inline_image_upload', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters whether the video embed control appears in the post composer.
+
+Surfaces as `features.video_embeder` in `portal_vars` and defaults to `true`. The Vue app tests it for truthiness only, so return the boolean `false` to hide the control — the string `'no'` is truthy and will leave it visible. The control is additionally gated on the composer's own `videoApp` config, so it only ever appears in the create-post composer, and hiding it does not block video embeds submitted through the API.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$hasVideoEmbeder` | `bool` | Whether the embed control is offered, `true` by default. |
+
+**Return:** `bool` — return a falsy value, ideally `false`, to hide the control.
 
 ### Call Sites
 
@@ -140,10 +164,12 @@ add_filter('fluent_community/has_inline_image_upload', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/has_video_embeder', function ($param1) {
-    return $param1;
+add_filter('fluent_community/has_video_embeder', function ($hasVideoEmbeder) {
+    return $hasVideoEmbeder;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars) · [`fluent_community/has_inline_image_upload`](#fluent-community-has-inline-image-upload)
 
 <a id="fluent-community-media-public-url-this"></a>
 
@@ -196,6 +222,18 @@ add_filter('fluent_community/media_signed_public_url_{this}', function ($media_u
 - **Type:** filter
 - **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 4
+- **When it fires:** Filters the attributes used to create a media row just before it is written.
+
+The last point at which an upload can be redirected or rejected — Pro's Cloud Storage module rewrites `driver`, `media_path` and `media_url` here to push the file offsite. Returning a `WP_Error` surfaces its message to the uploader, and returning anything falsy aborts the upload with a generic error, so this doubles as an upload veto. It is applied by four separate upload endpoints (feed media, generic uploads, FluentPlayer and Pro documents), which all pass the same shape.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$mediaData` | `array` | Attributes for the new media row: `media_type`, `driver`, `media_path`, `media_url`, `settings`. |
+| 2 | `$file` | `array` | The processed upload, including `path`, `url`, `type` and a `meta` array of image dimensions. |
+
+**Return:** `array` — the attributes to create the media row with. Return a `WP_Error` to reject the upload with a message, or a falsy value to reject it generically.
 
 ### Call Sites
 
@@ -213,6 +251,8 @@ add_filter('fluent_community/media_upload_data', function ($mediaData, $file) {
     return $mediaData;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/support_attachment_types`](#fluent-community-support-attachment-types) · [`fluent_community/upload_folder_name`](#fluent-community-upload-folder-name)
 
 <a id="fluent-community-media-upload-max-file-size"></a>
 
@@ -357,6 +397,18 @@ add_filter('fluent_community/rate_limit/media_upload_per_minute', function ($par
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the "Documents" label in a space's header navigation.
+
+Only reached for spaces whose permissions grant can_view_documents, i.e. where the space has document_library enabled. It renames the menu entry only — the route name and the API paths are unaffected.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$label` | `string` | Menu label, "Documents" by default. |
+| 2 | `$space` | `\FluentCommunity\App\Models\BaseSpace` | The space the header is being built for. |
+
+**Return:** The menu label string.
 
 ### Call Sites
 
@@ -367,10 +419,12 @@ add_filter('fluent_community/rate_limit/media_upload_per_minute', function ($par
 ### Example
 
 ```php
-add_filter('fluent_community/space_document_title_label', function ($param1, $space) {
-    return $param1;
+add_filter('fluent_community/space_document_title_label', function ($label, $space) {
+    return $label;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/space_media_title_label`](#fluent-community-space-media-title-label)
 
 <a id="fluent-community-space-media-title-label"></a>
 
@@ -379,6 +433,18 @@ add_filter('fluent_community/space_document_title_label', function ($param1, $sp
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the "Media" label in a space's header navigation.
+
+Only reached for spaces whose permissions grant can_view_media, i.e. where the space has media_gallery enabled. It renames the menu entry only — the route name and the API path are unaffected. The media entry is added at priority 0, ahead of the documents entry at priority 1.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$label` | `string` | Menu label, "Media" by default. |
+| 2 | `$space` | `\FluentCommunity\App\Models\BaseSpace` | The space the header is being built for. |
+
+**Return:** The menu label string.
 
 ### Call Sites
 
@@ -389,10 +455,12 @@ add_filter('fluent_community/space_document_title_label', function ($param1, $sp
 ### Example
 
 ```php
-add_filter('fluent_community/space_media_title_label', function ($param1, $space) {
-    return $param1;
+add_filter('fluent_community/space_media_title_label', function ($label, $space) {
+    return $label;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/space_document_title_label`](#fluent-community-space-document-title-label)
 
 <a id="fluent-community-space-media-api-response"></a>
 
@@ -401,6 +469,19 @@ add_filter('fluent_community/space_media_title_label', function ($param1, $space
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the media-gallery API response.
+
+The payload always carries items, has_more and cursor; has_audio is present only on the first page (no cursor), because the audio tab visibility is resolved once rather than per page. Fires after fluent_community/space_media/viewed.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$response` | `array` | Response payload: items, has_more, cursor, and has_audio on the first page. |
+| 2 | `$space` | `\FluentCommunity\App\Models\Space` | The space whose gallery was listed. |
+| 3 | `$type` | `string` | One of photos, videos, audios. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -416,6 +497,8 @@ add_filter('fluent_community/space_media/api_response', function ($response, $sp
 }, 10, 3);
 ```
 
+**Related:** [`fluent_community/space_media/query`](#fluent-community-space-media-query) · [`fluent_community/space_media/viewed`](#fluent-community-space-media-viewed)
+
 <a id="fluent-community-space-media-query"></a>
 
 ## `fluent_community/space_media/query`
@@ -423,6 +506,19 @@ add_filter('fluent_community/space_media/api_response', function ($response, $sp
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the media-gallery query builder before it is paged.
+
+Runs after the type filter has been applied — images for "photos", fluent_player media split by an audio token in settings for "videos" and "audios" — and before the cursor and per-page limits. This is the hook for adding constraints or eager loads; returning anything that is not a query builder will break the endpoint.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$query` | `\FluentCommunity\Framework\Database\Orm\Builder` | The Media query for this space and tab. |
+| 2 | `$space` | `\FluentCommunity\App\Models\Space` | The space whose gallery is being listed. |
+| 3 | `$type` | `string` | One of photos, videos, audios. |
+
+**Return:** The query builder.
 
 ### Call Sites
 
@@ -438,6 +534,8 @@ add_filter('fluent_community/space_media/query', function ($query, $space, $type
 }, 10, 3);
 ```
 
+**Related:** [`fluent_community/space_media/api_response`](#fluent-community-space-media-api-response)
+
 <a id="fluent-community-space-media-transform-item"></a>
 
 ## `fluent_community/space_media/transform_item`
@@ -445,6 +543,19 @@ add_filter('fluent_community/space_media/query', function ($query, $space, $type
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters one media item as it is shaped into the gallery API structure.
+
+Runs once per row on every page of the gallery, so keep callbacks cheap and avoid per-item queries — the feed and its author are already eager-loaded on the model. The `kind` key is the gallery's own classification (image / video / audio) and is not the raw mime type, which is carried separately as media_type. `feed` is null for media not attached to a post.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$item` | `array` | The item payload: id, url, media_type, kind, settings, created_at, feed. |
+| 2 | `$media` | `\FluentCommunity\App\Models\Media` | The underlying media row. |
+| 3 | `$space` | `\FluentCommunity\App\Models\Space` | The space whose gallery is being listed. |
+
+**Return:** The item payload array.
 
 ### Call Sites
 
@@ -455,10 +566,12 @@ add_filter('fluent_community/space_media/query', function ($query, $space, $type
 ### Example
 
 ```php
-add_filter('fluent_community/space_media/transform_item', function ($id, $m, $space) {
-    return $id;
+add_filter('fluent_community/space_media/transform_item', function ($item, $media, $space) {
+    return $item;
 }, 10, 3);
 ```
+
+**Related:** [`fluent_community/space_media/query`](#fluent-community-space-media-query) · [`fluent_community/space_media/api_response`](#fluent-community-space-media-api-response)
 
 <a id="fluent-community-support-attachment-types"></a>
 
@@ -467,6 +580,17 @@ add_filter('fluent_community/space_media/transform_item', function ($id, $m, $sp
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Filters the MIME types accepted by FluentCommunity's image upload endpoints.
+
+Applied at two upload entry points whose defaults are not identical: `FeedsController::handleMediaUpload()` includes `image/heic` while `UploadHelper::uploadFiles()` does not, so a callback that rebuilds the array instead of appending will silently change behaviour on one path. The list is also mined for extensions eligible for WebP conversion, so adding a non-image MIME type here has effects beyond validation.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$mimeTypes` | `array` | Accepted MIME type strings, image types only by default. |
+
+**Return:** `array` — MIME type strings. They are joined into the validator's `mimetypes` rule, so return a flat, non-associative array.
 
 ### Call Sites
 
@@ -478,10 +602,12 @@ add_filter('fluent_community/space_media/transform_item', function ($id, $m, $sp
 ### Example
 
 ```php
-add_filter('fluent_community/support_attachment_types', function ($param1) {
-    return $param1;
+add_filter('fluent_community/support_attachment_types', function ($mimeTypes) {
+    return $mimeTypes;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/media_upload_data`](#fluent-community-media-upload-data)
 
 <a id="fluent-community-upload-folder-name"></a>
 
@@ -490,6 +616,17 @@ add_filter('fluent_community/support_attachment_types', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Filters the folder, relative to the WordPress uploads base directory, that FluentCommunity writes media into.
+
+Defaults to the `FLUENT_COMMUNITY_UPLOAD_DIR` constant and is applied in two places that must agree — the directory resolver and the custom upload-dir override — so filter it unconditionally rather than for one code path. On first use the directory is created with a hardening `.htaccess` and an `index.php`; a folder you point at that already exists will not get those files. Pro's Document Library filters it temporarily to redirect document uploads.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$folderName` | `string` | Path fragment appended to the uploads base directory, with a leading slash. |
+
+**Return:** `string` — the folder path fragment. Existing media is not migrated, so changing it orphans previously uploaded files.
 
 ### Call Sites
 
@@ -501,8 +638,8 @@ add_filter('fluent_community/support_attachment_types', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/upload_folder_name', function ($param1) {
-    return $param1;
+add_filter('fluent_community/upload_folder_name', function ($folderName) {
+    return $folderName;
 }, 10, 1);
 ```
 

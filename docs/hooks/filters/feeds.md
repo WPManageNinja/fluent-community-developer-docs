@@ -77,6 +77,17 @@ add_filter('fluent_community/bookmarks_api_response', function ($data, $all) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the space pre-selected in the post composer.
+
+Surfaces as `portal_vars.default_post_space` and takes a space slug. The composer applies it only on the all-feeds and profile-feeds routes, only when no space is already chosen, and only if the slug appears among the spaces the viewer may post in — so an invalid or inaccessible slug is quietly ignored rather than producing an error. The special slug `__self__post__` selects the viewer's own profile.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$spaceSlug` | `string` | Slug of the space to pre-select. Empty by default. |
+
+**Return:** `string` — a space slug, or an empty string for no pre-selection.
 
 ### Call Sites
 
@@ -87,10 +98,12 @@ add_filter('fluent_community/bookmarks_api_response', function ($data, $all) {
 ### Example
 
 ```php
-add_filter('fluent_community/create_post_default_space', function ($param1) {
-    return $param1;
+add_filter('fluent_community/create_post_default_space', function ($spaceSlug) {
+    return $spaceSlug;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
 
 <a id="fluent-community-disable-duplicate-post-check"></a>
 
@@ -178,8 +191,8 @@ add_filter('fluent_community/feed_api_response', function ($data, $all) {
 ### Example
 
 ```php
-add_filter('fluent_community/feed_general_config', function ($userId, $feed, $userId_3) {
-    return $userId;
+add_filter('fluent_community/feed_general_config', function ($param1, $feed, $userId) {
+    return $param1;
 }, 10, 3);
 ```
 
@@ -357,8 +370,8 @@ add_filter('fluent_community/feed/new_feed_data_type_{formContentType}', functio
 ### Example
 
 ```php
-add_filter('fluent_community/feed/new_feed_response', function ($feed, $feed_2, $all) {
-    return $feed;
+add_filter('fluent_community/feed/new_feed_response', function ($param1, $feed, $all) {
+    return $param1;
 }, 10, 3);
 ```
 
@@ -379,8 +392,8 @@ add_filter('fluent_community/feed/new_feed_response', function ($feed, $feed_2, 
 ### Example
 
 ```php
-add_filter('fluent_community/feed/patch_feed_response', function ($feed, $feed_2, $all) {
-    return $feed;
+add_filter('fluent_community/feed/patch_feed_response', function ($param1, $feed, $all) {
+    return $param1;
 }, 10, 3);
 ```
 
@@ -634,6 +647,17 @@ add_filter('fluent_community/last_activity_date_for_unread_feeds', function ($la
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Filters how many media items may be attached to a single post.
+
+Applied twice with the same default from the customiser settings (4): once inside `portal_vars`, where the composer uses it to stop accepting further images, and once in `FeedsHelper` where surplus items are trimmed with `array_slice()`. Filter it unconditionally so both agree — raising only the client-side value results in silently discarded attachments. A value of `0` hides the attachment button altogether.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$maxMedia` | `int` | Maximum media items per post; comes from the `max_media_per_post` customiser setting, default 4. |
+
+**Return:** `int` — the cap. It is cast with `(int)` before the server-side trim.
 
 ### Call Sites
 
@@ -645,10 +669,12 @@ add_filter('fluent_community/last_activity_date_for_unread_feeds', function ($la
 ### Example
 
 ```php
-add_filter('fluent_community/max_media_per_post', function ($param1) {
-    return $param1;
+add_filter('fluent_community/max_media_per_post', function ($maxMedia) {
+    return $maxMedia;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_vars`](#fluent-community-portal-vars)
 
 <a id="fluent-community-max-post-length"></a>
 
@@ -657,6 +683,17 @@ add_filter('fluent_community/max_media_per_post', function ($param1) {
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the maximum number of characters allowed in a post body.
+
+Defaults to 15000 and is enforced server-side in `FeedsHelper::sanitizeAndValidateData()`; exceeding it throws and the post is rejected. The check uses `strlen()` on the Markdown source, so it counts bytes rather than characters — multibyte content hits the ceiling sooner than the number suggests, and inline image syntax counts towards it.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$maxLength` | `int` | The byte ceiling for a post body, 15000 by default. |
+
+**Return:** `int` — the maximum length. There is no matching client-side limit, so this is the only enforcement point.
 
 ### Call Sites
 
@@ -667,10 +704,12 @@ add_filter('fluent_community/max_media_per_post', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/max_post_length', function ($param1) {
-    return $param1;
+add_filter('fluent_community/max_post_length', function ($maxLength) {
+    return $maxLength;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/max_comment_char_length`](#fluent-community-max-comment-char-length)
 
 <a id="fluent-community-pinned-posts-api-response"></a>
 
@@ -745,6 +784,18 @@ add_filter('fluent_community/rate_limit/posts_per_5_minutes', function ($param1)
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the GET /scheduled-posts response.
+
+Each feed in the paginated list has already been run through FeedsHelper::transformFeed(), so it carries the same shape as a normal feed listing.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$data` | `array` | Response payload with a paginated `feeds` key. |
+| 2 | `$requestData` | `array` | The full request parameters. |
+
+**Return:** The response payload array.
 
 ### Call Sites
 
@@ -755,10 +806,12 @@ add_filter('fluent_community/rate_limit/posts_per_5_minutes', function ($param1)
 ### Example
 
 ```php
-add_filter('fluent_community/scheduled_posts_api_response', function ($data, $all) {
+add_filter('fluent_community/scheduled_posts_api_response', function ($data, $requestData) {
     return $data;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/feed/rescheduled`](#fluent-community-feed-rescheduled)
 
 <a id="fluent-community-update-welcome-banner-settings"></a>
 

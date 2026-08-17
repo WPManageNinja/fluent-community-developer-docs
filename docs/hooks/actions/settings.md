@@ -5,13 +5,83 @@ description: Settings action hooks for FluentCommunity.
 
 # Settings Actions
 
-1 unique action hook currently map to this category, across 1 call site.
+3 unique action hooks currently map to this category, across 7 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
+| [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` |
+| [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` |
 | [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1109` |
+
+<a id="fluent-community-daily-jobs"></a>
+
+## `fluent_community_daily_jobs`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 3
+- **When it fires:** Action Scheduler task that runs once every 24 hours for the plugin's daily maintenance.
+
+::: info Scheduled job
+This action is not fired inline. It is registered as a recurring background job
+and runs on a schedule, so the source below is where the job is *scheduled*, not
+where it fires. Hook it with `add_action()` as usual.
+:::
+
+Registered on activation and re-registered whenever a site administrator loads the portal, in the `fluent-community` Action Scheduler group. Core uses it to fire `fluent_community/remove_old_notifications` and to prune Action Scheduler logs older than seven days; Pro's leaderboard uses it to resync points. It takes no arguments and runs in a queue-runner request, so nothing about the current user is available.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` | No parameters |
+| Core | `fluent-community/boot/app.php:20` | No parameters |
+| Core | `fluent-community/boot/app.php:55` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community_daily_jobs', function () {
+}, 10, 0);
+```
+
+**Related:** [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs)
+
+<a id="fluent-community-scheduled-hour-jobs"></a>
+
+## `fluent_community_scheduled_hour_jobs`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 3
+- **When it fires:** Action Scheduler task that runs hourly for the plugin's short-interval maintenance.
+
+::: info Scheduled job
+This action is not fired inline. It is registered as a recurring background job
+and runs on a schedule, so the source below is where the job is *scheduled*, not
+where it fires. Hook it with `add_action()` as usual.
+:::
+
+Core uses it to re-evaluate the daily digest schedule and to fire `fluent_community/maybe_delete_draft_medias`. Like the daily job it is unscheduled on deactivation and takes no arguments. Hook here rather than to WP-Cron if you need work that must survive a page-load-free site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` | No parameters |
+| Core | `fluent-community/boot/app.php:16` | No parameters |
+| Core | `fluent-community/boot/app.php:51` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community_scheduled_hour_jobs', function () {
+}, 10, 0);
+```
+
+**Related:** [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) · [`fluent_community_send_daily_digest`](#fluent-community-send-daily-digest)
 
 <a id="fluent-community-recache-color-schema"></a>
 

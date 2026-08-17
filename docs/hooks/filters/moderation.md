@@ -20,6 +20,17 @@ description: Moderation filter hooks for FluentCommunity.
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the reasons a member can pick when reporting a post or comment.
+
+Defaults to harassment, spam, offensive, incorrect space, against community rules, and other. Keys are stored verbatim in the moderation record's `reason` column, so renaming a key orphans the label on reports already filed under the old one. Labels are translated through the `fluent-community` text domain; translate additions yourself.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$reasons` | `array` | Reason keys mapped to translated labels. |
+
+**Return:** `array` — an associative map of stored key to display label.
 
 ### Call Sites
 
@@ -30,8 +41,10 @@ description: Moderation filter hooks for FluentCommunity.
 ### Example
 
 ```php
-add_filter('fluent_community/report_reasons', function ($param1) {
-    return $param1;
+add_filter('fluent_community/report_reasons', function ($reasons) {
+    return $reasons;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created)
 

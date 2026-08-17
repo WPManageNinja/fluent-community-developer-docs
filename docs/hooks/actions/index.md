@@ -9,24 +9,24 @@ This page is generated from `do_action()`, `do_action_ref_array()` and `do_actio
 
 ## Overview
 
-- **Unique actions:** 167
-- **Action call sites:** 253
+- **Unique actions:** 181
+- **Action call sites:** 281
 - **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `moderation`, `integrations`, `rendering`, `settings`
 
 ## Categories
 
 | Category | Hooks | Call sites |
 | --- | --- | --- |
-| [Feeds](/hooks/actions/feeds) | 20 | 33 |
-| [Comments](/hooks/actions/comments) | 18 | 23 |
+| [Feeds](/hooks/actions/feeds) | 23 | 39 |
+| [Comments](/hooks/actions/comments) | 19 | 27 |
 | [Reactions](/hooks/actions/reactions) | 1 | 1 |
-| [Spaces](/hooks/actions/spaces) | 8 | 16 |
-| [Members](/hooks/actions/members) | 16 | 27 |
-| [Courses](/hooks/actions/courses) | 32 | 40 |
-| [Notifications](/hooks/actions/notifications) | 2 | 2 |
+| [Spaces](/hooks/actions/spaces) | 10 | 22 |
+| [Members](/hooks/actions/members) | 18 | 26 |
+| [Courses](/hooks/actions/courses) | 34 | 44 |
+| [Notifications](/hooks/actions/notifications) | 3 | 4 |
 | [Media](/hooks/actions/media) | 7 | 16 |
 | [Auth](/hooks/actions/auth) | 5 | 5 |
-| [Moderation](/hooks/actions/moderation) | 7 | 11 |
+| [Moderation](/hooks/actions/moderation) | 8 | 12 |
 | [Integrations](/hooks/actions/integrations) | 6 | 7 |
 | [Rendering](/hooks/actions/rendering) | 44 | 71 |
-| [Settings](/hooks/actions/settings) | 1 | 1 |
+| [Settings](/hooks/actions/settings) | 3 | 7 |

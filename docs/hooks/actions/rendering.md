@@ -297,6 +297,9 @@ add_action('fluent_community/before_js_loaded', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 4
+- **When it fires:** Prints inside the portal wrapper, immediately before the app markup.
+
+The one rendering hook shared by every portal surface: the standalone portal page, both WordPress frame templates, and the Gutenberg community block. Because it runs before the layout paints, it is the right place for pre-paint scripts — core uses it for the sidebar-collapse anti-flicker snippet.
 
 ### Call Sites
 
@@ -313,6 +316,8 @@ add_action('fluent_community/before_js_loaded', function () {
 add_action('fluent_community/before_portal_dom', function () {
 }, 10, 0);
 ```
+
+**Related:** [`fluent_community/portal_header`](#fluent-community-portal-header)
 
 <a id="fluent-community-before-portal-rendered"></a>
 
@@ -426,6 +431,15 @@ add_action('fluent_community/block_editor_head', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 4
+- **When it fires:** Fires while the portal's shared stylesheet and script bundle are being enqueued.
+
+Core's own callback does the enqueueing, so this is the hook to attach dependent assets to rather than a notification that assets are already registered — register at a later priority if you need to depend on `fluent_community_global` or `portal_general`. `$useDefaultTheme` is false only for the Gutenberg block when the author opted out of the built-in theme, in which case `theme-default.css` is skipped.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$useDefaultTheme` | `bool` | Whether the bundled default theme stylesheet is being loaded alongside the global one. |
 
 ### Call Sites
 
@@ -439,7 +453,7 @@ add_action('fluent_community/block_editor_head', function () {
 ### Example
 
 ```php
-add_action('fluent_community/enqueue_global_assets', function ($useBuildInTheme) {
+add_action('fluent_community/enqueue_global_assets', function ($useDefaultTheme) {
 }, 10, 1);
 ```
 
@@ -556,6 +570,15 @@ add_action('fluent_community/headless/head_early', function ($fluentCommunitySco
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires on WordPress `init`, after the FluentCommunity application has been bootstrapped.
+
+Registered from inside the `fluent_community/portal_loaded` callback, so it always runs after every core and Pro module has had a chance to register. Use it for anything that must wait for `init` — rewrite rules, registered types, or code that needs the current user.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$app` | `\FluentCommunity\Framework\Foundation\Application` | The plugin application container. |
 
 ### Call Sites
 
@@ -569,6 +592,8 @@ add_action('fluent_community/headless/head_early', function ($fluentCommunitySco
 add_action('fluent_community/on_wp_init', function ($app) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_loaded`](#fluent-community-portal-loaded)
 
 <a id="fluent-community-portal-action-action"></a>
 
@@ -598,6 +623,9 @@ add_action('fluent_community/portal_action_{action}', function ($_get) {
 - **Type:** action
 - **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 2
+- **When it fires:** Prints near the end of `<body>` on the standalone portal page, after the SPA scripts.
+
+Fires from `app/Views/portal_page.php` and from the Pro portal shortcode, and runs before `wp_footer()` on non-headless renders. Core hangs custom JS snippets and customiser output off it. The theme-framed portal uses `fluent_community/template_footer` instead.
 
 ### Call Sites
 
@@ -613,6 +641,8 @@ add_action('fluent_community/portal_footer', function () {
 }, 10, 0);
 ```
 
+**Related:** [`fluent_community/portal_head`](#fluent-community-portal-head) · [`fluent_community/template_footer`](#fluent-community-template-footer)
+
 <a id="fluent-community-portal-head"></a>
 
 ## `fluent_community/portal_head`
@@ -620,6 +650,9 @@ add_action('fluent_community/portal_footer', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Prints inside the `<head>` of the standalone portal page, after the plugin's colour variables.
+
+This is the SPA-only head hook: it fires from `app/Views/portal_page.php`, the template used when the portal renders itself rather than through a WordPress theme. For the theme-framed portal use `fluent_community/template_header` — Pro registers its custom CSS on both. Echo directly; there is no return value.
 
 ### Call Sites
 
@@ -633,6 +666,8 @@ add_action('fluent_community/portal_footer', function () {
 add_action('fluent_community/portal_head', function () {
 }, 10, 0);
 ```
+
+**Related:** [`fluent_community/template_header`](#fluent-community-template-header) · [`fluent_community/portal_footer`](#fluent-community-portal-footer)
 
 <a id="fluent-community-portal-head-meta"></a>
 
@@ -662,6 +697,15 @@ add_action('fluent_community/portal_head_meta', function ($landing_route) {
 - **Type:** action
 - **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 6
+- **When it fires:** Renders the portal header bar for a given render context.
+
+As with the sidebar, core attaches the default header renderer, so callbacks add to it. `$context` is `headless`, `wp`, or `block_editor`; unlike the sidebar there is no `ajax` context. To add items inside the default header rather than around it, use the finer-grained `fluent_community/before_header_menu_items` and `fluent_community/after_header_right_menu_items` hooks.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$context` | `string` | Render context: `headless`, `wp`, or `block_editor`. |
 
 ### Call Sites
 
@@ -677,9 +721,11 @@ add_action('fluent_community/portal_head_meta', function ($landing_route) {
 ### Example
 
 ```php
-add_action('fluent_community/portal_header', function ($contenx) {
+add_action('fluent_community/portal_header', function ($context) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_sidebar`](#fluent-community-portal-sidebar)
 
 <a id="fluent-community-portal-html"></a>
 
@@ -709,6 +755,15 @@ add_action('fluent_community/portal_html', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Fires on `plugins_loaded` once the FluentCommunity application container exists.
+
+The earliest safe extension point: the container, helper functions and Action Scheduler are available, but WordPress `init` has not run, so do not register post types, taxonomies or translations here. Core loads its own `Modules/` from this hook and Pro bootstraps itself from it, which is why Pro modules are always available by the time `fluent_community/on_wp_init` runs.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$app` | `\FluentCommunity\Framework\Foundation\Application` | The plugin application container. |
 
 ### Call Sites
 
@@ -722,6 +777,8 @@ add_action('fluent_community/portal_html', function () {
 add_action('fluent_community/portal_loaded', function ($app) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/on_wp_init`](#fluent-community-on-wp-init)
 
 <a id="fluent-community-portal-render-for-user"></a>
 
@@ -751,6 +808,15 @@ add_action('fluent_community/portal_render_for_user', function ($xprofile) {
 - **Type:** action
 - **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 7
+- **When it fires:** Renders the portal's left sidebar navigation for a given render context.
+
+Core attaches the sidebar renderer itself, so adding a callback appends to the sidebar rather than replacing it. The `$context` argument distinguishes where the sidebar is being drawn: `headless` for the SPA, `wp` for the theme frame templates, `block_editor` for the Gutenberg block in edit mode, and `ajax` when `OptionController::getSidebarMenuHtml()` buffers the markup for a client-side refresh.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$context` | `string` | Render context: `headless`, `wp`, `block_editor`, or `ajax`. |
 
 ### Call Sites
 
@@ -767,9 +833,11 @@ add_action('fluent_community/portal_render_for_user', function ($xprofile) {
 ### Example
 
 ```php
-add_action('fluent_community/portal_sidebar', function ($contenx) {
+add_action('fluent_community/portal_sidebar', function ($context) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/portal_header`](#fluent-community-portal-header)
 
 <a id="fluent-community-portal-not-logged-in"></a>
 
@@ -862,6 +930,15 @@ add_action('fluent_community/rendering_path_ssr_{pathParts}', function ($pathPar
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Fires after a custom portal sidebar link has been deleted.
+
+The in-memory model is still passed, but the row is gone by this point.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$link` | `\FluentCommunity\App\Models\SidebarLink` | The deleted link. |
 
 ### Call Sites
 
@@ -876,6 +953,8 @@ add_action('fluent_community/sidebar_link/after_delete', function ($link) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete)
+
 <a id="fluent-community-sidebar-link-before-delete"></a>
 
 ## `fluent_community/sidebar_link/before_delete`
@@ -883,6 +962,15 @@ add_action('fluent_community/sidebar_link/after_delete', function ($link) {
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Fires just before a custom portal sidebar link is deleted.
+
+The record is still readable here. There is no matching hook on save — only delete is instrumented.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$link` | `\FluentCommunity\App\Models\SidebarLink` | The link about to be deleted. |
 
 ### Call Sites
 
@@ -897,6 +985,8 @@ add_action('fluent_community/sidebar_link/before_delete', function ($link) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete)
+
 <a id="fluent-community-template-footer"></a>
 
 ## `fluent_community/template_footer`
@@ -904,6 +994,9 @@ add_action('fluent_community/sidebar_link/before_delete', function ($link) {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 3
+- **When it fires:** Prints at the end of `<body>` in the WordPress theme frame templates, after `wp_footer()`.
+
+Core renders the mobile bottom menu here. The Gutenberg community block also fires it, but indirectly — it defers the call into `wp_footer` at priority 99, so relative ordering against other footer output differs between the block and the frame templates.
 
 ### Call Sites
 
@@ -920,6 +1013,8 @@ add_action('fluent_community/template_footer', function () {
 }, 10, 0);
 ```
 
+**Related:** [`fluent_community/template_header`](#fluent-community-template-header) · [`fluent_community/portal_footer`](#fluent-community-portal-footer)
+
 <a id="fluent-community-template-header"></a>
 
 ## `fluent_community/template_header`
@@ -927,6 +1022,9 @@ add_action('fluent_community/template_footer', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Prints inside `<head>` of the WordPress theme frame templates, after `wp_head()`.
+
+Applies to the `fluent-community-frame.php` and `fluent-community-frame-full.php` page templates — the theme-integrated portal, not the standalone SPA page. Pro registers PWA meta tags and custom CSS on this and on `fluent_community/portal_head` together, which is the usual pattern for head output that must appear on every portal variant.
 
 ### Call Sites
 
@@ -942,6 +1040,8 @@ add_action('fluent_community/template_header', function () {
 }, 10, 0);
 ```
 
+**Related:** [`fluent_community/portal_head`](#fluent-community-portal-head) · [`fluent_community/template_footer`](#fluent-community-template-footer)
+
 <a id="fluent-community-theme-body-atts"></a>
 
 ## `fluent_community/theme_body_atts`
@@ -949,6 +1049,15 @@ add_action('fluent_community/template_header', function () {
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Prints extra attributes into the `<body>` tag of the theme frame templates.
+
+Output is echoed raw into the opening tag directly after `body_class()`, so emit `key="value"` pairs and escape them yourself; returning a value does nothing. Core uses it for Blocksy support, keyed off the theme name passed in.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$themeName` | `string` | The active theme's directory slug, from `get_option('template')`. |
 
 ### Call Sites
 
@@ -960,9 +1069,11 @@ add_action('fluent_community/template_header', function () {
 ### Example
 
 ```php
-add_action('fluent_community/theme_body_atts', function ($fluentCommunityThemeName) {
+add_action('fluent_community/theme_body_atts', function ($themeName) {
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/theme_content`](#fluent-community-theme-content)
 
 <a id="fluent-community-theme-content"></a>
 
@@ -971,6 +1082,16 @@ add_action('fluent_community/theme_body_atts', function ($fluentCommunityThemeNa
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
+- **When it fires:** Renders the WordPress page content area inside the community frame layout.
+
+Core attaches `TemplateLoader::renderWpContent()` at priority 10, so callbacks added later append to the theme content. To take the region over entirely, remove the default first — the FluentCart checkout integration does exactly that with `remove_all_actions('fluent_community/theme_content', 10)`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$themeName` | `string` | The active theme's directory slug. |
+| 2 | `$layout` | `string` | `default` for the standard frame, `full` for the full-width frame template. |
 
 ### Call Sites
 
@@ -982,9 +1103,11 @@ add_action('fluent_community/theme_body_atts', function ($fluentCommunityThemeNa
 ### Example
 
 ```php
-add_action('fluent_community/theme_content', function ($fluentCommunityThemeName, $param2) {
+add_action('fluent_community/theme_content', function ($themeName, $layout) {
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/theme_body_atts`](#fluent-community-theme-body-atts)
 
 <a id="fluent-community-top-menu-right-items"></a>
 

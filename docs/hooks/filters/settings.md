@@ -305,6 +305,17 @@ add_filter('fluent_community/onboarding_settings_api_response', function ($data,
 - **Type:** filter
 - **Edition:** Core
 - **Call sites:** 1
+- **When it fires:** Filters the URL segment the community portal is served from.
+
+Runs after the stored setting and the `FLUENT_COMMUNITY_PORTAL_SLUG` constant have both been applied, so a callback overrides even the constant. An empty string puts the portal at the site root, which is how Pro's shortcode renderer temporarily relocates it. The slug feeds both rewrite rules and every generated portal URL, so changing it at runtime without flushing rewrites will produce links that do not resolve.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$slug` | `string` | The portal slug, `portal` by default. |
+
+**Return:** `string` — the slug, without leading or trailing slashes. An empty string serves the portal from the site root.
 
 ### Call Sites
 
@@ -349,14 +360,18 @@ add_filter('fluent_community/privacy_settings_api_response', function ($data, $a
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filter the PWA splash screen background color for a color mode.
+- **When it fires:** Filters the PWA splash screen background color for one color mode.
+
+An admin-set background color in the PWA settings wins over the per-mode portal body color; the manifest carries a single static value, so an explicit choice applies to every mode. Falls back to #ffffff (light) / #2B2E33 (dark).
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$color` | `string` | — |
-| 2 | `$mode` | `string` | light|dark |
+| 1 | `$color` | `string` | Hex color for this mode. |
+| 2 | `$mode` | `string` | Either "light" or "dark". |
+
+**Return:** A hex color string.
 
 ### Call Sites
 
@@ -372,6 +387,8 @@ add_filter('fluent_community/pwa/background_color', function ($color, $mode) {
 }, 10, 2);
 ```
 
+**Related:** [`fluent_community/pwa/theme_color`](#fluent-community-pwa-theme-color)
+
 <a id="fluent-community-pwa-description"></a>
 
 ## `fluent_community/pwa/description`
@@ -379,13 +396,17 @@ add_filter('fluent_community/pwa/background_color', function ($color, $mode) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filter the PWA manifest description.
+- **When it fires:** Filters the description field of the PWA web app manifest.
+
+Defaults to the site tagline from get_bloginfo('description'). The result is cast to string.
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$description` | `string` | — |
+| 1 | `$description` | `string` | Manifest description, the site tagline by default. |
+
+**Return:** The manifest description string.
 
 ### Call Sites
 
@@ -401,6 +422,8 @@ add_filter('fluent_community/pwa/description', function ($description) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/pwa/orientation`](#fluent-community-pwa-orientation) · [`fluent_community/pwa/theme_color`](#fluent-community-pwa-theme-color)
+
 <a id="fluent-community-pwa-install-button-icon"></a>
 
 ## `fluent_community/pwa/install_button_icon`
@@ -408,13 +431,17 @@ add_filter('fluent_community/pwa/description', function ($description) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filter the portal install entry button icon markup. follows the portal color mode.
+- **When it fires:** Filters the inline SVG glyph on the portal install entry.
+
+The shipped default is returned untouched; anything a callback returns is treated as untrusted and passed through CustomSanitizer::sanitizeSvg(). That sanitizer's allowlist drops stroke-linecap, stroke-linejoin and aria-hidden, so a replacement glyph should not rely on them. Use stroke="currentColor" so the icon follows the portal color mode.
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$icon` | `string` | Inline svg. Use stroke="currentColor" so the glyph |
+| 1 | `$icon` | `string` | Inline SVG markup for the install glyph. |
+
+**Return:** Inline SVG markup. It will be sanitized unless it is byte-identical to the default.
 
 ### Call Sites
 
@@ -430,6 +457,8 @@ add_filter('fluent_community/pwa/install_button_icon', function ($icon) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/pwa/install_button_text`](#fluent-community-pwa-install-button-text)
+
 <a id="fluent-community-pwa-install-button-text"></a>
 
 ## `fluent_community/pwa/install_button_text`
@@ -437,13 +466,17 @@ add_filter('fluent_community/pwa/install_button_icon', function ($icon) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filter the portal install entry button text.
+- **When it fires:** Filters the label on the portal "Install App" entry.
+
+Applies to the in-portal install entry only, not to the manifest. The result is cast to string.
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$buttonText` | `string` | — |
+| 1 | `$buttonText` | `string` | Button label, "Install App" by default. |
+
+**Return:** The button label string.
 
 ### Call Sites
 
@@ -459,6 +492,8 @@ add_filter('fluent_community/pwa/install_button_text', function ($buttonText) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/pwa/install_button_icon`](#fluent-community-pwa-install-button-icon)
+
 <a id="fluent-community-pwa-orientation"></a>
 
 ## `fluent_community/pwa/orientation`
@@ -466,13 +501,17 @@ add_filter('fluent_community/pwa/install_button_text', function ($buttonText) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filter the PWA manifest orientation lock.
+- **When it fires:** Filters the screen orientation lock declared in the PWA manifest.
+
+Defaults to "any" deliberately — course lessons and video play landscape, so a portrait lock would trap those screens. The return value is validated against the manifest spec list (any, natural, portrait, landscape, portrait-primary, portrait-secondary, landscape-primary, landscape-secondary) and anything else silently falls back to "any".
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$orientation` | `string` | — |
+| 1 | `$orientation` | `string` | Orientation lock, "any" by default. |
+
+**Return:** One of the eight allowed manifest orientation values; any other string is ignored.
 
 ### Call Sites
 
@@ -488,6 +527,8 @@ add_filter('fluent_community/pwa/orientation', function ($orientation) {
 }, 10, 1);
 ```
 
+**Related:** [`fluent_community/pwa/description`](#fluent-community-pwa-description)
+
 <a id="fluent-community-pwa-theme-color"></a>
 
 ## `fluent_community/pwa/theme_color`
@@ -495,14 +536,18 @@ add_filter('fluent_community/pwa/orientation', function ($orientation) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filter the PWA theme (title bar) color for a color mode.
+- **When it fires:** Filters the PWA theme (title bar / browser chrome) color for one color mode.
+
+Runs once per mode. The default follows the portal top-bar background for the active color schema rather than the brand button color, so the installed app window blends into the portal header. Falls back to #ffffff (light) / #2B2E33 (dark) when no schema color resolves.
 
 ### Parameters
 
 | # | Name | Type | Description |
 | --- | --- | --- | --- |
-| 1 | `$color` | `string` | — |
-| 2 | `$mode` | `string` | light|dark |
+| 1 | `$color` | `string` | Hex color for this mode. |
+| 2 | `$mode` | `string` | Either "light" or "dark". |
+
+**Return:** A hex color string.
 
 ### Call Sites
 
@@ -517,6 +562,8 @@ add_filter('fluent_community/pwa/theme_color', function ($color, $mode) {
     return $color;
 }, 10, 2);
 ```
+
+**Related:** [`fluent_community/pwa/background_color`](#fluent-community-pwa-background-color)
 
 <a id="fluent-community-storage-settings-response"></a>
 
@@ -535,8 +582,8 @@ add_filter('fluent_community/pwa/theme_color', function ($color, $mode) {
 ### Example
 
 ```php
-add_filter('fluent_community/storage_settings_response', function ($config, $all) {
-    return $config;
+add_filter('fluent_community/storage_settings_response', function ($param1, $all) {
+    return $param1;
 }, 10, 2);
 ```
 

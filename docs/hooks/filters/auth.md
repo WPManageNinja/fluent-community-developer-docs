@@ -365,8 +365,8 @@ add_filter('fluent_community/auth/settings', function ($authSettings) {
 ### Example
 
 ```php
-add_filter('fluent_community/auth/signup_fields', function ($meta, $invitation) {
-    return $meta;
+add_filter('fluent_community/auth/signup_fields', function ($param1, $invitation) {
+    return $param1;
 }, 10, 2);
 ```
 
@@ -532,6 +532,17 @@ add_filter('fluent_community/terms_policy_url', function ($param1) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters the portal authentication settings just before they are saved.
+
+Runs after AuthenticationService::formatAuthSettings() has normalised the payload and before it is written to the option and primed into the week-long cache. The login and signup form field lists are attached to the response *after* this filter, so they are not visible to a callback.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$settings` | `array` | The formatted auth settings. |
+
+**Return:** The settings array to persist.
 
 ### Call Sites
 
@@ -542,8 +553,8 @@ add_filter('fluent_community/terms_policy_url', function ($param1) {
 ### Example
 
 ```php
-add_filter('fluent_community/update_auth_settings', function ($formattedSettings) {
-    return $formattedSettings;
+add_filter('fluent_community/update_auth_settings', function ($settings) {
+    return $settings;
 }, 10, 1);
 ```
 

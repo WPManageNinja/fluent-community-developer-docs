@@ -9,8 +9,8 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 
 ## Overview
 
-- **Unique filters:** 282
-- **Filter call sites:** 332
+- **Unique filters:** 285
+- **Filter call sites:** 335
 - **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `permissions`, `moderation`, `integrations`, `rendering`, `settings`, `miscellaneous`
 
 ## Categories
@@ -18,10 +18,10 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | Category | Hooks | Call sites |
 | --- | --- | --- |
 | [Feeds](/hooks/filters/feeds) | 36 | 44 |
-| [Comments](/hooks/filters/comments) | 14 | 14 |
+| [Comments](/hooks/filters/comments) | 13 | 13 |
 | [Reactions](/hooks/filters/reactions) | 4 | 5 |
 | [Spaces](/hooks/filters/spaces) | 18 | 21 |
-| [Members](/hooks/filters/members) | 35 | 42 |
+| [Members](/hooks/filters/members) | 37 | 44 |
 | [Courses](/hooks/filters/courses) | 47 | 47 |
 | [Notifications](/hooks/filters/notifications) | 8 | 10 |
 | [Media](/hooks/filters/media) | 21 | 32 |
@@ -29,6 +29,6 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | [Permissions](/hooks/filters/permissions) | 8 | 22 |
 | [Moderation](/hooks/filters/moderation) | 1 | 1 |
 | [Integrations](/hooks/filters/integrations) | 9 | 9 |
-| [Rendering](/hooks/filters/rendering) | 33 | 35 |
+| [Rendering](/hooks/filters/rendering) | 35 | 37 |
 | [Settings](/hooks/filters/settings) | 22 | 22 |
 | [Miscellaneous](/hooks/filters/miscellaneous) | 3 | 4 |
