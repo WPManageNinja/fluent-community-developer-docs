@@ -200,7 +200,7 @@ Applied at two call sites that both start from the stored `mainMenuItems` group:
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Functions/Utility.php:1242` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1188` | `$items` (mixed)<br>`$scope` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1200` | `$items` (mixed)<br>`$scope` (mixed) |
 
 ### Example
 

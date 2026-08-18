@@ -265,7 +265,7 @@ Three call sites, and their positions differ: on the signup template it fires as
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:10` | `'login'` (string) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:11` | `'signup'` (string) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:726` | `'login'` (string) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:729` | `'login'` (string) |
 
 ### Example
 
