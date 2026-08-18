@@ -580,3 +580,25 @@ add_action('fluent_community/user_points_updated', function ($xprofile, $oldPoin
 }, 10, 2);
 ```
 
+<a id="fluent_communityuserpassword_changed"></a>
+
+## `fluent_community/user/password_changed`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** User/Password Changed hook emitted from the current call site.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:524` | `$user->ID` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/user/password_changed', function ($id) {
+}, 10, 1);
+```
+

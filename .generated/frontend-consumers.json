@@ -4419,7 +4419,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 771
+    "line": 718
   },
   {
     "method": "GET",
@@ -4439,7 +4439,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 968
+    "line": 915
   },
   {
     "method": "GET",
@@ -4458,7 +4458,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 1090
+    "line": 1037
   },
   {
     "method": "POST",
@@ -4475,7 +4475,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/feed.js",
-    "line": 1238
+    "line": 1185
   },
   {
     "method": "GET",
