@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAdminCourse",
         "summary": "GET Get Admin Course",
-        "description": "Get Admin Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@findCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:24`",
+        "description": "Returns one course in its editable form, with the lock screen configuration, the attached category ids and — when it has students — the completion count and average progress.\n\nController: `CourseAdminController@findCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:24`",
         "tags": [
           "Courses"
         ],
@@ -58,8 +58,278 @@
                     "course": {
                       "type": "object",
                       "properties": {
+                        "category_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "completed_students": {
+                          "type": "integer"
+                        },
+                        "course_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "cover_photo": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": false
+                        },
                         "id": {
                           "type": "integer"
+                        },
+                        "lockscreen": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "background_image": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "button_color": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "button_link": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "button_text": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "button_text_color": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "heading": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "heading_color": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "hidden": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "name": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "new_tab": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "overlay_color": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "text_color": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "overAllProgress": {
+                          "type": "integer"
+                        },
+                        "owner": {
+                          "type": "object",
+                          "properties": {
+                            "ID": {
+                              "type": "integer"
+                            },
+                            "display_name": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "photo": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_email": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_login": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_nicename": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_registered": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "user_url": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "serial": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "can_request_join": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_details": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_layout": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_type": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "custom_lock_screen": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "disable_comments": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "emoji": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_instructor_view": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_members_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "layout_style": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "links": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "members_page_status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "og_image": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "public_lesson_view": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "restricted_post_only": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "sequential_lesson_order": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "shape_svg": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_instructor_students_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_sidebar": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "topic_required": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "students_count": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -69,7 +339,91 @@
                 },
                 "example": {
                   "course": {
-                    "id": 0
+                    "category_ids": [],
+                    "completed_students": 0,
+                    "course_type": "self_paced",
+                    "cover_photo": null,
+                    "created_at": "2026-08-17 22:39:56",
+                    "created_by": "1",
+                    "description": "Everything you need to get productive in your first week.",
+                    "id": 123,
+                    "lockscreen": [
+                      {
+                        "background_image": "",
+                        "button_color": "#2B2E33",
+                        "button_link": "",
+                        "button_text": "Buy Now",
+                        "button_text_color": "#FFFFFF",
+                        "description": "Share what you are building and get feedback from other members.",
+                        "heading": "Welcome to the community",
+                        "heading_color": "#FFFFFF",
+                        "hidden": false,
+                        "label": "Banner",
+                        "name": "banner",
+                        "new_tab": "no",
+                        "overlay_color": "#798398",
+                        "text_color": "#FFFFFF",
+                        "type": "image"
+                      },
+                      {
+                        "content": "Great point — I ran into the same thing last week.",
+                        "hidden": false,
+                        "label": "Description",
+                        "name": "description",
+                        "type": "block"
+                      },
+                      {
+                        "banner": null,
+                        "hidden": true,
+                        "label": "Welcome Banner",
+                        "name": "welcome_banner",
+                        "type": "welcome_banner"
+                      }
+                    ],
+                    "logo": null,
+                    "overAllProgress": 0,
+                    "owner": {
+                      "ID": 1,
+                      "display_name": "Lucas Moreau",
+                      "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau.png",
+                      "user_email": "lucas.moreau@example.com",
+                      "user_login": "lucas_moreau",
+                      "user_nicename": "lucas_moreau",
+                      "user_registered": "2024-03-05 10:37:02",
+                      "user_status": "0",
+                      "user_url": "https://example.com"
+                    },
+                    "parent_id": null,
+                    "privacy": "public",
+                    "serial": "21",
+                    "settings": {
+                      "can_request_join": "no",
+                      "course_details": "",
+                      "course_layout": "classic",
+                      "course_type": "self_paced",
+                      "custom_lock_screen": "no",
+                      "disable_comments": "no",
+                      "emoji": "",
+                      "hide_instructor_view": "no",
+                      "hide_members_count": "no",
+                      "layout_style": "timeline",
+                      "links": [],
+                      "members_page_status": "members_only",
+                      "og_image": "",
+                      "public_lesson_view": "no",
+                      "restricted_post_only": "no",
+                      "sequential_lesson_order": "no",
+                      "shape_svg": "",
+                      "show_instructor_students_count": "no",
+                      "show_sidebar": "yes",
+                      "topic_required": "no"
+                    },
+                    "slug": "getting-started-with-the-platform",
+                    "status": "published",
+                    "students_count": 2,
+                    "title": "Getting Started with the Platform",
+                    "type": "course",
+                    "updated_at": "2026-08-17 22:39:56"
                   }
                 }
               }

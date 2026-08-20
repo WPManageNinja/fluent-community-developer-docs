@@ -171,6 +171,8 @@
     "delete-webhook",
     "save-sidebar-link",
     "delete-sidebar-link",
+    "get-settings",
+    "post-save-settings",
     "list-user-badges",
     "save-user-badges"
   ],

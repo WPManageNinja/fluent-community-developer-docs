@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpacePaywalls",
         "summary": "GET List Space Paywalls",
-        "description": "List Space Paywalls for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@getPaywalls`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:15`",
+        "description": "Returns the published FluentCart products attached to a space as paywalls, each variant carrying its price, thumbnail and a ready-made instant-checkout URL.\n\nController: `PaywallController@getPaywalls`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:15`",
         "tags": [
           "Cart Integration"
         ],
@@ -66,14 +66,317 @@
                   "type": "object",
                   "properties": {
                     "paywalls": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ID": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "post_title": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "post_status": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "post_excerpt": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "view_url": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "admin_url": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "thumbnail": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "detail": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "post_id": {
+                                "type": "integer"
+                              },
+                              "fulfillment_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "min_price": {
+                                "type": "integer"
+                              },
+                              "max_price": {
+                                "type": "integer"
+                              },
+                              "default_variation_id": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "default_media": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "manage_stock": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "stock_availability": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "variation_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "manage_downloadable": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "other_info": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "featured_media": {
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "formatted_min_price": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "formatted_max_price": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "variants": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "post_id": {
+                                  "type": "integer"
+                                },
+                                "item_price": {
+                                  "type": "integer"
+                                },
+                                "variation_title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "other_info": {
+                                  "type": "object",
+                                  "properties": {
+                                    "description": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "payment_type": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "times": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "repeat_interval": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "trial_days": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "billing_summary": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "manage_setup_fee": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "signup_fee_name": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "signup_fee": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "setup_fee_per_item": {
+                                      "type": "string",
+                                      "nullable": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "thumbnail": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "photo": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "total_price": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "checkout_url": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "paywalls": null
+                  "paywalls": [
+                    {
+                      "ID": "125",
+                      "post_title": "Pro Membership",
+                      "post_status": "publish",
+                      "post_excerpt": "Full access to every private space and course.",
+                      "view_url": "https://yourwebsite.com/fluent-products/pro-membership/",
+                      "admin_url": "https://yourwebsite.com/wp-admin/admin.php?page=fluent-cart#/products/125",
+                      "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png",
+                      "detail": {
+                        "id": "9",
+                        "post_id": 125,
+                        "fulfillment_type": "digital",
+                        "min_price": 4900,
+                        "max_price": 4900,
+                        "default_variation_id": null,
+                        "default_media": null,
+                        "manage_stock": "0",
+                        "stock_availability": "in-stock",
+                        "variation_type": "simple",
+                        "manage_downloadable": "0",
+                        "other_info": null,
+                        "created_at": "2026-01-15 09:30:00",
+                        "updated_at": "2026-01-15 09:30:00",
+                        "featured_media": {
+                          "url": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png"
+                        },
+                        "formatted_min_price": "$49.00",
+                        "formatted_max_price": "$49.00"
+                      },
+                      "variants": [
+                        {
+                          "id": "48",
+                          "post_id": 125,
+                          "item_price": 4900,
+                          "variation_title": "Pro Membership",
+                          "other_info": {
+                            "description": "",
+                            "payment_type": "onetime",
+                            "times": "",
+                            "repeat_interval": "",
+                            "trial_days": "",
+                            "billing_summary": "",
+                            "manage_setup_fee": "no",
+                            "signup_fee_name": "",
+                            "signup_fee": "",
+                            "setup_fee_per_item": "no"
+                          },
+                          "thumbnail": null,
+                          "photo": "https://yourwebsite.com/wp-content/uploads/fluent-cart/pro-membership.png",
+                          "total_price": "$49.00",
+                          "checkout_url": "https://yourwebsite.com/?fluent-cart=instant_checkout&item_id=48&quantity=1&redirect_to=https%3A%2F%2Fyourwebsite.com%2Fportal%2Fcheckout%3Fspace_id%3D12"
+                        }
+                      ]
+                    },
+                    {
+                      "ID": "131",
+                      "post_title": "Founding Member Pass",
+                      "post_status": "publish",
+                      "post_excerpt": "Lifetime access with a private founders space.",
+                      "view_url": "https://yourwebsite.com/fluent-products/founding-member-pass/",
+                      "admin_url": "https://yourwebsite.com/wp-admin/admin.php?page=fluent-cart#/products/131",
+                      "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-member-pass.png",
+                      "detail": {
+                        "id": "11",
+                        "post_id": 131,
+                        "fulfillment_type": "digital",
+                        "min_price": 9900,
+                        "max_price": 24900,
+                        "default_variation_id": 52,
+                        "default_media": null,
+                        "manage_stock": "0",
+                        "stock_availability": "in-stock",
+                        "variation_type": "simple_variation",
+                        "other_info": null,
+                        "created_at": "2026-01-15 09:30:00",
+                        "updated_at": "2026-01-15 09:30:00",
+                        "featured_media": {
+                          "url": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-member-pass.png"
+                        },
+                        "formatted_min_price": "$99.00",
+                        "formatted_max_price": "$249.00"
+                      },
+                      "variants": [
+                        {
+                          "id": "52",
+                          "post_id": 131,
+                          "item_price": 9900,
+                          "variation_title": "Yearly",
+                          "other_info": {
+                            "description": "",
+                            "payment_type": "onetime",
+                            "times": "",
+                            "repeat_interval": "",
+                            "trial_days": "",
+                            "billing_summary": "",
+                            "manage_setup_fee": "no",
+                            "signup_fee_name": "",
+                            "signup_fee": "",
+                            "setup_fee_per_item": "no"
+                          },
+                          "thumbnail": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-yearly.png",
+                          "photo": "https://yourwebsite.com/wp-content/uploads/fluent-cart/founding-yearly.png",
+                          "total_price": "$99.00",
+                          "checkout_url": "https://yourwebsite.com/?fluent-cart=instant_checkout&item_id=52&quantity=1&redirect_to=https%3A%2F%2Fyourwebsite.com%2Fportal%2Fcheckout%3Fspace_id%3D12"
+                        }
+                      ]
+                    }
+                  ]
                 }
               }
             }

@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateModerationReport",
         "summary": "PUT Update Moderation Report",
-        "description": "Update Moderation Report for the FluentCommunity Reports API.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
+        "description": "Resolves a moderation report by setting its status, and publishes or unpublishes the reported content to match.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
         "tags": [
           "Reports"
         ],
@@ -60,7 +60,7 @@
                 }
               },
               "example": {
-                "status": ""
+                "status": "unpublished"
               }
             }
           }
@@ -73,28 +73,32 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "report": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
                     "content": {
                       "type": "object",
                       "properties": {
+                        "comments_count": {
+                          "type": "integer"
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "expired_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "id": {
                           "type": "integer"
                         },
-                        "user_id": {
-                          "type": "integer"
-                        },
-                        "post_id": {
-                          "type": "integer"
-                        },
-                        "parent_id": {
+                        "is_sticky": {
                           "type": "integer"
                         },
                         "message": {
@@ -108,101 +112,227 @@
                         "meta": {
                           "type": "object",
                           "properties": {
+                            "auto_flagged": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "flagged_reason": {
+                              "type": "string",
+                              "nullable": false
+                            },
                             "media_preview": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "prevent_published": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "reports_count": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "priority": {
+                          "type": "integer"
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reactions_count": {
+                          "type": "integer"
+                        },
+                        "scheduled_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "space": {
+                          "type": "object",
+                          "properties": {
+                            "cover_photo": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "created_by": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "logo": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "parent_id": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "privacy": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "serial": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "settings": {
                               "type": "object",
                               "properties": {
-                                "image": {
+                                "can_request_join": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "url": {
+                                "custom_lock_screen": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "type": {
+                                "default_comment_sort_by": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "provider": {
+                                "default_post_sort_by": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "content_type": {
+                                "disable_layout_style": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "title": {
+                                "disable_post_sort_by": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "author_name": {
+                                "document_access": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "html": {
+                                "document_library": {
                                   "type": "string",
                                   "nullable": false
                                 },
-                                "width": {
-                                  "type": "integer"
+                                "document_upload": {
+                                  "type": "string",
+                                  "nullable": false
                                 },
-                                "height": {
-                                  "type": "integer"
+                                "emoji": {
+                                  "type": "string",
+                                  "nullable": false
                                 },
-                                "media_id": {
-                                  "type": "integer"
+                                "hide_members_count": {
+                                  "type": "string",
+                                  "nullable": false
                                 },
-                                "player": {
+                                "layout_style": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "links": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "slug": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "media_access": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "media_gallery": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "members_page_status": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "og_image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "onboard_redirect_url": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "restricted_post_only": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "shape_svg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "show_paywalls": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "show_sidebar": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "topic_required": {
                                   "type": "string",
                                   "nullable": false
                                 }
                               },
                               "additionalProperties": false
                             },
-                            "media_items": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "url": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "type": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "media_id": {
-                                    "type": "integer"
-                                  },
-                                  "width": {
-                                    "type": "integer"
-                                  },
-                                  "height": {
-                                    "type": "integer"
-                                  },
-                                  "provider": {
-                                    "type": "string",
-                                    "nullable": false
-                                  }
-                                },
-                                "additionalProperties": false
-                              }
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
                             },
-                            "mentioned_user_ids": {
-                              "type": "array",
-                              "items": {
-                                "type": "integer"
-                              }
+                            "status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "type": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "nullable": false
                             }
                           },
                           "additionalProperties": false
                         },
-                        "type": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "content_type": {
+                        "space_id": {
                           "type": "string",
                           "nullable": false
                         },
@@ -210,17 +340,19 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "is_sticky": {
-                          "type": "boolean"
+                        "title": {
+                          "type": "string",
+                          "nullable": false
                         },
-                        "reactions_count": {
-                          "type": "integer"
-                        },
-                        "created_at": {
+                        "type": {
                           "type": "string",
                           "nullable": false
                         },
                         "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
                           "type": "string",
                           "nullable": false
                         }
@@ -230,59 +362,168 @@
                     "message": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "report": {
+                      "type": "object",
+                      "properties": {
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "explanation": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "updated_by": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "post_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reason": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reports_count": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "report": {
-                    "id": 0
-                  },
                   "content": {
-                    "id": 0,
-                    "user_id": 0,
-                    "post_id": 0,
-                    "parent_id": 0,
-                    "message": "",
-                    "message_rendered": "<p>...</p>",
+                    "comments_count": 0,
+                    "content_type": "text",
+                    "created_at": "2026-08-17 22:39:56",
+                    "expired_at": null,
+                    "featured_image": null,
+                    "id": 15067,
+                    "is_sticky": 0,
+                    "message": "Great point — I ran into the same thing last week.",
+                    "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
                     "meta": {
-                      "media_preview": {
-                        "image": "",
-                        "url": "",
-                        "type": "image",
-                        "provider": "",
-                        "content_type": "",
-                        "title": "",
-                        "author_name": "",
-                        "html": "<p>...</p>",
-                        "width": 0,
-                        "height": 0,
-                        "media_id": 0,
-                        "player": ""
-                      },
-                      "media_items": [
-                        {
-                          "url": "",
-                          "type": "image",
-                          "media_id": 0,
-                          "width": 0,
-                          "height": 0,
-                          "provider": "uploader"
-                        }
-                      ],
-                      "mentioned_user_ids": [
-                        0
-                      ]
+                      "auto_flagged": "yes",
+                      "flagged_reason": "first_post_approval",
+                      "media_preview": null,
+                      "prevent_published": "yes",
+                      "reports_count": 0
                     },
-                    "type": "",
-                    "content_type": "",
-                    "status": "",
-                    "is_sticky": false,
+                    "parent_id": null,
+                    "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/second-scratch-post",
+                    "priority": 0,
+                    "privacy": "public",
                     "reactions_count": 0,
-                    "created_at": "2026-01-01 00:00:00",
-                    "updated_at": "2026-01-01 00:00:00"
+                    "scheduled_at": null,
+                    "slug": "second-scratch-post",
+                    "space": {
+                      "cover_photo": null,
+                      "created_at": "2026-08-17 22:39:56",
+                      "created_by": "1",
+                      "description": "A place to introduce yourself and meet other members.",
+                      "id": 119,
+                      "logo": null,
+                      "parent_id": "118",
+                      "privacy": "public",
+                      "serial": "1",
+                      "settings": {
+                        "can_request_join": "no",
+                        "custom_lock_screen": "no",
+                        "default_comment_sort_by": "",
+                        "default_post_sort_by": "",
+                        "disable_layout_style": "no",
+                        "disable_post_sort_by": "no",
+                        "document_access": "everybody",
+                        "document_library": "yes",
+                        "document_upload": "admin_only",
+                        "emoji": "",
+                        "hide_members_count": "no",
+                        "layout_style": "timeline",
+                        "links": [
+                          {
+                            "slug": "space-guidelines",
+                            "title": "Space guidelines"
+                          }
+                        ],
+                        "media_access": "everybody",
+                        "media_gallery": "yes",
+                        "members_page_status": "members_only",
+                        "og_image": "",
+                        "onboard_redirect_url": "",
+                        "restricted_post_only": "no",
+                        "shape_svg": "",
+                        "show_paywalls": "no",
+                        "show_sidebar": "no",
+                        "topic_required": "no"
+                      },
+                      "slug": "general-discussion",
+                      "status": "published",
+                      "title": "General Discussion",
+                      "type": "community",
+                      "updated_at": "2026-08-17 22:41:08"
+                    },
+                    "space_id": "119",
+                    "status": "unpublished",
+                    "title": "Community poll results",
+                    "type": "text",
+                    "updated_at": "2026-08-17 22:41:10",
+                    "user_id": "13096"
                   },
-                  "message": "The report was dismissed. The comment is published and visible to the community."
+                  "message": "Just tried it and it works exactly as described.",
+                  "report": {
+                    "content_type": "post",
+                    "created_at": "2026-08-17 22:41:08",
+                    "explanation": "This post looks like spam.",
+                    "id": 59808,
+                    "meta": {
+                      "updated_by": 1
+                    },
+                    "parent_id": null,
+                    "post_id": "15067",
+                    "reason": "spam",
+                    "reports_count": "2",
+                    "status": "pending",
+                    "type": "report",
+                    "updated_at": "2026-08-17 22:41:10",
+                    "user_id": "13098"
+                  }
                 }
               }
             }

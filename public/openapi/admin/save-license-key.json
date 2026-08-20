@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveLicenseKey",
         "summary": "POST Save License Key",
-        "description": "Save License Key for the FluentCommunity Admin API.\n\nController: `LicenseController@saveLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:18`",
+        "description": "Activates a Pro licence key against the remote licensing service and stores the returned licence data.\n\nController: `LicenseController@saveLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:18`",
         "tags": [
           "Admin"
         ],
@@ -50,7 +50,7 @@
                 }
               },
               "example": {
-                "license_key": ""
+                "license_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
               }
             }
           }
@@ -64,8 +64,34 @@
                   "type": "object",
                   "properties": {
                     "license_data": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "license_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "variation_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "variation_title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "expires": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "activation_hash": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "type": "string",
@@ -75,7 +101,14 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "license_data": null,
+                  "license_data": {
+                    "license_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                    "status": "valid",
+                    "variation_id": "3",
+                    "variation_title": "Agency",
+                    "expires": "2027-01-15",
+                    "activation_hash": "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+                  },
                   "message": "Your license key has been successfully updated"
                 }
               }

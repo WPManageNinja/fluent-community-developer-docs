@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getVideoContent",
         "summary": "GET Get Video Content",
-        "description": "Get Video Content for the FluentCommunity Media API.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:14`",
+        "description": "Renders the FluentPlayer markup for one media item, including the scoped CSS that applies the portal theme colours to the player.\n\nController: `MediaController@getFluentPlayerContent`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:14`",
         "tags": [
           "Media"
         ],
@@ -63,6 +63,51 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "required": false,
+            "description": "URL read via `$request->get()` in getFluentPlayerContent().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "description": "Title read via `$request->get()` in getFluentPlayerContent().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": false,
+            "description": "Image read via `$request->get()` in getFluentPlayerContent().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "provider",
+            "in": "query",
+            "required": false,
+            "description": "Provider read via `$request->get()` in getFluentPlayerContent().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "Type read via `$request->get()` in getFluentPlayerContent().",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -71,10 +116,217 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "html": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "ID": {
+                          "type": "integer"
+                        },
+                        "deep_link_ref": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "aspectRatio": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "behaviors": {
+                              "type": "object",
+                              "properties": {
+                                "hide_bottom_controls": {
+                                  "type": "boolean"
+                                },
+                                "hide_center_controls": {
+                                  "type": "boolean"
+                                },
+                                "hide_top_controls": {
+                                  "type": "boolean"
+                                },
+                                "load_strategy": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "muted_autoplay": {
+                                  "type": "boolean"
+                                },
+                                "save_play_position": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "brandColor": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "controlBarColor": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "controls": {
+                              "type": "object",
+                              "properties": {
+                                "backward": {
+                                  "type": "boolean"
+                                },
+                                "captions_toggle": {
+                                  "type": "boolean"
+                                },
+                                "current_time": {
+                                  "type": "boolean"
+                                },
+                                "forward": {
+                                  "type": "boolean"
+                                },
+                                "fullscreen": {
+                                  "type": "boolean"
+                                },
+                                "pip": {
+                                  "type": "boolean"
+                                },
+                                "play": {
+                                  "type": "boolean"
+                                },
+                                "playback_speed": {
+                                  "type": "boolean"
+                                },
+                                "progress_bar": {
+                                  "type": "boolean"
+                                },
+                                "settings": {
+                                  "type": "boolean"
+                                },
+                                "volume": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "enable_audio": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enable_fluent_player": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "loadStrategy": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "playButtonBgColor": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "playButtonColor": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "play_embedded_videos": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "playerWidth": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "playsInline": {
+                              "type": "boolean"
+                            },
+                            "posterSrc": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "skin": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "src": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "video_upload": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "video_upload_role": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "viewType": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "html": "<style>\n#fluent_player_fcom_0{aspect-ratio:16/9}\n#fluent_player_fcom_0 .fluent-player-container{position:relative;overflow:hidden}\n.fluent-player-loader{position:absolute;inset:0;z-index:2;background:#000;transition:opacity .3s}\n.fluent-player-loader.is-hidden{opacity:0;pointer-events:none}\n.fluent-player-loader-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}\n.fluent-play …",
+                  "media": {
+                    "ID": 0,
+                    "deep_link_ref": "fcom_0",
+                    "settings": {
+                      "aspectRatio": "original",
+                      "behaviors": {
+                        "hide_bottom_controls": false,
+                        "hide_center_controls": false,
+                        "hide_top_controls": false,
+                        "load_strategy": "visible",
+                        "muted_autoplay": false,
+                        "save_play_position": false
+                      },
+                      "brandColor": "#FF2B2B",
+                      "controlBarColor": "",
+                      "controls": {
+                        "backward": true,
+                        "captions_toggle": true,
+                        "current_time": true,
+                        "forward": true,
+                        "fullscreen": true,
+                        "pip": true,
+                        "play": true,
+                        "playback_speed": true,
+                        "progress_bar": true,
+                        "settings": true,
+                        "volume": true
+                      },
+                      "enable_audio": "no",
+                      "enable_fluent_player": "yes",
+                      "loadStrategy": "idle",
+                      "playButtonBgColor": "",
+                      "playButtonColor": "",
+                      "play_embedded_videos": "yes",
+                      "playerWidth": "",
+                      "playsInline": true,
+                      "posterSrc": "",
+                      "skin": "classic",
+                      "src": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                      "title": "How we plan our release cycle",
+                      "video_upload": "no",
+                      "video_upload_role": "admin_moderator",
+                      "viewType": "video"
+                    }
+                  }
+                }
               }
             }
           },

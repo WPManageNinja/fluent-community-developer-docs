@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateSpaceById",
         "summary": "PUT Update Space By ID",
-        "description": "Update Space By ID for the FluentCommunity Spaces API.\n\nController: `SpaceController@patchById`\nRoute source: `fluent-community/app/Http/Routes/api.php:12`",
+        "description": "Updates a space addressed by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint.\n\nController: `SpaceController@patchById`\nRoute source: `fluent-community/app/Http/Routes/api.php:12`",
         "tags": [
           "Spaces"
         ],
@@ -47,16 +47,125 @@
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "privacy": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "settings": {
+                        "type": "object",
+                        "properties": {
+                          "can_create_post": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "custom_lock_screen": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "document_access": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "document_library": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "emoji": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "hide_members_count": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "layout_style": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "media_access": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "media_gallery": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "restricted_post_only": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "shape_svg": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "title": {
+                        "type": "string",
+                        "nullable": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "data": {
+                  "privacy": "private",
+                  "settings": {
+                    "can_create_post": "all",
+                    "custom_lock_screen": "no",
+                    "document_access": "everybody",
+                    "document_library": "yes",
+                    "emoji": "",
+                    "hide_members_count": "no",
+                    "layout_style": "timeline",
+                    "media_access": "everybody",
+                    "media_gallery": "yes",
+                    "restricted_post_only": "no",
+                    "shape_svg": ""
+                  },
+                  "title": "Product Feedback"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "redirect_url": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "message": "Just tried it and it works exactly as described.",
+                  "redirect_url": ""
+                }
               }
             }
           },

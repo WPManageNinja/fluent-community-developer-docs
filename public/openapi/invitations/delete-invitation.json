@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteInvitation",
         "summary": "DELETE Delete Invitation",
-        "description": "Delete Invitation for the FluentCommunity Invitations API.\n\nController: `InvitationController@delete`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:24`",
+        "description": "Revokes an invitation so its email and link can no longer be redeemed.\n\nController: `InvitationController@delete`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:24`",
         "tags": [
           "Invitations"
         ],
@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Invitation deleted successfully"
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

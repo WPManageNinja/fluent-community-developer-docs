@@ -5,493 +5,47 @@ description: Spaces action hooks for FluentCommunity.
 
 # Spaces Actions
 
-31 unique action hooks currently map to this category, across 58 call sites.
+10 unique action hooks currently map to this category, across 22 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/after_header_menu`](#fluent_communityafter_header_menu) | Core | 1 | `fluent-community/app/Views/portal/header.php:55` |
-| [`fluent_community/after_header_right_menu_items`](#fluent_communityafter_header_right_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:371` |
-| [`fluent_community/after_portal_sidebar`](#fluent_communityafter_portal_sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:153` |
-| [`fluent_community/before_header_menu_items`](#fluent_communitybefore_header_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:315` |
-| [`fluent_community/before_header_right_menu_items`](#fluent_communitybefore_header_right_menu_items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:250` |
-| [`fluent_community/before_portal_dom`](#fluent_communitybefore_portal_dom) | Core | 4 | `fluent-community/app/Views/portal_page.php:73` |
-| [`fluent_community/before_portal_rendered`](#fluent_communitybefore_portal_rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:899` |
-| [`fluent_community/course/topic_completed`](#fluent_communitycoursetopic_completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:228` |
-| [`fluent_community/portal_action_{action}`](#fluent_communityportal_action_action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:810` |
-| [`fluent_community/portal_footer`](#fluent_communityportal_footer) | Core + <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:82` |
-| [`fluent_community/portal_head`](#fluent_communityportal_head) | Core | 1 | `fluent-community/app/Views/portal_page.php:69` |
-| [`fluent_community/portal_head_meta`](#fluent_communityportal_head_meta) | Core | 1 | `fluent-community/app/Views/portal_page.php:39` |
-| [`fluent_community/portal_header`](#fluent_communityportal_header) | Core + <span class="pro-badge">PRO</span> | 6 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:64` |
-| [`fluent_community/portal_html`](#fluent_communityportal_html) | Core | 1 | `fluent-community/app/Views/portal_page.php:75` |
-| [`fluent_community/portal_render_for_user`](#fluent_communityportal_render_for_user) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:880` |
-| [`fluent_community/portal_sidebar`](#fluent_communityportal_sidebar) | Core + <span class="pro-badge">PRO</span> | 7 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:71` |
-| [`fluent_community/portal/not_logged_in`](#fluent_communityportalnot_logged_in) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:836` |
-| [`fluent_community/portal/viewed`](#fluent_communityportalviewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:842` |
-| [`fluent_community/rendering_headless_portal`](#fluent_communityrendering_headless_portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:891` |
-| [`fluent_community/space`](#fluent_communityspace) | Core | 3 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:420` |
-| [`fluent_community/space_media/viewed`](#fluent_communityspace_mediaviewed) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Http/MediaGalleryController.php:51` |
-| [`fluent_community/space/before_delete`](#fluent_communityspacebefore_delete) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:537` |
-| [`fluent_community/space/created`](#fluent_communityspacecreated) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:142` |
-| [`fluent_community/space/deleted`](#fluent_communityspacedeleted) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:554` |
-| [`fluent_community/space/join_requested`](#fluent_communityspacejoin_requested) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:488` |
-| [`fluent_community/space/joined`](#fluent_communityspacejoined) | Core + <span class="pro-badge">PRO</span> | 6 | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:245` |
-| [`fluent_community/space/member/role_updated`](#fluent_communityspacememberrole_updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:607` |
-| [`fluent_community/space/update_meta_settings_{metaProvider}`](#fluent_communityspaceupdate_meta_settings_metaProvider) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:359` |
-| [`fluent_community/space/updated`](#fluent_communityspaceupdated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:353` |
-| [`fluent_community/space/user_left`](#fluent_communityspaceuser_left) | Core + <span class="pro-badge">PRO</span> | 4 | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` |
-| [`fluent_community/top_menu_right_items`](#fluent_communitytop_menu_right_items) | Core | 1 | `fluent-community/app/Views/portal/header.php:58` |
-
-<a id="fluent_communityafter_header_menu"></a>
-
-## `fluent_community/after_header_menu`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** After Header Menu hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/header.php:55` | `$context` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/after_header_menu', function ($context) {
-}, 10, 1);
-```
-
-<a id="fluent_communityafter_header_right_menu_items"></a>
-
-## `fluent_community/after_header_right_menu_items`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** After Header Right Menu Items hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:371` | `$auth` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/after_header_right_menu_items', function ($auth) {
-}, 10, 1);
-```
-
-<a id="fluent_communityafter_portal_sidebar"></a>
-
-## `fluent_community/after_portal_sidebar`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** After Portal Sidebar hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:153` | `$fluentCommunityContext` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/after_portal_sidebar', function ($fluentCommunityContext) {
-}, 10, 1);
-```
-
-<a id="fluent_communitybefore_header_menu_items"></a>
-
-## `fluent_community/before_header_menu_items`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Before Header Menu Items hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:315` | `$auth` (mixed)<br>`$context` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/before_header_menu_items', function ($auth, $context) {
-}, 10, 2);
-```
-
-<a id="fluent_communitybefore_header_right_menu_items"></a>
-
-## `fluent_community/before_header_right_menu_items`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Before Header Right Menu Items hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:250` | `$auth` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/before_header_right_menu_items', function ($auth) {
-}, 10, 1);
-```
-
-<a id="fluent_communitybefore_portal_dom"></a>
-
-## `fluent_community/before_portal_dom`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 4
-- **When it fires:** Before Portal Dom hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:73` | No parameters |
-| Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:153` | No parameters |
-| Core | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:24` | No parameters |
-| Core | `fluent-community/Modules/Theming/templates/fluent-community-frame.php:24` | No parameters |
-
-### Example
-
-```php
-add_action('fluent_community/before_portal_dom', function () {
-}, 10, 0);
-```
-
-<a id="fluent_communitybefore_portal_rendered"></a>
-
-## `fluent_community/before_portal_rendered`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Before Portal Rendered hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:899` | `$data` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/before_portal_rendered', function ($data) {
-}, 10, 1);
-```
-
-<a id="fluent_communitycoursetopic_completed"></a>
-
-## `fluent_community/course/topic_completed`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Course/Topic Completed hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Services/CourseHelper.php:228` | `$topic` (mixed)<br>`$userId` (mixed)<br>`$lesson` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/course/topic_completed', function ($topic, $userId, $lesson) {
-}, 10, 3);
-```
-
-<a id="fluent_communityportal_action_action"></a>
-
-## `fluent_community/portal_action_{action}`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal Action {Action} hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:810` | `$_GET` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/portal_action_{action}', function ($_get) {
-}, 10, 1);
-```
-
-<a id="fluent_communityportal_footer"></a>
-
-## `fluent_community/portal_footer`
-
-- **Type:** action
-- **Edition:** Core + <span class="pro-badge">PRO</span>
-- **Call sites:** 2
-- **When it fires:** Portal Footer hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:82` | No parameters |
-| Core | `fluent-community/app/Views/portal_page.php:79` | No parameters |
-
-### Example
-
-```php
-add_action('fluent_community/portal_footer', function () {
-}, 10, 0);
-```
-
-<a id="fluent_communityportal_head"></a>
-
-## `fluent_community/portal_head`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal Head hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:69` | No parameters |
-
-### Example
-
-```php
-add_action('fluent_community/portal_head', function () {
-}, 10, 0);
-```
-
-<a id="fluent_communityportal_head_meta"></a>
-
-## `fluent_community/portal_head_meta`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal Head Meta hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:39` | `$landing_route` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/portal_head_meta', function ($landing_route) {
-}, 10, 1);
-```
-
-<a id="fluent_communityportal_header"></a>
-
-## `fluent_community/portal_header`
-
-- **Type:** action
-- **Edition:** Core + <span class="pro-badge">PRO</span>
-- **Call sites:** 6
-- **When it fires:** Portal Header hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:64` | `'headless'` (mixed) |
-| Core | `fluent-community/app/Views/portal/portal.php:3` | `'headless'` (mixed) |
-| Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:157` | `$contenx` (mixed) |
-| Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:197` | `'headless'` (mixed) |
-| Core | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:27` | `'wp'` (mixed) |
-| Core | `fluent-community/Modules/Theming/templates/fluent-community-frame.php:27` | `'wp'` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/portal_header', function ($param1) {
-}, 10, 1);
-```
-
-<a id="fluent_communityportal_html"></a>
-
-## `fluent_community/portal_html`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal HTML hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal_page.php:75` | No parameters |
-
-### Example
-
-```php
-add_action('fluent_community/portal_html', function () {
-}, 10, 0);
-```
-
-<a id="fluent_communityportal_render_for_user"></a>
-
-## `fluent_community/portal_render_for_user`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal Render For User hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:880` | `$xprofile` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/portal_render_for_user', function ($xprofile) {
-}, 10, 1);
-```
-
-<a id="fluent_communityportal_sidebar"></a>
-
-## `fluent_community/portal_sidebar`
-
-- **Type:** action
-- **Edition:** Core + <span class="pro-badge">PRO</span>
-- **Call sites:** 7
-- **When it fires:** Portal Sidebar hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:71` | `'headless'` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/OptionController.php:37` | `'ajax'` (mixed) |
-| Core | `fluent-community/app/Views/portal/portal.php:9` | `'headless'` (mixed) |
-| Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:164` | `$contenx` (mixed) |
-| Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:205` | `'headless'` (mixed) |
-| Core | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:33` | `'wp'` (mixed) |
-| Core | `fluent-community/Modules/Theming/templates/fluent-community-frame.php:33` | `'wp'` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/portal_sidebar', function ($param1) {
-}, 10, 1);
-```
-
-<a id="fluent_communityportalnot_logged_in"></a>
-
-## `fluent_community/portal/not_logged_in`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal/Not Logged In hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:836` | `$authUrl` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/portal/not_logged_in', function ($authUrl) {
-}, 10, 1);
-```
-
-<a id="fluent_communityportalviewed"></a>
-
-## `fluent_community/portal/viewed`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Portal/Viewed hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:842` | No parameters |
-
-### Example
-
-```php
-add_action('fluent_community/portal/viewed', function () {
-}, 10, 0);
-```
-
-<a id="fluent_communityrendering_headless_portal"></a>
-
-## `fluent_community/rendering_headless_portal`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Rendering Headless Portal hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:891` | `$data` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/rendering_headless_portal', function ($data) {
-}, 10, 1);
-```
-
-<a id="fluent_communityspace"></a>
+| [`fluent_community/space`](#fluent-community-space) | Core | 3 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:420` |
+| [`fluent_community/space/before_delete`](#fluent-community-space-before-delete) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:567` |
+| [`fluent_community/space/created`](#fluent-community-space-created) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:142` |
+| [`fluent_community/space/deleted`](#fluent-community-space-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:584` |
+| [`fluent_community/space/join_requested`](#fluent-community-space-join-requested) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:518` |
+| [`fluent_community/space/joined`](#fluent-community-space-joined) | Core <span class="edition-note">(also fired by Pro)</span> | 6 | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:245` |
+| [`fluent_community/space/member/role_updated`](#fluent-community-space-member-role-updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:637` |
+| [`fluent_community/space/update_meta_settings_{metaProvider}`](#fluent-community-space-update-meta-settings-metaProvider) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:372` |
+| [`fluent_community/space/updated`](#fluent-community-space-updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:366` |
+| [`fluent_community/space/user_left`](#fluent-community-space-user-left) | Core <span class="edition-note">(also fired by Pro)</span> | 4 | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` |
+
+<a id="fluent-community-space"></a>
 
 ## `fluent_community/space`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 3
-- **When it fires:** Space hook emitted from the current call site.
+- **When it fires:** Passes a formatted space by reference so its payload can be extended before it reaches the portal.
+
+Fired with `do_action_ref_array()`, so declare the parameter as `&$space` and mutate the model in place. It runs on three paths — the single-space fetch, the all-spaces listing, and the sidebar build during portal render — always immediately after `formatSpaceData()`, which is what attaches `permissions`, `membership`, `topics`, `header_links` and, for non-admins, `lockscreen_config`. Because it is a listing hook as well, it can run dozens of times per request; keep callbacks free of queries.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The formatted space, passed by reference. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:420` | `[&$space]` (array) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:229` | `[&$space]` (array) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:254` | `[&$space]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:420` | `&$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:242` | `&$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:267` | `&$space` (Space) |
 
 ### Example
 
@@ -500,42 +54,30 @@ add_action('fluent_community/space', function ($space) {
 }, 10, 1);
 ```
 
-<a id="fluent_communityspace_mediaviewed"></a>
+**Related:** [`fluent_community/space_api_response`](/hooks/filters/spaces#fluent-community-space-api-response) · [`fluent_community/space_header_links`](/hooks/filters/rendering#fluent-community-space-header-links)
 
-## `fluent_community/space_media/viewed`
-
-- **Type:** action
-- **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
-- **When it fires:** Space Media/Viewed hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/Http/MediaGalleryController.php:51` | `$space` (Space|mixed)<br>`$user` (mixed)<br>`$type` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/space_media/viewed', function ($space, $user, $type) {
-}, 10, 3);
-```
-
-<a id="fluent_communityspacebefore_delete"></a>
+<a id="fluent-community-space-before-delete"></a>
 
 ## `fluent_community/space/before_delete`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Space/Before Delete hook emitted from the current call site.
+- **When it fires:** Runs immediately before a space and its content are deleted.
+
+The last point at which the space, its posts, comments, reactions and membership rows are all still queryable — the controller deletes them in bulk straight afterwards. Those bulk deletes bypass the per-item controllers, so no `fluent_community/feed/deleted` or `fluent_community/comment_deleted` fires for the content that goes with the space. Attached media is not cleaned up here either.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space about to be deleted. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:537` | `$space` (Space|mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:567` | `$space` (Space) |
 
 ### Example
 
@@ -544,20 +86,31 @@ add_action('fluent_community/space/before_delete', function ($space) {
 }, 10, 1);
 ```
 
-<a id="fluent_communityspacecreated"></a>
+**Related:** [`fluent_community/space/deleted`](#fluent-community-space-deleted)
+
+<a id="fluent-community-space-created"></a>
 
 ## `fluent_community/space/created`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Space/Created hook emitted from the current call site.
+- **When it fires:** Runs after a new space is created, its images claimed, its creator attached as admin and its topics synced.
+
+Only fires for spaces created through `SpaceController::create()`; spaces produced by migrations, seeders or direct model writes do not reach it. The second argument is the sanitised request payload, which carries fields such as `topic_ids` and image URLs that are not columns on the model.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The newly created space. |
+| 2 | `$data` | `array` | The sanitised creation payload from the request. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:142` | `$space` (Space|mixed)<br>`$data` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:142` | `$space` (Space)<br>`$data` (mixed) |
 
 ### Example
 
@@ -566,20 +119,30 @@ add_action('fluent_community/space/created', function ($space, $data) {
 }, 10, 2);
 ```
 
-<a id="fluent_communityspacedeleted"></a>
+**Related:** [`fluent_community/space/updated`](#fluent-community-space-updated)
+
+<a id="fluent-community-space-deleted"></a>
 
 ## `fluent_community/space/deleted`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Space/Deleted hook emitted from the current call site.
+- **When it fires:** Runs after a space row has been deleted, with only its ID.
+
+The model and all its content are gone, so capture anything you need from `fluent_community/space/before_delete`. Deleting by ID delegates to the slug endpoint, so both routes fire it exactly once.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$spaceId` | `int` | ID of the deleted space. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:554` | `$spaceId` (Space|mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:584` | `$spaceId` (int) |
 
 ### Example
 
@@ -588,70 +151,106 @@ add_action('fluent_community/space/deleted', function ($spaceId) {
 }, 10, 1);
 ```
 
-<a id="fluent_communityspacejoin_requested"></a>
+**Related:** [`fluent_community/space/before_delete`](#fluent-community-space-before-delete)
+
+<a id="fluent-community-space-join-requested"></a>
 
 ## `fluent_community/space/join_requested`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Space/Join Requested hook emitted from the current call site.
+- **When it fires:** Fires when a member's request to join a non-public space is left pending approval.
+
+The membership row already exists with `status = pending`, so the member is attached but not yet active. Only self-service joins reach it: an admin adding a member creates an active row and fires `fluent_community/space/joined` instead, as does the later approval of this request. Secret spaces reject the join outright before the hook. Core emails the space admins from here. The third argument is always `self` at the only call site.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space that was requested. |
+| 2 | `$userId` | `int` | WordPress user ID of the requester. |
+| 3 | `$by` | `string` | How the request came about; `self` at the only current call site. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:488` | `$space` (Space|mixed)<br>`$user->ID` (mixed)<br>`'self'` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:518` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
 
 ### Example
 
 ```php
-add_action('fluent_community/space/join_requested', function ($space, $id, $param3) {
+add_action('fluent_community/space/join_requested', function ($space, $userId, $by) {
 }, 10, 3);
 ```
 
-<a id="fluent_communityspacejoined"></a>
+**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined) · [`fluent_community/space/join_status_for_private`](/hooks/filters/spaces#fluent-community-space-join-status-for-private)
+
+<a id="fluent-community-space-joined"></a>
 
 ## `fluent_community/space/joined`
 
 - **Type:** action
-- **Edition:** Core + <span class="pro-badge">PRO</span>
+- **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 6
-- **When it fires:** Space/Joined hook emitted from the current call site.
+- **When it fires:** Fires once a user holds an active membership row in a community space.
+
+Course-type spaces never reach this hook — `Helper::addToSpace()` routes them to `fluent_community/course/enrolled` instead. It also does not fire for join requests that land in `pending`; those fire `fluent_community/space/join_requested`, and the later approval fires this hook. Only the `Helper::addToSpace()` path supplies the fourth argument, and only when a membership row was genuinely created, so treat `$created` as optional.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space that was joined. |
+| 2 | `$userId` | `int` | WordPress user ID of the new member. |
+| 3 | `$by` | `string` | How the membership came about: `self`, `by_admin`, `automation`, or an integration key. |
+| 4 | `$created` | `\FluentCommunity\App\Models\SpaceUserPivot` | The newly created membership row. Optional — omitted when an existing pending or inactive row was reactivated. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:245` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`'by_admin'` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:490` | `$space` (Space|mixed)<br>`$user->ID` (mixed)<br>`'self'` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:621` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`'by_admin'` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:639` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`'by_admin'` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1734` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1758` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed)<br>`$created` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:245` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:520` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:651` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:669` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Services/Helper.php:1757` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1781` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
 
 ### Example
 
 ```php
-add_action('fluent_community/space/joined', function ($space, $userId, $param3) {
-}, 10, 3);
+add_action('fluent_community/space/joined', function ($space, $userId, $by, $created) {
+}, 10, 4);
 ```
 
-<a id="fluent_communityspacememberrole_updated"></a>
+**Related:** [`fluent_community/space/user_left`](#fluent-community-space-user-left) · [`fluent_community/course/enrolled`](/hooks/actions/courses#fluent-community-course-enrolled)
+
+<a id="fluent-community-space-member-role-updated"></a>
 
 ## `fluent_community/space/member/role_updated`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
-- **When it fires:** Space/Member/Role Updated hook emitted from the current call site.
+- **When it fires:** Runs after an existing member's role within a space has been changed and saved.
+
+Fires from the admin member-management endpoint only. When a pending member is approved with a non-default role, it fires straight after `fluent_community/space/joined` for the same user, so a promotion-on-approval reaches both hooks. The pivot is passed rather than the user, so read `$pivot->user_id` and `$pivot->role`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space whose membership changed. |
+| 2 | `$pivot` | `\FluentCommunity\App\Models\SpaceUserPivot` | The membership row, already saved with the new role. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:607` | `$space` (Space|mixed)<br>`$pivot` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:624` | `$space` (Space|mixed)<br>`$pivot` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:637` | `$space` (Space)<br>`$pivot` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:654` | `$space` (Space)<br>`$pivot` (mixed) |
 
 ### Example
 
@@ -660,20 +259,31 @@ add_action('fluent_community/space/member/role_updated', function ($space, $pivo
 }, 10, 2);
 ```
 
-<a id="fluent_communityspaceupdate_meta_settings_metaProvider"></a>
+**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined)
+
+<a id="fluent-community-space-update-meta-settings-metaProvider"></a>
 
 ## `fluent_community/space/update_meta_settings_{metaProvider}`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 1
-- **When it fires:** Space/Update Meta Settings {MetaProvider} hook emitted from the current call site.
+- **When it fires:** Delivers the submitted values for one extra settings section on a space.
+
+The suffix is the provider slug used when the section was registered through `fluent_community/space/meta_fields`, and the two must match or the values are never delivered. It fires once per provider present in the request, after the space itself has been saved and `fluent_community/space/updated` has run. The values arrive exactly as submitted — sanitise them yourself. `FluentExtendApi::addMetaBox()` wires both halves up for you.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$metaData` | `array` | The submitted values for this provider's section, unsanitised. |
+| 2 | `$space` | `\FluentCommunity\App\Models\Space` | The space that was updated. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:359` | `$metaData` (mixed)<br>`$space` (Space|mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:372` | `$metaData` (mixed)<br>`$space` (Space) |
 
 ### Example
 
@@ -682,20 +292,31 @@ add_action('fluent_community/space/update_meta_settings_{metaProvider}', functio
 }, 10, 2);
 ```
 
-<a id="fluent_communityspaceupdated"></a>
+**Related:** [`fluent_community/space/meta_fields`](/hooks/filters/spaces#fluent-community-space-meta-fields) · [`fluent_community/course/update_meta_settings_{metaProvider}`](/hooks/actions/courses#fluent-community-course-update-meta-settings-metaProvider)
+
+<a id="fluent-community-space-updated"></a>
 
 ## `fluent_community/space/updated`
 
 - **Type:** action
 - **Edition:** Core
 - **Call sites:** 2
-- **When it fires:** Space/Updated hook emitted from the current call site.
+- **When it fires:** Runs after a space is saved with changed values.
+
+Two call sites with different second arguments: `SpaceController::update()` passes the filtered request payload, while `BaseSpace::updateCustomData()` passes the dirty attribute map. The model-level call is additionally gated on `type == 'community'`, so custom-data updates to courses, space groups and sidebar links stay silent. Check what you actually received before reading keys off the second argument.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space after saving. |
+| 2 | `$data` | `array` | Either the request payload or the changed attributes, depending on the call site. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:353` | `$space` (Space|mixed)<br>`$data` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:366` | `$space` (Space)<br>`$data` (mixed) |
 | Core | `fluent-community/app/Models/BaseSpace.php:370` | `$this` (mixed)<br>`$dirty` (mixed) |
 
 ### Example
@@ -705,50 +326,42 @@ add_action('fluent_community/space/updated', function ($space, $data) {
 }, 10, 2);
 ```
 
-<a id="fluent_communityspaceuser_left"></a>
+**Related:** [`fluent_community/space/created`](#fluent-community-space-created)
+
+<a id="fluent-community-space-user-left"></a>
 
 ## `fluent_community/space/user_left`
 
 - **Type:** action
-- **Edition:** Core + <span class="pro-badge">PRO</span>
+- **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
 - **Call sites:** 4
-- **When it fires:** Space/User Left hook emitted from the current call site.
+- **When it fires:** Fires after a membership row has been removed from a community space.
+
+Covers self-leaves, admin removals and CRM-driven removals alike; the `$by` argument tells them apart. As with joining, course-type spaces are routed elsewhere — they fire `fluent_community/course/student_left`. The pivot row is already deleted and the user's cached space list rebuilt by the time callbacks run.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$space` | `\FluentCommunity\App\Models\Space` | The space the user left. |
+| 2 | `$userId` | `int` | WordPress user ID of the departing member. |
+| 3 | `$by` | `string` | What triggered the removal: `self`, `by_admin`, or `automation`. |
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`'by_admin'` (mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/RemoveFromSpaceAction.php:87` | `$space` (Space|mixed)<br>`$user->ID` (mixed)<br>`'automation'` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:676` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`'by_admin'` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1808` | `$space` (Space|mixed)<br>`$userId` (mixed)<br>`$by` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/RemoveFromSpaceAction.php:87` | `$space` (Space)<br>`$user->ID` (int)<br>`'automation'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:706` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Services/Helper.php:1831` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 
 ### Example
 
 ```php
-add_action('fluent_community/space/user_left', function ($space, $userId, $param3) {
+add_action('fluent_community/space/user_left', function ($space, $userId, $by) {
 }, 10, 3);
 ```
 
-<a id="fluent_communitytop_menu_right_items"></a>
-
-## `fluent_community/top_menu_right_items`
-
-- **Type:** action
-- **Edition:** Core
-- **Call sites:** 1
-- **When it fires:** Top Menu Right Items hook emitted from the current call site.
-
-### Call Sites
-
-| Edition | Source | Parameters |
-| --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/header.php:58` | `$context` (mixed) |
-
-### Example
-
-```php
-add_action('fluent_community/top_menu_right_items', function ($context) {
-}, 10, 1);
-```
+**Related:** [`fluent_community/space/joined`](#fluent-community-space-joined)
 

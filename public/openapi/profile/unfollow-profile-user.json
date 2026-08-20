@@ -27,7 +27,7 @@
       "post": {
         "operationId": "unfollowProfileUser",
         "summary": "POST Unfollow Profile User",
-        "description": "Unfollow Profile User for the FluentCommunity Profile API.\n\nController: `FollowController@unfollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:132`",
+        "description": "Removes the follow relationship from the current user to the named member.\n\nController: `FollowController@unfollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:132`",
         "tags": [
           "Profile"
         ],
@@ -58,112 +58,28 @@
                     "follow": {
                       "type": "object",
                       "properties": {
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "followed_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "follower_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
                         "id": {
                           "type": "integer"
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    "xprofile": {
-                      "type": "object",
-                      "properties": {
-                        "user_id": {
-                          "type": "integer"
                         },
-                        "badge": {
+                        "level": {
                           "type": "string",
                           "nullable": false
                         },
-                        "permalink": {
+                        "updated_at": {
                           "type": "string",
                           "nullable": false
-                        },
-                        "meta": {
-                          "type": "object",
-                          "properties": {
-                            "website": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "cover_photo": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "badge_slug": {
-                              "type": "array",
-                              "items": {
-                                "type": "string",
-                                "nullable": false
-                              }
-                            },
-                            "social_links": {
-                              "type": "object",
-                              "properties": {
-                                "instagram": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "twitter": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "youtube": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "linkedin": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "fb": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "blue_sky": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "tiktok": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "pinterest": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "telegram": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "snapchat": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "reddit": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "twitch": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "vk": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "github": {
-                                  "type": "string",
-                                  "nullable": false
-                                },
-                                "mastodon": {
-                                  "type": "string",
-                                  "nullable": false
-                                }
-                              },
-                              "additionalProperties": false
-                            }
-                          },
-                          "additionalProperties": false
                         }
                       },
                       "additionalProperties": false
@@ -171,44 +87,118 @@
                     "message": {
                       "type": "string",
                       "nullable": false
+                    },
+                    "xprofile": {
+                      "type": "object",
+                      "properties": {
+                        "avatar": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "badge": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "display_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_verified": {
+                          "type": "integer"
+                        },
+                        "last_activity": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "cover_photo": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "short_description_rendered": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "website": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "short_description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "total_points": {
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        },
+                        "username": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
                   "follow": {
-                    "id": 0
+                    "created_at": "2026-08-17 22:41:08",
+                    "followed_id": "13097",
+                    "follower_id": "13096",
+                    "id": 1734,
+                    "level": "2",
+                    "updated_at": "2026-08-17 22:41:08"
                   },
+                  "message": "Great point — I ran into the same thing last week.",
                   "xprofile": {
-                    "user_id": 0,
-                    "badge": "",
-                    "permalink": "",
+                    "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka.png",
+                    "badge": null,
+                    "created_at": "2026-08-17 21:31:53",
+                    "display_name": "Mei Tanaka",
+                    "id": "12394",
+                    "is_verified": 0,
+                    "last_activity": null,
                     "meta": {
-                      "website": "",
                       "cover_photo": "",
-                      "badge_slug": [
-                        ""
-                      ],
-                      "social_links": {
-                        "instagram": "",
-                        "twitter": "",
-                        "youtube": "",
-                        "linkedin": "",
-                        "fb": "",
-                        "blue_sky": "",
-                        "tiktok": "",
-                        "pinterest": "",
-                        "telegram": "",
-                        "snapchat": "",
-                        "reddit": "",
-                        "twitch": "",
-                        "vk": "",
-                        "github": "",
-                        "mastodon": ""
-                      }
-                    }
-                  },
-                  "message": "You unfollowed this user successfully"
+                      "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                      "website": ""
+                    },
+                    "permalink": "https://yourwebsite.com/portal/u/mei_tanaka",
+                    "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                    "status": "active",
+                    "total_points": 0,
+                    "updated_at": "2026-08-17 21:37:21",
+                    "user_id": 13097,
+                    "username": "mei_tanaka"
+                  }
                 }
               }
             }

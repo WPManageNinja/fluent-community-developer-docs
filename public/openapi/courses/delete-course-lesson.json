@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteCourseLesson",
         "summary": "DELETE Delete Course Lesson",
-        "description": "Delete Course Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@deleteLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:59`",
+        "description": "Deletes a single lesson from a course.\n\nController: `CourseAdminController@deleteLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:59`",
         "tags": [
           "Courses"
         ],
@@ -72,7 +72,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Lesson has been deleted successfully."
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleProfileNotification",
         "summary": "POST Toggle Profile Notification",
-        "description": "Toggle Profile Notification for the FluentCommunity Profile API.\n\nController: `FollowController@toggleNotification`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:136`",
+        "description": "Turns notifications about a member you already follow on or off, without changing the follow itself.\n\nController: `FollowController@toggleNotification`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:136`",
         "tags": [
           "Profile"
         ],
@@ -58,8 +58,27 @@
                     "follow": {
                       "type": "object",
                       "properties": {
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "followed_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "follower_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
                         "id": {
                           "type": "integer"
+                        },
+                        "level": {
+                          "type": "integer"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -73,9 +92,14 @@
                 },
                 "example": {
                   "follow": {
-                    "id": 0
+                    "created_at": "2026-08-17 22:41:08",
+                    "followed_id": "13097",
+                    "follower_id": "13096",
+                    "id": 1734,
+                    "level": 2,
+                    "updated_at": "2026-08-17 22:41:08"
                   },
-                  "message": "Notification has been updated successfully"
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

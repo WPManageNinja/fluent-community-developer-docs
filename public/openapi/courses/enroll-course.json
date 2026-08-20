@@ -27,7 +27,7 @@
       "post": {
         "operationId": "enrollCourse",
         "summary": "POST Enroll Course",
-        "description": "Enroll Course for the FluentCommunity Courses API.\n\nController: `CourseController@enrollCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:14`",
+        "description": "Enrols the current user in a course and returns their freshly initialised progress track.\n\nController: `CourseController@enrollCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:14`",
         "tags": [
           "Courses"
         ],
@@ -60,15 +60,34 @@
                       "nullable": false
                     },
                     "track": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "completed_lessons": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "isEnrolled": {
+                          "type": "boolean"
+                        },
+                        "progress": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "You have been enrolled in this course.",
-                  "track": null
+                  "message": "This is really helpful, thanks for writing it up.",
+                  "track": {
+                    "completed_lessons": [],
+                    "isEnrolled": true,
+                    "progress": 0
+                  }
                 }
               }
             }

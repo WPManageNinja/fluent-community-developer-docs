@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postBulkImportStudents",
         "summary": "POST Post Bulk Import Students",
-        "description": "Post Bulk Import Students for the FluentCommunity Courses API.\n\nController: `BulkMembersController@bulkImportStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:116`",
+        "description": "Imports students into a course from submitted rows, creating WordPress users for addresses that do not yet exist.\n\nController: `BulkMembersController@bulkImportStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:116`",
         "tags": [
           "Courses"
         ],
@@ -47,16 +47,68 @@
             }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emails": {
+                    "type": "string",
+                    "nullable": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "emails": "member@example.com\nmember@example.com"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    },
+                    "failed": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "processed": {
+                      "type": "integer"
+                    },
+                    "skipped": {
+                      "type": "integer"
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "added": 0,
+                  "failed": 0,
+                  "has_more": false,
+                  "message": "Following. I would love to see a worked example of this.",
+                  "processed": 0,
+                  "skipped": 0,
+                  "total": 0
+                }
               }
             }
           },

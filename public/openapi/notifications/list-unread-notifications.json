@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUnreadNotifications",
         "summary": "GET List Unread Notifications",
-        "description": "List Unread Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
+        "description": "Returns up to 50 unread notifications for the current user with the unread total, for the notification dropdown.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
         "tags": [
           "Notifications"
         ],
@@ -54,9 +54,193 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer"
+                  "type": "object",
+                  "properties": {
+                    "notifications": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "content": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "feed_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "object_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "route": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "params": {
+                                "type": "object",
+                                "properties": {
+                                  "feed_slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "space": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "src_object_type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "src_user_id": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "xprofile": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "unread_count": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": 0
+                "example": {
+                  "notifications": [
+                    {
+                      "action": "post_report_added",
+                      "content": "This is really helpful, thanks for writing it up.",
+                      "created_at": "2026-08-17 22:39:56",
+                      "feed_id": "15067",
+                      "id": 59577,
+                      "object_id": "59804",
+                      "route": {
+                        "name": "space_feed",
+                        "params": {
+                          "feed_slug": "second-scratch-post",
+                          "space": "general-discussion"
+                        }
+                      },
+                      "src_object_type": "report",
+                      "src_user_id": null,
+                      "title": null,
+                      "updated_at": "2026-08-17 22:39:56",
+                      "xprofile": null
+                    },
+                    {
+                      "action": "comment/react_added",
+                      "content": "Post a screenshot of your setup. I am always curious how other people organise their work.",
+                      "created_at": "2026-08-17 22:39:19",
+                      "feed_id": "15046",
+                      "id": 59571,
+                      "object_id": "59797",
+                      "route": {
+                        "name": "space_feed",
+                        "params": {
+                          "feed_slug": "welcome-to-the-community",
+                          "space": "general-discussion"
+                        }
+                      },
+                      "src_object_type": "comment",
+                      "src_user_id": "13096",
+                      "title": null,
+                      "updated_at": "2026-08-17 22:39:19",
+                      "xprofile": {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                        "badge": null,
+                        "created_at": "2026-08-17 21:31:52",
+                        "display_name": "Mei Tanaka",
+                        "is_verified": 0,
+                        "last_activity": null,
+                        "meta": {
+                          "badge_slug": [],
+                          "cover_photo": "",
+                          "headline": "Product Designer",
+                          "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                          "website": "https://example.com"
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                        "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                        "status": "active",
+                        "total_points": 0,
+                        "user_id": 13096,
+                        "username": "mei_tanaka_3"
+                      }
+                    },
+                    {
+                      "action": "feed/react_added",
+                      "content": "A short write-up of what worked, what did not, and what I would do differently next time.",
+                      "created_at": "2026-08-17 22:39:19",
+                      "feed_id": "15046",
+                      "id": 59570,
+                      "object_id": null,
+                      "route": {
+                        "name": "space_feed",
+                        "params": {
+                          "feed_slug": "welcome-to-the-community",
+                          "space": "general-discussion"
+                        }
+                      },
+                      "src_object_type": "feed",
+                      "src_user_id": "13097",
+                      "title": null,
+                      "updated_at": "2026-08-17 22:39:19",
+                      "xprofile": {
+                        "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka.png",
+                        "badge": null,
+                        "created_at": "2026-08-17 21:31:53",
+                        "display_name": "Mei Tanaka",
+                        "is_verified": 0,
+                        "last_activity": null,
+                        "meta": {
+                          "cover_photo": "",
+                          "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                          "website": ""
+                        },
+                        "permalink": "https://yourwebsite.com/portal/u/mei_tanaka",
+                        "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                        "status": "active",
+                        "total_points": 0,
+                        "user_id": 13097,
+                        "username": "mei_tanaka"
+                      }
+                    }
+                  ],
+                  "unread_count": 376
+                }
               }
             }
           },

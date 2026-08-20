@@ -27,7 +27,7 @@
       "post": {
         "operationId": "resendInvitation",
         "summary": "POST Resend Invitation",
-        "description": "Resend Invitation for the FluentCommunity Invitations API.\n\nController: `InvitationController@resend`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:27`",
+        "description": "Sends the invitation email again for an invitation that has not yet been redeemed.\n\nController: `InvitationController@resend`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:27`",
         "tags": [
           "Invitations"
         ],
@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Invitation has been resent successfully"
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

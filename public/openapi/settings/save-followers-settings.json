@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveFollowersSettings",
         "summary": "POST Save Followers Settings",
-        "description": "Save Followers Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:37`",
+        "description": "Stores the followers module configuration and returns the normalised result.\n\nController: `ProAdminController@saveFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:37`",
         "tags": [
           "Settings"
         ],
@@ -50,7 +50,11 @@
                 }
               },
               "example": {
-                "settings": {}
+                "settings": {
+                  "is_enabled": "yes",
+                  "who_can_see_followers": "members",
+                  "who_can_see_followings": "only_me"
+                }
               }
             }
           }
@@ -69,15 +73,32 @@
                     },
                     "settings": {
                       "type": "object",
-                      "properties": {},
+                      "properties": {
+                        "is_enabled": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "who_can_see_followers": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "who_can_see_followings": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
                       "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Followers settings have been updated successfully",
-                  "settings": {}
+                  "message": "Just tried it and it works exactly as described.",
+                  "settings": {
+                    "is_enabled": "yes",
+                    "who_can_see_followers": "members",
+                    "who_can_see_followings": "only_me"
+                  }
                 }
               }
             }

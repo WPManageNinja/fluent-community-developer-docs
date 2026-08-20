@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveWebhook",
         "summary": "POST Save Webhook",
-        "description": "Save Webhook for the FluentCommunity Admin API.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:51`",
+        "description": "Creates or updates an inbound webhook that adds or removes the resolved user from a set of spaces and courses when it is called.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:51`",
         "tags": [
           "Admin"
         ],
@@ -83,13 +83,14 @@
                 ]
               },
               "example": {
-                "title": "",
-                "course_ids": [],
-                "space_ids": [],
-                "remove_course_ids": [],
-                "remove_space_ids": [],
-                "send_wp_welcome_email": "",
-                "id": ""
+                "course_ids": [
+                  123
+                ],
+                "send_wp_welcome_email": "no",
+                "space_ids": [
+                  119
+                ],
+                "title": "CRM Sync"
               }
             }
           }
@@ -107,15 +108,99 @@
                       "nullable": false
                     },
                     "webhook": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "meta_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "object_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "value": {
+                          "type": "object",
+                          "properties": {
+                            "course_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "remove_course_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "remove_space_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "send_wp_welcome_email": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "space_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "webhook_url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Webhook has been saved successfully",
-                  "webhook": null
+                  "message": "Great point — I ran into the same thing last week.",
+                  "webhook": {
+                    "created_at": "2026-08-17 22:41:10",
+                    "id": 25089,
+                    "meta_key": "0000000000000000000000000000000000000000000000000000000000abcdef",
+                    "object_type": "webhook",
+                    "updated_at": "2026-08-17 22:41:10",
+                    "value": {
+                      "course_ids": [
+                        123
+                      ],
+                      "remove_course_ids": [],
+                      "remove_space_ids": [],
+                      "send_wp_welcome_email": "no",
+                      "space_ids": [
+                        119
+                      ],
+                      "title": "CRM Sync"
+                    },
+                    "webhook_url": "https://yourwebsite.com/portal/?fcom_action=incoming_webhook&webhook=6d8c76a0b547f12afd2a5c3b17c0a8bfa739ee6e7038611d985b438ab0c6d6a8"
+                  }
                 }
               }
             }

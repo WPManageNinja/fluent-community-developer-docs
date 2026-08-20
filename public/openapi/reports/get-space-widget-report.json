@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceWidgetReport",
         "summary": "GET Get Space Widget Report",
-        "description": "Get Space Widget Report for the FluentCommunity Reports API.\n\nController: `SpacesReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:85`",
+        "description": "Returns the space counters for a date range — spaces, posts, comments and members — optionally narrowed to one space.\n\nController: `SpacesReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:85`",
         "tags": [
           "Reports"
         ],
@@ -57,17 +57,105 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "total_comments": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "total_members": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "total_posts": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "total_spaces": {
+                          "type": "object",
+                          "properties": {
+                            "comparison": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "total_records": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": {
+                    "total_comments": {
+                      "comparison": "+100",
+                      "title": "New tutorial: getting started with the API",
+                      "total_records": 3
+                    },
+                    "total_members": {
+                      "comparison": "+100",
+                      "title": "New tutorial: getting started with the API",
+                      "total_records": 3
+                    },
+                    "total_posts": {
+                      "comparison": "+100",
+                      "title": "Community guidelines refresh",
+                      "total_records": 3
+                    },
+                    "total_spaces": {
+                      "comparison": "+100",
+                      "title": "New tutorial: getting started with the API",
+                      "total_records": 3
+                    }
+                  }
                 }
               }
             }

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateCourseLinks",
         "summary": "POST Update Course Links",
-        "description": "Update Course Links for the FluentCommunity Courses API.\n\nController: `CourseAdminController@updateLinks`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:37`",
+        "description": "Replaces the sidebar link list shown on a course with the submitted set.\n\nController: `CourseAdminController@updateLinks`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:37`",
         "tags": [
           "Courses"
         ],
@@ -63,7 +63,13 @@
                 }
               },
               "example": {
-                "links": []
+                "links": [
+                  {
+                    "is_new_tab": "yes",
+                    "title": "Course syllabus",
+                    "url": "https://example.com/syllabus"
+                  }
+                ]
               }
             }
           }
@@ -76,23 +82,38 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "links": {
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated for the course",
-                  "links": []
+                  "links": [
+                    {
+                      "slug": "course-syllabus",
+                      "title": "Course syllabus"
+                    }
+                  ],
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

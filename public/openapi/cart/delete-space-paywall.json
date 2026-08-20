@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteSpacePaywall",
         "summary": "DELETE Delete Space Paywall",
-        "description": "Delete Space Paywall for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@removePaywall`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:17`",
+        "description": "Detaches a FluentCart product from a space so it no longer sells access to it.\n\nController: `PaywallController@removePaywall`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:17`",
         "tags": [
           "Cart Integration"
         ],
@@ -60,7 +60,8 @@
                 }
               },
               "example": {
-                "cart_product_id": ""
+                "cart_product_id": 125,
+                "revoke_access": false
               }
             }
           }

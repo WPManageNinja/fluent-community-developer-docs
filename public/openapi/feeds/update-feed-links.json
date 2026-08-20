@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateFeedLinks",
         "summary": "POST Update Feed Links",
-        "description": "Update Feed Links for the FluentCommunity Feeds API.\n\nController: `FeedsController@updateLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:71`",
+        "description": "Replaces the feed sidebar link list with the submitted set.\n\nController: `FeedsController@updateLinks`\nRoute source: `fluent-community/app/Http/Routes/api.php:71`",
         "tags": [
           "Feeds"
         ],
@@ -53,7 +53,14 @@
                 }
               },
               "example": {
-                "links": []
+                "links": [
+                  {
+                    "is_new_tab": "yes",
+                    "title": "Community handbook",
+                    "url": "https://example.com/handbook"
+                  }
+                ],
+                "scope": "global"
               }
             }
           }
@@ -66,23 +73,38 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    },
                     "links": {
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Links have been updated.",
-                  "links": []
+                  "links": [
+                    {
+                      "slug": "community-handbook",
+                      "title": "Community handbook"
+                    }
+                  ],
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

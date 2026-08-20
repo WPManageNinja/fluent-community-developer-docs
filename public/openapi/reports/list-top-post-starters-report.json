@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopPostStartersReport",
         "summary": "GET List Top Post Starters Report",
-        "description": "List Top Post Starters Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@topPostStarter`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:80`",
+        "description": "Returns the ten members who published the most posts within the requested range, each with their post count.\n\nController: `MembersReportsController@topPostStarter`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:80`",
         "tags": [
           "Reports"
         ],
@@ -49,14 +49,197 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "avatar": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "badge": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "display_name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "is_verified": {
+                            "type": "integer"
+                          },
+                          "last_activity": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "cover_photo": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "short_description_rendered": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "social_links": {
+                                "type": "object",
+                                "properties": {
+                                  "fb": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "instagram": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "linkedin": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "twitter": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "youtube": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "website": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "permalink": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "posts_count": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "short_description": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "status": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "total_points": {
+                            "type": "integer"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "user_id": {
+                            "type": "integer"
+                          },
+                          "username": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": [
+                    {
+                      "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/grace_okafor_2.png",
+                      "badge": null,
+                      "created_at": "2024-03-28 06:39:48",
+                      "display_name": "Grace Okafor",
+                      "id": "166",
+                      "is_verified": 0,
+                      "last_activity": "2026-08-13 23:07:45",
+                      "meta": {
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "short_description_rendered": "<p>Community manager. I run the weekly office hours.</p>",
+                        "social_links": {
+                          "fb": "graceokafor2",
+                          "instagram": "graceokafor2",
+                          "linkedin": "graceokafor2",
+                          "twitter": "graceokafor2",
+                          "youtube": "graceokafor2"
+                        },
+                        "website": "https://example.com"
+                      },
+                      "permalink": "https://yourwebsite.com/portal/u/grace_okafor_2",
+                      "posts_count": "26",
+                      "short_description": "Community manager. I run the weekly office hours.",
+                      "status": "active",
+                      "total_points": 2706,
+                      "updated_at": "2026-08-17 21:33:08",
+                      "user_id": 166,
+                      "username": "grace_okafor_2"
+                    },
+                    {
+                      "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                      "badge": null,
+                      "created_at": "2024-03-05 16:37:02",
+                      "display_name": "Alex Rivera",
+                      "id": "1",
+                      "is_verified": 1,
+                      "last_activity": "2026-08-17 22:35:43",
+                      "meta": {
+                        "badge_slug": "admin",
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "social_links": {
+                          "fb": "alexrivera",
+                          "instagram": "alexrivera",
+                          "linkedin": "alexrivera",
+                          "twitter": "alexrivera",
+                          "youtube": "alexrivera"
+                        },
+                        "website": "https://example.com"
+                      },
+                      "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                      "posts_count": "22",
+                      "short_description": "Community builder. Helping members get the most out of the platform.",
+                      "status": "active",
+                      "total_points": 20385,
+                      "updated_at": "2026-08-17 22:35:43",
+                      "user_id": 1,
+                      "username": "alex_rivera"
+                    },
+                    {
+                      "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau_2.png",
+                      "badge": null,
+                      "created_at": "2024-10-30 04:45:25",
+                      "display_name": "Lucas Moreau",
+                      "id": "2516",
+                      "is_verified": 0,
+                      "last_activity": "2026-08-13 19:50:55",
+                      "meta": {
+                        "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                        "website": ""
+                      },
+                      "permalink": "https://yourwebsite.com/portal/u/lucas_moreau_2",
+                      "posts_count": "10",
+                      "short_description": "Agency owner. Interested in workflow automation.",
+                      "status": "active",
+                      "total_points": 1273,
+                      "updated_at": "2026-08-14 01:50:55",
+                      "user_id": 2813,
+                      "username": "lucas_moreau_2"
+                    }
+                  ]
                 }
               }
             }

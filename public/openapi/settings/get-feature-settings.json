@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeatureSettings",
         "summary": "GET Get Feature Settings",
-        "description": "Get Feature Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
+        "description": "Returns the feature flag configuration together with the add-on catalogue and whether each companion plugin is installed.\n\nController: `SettingController@getFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
         "tags": [
           "Settings"
         ],
@@ -45,20 +45,183 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "features": {
-                      "type": "string",
-                      "nullable": true
-                    },
                     "addOns": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "__truncated__": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "fluent-messaging": {
+                          "type": "object",
+                          "properties": {
+                            "action_text": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "is_installed": {
+                              "type": "boolean"
+                            },
+                            "is_repo": {
+                              "type": "boolean"
+                            },
+                            "learn_more_url": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "logo": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "settings_url": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "fluent-player": {
+                          "type": "object",
+                          "properties": {
+                            "action_text": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "is_installed": {
+                              "type": "boolean"
+                            },
+                            "is_repo": {
+                              "type": "boolean"
+                            },
+                            "learn_more_url": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "logo": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "features": {
+                      "type": "object",
+                      "properties": {
+                        "cloud_storage": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "content_moderation": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "course_module": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "custom_profile_fields": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "emoji_module": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "followers_module": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "giphy_api_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "giphy_module": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "has_crm_sync": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "invitation": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "leader_board_module": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "pwa_module": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_badge": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "features": null,
-                  "addOns": null
+                  "addOns": {
+                    "__truncated__": "6 further keys omitted from this sample",
+                    "fluent-messaging": {
+                      "action_text": "Active FluentCommunity Chat",
+                      "description": "Product announcements, release notes, and roadmap discussion.",
+                      "is_installed": true,
+                      "is_repo": false,
+                      "learn_more_url": "https://fluentcommunity.co",
+                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluent-messages.svg",
+                      "settings_url": "https://yourwebsite.com/portal/chat",
+                      "title": "Community guidelines refresh"
+                    },
+                    "fluent-player": {
+                      "action_text": "Active FluentPlayer",
+                      "description": "Share what you are building and get feedback from other members.",
+                      "is_installed": true,
+                      "is_repo": false,
+                      "learn_more_url": "https://wordpress.org/plugins/fluent-player/",
+                      "logo": "http://yourwebsite.com/wp-content/plugins/fluent-community/assets/images/brands/fluent-player.svg",
+                      "title": "Three things I learned this month"
+                    }
+                  },
+                  "features": {
+                    "cloud_storage": "yes",
+                    "content_moderation": "yes",
+                    "course_module": "yes",
+                    "custom_profile_fields": "no",
+                    "emoji_module": "yes",
+                    "followers_module": "yes",
+                    "giphy_api_key": "FCOM_ENCRYPTED_DATA_KEY",
+                    "giphy_module": "yes",
+                    "has_crm_sync": "yes",
+                    "invitation": "yes",
+                    "leader_board_module": "yes",
+                    "pwa_module": "no",
+                    "user_badge": "yes"
+                  }
                 }
               }
             }

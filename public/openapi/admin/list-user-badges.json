@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUserBadges",
         "summary": "GET List User Badges",
-        "description": "List User Badges for the FluentCommunity Admin API.\n\nController: `UserBadgeController@getBadges`\nRoute source: `fluent-community-pro/app/Modules/UserBadge/UserBadgeModule.php:19`",
+        "description": "Returns the badge definitions available to award to member profiles.\n\nController: `UserBadgeController@getBadges`\nRoute source: `fluent-community-pro/app/Modules/UserBadge/UserBadgeModule.php:19`",
         "tags": [
           "Admin"
         ],
@@ -45,15 +45,51 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "badges": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "config": {
+                            "type": "object",
+                            "properties": {
+                              "shape_svg": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "show_label": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "badges": [
+                    {
+                      "config": {
+                        "shape_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"40\" height=\"40\" color=\"#fdeb00\" fill=\"none\">\n    <path d=\"M10.9148 1.49784C11.2831 1.35888 11.6453 1.25 12 1.25C12.3547 1.25 12.7169 1.35888 13.0852 1.49784C13.4581 1.63848 13.9238 1.8452 14.5045 2.103C15.3581 2.48193 16.4848 2.91682 17.6932 3.26033L17.6933 3.26035C18.5751 3.51102 19.2881 3.71368 19.8282 3.9231C20.371 4.13358 20.86 …"
+                      },
+                      "show_label": "no",
+                      "slug": "admin",
+                      "title": "How we plan our release cycle"
+                    }
+                  ]
                 }
               }
             }

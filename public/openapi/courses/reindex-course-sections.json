@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "reindexCourseSections",
         "summary": "PATCH Reindex Course Sections",
-        "description": "Reindex Course Sections for the FluentCommunity Courses API.\n\nController: `CourseAdminController@resetSectionIndexes`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:45`",
+        "description": "Applies a new display order to a course outline by writing the submitted priority for each section.\n\nController: `CourseAdminController@resetSectionIndexes`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:45`",
         "tags": [
           "Courses"
         ],
@@ -63,7 +63,10 @@
                 }
               },
               "example": {
-                "indexes": []
+                "indexes": {
+                  "15070": 1,
+                  "15072": 2
+                }
               }
             }
           }
@@ -76,32 +79,168 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
                     "sections": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
+                          "comments_count": {
+                            "type": "integer"
+                          },
+                          "content_type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "expired_at": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "featured_image": {
+                            "type": "string",
+                            "nullable": true
+                          },
                           "id": {
                             "type": "integer"
+                          },
+                          "is_sticky": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "message": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "message_rendered": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "preview_data": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "parent_id": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "priority": {
+                            "type": "integer"
+                          },
+                          "privacy": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "reactions_count": {
+                            "type": "integer"
+                          },
+                          "scheduled_at": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "space_id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "status": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": false
                           }
                         },
                         "additionalProperties": false
                       }
-                    },
-                    "message": {
-                      "type": "string",
-                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
+                  "message": "This is really helpful, thanks for writing it up.",
                   "sections": [
                     {
-                      "id": 0
+                      "comments_count": 0,
+                      "content_type": "text",
+                      "created_at": "2026-08-17 22:39:56",
+                      "expired_at": null,
+                      "featured_image": null,
+                      "id": 15070,
+                      "is_sticky": "0",
+                      "message": null,
+                      "message_rendered": null,
+                      "meta": {
+                        "preview_data": null
+                      },
+                      "parent_id": null,
+                      "priority": 1,
+                      "privacy": "public",
+                      "reactions_count": 0,
+                      "scheduled_at": null,
+                      "slug": "getting-started-1787006396",
+                      "space_id": "123",
+                      "status": "published",
+                      "title": "Getting Started (updated)",
+                      "type": "course_section",
+                      "updated_at": "2026-08-17 22:41:09",
+                      "user_id": "1"
+                    },
+                    {
+                      "comments_count": 0,
+                      "content_type": "text",
+                      "created_at": "2026-08-17 22:39:56",
+                      "expired_at": null,
+                      "featured_image": null,
+                      "id": 15072,
+                      "is_sticky": "0",
+                      "message": null,
+                      "message_rendered": null,
+                      "meta": {
+                        "preview_data": null
+                      },
+                      "parent_id": null,
+                      "priority": 2,
+                      "privacy": "public",
+                      "reactions_count": 0,
+                      "scheduled_at": null,
+                      "slug": "advanced-topics-1787006396",
+                      "space_id": "123",
+                      "status": "published",
+                      "title": "Advanced Topics",
+                      "type": "course_section",
+                      "updated_at": "2026-08-17 22:41:09",
+                      "user_id": "1"
                     }
-                  ],
-                  "message": "Section indexes have been updated successfully."
+                  ]
                 }
               }
             }

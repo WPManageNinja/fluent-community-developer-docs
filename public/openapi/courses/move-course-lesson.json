@@ -27,7 +27,7 @@
       "put": {
         "operationId": "moveCourseLesson",
         "summary": "PUT Move Course Lesson",
-        "description": "Move Course Lesson for the FluentCommunity Courses API.\n\nController: `CourseAdminController@moveLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:55`",
+        "description": "Moves a lesson into a different section of the same course.\n\nController: `CourseAdminController@moveLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:55`",
         "tags": [
           "Courses"
         ],
@@ -63,8 +63,8 @@
                 }
               },
               "example": {
-                "lesson_id": "",
-                "section_id": ""
+                "lesson_id": 15075,
+                "section_id": 15072
               }
             }
           }
@@ -85,7 +85,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Lesson has been moved successfully"
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

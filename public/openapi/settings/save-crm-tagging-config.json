@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCrmTaggingConfig",
         "summary": "POST Save CRM Tagging Config",
-        "description": "Save CRM Tagging Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:32`",
+        "description": "Stores the mapping between FluentCRM tags and spaces or courses, and keeps the `has_crm_sync` feature flag in step.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:32`",
         "tags": [
           "Settings"
         ],
@@ -77,14 +77,113 @@
                 }
               },
               "example": {
+                "crm_tags": [
+                  {
+                    "id": 3,
+                    "title": "Welcome to the community"
+                  },
+                  {
+                    "id": 6,
+                    "title": "Community guidelines refresh"
+                  },
+                  {
+                    "id": 1,
+                    "title": "How we plan our release cycle"
+                  }
+                ],
+                "has_fluentcrm": true,
                 "settings": {
-                  "tagging_maps": [],
-                  "linked_maps": [],
-                  "is_enabled": "",
-                  "create_crm_contact": "",
-                  "create_user": "",
-                  "send_welcome_email": ""
-                }
+                  "create_crm_contact": "yes",
+                  "create_user": "yes",
+                  "has_course_sync": "no",
+                  "has_course_tagging": "no",
+                  "has_space_sync": "no",
+                  "has_space_tagging": "no",
+                  "is_enabled": "yes",
+                  "linked_maps": {
+                    "8": 10
+                  },
+                  "send_welcome_email": "no",
+                  "tagging_maps": {
+                    "8": 10
+                  }
+                },
+                "spaceGroups": [
+                  {
+                    "id": 118,
+                    "spaces": [
+                      {
+                        "icon": "",
+                        "id": 119,
+                        "privacy": "public",
+                        "slug": "general-discussion",
+                        "title": "General Discussion",
+                        "type": "community"
+                      },
+                      {
+                        "icon": "",
+                        "id": 120,
+                        "privacy": "public",
+                        "slug": "announcements",
+                        "title": "Announcements",
+                        "type": "community"
+                      }
+                    ],
+                    "title": "Community"
+                  },
+                  {
+                    "id": 10,
+                    "spaces": [
+                      {
+                        "icon": "<span class=\"fcom_shape\"><i class=\"el-icon\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\">\n    <path d=\"M17.9998 9.00098H6C4.89536 9.00098 3.9999 9.89652 4 11.0012L4.00083 20.0012C4.00093 21.1057 4.89633 22.001 6.00083 22.001H17.9998C19.1044 22.001 19.9998 21.1055 19.9998 20.001V11.001C19.9998 9.89641 19.1044 9.00098 17.9998 9.00098Z\" stroke=\"currentColor\" stroke …",
+                        "id": 11,
+                        "privacy": "secret",
+                        "slug": "vip_lounge",
+                        "title": "Community guidelines refresh",
+                        "type": "community"
+                      },
+                      {
+                        "icon": "<span class=\"fcom_emoji\">🚀</span>",
+                        "id": 12,
+                        "privacy": "secret",
+                        "slug": "elc_partners",
+                        "title": "New tutorial: getting started with the API",
+                        "type": "community"
+                      }
+                    ],
+                    "title": "Feature request round-up"
+                  },
+                  {
+                    "id": 5,
+                    "spaces": [
+                      {
+                        "icon": "<img alt=\"\" src=\"https://cdn.yourwebsite.com/uploads/fluent-boards-logo.webp\"/>",
+                        "id": 1,
+                        "privacy": "private",
+                        "slug": "fluent-boards",
+                        "title": "Three things I learned this month",
+                        "type": "community"
+                      },
+                      {
+                        "icon": "<img alt=\"\" src=\"https://cdn.yourwebsite.com/uploads/cropped-fluent-community-siteicon-180x180-1.webp\"/>",
+                        "id": 3,
+                        "privacy": "public",
+                        "slug": "community-meta",
+                        "title": "Weekly office hours are back",
+                        "type": "community"
+                      },
+                      {
+                        "icon": "<img alt=\"\" src=\"https://cdn.yourwebsite.com/uploads/s-logo-1.webp\"/>",
+                        "id": 8,
+                        "privacy": "public",
+                        "slug": "fluent-crm",
+                        "title": "Three things I learned this month",
+                        "type": "community"
+                      }
+                    ],
+                    "title": "Share your workflow setup"
+                  }
+                ]
               }
             }
           }
@@ -104,28 +203,39 @@
                     "settings": {
                       "type": "object",
                       "properties": {
-                        "is_enabled": {
-                          "type": "boolean"
-                        },
-                        "tagging_maps": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "linked_maps": {
-                          "type": "string",
-                          "nullable": true
-                        },
                         "create_crm_contact": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": false
                         },
                         "create_user": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": false
+                        },
+                        "is_enabled": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "linked_maps": {
+                          "type": "object",
+                          "properties": {
+                            "8": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
                         },
                         "send_welcome_email": {
                           "type": "string",
                           "nullable": false
+                        },
+                        "tagging_maps": {
+                          "type": "object",
+                          "properties": {
+                            "8": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "additionalProperties": false
@@ -134,14 +244,18 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "CRM Tagging settings have been updated successfully",
+                  "message": "Just tried it and it works exactly as described.",
                   "settings": {
-                    "is_enabled": false,
-                    "tagging_maps": null,
-                    "linked_maps": null,
-                    "create_crm_contact": null,
-                    "create_user": null,
-                    "send_welcome_email": ""
+                    "create_crm_contact": "yes",
+                    "create_user": "yes",
+                    "is_enabled": "yes",
+                    "linked_maps": {
+                      "8": 10
+                    },
+                    "send_welcome_email": "no",
+                    "tagging_maps": {
+                      "8": 10
+                    }
                   }
                 }
               }

@@ -32,9 +32,35 @@ Every run **deletes and rewrites** these paths (`cleanGeneratedOutput()`) — ne
 - `.generated/` (sidebar-ordering JSON consumed by `.vitepress/config.mts`)
 - `public/openapi/<module>/` spec directories
 
-To change generated content, edit the generator itself — prose and metadata live in constants near the top of `scripts/generate-docs.mjs` (`MODEL_SUMMARIES`, `MODEL_ORDER`/`MODEL_SLUGS`, `KEY_METHOD_SUMMARIES`, `MODULE_META`, `HOOK_PAGES`), and page templates live in the `writeFile(...)` sections near the bottom.
+To change generated content, edit the generator itself — prose and metadata live in constants near the top of `scripts/generate-docs.mjs` (`MODEL_SUMMARIES`, `MODEL_ORDER`/`MODEL_SLUGS`, `KEY_METHOD_SUMMARIES`, `MODULE_META`, `HOOK_PAGE_ORDER`, `HOOK_PATH_RULES`), and page templates live in the `writeFile(...)` sections near the bottom.
+
+The two largest prose sets live in their own modules under `data/` so the generator stays readable, and because they are the files most likely to be edited:
+
+- `data/hook-notes.mjs` — per-hook prose, keyed by full hook name
+- `data/operation-notes.mjs` — per-endpoint prose, keyed by `<module>/<operation-slug>`
+
+Both are plain data. A key that matches nothing is reported as a warning on every run, so typos surface rather than silently doing nothing. The generator prints prose coverage for both at the end of a run.
 
 Hand-written (safe to edit directly): `docs/guides/`, `docs/helpers/`, `docs/deployment/`.
+
+## REST API sample payloads
+
+Operation examples do **not** come from static analysis any more. Two checked-in
+fixture files feed the generator, and the response *schema* is derived from whichever
+example wins (`schemaFromExample()`), so a good example fixes both at once:
+
+- `data/response-examples.json` — real responses recorded from a live install and
+  anonymised. Produced by `scripts/capture/` (see its README). Never hand-edit;
+  re-run the harness instead.
+- `data/manual-examples.json` — hand-authored entries for the handful of endpoints
+  that cannot be recorded (module not installed, multipart upload, or would mutate
+  licensing/plugin state). Safe to edit; keep it in sync with the controllers.
+
+Both are keyed `modules.<module>.<operation-slug>`, matching
+`docs/restapi/operations/<module>/<slug>.md`. Lookup falls back to the slug alone when
+the harness's module differs from `classifyRoute()`'s. Each operation page is labelled
+with where its sample came from (`renderExampleProvenance()`), and the generator prints
+a per-origin count plus the list of operations still on inferred samples.
 
 Since generated output mirrors the checked-out plugin source, regenerating against a different plugin version produces large diffs — that is expected (see "Regenerate docs" commits in history).
 

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateDocument",
         "summary": "POST Update Document",
-        "description": "Update Document for the FluentCommunity Documents API.\n\nController: `DocumentController@updateDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:43`",
+        "description": "Renames a document, updating both the media record and the entry in the parent post or lesson document list.\n\nController: `DocumentController@updateDocument`\nRoute source: `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:43`",
         "tags": [
           "Documents"
         ],
@@ -37,6 +37,30 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "nullable": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "id": 13237,
+                "title": "Feature request round-up"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -45,6 +69,31 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "file": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "media_key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
@@ -53,7 +102,14 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "file": {
+                    "id": 13237,
+                    "media_key": "0000000000000000000000000000abcd",
+                    "title": "Feature request round-up",
+                    "type": "document",
+                    "url": "https://yourwebsite.com/portal/?fcom_action=download_document&media_key=6e90d97d84c320dea1353bd837e2d778&media_id=13237"
+                  },
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

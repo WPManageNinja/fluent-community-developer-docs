@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getExportableStudents",
         "summary": "GET Get Exportable Students",
-        "description": "Get Exportable Students for the FluentCommunity Admin API.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
+        "description": "Returns a flattened, spreadsheet-shaped list of a course roster — name, email, username, progress percentage, enrolment date and last activity.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
         "tags": [
           "Admin"
         ],
@@ -68,14 +68,57 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "Email": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Enrollment Date": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Last Activity": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Progress": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Username": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "students": []
+                  "students": [
+                    {
+                      "Email": "member@example.com",
+                      "Enrollment Date": "2026-08-17 22:39:56",
+                      "Last Activity": "",
+                      "Name": "Mei Tanaka",
+                      "Progress": "0%",
+                      "Username": "mei_tanaka_3"
+                    },
+                    {
+                      "Email": "member@example.com",
+                      "Enrollment Date": "2026-08-17 22:39:56",
+                      "Last Activity": "",
+                      "Name": "Mei Tanaka",
+                      "Progress": "0%",
+                      "Username": "mei_tanaka"
+                    }
+                  ]
                 }
               }
             }

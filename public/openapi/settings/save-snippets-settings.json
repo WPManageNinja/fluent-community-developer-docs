@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSnippetsSettings",
         "summary": "POST Save Snippets Settings",
-        "description": "Save Snippets Settings for the FluentCommunity Settings API.\n\nController: `ProAdminController@updateSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:34`",
+        "description": "Stores the custom CSS and, for callers allowed to post unfiltered HTML, the custom JavaScript injected into the portal.\n\nController: `ProAdminController@updateSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:34`",
         "tags": [
           "Settings"
         ],
@@ -60,7 +60,7 @@
               },
               "example": {
                 "snippets": {
-                  "custom_css": "",
+                  "custom_css": ".chat_medias img {\n    max-width: 100%;\n}",
                   "custom_js": ""
                 }
               }
@@ -83,7 +83,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Snippets settings have been saved successfully."
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

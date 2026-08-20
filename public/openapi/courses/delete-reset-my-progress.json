@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteResetMyProgress",
         "summary": "DELETE Delete Reset My Progress",
-        "description": "Delete Reset My Progress for the FluentCommunity Courses API.\n\nController: `CourseController@resetMyProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:17`",
+        "description": "Clears the current user own completion records for a course and returns an empty progress track, leaving the enrolment in place.\n\nController: `CourseController@resetMyProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:17`",
         "tags": [
           "Courses"
         ],
@@ -82,7 +82,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Your course progress has been reset.",
+                  "message": "Following. I would love to see a worked example of this.",
                   "track": {
                     "completed_lessons": [],
                     "isEnrolled": true,

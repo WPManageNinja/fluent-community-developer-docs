@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createInvitationLink",
         "summary": "POST Create Invitation Link",
-        "description": "Create Invitation Link for the FluentCommunity Invitations API.\n\nController: `InvitationController@createNewLink`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:26`",
+        "description": "Creates a shareable invitation link for a space that any recipient can redeem, and returns its access URL.\n\nController: `InvitationController@createNewLink`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:26`",
         "tags": [
           "Invitations"
         ],
@@ -63,10 +63,10 @@
                 ]
               },
               "example": {
-                "space_id": "",
-                "title": "",
+                "expire_date": "",
                 "limit": 0,
-                "expire_date": ""
+                "space_id": 119,
+                "title": "Share your workflow setup"
               }
             }
           }
@@ -79,20 +79,78 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "invitation": {
+                      "type": "object",
+                      "properties": {
+                        "access_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "message_rendered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "post_id": {
+                          "type": "integer"
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "invitation": {
-                      "type": "string",
-                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Invitation link has been created",
-                  "invitation": null
+                  "invitation": {
+                    "access_url": "https://yourwebsite.com/portal/?fcom_action=auth&invitation_token=f32e82d04c825dd17ebe785948acfa33",
+                    "created_at": "2026-08-17 22:41:09",
+                    "id": 59811,
+                    "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
+                    "meta": {
+                      "title": "Share your workflow setup"
+                    },
+                    "post_id": 119,
+                    "status": "active",
+                    "type": "invitation",
+                    "updated_at": "2026-08-17 22:41:09",
+                    "user_id": 1
+                  },
+                  "message": "Great point — I ran into the same thing last week."
                 }
               }
             }

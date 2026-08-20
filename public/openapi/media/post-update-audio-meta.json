@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdateAudioMeta",
         "summary": "POST Post Update Audio Meta",
-        "description": "Post Update Audio Meta for the FluentCommunity Media API.\n\nController: `MediaController@updateAudioMeta`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:15`",
+        "description": "Updates the display title and poster thumbnail stored on an uploaded audio media item.\n\nController: `MediaController@updateAudioMeta`\nRoute source: `fluent-community/Modules/Integrations/FluentPlayer/Http/player_api.php:15`",
         "tags": [
           "Media"
         ],
@@ -63,8 +63,8 @@
                 }
               },
               "example": {
-                "title": "",
-                "posterSrc": ""
+                "title": "Episode 4 - Community Rituals",
+                "posterSrc": "https://yourwebsite.com/wp-content/uploads/fluent-community/podcast-cover.webp"
               }
             }
           }
@@ -81,11 +81,32 @@
                       "type": "object",
                       "properties": {
                         "media_id": {
-                          "type": "integer"
+                          "type": "string",
+                          "nullable": false
                         },
                         "settings": {
                           "type": "object",
-                          "properties": {},
+                          "properties": {
+                            "src": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "viewType": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "posterSrc": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "poster_is_custom": {
+                              "type": "boolean"
+                            }
+                          },
                           "additionalProperties": false
                         }
                       },
@@ -96,8 +117,14 @@
                 },
                 "example": {
                   "media": {
-                    "media_id": 0,
-                    "settings": {}
+                    "media_id": "413",
+                    "settings": {
+                      "src": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-5a4b3c2d1e0f97867564534241302010-fluentcom-episode-4.mp3",
+                      "title": "Episode 4 - Community Rituals",
+                      "viewType": "audio",
+                      "posterSrc": "https://yourwebsite.com/wp-content/uploads/fluent-community/podcast-cover.webp",
+                      "poster_is_custom": true
+                    }
                   }
                 }
               }

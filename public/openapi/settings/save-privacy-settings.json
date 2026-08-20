@@ -27,7 +27,7 @@
       "post": {
         "operationId": "savePrivacySettings",
         "summary": "POST Save Privacy Settings",
-        "description": "Save Privacy Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updatePrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:162`",
+        "description": "Stores the privacy configuration.\n\nController: `SettingController@updatePrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:162`",
         "tags": [
           "Settings"
         ],
@@ -50,7 +50,20 @@
                 }
               },
               "example": {
-                "settings": {}
+                "settings": {
+                  "can_change_email": "no",
+                  "can_change_password": "yes",
+                  "can_customize_username": "yes",
+                  "can_deactive_account": "yes",
+                  "email_auto_login": "yes",
+                  "enable_gravatar": "yes",
+                  "enable_user_sync": "yes",
+                  "leaderboard_members_visibility": "logged_in",
+                  "members_page_status": "logged_in",
+                  "profile_page_visibility": "everybody",
+                  "show_last_activity": "no",
+                  "user_space_visibility": "logged_in"
+                }
               }
             }
           }
@@ -71,7 +84,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Privacy settings have been saved successfully."
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

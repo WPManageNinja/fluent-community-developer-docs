@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourse",
         "summary": "GET Get Course",
-        "description": "Get Course for the FluentCommunity Courses API.\n\nController: `CourseController@getCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:11`",
+        "description": "Returns one course by numeric id with its sections, the lessons the caller may see, per-lesson lock state and the current progress track.\n\nController: `CourseController@getCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:11`",
         "tags": [
           "Courses"
         ],
@@ -62,13 +62,562 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": true
-                  }
+                  "type": "object",
+                  "properties": {
+                    "course": {
+                      "type": "object",
+                      "properties": {
+                        "can_self_enroll": {
+                          "type": "boolean"
+                        },
+                        "cover_photo": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "isEnrolled": {
+                          "type": "boolean"
+                        },
+                        "is_course_admin": {
+                          "type": "boolean"
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "serial": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "can_request_join": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_details": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_layout": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_type": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "custom_lock_screen": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "disable_comments": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "emoji": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_instructor_view": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_members_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "layout_style": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "links": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "members_page_status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "og_image": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "public_lesson_view": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "restricted_post_only": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "sequential_lesson_order": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "shape_svg": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_instructor_students_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_sidebar": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "topic_required": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "welcome_banner": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "sections": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "object",
+                            "properties": {
+                              "date": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "timezone": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "timezone_type": {
+                                "type": "integer"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "is_locked": {
+                            "type": "boolean"
+                          },
+                          "lessons": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "can_view": {
+                                  "type": "boolean"
+                                },
+                                "comments_count": {
+                                  "type": "integer"
+                                },
+                                "content": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "content_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "course_id": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "created_at": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "featured_image": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "inline_css": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "is_locked": {
+                                  "type": "boolean"
+                                },
+                                "lazy_load": {
+                                  "type": "boolean"
+                                },
+                                "lock_type": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "meta": {
+                                  "type": "object",
+                                  "properties": {
+                                    "auto_complete_on_video_end": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "document_ids": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "additionalProperties": true
+                                      }
+                                    },
+                                    "document_lists": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "additionalProperties": true
+                                      }
+                                    },
+                                    "enable_comments": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "enable_media": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "enable_passing_score": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "enforce_passing_score": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "free_preview_lesson": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "hide_result": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "is_video_gated": {
+                                      "type": "boolean"
+                                    },
+                                    "media": {
+                                      "type": "object",
+                                      "properties": {
+                                        "provider": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "passing_score": {
+                                      "type": "integer"
+                                    },
+                                    "require_video_completion": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "video_auto_complete": {
+                                      "type": "boolean"
+                                    },
+                                    "video_completion_threshold": {
+                                      "type": "integer"
+                                    },
+                                    "video_length": {
+                                      "type": "integer"
+                                    },
+                                    "video_watched": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "section_id": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "slug": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "unlock_date": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "unlock_date": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "track": {
+                      "type": "object",
+                      "properties": {
+                        "completed_lessons": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "isEnrolled": {
+                          "type": "boolean"
+                        },
+                        "progress": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": []
+                "example": {
+                  "course": {
+                    "can_self_enroll": true,
+                    "cover_photo": null,
+                    "created_at": "2026-08-17 22:39:56",
+                    "created_by": "1",
+                    "description": "Everything you need to get productive in your first week.",
+                    "id": 123,
+                    "isEnrolled": false,
+                    "is_course_admin": true,
+                    "logo": null,
+                    "parent_id": null,
+                    "privacy": "public",
+                    "serial": "21",
+                    "settings": {
+                      "can_request_join": "no",
+                      "course_details": "",
+                      "course_layout": "classic",
+                      "course_type": "self_paced",
+                      "custom_lock_screen": "no",
+                      "disable_comments": "no",
+                      "emoji": "",
+                      "hide_instructor_view": "no",
+                      "hide_members_count": "no",
+                      "layout_style": "timeline",
+                      "links": [],
+                      "members_page_status": "members_only",
+                      "og_image": "",
+                      "public_lesson_view": "no",
+                      "restricted_post_only": "no",
+                      "sequential_lesson_order": "no",
+                      "shape_svg": "",
+                      "show_instructor_students_count": "no",
+                      "show_sidebar": "yes",
+                      "topic_required": "no"
+                    },
+                    "slug": "getting-started-with-the-platform",
+                    "status": "published",
+                    "title": "Getting Started with the Platform",
+                    "type": "course",
+                    "updated_at": "2026-08-17 22:39:56",
+                    "welcome_banner": null
+                  },
+                  "sections": [
+                    {
+                      "created_at": {
+                        "date": "2026-08-17 22:39:56.000000",
+                        "timezone": "+00:00",
+                        "timezone_type": 1
+                      },
+                      "id": 15070,
+                      "is_locked": false,
+                      "lessons": [
+                        {
+                          "can_view": true,
+                          "comments_count": 0,
+                          "content": "",
+                          "content_type": "text",
+                          "course_id": "123",
+                          "created_at": "2026-08-17 22:39:56",
+                          "featured_image": null,
+                          "id": 15073,
+                          "inline_css": "",
+                          "is_locked": false,
+                          "lazy_load": true,
+                          "lock_type": "",
+                          "meta": {
+                            "auto_complete_on_video_end": "no",
+                            "document_ids": [],
+                            "document_lists": [],
+                            "enable_comments": "no",
+                            "enable_media": "no",
+                            "enable_passing_score": "no",
+                            "enforce_passing_score": "no",
+                            "free_preview_lesson": "no",
+                            "hide_result": "no",
+                            "is_video_gated": false,
+                            "media": {
+                              "provider": ""
+                            },
+                            "passing_score": 0,
+                            "require_video_completion": "no",
+                            "video_auto_complete": false,
+                            "video_completion_threshold": 80,
+                            "video_length": 0,
+                            "video_watched": false
+                          },
+                          "section_id": "15070",
+                          "slug": "welcome-to-the-course-1787006396",
+                          "title": "Welcome to the course",
+                          "unlock_date": ""
+                        },
+                        {
+                          "can_view": true,
+                          "comments_count": 0,
+                          "content": "",
+                          "content_type": "text",
+                          "course_id": "123",
+                          "created_at": "2026-08-17 22:39:56",
+                          "featured_image": null,
+                          "id": 15074,
+                          "inline_css": "",
+                          "is_locked": false,
+                          "lazy_load": true,
+                          "lock_type": "",
+                          "meta": {
+                            "document_lists": [],
+                            "enable_comments": "yes",
+                            "enable_media": "yes",
+                            "is_video_gated": false,
+                            "media": {
+                              "content_type": "video",
+                              "html": "",
+                              "type": "oembed",
+                              "url": ""
+                            },
+                            "require_video_completion": "no",
+                            "video_auto_complete": false,
+                            "video_completion_threshold": 80,
+                            "video_watched": false
+                          },
+                          "section_id": "15070",
+                          "slug": "scratch-lesson-1787006396",
+                          "title": "Course Recap",
+                          "unlock_date": ""
+                        },
+                        {
+                          "can_view": true,
+                          "comments_count": 0,
+                          "content": "",
+                          "content_type": "text",
+                          "course_id": "123",
+                          "created_at": "2026-08-17 22:39:56",
+                          "featured_image": null,
+                          "id": 15075,
+                          "inline_css": "",
+                          "is_locked": false,
+                          "lazy_load": true,
+                          "lock_type": "",
+                          "meta": {
+                            "document_lists": [],
+                            "enable_comments": "yes",
+                            "enable_media": "yes",
+                            "is_video_gated": false,
+                            "media": {
+                              "content_type": "video",
+                              "html": "",
+                              "type": "oembed",
+                              "url": ""
+                            },
+                            "require_video_completion": "no",
+                            "video_auto_complete": false,
+                            "video_completion_threshold": 80,
+                            "video_watched": false
+                          },
+                          "section_id": "15070",
+                          "slug": "movable-lesson-1787006396",
+                          "title": "Next Steps",
+                          "unlock_date": ""
+                        }
+                      ],
+                      "slug": "getting-started-1787006396",
+                      "title": "Getting Started",
+                      "type": "section",
+                      "unlock_date": ""
+                    }
+                  ],
+                  "track": {
+                    "completed_lessons": [],
+                    "isEnrolled": false,
+                    "progress": 0
+                  }
+                }
               }
             }
           },

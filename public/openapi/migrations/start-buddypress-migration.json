@@ -27,7 +27,7 @@
       "post": {
         "operationId": "startBuddypressMigration",
         "summary": "POST Start Buddypress Migration",
-        "description": "Start Buddypress Migration for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@startMigration`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:15`",
+        "description": "Begins a BuddyPress or BuddyBoss migration by importing the groups as spaces and returns the progress record plus the maximum source ids the polling loop needs.\n\nController: `BPMigrationController@startMigration`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:15`",
         "tags": [
           "Migrations"
         ],
@@ -56,9 +56,12 @@
                 }
               },
               "example": {
-                "reset_migration": "",
-                "delete_current_data": "",
-                "config": {}
+                "reset_migration": "no",
+                "delete_current_data": "no",
+                "config": {
+                  "1": 3,
+                  "2": 3
+                }
               }
             }
           }
@@ -72,18 +75,76 @@
                   "type": "object",
                   "properties": {
                     "current_status": {
-                      "type": "string",
-                      "nullable": false
+                      "type": "object",
+                      "properties": {
+                        "migrated_groups": {
+                          "type": "object",
+                          "properties": {
+                            "1": {
+                              "type": "integer"
+                            },
+                            "2": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "last_activity_id": {
+                          "type": "integer"
+                        },
+                        "last_migrated_member_id": {
+                          "type": "integer"
+                        },
+                        "migrated_posts_count": {
+                          "type": "integer"
+                        },
+                        "last_migrated_user_id": {
+                          "type": "integer"
+                        },
+                        "current_stage": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "max_ids": {
-                      "type": "integer"
+                      "type": "object",
+                      "properties": {
+                        "group_member_max": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "max_user_id": {
+                          "type": "integer"
+                        },
+                        "max_activity_id": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "current_status": "",
-                  "max_ids": 0
+                  "current_status": {
+                    "migrated_groups": {
+                      "1": 14,
+                      "2": 15
+                    },
+                    "last_activity_id": 0,
+                    "last_migrated_member_id": 0,
+                    "migrated_posts_count": 0,
+                    "last_migrated_user_id": 0,
+                    "current_stage": "group_members"
+                  },
+                  "max_ids": {
+                    "group_member_max": "60",
+                    "max_user_id": 57,
+                    "max_activity_id": "496"
+                  }
                 }
               }
             }

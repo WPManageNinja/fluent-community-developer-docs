@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteResetStudentProgress",
         "summary": "DELETE Delete Reset Student Progress",
-        "description": "Delete Reset Student Progress for the FluentCommunity Courses API.\n\nController: `CourseAdminController@resetStudentProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:32`",
+        "description": "Clears one student completion records for the course while leaving them enrolled.\n\nController: `CourseAdminController@resetStudentProgress`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:32`",
         "tags": [
           "Courses"
         ],
@@ -72,7 +72,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Student's progress has been reset."
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

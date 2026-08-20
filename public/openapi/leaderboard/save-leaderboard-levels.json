@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveLeaderboardLevels",
         "summary": "POST Save Leaderboard Levels",
-        "description": "Save Leaderboard Levels for the FluentCommunity Leaderboard API.\n\nController: `LeaderBoardController@saveLevels`\nRoute source: `fluent-community-pro/app/Modules/LeaderBoard/Http/leaderboard_api.php:13`",
+        "description": "Stores the leaderboard levels and the excluded-member list, recomputing every point boundary so the levels tile without gaps.\n\nController: `LeaderBoardController@saveLevels`\nRoute source: `fluent-community-pro/app/Modules/LeaderBoard/Http/leaderboard_api.php:13`",
         "tags": [
           "Leaderboard"
         ],
@@ -37,6 +37,104 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "levels": {
+                    "type": "object",
+                    "properties": {
+                      "__truncated__": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "level_1": {
+                        "type": "object",
+                        "properties": {
+                          "level": {
+                            "type": "integer"
+                          },
+                          "max_points": {
+                            "type": "integer"
+                          },
+                          "min_points": {
+                            "type": "integer"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "tagline": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "level_2": {
+                        "type": "object",
+                        "properties": {
+                          "level": {
+                            "type": "integer"
+                          },
+                          "max_points": {
+                            "type": "integer"
+                          },
+                          "min_points": {
+                            "type": "integer"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "tagline": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "levels": {
+                  "__truncated__": "7 further keys omitted from this sample",
+                  "level_1": {
+                    "level": 1,
+                    "max_points": 4,
+                    "min_points": 0,
+                    "slug": "level_1",
+                    "tagline": "Taking the first steps into our vibrant world",
+                    "title": "Three things I learned this month"
+                  },
+                  "level_2": {
+                    "level": 2,
+                    "max_points": 19,
+                    "min_points": 5,
+                    "slug": "level_2",
+                    "tagline": "Uncovering the secrets of community mastery",
+                    "title": "Three things I learned this month"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -45,6 +143,70 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "levels": {
+                      "type": "object",
+                      "properties": {
+                        "__truncated__": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "level_1": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_2": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
@@ -53,7 +215,26 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "levels": {
+                    "__truncated__": "7 further keys omitted from this sample",
+                    "level_1": {
+                      "level": 1,
+                      "max_points": 4,
+                      "min_points": 0,
+                      "slug": "level_1",
+                      "tagline": "Taking the first steps into our vibrant world",
+                      "title": "Three things I learned this month"
+                    },
+                    "level_2": {
+                      "level": 2,
+                      "max_points": 19,
+                      "min_points": 5,
+                      "slug": "level_2",
+                      "tagline": "Uncovering the secrets of community mastery",
+                      "title": "Three things I learned this month"
+                    }
+                  },
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

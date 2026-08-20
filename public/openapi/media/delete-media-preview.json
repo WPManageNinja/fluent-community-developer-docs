@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteMediaPreview",
         "summary": "DELETE Delete Media Preview",
-        "description": "Delete Media Preview for the FluentCommunity Media API.\n\nController: `FeedsController@deleteMediaPreview`\nRoute source: `fluent-community/app/Http/Routes/api.php:62`",
+        "description": "Clears the link preview image stored on a post, leaving the rest of the post untouched.\n\nController: `FeedsController@deleteMediaPreview`\nRoute source: `fluent-community/app/Http/Routes/api.php:62`",
         "tags": [
           "Media"
         ],
@@ -63,7 +63,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Media preview image has been removed successfully."
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

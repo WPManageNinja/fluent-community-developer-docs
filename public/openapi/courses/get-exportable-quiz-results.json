@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getExportableQuizResults",
         "summary": "GET Get Exportable Quiz Results",
-        "description": "Get Exportable Quiz Results for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getExportableQuizResults`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`",
+        "description": "Returns a flattened, spreadsheet-shaped list of quiz attempts for a course — student, email, quiz, score, grade, attempt count and submission time.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getExportableQuizResults`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`",
         "tags": [
           "Courses"
         ],
@@ -45,15 +45,62 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "Email": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Grade": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Quiz": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Score": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Student Name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Submitted At": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "Total Attempts": {
+                            "type": "integer"
+                          },
+                          "Username": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "results": [
+                    {
+                      "Email": "member@example.com",
+                      "Grade": "passed",
+                      "Quiz": "Module 1 Quiz",
+                      "Score": "100%",
+                      "Student Name": "Noah Fischer",
+                      "Submitted At": "2026-08-17 22:41:09",
+                      "Total Attempts": 1,
+                      "Username": "noah_fischer_3"
+                    }
+                  ]
                 }
               }
             }

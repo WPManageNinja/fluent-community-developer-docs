@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getGeneralSettings",
         "summary": "GET Get General Settings",
-        "description": "Get General Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
+        "description": "Returns the portal-wide settings record together with the list of WordPress roles that can be granted portal access and whether open registration is enabled on the site.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
         "tags": [
           "Admin"
         ],
@@ -48,6 +48,75 @@
                     "settings": {
                       "type": "object",
                       "properties": {
+                        "access": {
+                          "type": "object",
+                          "properties": {
+                            "acess_level": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "auth_content": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_form_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_redirect": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "auth_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "custom_signup_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "cutsom_auth_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "disable_global_posts": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "explicit_registration": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_slug_defined": {
+                          "type": "boolean"
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo_permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "logo_permalink_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "notice_html": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "restricted_role_content": {
+                          "type": "string",
+                          "nullable": false
+                        },
                         "site_title": {
                           "type": "string",
                           "nullable": false
@@ -56,90 +125,25 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "logo": {
+                        "use_custom_signup_page": {
                           "type": "string",
                           "nullable": false
                         },
                         "white_logo": {
                           "type": "string",
                           "nullable": false
-                        },
-                        "logo_permalink_type": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "logo_permalink": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "featured_image": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "access": {
-                          "type": "object",
-                          "properties": {
-                            "acess_level": {
-                              "type": "string",
-                              "nullable": false
-                            },
-                            "access_roles": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                              }
-                            }
-                          },
-                          "additionalProperties": false
-                        },
-                        "auth_form_type": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "explicit_registration": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "disable_global_posts": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "auth_content": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "auth_redirect": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "restricted_role_content": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "auth_url": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "cutsom_auth_url": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "use_custom_signup_page": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "custom_signup_url": {
-                          "type": "string",
-                          "nullable": false
                         }
                       },
                       "additionalProperties": false
                     },
+                    "user_registration_enable_url": {
+                      "type": "string",
+                      "nullable": false
+                    },
                     "user_roles": {
                       "type": "object",
                       "properties": {
-                        "subscriber": {
+                        "author": {
                           "type": "string",
                           "nullable": false
                         },
@@ -147,11 +151,11 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "author": {
+                        "editor": {
                           "type": "string",
                           "nullable": false
                         },
-                        "editor": {
+                        "subscriber": {
                           "type": "string",
                           "nullable": false
                         }
@@ -160,46 +164,43 @@
                     },
                     "users_can_register": {
                       "type": "boolean"
-                    },
-                    "user_registration_enable_url": {
-                      "type": "string",
-                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
                   "settings": {
-                    "site_title": "",
-                    "slug": "portal",
-                    "logo": "",
-                    "white_logo": "",
-                    "logo_permalink_type": "default",
-                    "logo_permalink": "",
-                    "featured_image": "",
                     "access": {
-                      "acess_level": "public",
-                      "access_roles": []
+                      "acess_level": "public"
                     },
-                    "auth_form_type": "default",
-                    "explicit_registration": "no",
-                    "disable_global_posts": "yes",
                     "auth_content": "Please login first to access this page",
+                    "auth_form_type": "default",
                     "auth_redirect": "",
-                    "restricted_role_content": "Sorry, you cannot access this page. Only authorized users can access this page.",
-                    "auth_url": "",
-                    "cutsom_auth_url": "",
+                    "auth_url": "https://yourwebsite.com/",
+                    "custom_signup_url": "",
+                    "cutsom_auth_url": "https://yourwebsite.com/portal/?fcom_action=auth",
+                    "disable_global_posts": "yes",
+                    "explicit_registration": "no",
+                    "featured_image": "https://cdn.yourwebsite.com/uploads/Fluent-Community-Featured-image.png",
+                    "is_slug_defined": true,
+                    "logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp",
+                    "logo_permalink": "",
+                    "logo_permalink_type": "default",
+                    "notice_html": "",
+                    "restricted_role_content": "Sorry, you can not access to this page. Only authorized users can access this page.",
+                    "site_title": "Your Community",
+                    "slug": "portal",
                     "use_custom_signup_page": "no",
-                    "custom_signup_url": ""
+                    "white_logo": "https://cdn.yourwebsite.com/uploads/cropped-your-company_logo_icon-1-1.webp"
                   },
+                  "user_registration_enable_url": "https://yourwebsite.com/wp-admin/options-general.php",
                   "user_roles": {
-                    "subscriber": "Subscriber",
-                    "contributor": "Contributor",
                     "author": "Author",
-                    "editor": "Editor"
+                    "contributor": "Contributor",
+                    "editor": "Editor",
+                    "subscriber": "Subscriber"
                   },
-                  "users_can_register": false,
-                  "user_registration_enable_url": ""
+                  "users_can_register": false
                 }
               }
             }

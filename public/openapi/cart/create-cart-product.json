@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createCartProduct",
         "summary": "POST Create Cart Product",
-        "description": "Create Cart Product for the FluentCommunity Cart Integration API.\n\nController: `PaywallController@createProduct`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:14`",
+        "description": "Creates a simple one-time digital FluentCart product with a single variant, so a paywall can be set up without leaving the community admin.\n\nController: `PaywallController@createProduct`\nRoute source: `fluent-community/Modules/Integrations/FluentCart/Http/cart_api.php:14`",
         "tags": [
           "Cart Integration"
         ],
@@ -53,8 +53,8 @@
                 }
               },
               "example": {
-                "title": "",
-                "price": ""
+                "title": "Pro Membership",
+                "price": 49
               }
             }
           }
@@ -71,7 +71,8 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "type": "integer"
+                          "type": "string",
+                          "nullable": false
                         },
                         "title": {
                           "type": "string",
@@ -83,7 +84,7 @@
                         },
                         "price": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": false
                         }
                       },
                       "additionalProperties": false
@@ -93,10 +94,10 @@
                 },
                 "example": {
                   "product": {
-                    "id": 0,
-                    "title": "",
-                    "image": "",
-                    "price": null
+                    "id": "125",
+                    "title": "Pro Membership",
+                    "image": "https://yourwebsite.com/wp-content/plugins/fluent-cart/assets/images/placeholder.svg",
+                    "price": "$49.00"
                   }
                 }
               }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpaceMembers",
         "summary": "GET List Space Members",
-        "description": "List Space Members for the FluentCommunity Members API.\n\nController: `SpaceController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
+        "description": "Returns the paginated active membership of a space, each entry carrying the member profile and their role, plus the count of outstanding join requests.\n\nController: `SpaceController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
         "tags": [
           "Members"
         ],
@@ -63,6 +63,25 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort By read via `$request->getSafe()` in getMembers().",
+            "schema": {
+              "type": "string",
+              "default": "created_at"
+            }
+          },
+          {
+            "name": "sort_dir",
+            "in": "query",
+            "required": false,
+            "description": "Sort Dir read via `$request->getSafe()` in getMembers().",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -76,74 +95,78 @@
                     "members": {
                       "type": "object",
                       "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
                         "data": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
                               "id": {
                                 "type": "integer"
                               },
-                              "space_id": {
-                                "type": "integer"
-                              },
-                              "user_id": {
-                                "type": "integer"
-                              },
-                              "status": {
-                                "type": "string",
-                                "nullable": false
+                              "meta": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
                               },
                               "role": {
                                 "type": "string",
                                 "nullable": false
                               },
-                              "meta": {
-                                "type": "object",
-                                "additionalProperties": {
-                                  "type": "string"
-                                }
+                              "space_id": {
+                                "type": "string",
+                                "nullable": false
                               },
-                              "created_at": {
+                              "status": {
                                 "type": "string",
                                 "nullable": false
                               },
                               "updated_at": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "user_id": {
                                 "type": "string",
                                 "nullable": false
                               },
                               "xprofile": {
                                 "type": "object",
                                 "properties": {
-                                  "user_id": {
-                                    "type": "integer"
+                                  "avatar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "badge": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
                                   },
                                   "display_name": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "username": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "avatar": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "status": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "total_points": {
+                                  "is_verified": {
                                     "type": "integer"
                                   },
-                                  "is_verified": {
-                                    "type": "boolean"
+                                  "last_activity": {
+                                    "type": "string",
+                                    "nullable": false
                                   },
                                   "meta": {
                                     "type": "object",
                                     "properties": {
-                                      "website": {
+                                      "badge_slug": {
                                         "type": "string",
                                         "nullable": false
                                       },
@@ -151,17 +174,18 @@
                                         "type": "string",
                                         "nullable": false
                                       },
-                                      "badge_slug": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
                                       "social_links": {
                                         "type": "object",
                                         "properties": {
+                                          "fb": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
                                           "instagram": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "linkedin": {
                                             "type": "string",
                                             "nullable": false
                                           },
@@ -172,62 +196,18 @@
                                           "youtube": {
                                             "type": "string",
                                             "nullable": false
-                                          },
-                                          "linkedin": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "fb": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "blue_sky": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "tiktok": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "pinterest": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "telegram": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "snapchat": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "reddit": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "twitch": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "vk": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "github": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "mastodon": {
-                                            "type": "string",
-                                            "nullable": false
                                           }
                                         },
                                         "additionalProperties": false
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "nullable": false
                                       }
                                     },
                                     "additionalProperties": false
                                   },
-                                  "created_at": {
+                                  "permalink": {
                                     "type": "string",
                                     "nullable": false
                                   },
@@ -235,15 +215,17 @@
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "last_activity": {
+                                  "status": {
                                     "type": "string",
                                     "nullable": false
                                   },
-                                  "badge": {
-                                    "type": "string",
-                                    "nullable": false
+                                  "total_points": {
+                                    "type": "integer"
                                   },
-                                  "permalink": {
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "username": {
                                     "type": "string",
                                     "nullable": false
                                   }
@@ -254,26 +236,60 @@
                             "additionalProperties": false
                           }
                         },
-                        "current_page": {
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "from": {
                           "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
                         },
                         "per_page": {
                           "type": "integer"
                         },
-                        "from": {
-                          "type": "integer"
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
                         },
                         "to": {
                           "type": "integer"
                         },
                         "total": {
                           "type": "integer"
-                        },
-                        "last_page": {
-                          "type": "integer"
-                        },
-                        "has_more": {
-                          "type": "boolean"
                         }
                       },
                       "additionalProperties": false
@@ -286,63 +302,132 @@
                 },
                 "example": {
                   "members": {
+                    "current_page": 1,
                     "data": [
                       {
-                        "id": 0,
-                        "space_id": 0,
-                        "user_id": 0,
-                        "status": "",
-                        "role": "",
-                        "meta": {},
-                        "created_at": "2026-01-01 00:00:00",
-                        "updated_at": "2026-01-01 00:00:00",
+                        "created_at": "2026-08-17 22:39:56",
+                        "id": 36498,
+                        "meta": [],
+                        "role": "admin",
+                        "space_id": "119",
+                        "status": "active",
+                        "updated_at": null,
+                        "user_id": "1",
                         "xprofile": {
-                          "user_id": 0,
-                          "display_name": "",
-                          "username": "",
-                          "avatar": "",
-                          "status": "",
-                          "total_points": 0,
-                          "is_verified": false,
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "is_verified": 1,
+                          "last_activity": "2026-08-17 22:35:43",
                           "meta": {
-                            "website": "",
-                            "cover_photo": "",
-                            "badge_slug": [
-                              ""
-                            ],
+                            "badge_slug": "admin",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
                             "social_links": {
-                              "instagram": "",
-                              "twitter": "",
-                              "youtube": "",
-                              "linkedin": "",
-                              "fb": "",
-                              "blue_sky": "",
-                              "tiktok": "",
-                              "pinterest": "",
-                              "telegram": "",
-                              "snapchat": "",
-                              "reddit": "",
-                              "twitch": "",
-                              "vk": "",
-                              "github": "",
-                              "mastodon": ""
-                            }
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
                           },
-                          "created_at": "2026-01-01 00:00:00",
-                          "short_description": "",
-                          "last_activity": "2026-01-01 00:00:00",
-                          "badge": "",
-                          "permalink": ""
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "status": "active",
+                          "total_points": 20385,
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        }
+                      },
+                      {
+                        "created_at": "2026-08-17 22:39:56",
+                        "id": 36501,
+                        "meta": [],
+                        "role": "member",
+                        "space_id": "119",
+                        "status": "active",
+                        "updated_at": null,
+                        "user_id": "13096",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                          "badge": null,
+                          "created_at": "2026-08-17 21:31:52",
+                          "display_name": "Mei Tanaka",
+                          "is_verified": 0,
+                          "last_activity": null,
+                          "meta": {
+                            "badge_slug": [],
+                            "cover_photo": "",
+                            "headline": "Product Designer",
+                            "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                          "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                          "status": "active",
+                          "total_points": 0,
+                          "user_id": 13096,
+                          "username": "mei_tanaka_3"
+                        }
+                      },
+                      {
+                        "created_at": "2026-08-17 22:39:56",
+                        "id": 36502,
+                        "meta": [],
+                        "role": "moderator",
+                        "space_id": "119",
+                        "status": "active",
+                        "updated_at": null,
+                        "user_id": "13097",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka.png",
+                          "badge": null,
+                          "created_at": "2026-08-17 21:31:53",
+                          "display_name": "Mei Tanaka",
+                          "is_verified": 0,
+                          "last_activity": null,
+                          "meta": {
+                            "cover_photo": "",
+                            "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                            "website": ""
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/mei_tanaka",
+                          "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                          "status": "active",
+                          "total_points": 0,
+                          "user_id": 13097,
+                          "username": "mei_tanaka"
                         }
                       }
                     ],
-                    "current_page": 1,
-                    "per_page": 10,
+                    "first_page_url": "https://yourwebsite.com/?page=1",
                     "from": 1,
-                    "to": 1,
-                    "total": 1,
                     "last_page": 1,
-                    "has_more": false
+                    "last_page_url": "https://yourwebsite.com/?page=1",
+                    "links": [
+                      {
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "pagination.next",
+                        "url": null
+                      }
+                    ],
+                    "next_page_url": null,
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": 4,
+                    "total": 4
                   },
                   "pending_count": 0
                 }

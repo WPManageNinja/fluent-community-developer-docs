@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveColorConfig",
         "summary": "POST Save Color Config",
-        "description": "Save Color Config for the FluentCommunity Settings API.\n\nController: `ProAdminController@saveColorConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:31`",
+        "description": "Selects the light and dark colour schemas, and compiles the resulting CSS once so the portal can serve it without regenerating per request.\n\nController: `ProAdminController@saveColorConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:31`",
         "tags": [
           "Settings"
         ],
@@ -65,10 +65,10 @@
                 }
               },
               "example": {
-                "dark_schema": "",
-                "light_schema": "",
                 "dark_config": [],
-                "light_config": []
+                "dark_schema": "default",
+                "light_config": [],
+                "light_schema": "default"
               }
             }
           }
@@ -89,7 +89,7 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Color configuration has been updated successfully"
+                  "message": "This is really helpful, thanks for writing it up."
                 }
               }
             }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getNotificationPreferences",
         "summary": "GET Get Notification Preferences",
-        "description": "Get Notification Preferences for the FluentCommunity Profile API.\n\nController: `ProfileController@getNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:95`",
+        "description": "Returns the email notification preferences for a member — the global toggles, the per-space post preferences grouped by space group, and the digest send day.\n\nController: `ProfileController@getNotificationPreferance`\nRoute source: `fluent-community/app/Http/Routes/api.php:95`",
         "tags": [
           "Profile"
         ],
@@ -55,41 +55,198 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "user_globals": {
+                    "default_messaging_email_frequency": {
                       "type": "string",
-                      "nullable": true
+                      "nullable": false
+                    },
+                    "digestEmailDay": {
+                      "type": "string",
+                      "nullable": false
                     },
                     "spaceGroups": {
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "spaces": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "icon": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "pref": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "space_prefs": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "1": {
+                          "type": "object",
+                          "properties": {
+                            "np_by_admin_mail": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "np_by_member_mail": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "3": {
+                          "type": "object",
+                          "properties": {
+                            "np_by_admin_mail": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "np_by_member_mail": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "__truncated__": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
-                    "digestEmailDay": {
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "default_messaging_email_frequency": {
-                      "type": "string",
-                      "nullable": false
+                    "user_globals": {
+                      "type": "object",
+                      "properties": {
+                        "com_my_post_mail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "digest_mail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "mention_mail": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message_email_frequency": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reply_my_com_mail": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "user_globals": null,
-                  "spaceGroups": [],
-                  "space_prefs": [],
-                  "digestEmailDay": null,
-                  "default_messaging_email_frequency": ""
+                  "default_messaging_email_frequency": "hourly",
+                  "digestEmailDay": "Tuesday",
+                  "spaceGroups": [
+                    {
+                      "id": 10,
+                      "spaces": [
+                        {
+                          "icon": "<span class=\"fcom_shape\"><i class=\"el-icon\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" color=\"currentColor\" fill=\"none\">\n    <path d=\"M17.9998 9.00098H6C4.89536 9.00098 3.9999 9.89652 4 11.0012L4.00083 20.0012C4.00093 21.1057 4.89633 22.001 6.00083 22.001H17.9998C19.1044 22.001 19.9998 21.1055 19.9998 20.001V11.001C19.9998 9.89641 19.1044 9.00098 17.9998 9.00098Z\" stroke=\"currentColor\" stroke …",
+                          "id": 11,
+                          "pref": "all_member_posts",
+                          "title": "Community guidelines refresh"
+                        },
+                        {
+                          "icon": "<span class=\"fcom_emoji\">🚀</span>",
+                          "id": 12,
+                          "pref": "all_member_posts",
+                          "title": "New tutorial: getting started with the API"
+                        }
+                      ],
+                      "title": "Feature request round-up"
+                    },
+                    {
+                      "id": 5,
+                      "spaces": [
+                        {
+                          "icon": "<img alt=\"\" src=\"https://cdn.yourwebsite.com/uploads/fluent-boards-logo.webp\"/>",
+                          "id": 1,
+                          "pref": "all_member_posts",
+                          "title": "Three things I learned this month"
+                        },
+                        {
+                          "icon": "<img alt=\"\" src=\"https://cdn.yourwebsite.com/uploads/cropped-fluent-community-siteicon-180x180-1.webp\"/>",
+                          "id": 3,
+                          "pref": "all_member_posts",
+                          "title": "Weekly office hours are back"
+                        },
+                        {
+                          "icon": "<img alt=\"\" src=\"https://cdn.yourwebsite.com/uploads/s-logo-1.webp\"/>",
+                          "id": 8,
+                          "pref": "all_member_posts",
+                          "title": "Three things I learned this month"
+                        }
+                      ],
+                      "title": "Share your workflow setup"
+                    },
+                    {
+                      "id": 6,
+                      "spaces": [
+                        {
+                          "icon": "<span class=\"fcom_emoji\">👋</span>",
+                          "id": 7,
+                          "pref": "all_member_posts",
+                          "title": "Welcome to the community"
+                        }
+                      ],
+                      "title": "Feature request round-up"
+                    }
+                  ],
+                  "space_prefs": {
+                    "1": {
+                      "np_by_admin_mail": "1",
+                      "np_by_member_mail": "1"
+                    },
+                    "3": {
+                      "np_by_admin_mail": "1",
+                      "np_by_member_mail": "1"
+                    },
+                    "__truncated__": "11 further keys omitted from this sample"
+                  },
+                  "user_globals": {
+                    "com_my_post_mail": "yes",
+                    "digest_mail": "yes",
+                    "mention_mail": "yes",
+                    "message_email_frequency": "default",
+                    "reply_my_com_mail": "yes"
+                  }
                 }
               }
             }

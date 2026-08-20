@@ -1,0 +1,142 @@
+{
+  "action/feeds": {
+    "hooks": 23,
+    "callSites": 39,
+    "documented": 23
+  },
+  "action/comments": {
+    "hooks": 19,
+    "callSites": 27,
+    "documented": 19
+  },
+  "action/reactions": {
+    "hooks": 1,
+    "callSites": 1,
+    "documented": 1
+  },
+  "action/spaces": {
+    "hooks": 10,
+    "callSites": 22,
+    "documented": 10
+  },
+  "action/members": {
+    "hooks": 17,
+    "callSites": 24,
+    "documented": 17
+  },
+  "action/courses": {
+    "hooks": 34,
+    "callSites": 44,
+    "documented": 34
+  },
+  "action/notifications": {
+    "hooks": 4,
+    "callSites": 6,
+    "documented": 4
+  },
+  "action/media": {
+    "hooks": 7,
+    "callSites": 16,
+    "documented": 7
+  },
+  "action/auth": {
+    "hooks": 5,
+    "callSites": 5,
+    "documented": 5
+  },
+  "action/moderation": {
+    "hooks": 8,
+    "callSites": 12,
+    "documented": 8
+  },
+  "action/integrations": {
+    "hooks": 6,
+    "callSites": 7,
+    "documented": 6
+  },
+  "action/rendering": {
+    "hooks": 44,
+    "callSites": 71,
+    "documented": 44
+  },
+  "action/settings": {
+    "hooks": 3,
+    "callSites": 7,
+    "documented": 3
+  },
+  "filter/feeds": {
+    "hooks": 36,
+    "callSites": 44,
+    "documented": 36
+  },
+  "filter/comments": {
+    "hooks": 13,
+    "callSites": 13,
+    "documented": 13
+  },
+  "filter/reactions": {
+    "hooks": 4,
+    "callSites": 5,
+    "documented": 4
+  },
+  "filter/spaces": {
+    "hooks": 18,
+    "callSites": 21,
+    "documented": 18
+  },
+  "filter/members": {
+    "hooks": 37,
+    "callSites": 44,
+    "documented": 37
+  },
+  "filter/courses": {
+    "hooks": 43,
+    "callSites": 43,
+    "documented": 43
+  },
+  "filter/notifications": {
+    "hooks": 12,
+    "callSites": 14,
+    "documented": 12
+  },
+  "filter/media": {
+    "hooks": 21,
+    "callSites": 32,
+    "documented": 21
+  },
+  "filter/auth": {
+    "hooks": 23,
+    "callSites": 24,
+    "documented": 23
+  },
+  "filter/permissions": {
+    "hooks": 8,
+    "callSites": 22,
+    "documented": 8
+  },
+  "filter/moderation": {
+    "hooks": 1,
+    "callSites": 1,
+    "documented": 1
+  },
+  "filter/integrations": {
+    "hooks": 9,
+    "callSites": 9,
+    "documented": 9
+  },
+  "filter/rendering": {
+    "hooks": 35,
+    "callSites": 37,
+    "documented": 35
+  },
+  "filter/settings": {
+    "hooks": 22,
+    "callSites": 22,
+    "documented": 22
+  },
+  "filter/miscellaneous": {
+    "hooks": 3,
+    "callSites": 4,
+    "documented": 3
+  }
+}

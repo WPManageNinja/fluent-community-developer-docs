@@ -27,7 +27,7 @@
       "put": {
         "operationId": "reschedulePost",
         "summary": "PUT Reschedule Post",
-        "description": "Reschedule Post for the FluentCommunity Feeds API.\n\nController: `SchedulePostsController@reschedulePost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:110`",
+        "description": "Moves a scheduled post to a new publish time and re-queues the background action that will publish it.\n\nController: `SchedulePostsController@reschedulePost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:110`",
         "tags": [
           "Feeds"
         ],
@@ -60,7 +60,7 @@
                 }
               },
               "example": {
-                "scheduled_at": ""
+                "scheduled_at": "2026-08-31 22:41:08"
               }
             }
           }
@@ -76,10 +76,254 @@
                     "feed": {
                       "type": "object",
                       "properties": {
+                        "comments_count": {
+                          "type": "integer"
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "expired_at": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "id": {
                           "type": "integer"
                         },
+                        "is_sticky": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message_rendered": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "preview_data": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "permalink": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "priority": {
+                          "type": "integer"
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "reactions_count": {
+                          "type": "integer"
+                        },
+                        "scheduled_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "space": {
+                          "type": "object",
+                          "properties": {
+                            "cover_photo": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "created_by": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "logo": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "parent_id": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "privacy": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "serial": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "settings": {
+                              "type": "object",
+                              "properties": {
+                                "can_request_join": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "custom_lock_screen": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "default_comment_sort_by": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "default_post_sort_by": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "disable_layout_style": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "disable_post_sort_by": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "document_access": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "document_library": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "document_upload": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "emoji": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "hide_members_count": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "layout_style": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "links": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                  }
+                                },
+                                "media_access": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "media_gallery": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "members_page_status": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "og_image": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "restricted_post_only": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "shape_svg": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "show_paywalls": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "show_sidebar": {
+                                  "type": "string",
+                                  "nullable": false
+                                },
+                                "topic_required": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "type": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "space_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
                           "type": "string",
                           "nullable": false
                         }
@@ -95,10 +339,73 @@
                 },
                 "example": {
                   "feed": {
-                    "id": 0,
-                    "permalink": ""
+                    "comments_count": 0,
+                    "content_type": "text",
+                    "created_at": "2026-08-17 22:39:56",
+                    "expired_at": null,
+                    "featured_image": null,
+                    "id": 15069,
+                    "is_sticky": 0,
+                    "message": "Just tried it and it works exactly as described.",
+                    "message_rendered": "<p>Great point — I ran into the same thing last week.</p>",
+                    "meta": {
+                      "preview_data": null
+                    },
+                    "parent_id": null,
+                    "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/upcoming-announcement",
+                    "priority": 0,
+                    "privacy": "public",
+                    "reactions_count": 0,
+                    "scheduled_at": "2026-08-31 22:41:08",
+                    "slug": "upcoming-announcement",
+                    "space": {
+                      "cover_photo": null,
+                      "created_at": "2026-08-17 22:39:56",
+                      "created_by": "1",
+                      "description": "A place to introduce yourself and meet other members.",
+                      "id": 119,
+                      "logo": null,
+                      "parent_id": "118",
+                      "privacy": "public",
+                      "serial": "1",
+                      "settings": {
+                        "can_request_join": "no",
+                        "custom_lock_screen": "no",
+                        "default_comment_sort_by": "",
+                        "default_post_sort_by": "",
+                        "disable_layout_style": "no",
+                        "disable_post_sort_by": "no",
+                        "document_access": "everybody",
+                        "document_library": "yes",
+                        "document_upload": "admin_only",
+                        "emoji": "",
+                        "hide_members_count": "no",
+                        "layout_style": "timeline",
+                        "links": [],
+                        "media_access": "everybody",
+                        "media_gallery": "yes",
+                        "members_page_status": "members_only",
+                        "og_image": "",
+                        "restricted_post_only": "no",
+                        "shape_svg": "",
+                        "show_paywalls": "no",
+                        "show_sidebar": "no",
+                        "topic_required": "no"
+                      },
+                      "slug": "general-discussion",
+                      "status": "published",
+                      "title": "General Discussion",
+                      "type": "community",
+                      "updated_at": "2026-08-17 22:39:56"
+                    },
+                    "space_id": "119",
+                    "status": "scheduled",
+                    "title": "Upcoming announcement",
+                    "type": "text",
+                    "updated_at": "2026-08-17 22:41:08",
+                    "user_id": "1"
                   },
-                  "message": "Post has been rescheduled at %s"
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

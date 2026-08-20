@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listBookmarks",
         "summary": "GET List Bookmarks",
-        "description": "List Bookmarks for the FluentCommunity Feeds API.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
+        "description": "Returns a page of the published posts the current user has bookmarked, newest first and transformed for display.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
         "tags": [
           "Feeds"
         ],
@@ -105,459 +105,34 @@
                     "feeds": {
                       "type": "object",
                       "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
                         "data": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
-                              "id": {
-                                "type": "integer"
-                              },
-                              "slug": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "message_rendered": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "meta": {
-                                "type": "object",
-                                "properties": {
-                                  "preview_data": {
-                                    "type": "string",
-                                    "nullable": true
-                                  },
-                                  "media_preview": {
-                                    "type": "object",
-                                    "properties": {
-                                      "image": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "url": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "type": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "provider": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "content_type": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "title": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "author_name": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "html": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "width": {
-                                        "type": "integer"
-                                      },
-                                      "height": {
-                                        "type": "integer"
-                                      },
-                                      "media_id": {
-                                        "type": "integer"
-                                      },
-                                      "player": {
-                                        "type": "string",
-                                        "nullable": false
-                                      }
-                                    },
-                                    "additionalProperties": false
-                                  },
-                                  "media_items": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "url": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "media_id": {
-                                          "type": "integer"
-                                        },
-                                        "width": {
-                                          "type": "integer"
-                                        },
-                                        "height": {
-                                          "type": "integer"
-                                        },
-                                        "provider": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
-                                    }
-                                  },
-                                  "document_lists": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "integer"
-                                        },
-                                        "url": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "media_key": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "title": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
-                                    }
-                                  },
-                                  "document_ids": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "integer"
-                                        },
-                                        "url": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "media_key": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "title": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "type": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "additionalProperties": false
-                                    }
-                                  },
-                                  "survey_config": {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "options": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "object",
-                                          "properties": {
-                                            "slug": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "title": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "vote_counts": {
-                                              "type": "integer"
-                                            },
-                                            "voted": {
-                                              "type": "boolean"
-                                            }
-                                          },
-                                          "additionalProperties": false
-                                        }
-                                      },
-                                      "end_date": {
-                                        "type": "string",
-                                        "nullable": false
-                                      }
-                                    },
-                                    "additionalProperties": false
-                                  },
-                                  "send_announcement_email": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "comments_disabled": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "mentioned_user_ids": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "integer"
-                                    }
-                                  },
-                                  "auto_flagged": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "reports_count": {
-                                    "type": "integer"
-                                  }
-                                },
-                                "additionalProperties": false
-                              },
-                              "title": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "featured_image": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "created_at": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "privacy": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "priority": {
-                                "type": "integer"
-                              },
-                              "type": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "content_type": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "space_id": {
-                                "type": "integer"
-                              },
-                              "user_id": {
-                                "type": "integer"
-                              },
-                              "status": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "is_sticky": {
+                              "bookmarked": {
                                 "type": "boolean"
-                              },
-                              "scheduled_at": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "comments_count": {
-                                "type": "integer"
-                              },
-                              "reactions_count": {
-                                "type": "integer"
-                              },
-                              "permalink": {
-                                "type": "string",
-                                "nullable": false
-                              },
-                              "xprofile": {
-                                "type": "object",
-                                "properties": {
-                                  "user_id": {
-                                    "type": "integer"
-                                  },
-                                  "display_name": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "username": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "avatar": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "status": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "total_points": {
-                                    "type": "integer"
-                                  },
-                                  "is_verified": {
-                                    "type": "boolean"
-                                  },
-                                  "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                      "website": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "cover_photo": {
-                                        "type": "string",
-                                        "nullable": false
-                                      },
-                                      "badge_slug": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "string",
-                                          "nullable": false
-                                        }
-                                      },
-                                      "social_links": {
-                                        "type": "object",
-                                        "properties": {
-                                          "instagram": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "twitter": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "youtube": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "linkedin": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "fb": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "blue_sky": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "tiktok": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "pinterest": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "telegram": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "snapchat": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "reddit": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "twitch": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "vk": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "github": {
-                                            "type": "string",
-                                            "nullable": false
-                                          },
-                                          "mastodon": {
-                                            "type": "string",
-                                            "nullable": false
-                                          }
-                                        },
-                                        "additionalProperties": false
-                                      }
-                                    },
-                                    "additionalProperties": false
-                                  },
-                                  "created_at": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "short_description": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "last_activity": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "badge": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "permalink": {
-                                    "type": "string",
-                                    "nullable": false
-                                  }
-                                },
-                                "additionalProperties": false
-                              },
-                              "space": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "integer"
-                                  },
-                                  "title": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "slug": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "type": {
-                                    "type": "string",
-                                    "nullable": false
-                                  },
-                                  "privacy": {
-                                    "type": "string",
-                                    "nullable": false
-                                  }
-                                },
-                                "additionalProperties": false
                               },
                               "comments": {
                                 "type": "array",
                                 "items": {
                                   "type": "object",
                                   "properties": {
+                                    "content_type": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
+                                    "created_at": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
                                     "id": {
                                       "type": "integer"
                                     },
-                                    "user_id": {
-                                      "type": "integer"
-                                    },
-                                    "post_id": {
-                                      "type": "integer"
-                                    },
-                                    "parent_id": {
+                                    "is_sticky": {
                                       "type": "integer"
                                     },
                                     "message": {
@@ -569,103 +144,21 @@
                                       "nullable": false
                                     },
                                     "meta": {
-                                      "type": "object",
-                                      "properties": {
-                                        "media_preview": {
-                                          "type": "object",
-                                          "properties": {
-                                            "image": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "url": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "type": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "provider": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "content_type": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "title": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "author_name": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "html": {
-                                              "type": "string",
-                                              "nullable": false
-                                            },
-                                            "width": {
-                                              "type": "integer"
-                                            },
-                                            "height": {
-                                              "type": "integer"
-                                            },
-                                            "media_id": {
-                                              "type": "integer"
-                                            },
-                                            "player": {
-                                              "type": "string",
-                                              "nullable": false
-                                            }
-                                          },
-                                          "additionalProperties": false
-                                        },
-                                        "media_items": {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "object",
-                                            "properties": {
-                                              "url": {
-                                                "type": "string",
-                                                "nullable": false
-                                              },
-                                              "type": {
-                                                "type": "string",
-                                                "nullable": false
-                                              },
-                                              "media_id": {
-                                                "type": "integer"
-                                              },
-                                              "width": {
-                                                "type": "integer"
-                                              },
-                                              "height": {
-                                                "type": "integer"
-                                              },
-                                              "provider": {
-                                                "type": "string",
-                                                "nullable": false
-                                              }
-                                            },
-                                            "additionalProperties": false
-                                          }
-                                        },
-                                        "mentioned_user_ids": {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "integer"
-                                          }
-                                        }
-                                      },
-                                      "additionalProperties": false
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "additionalProperties": true
+                                      }
                                     },
-                                    "type": {
+                                    "parent_id": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "post_id": {
                                       "type": "string",
                                       "nullable": false
                                     },
-                                    "content_type": {
+                                    "reactions_count": {
                                       "type": "string",
                                       "nullable": false
                                     },
@@ -673,13 +166,7 @@
                                       "type": "string",
                                       "nullable": false
                                     },
-                                    "is_sticky": {
-                                      "type": "boolean"
-                                    },
-                                    "reactions_count": {
-                                      "type": "integer"
-                                    },
-                                    "created_at": {
+                                    "type": {
                                       "type": "string",
                                       "nullable": false
                                     },
@@ -687,38 +174,40 @@
                                       "type": "string",
                                       "nullable": false
                                     },
+                                    "user_id": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
                                     "xprofile": {
                                       "type": "object",
                                       "properties": {
-                                        "user_id": {
-                                          "type": "integer"
+                                        "avatar": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "badge": {
+                                          "type": "string",
+                                          "nullable": true
+                                        },
+                                        "created_at": {
+                                          "type": "string",
+                                          "nullable": false
                                         },
                                         "display_name": {
                                           "type": "string",
                                           "nullable": false
                                         },
-                                        "username": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "avatar": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "status": {
-                                          "type": "string",
-                                          "nullable": false
-                                        },
-                                        "total_points": {
+                                        "is_verified": {
                                           "type": "integer"
                                         },
-                                        "is_verified": {
-                                          "type": "boolean"
+                                        "last_activity": {
+                                          "type": "string",
+                                          "nullable": false
                                         },
                                         "meta": {
                                           "type": "object",
                                           "properties": {
-                                            "website": {
+                                            "badge_slug": {
                                               "type": "string",
                                               "nullable": false
                                             },
@@ -726,17 +215,18 @@
                                               "type": "string",
                                               "nullable": false
                                             },
-                                            "badge_slug": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "string",
-                                                "nullable": false
-                                              }
-                                            },
                                             "social_links": {
                                               "type": "object",
                                               "properties": {
+                                                "fb": {
+                                                  "type": "string",
+                                                  "nullable": false
+                                                },
                                                 "instagram": {
+                                                  "type": "string",
+                                                  "nullable": false
+                                                },
+                                                "linkedin": {
                                                   "type": "string",
                                                   "nullable": false
                                                 },
@@ -747,62 +237,18 @@
                                                 "youtube": {
                                                   "type": "string",
                                                   "nullable": false
-                                                },
-                                                "linkedin": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "fb": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "blue_sky": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "tiktok": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "pinterest": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "telegram": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "snapchat": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "reddit": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "twitch": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "vk": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "github": {
-                                                  "type": "string",
-                                                  "nullable": false
-                                                },
-                                                "mastodon": {
-                                                  "type": "string",
-                                                  "nullable": false
                                                 }
                                               },
                                               "additionalProperties": false
+                                            },
+                                            "website": {
+                                              "type": "string",
+                                              "nullable": false
                                             }
                                           },
                                           "additionalProperties": false
                                         },
-                                        "created_at": {
+                                        "permalink": {
                                           "type": "string",
                                           "nullable": false
                                         },
@@ -810,54 +256,105 @@
                                           "type": "string",
                                           "nullable": false
                                         },
-                                        "last_activity": {
+                                        "status": {
                                           "type": "string",
                                           "nullable": false
                                         },
-                                        "badge": {
-                                          "type": "string",
-                                          "nullable": false
+                                        "total_points": {
+                                          "type": "integer"
                                         },
-                                        "permalink": {
+                                        "user_id": {
+                                          "type": "integer"
+                                        },
+                                        "username": {
                                           "type": "string",
                                           "nullable": false
                                         }
                                       },
                                       "additionalProperties": false
-                                    },
-                                    "liked": {
-                                      "type": "integer"
                                     }
                                   },
                                   "additionalProperties": false
                                 }
+                              },
+                              "comments_count": {
+                                "type": "integer"
+                              },
+                              "content_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "default_comment_sort_by": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "featured_image": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "has_user_react": {
+                                "type": "boolean"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "is_sticky": {
+                                "type": "integer"
+                              },
+                              "message_rendered": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "media_preview": {
+                                    "type": "string",
+                                    "nullable": true
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "permalink": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "priority": {
+                                "type": "integer"
+                              },
+                              "privacy": {
+                                "type": "string",
+                                "nullable": false
                               },
                               "reactions": {
                                 "type": "array",
                                 "items": {
                                   "type": "object",
                                   "properties": {
+                                    "created_at": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
                                     "id": {
                                       "type": "integer"
                                     },
-                                    "user_id": {
-                                      "type": "integer"
-                                    },
                                     "object_id": {
-                                      "type": "integer"
+                                      "type": "string",
+                                      "nullable": false
                                     },
                                     "object_type": {
                                       "type": "string",
                                       "nullable": false
                                     },
-                                    "type": {
-                                      "type": "string",
-                                      "nullable": false
-                                    },
                                     "parent_id": {
-                                      "type": "integer"
+                                      "type": "string",
+                                      "nullable": true
                                     },
-                                    "created_at": {
+                                    "type": {
                                       "type": "string",
                                       "nullable": false
                                     },
@@ -865,19 +362,31 @@
                                       "type": "string",
                                       "nullable": false
                                     },
+                                    "user_id": {
+                                      "type": "string",
+                                      "nullable": false
+                                    },
                                     "xprofile": {
                                       "type": "object",
                                       "properties": {
-                                        "user_id": {
-                                          "type": "integer"
-                                        },
                                         "avatar": {
                                           "type": "string",
                                           "nullable": false
                                         },
+                                        "badge": {
+                                          "type": "string",
+                                          "nullable": true
+                                        },
                                         "display_name": {
                                           "type": "string",
                                           "nullable": false
+                                        },
+                                        "permalink": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "user_id": {
+                                          "type": "integer"
                                         }
                                       },
                                       "additionalProperties": false
@@ -886,16 +395,185 @@
                                   "additionalProperties": false
                                 }
                               },
+                              "reactions_count": {
+                                "type": "integer"
+                              },
+                              "scheduled_at": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "space": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "settings": {
+                                    "type": "object",
+                                    "properties": {
+                                      "can_request_join": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "custom_lock_screen": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "default_post_sort_by": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "disable_post_sort_by": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_access": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_library": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_upload": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "emoji": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "hide_members_count": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "layout_style": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "links": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "emoji": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "enabled": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "new_tab": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "permalink": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "slug": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "title": {
+                                              "type": "string",
+                                              "nullable": false
+                                            }
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "members_page_status": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "og_image": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "onboard_redirect_url": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "restricted_post_only": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "shape_svg": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "show_fetured_image": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "show_paywalls": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "show_sidebar": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "topic_required": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "space_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
                               "terms": {
                                 "type": "array",
                                 "items": {
                                   "type": "object",
                                   "properties": {
-                                    "title": {
+                                    "pivot": {
+                                      "type": "object",
+                                      "properties": {
+                                        "post_id": {
+                                          "type": "string",
+                                          "nullable": false
+                                        },
+                                        "term_id": {
+                                          "type": "string",
+                                          "nullable": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "slug": {
                                       "type": "string",
                                       "nullable": false
                                     },
-                                    "slug": {
+                                    "title": {
                                       "type": "string",
                                       "nullable": false
                                     }
@@ -903,295 +581,878 @@
                                   "additionalProperties": false
                                 }
                               },
-                              "has_user_react": {
-                                "type": "boolean"
-                              },
-                              "bookmarked": {
-                                "type": "boolean"
-                              },
-                              "default_comment_sort_by": {
+                              "title": {
                                 "type": "string",
                                 "nullable": false
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "user_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "xprofile": {
+                                "type": "object",
+                                "properties": {
+                                  "avatar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "badge": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "display_name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "is_verified": {
+                                    "type": "integer"
+                                  },
+                                  "last_activity": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "cover_photo": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "total_points": {
+                                    "type": "integer"
+                                  },
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "username": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "additionalProperties": false
                           }
                         },
-                        "current_page": {
-                          "type": "integer"
-                        },
-                        "per_page": {
-                          "type": "integer"
-                        },
                         "from": {
-                          "type": "integer"
-                        },
-                        "to": {
                           "type": "integer"
                         },
                         "has_more": {
                           "type": "boolean"
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "to": {
+                          "type": "integer"
                         },
                         "total": {
                           "type": "integer"
                         }
                       },
                       "additionalProperties": false
+                    },
+                    "last_id": {
+                      "type": "integer"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
                   "feeds": {
+                    "current_page": 1,
                     "data": [
                       {
-                        "id": 0,
-                        "slug": "",
-                        "message_rendered": "<p>...</p>",
-                        "meta": {
-                          "preview_data": null,
-                          "media_preview": {
-                            "image": "",
-                            "url": "",
-                            "type": "image",
-                            "provider": "",
-                            "content_type": "",
-                            "title": "",
-                            "author_name": "",
-                            "html": "<p>...</p>",
-                            "width": 0,
-                            "height": 0,
-                            "media_id": 0,
-                            "player": ""
-                          },
-                          "media_items": [
-                            {
-                              "url": "",
-                              "type": "image",
-                              "media_id": 0,
-                              "width": 0,
-                              "height": 0,
-                              "provider": "uploader"
-                            }
-                          ],
-                          "document_lists": [
-                            {
-                              "id": 0,
-                              "url": "",
-                              "media_key": "",
-                              "title": "",
-                              "type": "document"
-                            }
-                          ],
-                          "document_ids": [
-                            {
-                              "id": 0,
-                              "url": "",
-                              "media_key": "",
-                              "title": "",
-                              "type": "document"
-                            }
-                          ],
-                          "survey_config": {
-                            "type": "single_choice",
-                            "options": [
-                              {
-                                "slug": "",
-                                "title": "",
-                                "vote_counts": 0,
-                                "voted": false
-                              }
-                            ],
-                            "end_date": "2026-01-01 00:00:00"
-                          },
-                          "send_announcement_email": "no",
-                          "comments_disabled": "no",
-                          "mentioned_user_ids": [
-                            0
-                          ],
-                          "auto_flagged": "no",
-                          "reports_count": 0
-                        },
-                        "title": "",
-                        "featured_image": "",
-                        "created_at": "2026-01-01 00:00:00",
-                        "privacy": "",
-                        "priority": 0,
-                        "type": "",
-                        "content_type": "",
-                        "space_id": 0,
-                        "user_id": 0,
-                        "status": "",
-                        "is_sticky": false,
-                        "scheduled_at": "2026-01-01 00:00:00",
-                        "comments_count": 0,
-                        "reactions_count": 0,
-                        "permalink": "",
-                        "xprofile": {
-                          "user_id": 0,
-                          "display_name": "",
-                          "username": "",
-                          "avatar": "",
-                          "status": "",
-                          "total_points": 0,
-                          "is_verified": false,
-                          "meta": {
-                            "website": "",
-                            "cover_photo": "",
-                            "badge_slug": [
-                              ""
-                            ],
-                            "social_links": {
-                              "instagram": "",
-                              "twitter": "",
-                              "youtube": "",
-                              "linkedin": "",
-                              "fb": "",
-                              "blue_sky": "",
-                              "tiktok": "",
-                              "pinterest": "",
-                              "telegram": "",
-                              "snapchat": "",
-                              "reddit": "",
-                              "twitch": "",
-                              "vk": "",
-                              "github": "",
-                              "mastodon": ""
-                            }
-                          },
-                          "created_at": "2026-01-01 00:00:00",
-                          "short_description": "",
-                          "last_activity": "2026-01-01 00:00:00",
-                          "badge": "",
-                          "permalink": ""
-                        },
-                        "space": {
-                          "id": 0,
-                          "title": "",
-                          "slug": "",
-                          "type": "",
-                          "privacy": ""
-                        },
+                        "bookmarked": true,
                         "comments": [
                           {
-                            "id": 0,
-                            "user_id": 0,
-                            "post_id": 0,
-                            "parent_id": 0,
-                            "message": "",
-                            "message_rendered": "<p>...</p>",
-                            "meta": {
-                              "media_preview": {
-                                "image": "",
-                                "url": "",
-                                "type": "image",
-                                "provider": "",
-                                "content_type": "",
-                                "title": "",
-                                "author_name": "",
-                                "html": "<p>...</p>",
-                                "width": 0,
-                                "height": 0,
-                                "media_id": 0,
-                                "player": ""
+                            "content_type": "text",
+                            "created_at": "2026-01-23 10:12:18",
+                            "id": 45391,
+                            "is_sticky": 0,
+                            "message": "Just tried it and it works exactly as described.",
+                            "message_rendered": "<p>A short write-up of what worked, what did not, and what I would do differently next time.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "11890",
+                            "reactions_count": "0",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2026-01-23 10:12:18",
+                            "user_id": "1",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                              "badge": null,
+                              "created_at": "2024-03-05 16:37:02",
+                              "display_name": "Alex Rivera",
+                              "is_verified": 1,
+                              "last_activity": "2026-08-17 22:35:43",
+                              "meta": {
+                                "badge_slug": "admin",
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "social_links": {
+                                  "fb": "alexrivera",
+                                  "instagram": "alexrivera",
+                                  "linkedin": "alexrivera",
+                                  "twitter": "alexrivera",
+                                  "youtube": "alexrivera"
+                                },
+                                "website": "https://example.com"
                               },
+                              "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                              "short_description": "Community builder. Helping members get the most out of the platform.",
+                              "status": "active",
+                              "total_points": 20385,
+                              "user_id": 1,
+                              "username": "alex_rivera"
+                            }
+                          },
+                          {
+                            "content_type": "text",
+                            "created_at": "2026-01-23 10:25:50",
+                            "id": 45392,
+                            "is_sticky": 0,
+                            "message": "We have tightened up a couple of the guidelines. Nothing dramatic — details inside.",
+                            "message_rendered": "<p>Thanks for all the suggestions this month. Here is what we picked up and what we parked.</p>",
+                            "meta": {
                               "media_items": [
                                 {
-                                  "url": "",
+                                  "height": 473,
+                                  "media_id": 10266,
+                                  "provider": "uploader",
                                   "type": "image",
-                                  "media_id": 0,
-                                  "width": 0,
-                                  "height": 0,
-                                  "provider": "uploader"
+                                  "url": "https://cdn.yourwebsite.com/uploads/image.webp",
+                                  "width": 496
                                 }
-                              ],
-                              "mentioned_user_ids": [
-                                0
                               ]
                             },
-                            "type": "",
-                            "content_type": "",
-                            "status": "",
-                            "is_sticky": false,
-                            "reactions_count": 0,
-                            "created_at": "2026-01-01 00:00:00",
-                            "updated_at": "2026-01-01 00:00:00",
+                            "parent_id": "45391",
+                            "post_id": "11890",
+                            "reactions_count": "0",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2026-01-23 10:26:48",
+                            "user_id": "10791",
                             "xprofile": {
-                              "user_id": 0,
-                              "display_name": "",
-                              "username": "",
-                              "avatar": "",
-                              "status": "",
-                              "total_points": 0,
-                              "is_verified": false,
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau_3.png",
+                              "badge": null,
+                              "created_at": "2025-10-04 17:11:31",
+                              "display_name": "Lucas Moreau",
+                              "is_verified": 0,
+                              "last_activity": "2026-08-14 06:18:01",
                               "meta": {
-                                "website": "",
                                 "cover_photo": "",
-                                "badge_slug": [
-                                  ""
-                                ],
-                                "social_links": {
-                                  "instagram": "",
-                                  "twitter": "",
-                                  "youtube": "",
-                                  "linkedin": "",
-                                  "fb": "",
-                                  "blue_sky": "",
-                                  "tiktok": "",
-                                  "pinterest": "",
-                                  "telegram": "",
-                                  "snapchat": "",
-                                  "reddit": "",
-                                  "twitch": "",
-                                  "vk": "",
-                                  "github": "",
-                                  "mastodon": ""
-                                }
+                                "website": ""
                               },
-                              "created_at": "2026-01-01 00:00:00",
-                              "short_description": "",
-                              "last_activity": "2026-01-01 00:00:00",
-                              "badge": "",
-                              "permalink": ""
-                            },
-                            "liked": 1
-                          }
-                        ],
-                        "reactions": [
+                              "permalink": "https://yourwebsite.com/portal/u/lucas_moreau_3",
+                              "short_description": "Agency owner. Interested in workflow automation.",
+                              "status": "active",
+                              "total_points": 97,
+                              "user_id": 10791,
+                              "username": "lucas_moreau_3"
+                            }
+                          },
                           {
-                            "id": 0,
-                            "user_id": 0,
-                            "object_id": 0,
-                            "object_type": "",
-                            "type": "",
-                            "parent_id": 0,
-                            "created_at": "2026-01-01 00:00:00",
-                            "updated_at": "2026-01-01 00:00:00",
+                            "content_type": "text",
+                            "created_at": "2026-01-23 11:02:57",
+                            "id": 45395,
+                            "is_sticky": 0,
+                            "message": "Following. I would love to see a worked example of this.",
+                            "message_rendered": "<p>Following. I would love to see a worked example of this.</p>",
+                            "meta": {
+                              "mentioned_user_ids": [
+                                10791
+                              ]
+                            },
+                            "parent_id": "45391",
+                            "post_id": "11890",
+                            "reactions_count": "1",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2026-01-24 01:41:47",
+                            "user_id": "1",
                             "xprofile": {
-                              "user_id": 0,
-                              "avatar": "",
-                              "display_name": ""
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                              "badge": null,
+                              "created_at": "2024-03-05 16:37:02",
+                              "display_name": "Alex Rivera",
+                              "is_verified": 1,
+                              "last_activity": "2026-08-17 22:35:43",
+                              "meta": {
+                                "badge_slug": "admin",
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "social_links": {
+                                  "fb": "alexrivera",
+                                  "instagram": "alexrivera",
+                                  "linkedin": "alexrivera",
+                                  "twitter": "alexrivera",
+                                  "youtube": "alexrivera"
+                                },
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                              "short_description": "Community builder. Helping members get the most out of the platform.",
+                              "status": "active",
+                              "total_points": 20385,
+                              "user_id": 1,
+                              "username": "alex_rivera"
                             }
                           }
                         ],
-                        "terms": [
+                        "comments_count": 4,
+                        "content_type": "text",
+                        "created_at": "2026-01-23 10:06:05",
+                        "default_comment_sort_by": "",
+                        "featured_image": null,
+                        "has_user_react": false,
+                        "id": 11890,
+                        "is_sticky": 0,
+                        "message_rendered": "<p>A short write-up of what worked, what did not, and what I would do differently next time.</p>",
+                        "meta": {
+                          "media_preview": null
+                        },
+                        "permalink": "https://yourwebsite.com/portal/space/community-meta/post/friend-list-followers-list",
+                        "priority": 0,
+                        "privacy": "public",
+                        "reactions": [
                           {
-                            "title": "",
-                            "slug": ""
+                            "created_at": "2026-01-24 01:41:22",
+                            "id": 78945,
+                            "object_id": "11890",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2026-01-24 01:41:22",
+                            "user_id": "2556",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Noah Fischer",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 2556
+                            }
                           }
                         ],
+                        "reactions_count": 1,
+                        "scheduled_at": null,
+                        "slug": "friend-list-followers-list",
+                        "space": {
+                          "id": 3,
+                          "settings": {
+                            "can_request_join": "yes",
+                            "custom_lock_screen": "no",
+                            "default_post_sort_by": "",
+                            "disable_post_sort_by": "no",
+                            "document_access": "members_only",
+                            "document_library": "no",
+                            "document_upload": "admin_only",
+                            "emoji": "",
+                            "hide_members_count": "no",
+                            "layout_style": "timeline",
+                            "links": [
+                              {
+                                "emoji": "👉",
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://fluentcommunity.co/",
+                                "slug": "fcom_custom_website",
+                                "title": "Welcome to the community"
+                              },
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://fluentcommunity.co/discount-deal",
+                                "shape_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" color=\"currentColor\" fill=\"none\">\n    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V12.5H9.50003C9.09557 …",
+                                "slug": "fcom_custom_download_beta",
+                                "title": "Welcome to the community"
+                              },
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://dev.fluentcommunity.co/",
+                                "privacy": "public",
+                                "shape_svg": "<svg width=\"800px\" height=\"800px\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M7.90451 6.92144C8.41341 6.45495 8.44779 5.66424 7.9813 5.15534C7.51481 4.64645 6.7241 4.61207 6.2152 5.07856L7.90451 6.92144ZM1.46194 11.1314L2.3066 12.0529L2.3066 12.0529L1.46194 11.1314ZM1.46194 11.8686L2.3066 10.9471L2.3066 10.9471L1.46194 11.8686ZM6.2152 17.9214C6.7241 18.3879 7.5148 …",
+                                "slug": "fcom_custom_https___dev_fluentcommunity_co_",
+                                "title": "Feature request round-up"
+                              }
+                            ],
+                            "members_page_status": "members_only",
+                            "og_image": "",
+                            "onboard_redirect_url": "",
+                            "restricted_post_only": "no",
+                            "shape_svg": "",
+                            "show_fetured_image": "yes",
+                            "show_paywalls": "no",
+                            "show_sidebar": "yes",
+                            "topic_required": "yes"
+                          },
+                          "slug": "community-meta",
+                          "title": "Weekly office hours are back",
+                          "type": "community"
+                        },
+                        "space_id": "3",
+                        "status": "published",
+                        "terms": [
+                          {
+                            "pivot": {
+                              "post_id": "11890",
+                              "term_id": "1102"
+                            },
+                            "slug": "general",
+                            "title": "Weekly office hours are back"
+                          }
+                        ],
+                        "title": "How we plan our release cycle",
+                        "type": "text",
+                        "user_id": "10791",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau_3.png",
+                          "badge": null,
+                          "created_at": "2025-10-04 17:11:31",
+                          "display_name": "Lucas Moreau",
+                          "is_verified": 0,
+                          "last_activity": "2026-08-14 06:18:01",
+                          "meta": {
+                            "cover_photo": "",
+                            "website": ""
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/lucas_moreau_3",
+                          "short_description": "Agency owner. Interested in workflow automation.",
+                          "status": "active",
+                          "total_points": 97,
+                          "user_id": 10791,
+                          "username": "lucas_moreau_3"
+                        }
+                      },
+                      {
+                        "bookmarked": true,
+                        "comments": [
+                          {
+                            "content_type": "text",
+                            "created_at": "2025-11-13 20:01:25",
+                            "id": 38300,
+                            "is_sticky": 0,
+                            "message": "Just tried it and it works exactly as described.",
+                            "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "10264",
+                            "reactions_count": "1",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2025-11-13 20:14:56",
+                            "user_id": "1",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                              "badge": null,
+                              "created_at": "2024-03-05 16:37:02",
+                              "display_name": "Alex Rivera",
+                              "is_verified": 1,
+                              "last_activity": "2026-08-17 22:35:43",
+                              "meta": {
+                                "badge_slug": "admin",
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "social_links": {
+                                  "fb": "alexrivera",
+                                  "instagram": "alexrivera",
+                                  "linkedin": "alexrivera",
+                                  "twitter": "alexrivera",
+                                  "youtube": "alexrivera"
+                                },
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                              "short_description": "Community builder. Helping members get the most out of the platform.",
+                              "status": "active",
+                              "total_points": 20385,
+                              "user_id": 1,
+                              "username": "alex_rivera"
+                            }
+                          }
+                        ],
+                        "comments_count": 1,
+                        "content_type": "text",
+                        "created_at": "2025-11-11 20:36:25",
+                        "default_comment_sort_by": "",
+                        "featured_image": null,
                         "has_user_react": false,
-                        "bookmarked": false,
-                        "default_comment_sort_by": ""
+                        "id": 10264,
+                        "is_sticky": 0,
+                        "message_rendered": "<p>We have tightened up a couple of the guidelines. Nothing dramatic — details inside.</p>",
+                        "meta": {
+                          "preview_data": null
+                        },
+                        "permalink": "https://yourwebsite.com/portal/space/fluent-cart/post/phone-number-not-syncing-to-fluentcrm-wh",
+                        "priority": 0,
+                        "privacy": "public",
+                        "reactions": [
+                          {
+                            "created_at": "2025-11-11 20:48:04",
+                            "id": 67342,
+                            "object_id": "10264",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2025-11-11 20:48:04",
+                            "user_id": "166",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Grace Okafor",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 166
+                            }
+                          },
+                          {
+                            "created_at": "2025-11-12 11:34:00",
+                            "id": 67471,
+                            "object_id": "10264",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2025-11-12 11:34:00",
+                            "user_id": "1813",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Priya Nair",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 1813
+                            }
+                          },
+                          {
+                            "created_at": "2025-11-12 19:58:50",
+                            "id": 67526,
+                            "object_id": "10264",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2025-11-12 19:58:50",
+                            "user_id": "7981",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Sam Chen",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 7981
+                            }
+                          }
+                        ],
+                        "reactions_count": 3,
+                        "scheduled_at": null,
+                        "slug": "phone-number-not-syncing-to-fluentcrm-wh",
+                        "space": {
+                          "id": 16,
+                          "settings": {
+                            "can_request_join": "yes",
+                            "custom_lock_screen": "no",
+                            "default_post_sort_by": "latest",
+                            "disable_post_sort_by": "no",
+                            "document_access": "members_only",
+                            "document_library": "yes",
+                            "document_upload": "members_only",
+                            "emoji": "",
+                            "hide_members_count": "yes",
+                            "layout_style": "timeline",
+                            "links": [
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://fluentcart.com/discount-deal",
+                                "privacy": "public",
+                                "slug": "fcom_custom_get_fluentcart_ltd",
+                                "title": "New tutorial: getting started with the API"
+                              },
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://docs.fluentcart.com/",
+                                "privacy": "public",
+                                "slug": "fcom_custom_documentation",
+                                "title": "How we plan our release cycle"
+                              },
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://fluentcart.com/account/support",
+                                "privacy": "public",
+                                "slug": "fcom_custom_support",
+                                "title": "How we plan our release cycle"
+                              }
+                            ],
+                            "members_page_status": "admin_only",
+                            "og_image": "",
+                            "onboard_redirect_url": "",
+                            "restricted_post_only": "no",
+                            "shape_svg": "<svg width=\"300\" height=\"300\" viewBox=\"0 0 300 300\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect width=\"300\" height=\"300\" rx=\"30\" fill=\"#00009F\"/>\n<path d=\"M136.561 205.944H47.1367L61.1704 173.491C65.2906 163.963 74.6784 157.795 85.0589 157.795H191.584L184.338 174.551C176.098 193.607 157.322 205.944 136.561 205.944Z\" fill=\"white\"/>\n<path d=\"M210.643 142.439H84.8574L92.1035 125.683C100.344 …",
+                            "show_sidebar": "yes",
+                            "topic_required": "yes"
+                          },
+                          "slug": "fluent-cart",
+                          "title": "Feature request round-up",
+                          "type": "community"
+                        },
+                        "space_id": "16",
+                        "status": "published",
+                        "terms": [
+                          {
+                            "pivot": {
+                              "post_id": "10264",
+                              "term_id": "1109"
+                            },
+                            "slug": "bug-report",
+                            "title": "Weekly office hours are back"
+                          }
+                        ],
+                        "title": "Community guidelines refresh",
+                        "type": "text",
+                        "user_id": "2012",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/zara_ahmed_3.png",
+                          "badge": null,
+                          "created_at": "2024-09-27 15:59:40",
+                          "display_name": "Zara Ahmed",
+                          "is_verified": 0,
+                          "last_activity": "2026-05-19 08:28:36",
+                          "meta": {
+                            "cover_photo": "",
+                            "website": ""
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/zara_ahmed_3",
+                          "short_description": "Content strategist and part-time course student.",
+                          "status": "active",
+                          "total_points": 68,
+                          "user_id": 2012,
+                          "username": "zara_ahmed_3"
+                        }
+                      },
+                      {
+                        "bookmarked": true,
+                        "comments": [
+                          {
+                            "content_type": "text",
+                            "created_at": "2025-10-14 22:49:42",
+                            "id": 34286,
+                            "is_sticky": 0,
+                            "liked": 1,
+                            "message": "Just tried it and it works exactly as described.",
+                            "message_rendered": "<p>Following. I would love to see a worked example of this.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "9352",
+                            "reactions_count": "11",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2025-10-21 16:01:51",
+                            "user_id": "10",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/omar_haddad.png",
+                              "badge": null,
+                              "created_at": "2024-03-27 10:13:52",
+                              "display_name": "Omar Haddad",
+                              "is_verified": 0,
+                              "last_activity": "2026-08-14 04:05:47",
+                              "meta": {
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/omar_haddad",
+                              "short_description": "Consultant. I help teams migrate their communities.",
+                              "status": "active",
+                              "total_points": 1556,
+                              "user_id": 10,
+                              "username": "omar_haddad"
+                            }
+                          },
+                          {
+                            "content_type": "text",
+                            "created_at": "2025-10-14 22:49:42",
+                            "id": 34287,
+                            "is_sticky": 0,
+                            "liked": 1,
+                            "message": "This is really helpful, thanks for writing it up.",
+                            "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "9352",
+                            "reactions_count": "2",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2025-10-15 00:53:13",
+                            "user_id": "3895",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/ivan_petrov_3.png",
+                              "badge": null,
+                              "created_at": "2024-11-26 04:40:41",
+                              "display_name": "Ivan Petrov",
+                              "is_verified": 0,
+                              "last_activity": "2025-11-06 17:13:51",
+                              "meta": {
+                                "cover_photo": "",
+                                "social_links": {
+                                  "youtube": "ivanpetrov3"
+                                },
+                                "website": ""
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/ivan_petrov_3",
+                              "short_description": "Systems administrator. I care about performance.",
+                              "status": "active",
+                              "total_points": 16,
+                              "user_id": 3895,
+                              "username": "ivan_petrov_3"
+                            }
+                          },
+                          {
+                            "content_type": "text",
+                            "created_at": "2025-10-14 22:51:11",
+                            "id": 34288,
+                            "is_sticky": 0,
+                            "liked": 1,
+                            "message": "Great point — I ran into the same thing last week.",
+                            "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "9352",
+                            "reactions_count": "3",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2025-10-15 03:02:22",
+                            "user_id": "18",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/grace_okafor_3.png",
+                              "badge": null,
+                              "created_at": "2024-03-27 23:49:52",
+                              "display_name": "Grace Okafor",
+                              "is_verified": 0,
+                              "last_activity": "2026-07-30 18:27:56",
+                              "meta": {
+                                "cover_photo": "",
+                                "social_links": {
+                                  "fb": "graceokafor3",
+                                  "instagram": "graceokafor3",
+                                  "twitter": "graceokafor3"
+                                },
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/grace_okafor_3",
+                              "short_description": "Community manager. I run the weekly office hours.",
+                              "status": "active",
+                              "total_points": 411,
+                              "user_id": 18,
+                              "username": "grace_okafor_3"
+                            }
+                          }
+                        ],
+                        "comments_count": 110,
+                        "content_type": "text",
+                        "created_at": "2025-10-14 22:44:25",
+                        "default_comment_sort_by": "",
+                        "featured_image": null,
+                        "has_user_react": false,
+                        "id": 9352,
+                        "is_sticky": 0,
+                        "message_rendered": "<p>Office hours run every Thursday. Bring your questions — no topic is too small.</p>",
+                        "meta": {
+                          "media_preview": {
+                            "description": "A place to introduce yourself and meet other members.",
+                            "image": "https://fluentcart.com/wp-content/uploads/2025/10/Deal-Page-Featured-Image-FluentCart-Final-Version-scaled.webp",
+                            "title": "Share your workflow setup",
+                            "type": "meta_data",
+                            "url": "https://fluentcart.com/discount-deal"
+                          },
+                          "send_announcement_email": "yes"
+                        },
+                        "permalink": "https://yourwebsite.com/portal/space/community-meta/post/we-made-it-together-fluentcart-deal-dis",
+                        "priority": 1,
+                        "privacy": "public",
+                        "reactions": [
+                          {
+                            "created_at": "2025-10-14 22:48:43",
+                            "id": 61209,
+                            "object_id": "9352",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2025-10-14 22:48:43",
+                            "user_id": "10",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Aisha Bello",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 10
+                            }
+                          },
+                          {
+                            "created_at": "2025-10-14 22:50:31",
+                            "id": 61212,
+                            "object_id": "9352",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2025-10-14 22:50:31",
+                            "user_id": "18",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Elena Duarte",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 18
+                            }
+                          },
+                          {
+                            "created_at": "2025-10-15 01:47:53",
+                            "id": 61362,
+                            "object_id": "9352",
+                            "object_type": "feed",
+                            "parent_id": null,
+                            "type": "like",
+                            "updated_at": "2025-10-15 01:47:53",
+                            "user_id": "60",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                              "badge": null,
+                              "display_name": "Zara Zara",
+                              "permalink": "https://yourwebsite.com/portal/u/",
+                              "user_id": 60
+                            }
+                          }
+                        ],
+                        "reactions_count": 42,
+                        "scheduled_at": null,
+                        "slug": "we-made-it-together-fluentcart-deal-dis",
+                        "space": {
+                          "id": 3,
+                          "settings": {
+                            "can_request_join": "yes",
+                            "custom_lock_screen": "no",
+                            "default_post_sort_by": "",
+                            "disable_post_sort_by": "no",
+                            "document_access": "members_only",
+                            "document_library": "no",
+                            "document_upload": "admin_only",
+                            "emoji": "",
+                            "hide_members_count": "no",
+                            "layout_style": "timeline",
+                            "links": [
+                              {
+                                "emoji": "👉",
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://fluentcommunity.co/",
+                                "slug": "fcom_custom_website",
+                                "title": "Welcome to the community"
+                              },
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://fluentcommunity.co/discount-deal",
+                                "shape_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"48\" height=\"48\" color=\"currentColor\" fill=\"none\">\n    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V12.5H9.50003C9.09557 …",
+                                "slug": "fcom_custom_download_beta",
+                                "title": "Welcome to the community"
+                              },
+                              {
+                                "enabled": "yes",
+                                "new_tab": "yes",
+                                "permalink": "https://dev.fluentcommunity.co/",
+                                "privacy": "public",
+                                "shape_svg": "<svg width=\"800px\" height=\"800px\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M7.90451 6.92144C8.41341 6.45495 8.44779 5.66424 7.9813 5.15534C7.51481 4.64645 6.7241 4.61207 6.2152 5.07856L7.90451 6.92144ZM1.46194 11.1314L2.3066 12.0529L2.3066 12.0529L1.46194 11.1314ZM1.46194 11.8686L2.3066 10.9471L2.3066 10.9471L1.46194 11.8686ZM6.2152 17.9214C6.7241 18.3879 7.5148 …",
+                                "slug": "fcom_custom_https___dev_fluentcommunity_co_",
+                                "title": "Feature request round-up"
+                              }
+                            ],
+                            "members_page_status": "members_only",
+                            "og_image": "",
+                            "onboard_redirect_url": "",
+                            "restricted_post_only": "no",
+                            "shape_svg": "",
+                            "show_fetured_image": "yes",
+                            "show_paywalls": "no",
+                            "show_sidebar": "yes",
+                            "topic_required": "yes"
+                          },
+                          "slug": "community-meta",
+                          "title": "Weekly office hours are back",
+                          "type": "community"
+                        },
+                        "space_id": "3",
+                        "status": "published",
+                        "terms": [
+                          {
+                            "pivot": {
+                              "post_id": "9352",
+                              "term_id": "1082"
+                            },
+                            "slug": "announcements",
+                            "title": "Share your workflow setup"
+                          }
+                        ],
+                        "title": "Community guidelines refresh",
+                        "type": "text",
+                        "user_id": "1",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "is_verified": 1,
+                          "last_activity": "2026-08-17 22:35:43",
+                          "meta": {
+                            "badge_slug": "admin",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "status": "active",
+                          "total_points": 20385,
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        }
                       }
                     ],
-                    "current_page": 0,
-                    "per_page": 0,
-                    "from": 0,
-                    "to": 0,
-                    "has_more": false,
-                    "total": 0
-                  }
+                    "from": 1,
+                    "has_more": true,
+                    "per_page": 3,
+                    "to": 3,
+                    "total": 6
+                  },
+                  "last_id": 15068
                 }
               }
             }

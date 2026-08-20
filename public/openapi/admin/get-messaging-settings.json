@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMessagingSettings",
         "summary": "GET Get Messaging Settings",
-        "description": "Get Messaging Settings for the FluentCommunity Admin API.\n\nController: `ProAdminController@getMessagingSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:21`",
+        "description": "Returns the direct-messaging configuration alongside the realtime socket credentials used by the chat client.\n\nController: `ProAdminController@getMessagingSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:21`",
         "tags": [
           "Admin"
         ],
@@ -47,20 +47,107 @@
                   "properties": {
                     "settings": {
                       "type": "object",
-                      "properties": {},
+                      "properties": {
+                        "messaging_email_frequency": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "messaging_email_status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "points_to_initiate_message": {
+                          "type": "integer"
+                        },
+                        "realtime_enabled": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "socket_provider": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "who_can_initiate_message": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
                       "additionalProperties": false
                     },
                     "socket_config": {
                       "type": "object",
-                      "properties": {},
+                      "properties": {
+                        "appId": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "cluster": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_defined": {
+                          "type": "boolean"
+                        },
+                        "key": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "options": {
+                          "type": "object",
+                          "properties": {
+                            "host": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "port": {
+                              "type": "integer"
+                            },
+                            "scheme": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "useTLS": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "provider": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "secret": {
+                          "type": "boolean"
+                        }
+                      },
                       "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "settings": {},
-                  "socket_config": {}
+                  "settings": {
+                    "messaging_email_frequency": "hourly",
+                    "messaging_email_status": "yes",
+                    "points_to_initiate_message": 20,
+                    "realtime_enabled": "yes",
+                    "socket_provider": "fluent-socket",
+                    "who_can_initiate_message": "everyone"
+                  },
+                  "socket_config": {
+                    "appId": "2",
+                    "cluster": "mt1",
+                    "is_defined": false,
+                    "key": "app_xxxxxxxxxxxxxxxx",
+                    "options": {
+                      "host": "ws.fluentsocket.com",
+                      "port": 443,
+                      "scheme": "https",
+                      "useTLS": true
+                    },
+                    "provider": "fluent-socket",
+                    "secret": false
+                  }
                 }
               }
             }

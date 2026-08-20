@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopMembersReport",
         "summary": "GET List Top Members Report",
-        "description": "List Top Members Report for the FluentCommunity Reports API.\n\nController: `MembersReportsController@getTopMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:79`",
+        "description": "Returns ten member profiles ordered by lifetime points, drawn from those who joined within the requested range.\n\nController: `MembersReportsController@getTopMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:79`",
         "tags": [
           "Reports"
         ],
@@ -49,14 +49,156 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "avatar": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "badge": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "display_name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "is_verified": {
+                            "type": "integer"
+                          },
+                          "last_activity": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "meta": {
+                            "type": "object",
+                            "properties": {
+                              "cover_photo": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "headline": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "short_description_rendered": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "website": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "permalink": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "short_description": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "status": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "total_points": {
+                            "type": "integer"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "user_id": {
+                            "type": "integer"
+                          },
+                          "username": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": []
+                  "data": [
+                    {
+                      "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/lucas_moreau_8.png",
+                      "badge": null,
+                      "created_at": "2026-07-18 10:45:20",
+                      "display_name": "Lucas Moreau",
+                      "id": "12229",
+                      "is_verified": 0,
+                      "last_activity": "2026-08-10 07:37:34",
+                      "meta": {
+                        "cover_photo": "",
+                        "headline": "",
+                        "short_description_rendered": "<p>Agency owner. Interested in workflow automation.</p>",
+                        "website": ""
+                      },
+                      "permalink": "https://yourwebsite.com/portal/u/lucas_moreau_8",
+                      "short_description": "Agency owner. Interested in workflow automation.",
+                      "status": "active",
+                      "total_points": 4,
+                      "updated_at": "2026-08-10 13:37:34",
+                      "user_id": 12929,
+                      "username": "lucas_moreau_8"
+                    },
+                    {
+                      "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/zara_ahmed_8.png",
+                      "badge": null,
+                      "created_at": "2026-08-03 16:31:18",
+                      "display_name": "Zara Ahmed",
+                      "id": "12329",
+                      "is_verified": 0,
+                      "last_activity": "2026-08-11 16:29:08",
+                      "meta": {
+                        "cover_photo": "",
+                        "short_description_rendered": "<p>Content strategist and part-time course student.</p>",
+                        "website": ""
+                      },
+                      "permalink": "https://yourwebsite.com/portal/u/zara_ahmed_8",
+                      "short_description": "Content strategist and part-time course student.",
+                      "status": "active",
+                      "total_points": 3,
+                      "updated_at": "2026-08-11 22:29:08",
+                      "user_id": 13029,
+                      "username": "zara_ahmed_8"
+                    },
+                    {
+                      "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/ivan_petrov_8.png",
+                      "badge": null,
+                      "created_at": "2026-07-29 22:41:24",
+                      "display_name": "Ivan Petrov",
+                      "id": "12293",
+                      "is_verified": 0,
+                      "last_activity": "2026-07-30 07:23:34",
+                      "meta": {
+                        "cover_photo": "",
+                        "short_description_rendered": "<p>Systems administrator. I care about performance.</p>",
+                        "website": ""
+                      },
+                      "permalink": "https://yourwebsite.com/portal/u/ivan_petrov_8",
+                      "short_description": "Systems administrator. I care about performance.",
+                      "status": "active",
+                      "total_points": 2,
+                      "updated_at": "2026-08-04 19:11:11",
+                      "user_id": 12993,
+                      "username": "ivan_petrov_8"
+                    }
+                  ]
                 }
               }
             }

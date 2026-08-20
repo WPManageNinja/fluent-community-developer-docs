@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveModerationConfig",
         "summary": "POST Save Moderation Config",
-        "description": "Save Moderation Config for the FluentCommunity Reports API.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:105`",
+        "description": "Stores the content moderation configuration and keeps the `content_moderation` feature flag in step with its `is_enabled` value.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:105`",
         "tags": [
           "Reports"
         ],
@@ -72,12 +72,15 @@
               },
               "example": {
                 "config": {
-                  "is_enabled": "",
-                  "profanity_filter": "",
-                  "flag_after_threshold": 0,
-                  "first_comment_approval": "",
                   "auto_flag_user_reject_threshold": 0,
-                  "auto_flag_user_report_threshold": 0
+                  "auto_flag_user_report_threshold": 0,
+                  "first_comment_approval": "no",
+                  "first_post_approval": "yes",
+                  "flag_after_threshold": 3,
+                  "flag_all_new_posts": "no",
+                  "flag_all_new_posts_spaces": [],
+                  "is_enabled": "yes",
+                  "profanity_filter": ""
                 }
               }
             }
@@ -92,11 +95,46 @@
                   "type": "object",
                   "properties": {
                     "config": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "type": "object",
+                      "properties": {
+                        "auto_flag_user_reject_threshold": {
+                          "type": "integer"
+                        },
+                        "auto_flag_user_report_threshold": {
+                          "type": "integer"
+                        },
+                        "first_comment_approval": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "first_post_approval": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "flag_after_threshold": {
+                          "type": "integer"
+                        },
+                        "flag_all_new_posts": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "flag_all_new_posts_spaces": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "is_enabled": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "profanity_filter": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "type": "string",
@@ -106,8 +144,18 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "config": [],
-                  "message": "Moderation config saved successfully"
+                  "config": {
+                    "auto_flag_user_reject_threshold": 0,
+                    "auto_flag_user_report_threshold": 0,
+                    "first_comment_approval": "no",
+                    "first_post_approval": "yes",
+                    "flag_after_threshold": 3,
+                    "flag_all_new_posts": "no",
+                    "flag_all_new_posts_spaces": [],
+                    "is_enabled": "yes",
+                    "profanity_filter": ""
+                  },
+                  "message": "Just tried it and it works exactly as described."
                 }
               }
             }

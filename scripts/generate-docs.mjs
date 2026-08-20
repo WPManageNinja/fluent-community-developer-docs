@@ -7,6 +7,8 @@ import {
   writeFileSync,
 } from 'fs'
 import { basename, dirname, join, relative, resolve } from 'path'
+import { HOOK_NOTES } from '../data/hook-notes.mjs'
+import { OPERATION_NOTES } from '../data/operation-notes.mjs'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -18,6 +20,92 @@ const proPluginRoot = resolve(pluginsRoot, 'fluent-community-pro')
 const docsRoot = join(repoRoot, 'docs')
 const openapiRoot = join(repoRoot, 'public', 'openapi')
 const generatedRoot = join(repoRoot, '.generated')
+const capturedExamplesFile = join(repoRoot, 'data', 'response-examples.json')
+const manualExamplesFile = join(repoRoot, 'data', 'manual-examples.json')
+
+/**
+ * Real request/response pairs recorded against a live FluentCommunity install
+ * and anonymised, keyed by `<module>/<operation-slug>`. See scripts/capture/.
+ *
+ * When an operation has a captured sample it replaces the shape inferred from
+ * static analysis: the response schema is derived from the example, so a real
+ * payload makes both the schema and the example accurate at once.
+ */
+const capturedExamples = loadExampleFixtures([
+  { file: capturedExamplesFile, origin: 'captured' },
+  { file: manualExamplesFile, origin: 'manual' },
+])
+
+function loadExampleFixtures(sources) {
+  const byModuleSlug = {}
+  const bySlug = {}
+  const ambiguousSlugs = new Set()
+
+  for (const { file, origin } of sources) {
+    if (!existsSync(file)) {
+      console.warn(`No example fixtures at ${relative(repoRoot, file)}`)
+      continue
+    }
+    let parsed
+    try {
+      parsed = JSON.parse(readFileSync(file, 'utf8'))
+    } catch (error) {
+      console.warn(`Could not read ${relative(repoRoot, file)}: ${error.message}`)
+      continue
+    }
+    for (const [module, operations] of Object.entries(parsed.modules || {})) {
+      for (const [slug, entry] of Object.entries(operations)) {
+        const record = { ...entry, origin }
+        byModuleSlug[`${module}/${slug}`] = record
+        if (bySlug[slug] && bySlug[slug] !== record) {
+          ambiguousSlugs.add(slug)
+        }
+        bySlug[slug] = record
+      }
+    }
+  }
+
+  for (const slug of ambiguousSlugs) {
+    delete bySlug[slug]
+  }
+  return { byModuleSlug, bySlug }
+}
+
+/**
+ * The capture harness groups operations by its own idea of a module, which
+ * occasionally differs from classifyRoute() — `get-exportable-students` is a
+ * course concern but lives under the admin route prefix, for instance. Fall
+ * back to the slug alone, which is unique across the generated operation set.
+ */
+function getCapturedExample(module, slug) {
+  return capturedExamples.byModuleSlug[`${module}/${slug}`] || capturedExamples.bySlug[slug] || null
+}
+
+/**
+ * Tell the reader where an operation's sample payload came from, so they know
+ * how much to trust the values as opposed to the field names.
+ */
+function renderExampleProvenance(origin) {
+  if (origin === 'captured') {
+    return `
+::: tip Live sample
+The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+:::
+`
+  }
+  if (origin === 'manual') {
+    return `
+::: tip Reconstructed sample
+This endpoint belongs to a module that is not active on the reference install (or needs a file upload), so the payload below was reconstructed by reading the controller rather than recorded. Field names and types follow the source; values are illustrative.
+:::
+`
+  }
+  return `
+::: info Inferred sample
+No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
+:::
+`
+}
 
 const SOURCE_CONFIGS = [
   {
@@ -352,33 +440,54 @@ const XPROFILE_PUBLIC_FIELDS = [
   'last_activity',
 ]
 
+/**
+ * Both kinds share one page list. They used to diverge, which silently dropped
+ * every hook whose category had no page for its kind — all 15 comment filters and
+ * the theme-integration actions went missing that way. buildHookDocs() now fails
+ * the build if a category has no page, so the two must stay in step.
+ */
+const HOOK_PAGE_ORDER = [
+  'feeds',
+  'comments',
+  'reactions',
+  'spaces',
+  'members',
+  'courses',
+  'notifications',
+  'media',
+  'auth',
+  'permissions',
+  'moderation',
+  'integrations',
+  'rendering',
+  'settings',
+  'admin',
+  'miscellaneous',
+]
+
 const HOOK_PAGES = {
-  action: [
-    'feeds',
-    'spaces',
-    'members',
-    'comments',
-    'notifications',
-    'reactions',
-    'auth',
-    'admin',
-    'media',
-    'courses',
-    'miscellaneous',
-  ],
-  filter: [
-    'feeds',
-    'spaces',
-    'members',
-    'notifications',
-    'settings',
-    'permissions',
-    'auth',
-    'media',
-    'courses',
-    'miscellaneous',
-  ],
+  action: [...HOOK_PAGE_ORDER],
+  filter: [...HOOK_PAGE_ORDER],
 }
+
+
+
+/**
+ * Where a hook lives is decided by its source file before its name, because names
+ * lie: `fluent_community/course/topic_completed` matched the `topic` rule and filed
+ * itself under spaces. First match wins; order matters.
+ */
+const HOOK_PATH_RULES = [
+  [/\/Modules\/Course\//, 'courses'],
+  [/\/app\/Modules\/Quiz\//, 'courses'],
+  [/\/Modules\/Auth\//, 'auth'],
+  [/\/Modules\/Integrations\/|\/app\/Modules\/Integrations\//, 'integrations'],
+  [/\/Modules\/Theming\/|\/Modules\/Gutenberg\/|\/app\/Views\//, 'rendering'],
+  [/Moderation(Handler|Controller)\.php/, 'moderation'],
+  [/\/app\/Modules\/Pwa\//, 'settings'],
+  [/\/app\/Modules\/LeaderBoard\//, 'members'],
+  [/\/app\/Modules\/DocumentLibrary\/|\/app\/Modules\/MediaGallery\//, 'media'],
+]
 
 const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
 
@@ -434,7 +543,13 @@ function renderProBadge() {
   return '<span class="pro-badge">PRO</span>'
 }
 
-function renderSourceLabel(sourceIds) {
+/**
+ * `mixedNote` explains what "core and Pro" means in the caller's context, because
+ * the old "Core + PRO" label read as "you need Pro for this" when it actually means
+ * the thing is defined in core and Pro also participates — no licence required to
+ * use it.
+ */
+function renderSourceLabel(sourceIds, mixedNote = 'extended by Pro') {
   const normalized = [...new Set(sourceIds)].sort()
   if (!normalized.length) {
     return '—'
@@ -443,7 +558,7 @@ function renderSourceLabel(sourceIds) {
   const hasPro = normalized.includes('pro')
 
   if (hasCore && hasPro) {
-    return `Core + ${renderProBadge()}`
+    return `Core <span class="edition-note">(${mixedNote})</span>`
   }
 
   if (hasPro) {
@@ -1787,11 +1902,17 @@ function buildOperationMeta(route) {
   const slug = buildOperationAlias(route)
   const title = humanizeSlug(slug)
   const operationId = kebabToCamel(slug)
+  const note = OPERATION_NOTES[`${route.module}/${slug}`] || OPERATION_NOTES[slug]
   return {
     slug,
     title,
     operationId,
-    description: `${title} for the FluentCommunity ${MODULE_META[route.module]?.title || route.module}.`,
+    // Without a note this restates the title, which tells the reader nothing —
+    // add entries to OPERATION_NOTES rather than leaving the fallback in place.
+    description:
+      (note && note.summary) ||
+      `${title} for the FluentCommunity ${MODULE_META[route.module]?.title || route.module}.`,
+    notes: note || null,
   }
 }
 
@@ -5087,14 +5208,27 @@ function buildRoutes(controllerIndex, classIndex, frontendConsumers, models) {
     const params = resolved
       ? parseRequestParams({ ...route, module }, resolved.method, resolved.controller, classIndex)
       : { path: [], query: [], body: [], hasFileUpload: false }
-    const responseExample = resolved
+    const inferredResponseExample = resolved
       ? extractResponseShape(resolved.method, models, { module, slug: operation.slug })
       : { message: 'Success' }
     const errors = resolved
       ? extractErrorResponses(resolved.method, supportMethods)
       : [{ status: 400, message: 'Request error.' }]
-    const requestBodyExample = buildRequestBodyExample(params.body)
-    const requestBodySchema = buildRequestBodySchemaFromParams(params.body)
+    const inferredRequestBodyExample = buildRequestBodyExample(params.body)
+    const inferredRequestBodySchema = buildRequestBodySchemaFromParams(params.body)
+
+    // A recorded sample beats the statically inferred shape whenever we have one.
+    const captured = getCapturedExample(module, operation.slug)
+    const responseExample = captured?.response ?? inferredResponseExample
+    const requestBodyExample = captured?.request ?? inferredRequestBodyExample
+
+    // Several controllers read their payload in ways the parameter parser cannot
+    // follow — a nested `data` array, a variable key, a helper method. Those routes
+    // ended up documenting no request body at all, even where a real one was
+    // recorded, so fall back to the shape of the recorded request.
+    const requestBodySchema =
+      inferredRequestBodySchema ||
+      (captured?.request ? schemaFromExample(captured.request) : null)
 
     return {
       ...route,
@@ -5112,35 +5246,70 @@ function buildRoutes(controllerIndex, classIndex, frontendConsumers, models) {
       requestBodyContentType: params.hasFileUpload ? 'multipart/form-data' : 'application/json',
       frontendConsumers: findFrontendConsumersForRoute(route, frontendConsumers),
       errors,
+      exampleOrigin: captured?.origin || 'inferred',
+      isCapturedExample: captured?.origin === 'captured',
+      capturedQuery: captured?.query || null,
     }
   })
 }
 
+/**
+ * Best-effort type for a parameter expression. This is a guess from the variable
+ * name, so it returns a single concrete type when the name is unambiguous and plain
+ * `mixed` otherwise — the old `Feed|mixed` unions meant "unsure" while reading like
+ * a real union, and their pipes broke the Markdown tables they sat in.
+ *
+ * HOOK_NOTES[].params overrides this wherever a hook has been documented properly.
+ */
 function inferHookType(expr) {
   const normalized = expr.replace(/^&/, '').trim()
+
   if (normalized.startsWith('[') || normalized.endsWith(']')) {
     return 'array'
   }
   if (/->all\(\)/.test(normalized) || /toArray\(\)/.test(normalized)) {
     return 'array'
   }
-  if (/Ids\b/i.test(normalized) || /users\b/i.test(normalized)) {
+  if (/^'|^"/.test(normalized)) {
+    return 'string'
+  }
+  if (/^(true|false)$/i.test(normalized)) {
+    return 'bool'
+  }
+  if (/^-?\d+$/.test(normalized)) {
+    return 'int'
+  }
+  // Model checks come before the array-ish name checks: `$feedIds` is an array but
+  // `$feed` is a model, and testing `Ids` first mislabelled several model params.
+  if (/\bfeed\b|Feed$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Feed'
+  }
+  if (/\bcomment\b|Comment$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Comment'
+  }
+  if (/\bcourse\b|Course$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Course'
+  }
+  if (/\blesson\b|Lesson$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'CourseLesson'
+  }
+  if (/\bspace\b|Space$/i.test(normalized) && !/Ids?\b/i.test(normalized)) {
+    return 'Space'
+  }
+  if (/xprofile|XProfile/i.test(normalized)) {
+    return 'XProfile'
+  }
+  if (/Ids\b/i.test(normalized)) {
+    return 'int[]'
+  }
+  if (/Id\b/i.test(normalized)) {
+    return 'int'
+  }
+  if (/users\b/i.test(normalized)) {
     return 'array'
   }
-  if (/feed/i.test(normalized)) {
-    return 'Feed|mixed'
-  }
-  if (/space/i.test(normalized)) {
-    return 'Space|mixed'
-  }
-  if (/comment/i.test(normalized)) {
-    return 'Comment|mixed'
-  }
-  if (/course|lesson|topic/i.test(normalized)) {
-    return 'mixed'
-  }
-  if (/user|profile|subscriber/i.test(normalized)) {
-    return 'mixed'
+  if (/\buser\b|User$/i.test(normalized)) {
+    return 'User'
   }
   if (/request/i.test(normalized)) {
     return 'array'
@@ -5166,27 +5335,214 @@ function expressionToHookName(expression) {
 }
 
 function categorizeHook(hookName, filePath) {
-  const path = hookName.replace(/^fluent_community\//, '')
+  const path = hookName.replace(/^fluent_community[/_]?/, '')
 
-  if (/feed|ticker|post/.test(path)) return 'feeds'
-  if (/space|portal|menu|lockscreen|topic/.test(path)) return 'spaces'
-  if (/member|user|profile|xprofile|follow|leaderboard|badge/.test(path)) return 'members'
+  // 1. An explicit note wins over everything.
+  const note = HOOK_NOTES[hookName]
+  if (note && note.page) {
+    return note.page
+  }
+
+  // 2. The defining file is a better signal than the hook name.
+  const normalizedPath = toPosix(filePath || '')
+  for (const [pattern, page] of HOOK_PATH_RULES) {
+    if (pattern.test(normalizedPath)) {
+      return page
+    }
+  }
+
+  // 3. Name rules, most specific first.
+  if (/permission|capability|can_view|can_access|can_create|is_allowed/.test(path)) return 'permissions'
+  if (/moderation|report|content_flagged|block(ed|ing)_user/.test(path)) return 'moderation'
+  // Everything that shapes what the portal renders or how it boots, including the
+  // portal_vars bootstrap payload and its nested per-key defaults.
+  if (
+    /^portal|portal_vars|app_vars|before_portal|template_|theme_|headless|rendering_|block_editor|allowed_block_types|use_editor_block|allowed_html_tags|image_size_names_choose|app_route_paths|base_url|is_rtl|skip_no_conflict|date_time_i18n|on_wp_init|header|footer|sidebar|render_|enqueue_|asset_|editor_i18n/.test(
+      path,
+    ) &&
+    !/portal_slug/.test(path)
+  ) {
+    return 'rendering'
+  }
+  if (/course|lesson|section|quiz|question_types/.test(path)) return 'courses'
   if (/comment/.test(path)) return 'comments'
-  if (/notification|digest/.test(path)) return 'notifications'
   if (/reaction|survey/.test(path)) return 'reactions'
-  if (/auth|invitation|signup|login/.test(path)) return 'auth'
-  if (/permission|capability/.test(path)) return 'permissions'
-  if (/setting|config|color|theme|template|snippet/.test(path)) return 'settings'
-  if (/media|upload|file|document|giphy/.test(path)) return 'media'
-  if (/course|lesson|section|quiz/.test(path)) return 'courses'
-  if (/admin|report|moderation|webhook/.test(path) || filePath.includes('/Http/Controllers/AdminController.php')) return 'admin'
+  if (/feed|ticker|post|bookmark|welcome_banner/.test(path)) return 'feeds'
+  if (/notification|digest/.test(path)) return 'notifications'
+  if (/auth|invitation|signup|login|password|terms_policy|default_redirect/.test(path)) return 'auth'
+  if (/paywall|fluent_player|fluentform|wppayform|product_integration|install_/.test(path)) return 'integrations'
+  if (/smartcode|verified_email_senders/.test(path)) return 'notifications'
+  if (
+    /member|user|profile|xprofile|follow|leaderboard|badge|manage[rd]|activit|default_avatar|display_name|social_link_providers|reactivate_account/.test(
+      path,
+    )
+  ) {
+    return 'members'
+  }
+  if (/media|upload|file|document|giphy|image|webp|attachment|preview_metadata|embed/.test(path)) return 'media'
+  if (/space|menu|lockscreen|topic|sidebar_link/.test(path)) return 'spaces'
+  if (/setting|config|color|snippet|pwa|portal_slug|features?|pro_upgrade/.test(path)) return 'settings'
+  if (/admin|webhook/.test(path) || normalizedPath.includes('/Http/Controllers/AdminController.php')) {
+    return 'admin'
+  }
   return 'miscellaneous'
+}
+
+/**
+ * Read a WordPress-style docblock sitting immediately above a hook call.
+ *
+ * Barely any call site has one today, so this is not the primary prose channel —
+ * HOOK_NOTES is. It exists so that documenting a hook at the source counts for
+ * something, which is the only way the coverage number improves on its own.
+ */
+function extractHookDocblock(content, matchIndex) {
+  const before = content.slice(0, matchIndex)
+  const lineStart = before.lastIndexOf('\n') + 1
+  const preceding = before.slice(0, lineStart).replace(/\s+$/, '')
+  if (!preceding.endsWith('*/')) {
+    return null
+  }
+
+  const open = preceding.lastIndexOf('/**')
+  if (open === -1) {
+    return null
+  }
+  // A single-asterisk block comment also ends in `*/`. Without this check the
+  // scan walks back past it to the previous real docblock and swallows every
+  // line in between — one `/* translators: */` pulled in 265 lines of source.
+  if (preceding.slice(open + 3, preceding.length - 2).includes('*/')) {
+    return null
+  }
+
+  const body = preceding
+    .slice(open + 3, preceding.length - 2)
+    .split('\n')
+    .map((line) => line.replace(/^\s*\*\s?/, '').trim())
+
+  const summary = []
+  const params = []
+  let since = null
+
+  for (const line of body) {
+    const paramMatch = line.match(/^@param\s+(\S+)\s+\$(\w+)\s*(.*)$/)
+    if (paramMatch) {
+      params.push({ type: paramMatch[1], name: paramMatch[2], desc: paramMatch[3].trim() })
+      continue
+    }
+    const sinceMatch = line.match(/^@since\s+(\S+)/)
+    if (sinceMatch) {
+      since = sinceMatch[1]
+      continue
+    }
+    if (line.startsWith('@')) {
+      continue
+    }
+    if (line || summary.length) {
+      summary.push(line)
+    }
+  }
+
+  const text = summary.join(' ').replace(/\s+/g, ' ').trim()
+  // A docblock summary is a sentence, not code. Anything carrying statement
+  // punctuation came from a mis-scan, and anything this long is not a summary.
+  const looksLikeCode = /[;{}$]|apply_filters\(|do_action\(/.test(text)
+  const clean = !text || looksLikeCode || text.length > 400 ? null : text
+  if (!clean && !params.length && !since) {
+    return null
+  }
+  return { summary: clean, params, since }
+}
+
+/**
+ * Hook names that ship with a typo in the source. They are public surface — third
+ * party callbacks are registered against the misspelling — so they must appear in
+ * the reference, not be filtered out for failing the prefix check.
+ *
+ * `fluent_communuty/add_sitemap_provider` is the awkward one: the *prefix* is
+ * misspelled, so it sits outside the namespace entirely and evades any
+ * prefix-based tooling, this generator included.
+ */
+const MISSPELLED_HOOK_NAMES = new Set(['fluent_communuty/add_sitemap_provider'])
+
+/**
+ * A few hook names are assembled at runtime from a variable that every caller
+ * passes as a string literal, so the docs would otherwise show one placeholder
+ * where two real, separately-hookable names exist. Resolving them needs
+ * cross-method dataflow the parser does not do, so they are listed here.
+ *
+ * Keep the placeholder documented too — it explains the naming pattern.
+ */
+const HOOK_NAME_RESOLUTIONS = {
+  'fluent_community/bulk_members/{filterTag}': [
+    'fluent_community/bulk_members/crm_tag_students_resolve_response',
+    'fluent_community/bulk_members/crm_tag_members_resolve_response',
+  ],
+}
+
+/**
+ * Recurring jobs are scheduled with Action Scheduler (or WP cron) and consumed
+ * with add_action(), never do_action(), so a scan for hook *calls* misses them
+ * entirely — yet `add_action('fluent_community_daily_jobs', …)` is exactly the kind
+ * of extension point this reference exists to document.
+ */
+function extractScheduledActionHooks(content, file, source) {
+  const hooks = []
+  const regex =
+    /(as_schedule_recurring_action|as_schedule_single_action|wp_schedule_event|wp_schedule_single_event)\s*\(/g
+  let match
+
+  while ((match = regex.exec(content))) {
+    const callStart = content.indexOf('(', match.index)
+    const callEnd = scanBalanced(content, callStart, '(', ')')
+    if (callEnd === -1) {
+      continue
+    }
+    regex.lastIndex = callStart + 1
+
+    const args = splitTopLevel(content.slice(callStart + 1, callEnd))
+    // Action Scheduler takes (timestamp, interval, hook, …); wp_schedule_event
+    // takes (timestamp, recurrence, hook, …). Either way the hook is the first
+    // plain string literal in the argument list.
+    const hookArg = args.find((arg) => /^\s*['"]/.test(arg))
+    if (!hookArg) {
+      continue
+    }
+    const hookName = stripQuotes(normalizeWhitespace(hookArg))
+    if (!isFluentCommunityHook(hookName)) {
+      continue
+    }
+
+    hooks.push({
+      name: hookName,
+      kind: 'action',
+      deprecated: false,
+      deprecatedSince: null,
+      deprecatedReplacement: null,
+      scheduled: true,
+      sourceId: source.id,
+      file: displaySourcePath(file),
+      line: getLineNumber(content, match.index),
+      category: categorizeHook(hookName, file),
+      docblock: null,
+      params: [],
+    })
+  }
+
+  return hooks
+}
+
+function isFluentCommunityHook(hookName) {
+  // The underscore form (fluent_community_send_daily_digest) is public surface too.
+  return hookName.startsWith('fluent_community') || MISSPELLED_HOOK_NAMES.has(hookName)
 }
 
 function extractHookCalls() {
   const files = [
     ...collectFilesFromSources(['app'], (file) => file.endsWith('.php')),
     ...collectFilesFromSources(['Modules'], (file) => file.endsWith('.php')),
+    // Core fires portal_loaded / on_wp_init from its bootstrap; listFiles() tolerates
+    // the directory being absent, so Pro (which has no boot/) is unaffected.
+    ...collectFilesFromSources(['boot'], (file) => file.endsWith('.php')),
   ]
 
   const hooks = []
@@ -5194,7 +5550,8 @@ function extractHookCalls() {
   for (const file of files) {
     const content = read(file)
     const source = inferSourceConfig(file)
-    const regex = /(do_action_ref_array|do_action|apply_filters)\s*\(/g
+    const regex =
+      /(do_action_ref_array|do_action_deprecated|do_action|apply_filters_ref_array|apply_filters_deprecated|apply_filters)\s*\(/g
     let match
 
     while ((match = regex.exec(content))) {
@@ -5204,33 +5561,86 @@ function extractHookCalls() {
         continue
       }
 
+      // Resume just inside the call rather than past it: hooks nested in another
+      // call's arguments are real (nine of them live inside the portal_vars array)
+      // and jumping to callEnd made them invisible.
+      regex.lastIndex = callStart + 1
+
       const inner = content.slice(callStart + 1, callEnd)
       const args = splitTopLevel(inner)
       const hookName = expressionToHookName(args[0] || '')
-      if (!hookName.startsWith('fluent_community/')) {
-        regex.lastIndex = callEnd + 1
+      if (!isFluentCommunityHook(hookName)) {
         continue
       }
 
-      const kind = match[1] === 'apply_filters' ? 'filter' : 'action'
-      const params = args.slice(1).map((arg, index) => ({
-        name: normalizeWhitespace(arg.replace(/^&/, '')),
-        type: inferHookType(arg),
-        index: index + 1,
-      }))
+      const fn = match[1]
+      const kind = fn.startsWith('apply_filters') ? 'filter' : 'action'
+      const deprecated = fn.endsWith('_deprecated')
+      const byRefArray = fn.endsWith('_ref_array')
+
+      // do_action_ref_array() and the *_deprecated() variants pass one array of
+      // arguments; unwrap it so the documented arity and the `&$var` by-reference
+      // hint are both correct.
+      let paramExpressions = args.slice(1)
+      let deprecatedSince = null
+      let deprecatedReplacement = null
+      if (deprecated) {
+        deprecatedSince = stripQuotes(normalizeWhitespace(args[2] || '')) || null
+        deprecatedReplacement = stripQuotes(normalizeWhitespace(args[3] || '')) || null
+        paramExpressions = args.slice(1, 2)
+      }
+      if ((byRefArray || deprecated) && paramExpressions.length === 1) {
+        const literal = paramExpressions[0].trim()
+        if (literal.startsWith('[') && literal.endsWith(']')) {
+          paramExpressions = splitTopLevel(literal.slice(1, -1))
+        }
+      }
+
+      const params = paramExpressions
+        .map((arg) => arg.trim())
+        .filter(Boolean)
+        .map((arg, index) => ({
+          name: normalizeWhitespace(arg.replace(/^&/, '')),
+          type: inferHookType(arg),
+          byRef: arg.startsWith('&'),
+          index: index + 1,
+        }))
 
       hooks.push({
         name: hookName,
         kind,
+        deprecated,
+        deprecatedSince,
+        deprecatedReplacement,
         sourceId: source.id,
         file: displaySourcePath(file),
         line: getLineNumber(content, match.index),
         category: categorizeHook(hookName, file),
+        docblock: extractHookDocblock(content, match.index),
         params,
       })
 
-      regex.lastIndex = callEnd + 1
+      // Also record the concrete names a runtime-assembled name resolves to, so
+      // each is individually findable rather than hidden behind one placeholder.
+      for (const resolved of HOOK_NAME_RESOLUTIONS[hookName] || []) {
+        hooks.push({
+          name: resolved,
+          kind,
+          deprecated,
+          deprecatedSince,
+          deprecatedReplacement,
+          resolvedFrom: hookName,
+          sourceId: source.id,
+          file: displaySourcePath(file),
+          line: getLineNumber(content, match.index),
+          category: categorizeHook(resolved, file),
+          docblock: null,
+          params,
+        })
+      }
     }
+
+    hooks.push(...extractScheduledActionHooks(content, file, source))
   }
 
   return hooks.sort((a, b) => a.name.localeCompare(b.name) || a.file.localeCompare(b.file))
@@ -5716,7 +6126,9 @@ function mermaidRelation(item) {
 }
 
 function hookAnchor(name) {
-  return name.replace(/[{}$/]/g, '').replace(/\//g, '-')
+  // Keep the separators as dashes: stripping them made
+  // `fluent_community/space/joined` collide with a hypothetical `spacejoined`.
+  return name.replace(/[{}$]/g, '').replace(/[/_]/g, '-')
 }
 
 function escapeMarkdownCode(value) {
@@ -5752,23 +6164,124 @@ function groupHooksByName(collection) {
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
+/**
+ * Parameter expressions are inlined verbatim from source, and a few are whole array
+ * literals — the `portal_vars` default array is 13 KB on one line, which destroys the
+ * table it sits in. Collapse those to a summary of their keys.
+ */
+function condenseParamExpression(expression) {
+  const value = normalizeWhitespace(expression)
+  if (value.length <= 80) {
+    return value
+  }
+  if (value.startsWith('[') && value.endsWith(']')) {
+    const entries = splitTopLevel(value.slice(1, -1))
+    const keys = entries
+      .map((entry) => {
+        const key = entry.split('=>')[0]
+        return key && key !== entry ? stripQuotes(normalizeWhitespace(key)) : null
+      })
+      .filter(Boolean)
+    if (keys.length) {
+      const preview = keys.slice(0, 3).join(', ')
+      return `array (${keys.length} keys: ${preview}${keys.length > 3 ? ', …' : ''})`
+    }
+    return `array (${entries.length} items)`
+  }
+  return `${value.slice(0, 77)}…`
+}
+
 function formatHookParamSummary(params) {
   if (!params.length) {
     return 'No parameters'
   }
 
-  return params.map((param) => `\`${escapeMarkdownCode(param.name)}\` (${param.type})`).join('<br>')
+  return params
+    .map((param) => {
+      const name = escapeMarkdownCode(condenseParamExpression(param.name))
+      const type = escapeMarkdownCode(param.type)
+      return `\`${param.byRef ? '&' : ''}${name}\` (${type})`
+    })
+    .join('<br>')
 }
 
-function buildHookDocs(hooks) {
+/**
+ * categorizeHook() runs per call site, so a hook fired from two subsystems would be
+ * filed on two pages and counted twice. A hook name belongs on exactly one page:
+ * settle it once, by the category most of its call sites agree on, breaking ties
+ * toward the earliest page in HOOK_PAGE_ORDER (the most specific one).
+ */
+function settleHookCategories(hooks) {
+  const votesByName = new Map()
+  for (const hook of hooks) {
+    if (!votesByName.has(hook.name)) {
+      votesByName.set(hook.name, new Map())
+    }
+    const votes = votesByName.get(hook.name)
+    votes.set(hook.category, (votes.get(hook.category) || 0) + 1)
+  }
+
+  const settled = new Map()
+  for (const [name, votes] of votesByName) {
+    const override = HOOK_NOTES[name] && HOOK_NOTES[name].page
+    if (override) {
+      settled.set(name, override)
+      continue
+    }
+    const winner = [...votes.entries()].sort((a, b) => {
+      if (a[1] !== b[1]) return b[1] - a[1]
+      return HOOK_PAGE_ORDER.indexOf(a[0]) - HOOK_PAGE_ORDER.indexOf(b[0])
+    })[0][0]
+    settled.set(name, winner)
+  }
+
+  return hooks.map((hook) => ({ ...hook, category: settled.get(hook.name) }))
+}
+
+function buildHookDocs(rawHooks) {
+  const hooks = settleHookCategories(rawHooks)
+
+  // Related-hook links have to know which page each hook ended up on, so record
+  // that before any page is rendered.
+  HOOK_LOCATIONS.clear()
+  for (const hook of hooks) {
+    HOOK_LOCATIONS.set(hook.name, { kind: hook.kind, category: hook.category })
+  }
+
   const actionHooks = hooks.filter((hook) => hook.kind === 'action')
   const filterHooks = hooks.filter((hook) => hook.kind === 'filter')
 
+  const coverage = {}
+  const writtenPages = { action: [], filter: [] }
+
   for (const kind of ['action', 'filter']) {
     const collection = kind === 'action' ? actionHooks : filterHooks
-    const groupedCollection = groupHooksByName(collection)
     const pageDir = join(docsRoot, 'hooks', kind === 'action' ? 'actions' : 'filters')
     const pageList = HOOK_PAGES[kind]
+
+    // Any category without a page silently loses its hooks, which is how every
+    // comment filter went missing. Fail the build rather than the docs.
+    const orphanCategories = [...new Set(collection.map((hook) => hook.category))].filter(
+      (category) => !pageList.includes(category),
+    )
+    if (orphanCategories.length) {
+      throw new Error(
+        `Hook categories with no ${kind} page: ${orphanCategories.join(', ')}. ` +
+          'Add them to HOOK_PAGE_ORDER or fix categorizeHook().',
+      )
+    }
+
+    // Totals are counted from what actually reaches a page, so the index can never
+    // disagree with the sum of its pages again. Empty pages are not written at all —
+    // there are no `admin` actions, for instance, and a stub page is just noise.
+    const pagedHooks = pageList
+      .map((page) => ({
+        page,
+        hooks: collection.filter((hook) => hook.category === page),
+      }))
+      .filter((entry) => entry.hooks.length > 0)
+    const writtenGroups = pagedHooks.reduce((sum, entry) => sum + groupHooksByName(entry.hooks).length, 0)
+    const writtenCallSites = pagedHooks.reduce((sum, entry) => sum + entry.hooks.length, 0)
 
     writeFile(
       join(pageDir, 'index.md'),
@@ -5779,23 +6292,36 @@ description: Source-verified ${kind} hook inventory for FluentCommunity.
 
 # ${kind === 'action' ? 'Action Hooks' : 'Filter Hooks'}
 
-This page is generated from ${kind === 'action' ? '`do_action()` and `do_action_ref_array()`' : '`apply_filters()`'} calls in the FluentCommunity core and Pro plugin source trees.
+This page is generated from ${kind === 'action' ? '`do_action()`, `do_action_ref_array()` and `do_action_deprecated()`' : '`apply_filters()`, `apply_filters_ref_array()` and `apply_filters_deprecated()`'} calls in the FluentCommunity core and Pro plugin source trees.
 
 ## Overview
 
-- **Unique ${kind}s:** ${groupedCollection.length}
-- **${humanizeSlug(kind)} call sites:** ${collection.length}
-- **Categories covered:** ${pageList.map((page) => `\`${page}\``).join(', ')}
+- **Unique ${kind}s:** ${writtenGroups}
+- **${humanizeSlug(kind)} call sites:** ${writtenCallSites}
+- **Categories covered:** ${pagedHooks.map((entry) => `\`${entry.page}\``).join(', ')}
 
 ## Categories
 
-${pageList.map((page) => `- [${humanizeSlug(page)}](/hooks/${kind === 'action' ? 'actions' : 'filters'}/${page})`).join('\n')}
+| Category | Hooks | Call sites |
+| --- | --- | --- |
+${pagedHooks
+  .map(
+    (entry) =>
+      `| [${humanizeSlug(entry.page)}](/hooks/${kind === 'action' ? 'actions' : 'filters'}/${entry.page}) | ${groupHooksByName(entry.hooks).length} | ${entry.hooks.length} |`,
+  )
+  .join('\n')}
 `,
     )
 
-    for (const page of pageList) {
-      const categoryHooks = collection.filter((hook) => hook.category === page)
+    writtenPages[kind] = pagedHooks.map((entry) => entry.page)
+
+    for (const { page, hooks: categoryHooks } of pagedHooks) {
       const categoryGroups = groupHooksByName(categoryHooks)
+      coverage[`${kind}/${page}`] = {
+        hooks: categoryGroups.length,
+        callSites: categoryHooks.length,
+        documented: categoryGroups.filter((group) => Boolean(HOOK_NOTES[group.name])).length,
+      }
       writeFile(
         join(pageDir, `${page}.md`),
         `---
@@ -5814,22 +6340,161 @@ ${categoryGroups.length} unique ${kind} hook${categoryGroups.length === 1 ? '' :
 ${categoryGroups
   .map(
     (group) =>
-      `| [\`${group.name}\`](#${hookAnchor(group.name)}) | ${renderSourceLabel(group.sourceIds)} | ${group.callSites.length} | \`${group.callSites[0].file}:${group.callSites[0].line}\` |`,
+      `| [\`${group.name}\`](#${hookAnchor(group.name)}) | ${renderSourceLabel(group.sourceIds, 'also fired by Pro')} | ${group.callSites.length} | \`${group.callSites[0].file}:${group.callSites[0].line}\` |`,
   )
   .join('\n') || '| — | — | — | No hooks found in this category. |'}
 
-${categoryGroups
+${categoryGroups.map((group) => renderHookSection(group, kind)).join('\n')}
+`,
+      )
+    }
+  }
+
+  // A note whose key matches no extracted hook is dead weight — usually a typo, or
+  // a hook that is only ever add_action'd and never fired. Say so rather than
+  // letting it sit there looking like documentation.
+  const knownHookNames = new Set(hooks.map((hook) => hook.name))
+  const orphanNotes = Object.keys(HOOK_NOTES).filter((name) => !knownHookNames.has(name))
+  if (orphanNotes.length) {
+    console.warn(
+      `  ${orphanNotes.length} HOOK_NOTES entries match no extracted hook: ${orphanNotes.join(', ')}`,
+    )
+  }
+
+  ensureDir(generatedRoot)
+  // The sidebar in .vitepress/config.mts reads this instead of repeating the list,
+  // so a taxonomy change only has to be made here.
+  writeFile(join(generatedRoot, 'hook-page-order.json'), `${JSON.stringify(writtenPages, null, 2)}\n`)
+  writeFile(join(generatedRoot, 'hook-notes-coverage.json'), `${JSON.stringify(coverage, null, 2)}\n`)
+
+  return coverage
+}
+
+/**
+ * A related hook usually lives on a different page, so a bare `#anchor` would
+ * 404 — resolve it to the page that actually holds it. Falls back to plain code
+ * formatting when the name is not a hook we emit (a typo, or a hook that only
+ * exists in a version we are not parsing).
+ */
+/**
+ * Prose is rendered as Markdown inside a Vue SFC, so a literal `{{ … }}` in the
+ * text — smart-code placeholders like `{{crm.company}}`, dynamic hook name
+ * fragments — is parsed as an interpolation and crashes the build. Break the
+ * braces with a zero-width space, which renders identically.
+ */
+function sanitizeProse(value) {
+  if (typeof value !== 'string') {
+    return value
+  }
+  return value.replace(/{{/g, '{\u200b{').replace(/}}/g, '}\u200b}')
+}
+
+function renderRelatedHookLink(name, kind, sameCategory) {
+  const target = HOOK_LOCATIONS.get(name)
+  if (!target) {
+    return `\`${name}\``
+  }
+  const anchor = `#${hookAnchor(name)}`
+  if (target.kind === kind && target.category === sameCategory) {
+    return `[\`${name}\`](${anchor})`
+  }
+  const segment = target.kind === 'action' ? 'actions' : 'filters'
+  return `[\`${name}\`](/hooks/${segment}/${target.category}${anchor})`
+}
+
+/** name -> { kind, category }, populated by buildHookDocs() before rendering. */
+const HOOK_LOCATIONS = new Map()
+
+function renderHookSection(group, kind) {
+  const note = HOOK_NOTES[group.name] || {}
+  const summary = sanitizeProse(describeHook(group))
+  const documentedParamList = hookParamsFrom(group)
+  const params = documentedParamList || mergeHookParamNames(group)
+  const since = hookSinceFrom(group)
+  const isDeprecated = group.callSites.some((hook) => hook.deprecated)
+  const deprecatedSite = group.callSites.find((hook) => hook.deprecated)
+
+  const meta = [
+    `- **Type:** ${kind}`,
+    `- **Edition:** ${renderSourceLabel(group.sourceIds, 'also fired by Pro')}`,
+    `- **Call sites:** ${group.callSites.length}`,
+  ]
+  if (since) {
+    meta.push(`- **Since:** ${since}`)
+  }
+  if (summary) {
+    meta.push(`- **When it fires:** ${summary}`)
+  }
+
+  const isScheduled = group.callSites.every((hook) => hook.scheduled)
+  const scheduledNotice = isScheduled
+    ? `
+::: info Scheduled job
+This action is not fired inline. It is registered as a recurring background job
+and runs on a schedule, so the source below is where the job is *scheduled*, not
+where it fires. Hook it with \`add_action()\` as usual.
+:::
+`
+    : ''
+
+  const resolvedFrom = group.callSites.find((hook) => hook.resolvedFrom)
+  const resolvedNotice = resolvedFrom
+    ? `
+::: info Resolved name
+The source assembles this name at runtime from \`${resolvedFrom.resolvedFrom}\`. This
+is the concrete name to hook; the pattern is documented under that placeholder.
+:::
+`
+    : ''
+
+  const deprecationNotice = isDeprecated
+    ? `
+::: warning Deprecated
+This hook is fired through \`${kind === 'action' ? 'do_action_deprecated' : 'apply_filters_deprecated'}()\`${
+        deprecatedSite && deprecatedSite.deprecatedSince
+          ? ` as of ${deprecatedSite.deprecatedSince}`
+          : ''
+      }.${
+        deprecatedSite && deprecatedSite.deprecatedReplacement
+          ? ` Use \`${deprecatedSite.deprecatedReplacement}\` instead.`
+          : ' Avoid it in new code.'
+      }
+:::
+`
+    : ''
+
+  const detailsBlock = note.details ? `\n${sanitizeProse(note.details)}\n` : ''
+
+  const documentedParams =
+    documentedParamList && documentedParamList.length
+      ? `
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+${documentedParamList
   .map(
-    (group) => `
+    (param, index) =>
+      `| ${index + 1} | \`$${param.name}\` | \`${escapeMarkdownCode(param.type || 'mixed')}\` | ${sanitizeProse(param.desc) || '—'} |`,
+  )
+  .join('\n')}
+`
+      : ''
+
+  const returnsBlock =
+    kind === 'filter' && note.returns ? `\n**Return:** ${sanitizeProse(note.returns)}\n` : ''
+
+  const relatedBlock = note.related && note.related.length
+    ? `\n**Related:** ${note.related.map((name) => renderRelatedHookLink(name, kind, group.category)).join(' · ')}\n`
+    : ''
+
+  return `
 <a id="${hookAnchor(group.name)}"></a>
 
 ## \`${group.name}\`
 
-- **Type:** ${kind}
-- **Edition:** ${renderSourceLabel(group.sourceIds)}
-- **Call sites:** ${group.callSites.length}
-- **When it fires:** ${describeHook(group.callSites[0])}
-
+${meta.join('\n')}
+${scheduledNotice}${resolvedNotice}${deprecationNotice}${detailsBlock}${documentedParams}${returnsBlock}
 ### Call Sites
 
 | Edition | Source | Parameters |
@@ -5844,28 +6509,91 @@ ${group.callSites
 ### Example
 
 \`\`\`php
-${buildHookExample(group.callSites[0])}
+${buildHookExample(group)}
 \`\`\`
-`,
-  )
-  .join('\n')}
-`,
-      )
-    }
-  }
+${relatedBlock}`
 }
 
-function describeHook(hook) {
-  const clean = hook.name.replace(/^fluent_community\//, '')
-  return `${humanizeSlug(clean)} hook emitted from the current call site.`
+/**
+ * Pick the call site an example should be built from. The first site after sorting
+ * by path can be a Pro site that passes fewer arguments than Core does, which
+ * produced examples with the wrong arity — take the widest signature instead, and
+ * prefer Core when several sites tie.
+ */
+function pickExampleCallSite(group) {
+  return group.callSites.reduce((best, candidate) => {
+    if (candidate.params.length !== best.params.length) {
+      return candidate.params.length > best.params.length ? candidate : best
+    }
+    if (best.sourceId !== 'core' && candidate.sourceId === 'core') {
+      return candidate
+    }
+    return best
+  }, group.callSites[0])
+}
+
+/**
+ * A hook fired from several places may pass a variable at one site and a string
+ * literal at another; `'by_admin'` cannot be named, so borrow the name that another
+ * call site gives that position.
+ */
+function mergeHookParamNames(group) {
+  const site = pickExampleCallSite(group)
+  return site.params.map((param, index) => {
+    if (/\$[A-Za-z_]/.test(param.name) || /->[A-Za-z_]/.test(param.name)) {
+      return param
+    }
+    const named = group.callSites
+      .map((candidate) => candidate.params[index])
+      .find((candidate) => candidate && /\$[A-Za-z_]/.test(candidate.name))
+    return named ? { ...param, name: named.name } : param
+  })
+}
+
+/**
+ * Prefer a hand-written note, fall back to a source docblock, and print nothing at
+ * all when neither exists — the old fallback rendered the same filler sentence 412
+ * times, which is strictly worse than an absent bullet.
+ */
+function describeHook(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.summary) {
+    return note.summary
+  }
+  const documented = group.callSites.find((hook) => hook.docblock && hook.docblock.summary)
+  return documented ? documented.docblock.summary : null
+}
+
+function hookParamsFrom(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.params) {
+    return note.params
+  }
+  const documented = group.callSites.find(
+    (hook) => hook.docblock && hook.docblock.params && hook.docblock.params.length,
+  )
+  return documented ? documented.docblock.params : null
+}
+
+function hookSinceFrom(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.since) {
+    return note.since
+  }
+  const documented = group.callSites.find((hook) => hook.docblock && hook.docblock.since)
+  return documented ? documented.docblock.since : null
 }
 
 function buildHookExampleArgs(params) {
   const used = new Set()
 
   return params.map((param, index) => {
-    const propertyMatch = param.name.match(/->([A-Za-z_][A-Za-z0-9_]*)/)
-    const variableMatch = param.name.match(/\$([A-Za-z_][A-Za-z0-9_]*)/)
+    // An array literal has no name of its own; naming it after the first value
+    // inside produced signatures like `function ($display_name, $student, ...)`
+    // for a parameter that is the whole row array.
+    const isArrayLiteral = /^\s*(\[|array\s*\()/.test(param.name)
+    const propertyMatch = isArrayLiteral ? null : param.name.match(/->([A-Za-z_][A-Za-z0-9_]*)/)
+    const variableMatch = isArrayLiteral ? null : param.name.match(/\$([A-Za-z_][A-Za-z0-9_]*)/)
     let candidate = propertyMatch ? propertyMatch[1] : variableMatch ? variableMatch[1] : `param${index + 1}`
 
     if (candidate === 'this') {
@@ -5886,13 +6614,23 @@ function buildHookExampleArgs(params) {
   })
 }
 
-function buildHookExample(hook) {
-  const fn = hook.kind === 'action' ? 'add_action' : 'add_filter'
-  const args = buildHookExampleArgs(hook.params)
-  const functionSignature = args.length ? `$${args.join(', $')}` : ''
-  const returnLine = hook.kind === 'filter' ? `\n    return $${args[0] || 'value'};` : ''
+function buildHookExample(group) {
+  const note = HOOK_NOTES[group.name]
+  if (note && note.example) {
+    return note.example
+  }
 
-  return `${fn}('${hook.name}', function (${functionSignature}) {${returnLine}\n}, 10, ${hook.params.length});`
+  const site = pickExampleCallSite(group)
+  const documented = hookParamsFrom(group)
+  const params = documented || mergeHookParamNames(group)
+  const fn = site.kind === 'action' ? 'add_action' : 'add_filter'
+  const args = documented ? documented.map((param) => param.name) : buildHookExampleArgs(params)
+  const signature = args
+    .map((name, index) => `${params[index] && params[index].byRef ? '&' : ''}$${name}`)
+    .join(', ')
+  const returnLine = site.kind === 'filter' ? `\n    return $${args[0] || 'value'};` : ''
+
+  return `${fn}('${group.name}', function (${signature}) {${returnLine}\n}, 10, ${args.length});`
 }
 
 function buildRouteOverviewAndSpecs(routes) {
@@ -5925,9 +6663,45 @@ This reference covers ${routes.length} routes registered in the FluentCommunity 
 
 ## Authentication
 
-- **Admin and settings routes:** typically used with WordPress Application Passwords.
-- **Portal routes:** typically use cookie authentication plus a nonce in browser contexts.
-- **Method override:** the FluentCommunity frontend sends PUT, PATCH, and DELETE requests as POST requests with \`X-HTTP-Method-Override\`.
+Every route runs behind a WordPress REST authentication check and then a
+FluentCommunity policy. Authenticate the request the way you would any WordPress
+REST call:
+
+- **Server to server:** a [WordPress Application Password](https://wordpress.org/documentation/article/application-passwords/) sent as HTTP Basic auth. The interactive examples on these pages use this.
+- **In the browser:** the logged-in cookie plus an \`X-WP-Nonce\` header carrying a \`wp_rest\` nonce. This is what the portal itself uses.
+
+## Authorization
+
+Authentication only establishes *who* you are. Each route group then applies a
+policy, and the policy is what decides whether the call is allowed:
+
+| Policy | Applies to | Requirement |
+| --- | --- | --- |
+| \`PortalPolicy\` | Feeds, comments, reactions, members, notifications, profile, activity, options | An active member profile with portal access. Anything other than \`GET\` also requires a logged-in user. |
+| \`SpacePolicy\` | Spaces | Portal access, plus per-space membership and role checks inside each method. |
+| \`AdminPolicy\` | Admin and settings routes | Community administrator. |
+| \`CourseAdminPolicy\` | Course administration | Course-creator access, and management rights over the course named in the path. |
+| \`ModerationPolicy\` | Moderation reports | Community moderator access; the \`content_moderation\` feature must also be enabled for the listing routes. |
+| \`TopicPolicy\` | Topic management | Space-manage access, with a narrow read-only exception for course creators fetching topic options. |
+| \`InvitationPolicy\` | Invitations | Any logged-in user with portal access; per-space moderator rights are then checked inside each method. |
+
+::: warning Community administrator is not a WordPress administrator
+\`AdminPolicy\` checks FluentCommunity's own \`community_admin\` permission (or a
+super admin), not the WordPress \`manage_options\` capability. A community
+administrator is a role FluentCommunity delegates, and it can be granted to users
+who have no elevated WordPress capabilities at all. Treat these routes as
+privileged, but do not assume the caller is a site administrator.
+:::
+
+A route may also be gated by a feature flag (\`Helper::isFeatureEnabled('…')\`) or
+by the Pro plugin being active. Where that applies it is called out on the
+operation's own page.
+
+## Conventions
+
+- **Method override:** the portal frontend sends \`PUT\`, \`PATCH\` and \`DELETE\` as \`POST\` with an \`X-HTTP-Method-Override\` header. Direct API clients can use the real verbs.
+- **Pagination:** list endpoints return a paginator object (\`data\`, \`total\`, \`per_page\`, \`current_page\`, \`last_page\`) and accept \`page\` and \`per_page\`.
+- **Errors:** most failures return a JSON body with a \`message\` key. Note that several endpoints report a *business* failure as HTTP 200 with only a \`message\` — check the body, not just the status.
 
 ## Modules
 
@@ -5987,12 +6761,12 @@ ${meta.auth}
 
 ## Endpoints
 
-| Method | Path | Edition | Operation | Controller |
+| Method | Path | Edition | Operation | What it does |
 | --- | --- | --- | --- | --- |
 ${moduleRoutes
   .map(
     (route) =>
-      `| \`${route.httpMethod}\` | \`${route.routePath}\` | ${renderSourceLabel([route.sourceId])} | [${route.title}](/restapi/operations/${module}/${route.slug}) | \`${route.controllerClass}@${route.action}\` |`,
+      `| \`${route.httpMethod}\` | \`${route.routePath}\` | ${renderSourceLabel([route.sourceId])} | [${route.title}](/restapi/operations/${module}/${route.slug}) | ${escapeMarkdownCode(route.notes?.summary || route.description)} |`,
   )
   .join('\n')}
 `,
@@ -6008,6 +6782,9 @@ description: "${route.description}"
 outline: false
 aside: false
 ---
+${route.notes && route.notes.summary ? `\n${sanitizeProse(route.notes.summary)}\n` : ''}${
+          route.notes && route.notes.details ? `\n${sanitizeProse(route.notes.details)}\n` : ''
+        }
 ## Endpoint
 
 - **Method:** \`${route.httpMethod}\`
@@ -6016,6 +6793,11 @@ aside: false
 - **Controller:** \`${route.controllerClass}@${route.action}\`
 - **Route source:** \`${route.routeFile}:${route.routeLine}\`
 ${route.controllerFile ? `- **Controller source:** \`${route.controllerFile}\`` : ''}
+${
+  route.notes && route.notes.notes && route.notes.notes.length
+    ? `\n${route.notes.notes.map((item) => `- ${sanitizeProse(item)}`).join('\n')}\n`
+    : ''
+}${renderExampleProvenance(route.exampleOrigin)}
 
 <OAOperation operationId="${route.operationId}" specUrl="/openapi/public/${module}/${route.slug}.json" />
 `,
@@ -6168,14 +6950,59 @@ function main() {
   const hookSummary = summarizeHooks(hooks)
 
   buildModelDocs(models, hooks, routes)
-  buildHookDocs(hooks)
+  const hookCoverage = buildHookDocs(hooks)
   buildRouteOverviewAndSpecs(routes)
+
+  const byOrigin = routes.reduce((carry, route) => {
+    carry[route.exampleOrigin] = (carry[route.exampleOrigin] || 0) + 1
+    return carry
+  }, {})
 
   console.log(
     `Generated docs for ${MODEL_ORDER.length} models, ${
       hookSummary.uniqueActionNames + hookSummary.uniqueFilterNames
     } unique hooks across ${hooks.length} call sites, and ${routes.length} routes.`,
   )
+  console.log(
+    `Response samples: ${byOrigin.captured || 0} recorded live, ${
+      byOrigin.manual || 0
+    } reconstructed from source, ${byOrigin.inferred || 0} inferred from static analysis.`,
+  )
+
+  const describedRoutes = routes.filter((route) => route.notes && route.notes.summary).length
+  console.log(
+    `Endpoint prose: ${describedRoutes}/${routes.length} operations have a hand-written description (${Math.round(
+      (describedRoutes / routes.length) * 100,
+    )}%).${describedRoutes < routes.length ? ' Add entries to OPERATION_NOTES to raise it.' : ''}`,
+  )
+
+  const routeKeys = new Set(routes.flatMap((route) => [`${route.module}/${route.slug}`, route.slug]))
+  const orphanOperationNotes = Object.keys(OPERATION_NOTES).filter((key) => !routeKeys.has(key))
+  if (orphanOperationNotes.length) {
+    console.warn(
+      `  ${orphanOperationNotes.length} OPERATION_NOTES entries match no route: ${orphanOperationNotes.join(', ')}`,
+    )
+  }
+
+  const hookTotals = Object.values(hookCoverage).reduce(
+    (carry, entry) => ({
+      hooks: carry.hooks + entry.hooks,
+      documented: carry.documented + entry.documented,
+    }),
+    { hooks: 0, documented: 0 },
+  )
+  console.log(
+    `Hook prose: ${hookTotals.documented}/${hookTotals.hooks} hooks have a hand-written note (${Math.round(
+      (hookTotals.documented / hookTotals.hooks) * 100,
+    )}%).${hookTotals.documented < hookTotals.hooks ? ' Add entries to HOOK_NOTES to raise it.' : ''}`,
+  )
+
+  const inferred = routes.filter((route) => route.exampleOrigin === 'inferred')
+  if (inferred.length) {
+    console.log(
+      `  Still inferred: ${inferred.map((route) => `${route.module}/${route.slug}`).join(', ')}`,
+    )
+  }
 }
 
 main()

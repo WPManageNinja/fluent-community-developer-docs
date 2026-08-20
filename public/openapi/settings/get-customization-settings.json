@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCustomizationSettings",
         "summary": "GET Get Customization Settings",
-        "description": "Get Customization Settings for the FluentCommunity Settings API.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
+        "description": "Returns the portal appearance settings — dark mode, header and sidebar behaviour, post modal, and the powered-by line.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
         "tags": [
           "Settings"
         ],
@@ -48,43 +48,18 @@
                     "settings": {
                       "type": "object",
                       "properties": {
-                        "dark_mode": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "fixed_page_header": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "show_powered_by": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "feed_link_on_sidebar": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "show_post_modal": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "fixed_sidebar": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "icon_on_header_menu": {
+                        "a11y_enhancement_style": {
                           "type": "string",
                           "nullable": false
                         },
                         "affiliate_id": {
+                          "type": "integer"
+                        },
+                        "collapse_sidebar_groups": {
                           "type": "string",
                           "nullable": false
                         },
-                        "rich_post_layout": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "member_list_layout": {
+                        "dark_mode": {
                           "type": "string",
                           "nullable": false
                         },
@@ -92,7 +67,51 @@
                           "type": "string",
                           "nullable": false
                         },
+                        "default_feed_sort_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "default_theme_mode": {
+                          "type": "string",
+                          "nullable": false
+                        },
                         "disable_feed_layout": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "disable_feed_sort_by": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "enable_sidebar_toggle": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "feed_link_on_sidebar": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "fixed_page_header": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "fixed_sidebar": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "hide_header_on_scroll": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "icon_on_header_menu": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "max_media_per_post": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "member_list_layout": {
                           "type": "string",
                           "nullable": false
                         },
@@ -100,14 +119,15 @@
                           "type": "string",
                           "nullable": false
                         },
-                        "max_media_per_post": {
-                          "type": "integer"
-                        },
-                        "disable_feed_sort_by": {
+                        "rich_post_layout": {
                           "type": "string",
                           "nullable": false
                         },
-                        "default_feed_sort_by": {
+                        "show_post_modal": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "show_powered_by": {
                           "type": "string",
                           "nullable": false
                         }
@@ -119,22 +139,27 @@
                 },
                 "example": {
                   "settings": {
+                    "a11y_enhancement_style": "yes",
+                    "affiliate_id": 69,
+                    "collapse_sidebar_groups": "no",
                     "dark_mode": "yes",
-                    "fixed_page_header": "yes",
-                    "show_powered_by": "yes",
-                    "feed_link_on_sidebar": "yes",
-                    "show_post_modal": "yes",
-                    "fixed_sidebar": "no",
-                    "icon_on_header_menu": "no",
-                    "affiliate_id": "",
-                    "rich_post_layout": "classic",
-                    "member_list_layout": "classic",
                     "default_feed_layout": "timeline",
+                    "default_feed_sort_by": "latest",
+                    "default_theme_mode": "light",
                     "disable_feed_layout": "no",
-                    "post_title_pref": "optional",
-                    "max_media_per_post": 4,
                     "disable_feed_sort_by": "no",
-                    "default_feed_sort_by": ""
+                    "enable_sidebar_toggle": "no",
+                    "feed_link_on_sidebar": "yes",
+                    "fixed_page_header": "yes",
+                    "fixed_sidebar": "no",
+                    "hide_header_on_scroll": "no",
+                    "icon_on_header_menu": "no",
+                    "max_media_per_post": "4",
+                    "member_list_layout": "grid",
+                    "post_title_pref": "required",
+                    "rich_post_layout": "classic",
+                    "show_post_modal": "yes",
+                    "show_powered_by": "yes"
                   }
                 }
               }

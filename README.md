@@ -7,8 +7,8 @@ Developer documentation for [FluentCommunity](https://fluentcommunity.co/) — t
 ## What's inside
 
 - **Database** — Schema overview, Eloquent-style models, relationships, and query builder usage
-- **Hooks** — Action and filter hook references with signatures, parameters, and examples
-- **REST API** — Full endpoint reference with interactive playground (112 routes across 10 groups)
+- **Hooks** — Every action and filter in core and Pro (466 hooks across 616 call sites) with parameters, call sites and examples
+- **REST API** — All 248 endpoints with an interactive playground, real recorded request/response samples, and the permissions each one needs
 - **Helpers** — Utility classes and commonly used helper methods
 - **Guides** — Code snippets, menu customization, theme compatibility, webhooks, cloud storage
 - **Deployment** — Server requirements, performance optimization, and benchmarks
@@ -22,7 +22,14 @@ yarn docs:build    # Production build
 yarn docs:preview  # Preview production build locally
 ```
 
-`docs:dev` and `docs:build` auto-generate database, hook, and REST API references from the FluentCommunity plugin source before starting VitePress.
+`docs:dev` and `docs:build` auto-generate the database, hook and REST API references
+from the FluentCommunity plugin source before starting VitePress. Anything under
+`docs/database/`, `docs/hooks/`, `docs/restapi/`, `docs/modules/` and
+`public/openapi/` is deleted and rewritten on every run — edit
+`scripts/generate-docs.mjs` or the prose files in `data/`, never those pages.
+
+REST samples are recorded from a live install rather than synthesised; see
+[`scripts/capture/README.md`](scripts/capture/README.md).
 
 ## Tech stack
 

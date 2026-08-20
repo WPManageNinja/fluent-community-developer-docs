@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLessonBySlug",
         "summary": "GET Get Lesson By Slug",
-        "description": "Get Lesson By Slug for the FluentCommunity Courses API.\n\nController: `CourseController@getLessonBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:13`",
+        "description": "Returns a single lesson by course and lesson slug, with its access decision resolved and its body parsed only when the caller may read it.\n\nController: `CourseController@getLessonBySlug`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:13`",
         "tags": [
           "Courses"
         ],
@@ -65,14 +65,189 @@
                   "type": "object",
                   "properties": {
                     "lesson": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "can_view": {
+                          "type": "boolean"
+                        },
+                        "comments_count": {
+                          "type": "integer"
+                        },
+                        "content": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "course_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "featured_image": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "inline_css": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "is_locked": {
+                          "type": "boolean"
+                        },
+                        "lock_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "auto_complete_on_video_end": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "document_ids": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "document_lists": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "enable_comments": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enable_media": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enable_passing_score": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "enforce_passing_score": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "free_preview_lesson": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_result": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "is_video_gated": {
+                              "type": "boolean"
+                            },
+                            "media": {
+                              "type": "object",
+                              "properties": {
+                                "provider": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "passing_score": {
+                              "type": "integer"
+                            },
+                            "require_video_completion": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "video_auto_complete": {
+                              "type": "boolean"
+                            },
+                            "video_completion_threshold": {
+                              "type": "integer"
+                            },
+                            "video_length": {
+                              "type": "integer"
+                            },
+                            "video_watched": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "section_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "unlock_date": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "lesson": null
+                  "lesson": {
+                    "can_view": true,
+                    "comments_count": 0,
+                    "content": "Great point — I ran into the same thing last week.",
+                    "content_type": "text",
+                    "course_id": "123",
+                    "created_at": "2026-08-17 22:39:56",
+                    "featured_image": null,
+                    "id": 15073,
+                    "inline_css": "",
+                    "is_locked": false,
+                    "lock_type": "",
+                    "meta": {
+                      "auto_complete_on_video_end": "no",
+                      "document_ids": [],
+                      "document_lists": [],
+                      "enable_comments": "no",
+                      "enable_media": "no",
+                      "enable_passing_score": "no",
+                      "enforce_passing_score": "no",
+                      "free_preview_lesson": "no",
+                      "hide_result": "no",
+                      "is_video_gated": false,
+                      "media": {
+                        "provider": ""
+                      },
+                      "passing_score": 0,
+                      "require_video_completion": "no",
+                      "video_auto_complete": false,
+                      "video_completion_threshold": 80,
+                      "video_length": 0,
+                      "video_watched": false
+                    },
+                    "section_id": "15070",
+                    "slug": "welcome-to-the-course-1787006396",
+                    "title": "Welcome to the course",
+                    "unlock_date": ""
+                  }
                 }
               }
             }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getBuddypressMigrationConfig",
         "summary": "GET Get Buddypress Migration Config",
-        "description": "Get Buddypress Migration Config for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@getMigrationConfig`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:14`",
+        "description": "Returns everything the migration wizard needs before it starts: the BuddyPress groups with their member counts and migrated state, the source data statistics, and any previously saved progress.\n\nController: `BPMigrationController@getMigrationConfig`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:14`",
         "tags": [
           "Migrations"
         ],
@@ -49,7 +49,23 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "members_count": {
+                            "type": "integer"
+                          },
+                          "is_migrated": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "featureConfig": {
@@ -62,12 +78,56 @@
                       "additionalProperties": false
                     },
                     "stats": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "groups": {
+                          "type": "integer"
+                        },
+                        "total_posts": {
+                          "type": "integer"
+                        },
+                        "total_comments": {
+                          "type": "integer"
+                        },
+                        "total_reactions": {
+                          "type": "integer"
+                        },
+                        "total_community_users": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "current_status": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "migrated_groups": {
+                          "type": "object",
+                          "properties": {
+                            "1": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "last_activity_id": {
+                          "type": "integer"
+                        },
+                        "migrated_posts_count": {
+                          "type": "integer"
+                        },
+                        "last_migrated_user_id": {
+                          "type": "integer"
+                        },
+                        "last_migrated_member_id": {
+                          "type": "integer"
+                        },
+                        "current_stage": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "has_previous": {
                       "type": "boolean"
@@ -76,13 +136,41 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "groupItems": [],
+                  "groupItems": [
+                    {
+                      "id": "1",
+                      "name": "Product Feedback",
+                      "members_count": 42,
+                      "is_migrated": true
+                    },
+                    {
+                      "id": "2",
+                      "name": "Beta Testers",
+                      "members_count": 18,
+                      "is_migrated": false
+                    }
+                  ],
                   "featureConfig": {
-                    "has_groups": false
+                    "has_groups": true
                   },
-                  "stats": null,
-                  "current_status": null,
-                  "has_previous": false
+                  "stats": {
+                    "groups": 2,
+                    "total_posts": 184,
+                    "total_comments": 312,
+                    "total_reactions": 0,
+                    "total_community_users": 57
+                  },
+                  "current_status": {
+                    "migrated_groups": {
+                      "1": 14
+                    },
+                    "last_activity_id": 0,
+                    "migrated_posts_count": 0,
+                    "last_migrated_user_id": 0,
+                    "last_migrated_member_id": 0,
+                    "current_stage": "groups"
+                  },
+                  "has_previous": true
                 }
               }
             }

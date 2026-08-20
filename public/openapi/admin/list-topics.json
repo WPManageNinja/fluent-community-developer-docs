@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopics",
         "summary": "GET List Topics",
-        "description": "List Topics for the FluentCommunity Admin API.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
+        "description": "Returns the post topics defined for the community, along with every space they can be attached to.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
         "tags": [
           "Admin"
         ],
@@ -60,8 +60,121 @@
                       "items": {
                         "type": "object",
                         "properties": {
+                          "cover_photo": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "created_by": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "description": {
+                            "type": "string",
+                            "nullable": false
+                          },
                           "id": {
                             "type": "integer"
+                          },
+                          "logo": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "parent_id": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "privacy": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "serial": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "settings": {
+                            "type": "object",
+                            "properties": {
+                              "can_request_join": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "course_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "custom_lock_screen": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "emoji": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "hide_members_count": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "layout_style": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "links": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
+                              },
+                              "members_page_status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "og_image": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "restricted_post_only": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "shape_svg": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "show_sidebar": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "topic_required": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "status": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "type": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "nullable": false
                           }
                         },
                         "additionalProperties": false
@@ -71,7 +184,35 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "admin_only": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "description": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "space_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "title": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
@@ -80,10 +221,149 @@
                 "example": {
                   "all_spaces": [
                     {
-                      "id": 0
+                      "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                      "created_at": "2024-08-19 10:34:58",
+                      "created_by": "1",
+                      "description": "Share what you are building and get feedback from other members.",
+                      "id": 4,
+                      "logo": null,
+                      "parent_id": null,
+                      "privacy": "public",
+                      "serial": "1",
+                      "settings": {
+                        "can_request_join": "no",
+                        "course_type": "self_paced",
+                        "custom_lock_screen": "no",
+                        "emoji": "",
+                        "hide_members_count": "no",
+                        "layout_style": "timeline",
+                        "links": [],
+                        "members_page_status": "members_only",
+                        "og_image": "",
+                        "restricted_post_only": "no",
+                        "shape_svg": "",
+                        "show_sidebar": "yes",
+                        "topic_required": "no"
+                      },
+                      "slug": "test",
+                      "status": "draft",
+                      "title": "Feature request round-up",
+                      "type": "course",
+                      "updated_at": "2024-08-19 10:39:06"
+                    },
+                    {
+                      "cover_photo": null,
+                      "created_at": "2024-09-02 21:03:12",
+                      "created_by": "1",
+                      "description": "Product announcements, release notes, and roadmap discussion.",
+                      "id": 7,
+                      "logo": null,
+                      "parent_id": "6",
+                      "privacy": "public",
+                      "serial": "1",
+                      "settings": {
+                        "can_request_join": "no",
+                        "custom_lock_screen": "no",
+                        "default_post_sort_by": "",
+                        "disable_post_sort_by": "no",
+                        "document_access": "members_only",
+                        "document_library": "no",
+                        "document_upload": "admin_only",
+                        "emoji": "👋",
+                        "hide_members_count": "no",
+                        "layout_style": "timeline",
+                        "links": [],
+                        "members_page_status": "members_only",
+                        "og_image": "",
+                        "onboard_redirect_url": "",
+                        "restricted_post_only": "no",
+                        "shape_svg": "",
+                        "show_sidebar": "yes",
+                        "topic_required": "no"
+                      },
+                      "slug": "say-hello",
+                      "status": "published",
+                      "title": "Welcome to the community",
+                      "type": "community",
+                      "updated_at": "2025-09-02 20:06:38"
+                    },
+                    {
+                      "cover_photo": null,
+                      "created_at": "2026-08-17 22:39:56",
+                      "created_by": "1",
+                      "description": "A place to introduce yourself and meet other members.",
+                      "id": 119,
+                      "logo": null,
+                      "parent_id": "118",
+                      "privacy": "public",
+                      "serial": "1",
+                      "settings": {
+                        "can_request_join": "no",
+                        "custom_lock_screen": "no",
+                        "default_comment_sort_by": "",
+                        "default_post_sort_by": "",
+                        "disable_layout_style": "no",
+                        "disable_post_sort_by": "no",
+                        "document_access": "everybody",
+                        "document_library": "yes",
+                        "document_upload": "admin_only",
+                        "emoji": "",
+                        "hide_members_count": "no",
+                        "layout_style": "timeline",
+                        "links": [],
+                        "media_access": "everybody",
+                        "media_gallery": "yes",
+                        "members_page_status": "members_only",
+                        "og_image": "",
+                        "restricted_post_only": "no",
+                        "shape_svg": "",
+                        "show_paywalls": "no",
+                        "show_sidebar": "no",
+                        "topic_required": "no"
+                      },
+                      "slug": "general-discussion",
+                      "status": "published",
+                      "title": "General Discussion",
+                      "type": "community",
+                      "updated_at": "2026-08-17 22:39:56"
                     }
                   ],
-                  "topics": []
+                  "topics": [
+                    {
+                      "admin_only": "yes",
+                      "description": null,
+                      "id": 1082,
+                      "slug": "announcements",
+                      "space_ids": [
+                        "3",
+                        "13",
+                        "11"
+                      ],
+                      "title": "Share your workflow setup"
+                    },
+                    {
+                      "admin_only": "no",
+                      "description": "",
+                      "id": 1109,
+                      "slug": "bug-report",
+                      "space_ids": [
+                        "3",
+                        "13",
+                        "16"
+                      ],
+                      "title": "Weekly office hours are back"
+                    },
+                    {
+                      "admin_only": "no",
+                      "description": "News and release notes.",
+                      "id": 1135,
+                      "slug": "product-updates",
+                      "space_ids": [
+                        "119"
+                      ],
+                      "title": "Product Updates"
+                    }
+                  ]
                 }
               }
             }

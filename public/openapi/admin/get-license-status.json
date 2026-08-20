@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLicenseStatus",
         "summary": "GET Get License Status",
-        "description": "Get License Status for the FluentCommunity Admin API.\n\nController: `LicenseController@getStatus`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:17`",
+        "description": "Returns the current Pro licence state, including expiry and a renewal URL when the licence has lapsed.\n\nController: `LicenseController@getStatus`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:17`",
         "tags": [
           "Admin"
         ],
@@ -43,13 +43,100 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": true
-                  }
+                  "type": "object",
+                  "properties": {
+                    "activation_hash": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "activation_limit": {
+                      "type": "integer"
+                    },
+                    "activations_count": {
+                      "type": "integer"
+                    },
+                    "customer_email_masked": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "customer_name": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "error_message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "error_type": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "expires": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "is_expired": {
+                      "type": "boolean"
+                    },
+                    "last_checked": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "licensed_at": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "product_title": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "purchase_url": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "renew_url": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "status": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "subscription_status": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "variation_id": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "variation_title": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": []
+                "example": {
+                  "activation_hash": "b239d1dce8d9dd9fac60d9d8770b1dcc",
+                  "activation_limit": 1,
+                  "activations_count": 1,
+                  "customer_email_masked": "ce******l@g****.com",
+                  "customer_name": "Mei alex_rivera",
+                  "error_message": "Invalid License key provided.",
+                  "error_type": "invalid_license",
+                  "expires": "2026-08-17 15:08:14",
+                  "is_expired": false,
+                  "last_checked": "2026-08-17 19:01:06",
+                  "licensed_at": "2026-08-17 15:08:14",
+                  "product_title": "FluentCommunity Pro",
+                  "purchase_url": "https://fluentcommunity.co/",
+                  "renew_url": "",
+                  "status": "invalid",
+                  "subscription_status": "canceled",
+                  "variation_id": "75",
+                  "variation_title": "Single Site Annual License"
+                }
               }
             }
           },

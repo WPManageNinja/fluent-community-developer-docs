@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getIndex",
         "summary": "GET Get Index",
-        "description": "Get Index for the FluentCommunity Media API.\n\nController: `MediaGalleryController@index`\nRoute source: `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`",
+        "description": "Returns a cursor-paginated page of the photos, videos or audio shared in one space, each item carrying the post and author it came from.\n\nController: `MediaGalleryController@index`\nRoute source: `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`",
         "tags": [
           "Media"
         ],
@@ -45,15 +45,31 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "cursor": {
                       "type": "string",
-                      "nullable": false
+                      "nullable": true
+                    },
+                    "has_audio": {
+                      "type": "boolean"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "cursor": null,
+                  "has_audio": false,
+                  "has_more": false,
+                  "items": []
                 }
               }
             }

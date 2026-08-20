@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deactivateLicenseKey",
         "summary": "DELETE Deactivate License Key",
-        "description": "Deactivate License Key for the FluentCommunity Admin API.\n\nController: `LicenseController@deactivateLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:19`",
+        "description": "Releases the Pro licence activation for this site so the key can be used elsewhere.\n\nController: `LicenseController@deactivateLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:19`",
         "tags": [
           "Admin"
         ],
@@ -46,8 +46,18 @@
                   "type": "object",
                   "properties": {
                     "license_data": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "message": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "type": "string",
@@ -57,7 +67,10 @@
                   "additionalProperties": false
                 },
                 "example": {
-                  "license_data": null,
+                  "license_data": {
+                    "status": "deactivated",
+                    "message": "License has been deactivated for this site"
+                  },
                   "message": "Your license key has been successfully deactivated"
                 }
               }

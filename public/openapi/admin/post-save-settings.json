@@ -1,0 +1,214 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/admin/pwa-settings": {
+      "post": {
+        "operationId": "postSaveSettings",
+        "summary": "POST Post Save Settings",
+        "description": "Validates and stores the Progressive Web App settings, marking a custom icon as permanent media and recording its pixel dimensions.\n\nController: `PwaController@saveSettings`\nRoute source: `fluent-community-pro/app/Modules/Pwa/Http/pwa_api.php:9`",
+        "tags": [
+          "Admin"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "app_name": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "background_color": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "custom_icon": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "icon_sizes": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "icon_source": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "install_dismissible": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "install_entry": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "install_position": {
+                        "type": "string",
+                        "nullable": false
+                      },
+                      "short_name": {
+                        "type": "string",
+                        "nullable": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "example": {
+                "settings": {
+                  "app_name": "",
+                  "background_color": "",
+                  "custom_icon": "",
+                  "icon_sizes": "",
+                  "icon_source": "default",
+                  "install_dismissible": "no",
+                  "install_entry": "yes",
+                  "install_position": "bottom",
+                  "short_name": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "app_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "background_color": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "custom_icon": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "icon_sizes": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "icon_source": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "install_dismissible": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "install_entry": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "install_position": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "short_name": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "This is really helpful, thanks for writing it up.",
+                  "settings": {
+                    "app_name": "",
+                    "background_color": "",
+                    "custom_icon": "",
+                    "icon_sizes": "",
+                    "icon_source": "default",
+                    "install_dismissible": "no",
+                    "install_entry": "yes",
+                    "install_position": "bottom",
+                    "short_name": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

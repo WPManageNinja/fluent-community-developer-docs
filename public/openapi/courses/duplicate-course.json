@@ -27,7 +27,7 @@
       "post": {
         "operationId": "duplicateCourse",
         "summary": "POST Duplicate Course",
-        "description": "Duplicate Course for the FluentCommunity Courses API.\n\nController: `CourseAdminController@duplicateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:26`",
+        "description": "Copies a course, its sections, its lessons and their attached documents into a new draft owned by the current user.\n\nController: `CourseAdminController@duplicateCourse`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:26`",
         "tags": [
           "Courses"
         ],
@@ -55,20 +55,202 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "course": {
+                      "type": "object",
+                      "properties": {
+                        "cover_photo": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "created_by": {
+                          "type": "integer"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "logo": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "serial": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "settings": {
+                          "type": "object",
+                          "properties": {
+                            "can_request_join": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_details": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_layout": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "course_type": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "custom_lock_screen": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "disable_comments": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "emoji": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_instructor_view": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "hide_members_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "layout_style": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "links": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "members_page_status": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "og_image": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "public_lesson_view": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "restricted_post_only": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "sequential_lesson_order": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "shape_svg": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_instructor_students_count": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "show_sidebar": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "topic_required": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "course": {
-                      "type": "string",
-                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Course duplicated successfully.",
-                  "course": null
+                  "course": {
+                    "cover_photo": null,
+                    "created_at": "2026-08-17 22:41:09",
+                    "created_by": 1,
+                    "description": "Deeper patterns for teams already using the basics.",
+                    "id": 125,
+                    "logo": null,
+                    "parent_id": null,
+                    "privacy": "public",
+                    "serial": "21",
+                    "settings": {
+                      "can_request_join": "no",
+                      "course_details": "",
+                      "course_layout": "classic",
+                      "course_type": "self_paced",
+                      "custom_lock_screen": "no",
+                      "disable_comments": "no",
+                      "emoji": "",
+                      "hide_instructor_view": "no",
+                      "hide_members_count": "no",
+                      "layout_style": "timeline",
+                      "links": [],
+                      "members_page_status": "members_only",
+                      "og_image": "",
+                      "public_lesson_view": "no",
+                      "restricted_post_only": "no",
+                      "sequential_lesson_order": "no",
+                      "shape_svg": "",
+                      "show_instructor_students_count": "no",
+                      "show_sidebar": "yes",
+                      "topic_required": "no"
+                    },
+                    "slug": "advanced-workflows-1787006469",
+                    "status": "draft",
+                    "title": "Share your workflow setup",
+                    "type": "course",
+                    "updated_at": "2026-08-17 22:41:09"
+                  },
+                  "message": "Following. I would love to see a worked example of this."
                 }
               }
             }

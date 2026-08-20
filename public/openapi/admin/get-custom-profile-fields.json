@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCustomProfileFields",
         "summary": "GET Get Custom Profile Fields",
-        "description": "Get Custom Profile Fields for the FluentCommunity Admin API.\n\nController: `ProAdminController@getCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:24`",
+        "description": "Returns the custom profile field configuration — the field groups, the field definitions and whether the feature is switched on.\n\nController: `ProAdminController@getCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:24`",
         "tags": [
           "Admin"
         ],
@@ -47,14 +47,61 @@
                   "properties": {
                     "config": {
                       "type": "object",
-                      "properties": {},
+                      "properties": {
+                        "fields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "groups": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "edit_description": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "is_system": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "is_enabled": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
                       "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "config": {}
+                  "config": {
+                    "fields": [],
+                    "groups": [
+                      {
+                        "edit_description": "Fill in additional information about yourself.",
+                        "is_system": true,
+                        "label": "Additional Information",
+                        "slug": "_additional_info"
+                      }
+                    ],
+                    "is_enabled": "no"
+                  }
                 }
               }
             }

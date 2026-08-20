@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postHandleMediaUpload",
         "summary": "POST Post Handle Media Upload",
-        "description": "Post Handle Media Upload for the FluentCommunity Media API.\n\nController: `FeedsController@handleMediaUpload`\nRoute source: `fluent-community/app/Http/Routes/api.php:46`",
+        "description": "Uploads an image for use in a post or comment, optionally resizing and converting it to WebP, and returns the media URL and key.\n\nController: `FeedsController@handleMediaUpload`\nRoute source: `fluent-community/app/Http/Routes/api.php:46`",
         "tags": [
           "Media"
         ],
@@ -66,12 +66,10 @@
                 }
               },
               "example": {
-                "disable_convert": "",
-                "resize": "",
-                "max_width": "",
-                "context": "",
-                "skip_convert": "",
-                "file": "(binary)"
+                "file": "<binary>",
+                "resize": true,
+                "max_width": 1400,
+                "context": "feed"
               }
             }
           }
@@ -89,7 +87,7 @@
                       "properties": {
                         "url": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": false
                         },
                         "media_key": {
                           "type": "string",
@@ -113,11 +111,11 @@
                 },
                 "example": {
                   "media": {
-                    "url": null,
-                    "media_key": "",
-                    "type": "",
-                    "width": 0,
-                    "height": 0
+                    "url": "https://yourwebsite.com/wp-content/uploads/fluent-community/fluentcom-a1b2c3d4e5f60718293a4b5c6d7e8f90-fluentcom-team-photo.webp?media_key=4d2f8b6a1c9e7d350a1b2c3d4e5f6071",
+                    "media_key": "4d2f8b6a1c9e7d350a1b2c3d4e5f6071",
+                    "type": "image/webp",
+                    "width": 1400,
+                    "height": 933
                   }
                 }
               }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchCourseInstructors",
         "summary": "GET Search Course Instructors",
-        "description": "Search Course Instructors for the FluentCommunity Courses API.\n\nController: `CourseAdminController@getOtherInstructors`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:41`",
+        "description": "Searches all WordPress users so one can be assigned as the course instructor.\n\nController: `CourseAdminController@getOtherInstructors`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:41`",
         "tags": [
           "Courses"
         ],
@@ -70,10 +70,17 @@
                         "type": "object",
                         "properties": {
                           "ID": {
+                            "type": "integer"
+                          },
+                          "display_name": {
                             "type": "string",
                             "nullable": false
                           },
                           "photo": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "user_email": {
                             "type": "string",
                             "nullable": false
                           }
@@ -87,8 +94,22 @@
                 "example": {
                   "instructors": [
                     {
-                      "ID": "",
-                      "photo": ""
+                      "ID": 1,
+                      "display_name": "Omar Haddad",
+                      "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                      "user_email": "member@example.com"
+                    },
+                    {
+                      "ID": 2,
+                      "display_name": "Ivan Petrov",
+                      "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                      "user_email": "member@example.com"
+                    },
+                    {
+                      "ID": 3,
+                      "display_name": "Ruby Callahan",
+                      "photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/member.png",
+                      "user_email": "member@example.com"
                     }
                   ]
                 }

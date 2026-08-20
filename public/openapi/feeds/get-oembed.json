@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOembed",
         "summary": "GET Get OEmbed",
-        "description": "Get OEmbed for the FluentCommunity Feeds API.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:68`",
+        "description": "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:68`",
         "tags": [
           "Feeds"
         ],
@@ -56,14 +56,57 @@
                   "type": "object",
                   "properties": {
                     "oembed": {
-                      "type": "string",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "author_name": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "html": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "image": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "provider": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "oembed": null
+                  "oembed": {
+                    "author_name": "Hannah Lindqvist",
+                    "content_type": "video",
+                    "html": "<iframe width=\"500\" height=\"281\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?feature=oembed\" frameborder=\"0\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Grace Astley - Never Gonna Give You Up (Official Video) (4K Remaster)\"></iframe>",
+                    "image": "https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/maxresdefault.webp",
+                    "provider": "youtube",
+                    "title": "Community guidelines refresh",
+                    "type": "oembed",
+                    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  }
                 }
               }
             }

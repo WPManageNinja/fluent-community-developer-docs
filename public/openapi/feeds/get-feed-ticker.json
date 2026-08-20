@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeedTicker",
         "summary": "GET Get Feed Ticker",
-        "description": "Get Feed Ticker for the FluentCommunity Feeds API.\n\nController: `FeedsController@getTicker`\nRoute source: `fluent-community/app/Http/Routes/api.php:64`",
+        "description": "Returns posts created or updated since a given moment, each with its full payload, plus the unread notification count — the polling endpoint that keeps an open feed fresh.\n\nController: `FeedsController@getTicker`\nRoute source: `fluent-community/app/Http/Routes/api.php:64`",
         "tags": [
           "Feeds"
         ],
@@ -55,27 +55,424 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "timestamp": {
-                      "type": "string",
-                      "nullable": false
-                    },
-                    "has_changes": {
-                      "type": "boolean"
+                    "execution_time": {
+                      "type": "number"
                     },
                     "feeds": {
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "action": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "context": {
+                            "type": "string",
+                            "nullable": false
+                          },
+                          "feed_data": {
+                            "type": "object",
+                            "properties": {
+                              "comments": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
+                              },
+                              "comments_count": {
+                                "type": "integer"
+                              },
+                              "content_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "default_comment_sort_by": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "expired_at": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "featured_image": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "is_sticky": {
+                                "type": "integer"
+                              },
+                              "message": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "message_rendered": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "meta": {
+                                "type": "object",
+                                "properties": {
+                                  "survey_config": {
+                                    "type": "object",
+                                    "properties": {
+                                      "end_date": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "options": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "label": {
+                                              "type": "string",
+                                              "nullable": false
+                                            },
+                                            "slug": {
+                                              "type": "string",
+                                              "nullable": false
+                                            }
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "parent_id": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "permalink": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "priority": {
+                                "type": "integer"
+                              },
+                              "privacy": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "reactions": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
+                              },
+                              "reactions_count": {
+                                "type": "integer"
+                              },
+                              "scheduled_at": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "slug": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "space": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "settings": {
+                                    "type": "object",
+                                    "properties": {
+                                      "can_request_join": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "custom_lock_screen": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "default_comment_sort_by": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "default_post_sort_by": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "disable_layout_style": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "disable_post_sort_by": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_access": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_library": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "document_upload": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "emoji": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "hide_members_count": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "layout_style": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "links": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "additionalProperties": true
+                                        }
+                                      },
+                                      "media_access": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "media_gallery": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "members_page_status": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "og_image": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "restricted_post_only": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "shape_svg": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "show_paywalls": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "show_sidebar": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "topic_required": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "slug": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "title": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "space_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "status": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "terms": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": true
+                                }
+                              },
+                              "title": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "user_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "xprofile": {
+                                "type": "object",
+                                "properties": {
+                                  "avatar": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "badge": {
+                                    "type": "string",
+                                    "nullable": true
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "display_name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "is_verified": {
+                                    "type": "integer"
+                                  },
+                                  "last_activity": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "meta": {
+                                    "type": "object",
+                                    "properties": {
+                                      "badge_slug": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "cover_photo": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "social_links": {
+                                        "type": "object",
+                                        "properties": {
+                                          "fb": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "instagram": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "linkedin": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "twitter": {
+                                            "type": "string",
+                                            "nullable": false
+                                          },
+                                          "youtube": {
+                                            "type": "string",
+                                            "nullable": false
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  },
+                                  "permalink": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "short_description": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "total_points": {
+                                    "type": "integer"
+                                  },
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "username": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "updated_at": {
+                            "type": "object",
+                            "properties": {
+                              "date": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "timezone": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "timezone_type": {
+                                "type": "integer"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": false
+                          }
+                        },
+                        "additionalProperties": false
                       }
+                    },
+                    "has_changes": {
+                      "type": "boolean"
                     },
                     "notifications": {
                       "type": "object",
                       "properties": {
-                        "unread_count": {
+                        "new_count": {
                           "type": "integer"
                         },
-                        "new_count": {
+                        "unread_count": {
                           "type": "integer"
                         }
                       },
@@ -88,22 +485,462 @@
                         "additionalProperties": true
                       }
                     },
-                    "execution_time": {
-                      "type": "number"
+                    "timestamp": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "timestamp": "2026-01-01 00:00:00",
-                  "has_changes": false,
-                  "feeds": [],
+                  "execution_time": 0.026,
+                  "feeds": [
+                    {
+                      "action": "created",
+                      "context": "space-general-discussion",
+                      "feed_data": {
+                        "comments": [],
+                        "comments_count": 0,
+                        "content_type": "survey",
+                        "created_at": "2026-08-17 22:39:56",
+                        "default_comment_sort_by": "",
+                        "expired_at": null,
+                        "featured_image": null,
+                        "id": 15068,
+                        "is_sticky": 0,
+                        "message": "Which feature should we build next?",
+                        "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                        "meta": {
+                          "survey_config": {
+                            "end_date": "",
+                            "options": [
+                              {
+                                "label": "Better search",
+                                "slug": "better-search"
+                              },
+                              {
+                                "label": "Dark mode",
+                                "slug": "dark-mode"
+                              },
+                              {
+                                "label": "Mobile app",
+                                "slug": "mobile-app"
+                              }
+                            ],
+                            "type": "single_choice"
+                          }
+                        },
+                        "parent_id": null,
+                        "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/feature-poll",
+                        "priority": 0,
+                        "privacy": "public",
+                        "reactions": [],
+                        "reactions_count": 0,
+                        "scheduled_at": null,
+                        "slug": "feature-poll",
+                        "space": {
+                          "id": 119,
+                          "settings": {
+                            "can_request_join": "no",
+                            "custom_lock_screen": "no",
+                            "default_comment_sort_by": "",
+                            "default_post_sort_by": "",
+                            "disable_layout_style": "no",
+                            "disable_post_sort_by": "no",
+                            "document_access": "everybody",
+                            "document_library": "yes",
+                            "document_upload": "admin_only",
+                            "emoji": "",
+                            "hide_members_count": "no",
+                            "layout_style": "timeline",
+                            "links": [],
+                            "media_access": "everybody",
+                            "media_gallery": "yes",
+                            "members_page_status": "members_only",
+                            "og_image": "",
+                            "restricted_post_only": "no",
+                            "shape_svg": "",
+                            "show_paywalls": "no",
+                            "show_sidebar": "no",
+                            "topic_required": "no"
+                          },
+                          "slug": "general-discussion",
+                          "title": "General Discussion",
+                          "type": "community"
+                        },
+                        "space_id": "119",
+                        "status": "published",
+                        "terms": [],
+                        "title": "Feature poll",
+                        "type": "text",
+                        "updated_at": "2026-08-17 22:39:56",
+                        "user_id": "1",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "is_verified": 1,
+                          "last_activity": "2026-08-17 22:35:43",
+                          "meta": {
+                            "badge_slug": "admin",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "status": "active",
+                          "total_points": 20385,
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        }
+                      },
+                      "id": 15068,
+                      "updated_at": {
+                        "date": "2026-08-17 22:39:56.000000",
+                        "timezone": "+00:00",
+                        "timezone_type": 1
+                      },
+                      "user_id": "1"
+                    },
+                    {
+                      "action": "created",
+                      "context": "space-general-discussion",
+                      "feed_data": {
+                        "comments": [],
+                        "comments_count": 0,
+                        "content_type": "text",
+                        "created_at": "2026-08-17 22:39:56",
+                        "default_comment_sort_by": "",
+                        "expired_at": null,
+                        "featured_image": null,
+                        "id": 15066,
+                        "is_sticky": 0,
+                        "message": "Following. I would love to see a worked example of this.",
+                        "message_rendered": "<p>Just tried it and it works exactly as described.</p>",
+                        "meta": {
+                          "preview_data": null
+                        },
+                        "parent_id": null,
+                        "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/scratch-post",
+                        "priority": 0,
+                        "privacy": "public",
+                        "reactions": [],
+                        "reactions_count": 0,
+                        "scheduled_at": null,
+                        "slug": "scratch-post",
+                        "space": {
+                          "id": 119,
+                          "settings": {
+                            "can_request_join": "no",
+                            "custom_lock_screen": "no",
+                            "default_comment_sort_by": "",
+                            "default_post_sort_by": "",
+                            "disable_layout_style": "no",
+                            "disable_post_sort_by": "no",
+                            "document_access": "everybody",
+                            "document_library": "yes",
+                            "document_upload": "admin_only",
+                            "emoji": "",
+                            "hide_members_count": "no",
+                            "layout_style": "timeline",
+                            "links": [],
+                            "media_access": "everybody",
+                            "media_gallery": "yes",
+                            "members_page_status": "members_only",
+                            "og_image": "",
+                            "restricted_post_only": "no",
+                            "shape_svg": "",
+                            "show_paywalls": "no",
+                            "show_sidebar": "no",
+                            "topic_required": "no"
+                          },
+                          "slug": "general-discussion",
+                          "title": "General Discussion",
+                          "type": "community"
+                        },
+                        "space_id": "119",
+                        "status": "published",
+                        "terms": [],
+                        "title": "Roadmap update",
+                        "type": "text",
+                        "updated_at": "2026-08-17 22:39:56",
+                        "user_id": "1",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "is_verified": 1,
+                          "last_activity": "2026-08-17 22:35:43",
+                          "meta": {
+                            "badge_slug": "admin",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "status": "active",
+                          "total_points": 20385,
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        }
+                      },
+                      "id": 15066,
+                      "updated_at": {
+                        "date": "2026-08-17 22:39:56.000000",
+                        "timezone": "+00:00",
+                        "timezone_type": 1
+                      },
+                      "user_id": "1"
+                    },
+                    {
+                      "action": "created",
+                      "context": "space-general-discussion",
+                      "feed_data": {
+                        "comments": [
+                          {
+                            "content_type": "text",
+                            "created_at": "2026-08-17 22:39:56",
+                            "id": 59805,
+                            "is_sticky": 0,
+                            "message": "This is really helpful, thanks for writing it up.",
+                            "message_rendered": "<p>Following. I would love to see a worked example of this.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "15065",
+                            "reactions_count": "0",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2026-08-17 22:39:56",
+                            "user_id": "1",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                              "badge": null,
+                              "created_at": "2024-03-05 16:37:02",
+                              "display_name": "Alex Rivera",
+                              "is_verified": 1,
+                              "last_activity": "2026-08-17 22:35:43",
+                              "meta": {
+                                "badge_slug": "admin",
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "social_links": {
+                                  "fb": "alexrivera",
+                                  "instagram": "alexrivera",
+                                  "linkedin": "alexrivera",
+                                  "twitter": "alexrivera",
+                                  "youtube": "alexrivera"
+                                },
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                              "short_description": "Community builder. Helping members get the most out of the platform.",
+                              "status": "active",
+                              "total_points": 20385,
+                              "user_id": 1,
+                              "username": "alex_rivera"
+                            }
+                          },
+                          {
+                            "content_type": "text",
+                            "created_at": "2026-08-17 22:39:56",
+                            "id": 59806,
+                            "is_sticky": 0,
+                            "message": "Just tried it and it works exactly as described.",
+                            "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "15065",
+                            "reactions_count": "0",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2026-08-17 22:39:56",
+                            "user_id": "1",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                              "badge": null,
+                              "created_at": "2024-03-05 16:37:02",
+                              "display_name": "Alex Rivera",
+                              "is_verified": 1,
+                              "last_activity": "2026-08-17 22:35:43",
+                              "meta": {
+                                "badge_slug": "admin",
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "social_links": {
+                                  "fb": "alexrivera",
+                                  "instagram": "alexrivera",
+                                  "linkedin": "alexrivera",
+                                  "twitter": "alexrivera",
+                                  "youtube": "alexrivera"
+                                },
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                              "short_description": "Community builder. Helping members get the most out of the platform.",
+                              "status": "active",
+                              "total_points": 20385,
+                              "user_id": 1,
+                              "username": "alex_rivera"
+                            }
+                          },
+                          {
+                            "content_type": "text",
+                            "created_at": "2026-08-17 22:39:56",
+                            "id": 59807,
+                            "is_sticky": 0,
+                            "message": "Great point — I ran into the same thing last week.",
+                            "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                            "meta": [],
+                            "parent_id": null,
+                            "post_id": "15065",
+                            "reactions_count": "0",
+                            "status": "published",
+                            "type": "comment",
+                            "updated_at": "2026-08-17 22:39:56",
+                            "user_id": "1",
+                            "xprofile": {
+                              "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                              "badge": null,
+                              "created_at": "2024-03-05 16:37:02",
+                              "display_name": "Alex Rivera",
+                              "is_verified": 1,
+                              "last_activity": "2026-08-17 22:35:43",
+                              "meta": {
+                                "badge_slug": "admin",
+                                "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                                "social_links": {
+                                  "fb": "alexrivera",
+                                  "instagram": "alexrivera",
+                                  "linkedin": "alexrivera",
+                                  "twitter": "alexrivera",
+                                  "youtube": "alexrivera"
+                                },
+                                "website": "https://example.com"
+                              },
+                              "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                              "short_description": "Community builder. Helping members get the most out of the platform.",
+                              "status": "active",
+                              "total_points": 20385,
+                              "user_id": 1,
+                              "username": "alex_rivera"
+                            }
+                          }
+                        ],
+                        "comments_count": 3,
+                        "content_type": "text",
+                        "created_at": "2026-08-17 22:39:56",
+                        "default_comment_sort_by": "",
+                        "expired_at": null,
+                        "featured_image": null,
+                        "id": 15065,
+                        "is_sticky": 0,
+                        "message": "This is really helpful, thanks for writing it up.",
+                        "message_rendered": "<p>This is really helpful, thanks for writing it up.</p>",
+                        "meta": {
+                          "preview_data": null
+                        },
+                        "parent_id": null,
+                        "permalink": "https://yourwebsite.com/portal/space/general-discussion/post/welcome-to-the-community",
+                        "priority": 0,
+                        "privacy": "public",
+                        "reactions": [],
+                        "reactions_count": 0,
+                        "scheduled_at": null,
+                        "slug": "welcome-to-the-community",
+                        "space": {
+                          "id": 119,
+                          "settings": {
+                            "can_request_join": "no",
+                            "custom_lock_screen": "no",
+                            "default_comment_sort_by": "",
+                            "default_post_sort_by": "",
+                            "disable_layout_style": "no",
+                            "disable_post_sort_by": "no",
+                            "document_access": "everybody",
+                            "document_library": "yes",
+                            "document_upload": "admin_only",
+                            "emoji": "",
+                            "hide_members_count": "no",
+                            "layout_style": "timeline",
+                            "links": [],
+                            "media_access": "everybody",
+                            "media_gallery": "yes",
+                            "members_page_status": "members_only",
+                            "og_image": "",
+                            "restricted_post_only": "no",
+                            "shape_svg": "",
+                            "show_paywalls": "no",
+                            "show_sidebar": "no",
+                            "topic_required": "no"
+                          },
+                          "slug": "general-discussion",
+                          "title": "General Discussion",
+                          "type": "community"
+                        },
+                        "space_id": "119",
+                        "status": "published",
+                        "terms": [],
+                        "title": "Welcome to the community",
+                        "type": "text",
+                        "updated_at": "2026-08-17 22:39:56",
+                        "user_id": "1",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/alex_rivera.png",
+                          "badge": null,
+                          "created_at": "2024-03-05 16:37:02",
+                          "display_name": "Alex Rivera",
+                          "is_verified": 1,
+                          "last_activity": "2026-08-17 22:35:43",
+                          "meta": {
+                            "badge_slug": "admin",
+                            "cover_photo": "https://yourwebsite.com/wp-content/uploads/fluent-community/covers/cover.jpg",
+                            "social_links": {
+                              "fb": "alexrivera",
+                              "instagram": "alexrivera",
+                              "linkedin": "alexrivera",
+                              "twitter": "alexrivera",
+                              "youtube": "alexrivera"
+                            },
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/alex_rivera",
+                          "short_description": "Community builder. Helping members get the most out of the platform.",
+                          "status": "active",
+                          "total_points": 20385,
+                          "user_id": 1,
+                          "username": "alex_rivera"
+                        }
+                      },
+                      "id": 15065,
+                      "updated_at": {
+                        "date": "2026-08-17 22:39:56.000000",
+                        "timezone": "+00:00",
+                        "timezone_type": 1
+                      },
+                      "user_id": "1"
+                    }
+                  ],
+                  "has_changes": true,
                   "notifications": {
-                    "unread_count": 0,
-                    "new_count": 0
+                    "new_count": 0,
+                    "unread_count": 376
                   },
                   "spaces": [],
-                  "execution_time": 0.123
+                  "timestamp": "2026-08-17 22:39:57"
                 }
               }
             }

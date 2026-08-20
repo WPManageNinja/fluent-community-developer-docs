@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveFluentPlayerSettings",
         "summary": "POST Save Fluent Player Settings",
-        "description": "Save Fluent Player Settings for the FluentCommunity Settings API.\n\nController: `SettingController@updateFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:168`",
+        "description": "Stores the FluentPlayer integration settings and returns the normalised result.\n\nController: `SettingController@updateFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:168`",
         "tags": [
           "Settings"
         ],
@@ -50,7 +50,39 @@
                 }
               },
               "example": {
-                "settings": {}
+                "settings": {
+                  "behaviors": {
+                    "hide_bottom_controls": false,
+                    "hide_center_controls": false,
+                    "hide_top_controls": false,
+                    "load_strategy": "visible",
+                    "muted_autoplay": false,
+                    "save_play_position": false
+                  },
+                  "brandColor": "#FF2B2B",
+                  "controlBarColor": "",
+                  "controls": {
+                    "backward": true,
+                    "captions_toggle": true,
+                    "current_time": true,
+                    "forward": true,
+                    "fullscreen": true,
+                    "pip": true,
+                    "play": true,
+                    "playback_speed": true,
+                    "progress_bar": true,
+                    "settings": true,
+                    "volume": true
+                  },
+                  "enable_audio": "no",
+                  "enable_fluent_player": "yes",
+                  "playButtonBgColor": "",
+                  "playButtonColor": "",
+                  "play_embedded_videos": "yes",
+                  "skin": "classic",
+                  "video_upload": "no",
+                  "video_upload_role": "admin_moderator"
+                }
               }
             }
           }
@@ -68,15 +100,153 @@
                       "nullable": false
                     },
                     "settings": {
-                      "type": "string",
-                      "nullable": false
+                      "type": "object",
+                      "properties": {
+                        "behaviors": {
+                          "type": "object",
+                          "properties": {
+                            "hide_bottom_controls": {
+                              "type": "boolean"
+                            },
+                            "hide_center_controls": {
+                              "type": "boolean"
+                            },
+                            "hide_top_controls": {
+                              "type": "boolean"
+                            },
+                            "load_strategy": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "muted_autoplay": {
+                              "type": "boolean"
+                            },
+                            "save_play_position": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "brandColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "controlBarColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "controls": {
+                          "type": "object",
+                          "properties": {
+                            "backward": {
+                              "type": "boolean"
+                            },
+                            "captions_toggle": {
+                              "type": "boolean"
+                            },
+                            "current_time": {
+                              "type": "boolean"
+                            },
+                            "forward": {
+                              "type": "boolean"
+                            },
+                            "fullscreen": {
+                              "type": "boolean"
+                            },
+                            "pip": {
+                              "type": "boolean"
+                            },
+                            "play": {
+                              "type": "boolean"
+                            },
+                            "playback_speed": {
+                              "type": "boolean"
+                            },
+                            "progress_bar": {
+                              "type": "boolean"
+                            },
+                            "settings": {
+                              "type": "boolean"
+                            },
+                            "volume": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "enable_audio": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "enable_fluent_player": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "playButtonBgColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "playButtonColor": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "play_embedded_videos": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "skin": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "video_upload": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "video_upload_role": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "FluentPlayer settings have been saved successfully.",
-                  "settings": "2026-01-01 00:00:00"
+                  "message": "Following. I would love to see a worked example of this.",
+                  "settings": {
+                    "behaviors": {
+                      "hide_bottom_controls": false,
+                      "hide_center_controls": false,
+                      "hide_top_controls": false,
+                      "load_strategy": "visible",
+                      "muted_autoplay": false,
+                      "save_play_position": false
+                    },
+                    "brandColor": "#FF2B2B",
+                    "controlBarColor": "",
+                    "controls": {
+                      "backward": true,
+                      "captions_toggle": true,
+                      "current_time": true,
+                      "forward": true,
+                      "fullscreen": true,
+                      "pip": true,
+                      "play": true,
+                      "playback_speed": true,
+                      "progress_bar": true,
+                      "settings": true,
+                      "volume": true
+                    },
+                    "enable_audio": "no",
+                    "enable_fluent_player": "yes",
+                    "playButtonBgColor": "",
+                    "playButtonColor": "",
+                    "play_embedded_videos": "yes",
+                    "skin": "classic",
+                    "video_upload": "no",
+                    "video_upload_role": "admin_moderator"
+                  }
                 }
               }
             }

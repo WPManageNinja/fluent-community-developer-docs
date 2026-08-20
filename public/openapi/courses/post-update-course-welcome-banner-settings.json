@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdateCourseWelcomeBannerSettings",
         "summary": "POST Post Update Course Welcome Banner Settings",
-        "description": "Post Update Course Welcome Banner Settings for the FluentCommunity Courses API.\n\nController: `ProAdminController@updateCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:65`",
+        "description": "Stores both course welcome banner variants and pre-renders their Markdown descriptions to HTML.\n\nController: `ProAdminController@updateCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:65`",
         "tags": [
           "Courses"
         ],
@@ -85,12 +85,9 @@
               },
               "example": {
                 "settings": {
-                  "$view ": {
-                    " '": {
-                      "description'": ""
-                    }
-                  },
-                  "$type": []
+                  "description": "Start with the first lesson.",
+                  "enabled": "yes",
+                  "title": "Welcome to the course"
                 }
               }
             }
@@ -109,16 +106,18 @@
                       "nullable": false
                     },
                     "settings": {
-                      "type": "object",
-                      "properties": {},
-                      "additionalProperties": false
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Welcome banner settings have been updated successfully.",
-                  "settings": {}
+                  "message": "Just tried it and it works exactly as described.",
+                  "settings": []
                 }
               }
             }

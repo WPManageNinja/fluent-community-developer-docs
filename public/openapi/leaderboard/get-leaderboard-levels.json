@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLeaderboardLevels",
         "summary": "GET Get Leaderboard Levels",
-        "description": "Get Leaderboard Levels for the FluentCommunity Leaderboard API.\n\nController: `LeaderBoardController@getLevels`\nRoute source: `fluent-community-pro/app/Modules/LeaderBoard/Http/leaderboard_api.php:12`",
+        "description": "Returns the leaderboard level definitions with their point thresholds, plus the members excluded from ranking.\n\nController: `LeaderBoardController@getLevels`\nRoute source: `fluent-community-pro/app/Modules/LeaderBoard/Http/leaderboard_api.php:12`",
         "tags": [
           "Leaderboard"
         ],
@@ -45,15 +45,109 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "excludedUserIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "excludedUsers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "levels": {
+                      "type": "object",
+                      "properties": {
+                        "__truncated__": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "level_1": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "level_2": {
+                          "type": "object",
+                          "properties": {
+                            "level": {
+                              "type": "integer"
+                            },
+                            "max_points": {
+                              "type": "integer"
+                            },
+                            "min_points": {
+                              "type": "integer"
+                            },
+                            "slug": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "tagline": {
+                              "type": "string",
+                              "nullable": false
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "excludedUserIds": [],
+                  "excludedUsers": [],
+                  "levels": {
+                    "__truncated__": "7 further keys omitted from this sample",
+                    "level_1": {
+                      "level": 1,
+                      "max_points": 4,
+                      "min_points": 0,
+                      "slug": "level_1",
+                      "tagline": "Taking the first steps into our vibrant world",
+                      "title": "Three things I learned this month"
+                    },
+                    "level_2": {
+                      "level": 2,
+                      "max_points": 19,
+                      "min_points": 5,
+                      "slug": "level_2",
+                      "tagline": "Uncovering the secrets of community mastery",
+                      "title": "Three things I learned this month"
+                    }
+                  }
                 }
               }
             }

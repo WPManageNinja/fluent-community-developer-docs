@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLessonQuizResult",
         "summary": "GET Get Lesson Quiz Result",
-        "description": "Get Lesson Quiz Result for the FluentCommunity Courses API.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:9`",
+        "description": "Returns the current user stored result for one quiz lesson, or null if they have not attempted it.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:9`",
         "tags": [
           "Courses"
         ],
@@ -45,15 +45,130 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "content_type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "object",
+                          "properties": {
+                            "q1": {
+                              "type": "object",
+                              "properties": {
+                                "is_correct": {
+                                  "type": "boolean"
+                                },
+                                "user_answer": {
+                                  "type": "string",
+                                  "nullable": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "q2": {
+                              "type": "object",
+                              "properties": {
+                                "is_correct": {
+                                  "type": "boolean"
+                                },
+                                "user_answer": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "attempts": {
+                              "type": "integer"
+                            },
+                            "correct_answers": {
+                              "type": "integer"
+                            },
+                            "total_questions": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "parent_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "post_id": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "score": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "status": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "result": {
+                    "content_type": "quiz",
+                    "id": 59809,
+                    "message": {
+                      "q1": {
+                        "is_correct": true,
+                        "user_answer": "POST"
+                      },
+                      "q2": {
+                        "is_correct": true,
+                        "user_answer": [
+                          "public",
+                          "private"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "attempts": 1,
+                      "correct_answers": 2,
+                      "total_questions": 2
+                    },
+                    "parent_id": "123",
+                    "post_id": "15083",
+                    "score": "100",
+                    "status": "passed",
+                    "type": "quiz",
+                    "updated_at": "2026-08-17 22:41:09",
+                    "user_id": "13098"
+                  }
                 }
               }
             }

@@ -76,32 +76,44 @@ const databaseSidebar = [
   },
 ]
 
-const actionHookPages = [
-  { text: 'Feeds', link: '/hooks/actions/feeds' },
-  { text: 'Spaces', link: '/hooks/actions/spaces' },
-  { text: 'Members', link: '/hooks/actions/members' },
-  { text: 'Comments', link: '/hooks/actions/comments' },
-  { text: 'Notifications', link: '/hooks/actions/notifications' },
-  { text: 'Reactions', link: '/hooks/actions/reactions' },
-  { text: 'Auth', link: '/hooks/actions/auth' },
-  { text: 'Admin', link: '/hooks/actions/admin' },
-  { text: 'Media', link: '/hooks/actions/media' },
-  { text: 'Courses', link: '/hooks/actions/courses' },
-  { text: 'Miscellaneous', link: '/hooks/actions/miscellaneous' },
-]
+// Which hook pages exist, and in what order, is decided by the generator — it only
+// writes a page when hooks actually land on it. Reading its manifest keeps the
+// sidebar from listing pages that no longer exist (or missing ones that appeared).
+const hookPageOrderPath = join(generatedDir, 'hook-page-order.json')
 
-const filterHookPages = [
-  { text: 'Feeds', link: '/hooks/filters/feeds' },
-  { text: 'Spaces', link: '/hooks/filters/spaces' },
-  { text: 'Members', link: '/hooks/filters/members' },
-  { text: 'Notifications', link: '/hooks/filters/notifications' },
-  { text: 'Settings', link: '/hooks/filters/settings' },
-  { text: 'Permissions', link: '/hooks/filters/permissions' },
-  { text: 'Auth', link: '/hooks/filters/auth' },
-  { text: 'Media', link: '/hooks/filters/media' },
-  { text: 'Courses', link: '/hooks/filters/courses' },
-  { text: 'Miscellaneous', link: '/hooks/filters/miscellaneous' },
-]
+const HOOK_PAGE_ORDER: Record<string, string[]> = existsSync(hookPageOrderPath)
+  ? JSON.parse(readFileSync(hookPageOrderPath, 'utf8'))
+  : { action: [], filter: [] }
+
+const HOOK_PAGE_LABELS: Record<string, string> = {
+  feeds: 'Feeds',
+  comments: 'Comments',
+  reactions: 'Reactions',
+  spaces: 'Spaces',
+  members: 'Members',
+  courses: 'Courses',
+  notifications: 'Notifications',
+  media: 'Media',
+  auth: 'Auth',
+  permissions: 'Permissions',
+  moderation: 'Moderation',
+  integrations: 'Integrations',
+  rendering: 'Rendering & Theming',
+  settings: 'Settings',
+  admin: 'Admin',
+  miscellaneous: 'Miscellaneous',
+}
+
+function hookPagesFor(kind: 'action' | 'filter') {
+  const segment = kind === 'action' ? 'actions' : 'filters'
+  return (HOOK_PAGE_ORDER[kind] || []).map((page) => ({
+    text: HOOK_PAGE_LABELS[page] || page,
+    link: `/hooks/${segment}/${page}`,
+  }))
+}
+
+const actionHookPages = hookPagesFor('action')
+const filterHookPages = hookPagesFor('filter')
 
 const helperPages = [
   { text: 'Overview', link: '/helpers/' },

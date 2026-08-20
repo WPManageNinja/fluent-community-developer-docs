@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getBuddypressMigrationStatus",
         "summary": "GET Get Buddypress Migration Status",
-        "description": "Get Buddypress Migration Status for the FluentCommunity Migrations API.\n\nController: `BPMigrationController@getPollingStatus`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:16`",
+        "description": "Advances the migration by one time-boxed batch and returns the updated progress record — this endpoint does the work, it does not merely report on it.\n\nController: `BPMigrationController@getPollingStatus`\nRoute source: `fluent-community/Modules/Migrations/Http/migration_api.php:16`",
         "tags": [
           "Migrations"
         ],
@@ -43,10 +43,52 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": true
+                  "type": "object",
+                  "properties": {
+                    "migrated_groups": {
+                      "type": "object",
+                      "properties": {
+                        "1": {
+                          "type": "integer"
+                        },
+                        "2": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "last_activity_id": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "last_migrated_member_id": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "migrated_posts_count": {
+                      "type": "integer"
+                    },
+                    "last_migrated_user_id": {
+                      "type": "integer"
+                    },
+                    "current_stage": {
+                      "type": "string",
+                      "nullable": false
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": null
+                "example": {
+                  "migrated_groups": {
+                    "1": 14,
+                    "2": 15
+                  },
+                  "last_activity_id": "496",
+                  "last_migrated_member_id": "60",
+                  "migrated_posts_count": 0,
+                  "last_migrated_user_id": 0,
+                  "current_stage": "users"
+                }
               }
             }
           },

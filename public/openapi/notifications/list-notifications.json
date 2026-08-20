@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listNotifications",
         "summary": "GET List Notifications",
-        "description": "List Notifications for the FluentCommunity Notifications API.\n\nController: `NotificationsController@getNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:131`",
+        "description": "Returns the paginated notification history for the current user, newest activity first, with the unread total alongside it.\n\nController: `NotificationsController@getNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:131`",
         "tags": [
           "Notifications"
         ],
@@ -63,9 +63,354 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "integer"
+                  "type": "object",
+                  "properties": {
+                    "notifications": {
+                      "type": "object",
+                      "properties": {
+                        "current_page": {
+                          "type": "integer"
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "action": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "content": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "feed_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "object_id": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "route": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "params": {
+                                    "type": "object",
+                                    "properties": {
+                                      "feed_slug": {
+                                        "type": "string",
+                                        "nullable": false
+                                      },
+                                      "space": {
+                                        "type": "string",
+                                        "nullable": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "src_object_type": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "src_user_id": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "subscriber": {
+                                "type": "object",
+                                "properties": {
+                                  "created_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "is_read": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "notification_type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "object_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "object_type": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "nullable": false
+                                  },
+                                  "user_id": {
+                                    "type": "string",
+                                    "nullable": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "title": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "xprofile": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "first_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "from": {
+                          "type": "integer"
+                        },
+                        "last_page": {
+                          "type": "integer"
+                        },
+                        "last_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "active": {
+                                "type": "boolean"
+                              },
+                              "label": {
+                                "type": "string",
+                                "nullable": false
+                              },
+                              "url": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "next_page_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "path": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "per_page": {
+                          "type": "integer"
+                        },
+                        "prev_page_url": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "to": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "unread_count": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": 0
+                "example": {
+                  "notifications": {
+                    "current_page": 1,
+                    "data": [
+                      {
+                        "action": "post_report_added",
+                        "content": "This is really helpful, thanks for writing it up.",
+                        "created_at": "2026-08-17 22:39:56",
+                        "feed_id": "15067",
+                        "id": 59577,
+                        "object_id": "59804",
+                        "route": {
+                          "name": "space_feed",
+                          "params": {
+                            "feed_slug": "second-scratch-post",
+                            "space": "general-discussion"
+                          }
+                        },
+                        "src_object_type": "report",
+                        "src_user_id": null,
+                        "subscriber": {
+                          "created_at": "2026-08-17 22:39:56",
+                          "id": 1890739,
+                          "is_read": "0",
+                          "notification_type": "web",
+                          "object_id": "59577",
+                          "object_type": "notification",
+                          "updated_at": "2026-08-17 22:39:56",
+                          "user_id": "1"
+                        },
+                        "title": null,
+                        "updated_at": "2026-08-17 22:39:56",
+                        "xprofile": null
+                      },
+                      {
+                        "action": "comment/react_added",
+                        "content": "Post a screenshot of your setup. I am always curious how other people organise their work.",
+                        "created_at": "2026-08-17 22:39:19",
+                        "feed_id": "15046",
+                        "id": 59571,
+                        "object_id": "59797",
+                        "route": {
+                          "name": "space_feed",
+                          "params": {
+                            "feed_slug": "welcome-to-the-community",
+                            "space": "general-discussion"
+                          }
+                        },
+                        "src_object_type": "comment",
+                        "src_user_id": "13096",
+                        "subscriber": {
+                          "created_at": "2026-08-17 22:39:19",
+                          "id": 1890727,
+                          "is_read": "0",
+                          "notification_type": "web",
+                          "object_id": "59571",
+                          "object_type": "notification",
+                          "updated_at": "2026-08-17 22:39:19",
+                          "user_id": "1"
+                        },
+                        "title": null,
+                        "updated_at": "2026-08-17 22:39:19",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka_3.png",
+                          "badge": null,
+                          "created_at": "2026-08-17 21:31:52",
+                          "display_name": "Mei Tanaka",
+                          "is_verified": 0,
+                          "last_activity": null,
+                          "meta": {
+                            "badge_slug": [],
+                            "cover_photo": "",
+                            "headline": "Product Designer",
+                            "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                            "website": "https://example.com"
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/mei_tanaka_3",
+                          "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                          "status": "active",
+                          "total_points": 0,
+                          "user_id": 13096,
+                          "username": "mei_tanaka_3"
+                        }
+                      },
+                      {
+                        "action": "feed/react_added",
+                        "content": "A short write-up of what worked, what did not, and what I would do differently next time.",
+                        "created_at": "2026-08-17 22:39:19",
+                        "feed_id": "15046",
+                        "id": 59570,
+                        "object_id": null,
+                        "route": {
+                          "name": "space_feed",
+                          "params": {
+                            "feed_slug": "welcome-to-the-community",
+                            "space": "general-discussion"
+                          }
+                        },
+                        "src_object_type": "feed",
+                        "src_user_id": "13097",
+                        "subscriber": {
+                          "created_at": "2026-08-17 22:39:19",
+                          "id": 1890726,
+                          "is_read": "0",
+                          "notification_type": "web",
+                          "object_id": "59570",
+                          "object_type": "notification",
+                          "updated_at": "2026-08-17 22:39:19",
+                          "user_id": "1"
+                        },
+                        "title": null,
+                        "updated_at": "2026-08-17 22:39:19",
+                        "xprofile": {
+                          "avatar": "https://yourwebsite.com/wp-content/uploads/fluent-community/avatars/mei_tanaka.png",
+                          "badge": null,
+                          "created_at": "2026-08-17 21:31:53",
+                          "display_name": "Mei Tanaka",
+                          "is_verified": 0,
+                          "last_activity": null,
+                          "meta": {
+                            "cover_photo": "",
+                            "short_description_rendered": "<p>Designer and illustrator. I post work-in-progress shots.</p>",
+                            "website": ""
+                          },
+                          "permalink": "https://yourwebsite.com/portal/u/mei_tanaka",
+                          "short_description": "Designer and illustrator. I post work-in-progress shots.",
+                          "status": "active",
+                          "total_points": 0,
+                          "user_id": 13097,
+                          "username": "mei_tanaka"
+                        }
+                      }
+                    ],
+                    "first_page_url": "https://yourwebsite.com/?page=1",
+                    "from": 1,
+                    "last_page": 31,
+                    "last_page_url": "https://yourwebsite.com/?page=31",
+                    "links": [
+                      {
+                        "active": false,
+                        "label": "pagination.previous",
+                        "url": null
+                      },
+                      {
+                        "active": true,
+                        "label": "1",
+                        "url": "https://yourwebsite.com/?page=1"
+                      },
+                      {
+                        "active": false,
+                        "label": "2",
+                        "url": "https://yourwebsite.com/?page=2"
+                      }
+                    ],
+                    "next_page_url": "https://yourwebsite.com/?page=2",
+                    "path": "https://yourwebsite.com",
+                    "per_page": 15,
+                    "prev_page_url": null,
+                    "to": 15,
+                    "total": 453
+                  },
+                  "unread_count": 376
+                }
               }
             }
           },
