@@ -637,9 +637,41 @@ export const HOOK_NOTES = {
       "fluent_community/sidebar_menu_html_api_response"
     ]
   },
+  "fluent_com_editor/asset_listed_slugs": {
+    "summary": "Filters the URL fragments that exempt a script from the lesson editor's no-conflict mode.",
+    "details": "Scripts are the only assets this affects; the stylesheet side is governed by the differently prefixed `fluent_community/asset_listed_slugs`, so filtering this one does nothing for CSS. The list is joined into a regular expression and matched against every enqueued script URL under the plugins and themes directories; anything that does not match is dequeued and its `script_loader_src` forced to `false`. `\\/fluent-community(-pro)?\\/` is appended after the filter and cannot be removed.",
+    "params": [
+      {
+        "name": "approvedSlugs",
+        "type": "array",
+        "desc": "Regular-expression fragments matched against script URLs, for example `\\/gutenberg\\/`."
+      }
+    ],
+    "returns": "`array` — fragments that are deduplicated and joined with `|` into one pattern, so each entry must be regex-safe.",
+    "related": [
+      "fluent_com_editor/skip_no_conflict",
+      "fluent_community/asset_listed_slugs"
+    ]
+  },
+  "fluent_com_editor/skip_no_conflict": {
+    "summary": "Filters whether the lesson editor's no-conflict sweep runs at all.",
+    "details": "Return `true` and neither the script pass nor the stylesheet pass is registered, so every third-party asset stays enqueued on the editor screen. This is the broader of the two escape hatches: `fluent_community/skip_no_conflict` only spares stylesheets, and it is never reached when this filter returns `true`. Note the legacy `fluent_com_editor/` prefix — the stylesheet-only counterpart uses `fluent_community/`.",
+    "params": [
+      {
+        "name": "isSkip",
+        "type": "bool",
+        "desc": "Whether to leave every third-party script and stylesheet enqueued. `false` by default."
+      }
+    ],
+    "returns": "`bool` — evaluated for truthiness.",
+    "related": [
+      "fluent_com_editor/asset_listed_slugs",
+      "fluent_community/skip_no_conflict"
+    ]
+  },
   "fluent_community/asset_listed_slugs": {
     "summary": "Filters the URL fragments that exempt a stylesheet from the lesson editor's no-conflict mode.",
-    "details": "Stylesheets are the only assets this affects. The list is joined into a regular expression and matched against every enqueued stylesheet URL under the plugins and themes directories; anything that does not match is dequeued so third-party CSS cannot break the editor. `\\/fluent-community\\/` is appended after the filter and cannot be removed. Note the script side is governed by a differently prefixed hook, `fluent_com_editor/asset_listed_slugs` — filtering this one does nothing for JavaScript.",
+    "details": "Stylesheets are the only assets this affects. The list is joined into a regular expression and matched against every enqueued stylesheet URL under the plugins and themes directories; anything that does not match is dequeued so third-party CSS cannot break the editor. `\\/fluent-community(-pro)?\\/` is appended after the filter and cannot be removed, so the plugin's own stylesheets and Pro's always survive. Note the script side is governed by a differently prefixed hook, `fluent_com_editor/asset_listed_slugs` — filtering this one does nothing for JavaScript.",
     "params": [
       {
         "name": "approvedSlugs",
@@ -7123,7 +7155,7 @@ export const HOOK_NOTES = {
   },
   "fluent_community/skip_no_conflict": {
     "summary": "Filters whether the lesson editor's stylesheet no-conflict pass is skipped.",
-    "details": "Return `true` and no stylesheet is dequeued on the editor page, which is the escape hatch when a theme or plugin's CSS is genuinely needed inside the editor. The second argument is always the literal string `styles`; there is no matching call for scripts, which are filtered unconditionally through `script_loader_src` and cannot be exempted this way.",
+    "details": "Return `true` and no stylesheet is dequeued on the editor page, which is the escape hatch when a theme or plugin's CSS is genuinely needed inside the editor. The second argument is always the literal string `styles`; scripts are not covered here. To leave scripts alone, return `true` from `fluent_com_editor/skip_no_conflict`, which aborts the whole sweep before either pass is registered.",
     "params": [
       {
         "name": "isSkip",
