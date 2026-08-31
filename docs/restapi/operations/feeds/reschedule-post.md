@@ -15,7 +15,7 @@ Moves a scheduled post to a new publish time and re-queues the background action
 - **Path:** `/scheduled-posts/{feed_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SchedulePostsController@reschedulePost`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:110`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:113`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php`
 
 - Requires the post author or a community moderator, either globally or in the post space.

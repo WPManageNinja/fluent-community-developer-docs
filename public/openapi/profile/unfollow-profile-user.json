@@ -27,7 +27,7 @@
       "post": {
         "operationId": "unfollowProfileUser",
         "summary": "POST Unfollow Profile User",
-        "description": "Removes the follow relationship from the current user to the named member.\n\nController: `FollowController@unfollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:132`",
+        "description": "Removes the follow relationship from the current user to the named member.\n\nController: `FollowController@unfollow`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:135`",
         "tags": [
           "Profile"
         ],

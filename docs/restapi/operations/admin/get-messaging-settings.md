@@ -15,7 +15,7 @@ Fails with a message asking for an update when the installed Fluent Messaging pl
 - **Path:** `/admin/messaging-setting`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@getMessagingSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:21`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:19`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

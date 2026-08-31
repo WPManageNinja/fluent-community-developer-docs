@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCustomProfileFields",
         "summary": "GET Get Custom Profile Fields",
-        "description": "Returns the custom profile field configuration — the field groups, the field definitions and whether the feature is switched on.\n\nController: `ProAdminController@getCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:24`",
+        "description": "Returns the custom profile field configuration — the field groups, the field definitions and whether the feature is switched on.\n\nController: `ProAdminController@getCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:22`",
         "tags": [
           "Admin"
         ],

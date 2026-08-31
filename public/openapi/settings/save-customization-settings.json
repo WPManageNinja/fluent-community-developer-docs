@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCustomizationSettings",
         "summary": "POST Save Customization Settings",
-        "description": "Stores the portal appearance settings, coercing each field to its expected shape.\n\nController: `SettingController@updateCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:160`",
+        "description": "Stores the portal appearance settings, coercing each field to its expected shape.\n\nController: `SettingController@updateCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:164`",
         "tags": [
           "Settings"
         ],

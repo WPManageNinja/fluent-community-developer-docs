@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopics",
         "summary": "GET List Topics",
-        "description": "Returns the post topics defined for the community, along with every space they can be attached to.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:42`",
+        "description": "Returns the post topics defined for the community, along with every space they can be attached to.\n\nController: `ProAdminController@getTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:45`",
         "tags": [
           "Admin"
         ],

@@ -15,7 +15,7 @@ The range is applied to the posts rather than to the member record, so this rank
 - **Path:** `/analytics/members/top-post-starters`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `MembersReportsController@topPostStarter`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:80`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:83`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/MembersReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

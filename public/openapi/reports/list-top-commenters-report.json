@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopCommentersReport",
         "summary": "GET List Top Commenters Report",
-        "description": "Returns the ten members who wrote the most comments within the requested range, each with their comment count.\n\nController: `MembersReportsController@topCommenters`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:81`",
+        "description": "Returns the ten members who wrote the most comments within the requested range, each with their comment count.\n\nController: `MembersReportsController@topCommenters`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:84`",
         "tags": [
           "Reports"
         ],

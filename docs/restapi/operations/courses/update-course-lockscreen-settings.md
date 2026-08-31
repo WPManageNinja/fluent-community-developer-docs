@@ -13,7 +13,7 @@ Stores the lock screen a private course shows to visitors who are not enrolled â
 - **Path:** `/admin/courses/{course_id}/lockscreens`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateCourseLockscreenSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:63`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:66`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

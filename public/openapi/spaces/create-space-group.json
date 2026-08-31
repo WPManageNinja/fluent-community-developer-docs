@@ -44,6 +44,15 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
                   "settings": {
                     "type": "object",
                     "properties": {
@@ -52,12 +61,6 @@
                       }
                     },
                     "required": []
-                  },
-                  "title": {
-                    "type": "string"
-                  },
-                  "slug": {
-                    "type": "string"
                   }
                 },
                 "required": [
@@ -171,7 +174,7 @@
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "Please enter a valid group slug.",
             "content": {
               "application/json": {
                 "schema": {
@@ -183,7 +186,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Please enter a valid group slug."
                 }
               }
             }

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listModerationReports",
         "summary": "GET List Moderation Reports",
-        "description": "Returns the paginated moderation queue, newest first, with the reported post or comment, its author and the reporting member attached.\n\nController: `ModerationController@get`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:98`",
+        "description": "Returns the paginated moderation queue, newest first, with the reported post or comment, its author and the reporting member attached.\n\nController: `ModerationController@get`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:101`",
         "tags": [
           "Reports"
         ],

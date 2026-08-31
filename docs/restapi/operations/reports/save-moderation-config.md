@@ -15,7 +15,7 @@ Recognised keys are `is_enabled`, `profanity_filter`, `flag_after_threshold`, `f
 - **Path:** `/moderation/config`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ModerationController@saveConfig`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:105`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:108`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ModerationController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

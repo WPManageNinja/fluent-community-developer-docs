@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileFollowers",
         "summary": "GET List Profile Followers",
-        "description": "Returns the paginated list of members following this profile, each annotated with whether the current user follows them back.\n\nController: `FollowController@getFollowers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:128`",
+        "description": "Returns the paginated list of members following this profile, each annotated with whether the current user follows them back.\n\nController: `FollowController@getFollowers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:131`",
         "tags": [
           "Profile"
         ],

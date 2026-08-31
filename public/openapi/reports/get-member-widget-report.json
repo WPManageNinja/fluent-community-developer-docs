@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMemberWidgetReport",
         "summary": "GET Get Member Widget Report",
-        "description": "Returns the member counters for a date range — total, active, new and pending — each with a period-over-period comparison.\n\nController: `MembersReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:77`",
+        "description": "Returns the member counters for a date range — total, active, new and pending — each with a period-over-period comparison.\n\nController: `MembersReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:80`",
         "tags": [
           "Reports"
         ],

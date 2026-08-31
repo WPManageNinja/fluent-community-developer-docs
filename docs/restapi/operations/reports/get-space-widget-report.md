@@ -15,7 +15,7 @@ Pass `space_id` to scope posts, comments and members to a single space; the spac
 - **Path:** `/analytics/spaces/widget`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SpacesReportsController@widget`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:85`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:88`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SpacesReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listWebhooks",
         "summary": "GET List Webhooks",
-        "description": "Returns the paginated list of inbound webhooks, and on the first page also the spaces and courses available as enrolment targets.\n\nController: `ProAdminController@getWebhooks`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:50`",
+        "description": "Returns the paginated list of inbound webhooks, and on the first page also the spaces and courses available as enrolment targets.\n\nController: `ProAdminController@getWebhooks`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:53`",
         "tags": [
           "Admin"
         ],

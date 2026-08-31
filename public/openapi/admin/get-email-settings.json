@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getEmailSettings",
         "summary": "GET Get Email Settings",
-        "description": "Returns the global email notification settings — digest schedule, sender details and template branding — falling back to the portal logo when no email-specific logo is set.\n\nController: `AdminController@getEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:103`",
+        "description": "Returns the global email notification settings — digest schedule, sender details and template branding — falling back to the portal logo when no email-specific logo is set.\n\nController: `AdminController@getEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:104`",
         "tags": [
           "Admin"
         ],

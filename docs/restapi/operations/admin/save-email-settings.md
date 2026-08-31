@@ -15,7 +15,7 @@ Submitted values are merged onto the previous settings, so a partial payload is 
 - **Path:** `/admin/email-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@saveEmailSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:104`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:105`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

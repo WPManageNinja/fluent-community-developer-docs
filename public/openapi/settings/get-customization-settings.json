@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCustomizationSettings",
         "summary": "GET Get Customization Settings",
-        "description": "Returns the portal appearance settings — dark mode, header and sidebar behaviour, post modal, and the powered-by line.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
+        "description": "Returns the portal appearance settings — dark mode, header and sidebar behaviour, post modal, and the powered-by line.\n\nController: `SettingController@getCustomizationSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:163`",
         "tags": [
           "Settings"
         ],

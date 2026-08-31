@@ -13,7 +13,7 @@ Returns the followers module configuration, including who may see a member follo
 - **Path:** `/settings/followers/config`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@getFollowersSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:36`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:39`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

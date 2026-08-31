@@ -15,7 +15,7 @@ A title, a `parent_id` space group, a `privacy` value of `public`, `logged_in`, 
 - **Path:** `/admin/links`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveSidebarLink`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:54`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:57`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

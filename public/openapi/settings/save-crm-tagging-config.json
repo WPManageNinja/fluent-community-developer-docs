@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveCrmTaggingConfig",
         "summary": "POST Save CRM Tagging Config",
-        "description": "Stores the mapping between FluentCRM tags and spaces or courses, and keeps the `has_crm_sync` feature flag in step.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:32`",
+        "description": "Stores the mapping between FluentCRM tags and spaces or courses, and keeps the `has_crm_sync` feature flag in step.\n\nController: `ProAdminController@saveCrmTaggingConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:35`",
         "tags": [
           "Settings"
         ],

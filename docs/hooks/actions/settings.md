@@ -13,7 +13,7 @@ description: Settings action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` |
 | [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` |
-| [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1109` |
+| [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1110` |
 
 <a id="fluent-community-daily-jobs"></a>
 
@@ -98,7 +98,7 @@ Fired from `Utility::getColorCssVariables()` when a `cached_css` value exists bu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1109` | No parameters |
+| Core | `fluent-community/app/Functions/Utility.php:1110` | No parameters |
 
 ### Example
 

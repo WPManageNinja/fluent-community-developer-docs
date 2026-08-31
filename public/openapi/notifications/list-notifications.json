@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listNotifications",
         "summary": "GET List Notifications",
-        "description": "Returns the paginated notification history for the current user, newest activity first, with the unread total alongside it.\n\nController: `NotificationsController@getNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:131`",
+        "description": "Returns the paginated notification history for the current user, newest activity first, with the unread total alongside it.\n\nController: `NotificationsController@getNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:135`",
         "tags": [
           "Notifications"
         ],

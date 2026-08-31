@@ -5,47 +5,119 @@ description: Rendering filter hooks for FluentCommunity.
 
 # Rendering Filters
 
-35 unique filter hooks currently map to this category, across 37 call sites.
+37 unique filter hooks currently map to this category, across 39 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/allowed_block_types`](#fluent-community-allowed-block-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:650` |
+| [`fluent_com_editor/asset_listed_slugs`](#fluent-com-editor-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:491` |
+| [`fluent_com_editor/skip_no_conflict`](#fluent-com-editor-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:477` |
+| [`fluent_community/allowed_block_types`](#fluent-community-allowed-block-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:676` |
 | [`fluent_community/allowed_html_tags`](#fluent-community-allowed-html-tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:385` |
-| [`fluent_community/app_route_paths`](#fluent-community-app-route-paths) | Core | 1 | `fluent-community/app/Services/Helper.php:577` |
+| [`fluent_community/app_route_paths`](#fluent-community-app-route-paths) | Core | 1 | `fluent-community/app/Services/Helper.php:578` |
 | [`fluent_community/app_vars_api_response`](#fluent-community-app-vars-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:25` |
-| [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:532` |
-| [`fluent_community/base_url`](#fluent-community-base-url) | Core | 1 | `fluent-community/app/Services/Helper.php:293` |
-| [`fluent_community/block_editor_settings`](#fluent-community-block-editor-settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:736` |
+| [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:558` |
+| [`fluent_community/base_url`](#fluent-community-base-url) | Core | 1 | `fluent-community/app/Services/Helper.php:294` |
+| [`fluent_community/block_editor_settings`](#fluent-community-block-editor-settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:762` |
 | [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:551` |
-| [`fluent_community/default_theme_mode`](#fluent-community-default-theme-mode) | Core | 1 | `fluent-community/app/Services/Helper.php:166` |
-| [`fluent_community/editor_i18n_strings`](#fluent-community-editor-i18n-strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:358` |
+| [`fluent_community/default_theme_mode`](#fluent-community-default-theme-mode) | Core | 1 | `fluent-community/app/Services/Helper.php:167` |
+| [`fluent_community/editor_i18n_strings`](#fluent-community-editor-i18n-strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:360` |
 | [`fluent_community/error_page_custom_css`](#fluent-community-error-page-custom-css) | Core | 1 | `fluent-community/app/Views/error_page.php:21` |
 | [`fluent_community/general_portal_vars`](#fluent-community-general-portal-vars) | Core | 2 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:773` |
 | [`fluent_community/header_vars`](#fluent-community-header-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1234` |
-| [`fluent_community/image_size_names_choose`](#fluent-community-image-size-names-choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:363` |
-| [`fluent_community/is_rtl`](#fluent-community-is-rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:28` |
+| [`fluent_community/image_size_names_choose`](#fluent-community-image-size-names-choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:365` |
+| [`fluent_community/is_rtl`](#fluent-community-is-rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:29` |
 | [`fluent_community/is_supported_theme`](#fluent-community-is-supported-theme) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:36` |
 | [`fluent_community/portal_data_vars`](#fluent-community-portal-data-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1028` |
 | [`fluent_community/portal_notices`](#fluent-community-portal-notices) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:472` |
-| [`fluent_community/portal_page_headless`](#fluent-community-portal-page-headless) | Core | 1 | `fluent-community/app/Services/Helper.php:140` |
-| [`fluent_community/portal_route_type`](#fluent-community-portal-route-type) | Core | 1 | `fluent-community/app/Services/Helper.php:130` |
+| [`fluent_community/portal_page_headless`](#fluent-community-portal-page-headless) | Core | 1 | `fluent-community/app/Services/Helper.php:141` |
+| [`fluent_community/portal_route_type`](#fluent-community-portal-route-type) | Core | 1 | `fluent-community/app/Services/Helper.php:131` |
 | [`fluent_community/portal_settings_menu_items`](#fluent-community-portal-settings-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalSettingsHandler.php:68` |
-| [`fluent_community/portal_supported_query_params`](#fluent-community-portal-supported-query-params) | Core | 1 | `fluent-community/app/Services/Helper.php:2148` |
+| [`fluent_community/portal_supported_query_params`](#fluent-community-portal-supported-query-params) | Core | 1 | `fluent-community/app/Services/Helper.php:2150` |
 | [`fluent_community/portal_vars`](#fluent-community-portal-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:471` |
-| [`fluent_community/pro_upgrade_base_url`](#fluent-community-pro-upgrade-base-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:416` |
+| [`fluent_community/pro_upgrade_base_url`](#fluent-community-pro-upgrade-base-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:417` |
 | [`fluent_community/render_default_touch_icon`](#fluent-community-render-default-touch-icon) | Core | 1 | `fluent-community/app/Views/portal_page.php:29` |
-| [`fluent_community/rendering_feed_model`](#fluent-community-rendering-feed-model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1053` |
-| [`fluent_community/seo/ld_comment_limit`](#fluent-community-seo-ld-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:471` |
-| [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1244` |
+| [`fluent_community/rendering_feed_model`](#fluent-community-rendering-feed-model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1082` |
+| [`fluent_community/seo/ld_comment_limit`](#fluent-community-seo-ld-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:472` |
+| [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1245` |
 | [`fluent_community/sidebar_menu_html_api_response`](#fluent-community-sidebar-menu-html-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:76` |
-| [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:521` |
+| [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:539` |
 | [`fluent_community/space_header_links`](#fluent-community-space-header-links) | Core | 1 | `fluent-community/app/Models/BaseSpace.php:659` |
 | [`fluent_community/template_slug`](#fluent-community-template-slug) | Core | 1 | `fluent-community/Modules/Theming/TemplateLoader.php:75` |
 | [`fluent_community/use_editor_block`](#fluent-community-use-editor-block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:160` |
 | [`fluent_community/will_render_default_sidebar_items`](#fluent-community-will-render-default-sidebar-items) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:35` |
 | [`fluent_communuty/add_sitemap_provider`](#fluent-communuty-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:21` |
+
+<a id="fluent-com-editor-asset-listed-slugs"></a>
+
+## `fluent_com_editor/asset_listed_slugs`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Filters the URL fragments that exempt a script from the lesson editor's no-conflict mode.
+
+Scripts are the only assets this affects; the stylesheet side is governed by the differently prefixed `fluent_community/asset_listed_slugs`, so filtering this one does nothing for CSS. The list is joined into a regular expression and matched against every enqueued script URL under the plugins and themes directories; anything that does not match is dequeued and its `script_loader_src` forced to `false`. `\/fluent-community(-pro)?\/` is appended after the filter and cannot be removed.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$approvedSlugs` | `array` | Regular-expression fragments matched against script URLs, for example `\/gutenberg\/`. |
+
+**Return:** `array` — fragments that are deduplicated and joined with `|` into one pattern, so each entry must be regex-safe.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:491` | `[ '\/gutenberg\/' ]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_com_editor/asset_listed_slugs', function ($approvedSlugs) {
+    return $approvedSlugs;
+}, 10, 1);
+```
+
+**Related:** [`fluent_com_editor/skip_no_conflict`](#fluent-com-editor-skip-no-conflict) · [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs)
+
+<a id="fluent-com-editor-skip-no-conflict"></a>
+
+## `fluent_com_editor/skip_no_conflict`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Filters whether the lesson editor's no-conflict sweep runs at all.
+
+Return `true` and neither the script pass nor the stylesheet pass is registered, so every third-party asset stays enqueued on the editor screen. This is the broader of the two escape hatches: `fluent_community/skip_no_conflict` only spares stylesheets, and it is never reached when this filter returns `true`. Note the legacy `fluent_com_editor/` prefix — the stylesheet-only counterpart uses `fluent_community/`.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$isSkip` | `bool` | Whether to leave every third-party script and stylesheet enqueued. `false` by default. |
+
+**Return:** `bool` — evaluated for truthiness.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:477` | `false` (bool) |
+
+### Example
+
+```php
+add_filter('fluent_com_editor/skip_no_conflict', function ($isSkip) {
+    return $isSkip;
+}, 10, 1);
+```
+
+**Related:** [`fluent_com_editor/asset_listed_slugs`](#fluent-com-editor-asset-listed-slugs) · [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict)
 
 <a id="fluent-community-allowed-block-types"></a>
 
@@ -70,7 +142,7 @@ An explicit allowlist rather than a denylist, so a block that is not named is un
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:650` | `array (32 items)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:676` | `array (32 items)` (array) |
 
 ### Example
 
@@ -138,7 +210,7 @@ Only consulted when the portal is mounted at the site root — with a portal slu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:577` | `array (15 items)` (array) |
+| Core | `fluent-community/app/Services/Helper.php:578` | `array (15 items)` (array) |
 
 ### Example
 
@@ -195,7 +267,7 @@ add_filter('fluent_community/app_vars_api_response', function ($data, $requestDa
 - **Call sites:** 1
 - **When it fires:** Filters the URL fragments that exempt a stylesheet from the lesson editor's no-conflict mode.
 
-Stylesheets are the only assets this affects. The list is joined into a regular expression and matched against every enqueued stylesheet URL under the plugins and themes directories; anything that does not match is dequeued so third-party CSS cannot break the editor. `\/fluent-community\/` is appended after the filter and cannot be removed. Note the script side is governed by a differently prefixed hook, `fluent_com_editor/asset_listed_slugs` — filtering this one does nothing for JavaScript.
+Stylesheets are the only assets this affects. The list is joined into a regular expression and matched against every enqueued stylesheet URL under the plugins and themes directories; anything that does not match is dequeued so third-party CSS cannot break the editor. `\/fluent-community(-pro)?\/` is appended after the filter and cannot be removed, so the plugin's own stylesheets and Pro's always survive. Note the script side is governed by a differently prefixed hook, `fluent_com_editor/asset_listed_slugs` — filtering this one does nothing for JavaScript.
 
 ### Parameters
 
@@ -209,7 +281,7 @@ Stylesheets are the only assets this affects. The list is joined into a regular 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:532` | `[ '\/gutenberg\/', ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:558` | `[ '\/gutenberg\/', ]` (array) |
 
 ### Example
 
@@ -244,7 +316,7 @@ The default is `home_url()` joined with the portal slug, and the result is passe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:293` | `home_url(self::getPortalSlug())` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:294` | `home_url(self::getPortalSlug())` (mixed) |
 
 ### Example
 
@@ -279,7 +351,7 @@ Applied last, after the editor styles, resolved assets, default styles and image
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:736` | `$editor_settings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:762` | `$editor_settings` (mixed) |
 
 ### Example
 
@@ -349,7 +421,7 @@ The stored setting is validated against `light`, `dark` and `system` before the 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:166` | `$mode` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:167` | `$mode` (mixed) |
 
 ### Example
 
@@ -384,7 +456,7 @@ An English-keyed map: each key is the source string and each value its translati
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:358` | `$strings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:360` | `$strings` (mixed) |
 
 ### Example
 
@@ -453,7 +525,7 @@ Localised as `fcom_portal_general` for the `portal_general.js` bundle, which han
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:773` | `array (10 keys: scope, theme, default_color, …)` (array) |
-| Core | `fluent-community/app/Services/Helper.php:177` | `['color_switch_cookie_name' => '']` (array) |
+| Core | `fluent-community/app/Services/Helper.php:178` | `['color_switch_cookie_name' => '']` (array) |
 
 ### Example
 
@@ -523,7 +595,7 @@ A FluentCommunity-scoped analogue of WordPress's own `image_size_names_choose`, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:363` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Me…` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:365` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Me…` (mixed) |
 
 ### Example
 
@@ -558,7 +630,7 @@ Defaults to WordPress `is_rtl()`. It decides which build of every stylesheet is 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:28` | `is_rtl()` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:29` | `is_rtl()` (mixed) |
 
 ### Example
 
@@ -698,7 +770,7 @@ Returns `false` from core, but `Modules\FeaturesHandler` immediately adds `__ret
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:140` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:141` | `false` (bool) |
 
 ### Example
 
@@ -733,7 +805,7 @@ Defaults to `WebHistory`, the HTML5 history mode; the only other value the code 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:130` | `'WebHistory'` (string) |
+| Core | `fluent-community/app/Services/Helper.php:131` | `'WebHistory'` (string) |
 
 ### Example
 
@@ -803,7 +875,7 @@ Applies to one narrow case: a portal mounted at the site root, with an empty req
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2148` | `[ 'customizer_panel', 'create_space' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2150` | `[ 'customizer_panel', 'create_space' ]` (array) |
 
 ### Example
 
@@ -873,7 +945,7 @@ Only the base URL passes through the filter; the UTM parameters are appended aft
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:416` | `'https://fluentcommunity.co/pricing/'` (string) |
+| Core | `fluent-community/app/Functions/Utility.php:417` | `'https://fluentcommunity.co/pricing/'` (string) |
 
 ### Example
 
@@ -942,7 +1014,7 @@ The final step of `FeedsHelper` post formatting, applied after the rendered HTML
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:1053` | `$feed` (Feed)<br>`$config` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:1082` | `$feed` (Feed)<br>`$config` (mixed) |
 
 ### Example
 
@@ -975,7 +1047,7 @@ Defaults to 100 and is cast to int. It caps the comments serialized into the sch
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:471` | `100` (int) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:472` | `100` (int) |
 
 ### Example
 
@@ -1009,7 +1081,7 @@ Applied by `Utility::getPortalSidebarData()`, which feeds both the server-render
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1244` | `array (8 keys: primaryItems, spaceGroups, settingsItems, …)` (array)<br>`$userModel` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1245` | `array (8 keys: primaryItems, spaceGroups, settingsItems, …)` (array)<br>`$userModel` (mixed) |
 
 ### Example
 
@@ -1066,7 +1138,7 @@ add_filter('fluent_community/sidebar_menu_html_api_response', function ($data, $
 - **Call sites:** 1
 - **When it fires:** Filters whether the lesson editor's stylesheet no-conflict pass is skipped.
 
-Return `true` and no stylesheet is dequeued on the editor page, which is the escape hatch when a theme or plugin's CSS is genuinely needed inside the editor. The second argument is always the literal string `styles`; there is no matching call for scripts, which are filtered unconditionally through `script_loader_src` and cannot be exempted this way.
+Return `true` and no stylesheet is dequeued on the editor page, which is the escape hatch when a theme or plugin's CSS is genuinely needed inside the editor. The second argument is always the literal string `styles`; scripts are not covered here. To leave scripts alone, return `true` from `fluent_com_editor/skip_no_conflict`, which aborts the whole sweep before either pass is registered.
 
 ### Parameters
 
@@ -1081,7 +1153,7 @@ Return `true` and no stylesheet is dequeued on the editor page, which is the esc
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:521` | `false` (bool)<br>`'styles'` (string) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:539` | `false` (bool)<br>`'styles'` (string) |
 
 ### Example
 
@@ -1240,6 +1312,10 @@ add_filter('fluent_community/will_render_default_sidebar_items', function ($will
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
 - **When it fires:** Filters whether FluentCommunity registers its WordPress sitemap provider.
+
+::: warning Deprecated
+This hook is fired through `apply_filters_deprecated()` as of 2.8.1. Use `fluent_community/add_sitemap_provider` instead.
+:::
 
 Returning false on this filter stops wp_register_sitemap_provider() from running, which removes the community entries from the core WordPress sitemap — useful when a dedicated SEO plugin is already emitting them. It runs on `init`, so a callback has to be attached before that. Note the hook prefix is misspelled `fluent_communuty` in the source; the name is part of the public surface and is documented as written.
 

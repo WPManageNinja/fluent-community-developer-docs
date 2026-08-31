@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSidebarLink",
         "summary": "POST Save Sidebar Link",
-        "description": "Creates or updates a custom sidebar link inside a space group, including its icon, target and visibility rule.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:54`",
+        "description": "Creates or updates a custom sidebar link inside a space group, including its icon, target and visibility rule.\n\nController: `ProAdminController@saveSidebarLink`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:57`",
         "tags": [
           "Admin"
         ],

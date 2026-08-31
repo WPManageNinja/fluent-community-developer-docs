@@ -15,7 +15,7 @@ Send up to 500 ids in `user_ids`; larger payloads are rejected with a 413 so the
 - **Path:** `/admin/courses/{course_id}/students/bulk-add`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@bulkAddStudents`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:115`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:118`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 - Requires a course admin for this course.

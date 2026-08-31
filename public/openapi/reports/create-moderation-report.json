@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createModerationReport",
         "summary": "POST Create Moderation Report",
-        "description": "Files a moderation report against a post or a comment and returns the report together with the reported content.\n\nController: `ModerationController@create`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:93`",
+        "description": "Files a moderation report against a post or a comment and returns the report together with the reported content.\n\nController: `ModerationController@create`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:96`",
         "tags": [
           "Reports"
         ],

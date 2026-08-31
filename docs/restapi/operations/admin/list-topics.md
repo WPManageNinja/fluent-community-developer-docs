@@ -15,7 +15,7 @@ Pass `optionsOnly` for the trimmed id/title/description shape used by pickers; t
 - **Path:** `/admin/topics`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@getTopics`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:42`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:45`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a community admin, a course admin, or the admin role in the space named by `space_id`; course creators may call the `optionsOnly` variant.

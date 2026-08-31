@@ -15,7 +15,7 @@ The `administrator` role is stripped from `user_roles` because administrators al
 - **Path:** `/admin/general`
 - **Edition:** Core
 - **Controller:** `AdminController@getGeneralSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:100`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:101`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

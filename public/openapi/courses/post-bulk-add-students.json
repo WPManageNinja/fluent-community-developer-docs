@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postBulkAddStudents",
         "summary": "POST Post Bulk Add Students",
-        "description": "Enrols many users in a course in one call, either from an explicit id list or by copying the membership of another space or course in batches.\n\nController: `BulkMembersController@bulkAddStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:115`",
+        "description": "Enrols many users in a course in one call, either from an explicit id list or by copying the membership of another space or course in batches.\n\nController: `BulkMembersController@bulkAddStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:118`",
         "tags": [
           "Courses"
         ],

@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deleteWebhook",
         "summary": "DELETE Delete Webhook",
-        "description": "Deletes an inbound webhook so its URL stops accepting calls.\n\nController: `ProAdminController@deleteWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:52`",
+        "description": "Deletes an inbound webhook so its URL stops accepting calls.\n\nController: `ProAdminController@deleteWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:55`",
         "tags": [
           "Admin"
         ],

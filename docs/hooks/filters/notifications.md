@@ -11,18 +11,18 @@ description: Notifications filter hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:353` |
+| [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:365` |
 | [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
 | [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
 | [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
-| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:471` |
-| [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:192` |
+| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:489` |
+| [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:198` |
 | [`fluent_community/notifications_api_response`](#fluent-community-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
-| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:874` |
+| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:884` |
 | [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
 | [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:59` |
-| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1267` |
+| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1268` |
 
 <a id="fluent-community-comment-notification-email-sections"></a>
 
@@ -49,7 +49,7 @@ Same marker mechanism as the post notifications, but the third argument is the c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:353` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$comment` (Comment) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:365` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$comment` (Comment) |
 
 ### Example
 
@@ -195,7 +195,7 @@ A separate call site from the space notification with an identical signature, be
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:471` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:489` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -232,7 +232,7 @@ The two strings are substituted into the `<!--email_content_before-->` and `<!--
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:192` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:198` | `[ 'before_content' => '', 'after_content' => '' ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -304,7 +304,7 @@ Backs the notification settings screen. The payload holds `user_globals` cast to
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:874` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:884` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -449,7 +449,7 @@ Populated from FluentSMTP's configured sender mappings, and empty when FluentSMT
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1267` | `$verifiedSenders` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1268` | `$verifiedSenders` (mixed) |
 
 ### Example
 

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listUnreadNotifications",
         "summary": "GET List Unread Notifications",
-        "description": "Returns up to 50 unread notifications for the current user with the unread total, for the notification dropdown.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:132`",
+        "description": "Returns up to 50 unread notifications for the current user with the unread total, for the notification dropdown.\n\nController: `NotificationsController@getUnreadNotifications`\nRoute source: `fluent-community/app/Http/Routes/api.php:136`",
         "tags": [
           "Notifications"
         ],

@@ -15,7 +15,7 @@ Blocking yourself is rejected, as is blocking anyone who holds community-moderat
 - **Path:** `/profile/{username}/block`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@block`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:134`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:137`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 - Requires FluentCommunity Pro with the `followers_module` feature enabled.

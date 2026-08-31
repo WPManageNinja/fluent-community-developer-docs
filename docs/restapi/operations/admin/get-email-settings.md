@@ -13,7 +13,7 @@ Returns the global email notification settings — digest schedule, sender detai
 - **Path:** `/admin/email-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@getEmailSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:103`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:104`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

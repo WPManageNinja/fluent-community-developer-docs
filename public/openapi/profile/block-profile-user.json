@@ -27,7 +27,7 @@
       "post": {
         "operationId": "blockProfileUser",
         "summary": "POST Block Profile User",
-        "description": "Blocks a member, converting any existing follow relationship into a block rather than creating a second row.\n\nController: `FollowController@block`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:134`",
+        "description": "Blocks a member, converting any existing follow relationship into a block rather than creating a second row.\n\nController: `FollowController@block`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:137`",
         "tags": [
           "Profile"
         ],

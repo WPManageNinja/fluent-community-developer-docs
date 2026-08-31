@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postSaveCustomProfileFields",
         "summary": "POST Post Save Custom Profile Fields",
-        "description": "Replaces the whole custom profile field configuration and keeps the `custom_profile_fields` feature flag in step with the submitted `is_enabled` value.\n\nController: `ProAdminController@saveCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:25`",
+        "description": "Replaces the whole custom profile field configuration and keeps the `custom_profile_fields` feature flag in step with the submitted `is_enabled` value.\n\nController: `ProAdminController@saveCustomProfileFields`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:23`",
         "tags": [
           "Admin"
         ],

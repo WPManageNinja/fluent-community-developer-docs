@@ -15,7 +15,7 @@ Only the `enrolled` and `not_enrolled` views are recognised. The banner is displ
 - **Path:** `/admin/courses/{course_id}/welcome-banner`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateCourseWelcomeBannerSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:65`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:68`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

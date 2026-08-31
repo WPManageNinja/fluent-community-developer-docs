@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleProfileNotification",
         "summary": "POST Toggle Profile Notification",
-        "description": "Turns notifications about a member you already follow on or off, without changing the follow itself.\n\nController: `FollowController@toggleNotification`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:136`",
+        "description": "Turns notifications about a member you already follow on or off, without changing the follow itself.\n\nController: `FollowController@toggleNotification`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:139`",
         "tags": [
           "Profile"
         ],

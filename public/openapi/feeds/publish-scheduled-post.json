@@ -27,7 +27,7 @@
       "post": {
         "operationId": "publishScheduledPost",
         "summary": "POST Publish Scheduled Post",
-        "description": "Publishes a scheduled post immediately, cancelling its queued publish action and restamping its creation time to now.\n\nController: `SchedulePostsController@publishPost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:111`",
+        "description": "Publishes a scheduled post immediately, cancelling its queued publish action and restamping its creation time to now.\n\nController: `SchedulePostsController@publishPost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:114`",
         "tags": [
           "Feeds"
         ],

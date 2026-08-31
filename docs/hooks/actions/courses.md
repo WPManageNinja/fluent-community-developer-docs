@@ -11,35 +11,35 @@ description: Courses action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/course`](#fluent-community-course) | Core | 2 | `fluent-community/app/Http/Controllers/ProfileController.php:657` |
-| [`fluent_community/course/{courseType}/unschedule_notification`](#fluent-community-course-courseType-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:124` |
-| [`fluent_community/course/{prevType}/unschedule_notification`](#fluent-community-course-prevType-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:114` |
+| [`fluent_community/course`](#fluent-community-course) | Core | 2 | `fluent-community/app/Http/Controllers/ProfileController.php:658` |
+| [`fluent_community/course/{courseType}/unschedule_notification`](#fluent-community-course-courseType-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:125` |
+| [`fluent_community/course/{prevType}/unschedule_notification`](#fluent-community-course-prevType-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:115` |
 | [`fluent_community/course/before_create`](#fluent-community-course-before-create) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:147` |
 | [`fluent_community/course/before_delete`](#fluent-community-course-before-delete) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:409` |
 | [`fluent_community/course/before_progress_reset`](#fluent-community-course-before-progress-reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:302` |
 | [`fluent_community/course/completed`](#fluent-community-course-completed) | Core | 2 | `fluent-community/Modules/Course/Services/CourseHelper.php:278` |
 | [`fluent_community/course/created`](#fluent-community-course-created) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:182` |
 | [`fluent_community/course/deleted`](#fluent-community-course-deleted) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:442` |
-| [`fluent_community/course/enrolled`](#fluent-community-course-enrolled) | Core | 2 | `fluent-community/app/Services/Helper.php:1755` |
+| [`fluent_community/course/enrolled`](#fluent-community-course-enrolled) | Core | 2 | `fluent-community/app/Services/Helper.php:1756` |
 | [`fluent_community/course/lesson_completed`](#fluent-community-course-lesson-completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:211` |
 | [`fluent_community/course/lesson_marked_incomplete`](#fluent-community-course-lesson-marked-incomplete) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:195` |
 | [`fluent_community/course/progress_reset`](#fluent-community-course-progress-reset) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:323` |
 | [`fluent_community/course/published`](#fluent-community-course-published) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:329` |
-| [`fluent_community/course/scheduled/init_notification`](#fluent-community-course-scheduled-init-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:227` |
-| [`fluent_community/course/scheduled/send_notification_async`](#fluent-community-course-scheduled-send-notification-async) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:185` |
-| [`fluent_community/course/scheduled/unschedule_notification`](#fluent-community-course-scheduled-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:226` |
-| [`fluent_community/course/structured/init_notification`](#fluent-community-course-structured-init-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:237` |
-| [`fluent_community/course/structured/send_notification_async`](#fluent-community-course-structured-send-notification-async) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:153` |
-| [`fluent_community/course/structured/unschedule_notification`](#fluent-community-course-structured-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:236` |
-| [`fluent_community/course/student_left`](#fluent-community-course-student-left) | Core | 1 | `fluent-community/app/Services/Helper.php:1825` |
+| [`fluent_community/course/scheduled/init_notification`](#fluent-community-course-scheduled-init-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:228` |
+| [`fluent_community/course/scheduled/send_notification_async`](#fluent-community-course-scheduled-send-notification-async) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:186` |
+| [`fluent_community/course/scheduled/unschedule_notification`](#fluent-community-course-scheduled-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:227` |
+| [`fluent_community/course/structured/init_notification`](#fluent-community-course-structured-init-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:238` |
+| [`fluent_community/course/structured/send_notification_async`](#fluent-community-course-structured-send-notification-async) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:154` |
+| [`fluent_community/course/structured/unschedule_notification`](#fluent-community-course-structured-unschedule-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:237` |
+| [`fluent_community/course/student_left`](#fluent-community-course-student-left) | Core | 1 | `fluent-community/app/Services/Helper.php:1826` |
 | [`fluent_community/course/topic_completed`](#fluent-community-course-topic-completed) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:228` |
 | [`fluent_community/course/update_meta_settings_{metaProvider}`](#fluent-community-course-update-meta-settings-metaProvider) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:343` |
 | [`fluent_community/course/updated`](#fluent-community-course-updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:327` |
-| [`fluent_community/course/welcome_banner_updated`](#fluent-community-course-welcome-banner-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:489` |
-| [`fluent_community/lesson/additional_media_updated`](#fluent-community-lesson-additional-media-updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1068` |
+| [`fluent_community/course/welcome_banner_updated`](#fluent-community-course-welcome-banner-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:490` |
+| [`fluent_community/lesson/additional_media_updated`](#fluent-community-lesson-additional-media-updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1074` |
 | [`fluent_community/lesson/before_deleted`](#fluent-community-lesson-before-deleted) | Core | 3 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:428` |
-| [`fluent_community/lesson/duplicated`](#fluent-community-lesson-duplicated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1197` |
-| [`fluent_community/lesson/updated`](#fluent-community-lesson-updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1065` |
+| [`fluent_community/lesson/duplicated`](#fluent-community-lesson-duplicated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1203` |
+| [`fluent_community/lesson/updated`](#fluent-community-lesson-updated) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1071` |
 | [`fluent_community/lesson/video_watched`](#fluent-community-lesson-video-watched) | Core | 1 | `fluent-community/Modules/Course/Services/LessonVideoGateService.php:158` |
 | [`fluent_community/quiz/submitted`](#fluent-community-quiz-submitted) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:177` |
 | [`fluent_community/section/before_deleted`](#fluent-community-section-before-deleted) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:425` |
@@ -67,7 +67,7 @@ Fired with `do_action_ref_array()`, so a callback declared as `function (&$cours
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:657` | `&$course` (Course) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:658` | `&$course` (Course) |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:77` | `&$course` (Course) |
 
 ### Example
@@ -101,7 +101,7 @@ The placeholder is the course type — `self_paced`, `scheduled` or `structured`
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:124` | `$course` (Course)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:125` | `$course` (Course)<br>`$section` (mixed) |
 
 ### Example
 
@@ -134,7 +134,7 @@ When a course switches between self-paced, scheduled and structured, the pending
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:114` | `$course` (Course)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:115` | `$course` (Course)<br>`$section` (mixed) |
 
 ### Example
 
@@ -366,8 +366,8 @@ The course equivalent of `fluent_community/space/joined`; courses never fire the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1755` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1776` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1756` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1777` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
 
 ### Example
 
@@ -531,7 +531,7 @@ Only reached for courses whose course_type is `scheduled` and for sections whose
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:227` | `$course` (Course)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:228` | `$course` (Course)<br>`$section` (mixed) |
 
 ### Example
 
@@ -569,8 +569,8 @@ Queued in the `fluent-community` group for the section's release moment, convert
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:185` | No parameters |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:311` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:186` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:318` | No parameters |
 
 ### Example
 
@@ -603,7 +603,7 @@ Fires on an explicit cancel, on a settings reset (immediately before the matchin
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:226` | `$course` (Course)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:227` | `$course` (Course)<br>`$section` (mixed) |
 
 ### Example
 
@@ -636,7 +636,7 @@ The structured counterpart. Structured courses schedule per enrolled student rat
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:237` | `$course` (Course)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:238` | `$course` (Course)<br>`$section` (mixed) |
 
 ### Example
 
@@ -675,8 +675,8 @@ Structured courses drip relative to each student's enrolment date, so unlike the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:153` | No parameters |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:202` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:154` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:203` | No parameters |
 
 ### Example
 
@@ -709,7 +709,7 @@ Fires on an explicit cancel, on a settings reset immediately before the matching
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:236` | `$course` (Course)<br>`$section` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/CourseEmailNotificationHandler.php:237` | `$course` (Course)<br>`$section` (mixed) |
 
 ### Example
 
@@ -743,7 +743,7 @@ The course-side counterpart of `fluent_community/space/user_left`; courses never
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1825` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1826` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 
 ### Example
 
@@ -877,7 +877,7 @@ Runs once the settings are persisted, so it is the right place to bust a cache. 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:489` | `$course` (Course)<br>`$settings` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:490` | `$course` (Course)<br>`$settings` (mixed) |
 
 ### Example
 
@@ -911,7 +911,7 @@ Fires on every save of the lesson editor, including ones where nothing changed a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1068` | `$request->all()` (array)<br>`$lesson` (CourseLesson)<br>`$updateData` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1074` | `$request->all()` (array)<br>`$lesson` (CourseLesson)<br>`$updateData` (mixed) |
 
 ### Example
 
@@ -945,7 +945,7 @@ Fires from three places: deleting a single lesson, deleting a section (once per 
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:428` | `$courseLesson` (CourseLesson) |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:907` | `$lesson` (CourseLesson) |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1138` | `$lesson` (CourseLesson) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1144` | `$lesson` (CourseLesson) |
 
 ### Example
 
@@ -978,7 +978,7 @@ The copy is a full `replicate()` with a fresh slug, a unique "(Copy)" title and 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1197` | `$newLesson` (CourseLesson)<br>`$lesson` (CourseLesson) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1203` | `$newLesson` (CourseLesson)<br>`$lesson` (CourseLesson) |
 
 ### Example
 
@@ -1012,7 +1012,7 @@ Guarded by a dirty check, so a save that changes nothing is silent — but note 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1065` | `$lesson` (CourseLesson)<br>`$dirtyFields` (mixed)<br>`$isNewlyPublished` (mixed) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1071` | `$lesson` (CourseLesson)<br>`$dirtyFields` (mixed)<br>`$isNewlyPublished` (mixed) |
 
 ### Example
 

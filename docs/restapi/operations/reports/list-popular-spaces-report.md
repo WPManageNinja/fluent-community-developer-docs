@@ -15,7 +15,7 @@ Both variants come back as a `columns` and `data` pair, but the columns differ: 
 - **Path:** `/analytics/spaces/popular`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SpacesReportsController@getTopSpaces`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:87`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:90`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SpacesReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

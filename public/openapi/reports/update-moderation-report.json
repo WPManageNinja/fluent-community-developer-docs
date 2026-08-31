@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateModerationReport",
         "summary": "PUT Update Moderation Report",
-        "description": "Resolves a moderation report by setting its status, and publishes or unpublishes the reported content to match.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:99`",
+        "description": "Resolves a moderation report by setting its status, and publishes or unpublishes the reported content to match.\n\nController: `ModerationController@update`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:102`",
         "tags": [
           "Reports"
         ],

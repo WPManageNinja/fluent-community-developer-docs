@@ -15,7 +15,7 @@ Boolean-style keys are forced to `yes` or `no`. `default_theme_mode` accepts onl
 - **Path:** `/settings/customization-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@updateCustomizationSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:160`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:164`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

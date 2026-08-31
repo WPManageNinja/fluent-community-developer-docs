@@ -15,7 +15,7 @@ Groups are sanitised first and fields are then validated against the surviving g
 - **Path:** `/admin/custom-profile-fields`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveCustomProfileFields`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:25`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:23`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

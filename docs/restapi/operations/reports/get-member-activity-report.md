@@ -15,7 +15,7 @@ The end date is excluded from this series while the member widget includes the w
 - **Path:** `/analytics/members/activity`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `MembersReportsController@activity`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:78`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:81`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/MembersReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

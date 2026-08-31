@@ -15,7 +15,7 @@ Passing `id` updates in place; otherwise a new term is created and the slug — 
 - **Path:** `/admin/topics`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveTopics`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:43`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:46`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a community admin, a course admin, or the admin role in the space named by `space_id`.

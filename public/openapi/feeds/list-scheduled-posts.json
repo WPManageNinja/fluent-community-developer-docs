@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listScheduledPosts",
         "summary": "GET List Scheduled Posts",
-        "description": "Returns the paginated list of posts one member has scheduled but not yet published, soonest first.\n\nController: `SchedulePostsController@getScheduledPosts`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:109`",
+        "description": "Returns the paginated list of posts one member has scheduled but not yet published, soonest first.\n\nController: `SchedulePostsController@getScheduledPosts`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:112`",
         "tags": [
           "Feeds"
         ],
@@ -43,7 +43,8 @@
             "required": false,
             "description": "User ID read via `$request->getSafe()` in getScheduledPosts().",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "$currentUserId"
             }
           }
         ],

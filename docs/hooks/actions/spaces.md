@@ -215,8 +215,8 @@ Course-type spaces never reach this hook — `Helper::addToSpace()` routes them 
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:520` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:651` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:669` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Services/Helper.php:1757` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1781` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1758` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1782` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
 
 ### Example
 
@@ -354,7 +354,7 @@ Covers self-leaves, admin removals and CRM-driven removals alike; the `$by` argu
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/RemoveFromSpaceAction.php:87` | `$space` (Space)<br>`$user->ID` (int)<br>`'automation'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:706` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Services/Helper.php:1831` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1832` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 
 ### Example
 

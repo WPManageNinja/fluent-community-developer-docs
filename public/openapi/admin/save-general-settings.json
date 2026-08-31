@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveGeneralSettings",
         "summary": "POST Save General Settings",
-        "description": "Persists the portal-wide settings record — branding, access level, auth copy and redirects, and the portal slug.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:101`",
+        "description": "Persists the portal-wide settings record — branding, access level, auth copy and redirects, and the portal slug.\n\nController: `AdminController@saveGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:102`",
         "tags": [
           "Admin"
         ],
@@ -162,7 +162,7 @@
             }
           },
           "422": {
-            "description": "Please provide a valid signup URL",
+            "description": "You do not have permission to change the authentication and login settings",
             "content": {
               "application/json": {
                 "schema": {
@@ -174,7 +174,7 @@
                   }
                 },
                 "example": {
-                  "message": "Please provide a valid signup URL"
+                  "message": "You do not have permission to change the authentication and login settings"
                 }
               }
             }

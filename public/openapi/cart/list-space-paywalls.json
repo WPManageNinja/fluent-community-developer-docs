@@ -381,8 +381,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "The space could not be found",
             "content": {
               "application/json": {
                 "schema": {
@@ -394,7 +394,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "The space could not be found"
                 }
               }
             }

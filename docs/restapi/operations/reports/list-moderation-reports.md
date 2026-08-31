@@ -15,7 +15,7 @@ Filter with `post_id`, `parent_id`, `status` and `content_type`. The reported co
 - **Path:** `/moderation/reports`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ModerationController@get`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:98`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:101`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ModerationController.php`
 
 - Requires a community moderator, or the admin or moderator role in the space named by `space_id`.

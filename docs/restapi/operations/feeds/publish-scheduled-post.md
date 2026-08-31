@@ -15,7 +15,7 @@ Only posts still in `scheduled` state are accepted. Publishing fires the normal 
 - **Path:** `/scheduled-posts/publish/{feed_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SchedulePostsController@publishPost`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:111`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:114`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php`
 
 - Requires the post author or a community moderator, either globally or in the post space.

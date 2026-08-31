@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveSnippetsSettings",
         "summary": "POST Save Snippets Settings",
-        "description": "Stores the custom CSS and, for callers allowed to post unfiltered HTML, the custom JavaScript injected into the portal.\n\nController: `ProAdminController@updateSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:34`",
+        "description": "Stores the custom CSS and, for callers allowed to post unfiltered HTML, the custom JavaScript injected into the portal.\n\nController: `ProAdminController@updateSnippetsSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:37`",
         "tags": [
           "Settings"
         ],

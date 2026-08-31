@@ -13,7 +13,7 @@ Stores the followers module configuration and returns the normalised result.
 - **Path:** `/settings/followers/config`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveFollowersSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:37`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:40`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

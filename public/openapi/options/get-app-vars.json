@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAppVars",
         "summary": "GET Get App Vars",
-        "description": "Returns the bootstrap payload the portal SPA needs — current user, permissions, feature flags, branding and route configuration — together with the sidebar menu groups.\n\nController: `OptionController@getAppVars`\nRoute source: `fluent-community/app/Http/Routes/api.php:148`",
+        "description": "Returns the bootstrap payload the portal SPA needs — current user, permissions, feature flags, branding and route configuration — together with the sidebar menu groups.\n\nController: `OptionController@getAppVars`\nRoute source: `fluent-community/app/Http/Routes/api.php:152`",
         "tags": [
           "Options"
         ],

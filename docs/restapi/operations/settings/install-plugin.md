@@ -15,7 +15,7 @@ Only slugs present in the add-on catalogue are accepted. Repository plugins are 
 - **Path:** `/settings/install_plugin`
 - **Edition:** Core
 - **Controller:** `SettingController@installPlugin`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:158`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:162`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the WordPress `install_plugins` capability in addition to the community-admin permission.

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveEmailSettings",
         "summary": "POST Save Email Settings",
-        "description": "Merges the submitted email notification settings over the stored ones and saves the result.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:104`",
+        "description": "Merges the submitted email notification settings over the stored ones and saves the result.\n\nController: `AdminController@saveEmailSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:105`",
         "tags": [
           "Admin"
         ],

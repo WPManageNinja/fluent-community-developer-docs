@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFluentPlayerSettings",
         "summary": "GET Get Fluent Player Settings",
-        "description": "Returns the FluentPlayer integration settings used for lesson and post video playback.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:167`",
+        "description": "Returns the FluentPlayer integration settings used for lesson and post video playback.\n\nController: `SettingController@getFluentPlayerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:171`",
         "tags": [
           "Settings"
         ],

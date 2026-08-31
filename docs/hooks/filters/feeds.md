@@ -5,48 +5,48 @@ description: Feeds filter hooks for FluentCommunity.
 
 # Feeds Filters
 
-36 unique filter hooks currently map to this category, across 44 call sites.
+36 unique filter hooks currently map to this category, across 45 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/bookmarks_api_response`](#fluent-community-bookmarks-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:269` |
+| [`fluent_community/bookmarks_api_response`](#fluent-community-bookmarks-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:270` |
 | [`fluent_community/create_post_default_space`](#fluent-community-create-post-default-space) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:737` |
-| [`fluent_community/disable_duplicate_post_check`](#fluent-community-disable-duplicate-post-check) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:793` |
-| [`fluent_community/disable_self_post_react`](#fluent-community-disable-self-post-react) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:519` |
-| [`fluent_community/feed_api_response`](#fluent-community-feed-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:175` |
-| [`fluent_community/feed_general_config`](#fluent-community-feed-general-config) | Core | 2 | `fluent-community/app/Services/FeedsHelper.php:1060` |
-| [`fluent_community/feed_links_api_response`](#fluent-community-feed-links-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:742` |
-| [`fluent_community/feed_oembed_api_response`](#fluent-community-feed-oembed-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1305` |
-| [`fluent_community/feed_ticker`](#fluent-community-feed-ticker) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1167` |
+| [`fluent_community/disable_duplicate_post_check`](#fluent-community-disable-duplicate-post-check) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:824` |
+| [`fluent_community/disable_self_post_react`](#fluent-community-disable-self-post-react) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:524` |
+| [`fluent_community/feed_api_response`](#fluent-community-feed-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:176` |
+| [`fluent_community/feed_general_config`](#fluent-community-feed-general-config) | Core | 2 | `fluent-community/app/Services/FeedsHelper.php:1089` |
+| [`fluent_community/feed_links_api_response`](#fluent-community-feed-links-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:773` |
+| [`fluent_community/feed_oembed_api_response`](#fluent-community-feed-oembed-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1336` |
+| [`fluent_community/feed_ticker`](#fluent-community-feed-ticker) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1198` |
 | [`fluent_community/feed_view_json_ld`](#fluent-community-feed-view-json-ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1153` |
-| [`fluent_community/feed/filterable_statuses`](#fluent-community-feed-filterable-statuses) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:44` |
-| [`fluent_community/feed/new_feed_data`](#fluent-community-feed-new-feed-data) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:364` |
-| [`fluent_community/feed/new_feed_data_type_{formContentType}`](#fluent-community-feed-new-feed-data-type-formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:369` |
-| [`fluent_community/feed/new_feed_response`](#fluent-community-feed-new-feed-response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:427` |
-| [`fluent_community/feed/patch_feed_response`](#fluent-community-feed-patch-feed-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:716` |
-| [`fluent_community/feed/save_status`](#fluent-community-feed-save-status) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:284` |
-| [`fluent_community/feed/update_data`](#fluent-community-feed-update-data) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:586` |
-| [`fluent_community/feed/update_feed_data`](#fluent-community-feed-update-feed-data) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:515` |
-| [`fluent_community/feed/update_feed_data_type_{newContentType}`](#fluent-community-feed-update-feed-data-type-newContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:537` |
-| [`fluent_community/feed/update_feed_response`](#fluent-community-feed-update-feed-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:662` |
-| [`fluent_community/feed/uploaded_feed_medias`](#fluent-community-feed-uploaded-feed-medias) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:997` |
-| [`fluent_community/feeds_api_response`](#fluent-community-feeds-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:154` |
-| [`fluent_community/get_welcome_banner_settings`](#fluent-community-get-welcome-banner-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:333` |
-| [`fluent_community/has_global_post`](#fluent-community-has-global-post) | Core | 1 | `fluent-community/app/Services/Helper.php:511` |
-| [`fluent_community/has_post_title`](#fluent-community-has-post-title) | Core | 1 | `fluent-community/app/Functions/Utility.php:493` |
-| [`fluent_community/last_activity_date_for_unread_feeds`](#fluent-community-last-activity-date-for-unread-feeds) | Core | 1 | `fluent-community/app/Services/Helper.php:982` |
+| [`fluent_community/feed/filterable_statuses`](#fluent-community-feed-filterable-statuses) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:45` |
+| [`fluent_community/feed/new_feed_data`](#fluent-community-feed-new-feed-data) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:363` |
+| [`fluent_community/feed/new_feed_data_type_{formContentType}`](#fluent-community-feed-new-feed-data-type-formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:368` |
+| [`fluent_community/feed/new_feed_response`](#fluent-community-feed-new-feed-response) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:442` |
+| [`fluent_community/feed/patch_feed_response`](#fluent-community-feed-patch-feed-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:747` |
+| [`fluent_community/feed/save_status`](#fluent-community-feed-save-status) | Core | 3 | `fluent-community/app/Http/Controllers/FeedsController.php:285` |
+| [`fluent_community/feed/update_data`](#fluent-community-feed-update-data) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:604` |
+| [`fluent_community/feed/update_feed_data`](#fluent-community-feed-update-feed-data) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:530` |
+| [`fluent_community/feed/update_feed_data_type_{newContentType}`](#fluent-community-feed-update-feed-data-type-newContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:552` |
+| [`fluent_community/feed/update_feed_response`](#fluent-community-feed-update-feed-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:683` |
+| [`fluent_community/feed/uploaded_feed_medias`](#fluent-community-feed-uploaded-feed-medias) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1026` |
+| [`fluent_community/feeds_api_response`](#fluent-community-feeds-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:155` |
+| [`fluent_community/get_welcome_banner_settings`](#fluent-community-get-welcome-banner-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:344` |
+| [`fluent_community/has_global_post`](#fluent-community-has-global-post) | Core | 1 | `fluent-community/app/Services/Helper.php:512` |
+| [`fluent_community/has_post_title`](#fluent-community-has-post-title) | Core | 1 | `fluent-community/app/Functions/Utility.php:494` |
+| [`fluent_community/last_activity_date_for_unread_feeds`](#fluent-community-last-activity-date-for-unread-feeds) | Core | 1 | `fluent-community/app/Services/Helper.php:983` |
 | [`fluent_community/max_media_per_post`](#fluent-community-max-media-per-post) | Core | 2 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:506` |
-| [`fluent_community/max_post_length`](#fluent-community-max-post-length) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:590` |
+| [`fluent_community/max_post_length`](#fluent-community-max-post-length) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:613` |
 | [`fluent_community/pinned_posts_api_response`](#fluent-community-pinned-posts-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ActivityController.php:195` |
-| [`fluent_community/post_order_options`](#fluent-community-post-order-options) | Core | 1 | `fluent-community/app/Services/Helper.php:2261` |
+| [`fluent_community/post_order_options`](#fluent-community-post-order-options) | Core | 1 | `fluent-community/app/Services/Helper.php:2263` |
 | [`fluent_community/rate_limit/posts_per_5_minutes`](#fluent-community-rate-limit-posts-per-5-minutes) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:31` |
-| [`fluent_community/scheduled_posts_api_response`](#fluent-community-scheduled-posts-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:46` |
-| [`fluent_community/update_welcome_banner_settings`](#fluent-community-update-welcome-banner-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:357` |
-| [`fluent_community/welcome_banner_api_response`](#fluent-community-welcome-banner-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:730` |
-| [`fluent_community/welcome_banner_for_guests`](#fluent-community-welcome-banner-for-guests) | Core | 1 | `fluent-community/app/Services/Helper.php:1574` |
-| [`fluent_community/welcome_banner_for_logged_in`](#fluent-community-welcome-banner-for-logged-in) | Core | 1 | `fluent-community/app/Services/Helper.php:1571` |
+| [`fluent_community/scheduled_posts_api_response`](#fluent-community-scheduled-posts-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:50` |
+| [`fluent_community/update_welcome_banner_settings`](#fluent-community-update-welcome-banner-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:368` |
+| [`fluent_community/welcome_banner_api_response`](#fluent-community-welcome-banner-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:761` |
+| [`fluent_community/welcome_banner_for_guests`](#fluent-community-welcome-banner-for-guests) | Core | 1 | `fluent-community/app/Services/Helper.php:1575` |
+| [`fluent_community/welcome_banner_for_logged_in`](#fluent-community-welcome-banner-for-logged-in) | Core | 1 | `fluent-community/app/Services/Helper.php:1572` |
 
 <a id="fluent-community-bookmarks-api-response"></a>
 
@@ -72,7 +72,7 @@ The payload wraps a `feeds` block with the usual paging keys, and adds `last_id`
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:269` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:270` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -144,7 +144,7 @@ By default a post whose trimmed body exactly matches one the same author made in
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:793` | `false` (bool)<br>`$userId` (int)<br>`$spaceId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:824` | `false` (bool)<br>`$userId` (int)<br>`$spaceId` (int) |
 
 ### Example
 
@@ -180,8 +180,8 @@ Like its comment twin the name inverts the default: it is `false`, so self-react
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:519` | `false` (bool)<br>`$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:91` | `false` (bool)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:524` | `false` (bool)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:93` | `false` (bool)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -217,8 +217,8 @@ Applied at three points in `getFeedBySlug()`, and `getFeedById()` delegates to i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:175` | `$data` (mixed)<br>`$request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:203` | `[ 'feed' => $feed, 'execution_time' => microtime(true) - $start ]` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:176` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:204` | `[ 'feed' => $feed, 'execution_time' => microtime(true) - $start ]` (array)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -255,8 +255,8 @@ Two call sites with incompatible trailing arguments: `transformFeed()` passes a 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:1060` | `array (4 keys: user_id, interactions, comment_like_ids, …)` (array)<br>`$feed` (Feed)<br>`$userId` (int) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:1117` | `array (4 keys: user_id, interactions, comment_like_ids, …)` (array)<br>`$feeds` (mixed)<br>`$feedIds` (int[]) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:1089` | `array (4 keys: user_id, interactions, comment_like_ids, …)` (array)<br>`$feed` (Feed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:1146` | `array (4 keys: user_id, interactions, comment_like_ids, …)` (array)<br>`$feeds` (mixed)<br>`$feedIds` (int[]) |
 
 ### Example
 
@@ -292,8 +292,8 @@ Applied on both branches with the same payload key. With `scope=view` the list h
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:742` | `$data` (mixed)<br>`$request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:749` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:773` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:780` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -327,7 +327,7 @@ Only applied when `RemoteUrlParser` successfully resolved metadata; a failed or 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1305` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1336` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -363,7 +363,7 @@ The SPA polls this endpoint every 45 to 75 seconds per open session, so callback
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1167` | `$response` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1198` | `$response` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -433,7 +433,7 @@ Defaults to an empty array, meaning no status filter is honoured at all in core 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:44` | `[]` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:45` | `[]` (array) |
 
 ### Example
 
@@ -469,8 +469,8 @@ The main pre-save hook for posts, applied by both `FeedsController::store()` and
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:364` | `$data` (mixed)<br>`$requestData` (array) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:509` | `$feedData` (mixed)<br>`$allData` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:363` | `$data` (mixed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:529` | `$feedData` (mixed)<br>`$allData` (mixed) |
 
 ### Example
 
@@ -506,7 +506,7 @@ Applied immediately after the generic filter, and only when the request carried 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:369` | `$data` (mixed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:368` | `$data` (mixed)<br>`$requestData` (array) |
 
 ### Example
 
@@ -543,8 +543,8 @@ Applied on the published branch and on the held-for-moderation branch, but not o
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:427` | `array (3 keys: feed, message, last_fetched_timestamp)` (array)<br>`$feed` (Feed)<br>`$request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:444` | `array (3 keys: feed, message, last_fetched_timestamp)` (array)<br>`$feed` (Feed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:442` | `array (3 keys: feed, message, last_fetched_timestamp)` (array)<br>`$feed` (Feed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:459` | `array (3 keys: feed, message, last_fetched_timestamp)` (array)<br>`$feed` (Feed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -581,7 +581,7 @@ The patch endpoint only ever touches `is_sticky`, `priority` and `comments_disab
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:716` | `[ 'feed' => $feed, 'message' => __('Feed updated', 'fluent-community') ]` (array)<br>`$feed` (Feed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:747` | `[ 'feed' => $feed, 'message' => __('Feed updated', 'fluent-community') ]` (array)<br>`$feed` (Feed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -599,7 +599,7 @@ add_filter('fluent_community/feed/patch_feed_response', function ($response, $fe
 
 - **Type:** filter
 - **Edition:** Core
-- **Call sites:** 2
+- **Call sites:** 3
 - **When it fires:** Filters the status a post is about to be saved with.
 
 Two call sites with different defaults. On create the incoming value is always `published`, and the third argument is `null`. On update it is only consulted when the request carried a `status` among `published`, `unlisted`, `scheduled` and `pending`, the incoming value is that status — except that a request for `unlisted` passes the post's current status instead — and the third argument is the existing post. Pro uses it to honour `unlisted`; the returned string is written straight to the column without validation.
@@ -618,8 +618,9 @@ Two call sites with different defaults. On create the incoming value is always `
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:284` | `$data['status']` (array)<br>`$requestData` (array)<br>`null` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:481` | `$fallbackStatus` (mixed)<br>`$requestData` (array)<br>`$existingFeed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:285` | `$data['status']` (array)<br>`$requestData` (array)<br>`null` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:496` | `$fallbackStatus` (mixed)<br>`$requestData` (array)<br>`$existingFeed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:719` | `$fallbackStatus` (mixed)<br>`$allData` (mixed)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -655,7 +656,7 @@ Not to be confused with `fluent_community/feed/update_feed_data`, which is a dif
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:586` | `$data` (mixed)<br>`$existingFeed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:604` | `$data` (mixed)<br>`$existingFeed` (Feed) |
 
 ### Example
 
@@ -691,7 +692,7 @@ The update-side counterpart of `fluent_community/feed/new_feed_data`, applied be
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:515` | `$data` (mixed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:530` | `$data` (mixed)<br>`$requestData` (array) |
 
 ### Example
 
@@ -728,7 +729,7 @@ The suffix is the incoming type, so `..._document` and `..._survey` are the live
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:537` | `$data` (mixed)<br>`$requestData` (array)<br>`$existingFeed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:552` | `$data` (mixed)<br>`$requestData` (array)<br>`$existingFeed` (Feed) |
 
 ### Example
 
@@ -764,7 +765,7 @@ Applied unconditionally at the end of the update endpoint, including when the ed
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:662` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:683` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -800,7 +801,7 @@ Applied at the end of `FeedsHelper::processFeedMetaData()`, which runs on both c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:997` | `$uplaodedDocs` (mixed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:1026` | `$uplaodedDocs` (mixed)<br>`$requestData` (array) |
 
 ### Example
 
@@ -834,7 +835,7 @@ Covers the global feed, space feeds and profile feeds — they are all the same 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:154` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:155` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -870,7 +871,7 @@ This is the editor-facing shape: both the `login` and `logout` variants complete
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:333` | `Helper::getWelcomeBannerSettings()` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:344` | `Helper::getWelcomeBannerSettings()` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -905,7 +906,7 @@ The stored setting is inverted before the filter sees it: `disable_global_posts`
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:511` | `$status` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:512` | `$status` (mixed) |
 
 ### Example
 
@@ -938,7 +939,7 @@ Despite the boolean-sounding name this is a string preference: `optional`, `requ
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:493` | `$pref` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:494` | `$pref` (mixed) |
 
 ### Example
 
@@ -972,7 +973,7 @@ Defaults to the viewer's `last_activity` minus five minutes, expressed as a UTC 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:982` | `$lastActivityDate` (mixed)<br>`$xprofile` (XProfile) |
+| Core | `fluent-community/app/Services/Helper.php:983` | `$lastActivityDate` (mixed)<br>`$xprofile` (XProfile) |
 
 ### Example
 
@@ -1006,7 +1007,7 @@ Applied twice with the same default from the customiser settings (4): once insid
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:506` | `Utility::getCustomizationSetting('max_media_per_post')` (mixed) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:955` | `Utility::getCustomizationSetting('max_media_per_post')` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:984` | `Utility::getCustomizationSetting('max_media_per_post')` (mixed) |
 
 ### Example
 
@@ -1041,7 +1042,7 @@ Defaults to 15000 and is enforced server-side in `FeedsHelper::sanitizeAndValida
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:590` | `15000` (int) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:613` | `15000` (int) |
 
 ### Example
 
@@ -1114,7 +1115,7 @@ Defaults to new activity, latest, oldest, popular, likes, alphabetical and unans
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2261` | `$options` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2263` | `$options` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -1185,7 +1186,7 @@ Each feed in the paginated list has already been run through FeedsHelper::transf
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:46` | `$data` (mixed)<br>`$request->all()` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:50` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1220,7 +1221,7 @@ Runs after sanitisation and after the markdown descriptions have been rendered i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:357` | `$settings` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:368` | `$settings` (mixed) |
 
 ### Example
 
@@ -1256,7 +1257,7 @@ The scope is chosen from the session, not the request: a logged-in visitor gets 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:730` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:761` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1291,7 +1292,7 @@ Only reached when the `logout` banner is enabled — a disabled banner returns `
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1574` | `$welcomeBanner` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1575` | `$welcomeBanner` (mixed) |
 
 ### Example
 
@@ -1326,7 +1327,7 @@ The `login` twin of the guest filter, with the same caveats: it is skipped entir
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1571` | `$welcomeBanner` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1572` | `$welcomeBanner` (mixed) |
 
 ### Example
 

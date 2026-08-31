@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listTopMembersReport",
         "summary": "GET List Top Members Report",
-        "description": "Returns ten member profiles ordered by lifetime points, drawn from those who joined within the requested range.\n\nController: `MembersReportsController@getTopMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:79`",
+        "description": "Returns ten member profiles ordered by lifetime points, drawn from those who joined within the requested range.\n\nController: `MembersReportsController@getTopMembers`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:82`",
         "tags": [
           "Reports"
         ],

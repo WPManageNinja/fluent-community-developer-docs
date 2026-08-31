@@ -15,7 +15,7 @@ A blocked relationship cannot be toggled; unblock first. The response message te
 - **Path:** `/profile/{userId}/toggle-follow`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@toggleFollow`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:133`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:136`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 - Requires FluentCommunity Pro with the `followers_module` feature enabled.

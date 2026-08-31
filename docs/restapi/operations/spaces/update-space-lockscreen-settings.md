@@ -15,7 +15,7 @@ The route group only requires portal access, so the controller performs its own 
 - **Path:** `/spaces/{spaceSlug}/lockscreens`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateSpaceLockscreenSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:59`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:62`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires community-admin or course-admin access, or the admin role in this space.

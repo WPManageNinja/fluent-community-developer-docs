@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postResolveCrmTagSpace",
         "summary": "POST Post Resolve CRM Tag Space",
-        "description": "Resolves a FluentCRM tag into a page of contacts to add to the space, optionally creating WordPress users for contacts that do not have one.\n\nController: `BulkMembersController@resolveCrmTagSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:123`",
+        "description": "Resolves a FluentCRM tag into a page of contacts to add to the space, optionally creating WordPress users for contacts that do not have one.\n\nController: `BulkMembersController@resolveCrmTagSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:126`",
         "tags": [
           "Members"
         ],

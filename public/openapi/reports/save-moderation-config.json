@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveModerationConfig",
         "summary": "POST Save Moderation Config",
-        "description": "Stores the content moderation configuration and keeps the `content_moderation` feature flag in step with its `is_enabled` value.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:105`",
+        "description": "Stores the content moderation configuration and keeps the `content_moderation` feature flag in step with its `is_enabled` value.\n\nController: `ModerationController@saveConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:108`",
         "tags": [
           "Reports"
         ],

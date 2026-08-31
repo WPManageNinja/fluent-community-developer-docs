@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveWebhook",
         "summary": "POST Save Webhook",
-        "description": "Creates or updates an inbound webhook that adds or removes the resolved user from a set of spaces and courses when it is called.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:51`",
+        "description": "Creates or updates an inbound webhook that adds or removes the resolved user from a set of spaces and courses when it is called.\n\nController: `ProAdminController@saveWebhook`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:54`",
         "tags": [
           "Admin"
         ],

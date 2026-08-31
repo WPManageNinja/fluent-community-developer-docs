@@ -14,9 +14,9 @@ description: Rendering action hooks for FluentCommunity.
 | [`fluent_community/after_header_logo`](#fluent-community-after-header-logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:45` |
 | [`fluent_community/after_header_menu`](#fluent-community-after-header-menu) | Core | 1 | `fluent-community/app/Views/portal/header.php:55` |
 | [`fluent_community/after_header_right_menu_items`](#fluent-community-after-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:371` |
-| [`fluent_community/after_portal_sidebar`](#fluent-community-after-portal-sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:157` |
+| [`fluent_community/after_portal_sidebar`](#fluent-community-after-portal-sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:159` |
 | [`fluent_community/after_registration_form`](#fluent-community-after-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:59` |
-| [`fluent_community/after_sidebar_wrap`](#fluent-community-after-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:155` |
+| [`fluent_community/after_sidebar_wrap`](#fluent-community-after-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:157` |
 | [`fluent_community/before_auth_form_header`](#fluent-community-before-auth-form-header) | Core | 3 | `fluent-community/app/Views/auth/login_form.php:10` |
 | [`fluent_community/before_header_logo`](#fluent-community-before-header-logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:34` |
 | [`fluent_community/before_header_menu_items`](#fluent-community-before-header-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:315` |
@@ -26,9 +26,9 @@ description: Rendering action hooks for FluentCommunity.
 | [`fluent_community/before_portal_rendered`](#fluent-community-before-portal-rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:899` |
 | [`fluent_community/before_registration_form`](#fluent-community-before-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:23` |
 | [`fluent_community/before_sidebar_wrap`](#fluent-community-before-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:31` |
-| [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:424` |
-| [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:417` |
-| [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:187` |
+| [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:426` |
+| [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:419` |
+| [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:222` |
 | [`fluent_community/headless/before_js_loaded`](#fluent-community-headless-before-js-loaded) | Core | 1 | `fluent-community/app/Views/headless_page.php:110` |
 | [`fluent_community/headless/content`](#fluent-community-headless-content) | Core | 2 | `fluent-community/app/Views/headless_page.php:94` |
 | [`fluent_community/headless/footer`](#fluent-community-headless-footer) | Core | 1 | `fluent-community/app/Views/headless_page.php:118` |
@@ -48,8 +48,8 @@ description: Rendering action hooks for FluentCommunity.
 | [`fluent_community/portal/viewed`](#fluent-community-portal-viewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:842` |
 | [`fluent_community/rendering_headless_portal`](#fluent-community-rendering-headless-portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:891` |
 | [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:814` |
-| [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:817` |
-| [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:813` |
+| [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:818` |
+| [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:814` |
 | [`fluent_community/template_footer`](#fluent-community-template-footer) | Core | 3 | `fluent-community/Modules/Gutenberg/EditorBlock.php:180` |
 | [`fluent_community/template_header`](#fluent-community-template-header) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:18` |
 | [`fluent_community/theme_body_atts`](#fluent-community-theme-body-atts) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:21` |
@@ -173,7 +173,7 @@ Core attaches the sidebar footer here — the upgrade or wp-admin shortcut, the 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:157` | `$fluentCommunityContext` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:159` | `$fluentCommunityContext` (mixed) |
 
 ### Example
 
@@ -231,7 +231,7 @@ The counterpart of `fluent_community/before_sidebar_wrap` and subject to the sam
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:155` | `$fluentCommunityContext` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:157` | `$fluentCommunityContext` (mixed) |
 
 ### Example
 
@@ -265,7 +265,7 @@ Three call sites, and their positions differ: on the signup template it fires as
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:10` | `'login'` (string) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:11` | `'signup'` (string) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:729` | `'login'` (string) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:762` | `'login'` (string) |
 
 ### Example
 
@@ -534,7 +534,7 @@ Core attaches the entire WordPress footer sequence here — footer scripts, scri
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:424` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:426` | No parameters |
 
 ### Example
 
@@ -560,7 +560,7 @@ The lesson editor renders its own complete HTML document in an iframe rather tha
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:417` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:419` | No parameters |
 
 ### Example
 
@@ -592,7 +592,7 @@ Core's own callback does the enqueueing, so this is the hook to attach dependent
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:187` | `true` (bool) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:222` | `true` (bool) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:130` | `$useBuildInTheme` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:188` | `true` (bool) |
 | Core | `fluent-community/Modules/Theming/TemplateLoader.php:189` | `true` (bool) |
@@ -1222,7 +1222,7 @@ The in-memory model is still passed, but the row is gone by this point.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:817` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:818` | `$link` (mixed) |
 
 ### Example
 
@@ -1254,7 +1254,7 @@ The record is still readable here. There is no matching hook on save — only de
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:813` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:814` | `$link` (mixed) |
 
 ### Example
 
