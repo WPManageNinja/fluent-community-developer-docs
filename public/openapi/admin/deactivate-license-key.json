@@ -27,7 +27,7 @@
       "delete": {
         "operationId": "deactivateLicenseKey",
         "summary": "DELETE Deactivate License Key",
-        "description": "Releases the Pro licence activation for this site so the key can be used elsewhere.\n\nController: `LicenseController@deactivateLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:19`",
+        "description": "Releases the Pro licence activation for this site so the key can be used elsewhere.\n\nController: `LicenseController@deactivateLicense`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:30`",
         "tags": [
           "Admin"
         ],

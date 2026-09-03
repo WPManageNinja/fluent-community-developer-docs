@@ -5,15 +5,40 @@ description: Miscellaneous filter hooks for FluentCommunity.
 
 # Miscellaneous Filters
 
-3 unique filter hooks currently map to this category, across 4 call sites.
+6 unique filter hooks currently map to this category, across 8 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
+| [`fluent_community/add_sitemap_provider`](#fluent-community-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:22` |
 | [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:377` |
-| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:596` |
+| [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:106` |
+| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:597` |
 | [`fluent_community/max_per_page`](#fluent-community-max-per-page) | Core | 2 | `fluent-community/app/Http/Controllers/ActivityController.php:23` |
+| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:2506` |
+
+<a id="fluent-community-add-sitemap-provider"></a>
+
+## `fluent_community/add_sitemap_provider`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:22` | `$enableSitemap` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/add_sitemap_provider', function ($enableSitemap) {
+    return $enableSitemap;
+}, 10, 1);
+```
 
 <a id="fluent-community-custom-order-by"></a>
 
@@ -51,6 +76,28 @@ add_filter('fluent_community/custom_order_by', function ($query, $type) {
 
 **Related:** [`fluent_community/post_order_options`](/hooks/filters/feeds#fluent-community-post-order-options)
 
+<a id="fluent-community-license-grace-period-days"></a>
+
+## `fluent_community/license_grace_period_days`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/LicenseController.php:106` | `15` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/license_grace_period_days', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
 <a id="fluent-community-max-execution-time"></a>
 
 ## `fluent_community/max_execution_time`
@@ -74,7 +121,7 @@ The default is derived from PHP's `max_execution_time`: unlimited or unreadable 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:596` | `$maxRunTime` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:597` | `$maxRunTime` (mixed) |
 
 ### Example
 
@@ -110,13 +157,43 @@ Defaults to 100 and is applied identically in the feeds and activities endpoints
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Http/Controllers/ActivityController.php:23` | `100` (int) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:52` | `100` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:53` | `100` (int) |
 
 ### Example
 
 ```php
 add_filter('fluent_community/max_per_page', function ($maxPerPage) {
     return $maxPerPage;
+}, 10, 1);
+```
+
+<a id="fluent-community-undeliverable-crm-contact-statuses"></a>
+
+## `fluent_community/undeliverable_crm_contact_statuses`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 2
+- **When it fires:** FluentCRM contact statuses that FluentCommunity treats as undeliverable. Emails to contacts with these statuses are skipped for notification emails.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$statuses` | `array` | Contact statuses to skip. Default: bounced, complained, spammed. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/Helper.php:2506` | `['bounced', 'complained', 'spammed']` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2530` | `['bounced', 'complained', 'spammed']` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/undeliverable_crm_contact_statuses', function ($statuses) {
+    return $statuses;
 }, 10, 1);
 ```
 

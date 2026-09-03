@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getExportableStudents",
         "summary": "GET Get Exportable Students",
-        "description": "Returns a flattened, spreadsheet-shaped list of a course roster — name, email, username, progress percentage, enrolment date and last activity.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:27`",
+        "description": "Returns a flattened, spreadsheet-shaped list of a course roster — name, email, username, progress percentage, enrolment date and last activity.\n\nController: `ProAdminController@getExportableStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:25`",
         "tags": [
           "Admin"
         ],

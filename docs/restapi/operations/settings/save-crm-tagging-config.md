@@ -15,7 +15,7 @@ Non-numeric tag mappings are discarded, and `linked_maps` is reduced to the keys
 - **Path:** `/settings/crm-tagging-config`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@saveCrmTaggingConfig`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:32`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:35`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

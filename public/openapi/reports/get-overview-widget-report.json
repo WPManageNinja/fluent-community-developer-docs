@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOverviewWidgetReport",
         "summary": "GET Get Overview Widget Report",
-        "description": "Returns the four headline community counters — members, posts, comments and spaces — each with a period-over-period comparison.\n\nController: `ReportsController@getOverviewWidget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:71`",
+        "description": "Returns the four headline community counters — members, posts, comments and spaces — each with a period-over-period comparison.\n\nController: `ReportsController@getOverviewWidget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:74`",
         "tags": [
           "Reports"
         ],

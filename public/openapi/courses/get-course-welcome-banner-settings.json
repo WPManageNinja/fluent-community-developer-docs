@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getCourseWelcomeBannerSettings",
         "summary": "GET Get Course Welcome Banner Settings",
-        "description": "Returns the two course welcome banner variants, one for enrolled students and one for visitors who have not enrolled.\n\nController: `ProAdminController@getCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:64`",
+        "description": "Returns the two course welcome banner variants, one for enrolled students and one for visitors who have not enrolled.\n\nController: `ProAdminController@getCourseWelcomeBannerSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:67`",
         "tags": [
           "Courses"
         ],

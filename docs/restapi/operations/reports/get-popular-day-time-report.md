@@ -15,7 +15,7 @@ Only `start_date` and `end_date` are read; the block size is fixed. Each cell su
 - **Path:** `/analytics/overview/popular-day-time`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ReportsController@popularDayTimeReport`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:73`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:76`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -15,7 +15,7 @@ Only the one report is deleted, not the whole group of reports against the same 
 - **Path:** `/moderation/reports/{report_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ModerationController@delete`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:100`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:103`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ModerationController.php`
 
 - Requires a community moderator, or the admin or moderator role in the space holding the reported content.

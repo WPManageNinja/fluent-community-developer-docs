@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOverviewActivityReport",
         "summary": "GET Get Overview Activity Report",
-        "description": "Returns a gap-filled time series of one activity type across the community, ready to plot without client-side interpolation.\n\nController: `ReportsController@activityReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:72`",
+        "description": "Returns a gap-filled time series of one activity type across the community, ready to plot without client-side interpolation.\n\nController: `ReportsController@activityReport`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:75`",
         "tags": [
           "Reports"
         ],

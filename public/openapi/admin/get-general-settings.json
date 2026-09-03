@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getGeneralSettings",
         "summary": "GET Get General Settings",
-        "description": "Returns the portal-wide settings record together with the list of WordPress roles that can be granted portal access and whether open registration is enabled on the site.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
+        "description": "Returns the portal-wide settings record together with the list of WordPress roles that can be granted portal access and whether open registration is enabled on the site.\n\nController: `AdminController@getGeneralSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:101`",
         "tags": [
           "Admin"
         ],

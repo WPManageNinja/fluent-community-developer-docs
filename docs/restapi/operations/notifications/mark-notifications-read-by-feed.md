@@ -15,7 +15,7 @@ The `unread_feed_ids` list is what the portal uses to keep the unread dot on ind
 - **Path:** `/notifications/mark-read/{feed_id}/by-feed-id`
 - **Edition:** Core
 - **Controller:** `NotificationsController@markAsReadByFeedId`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:134`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:138`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 - Requires a signed-in user.

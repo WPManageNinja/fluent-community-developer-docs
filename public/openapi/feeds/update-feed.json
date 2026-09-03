@@ -921,7 +921,7 @@
             }
           },
           "422": {
-            "description": "Title is required. Please provide a title",
+            "description": "Sorry, you do not have permission to move this post to a profile",
             "content": {
               "application/json": {
                 "schema": {
@@ -933,7 +933,7 @@
                   }
                 },
                 "example": {
-                  "message": "Title is required. Please provide a title"
+                  "message": "Sorry, you do not have permission to move this post to a profile"
                 }
               }
             }

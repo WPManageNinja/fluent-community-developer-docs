@@ -13,7 +13,7 @@ Deletes an inbound webhook so its URL stops accepting calls.
 - **Path:** `/admin/webhooks/{id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@deleteWebhook`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:52`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:55`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

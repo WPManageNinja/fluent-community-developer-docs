@@ -15,7 +15,7 @@ The `rest` block is deliberately stripped, because the client already holds its 
 - **Path:** `/options/app-vars`
 - **Edition:** Core
 - **Controller:** `OptionController@getAppVars`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:148`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:152`
 - **Controller source:** `fluent-community/app/Http/Controllers/OptionController.php`
 
 ::: tip Live sample

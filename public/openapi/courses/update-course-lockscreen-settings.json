@@ -27,7 +27,7 @@
       "put": {
         "operationId": "updateCourseLockscreenSettings",
         "summary": "PUT Update Course Lockscreen Settings",
-        "description": "Stores the lock screen a private course shows to visitors who are not enrolled — its copy, imagery and call to action.\n\nController: `ProAdminController@updateCourseLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:63`",
+        "description": "Stores the lock screen a private course shows to visitors who are not enrolled — its copy, imagery and call to action.\n\nController: `ProAdminController@updateCourseLockscreenSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:66`",
         "tags": [
           "Courses"
         ],

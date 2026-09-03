@@ -15,7 +15,7 @@ Capped at 5000 students in a single call and filterable with `search`. Progress 
 - **Path:** `/admin/courses/{course_id}/export/students`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@getExportableStudents`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:27`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:25`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

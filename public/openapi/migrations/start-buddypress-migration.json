@@ -44,10 +44,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "reset_migration": {
+                  "delete_current_data": {
                     "type": "string"
                   },
-                  "delete_current_data": {
+                  "delete_current_data_confirmation": {
+                    "type": "string"
+                  },
+                  "reset_migration": {
                     "type": "string"
                   },
                   "config": {
@@ -150,7 +153,7 @@
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "Please type %s to confirm permanently removing all existing FluentCommunity data.",
             "content": {
               "application/json": {
                 "schema": {
@@ -162,7 +165,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Please type %s to confirm permanently removing all existing FluentCommunity data."
                 }
               }
             }

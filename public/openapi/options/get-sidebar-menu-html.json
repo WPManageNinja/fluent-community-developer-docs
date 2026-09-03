@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSidebarMenuHtml",
         "summary": "GET Get Sidebar Menu HTML",
-        "description": "Returns the server-rendered sidebar HTML together with the spaces the current user can act in, each carrying its resolved permissions, membership and topics.\n\nController: `OptionController@getSidebarMenuHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:149`",
+        "description": "Returns the server-rendered sidebar HTML together with the spaces the current user can act in, each carrying its resolved permissions, membership and topics.\n\nController: `OptionController@getSidebarMenuHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:153`",
         "tags": [
           "Options"
         ],

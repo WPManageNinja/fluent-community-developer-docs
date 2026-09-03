@@ -15,7 +15,7 @@ The response reports per-batch counts so a large import can be driven in chunks 
 - **Path:** `/spaces/{spaceSlug}/members/bulk-import`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@bulkImportMembers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:122`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:125`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 - Requires the `can_add_member` permission in this space.

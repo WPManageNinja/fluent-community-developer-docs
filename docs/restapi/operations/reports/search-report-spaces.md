@@ -15,7 +15,7 @@ Only `search` is read. Space groups, courses and sidebar links are excluded, and
 - **Path:** `/analytics/spaces/search`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SpacesReportsController@searchSpace`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:88`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:91`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SpacesReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

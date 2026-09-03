@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getProfileLinkProviders",
         "summary": "GET Get Profile Link Providers",
-        "description": "Returns the catalogue of social link providers members can add to their profile, including the ones currently disabled.\n\nController: `AdminController@getProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:118`",
+        "description": "Returns the catalogue of social link providers members can add to their profile, including the ones currently disabled.\n\nController: `AdminController@getProfileLinkProviders`\nRoute source: `fluent-community/app/Http/Routes/api.php:117`",
         "tags": [
           "Admin"
         ],

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveColorConfig",
         "summary": "POST Save Color Config",
-        "description": "Selects the light and dark colour schemas, and compiles the resulting CSS once so the portal can serve it without regenerating per request.\n\nController: `ProAdminController@saveColorConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:31`",
+        "description": "Selects the light and dark colour schemas, and compiles the resulting CSS once so the portal can serve it without regenerating per request.\n\nController: `ProAdminController@saveColorConfig`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:34`",
         "tags": [
           "Settings"
         ],

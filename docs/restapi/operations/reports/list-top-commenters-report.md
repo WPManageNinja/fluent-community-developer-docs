@@ -15,7 +15,7 @@ The range is applied to the comments, so this ranks activity in the window. Fixe
 - **Path:** `/analytics/members/top-commenters`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `MembersReportsController@topCommenters`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:81`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:84`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/MembersReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

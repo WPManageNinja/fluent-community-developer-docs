@@ -13,7 +13,7 @@ Returns the active light and dark colour schema selection alongside the full cat
 - **Path:** `/settings/color-config`
 - **Edition:** Core
 - **Controller:** `SettingController@getColorConfig`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:163`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:167`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

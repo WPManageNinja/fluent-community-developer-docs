@@ -673,7 +673,8 @@
     ],
     "routeExpression": "'cart/products/search'",
     "payloadKeys": [
-      "search"
+      "search",
+      "space_id"
     ],
     "responseKeys": [
       "products"
@@ -698,7 +699,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/_AddPaywallModal.vue",
-    "line": 164
+    "line": 167
   },
   {
     "method": "GET",
@@ -1463,7 +1464,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_QuizView.vue",
-    "line": 267
+    "line": 268
   },
   {
     "method": "POST",
@@ -1482,7 +1483,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_QuizView.vue",
-    "line": 284
+    "line": 285
   },
   {
     "method": "POST",
@@ -1800,7 +1801,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Comment/__ReactedUsers.vue",
-    "line": 98
+    "line": 97
   },
   {
     "method": "POST",
@@ -1860,7 +1861,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/FeedCard.vue",
-    "line": 194
+    "line": 165
   },
   {
     "method": "POST",
@@ -1936,7 +1937,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/WelcomeBannerConfig.vue",
-    "line": 187
+    "line": 188
   },
   {
     "method": "POST",
@@ -1952,7 +1953,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/WelcomeBannerConfig.vue",
-    "line": 201
+    "line": 202
   },
   {
     "method": "POST",
@@ -2001,7 +2002,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/_FeedAction.vue",
-    "line": 131
+    "line": 135
   },
   {
     "method": "PATCH",
@@ -2017,7 +2018,24 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/_FeedAction.vue",
-    "line": 153
+    "line": 157
+  },
+  {
+    "method": "PATCH",
+    "routePatterns": [
+      "feeds/{id}"
+    ],
+    "routeExpression": "'feeds/' + this.feed.id",
+    "payloadKeys": [
+      "status"
+    ],
+    "responseKeys": [
+      "feed.status",
+      "feed"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Feeds/Parts/_FeedAction.vue",
+    "line": 181
   },
   {
     "method": "PATCH",
@@ -2033,7 +2051,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/_FeedAction.vue",
-    "line": 177
+    "line": 207
   },
   {
     "method": "DELETE",
@@ -2045,7 +2063,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/_FeedAction.vue",
-    "line": 202
+    "line": 232
   },
   {
     "method": "POST",
@@ -2302,7 +2320,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Migrations/_BuddyPress.vue",
-    "line": 190
+    "line": 213
   },
   {
     "method": "POST",
@@ -2313,7 +2331,8 @@
     "payloadKeys": [
       "config",
       "reset_migration",
-      "delete_current_data"
+      "delete_current_data",
+      "delete_current_data_confirmation"
     ],
     "responseKeys": [
       "current_status",
@@ -2321,7 +2340,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Migrations/_BuddyPress.vue",
-    "line": 207
+    "line": 230
   },
   {
     "method": "GET",
@@ -2333,7 +2352,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Migrations/_BuddyPress.vue",
-    "line": 225
+    "line": 249
   },
   {
     "method": "GET",
@@ -2382,7 +2401,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Notifications/NotificationsPop.vue",
-    "line": 106
+    "line": 101
   },
   {
     "method": "POST",
@@ -2396,7 +2415,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Notifications/NotificationsPop.vue",
-    "line": 121
+    "line": 116
   },
   {
     "method": "POST",
@@ -2661,11 +2680,26 @@
       "user_globals",
       "spaceGroups",
       "digestEmailDay",
-      "default_messaging_email_frequency"
+      "default_messaging_email_frequency",
+      "crm_email_status"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 224
+    "line": 244
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "profile/{username}/reconfirm-email"
+    ],
+    "routeExpression": "`profile/${this.username}/reconfirm-email`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
+    "line": 263
   },
   {
     "method": "POST",
@@ -2682,7 +2716,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 250
+    "line": 285
   },
   {
     "method": "GET",
@@ -3048,7 +3082,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/GeneralSettings.vue",
-    "line": 363
+    "line": 367
   },
   {
     "method": "POST",
@@ -3064,7 +3098,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/GeneralSettings.vue",
-    "line": 379
+    "line": 383
   },
   {
     "method": "GET",
@@ -3340,7 +3374,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PrivacySettings.vue",
-    "line": 152
+    "line": 159
   },
   {
     "method": "POST",
@@ -3356,7 +3390,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PrivacySettings.vue",
-    "line": 165
+    "line": 172
   },
   {
     "method": "GET",
@@ -3513,11 +3547,12 @@
     "routeExpression": "'admin/pwa-settings'",
     "payloadKeys": [],
     "responseKeys": [
-      "settings"
+      "settings",
+      "default_icon"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_PwaConfig.vue",
-    "line": 192
+    "line": 212
   },
   {
     "method": "POST",
@@ -3534,7 +3569,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_PwaConfig.vue",
-    "line": 220
+    "line": 241
   },
   {
     "method": "GET",
@@ -3712,7 +3747,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/CreateSpaceForm.vue",
-    "line": 595
+    "line": 603
   },
   {
     "method": "PUT",
@@ -3807,7 +3842,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Members.vue",
-    "line": 250
+    "line": 241
   },
   {
     "method": "POST",
@@ -3823,7 +3858,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Members.vue",
-    "line": 303
+    "line": 294
   },
   {
     "method": "POST",
@@ -3839,7 +3874,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Members.vue",
-    "line": 326
+    "line": 317
   },
   {
     "method": "PATCH",
@@ -4078,7 +4113,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Onboarding/Components/LicenseManagement.vue",
-    "line": 93
+    "line": 433
   },
   {
     "method": "POST",
@@ -4095,7 +4130,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Onboarding/Components/LicenseManagement.vue",
-    "line": 116
+    "line": 456
   },
   {
     "method": "DELETE",
@@ -4110,7 +4145,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Onboarding/Components/LicenseManagement.vue",
-    "line": 134
+    "line": 485
   },
   {
     "method": "POST",

@@ -27,7 +27,7 @@
       "put": {
         "operationId": "reschedulePost",
         "summary": "PUT Reschedule Post",
-        "description": "Moves a scheduled post to a new publish time and re-queues the background action that will publish it.\n\nController: `SchedulePostsController@reschedulePost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:110`",
+        "description": "Moves a scheduled post to a new publish time and re-queues the background action that will publish it.\n\nController: `SchedulePostsController@reschedulePost`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:113`",
         "tags": [
           "Feeds"
         ],

@@ -13,7 +13,7 @@ Returns every space and course row in serial order, ignoring privacy and members
 - **Path:** `/admin/all_space_courses`
 - **Edition:** Core
 - **Controller:** `AdminController@getAllSpaceCourses`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:121`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:120`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

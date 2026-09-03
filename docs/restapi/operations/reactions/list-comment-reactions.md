@@ -15,7 +15,7 @@ Capped at 100 distinct users with no pagination. Access is validated against the
 - **Path:** `/comments/{comment_id}/reactions`
 - **Edition:** Core
 - **Controller:** `ReactionController@getByCommentId`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:143`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:147`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 ::: tip Live sample

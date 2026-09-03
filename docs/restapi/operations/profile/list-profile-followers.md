@@ -15,7 +15,7 @@ Filter with `search` over display name and username; pass `sort_by=alphabetical`
 - **Path:** `/profile/{username}/followers`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@getFollowers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:128`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:131`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 - Requires FluentCommunity Pro with the `followers_module` feature enabled.

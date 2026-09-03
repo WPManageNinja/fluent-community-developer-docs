@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceActivityReport",
         "summary": "GET Get Space Activity Report",
-        "description": "Returns a gap-filled time series of posts, optionally narrowed to one space with `space_id`.\n\nController: `SpacesReportsController@activity`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:86`",
+        "description": "Returns a gap-filled time series of posts, optionally narrowed to one space with `space_id`.\n\nController: `SpacesReportsController@activity`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:89`",
         "tags": [
           "Reports"
         ],

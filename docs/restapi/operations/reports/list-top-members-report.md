@@ -15,7 +15,7 @@ The date range filters on the profile creation date, not on points earned, so th
 - **Path:** `/analytics/members/top-members`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `MembersReportsController@getTopMembers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:79`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:82`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/MembersReportsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

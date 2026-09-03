@@ -15,7 +15,7 @@ The response reports per-batch counts so a large import can be driven in chunks 
 - **Path:** `/admin/courses/{course_id}/students/bulk-import`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@bulkImportStudents`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:116`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:119`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 - Requires a course admin for this course.

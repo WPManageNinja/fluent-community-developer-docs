@@ -15,7 +15,7 @@ Returns the paginated list of posts one member has scheduled but not yet publish
 - **Path:** `/scheduled-posts`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `SchedulePostsController@getScheduledPosts`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:109`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:112`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php`
 
 - Requires FluentCommunity Pro.

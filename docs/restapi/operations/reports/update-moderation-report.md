@@ -15,7 +15,7 @@ Resolves a moderation report by setting its status, and publishes or unpublishes
 - **Path:** `/moderation/reports/{report_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ModerationController@update`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:99`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:102`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ModerationController.php`
 
 - Requires a community moderator, or the admin or moderator role in the space holding the reported content.

@@ -15,7 +15,7 @@ CSS is sanitised before storage. Custom JavaScript is only written when the call
 - **Path:** `/settings/snippets-settings`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateSnippetsSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:34`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:37`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -15,7 +15,7 @@ Community moderators receive every space; everyone else receives only spaces whe
 - **Path:** `/options/sidebar-menu-html`
 - **Edition:** Core
 - **Controller:** `OptionController@getSidebarMenuHtml`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:149`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:153`
 - **Controller source:** `fluent-community/app/Http/Controllers/OptionController.php`
 
 - Signed-out callers receive the rendered HTML and an empty spaces object.

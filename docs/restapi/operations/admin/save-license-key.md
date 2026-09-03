@@ -13,7 +13,7 @@ Activates a Pro licence key against the remote licensing service and stores the 
 - **Path:** `/admin/license`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `LicenseController@saveLicense`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:18`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:29`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/LicenseController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

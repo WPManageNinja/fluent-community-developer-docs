@@ -15,7 +15,7 @@ Send up to 500 ids in `user_ids`; larger payloads are rejected with a 413 so the
 - **Path:** `/spaces/{spaceSlug}/members/bulk-add`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@bulkAddMembers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:121`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:124`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 - Requires the `can_add_member` permission in this space.

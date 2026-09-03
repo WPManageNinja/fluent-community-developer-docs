@@ -54,12 +54,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "is_sticky": {
-                    "type": "string",
-                    "nullable": false
+                  "status": {
+                    "type": "string"
                   }
-                },
-                "additionalProperties": false
+                }
               },
               "example": {
                 "is_sticky": "yes"

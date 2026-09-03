@@ -27,7 +27,7 @@
       "post": {
         "operationId": "unblockProfileUser",
         "summary": "POST Unblock Profile User",
-        "description": "Lifts a block, deleting the relationship row entirely rather than reverting it to a follow.\n\nController: `FollowController@unblock`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:135`",
+        "description": "Lifts a block, deleting the relationship row entirely rather than reverting it to a follow.\n\nController: `FollowController@unblock`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:138`",
         "tags": [
           "Profile"
         ],

@@ -15,7 +15,7 @@ Requires a valid `tag_id`. Paging is driven by `offset` and `per_page` (clamped 
 - **Path:** `/admin/courses/{course_id}/students/resolve-crm-tag`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `BulkMembersController@resolveCrmTagCourse`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:117`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:120`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/BulkMembersController.php`
 
 - Requires a course admin for this course.

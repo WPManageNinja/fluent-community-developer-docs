@@ -15,7 +15,7 @@ The follow relationship stores this as a level, so the toggle flips between plai
 - **Path:** `/profile/{username}/notification`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@toggleNotification`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:136`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:139`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 - Requires FluentCommunity Pro with the `followers_module` feature enabled.

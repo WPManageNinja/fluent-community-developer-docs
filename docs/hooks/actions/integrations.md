@@ -13,8 +13,8 @@ description: Integrations action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:317` |
 | [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:310` |
-| [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:93` |
-| [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:128` |
+| [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:100` |
+| [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:135` |
 | [`fluent_community/product_integration_feed_created`](#fluent-community-product-integration-feed-created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:84` |
 | [`fluent_community/product_integration_feed_updated`](#fluent-community-product-integration-feed-updated) | Core | 2 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:57` |
 
@@ -92,7 +92,7 @@ The product ID is already stored in the space's `settings.cart_product_ids` by t
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:93` | `$space` (Space)<br>`$productId` (int) |
+| Core | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:100` | `$space` (Space)<br>`$productId` (int) |
 
 ### Example
 
@@ -126,7 +126,7 @@ The third argument is the raw request payload, and core reads one key from it: u
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:128` | `$space` (Space)<br>`$productId` (int)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:135` | `$space` (Space)<br>`$productId` (int)<br>`$request->all()` (array) |
 
 ### Example
 

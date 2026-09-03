@@ -13,7 +13,7 @@ Returns the general settings plus everything the setup wizard needs: which sibli
 - **Path:** `/admin/on-boardings`
 - **Edition:** Core
 - **Controller:** `AdminController@getOnBoardingSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:114`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:115`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

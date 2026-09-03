@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postBulkImportStudents",
         "summary": "POST Post Bulk Import Students",
-        "description": "Imports students into a course from submitted rows, creating WordPress users for addresses that do not yet exist.\n\nController: `BulkMembersController@bulkImportStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:116`",
+        "description": "Imports students into a course from submitted rows, creating WordPress users for addresses that do not yet exist.\n\nController: `BulkMembersController@bulkImportStudents`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:119`",
         "tags": [
           "Courses"
         ],

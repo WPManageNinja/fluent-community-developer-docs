@@ -13,7 +13,7 @@ Returns the FluentPlayer integration settings used for lesson and post video pla
 - **Path:** `/settings/fluent-player-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@getFluentPlayerSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:167`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:171`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

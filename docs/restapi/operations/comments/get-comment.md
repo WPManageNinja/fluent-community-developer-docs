@@ -15,7 +15,7 @@ Pass `context=edit` to receive `media_images` resolved from the stored media met
 - **Path:** `/comments/{id}`
 - **Edition:** Core
 - **Controller:** `CommentsController@show`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:144`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:148`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 ::: tip Live sample

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveFeatureSettings",
         "summary": "POST Save Feature Settings",
-        "description": "Saves the feature flag configuration, merging the submitted flags over the stored ones.\n\nController: `SettingController@setFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
+        "description": "Saves the feature flag configuration, merging the submitted flags over the stored ones.\n\nController: `SettingController@setFeatures`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
         "tags": [
           "Settings"
         ],

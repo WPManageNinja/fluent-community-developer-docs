@@ -15,7 +15,7 @@ Spaces are grouped by space group, with ungrouped ones under "Other Spaces" and 
 - **Path:** `/settings/crm-tagging-config`
 - **Edition:** Core
 - **Controller:** `SettingController@getCrmTaggingConfig`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:165`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:169`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "searchReportSpaces",
         "summary": "GET Search Report Spaces",
-        "description": "Searches community spaces by title, returning id and title pairs for the analytics space picker.\n\nController: `SpacesReportsController@searchSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:88`",
+        "description": "Searches community spaces by title, returning id and title pairs for the analytics space picker.\n\nController: `SpacesReportsController@searchSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:91`",
         "tags": [
           "Reports"
         ],

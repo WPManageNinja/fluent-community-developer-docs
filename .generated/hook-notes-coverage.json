@@ -20,8 +20,8 @@
     "documented": 10
   },
   "action/members": {
-    "hooks": 17,
-    "callSites": 24,
+    "hooks": 18,
+    "callSites": 25,
     "documented": 17
   },
   "action/courses": {
@@ -35,8 +35,8 @@
     "documented": 4
   },
   "action/media": {
-    "hooks": 7,
-    "callSites": 16,
+    "hooks": 8,
+    "callSites": 17,
     "documented": 7
   },
   "action/auth": {
@@ -64,9 +64,14 @@
     "callSites": 7,
     "documented": 3
   },
+  "action/miscellaneous": {
+    "hooks": 3,
+    "callSites": 3,
+    "documented": 0
+  },
   "filter/feeds": {
     "hooks": 36,
-    "callSites": 44,
+    "callSites": 45,
     "documented": 36
   },
   "filter/comments": {
@@ -125,18 +130,18 @@
     "documented": 9
   },
   "filter/rendering": {
-    "hooks": 35,
-    "callSites": 37,
-    "documented": 35
+    "hooks": 37,
+    "callSites": 39,
+    "documented": 37
   },
   "filter/settings": {
-    "hooks": 22,
-    "callSites": 22,
+    "hooks": 23,
+    "callSites": 23,
     "documented": 22
   },
   "filter/miscellaneous": {
-    "hooks": 3,
-    "callSites": 4,
+    "hooks": 6,
+    "callSites": 8,
     "documented": 3
   }
 }

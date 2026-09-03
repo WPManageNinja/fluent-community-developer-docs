@@ -13,7 +13,7 @@ Returns the two course welcome banner variants, one for enrolled students and on
 - **Path:** `/admin/courses/{course_id}/welcome-banner`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@getCourseWelcomeBannerSettings`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:64`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:67`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

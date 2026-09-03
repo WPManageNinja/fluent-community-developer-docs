@@ -15,7 +15,7 @@ Files a moderation report against a post or a comment and returns the report tog
 - **Path:** `/moderation/report`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ModerationController@create`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:93`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:96`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ModerationController.php`
 
 - Requires an active portal user; unlike the rest of the moderation group this endpoint is not gated on the `content_moderation` feature flag, so reports can still be filed while the feature is off even though no screen lists them.

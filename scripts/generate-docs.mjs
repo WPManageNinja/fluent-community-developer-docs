@@ -5464,6 +5464,12 @@ function extractHookDocblock(content, matchIndex) {
  */
 const MISSPELLED_HOOK_NAMES = new Set(['fluent_communuty/add_sitemap_provider'])
 
+// Public editor filters that ship under a legacy `fluent_com_editor/` prefix.
+const OFF_PREFIX_HOOK_NAMES = new Set([
+  'fluent_com_editor/skip_no_conflict',
+  'fluent_com_editor/asset_listed_slugs',
+])
+
 /**
  * A few hook names are assembled at runtime from a variable that every caller
  * passes as a string literal, so the docs would otherwise show one placeholder
@@ -5533,7 +5539,11 @@ function extractScheduledActionHooks(content, file, source) {
 
 function isFluentCommunityHook(hookName) {
   // The underscore form (fluent_community_send_daily_digest) is public surface too.
-  return hookName.startsWith('fluent_community') || MISSPELLED_HOOK_NAMES.has(hookName)
+  return (
+    hookName.startsWith('fluent_community') ||
+    MISSPELLED_HOOK_NAMES.has(hookName) ||
+    OFF_PREFIX_HOOK_NAMES.has(hookName)
+  )
 }
 
 function extractHookCalls() {

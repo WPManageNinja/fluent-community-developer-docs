@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFollowersSettings",
         "summary": "GET Get Followers Settings",
-        "description": "Returns the followers module configuration, including who may see a member follower and following lists.\n\nController: `ProAdminController@getFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:36`",
+        "description": "Returns the followers module configuration, including who may see a member follower and following lists.\n\nController: `ProAdminController@getFollowersSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:39`",
         "tags": [
           "Settings"
         ],

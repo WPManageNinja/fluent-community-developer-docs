@@ -15,7 +15,7 @@ Scope the stream with `context[space_id]` or `context[user_id]`; when both are p
 - **Path:** `/activities`
 - **Edition:** Core
 - **Controller:** `ActivityController@getActivities`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:139`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:143`
 - **Controller source:** `fluent-community/app/Http/Controllers/ActivityController.php`
 
 - Callers who are not community moderators see only activity flagged public or belonging to a space they are a member of.

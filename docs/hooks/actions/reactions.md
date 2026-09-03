@@ -11,7 +11,7 @@ description: Reactions action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/feed/cast_survey_vote`](#fluent-community-feed-cast-survey-vote) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:411` |
+| [`fluent_community/feed/cast_survey_vote`](#fluent-community-feed-cast-survey-vote) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:431` |
 
 <a id="fluent-community-feed-cast-survey-vote"></a>
 
@@ -36,7 +36,7 @@ Only fires when the ballot contains at least one option the member had not alrea
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:411` | `$newSyncIndexes` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:431` | `$newSyncIndexes` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
 
 ### Example
 

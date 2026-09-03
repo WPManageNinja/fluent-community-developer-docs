@@ -12,7 +12,8 @@
     "moderation",
     "integrations",
     "rendering",
-    "settings"
+    "settings",
+    "miscellaneous"
   ],
   "filter": [
     "feeds",

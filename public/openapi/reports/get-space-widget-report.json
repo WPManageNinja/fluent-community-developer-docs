@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSpaceWidgetReport",
         "summary": "GET Get Space Widget Report",
-        "description": "Returns the space counters for a date range — spaces, posts, comments and members — optionally narrowed to one space.\n\nController: `SpacesReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:85`",
+        "description": "Returns the space counters for a date range — spaces, posts, comments and members — optionally narrowed to one space.\n\nController: `SpacesReportsController@widget`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:88`",
         "tags": [
           "Reports"
         ],

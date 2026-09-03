@@ -27,7 +27,7 @@
       "post": {
         "operationId": "installPlugin",
         "summary": "POST Install Plugin",
-        "description": "Installs and activates one of the companion Fluent plugins from the add-on catalogue, in the background.\n\nController: `SettingController@installPlugin`\nRoute source: `fluent-community/app/Http/Routes/api.php:158`",
+        "description": "Installs and activates one of the companion Fluent plugins from the add-on catalogue, in the background.\n\nController: `SettingController@installPlugin`\nRoute source: `fluent-community/app/Http/Routes/api.php:162`",
         "tags": [
           "Settings"
         ],
@@ -81,7 +81,7 @@
             }
           },
           "422": {
-            "description": "FluentPlayer is required pro version of FluentCommunity. Please install FluentCommunity Pro first.",
+            "description": "FluentPlayer requires the pro version of FluentCommunity. Please install FluentCommunity Pro first.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +93,7 @@
                   }
                 },
                 "example": {
-                  "message": "FluentPlayer is required pro version of FluentCommunity. Please install FluentCommunity Pro first."
+                  "message": "FluentPlayer requires the pro version of FluentCommunity. Please install FluentCommunity Pro first."
                 }
               }
             }

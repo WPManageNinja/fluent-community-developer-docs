@@ -64,31 +64,23 @@
                 "type": "object",
                 "properties": {
                   "lesson": {
-                    "type": "object",
-                    "properties": {
-                      "meta": {
-                        "type": "object"
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "status": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "parent_id": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "title",
-                      "status",
-                      "parent_id"
-                    ]
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "parent_id": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "title",
+                  "parent_id",
+                  "status"
+                ]
               },
               "example": {
                 "lesson": {

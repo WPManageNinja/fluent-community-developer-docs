@@ -15,7 +15,7 @@ Only keys that already exist in the stored settings are accepted, so unknown fie
 - **Path:** `/admin/general`
 - **Edition:** Core
 - **Controller:** `AdminController@saveGeneralSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:101`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:102`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -12,28 +12,28 @@ description: Auth filter hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/allow_auto_login_by_url`](#fluent-community-allow-auto-login-by-url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:51` |
-| [`fluent_community/autg/password_confirmation`](#fluent-community-autg-password-confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:244` |
+| [`fluent_community/autg/password_confirmation`](#fluent-community-autg-password-confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:254` |
 | [`fluent_community/auth/after_login_redirect_url`](#fluent-community-auth-after-login-redirect-url) | Core | 2 | `fluent-community/Modules/Auth/AuthModdule.php:40` |
-| [`fluent_community/auth/after_login_with_invitation`](#fluent-community-auth-after-login-with-invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:638` |
-| [`fluent_community/auth/after_signup_redirect_url`](#fluent-community-auth-after-signup-redirect-url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:546` |
-| [`fluent_community/auth/disable_rate_limit`](#fluent-community-auth-disable-rate-limit) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:411` |
-| [`fluent_community/auth/invitation`](#fluent-community-auth-invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:87` |
-| [`fluent_community/auth/login_fields`](#fluent-community-auth-login-fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:224` |
+| [`fluent_community/auth/after_login_with_invitation`](#fluent-community-auth-after-login-with-invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:671` |
+| [`fluent_community/auth/after_signup_redirect_url`](#fluent-community-auth-after-signup-redirect-url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:579` |
+| [`fluent_community/auth/disable_rate_limit`](#fluent-community-auth-disable-rate-limit) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:421` |
+| [`fluent_community/auth/invitation`](#fluent-community-auth-invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:127` |
+| [`fluent_community/auth/login_fields`](#fluent-community-auth-login-fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:234` |
 | [`fluent_community/auth/login_url`](#fluent-community-auth-login-url) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1307` |
-| [`fluent_community/auth/lost_password_url`](#fluent-community-auth-lost-password-url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:219` |
-| [`fluent_community/auth/password_confirmation`](#fluent-community-auth-password-confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:246` |
-| [`fluent_community/auth/pre_content`](#fluent-community-auth-pre-content) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:235` |
-| [`fluent_community/auth/registration_enabled`](#fluent-community-auth-registration-enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:259` |
+| [`fluent_community/auth/lost_password_url`](#fluent-community-auth-lost-password-url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:229` |
+| [`fluent_community/auth/password_confirmation`](#fluent-community-auth-password-confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:256` |
+| [`fluent_community/auth/pre_content`](#fluent-community-auth-pre-content) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:270` |
+| [`fluent_community/auth/registration_enabled`](#fluent-community-auth-registration-enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:269` |
 | [`fluent_community/auth/settings`](#fluent-community-auth-settings) | Core | 1 | `fluent-community/app/Services/AuthenticationService.php:102` |
-| [`fluent_community/auth/signup_fields`](#fluent-community-auth-signup-fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:156` |
-| [`fluent_community/auth/signup_verification_email_body`](#fluent-community-auth-signup-verification-email-body) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:303` |
-| [`fluent_community/auth/signup_verification_mail_subject`](#fluent-community-auth-signup-verification-mail-subject) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:291` |
-| [`fluent_community/auth/two_factor_enabled`](#fluent-community-auth-two-factor-enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:267` |
+| [`fluent_community/auth/signup_fields`](#fluent-community-auth-signup-fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:166` |
+| [`fluent_community/auth/signup_verification_email_body`](#fluent-community-auth-signup-verification-email-body) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:313` |
+| [`fluent_community/auth/signup_verification_mail_subject`](#fluent-community-auth-signup-verification-mail-subject) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:301` |
+| [`fluent_community/auth/two_factor_enabled`](#fluent-community-auth-two-factor-enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:277` |
 | [`fluent_community/create_invitation_link`](#fluent-community-create-invitation-link) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationController.php:133` |
-| [`fluent_community/default_redirect_url`](#fluent-community-default-redirect-url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:714` |
-| [`fluent_community/get_auth_settings`](#fluent-community-get-auth-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:376` |
-| [`fluent_community/terms_policy_url`](#fluent-community-terms-policy-url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:143` |
-| [`fluent_community/update_auth_settings`](#fluent-community-update-auth-settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:399` |
+| [`fluent_community/default_redirect_url`](#fluent-community-default-redirect-url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:747` |
+| [`fluent_community/get_auth_settings`](#fluent-community-get-auth-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:387` |
+| [`fluent_community/terms_policy_url`](#fluent-community-terms-policy-url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:153` |
+| [`fluent_community/update_auth_settings`](#fluent-community-update-auth-settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:400` |
 
 <a id="fluent-community-allow-auto-login-by-url"></a>
 
@@ -98,7 +98,7 @@ Kept alive through `apply_filters_deprecated()` and marked deprecated since 2.7.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:244` | `true` (bool) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:254` | `true` (bool) |
 
 ### Example
 
@@ -135,7 +135,7 @@ Applied at two call sites that reach different sign-in flows: the plugin's own A
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Auth/AuthModdule.php:40` | `$redirectUrl` (mixed)<br>`$user` (User) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:653` | `$redirectUrl` (mixed)<br>`$user` (User) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:686` | `$redirectUrl` (mixed)<br>`$user` (User) |
 
 ### Example
 
@@ -172,7 +172,7 @@ Core's handler does the real work here: it validates the token, adds the user to
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:638` | `null` (mixed)<br>`$user` (User)<br>`$invitationToken` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:671` | `null` (mixed)<br>`$user` (User)<br>`$invitationToken` (mixed) |
 
 ### Example
 
@@ -209,7 +209,7 @@ Core attaches the invitation handler here, which — when the request carried a 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:546` | `$redirectUrl` (mixed)<br>`$user` (User)<br>`$_REQUEST` (array) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:579` | `$redirectUrl` (mixed)<br>`$user` (User)<br>`$_REQUEST` (array) |
 
 ### Example
 
@@ -244,7 +244,7 @@ The limit is ten attempts per IP address per five minutes, tracked in a transien
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:411` | `false` (bool) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:421` | `false` (bool) |
 
 ### Example
 
@@ -278,7 +278,7 @@ Starts as `null`; core's `InvitationHandler` answers it with the matching `pendi
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:87` | `null` (mixed)<br>`$inivtationToken` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:127` | `null` (mixed)<br>`$inivtationToken` (mixed) |
 
 ### Example
 
@@ -313,7 +313,7 @@ Narrower than it looks: the built-in login form is only used when FluentAuth is 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:224` | `array (2 keys: username, password)` (array) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:234` | `array (2 keys: username, password)` (array) |
 
 ### Example
 
@@ -383,7 +383,7 @@ The default depends on FluentAuth: with it active the link stays on the communit
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:219` | `$url` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:229` | `$url` (mixed) |
 
 ### Example
 
@@ -418,7 +418,7 @@ Returning `false` drops the `conf_password` field from the form and relaxes the 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:246` | `$isRequired` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:256` | `$isRequired` (mixed) |
 
 ### Example
 
@@ -456,7 +456,7 @@ The return value is never printed. The callback that renders the auth forms appl
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:235` | `''` (string)<br>`$context` (mixed)<br>`$targetForm` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:270` | `''` (string)<br>`$context` (mixed)<br>`$targetForm` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 
@@ -491,7 +491,7 @@ The base value is the WordPress `users_can_register` option, widened by the plug
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:259` | `$enabled` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:269` | `$enabled` (mixed) |
 
 ### Example
 
@@ -562,7 +562,7 @@ Both sides of registration read this: the form builder renders it, and the AJAX 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:156` | `array (6 keys: full_name, email, username, …)` (array)<br>`$invitation` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:166` | `array (6 keys: full_name, email, username, …)` (array)<br>`$invitation` (mixed) |
 
 ### Example
 
@@ -599,7 +599,7 @@ The filtered HTML is the inner content only; it is wrapped in the shared `email.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:303` | `$message` (mixed)<br>`$verifcationCode` (mixed)<br>`$formData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:313` | `$message` (mixed)<br>`$verifcationCode` (mixed)<br>`$formData` (mixed) |
 
 ### Example
 
@@ -634,7 +634,7 @@ Only fires when two-factor signup verification is active. It receives just the d
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:291` | `sprintf(__('Your registration verification code for %s', 'fluent-community'),…` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:301` | `sprintf(__('Your registration verification code for %s', 'fluent-community'),…` (mixed) |
 
 ### Example
 
@@ -669,7 +669,7 @@ The value handed in is the result of `fluent_auth/verify_signup_email`, kept for
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:267` | `$enabled` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:277` | `$enabled` (mixed) |
 
 ### Example
 
@@ -740,7 +740,7 @@ Narrow scope: it applies only when FluentAuth renders the login form and the req
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:714` | `Helper::baseUrl()` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:747` | `Helper::baseUrl()` (mixed) |
 
 ### Example
 
@@ -775,7 +775,7 @@ A thin wrapper over `fluent_community/auth/settings` that runs only in `AdminCon
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:376` | `$settings` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:387` | `$settings` (mixed) |
 
 ### Example
 
@@ -810,7 +810,7 @@ Defaults to `get_privacy_policy_url()`, which is empty until a privacy page is s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthHelper.php:143` | `get_privacy_policy_url()` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthHelper.php:153` | `get_privacy_policy_url()` (mixed) |
 
 ### Example
 
@@ -845,7 +845,7 @@ Runs after AuthenticationService::formatAuthSettings() has normalised the payloa
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:399` | `$formattedSettings` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:400` | `$formattedSettings` (mixed) |
 
 ### Example
 

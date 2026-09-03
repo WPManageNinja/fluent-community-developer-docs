@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveMessagingSettings",
         "summary": "POST Save Messaging Settings",
-        "description": "Merges the submitted messaging settings over the stored ones and saves the realtime socket credentials when realtime chat is switched on.\n\nController: `ProAdminController@updateMessagingSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:22`",
+        "description": "Merges the submitted messaging settings over the stored ones and saves the realtime socket credentials when realtime chat is switched on.\n\nController: `ProAdminController@updateMessagingSettings`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:20`",
         "tags": [
           "Admin"
         ],
