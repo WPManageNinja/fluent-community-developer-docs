@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getComment",
         "summary": "GET Get Comment",
-        "description": "Returns a single comment with its author profile, optionally in the shape the editor expects.\n\nController: `CommentsController@show`\nRoute source: `fluent-community/app/Http/Routes/api.php:148`",
+        "description": "Returns a single comment with its author profile, optionally in the shape the editor expects.\n\nController: `CommentsController@show`\nRoute source: `fluent-community/app/Http/Routes/api.php:151`",
         "tags": [
           "Comments"
         ],

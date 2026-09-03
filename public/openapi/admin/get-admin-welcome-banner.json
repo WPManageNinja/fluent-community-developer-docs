@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAdminWelcomeBanner",
         "summary": "GET Get Admin Welcome Banner",
-        "description": "Returns the two portal welcome banner variants — one shown to signed-in members, one to logged-out visitors — as stored, before rendering.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:110`",
+        "description": "Returns the two portal welcome banner variants — one shown to signed-in members, one to logged-out visitors — as stored, before rendering.\n\nController: `AdminController@getWelcomeBannerSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:113`",
         "tags": [
           "Admin"
         ],

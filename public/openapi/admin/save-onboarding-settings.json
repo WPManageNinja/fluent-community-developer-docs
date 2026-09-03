@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveOnboardingSettings",
         "summary": "POST Save Onboarding Settings",
-        "description": "Applies the setup wizard answers — site title, logo, portal slug and starter content — and kicks off the optional plugin installs.\n\nController: `AdminController@saveOnBoardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:125`",
+        "description": "Applies the setup wizard answers — site title, logo, portal slug and starter content — and kicks off the optional plugin installs.\n\nController: `AdminController@saveOnBoardingSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:128`",
         "tags": [
           "Admin"
         ],

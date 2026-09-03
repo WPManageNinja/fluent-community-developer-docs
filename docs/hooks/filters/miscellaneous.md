@@ -13,10 +13,10 @@ description: Miscellaneous filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/add_sitemap_provider`](#fluent-community-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:22` |
 | [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:377` |
-| [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:106` |
-| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:597` |
+| [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:111` |
+| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:637` |
 | [`fluent_community/max_per_page`](#fluent-community-max-per-page) | Core | 2 | `fluent-community/app/Http/Controllers/ActivityController.php:23` |
-| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:2506` |
+| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:2510` |
 
 <a id="fluent-community-add-sitemap-provider"></a>
 
@@ -88,7 +88,7 @@ add_filter('fluent_community/custom_order_by', function ($query, $type) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/LicenseController.php:106` | `15` (int) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/LicenseController.php:111` | `15` (int) |
 
 ### Example
 
@@ -121,7 +121,7 @@ The default is derived from PHP's `max_execution_time`: unlimited or unreadable 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:597` | `$maxRunTime` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:637` | `$maxRunTime` (mixed) |
 
 ### Example
 
@@ -157,7 +157,7 @@ Defaults to 100 and is applied identically in the feeds and activities endpoints
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Http/Controllers/ActivityController.php:23` | `100` (int) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:53` | `100` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:54` | `100` (int) |
 
 ### Example
 
@@ -186,8 +186,8 @@ add_filter('fluent_community/max_per_page', function ($maxPerPage) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2506` | `['bounced', 'complained', 'spammed']` (array) |
-| Core | `fluent-community/app/Services/Helper.php:2530` | `['bounced', 'complained', 'spammed']` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2510` | `['bounced', 'complained', 'spammed']` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2534` | `['bounced', 'complained', 'spammed']` (array) |
 
 ### Example
 

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getStorageSettings",
         "summary": "GET Get Storage Settings",
-        "description": "Returns the media storage driver configuration, with secrets masked; without the Pro plugin it always reports the local driver.\n\nController: `AdminController@getStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:107`",
+        "description": "Returns the media storage driver configuration, with secrets masked; without the Pro plugin it always reports the local driver.\n\nController: `AdminController@getStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:110`",
         "tags": [
           "Admin"
         ],

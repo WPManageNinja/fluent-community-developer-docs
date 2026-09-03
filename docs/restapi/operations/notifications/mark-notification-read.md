@@ -15,7 +15,7 @@ When the notification is tied to a post, every other notification for that same 
 - **Path:** `/notifications/mark-read/{notification_id}`
 - **Edition:** Core
 - **Controller:** `NotificationsController@markAsRead`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:137`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:140`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 - Requires a signed-in user; only the caller own subscriber rows are touched.

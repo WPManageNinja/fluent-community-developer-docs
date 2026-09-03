@@ -88,6 +88,7 @@ The model layer uses standard WPFluent relation helpers such as `belongsTo`, `ha
 | [`User`](/database/models/user) | `spaces` | `belongsToMany` | `BaseSpace` |
 | [`User`](/database/models/user) | `courses` | `belongsToMany` | `Course` |
 | [`User`](/database/models/user) | `notificationSubscriptions` | `hasMany` | `NotificationSubscription` |
+| [`User`](/database/models/user) | `notificationPreferences` | `hasMany` | `NotificationPreference` |
 | [`User`](/database/models/user) | `space_pivot` | `belongsTo` | `SpaceUserPivot` |
 | [`User`](/database/models/user) | `notification_records` | `hasMany` | `NotificationSubscriber` |
 | [`User`](/database/models/user) | `crm_contact` | `belongsTo` | `Contact` |

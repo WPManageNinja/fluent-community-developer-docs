@@ -13,7 +13,7 @@ description: Settings action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` |
 | [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` |
-| [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1110` |
+| [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1150` |
 
 <a id="fluent-community-daily-jobs"></a>
 
@@ -38,7 +38,7 @@ Registered on activation and re-registered whenever a site administrator loads t
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` | No parameters |
 | Core | `fluent-community/boot/app.php:20` | No parameters |
-| Core | `fluent-community/boot/app.php:55` | No parameters |
+| Core | `fluent-community/boot/app.php:88` | No parameters |
 
 ### Example
 
@@ -72,7 +72,7 @@ Core uses it to re-evaluate the daily digest schedule and to fire `fluent_commun
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` | No parameters |
 | Core | `fluent-community/boot/app.php:16` | No parameters |
-| Core | `fluent-community/boot/app.php:51` | No parameters |
+| Core | `fluent-community/boot/app.php:84` | No parameters |
 
 ### Example
 
@@ -98,7 +98,7 @@ Fired from `Utility::getColorCssVariables()` when a `cached_css` value exists bu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1110` | No parameters |
+| Core | `fluent-community/app/Functions/Utility.php:1150` | No parameters |
 
 ### Example
 

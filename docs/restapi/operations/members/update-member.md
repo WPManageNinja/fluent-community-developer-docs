@@ -15,7 +15,7 @@ Changes the community status of one member, moving them between active, pending 
 - **Path:** `/members/{user_id}`
 - **Edition:** Core
 - **Controller:** `MembersController@patchMember`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:131`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:134`
 - **Controller source:** `fluent-community/app/Http/Controllers/MembersController.php`
 
 - Requires the `delete_any_feed` community permission, which in practice means a community moderator or admin.

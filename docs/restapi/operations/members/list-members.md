@@ -15,7 +15,7 @@ Passing `mention` switches the endpoint into autocomplete mode: at most ten matc
 - **Path:** `/members`
 - **Edition:** Core
 - **Controller:** `MembersController@getMembers`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:130`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:133`
 - **Controller source:** `fluent-community/app/Http/Controllers/MembersController.php`
 
 - Moderators may pass `status` to list `pending`, `blocked` or `deactivated` members; everyone else only ever sees active profiles.

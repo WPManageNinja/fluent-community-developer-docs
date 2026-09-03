@@ -152,6 +152,24 @@
               }
             }
           },
+          "403": {
+            "description": "You do not have permission to delete existing FluentCommunity data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "You do not have permission to delete existing FluentCommunity data."
+                }
+              }
+            }
+          },
           "422": {
             "description": "Please type %s to confirm permanently removing all existing FluentCommunity data.",
             "content": {

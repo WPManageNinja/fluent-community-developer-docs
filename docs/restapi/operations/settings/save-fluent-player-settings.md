@@ -13,7 +13,7 @@ Stores the FluentPlayer integration settings and returns the normalised result.
 - **Path:** `/settings/fluent-player-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@updateFluentPlayerSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:172`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:175`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

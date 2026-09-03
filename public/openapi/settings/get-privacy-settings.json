@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPrivacySettings",
         "summary": "GET Get Privacy Settings",
-        "description": "Returns the privacy configuration that governs who can see the members directory, member profiles and member space lists, and what members may change about their own account.\n\nController: `SettingController@getPrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:165`",
+        "description": "Returns the privacy configuration that governs who can see the members directory, member profiles and member space lists, and what members may change about their own account.\n\nController: `SettingController@getPrivacySettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:168`",
         "tags": [
           "Settings"
         ],

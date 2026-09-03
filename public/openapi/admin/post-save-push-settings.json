@@ -23,30 +23,38 @@
     }
   ],
   "paths": {
-    "/notifications/mark-read/{notification_id}": {
+    "/admin/push-settings": {
       "post": {
-        "operationId": "markNotificationRead",
-        "summary": "POST Mark Notification Read",
-        "description": "Marks one notification read for the current user and returns the recalculated unread count.\n\nController: `NotificationsController@markAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:140`",
+        "operationId": "postSavePushSettings",
+        "summary": "POST Post Save Push Settings",
+        "description": "Post Save Push Settings for the FluentCommunity Admin API.\n\nController: `AdminController@savePushSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:108`",
         "tags": [
-          "Notifications"
+          "Admin"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [
-          {
-            "name": "notification_id",
-            "in": "path",
-            "required": true,
-            "description": "Notification ID extracted from the URL path.",
-            "schema": {
-              "type": "integer"
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "settings": {
+                    "type": "object"
+                  }
+                }
+              },
+              "example": {
+                "settings": {}
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -55,14 +63,23 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "unread_count": {
-                      "type": "integer"
+                    "push_settings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "unread_count": 0
+                  "push_settings": [],
+                  "message": "Push notification settings have been updated"
                 }
               }
             }

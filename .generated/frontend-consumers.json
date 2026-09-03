@@ -12,7 +12,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/App.vue",
-    "line": 251
+    "line": 253
   },
   {
     "method": "GET",
@@ -327,7 +327,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/MilkDownEditor/CrepeEditor.vue",
-    "line": 317
+    "line": 371
   },
   {
     "method": "POST",
@@ -371,7 +371,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/RecentActivities.vue",
-    "line": 134
+    "line": 138
   },
   {
     "method": "POST",
@@ -1497,7 +1497,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewCourse.vue",
-    "line": 332
+    "line": 337
   },
   {
     "method": "DELETE",
@@ -1511,7 +1511,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewCourse.vue",
-    "line": 368
+    "line": 373
   },
   {
     "method": "GET",
@@ -1699,7 +1699,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Comment/_CommentReactions.vue",
-    "line": 61
+    "line": 60
   },
   {
     "method": "POST",
@@ -2302,7 +2302,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Migrations/ManageMigrations.vue",
-    "line": 66
+    "line": 75
   },
   {
     "method": "GET",
@@ -2367,6 +2367,20 @@
     "line": 17
   },
   {
+    "method": "POST",
+    "routePatterns": [
+      "notifications/mark-read/{id}"
+    ],
+    "routeExpression": "'notifications/mark-read/' + item.id",
+    "payloadKeys": [],
+    "responseKeys": [
+      "unread_count"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Notifications/NotificationToaster.vue",
+    "line": 130
+  },
+  {
     "method": "GET",
     "routePatterns": [
       "notifications"
@@ -2401,7 +2415,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Notifications/NotificationsPop.vue",
-    "line": 101
+    "line": 104
   },
   {
     "method": "POST",
@@ -2415,7 +2429,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Notifications/NotificationsPop.vue",
-    "line": 116
+    "line": 119
   },
   {
     "method": "POST",
@@ -2445,7 +2459,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/ProfileRoute.vue",
-    "line": 189
+    "line": 190
   },
   {
     "method": "DELETE",
@@ -2681,11 +2695,12 @@
       "spaceGroups",
       "digestEmailDay",
       "default_messaging_email_frequency",
-      "crm_email_status"
+      "crm_email_status",
+      "push_available"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 244
+    "line": 278
   },
   {
     "method": "POST",
@@ -2699,7 +2714,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 263
+    "line": 298
   },
   {
     "method": "POST",
@@ -2716,7 +2731,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 285
+    "line": 321
   },
   {
     "method": "GET",
@@ -2851,7 +2866,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/AllTopics.vue",
-    "line": 179
+    "line": 187
   },
   {
     "method": "DELETE",
@@ -2865,7 +2880,23 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/AllTopics.vue",
-    "line": 202
+    "line": 213
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/topics/reorder"
+    ],
+    "routeExpression": "'admin/topics/reorder'",
+    "payloadKeys": [
+      "topic_ids"
+    ],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Settings/AllTopics.vue",
+    "line": 262
   },
   {
     "method": "GET",
@@ -3002,7 +3033,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 462
+    "line": 494
   },
   {
     "method": "GET",
@@ -3017,7 +3048,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 477
+    "line": 509
   },
   {
     "method": "POST",
@@ -3034,7 +3065,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 494
+    "line": 526
   },
   {
     "method": "GET",
@@ -3395,6 +3426,37 @@
   {
     "method": "GET",
     "routePatterns": [
+      "admin/push-settings"
+    ],
+    "routeExpression": "'admin/push-settings'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "push_settings",
+      "push_available"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Settings/PushNotificationSettings.vue",
+    "line": 126
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/push-settings"
+    ],
+    "routeExpression": "'admin/push-settings'",
+    "payloadKeys": [
+      "settings"
+    ],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Settings/PushNotificationSettings.vue",
+    "line": 142
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
       "admin/custom-profile-fields"
     ],
     "routeExpression": "'admin/custom-profile-fields'",
@@ -3677,7 +3739,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_UserBadges.vue",
-    "line": 179
+    "line": 188
   },
   {
     "method": "POST",
@@ -3694,7 +3756,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_UserBadges.vue",
-    "line": 204
+    "line": 214
   },
   {
     "method": "POST",
@@ -3818,7 +3880,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/Media/SpaceMedia.vue",
-    "line": 206
+    "line": 214
   },
   {
     "method": "GET",
@@ -4648,7 +4710,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/ticker.js",
-    "line": 214
+    "line": 225
   },
   {
     "method": "GET",

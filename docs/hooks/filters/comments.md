@@ -12,7 +12,7 @@ description: Comments filter hooks for FluentCommunity.
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/comment_api_response`](#fluent-community-comment-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:749` |
-| [`fluent_community/comment_order_options`](#fluent-community-comment-order-options) | Core | 1 | `fluent-community/app/Services/Helper.php:2275` |
+| [`fluent_community/comment_order_options`](#fluent-community-comment-order-options) | Core | 1 | `fluent-community/app/Services/Helper.php:2279` |
 | [`fluent_community/comment/comment_data`](#fluent-community-comment-comment-data) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:124` |
 | [`fluent_community/comment/new_comment_response`](#fluent-community-comment-new-comment-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:182` |
 | [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:339` |
@@ -22,8 +22,8 @@ description: Comments filter hooks for FluentCommunity.
 | [`fluent_community/disable_duplicate_comment_check`](#fluent-community-disable-duplicate-comment-check) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:127` |
 | [`fluent_community/disable_self_comment_react`](#fluent-community-disable-self-comment-react) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:640` |
 | [`fluent_community/max_comment_char_length`](#fluent-community-max-comment-char-length) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:453` |
-| [`fluent_community/profile_comments_api_response`](#fluent-community-profile-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:714` |
-| [`fluent_community/rate_limit/comments_per_minute`](#fluent-community-rate-limit-comments-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:49` |
+| [`fluent_community/profile_comments_api_response`](#fluent-community-profile-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:718` |
+| [`fluent_community/rate_limit/comments_per_minute`](#fluent-community-rate-limit-comments-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:50` |
 
 <a id="fluent-community-comment-api-response"></a>
 
@@ -85,7 +85,7 @@ Defaults to `oldest` (labelled "Earliest"), `latest`, `popular` and `most_replie
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2275` | `$options` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2279` | `$options` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -447,7 +447,7 @@ Scoped to comments on plain `text` posts the viewer may access, newest first, an
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:714` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:718` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -482,7 +482,7 @@ Defaults to 5. The comparison is `count > limit` against comments created in the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:49` | `5` (int) |
+| Core | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:50` | `5` (int) |
 
 ### Example
 

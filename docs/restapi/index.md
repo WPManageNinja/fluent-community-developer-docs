@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 249 routes registered in the FluentCommunity core and module route files.
+This reference covers 252 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -67,7 +67,7 @@ operation's own page.
 | [Profile API](/restapi/profile) | Core <span class="edition-note">(extended by Pro)</span> | 19 | Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences. |
 | [Media API](/restapi/media) | Core <span class="edition-note">(extended by Pro)</span> | 6 | Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints. |
 | [Settings API](/restapi/settings) | Core <span class="edition-note">(extended by Pro)</span> | 19 | Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings. |
-| [Admin API](/restapi/admin) | Core <span class="edition-note">(extended by Pro)</span> | 41 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |
+| [Admin API](/restapi/admin) | Core <span class="edition-note">(extended by Pro)</span> | 44 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |
 | [Options API](/restapi/options) | Core | 3 | Portal bootstrap variables, server-rendered sidebar HTML, and menu item payloads. |
 | [Courses API](/restapi/courses) | Core <span class="edition-note">(extended by Pro)</span> | 51 | Portal course consumption endpoints and the full course administration surface. |
 | [Migrations API](/restapi/migrations) | Core | 4 | BuddyBoss and BuddyPress migration discovery, execution, and status polling. |

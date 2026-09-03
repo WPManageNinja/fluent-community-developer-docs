@@ -5,7 +5,7 @@ description: Table inventory and ER diagrams for FluentCommunity.
 
 # Database Schema
 
-FluentCommunity defines 13 first-party database tables in `database/Migrations/`, plus relationships to WordPress core tables and optional integration tables.
+FluentCommunity defines 14 first-party database tables in `database/Migrations/`, plus relationships to WordPress core tables and optional integration tables.
 
 ## Table Inventory
 
@@ -19,6 +19,7 @@ FluentCommunity defines 13 first-party database tables in `database/Migrations/`
 | `fcom_media_archive` | database/Migrations/MediaArchiveMigrator.php |
 | `fcom_meta` | database/Migrations/MetaMigrator.php |
 | `fcom_notifications` | database/Migrations/NotificationsMigrator.php |
+| `fcom_notification_prefs` | database/Migrations/NotificationPrefMigrator.php |
 | `fcom_notification_users` | database/Migrations/NotificationUserMigrator.php |
 | `fcom_post_reactions` | database/Migrations/FeedReactionsMigrator.php |
 | `fcom_space_user` | database/Migrations/FeedSpaceUserMigrator.php |
@@ -27,7 +28,6 @@ FluentCommunity defines 13 first-party database tables in `database/Migrations/`
 | `usermeta` | WordPress core table. FluentCommunity exposes it through `UserMeta`, but schema ownership stays with WordPress. |
 | `fcom_xprofile` | database/Migrations/XProfileMigrator.php |
 | `fcom_followers` | Inherited / external table |
-| `fn_subscriptions` | Inherited / external table |
 
 ## Content Relationships
 
@@ -74,6 +74,7 @@ users ||--o{ external : messages
 users }o--o{ fcom_spaces : spaces
 users }o--o{ fcom_spaces : courses
 users ||--o{ fcom_notification_users : notificationSubscriptions
+users ||--o{ fcom_notification_prefs : notificationPreferences
 fcom_space_user ||--o{ users : space_pivot
 users ||--o{ fcom_notification_users : notification_records
 fc_subscribers ||--o{ users : crm_contact
@@ -116,6 +117,7 @@ users ||--o{ external : messages
 users }o--o{ fcom_spaces : spaces
 users }o--o{ fcom_spaces : courses
 users ||--o{ fcom_notification_users : notificationSubscriptions
+users ||--o{ fcom_notification_prefs : notificationPreferences
 fcom_space_user ||--o{ users : space_pivot
 users ||--o{ fcom_notification_users : notification_records
 fc_subscribers ||--o{ users : crm_contact

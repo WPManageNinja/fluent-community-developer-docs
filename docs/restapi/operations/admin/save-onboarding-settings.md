@@ -15,7 +15,7 @@ Passing a `template` creates the matching starter spaces. Any of `install_fluent
 - **Path:** `/admin/on-boardings`
 - **Edition:** Core
 - **Controller:** `AdminController@saveOnBoardingSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:125`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:128`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

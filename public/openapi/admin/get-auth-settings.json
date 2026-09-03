@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getAuthSettings",
         "summary": "GET Get Auth Settings",
-        "description": "Returns the login and signup configuration together with the resolved form field definitions the auth screens render.\n\nController: `AdminController@getAuthSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:113`",
+        "description": "Returns the login and signup configuration together with the resolved form field definitions the auth screens render.\n\nController: `AdminController@getAuthSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:116`",
         "tags": [
           "Admin"
         ],

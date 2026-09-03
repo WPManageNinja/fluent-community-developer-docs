@@ -23,30 +23,41 @@
     }
   ],
   "paths": {
-    "/notifications/mark-read/{notification_id}": {
+    "/admin/topics/reorder": {
       "post": {
-        "operationId": "markNotificationRead",
-        "summary": "POST Mark Notification Read",
-        "description": "Marks one notification read for the current user and returns the recalculated unread count.\n\nController: `NotificationsController@markAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:140`",
+        "operationId": "postReorderTopics",
+        "summary": "POST Post Reorder Topics",
+        "description": "Post Reorder Topics for the FluentCommunity Admin API.\n\nController: `ProAdminController@reorderTopics`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:47`",
         "tags": [
-          "Notifications"
+          "Admin"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [
-          {
-            "name": "notification_id",
-            "in": "path",
-            "required": true,
-            "description": "Notification ID extracted from the URL path.",
-            "schema": {
-              "type": "integer"
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "topic_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "example": {
+                "topic_ids": []
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -55,20 +66,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "unread_count": {
-                      "type": "integer"
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "unread_count": 0
+                  "message": "Topics reordered successfully"
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "Invalid reorder request. Please refresh and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -80,7 +92,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Invalid reorder request. Please refresh and try again."
                 }
               }
             }

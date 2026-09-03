@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getMenuItems",
         "summary": "GET Get Menu Items",
-        "description": "Returns the sidebar menu groups on their own, for refreshing navigation without refetching the full bootstrap payload.\n\nController: `OptionController@getMenuItems`\nRoute source: `fluent-community/app/Http/Routes/api.php:154`",
+        "description": "Returns the sidebar menu groups on their own, for refreshing navigation without refetching the full bootstrap payload.\n\nController: `OptionController@getMenuItems`\nRoute source: `fluent-community/app/Http/Routes/api.php:157`",
         "tags": [
           "Options"
         ],

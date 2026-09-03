@@ -13,7 +13,7 @@ Returns the sidebar menu groups on their own, for refreshing navigation without 
 - **Path:** `/options/menu-items`
 - **Edition:** Core
 - **Controller:** `OptionController@getMenuItems`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:154`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:157`
 - **Controller source:** `fluent-community/app/Http/Controllers/OptionController.php`
 
 ::: tip Live sample

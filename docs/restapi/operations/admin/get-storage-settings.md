@@ -13,7 +13,7 @@ Returns the media storage driver configuration, with secrets masked; without the
 - **Path:** `/admin/storage-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@getStorageSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:107`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:110`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Remote storage drivers require FluentCommunity Pro.

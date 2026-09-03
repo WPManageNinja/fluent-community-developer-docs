@@ -15,7 +15,7 @@ Required fields differ per driver (`amazon_s3`, `bunny_cdn`, `cloudflare_r2` and
 - **Path:** `/admin/storage-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@updateStorageSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:108`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:111`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

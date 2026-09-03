@@ -15,7 +15,7 @@ Items missing a title or a permalink are discarded. Items without a slug are tre
 - **Path:** `/settings/menu-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@saveMenuSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:161`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:164`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

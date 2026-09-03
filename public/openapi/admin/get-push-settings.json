@@ -23,30 +23,20 @@
     }
   ],
   "paths": {
-    "/notifications/mark-read/{notification_id}": {
-      "post": {
-        "operationId": "markNotificationRead",
-        "summary": "POST Mark Notification Read",
-        "description": "Marks one notification read for the current user and returns the recalculated unread count.\n\nController: `NotificationsController@markAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:140`",
+    "/admin/push-settings": {
+      "get": {
+        "operationId": "getPushSettings",
+        "summary": "GET Get Push Settings",
+        "description": "Get Push Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getPushSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:107`",
         "tags": [
-          "Notifications"
+          "Admin"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [
-          {
-            "name": "notification_id",
-            "in": "path",
-            "required": true,
-            "description": "Notification ID extracted from the URL path.",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -55,14 +45,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "unread_count": {
-                      "type": "integer"
+                    "push_settings": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "push_available": {
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "unread_count": 0
+                  "push_settings": {},
+                  "push_available": null
                 }
               }
             }

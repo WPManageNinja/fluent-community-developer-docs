@@ -15,7 +15,7 @@ Not paginated. `notification_type` narrows the list; it defaults to `all`.
 - **Path:** `/notifications/unread`
 - **Edition:** Core
 - **Controller:** `NotificationsController@getUnreadNotifications`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:136`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:139`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 - Requires a signed-in user.
