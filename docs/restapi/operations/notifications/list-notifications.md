@@ -15,7 +15,7 @@ Filter with `status` (for example `unread`) and `notification_type`, which defau
 - **Path:** `/notifications`
 - **Edition:** Core
 - **Controller:** `NotificationsController@getNotifications`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:135`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:138`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 - Requires a signed-in user; a caller only ever sees their own notifications.

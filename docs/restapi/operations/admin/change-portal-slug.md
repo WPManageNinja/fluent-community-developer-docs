@@ -15,7 +15,7 @@ The submitted slug passes through `sanitize_title()` and must not be empty. Rewr
 - **Path:** `/admin/on-boardings/change-slug`
 - **Edition:** Core
 - **Controller:** `AdminController@changePortalSlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:126`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:129`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

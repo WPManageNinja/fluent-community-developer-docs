@@ -15,7 +15,7 @@ Only keys that already exist in the stored config are accepted. The cached confi
 - **Path:** `/admin/topics/config`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@updateTopicConfig`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:47`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:48`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires a community admin, a course admin, or the admin role in the space named by `space_id`.

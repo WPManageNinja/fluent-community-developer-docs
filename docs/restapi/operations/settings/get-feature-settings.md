@@ -15,7 +15,7 @@ A stored Giphy API key is replaced with the literal `FCOM_ENCRYPTED_DATA_KEY` ra
 - **Path:** `/settings/features`
 - **Edition:** Core
 - **Controller:** `SettingController@getFeatures`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:158`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:161`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

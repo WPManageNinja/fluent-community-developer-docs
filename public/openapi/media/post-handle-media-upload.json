@@ -38,7 +38,7 @@
         ],
         "parameters": [],
         "requestBody": {
-          "required": false,
+          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
@@ -63,7 +63,10 @@
                     "type": "string",
                     "format": "binary"
                   }
-                }
+                },
+                "required": [
+                  "file"
+                ]
               },
               "example": {
                 "file": "<binary>",

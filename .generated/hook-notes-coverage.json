@@ -35,8 +35,8 @@
     "documented": 4
   },
   "action/media": {
-    "hooks": 8,
-    "callSites": 17,
+    "hooks": 9,
+    "callSites": 18,
     "documented": 7
   },
   "action/auth": {
@@ -50,8 +50,8 @@
     "documented": 8
   },
   "action/integrations": {
-    "hooks": 6,
-    "callSites": 7,
+    "hooks": 7,
+    "callSites": 8,
     "documented": 6
   },
   "action/rendering": {
@@ -100,13 +100,13 @@
     "documented": 43
   },
   "filter/notifications": {
-    "hooks": 12,
-    "callSites": 14,
+    "hooks": 16,
+    "callSites": 18,
     "documented": 12
   },
   "filter/media": {
-    "hooks": 21,
-    "callSites": 32,
+    "hooks": 22,
+    "callSites": 33,
     "documented": 21
   },
   "filter/auth": {
@@ -115,8 +115,8 @@
     "documented": 23
   },
   "filter/permissions": {
-    "hooks": 8,
-    "callSites": 22,
+    "hooks": 9,
+    "callSites": 23,
     "documented": 8
   },
   "filter/moderation": {
@@ -135,8 +135,8 @@
     "documented": 37
   },
   "filter/settings": {
-    "hooks": 23,
-    "callSites": 23,
+    "hooks": 25,
+    "callSites": 25,
     "documented": 22
   },
   "filter/miscellaneous": {

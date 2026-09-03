@@ -13,7 +13,7 @@ Returns the two portal welcome banner variants — one shown to signed-in member
 - **Path:** `/admin/welcome-banner`
 - **Edition:** Core
 - **Controller:** `AdminController@getWelcomeBannerSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:110`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:113`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -15,7 +15,7 @@ The filtered list is handed to the `fluent_community/update_profile_link_provide
 - **Path:** `/admin/profile-link-providers`
 - **Edition:** Core
 - **Controller:** `AdminController@updateProfileLinkProviders`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:118`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:121`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

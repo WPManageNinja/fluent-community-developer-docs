@@ -27,7 +27,7 @@
       "post": {
         "operationId": "markAllNotificationsRead",
         "summary": "POST Mark All Notifications Read",
-        "description": "Marks every unread notification read for the current user in a single update.\n\nController: `NotificationsController@markAllRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:139`",
+        "description": "Marks every unread notification read for the current user in a single update.\n\nController: `NotificationsController@markAllRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:142`",
         "tags": [
           "Notifications"
         ],

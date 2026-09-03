@@ -27,7 +27,7 @@
       "post": {
         "operationId": "changePortalSlug",
         "summary": "POST Change Portal Slug",
-        "description": "Changes the URL segment the portal is served from and rebuilds the WordPress rewrite rules so the new path resolves immediately.\n\nController: `AdminController@changePortalSlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:126`",
+        "description": "Changes the URL segment the portal is served from and rebuilds the WordPress rewrite rules so the new path resolves immediately.\n\nController: `AdminController@changePortalSlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:129`",
         "tags": [
           "Admin"
         ],

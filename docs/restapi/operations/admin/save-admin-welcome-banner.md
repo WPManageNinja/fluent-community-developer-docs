@@ -15,7 +15,7 @@ Rendering happens only for a variant whose `enabled` flag is `yes`. When the log
 - **Path:** `/admin/welcome-banner`
 - **Edition:** Core
 - **Controller:** `AdminController@updateWelcomeBannerSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:111`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:114`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

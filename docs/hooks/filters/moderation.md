@@ -11,7 +11,7 @@ description: Moderation filter hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/report_reasons`](#fluent-community-report-reasons) | Core | 1 | `fluent-community/app/Services/Helper.php:2199` |
+| [`fluent_community/report_reasons`](#fluent-community-report-reasons) | Core | 1 | `fluent-community/app/Services/Helper.php:2203` |
 
 <a id="fluent-community-report-reasons"></a>
 
@@ -36,7 +36,7 @@ Defaults to harassment, spam, offensive, incorrect space, against community rule
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2199` | `array (6 keys: harassment, spam, offensive, …)` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2203` | `array (6 keys: harassment, spam, offensive, …)` (array) |
 
 ### Example
 

@@ -15,7 +15,7 @@ These values feed the visibility checks on the members directory, profile pages,
 - **Path:** `/settings/privacy-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@updatePrivacySettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:166`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:169`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

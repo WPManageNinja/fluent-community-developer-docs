@@ -27,7 +27,7 @@
       "post": {
         "operationId": "saveStorageSettings",
         "summary": "POST Save Storage Settings",
-        "description": "Validates and stores the media storage driver configuration, testing the connection before saving anything for remote drivers.\n\nController: `AdminController@updateStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:108`",
+        "description": "Validates and stores the media storage driver configuration, testing the connection before saving anything for remote drivers.\n\nController: `AdminController@updateStorageSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:111`",
         "tags": [
           "Admin"
         ],

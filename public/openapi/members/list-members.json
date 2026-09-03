@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listMembers",
         "summary": "GET List Members",
-        "description": "Returns a paginated directory of community members in the requested sort order, or the trimmed candidate list the mention autocomplete uses.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:130`",
+        "description": "Returns a paginated directory of community members in the requested sort order, or the trimmed candidate list the mention autocomplete uses.\n\nController: `MembersController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:133`",
         "tags": [
           "Members"
         ],

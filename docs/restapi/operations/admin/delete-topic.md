@@ -13,7 +13,7 @@ Deletes a post topic and every space relation recorded for it.
 - **Path:** `/admin/topics/{topic_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `ProAdminController@deleteTopic`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:51`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:49`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/ProAdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin) — a narrower role than the endpoints that create topics.

@@ -17,6 +17,7 @@
     "/openapi/public/admin/get-messaging-settings.json",
     "/openapi/public/admin/get-onboarding-settings.json",
     "/openapi/public/admin/get-profile-link-providers.json",
+    "/openapi/public/admin/get-push-settings.json",
     "/openapi/public/admin/get-settings.json",
     "/openapi/public/admin/get-storage-settings.json",
     "/openapi/public/admin/list-admin-managers.json",
@@ -24,7 +25,9 @@
     "/openapi/public/admin/list-topics.json",
     "/openapi/public/admin/list-user-badges.json",
     "/openapi/public/admin/list-webhooks.json",
+    "/openapi/public/admin/post-reorder-topics.json",
     "/openapi/public/admin/post-save-custom-profile-fields.json",
+    "/openapi/public/admin/post-save-push-settings.json",
     "/openapi/public/admin/post-save-settings.json",
     "/openapi/public/admin/save-admin-manager.json",
     "/openapi/public/admin/save-admin-welcome-banner.json",
@@ -177,6 +180,7 @@
     "/openapi/public/profile/list-profile-spaces.json",
     "/openapi/public/profile/patch-profile.json",
     "/openapi/public/profile/post-change-password.json",
+    "/openapi/public/profile/post-reconfirm-email.json",
     "/openapi/public/profile/save-notification-preferences.json",
     "/openapi/public/profile/toggle-profile-follow.json",
     "/openapi/public/profile/toggle-profile-notification.json",
@@ -250,5 +254,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-08-18T07:20:08.168Z"
+  "generated": "2026-09-03T15:23:02.946Z"
 }

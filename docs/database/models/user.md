@@ -31,6 +31,7 @@ Wraps the WordPress `users` table with community-specific relationships and help
 | `spaces()` | `belongsToMany` | `BaseSpace` | Signature: `—` |
 | `courses()` | `belongsToMany` | `Course` | Signature: `—` |
 | `notificationSubscriptions()` | `hasMany` | `NotificationSubscription` | Signature: `—` |
+| `notificationPreferences()` | `hasMany` | `NotificationPreference` | Signature: `—` |
 | `space_pivot()` | `belongsTo` | `SpaceUserPivot` | Signature: `—` |
 | `notification_records()` | `hasMany` | `NotificationSubscriber` | Signature: `—` |
 | `crm_contact()` | `belongsTo` | `Contact` | Signature: `—` |

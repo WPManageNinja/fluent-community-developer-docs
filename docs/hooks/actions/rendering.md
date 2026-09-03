@@ -48,8 +48,8 @@ description: Rendering action hooks for FluentCommunity.
 | [`fluent_community/portal/viewed`](#fluent-community-portal-viewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:842` |
 | [`fluent_community/rendering_headless_portal`](#fluent-community-rendering-headless-portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:891` |
 | [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:814` |
-| [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:818` |
-| [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:814` |
+| [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:863` |
+| [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:859` |
 | [`fluent_community/template_footer`](#fluent-community-template-footer) | Core | 3 | `fluent-community/Modules/Gutenberg/EditorBlock.php:180` |
 | [`fluent_community/template_header`](#fluent-community-template-header) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:18` |
 | [`fluent_community/theme_body_atts`](#fluent-community-theme-body-atts) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:21` |
@@ -265,7 +265,7 @@ Three call sites, and their positions differ: on the signup template it fires as
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:10` | `'login'` (string) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:11` | `'signup'` (string) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:762` | `'login'` (string) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:768` | `'login'` (string) |
 
 ### Example
 
@@ -936,7 +936,7 @@ As with the sidebar, core attaches the default header renderer, so callbacks add
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:64` | `'headless'` (string) |
-| Core | `fluent-community/app/Views/portal/portal.php:3` | `'headless'` (string) |
+| Core | `fluent-community/app/Views/portal/portal.php:4` | `'headless'` (string) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:157` | `$contenx` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:197` | `'headless'` (string) |
 | Core | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:27` | `'wp'` (string) |
@@ -1064,7 +1064,7 @@ Core attaches the sidebar renderer itself, so adding a callback appends to the s
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:71` | `'headless'` (string) |
 | Core | `fluent-community/app/Http/Controllers/OptionController.php:37` | `'ajax'` (string) |
-| Core | `fluent-community/app/Views/portal/portal.php:9` | `'headless'` (string) |
+| Core | `fluent-community/app/Views/portal/portal.php:10` | `'headless'` (string) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:164` | `$contenx` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:205` | `'headless'` (string) |
 | Core | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:33` | `'wp'` (string) |
@@ -1222,7 +1222,7 @@ The in-memory model is still passed, but the row is gone by this point.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:818` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:863` | `$link` (mixed) |
 
 ### Example
 
@@ -1254,7 +1254,7 @@ The record is still readable here. There is no matching hook on save — only de
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:814` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:859` | `$link` (mixed) |
 
 ### Example
 

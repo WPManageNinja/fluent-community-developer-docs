@@ -5,18 +5,40 @@ description: Integrations action hooks for FluentCommunity.
 
 # Integrations Actions
 
-6 unique action hooks currently map to this category, across 7 call sites.
+7 unique action hooks currently map to this category, across 8 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:317` |
-| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:310` |
+| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:329` |
+| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:326` |
+| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:319` |
 | [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:100` |
 | [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:135` |
 | [`fluent_community/product_integration_feed_created`](#fluent-community-product-integration-feed-created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:84` |
 | [`fluent_community/product_integration_feed_updated`](#fluent-community-product-integration-feed-updated) | Core | 2 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:57` |
+
+<a id="fluent-community-install-fluent-notify-plugin"></a>
+
+## `fluent_community/install_fluent_notify_plugin`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:329` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community/install_fluent_notify_plugin', function () {
+}, 10, 0);
+```
 
 <a id="fluent-community-install-fluent-player-plugin"></a>
 
@@ -33,7 +55,7 @@ Guarded by an explicit Pro check before it fires — a free install gets an erro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:317` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:326` | No parameters |
 
 ### Example
 
@@ -59,7 +81,7 @@ Fluent Messages is not hosted on wordpress.org, so there is no default installer
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:310` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:319` | No parameters |
 
 ### Example
 

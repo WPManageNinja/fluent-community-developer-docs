@@ -41,7 +41,7 @@
             "name": "url",
             "in": "query",
             "required": false,
-            "description": "URL read via `$request->get()` in getOembed().",
+            "description": "URL read via `$request->getSafe()` in getOembed().",
             "schema": {
               "type": "string"
             }

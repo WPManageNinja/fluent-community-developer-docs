@@ -14,9 +14,9 @@ description: Comments action hooks for FluentCommunity.
 | [`fluent_community/before_comment_create`](#fluent-community-before-comment-create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:122` |
 | [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:600` |
 | [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:78` |
-| [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:211` |
-| [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:210` |
-| [`fluent_community/comment_added_async`](#fluent-community-comment-added-async) | Core | 4 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:237` |
+| [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:224` |
+| [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:223` |
+| [`fluent_community/comment_added_async`](#fluent-community-comment-added-async) | Core | 4 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:239` |
 | [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:613` |
 | [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:612` |
 | [`fluent_community/comment_updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:277` |
@@ -151,7 +151,7 @@ Comments held for moderation never reach it — those fire `fluent_community/com
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:211` | `$content` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:224` | `$content` (mixed)<br>`$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:186` | `$comment` (Comment)<br>`$feed` (Feed)<br>`Arr::get($mentions, 'users', [])` (array) |
 
 ### Example
@@ -185,7 +185,7 @@ The suffix is `$feed->type`, so the live names are `fluent_community/comment_add
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:210` | `$content` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:223` | `$content` (mixed)<br>`$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:185` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
@@ -225,10 +225,10 @@ Queued for immediate execution from `EmailNotificationHandler::handleNewCommentE
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:237` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:251` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:266` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:384` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:239` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:253` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:268` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:386` | No parameters |
 
 ### Example
 

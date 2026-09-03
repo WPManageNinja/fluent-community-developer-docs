@@ -11,10 +11,10 @@ description: Notifications action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community_send_daily_digest`](#fluent-community-send-daily-digest) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:603` |
-| [`fluent_community_send_daily_digest_init`](#fluent-community-send-daily-digest-init) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:60` |
-| [`fluent_community/email_notify_users_everyone_tag`](#fluent-community-email-notify-users-everyone-tag) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:508` |
-| [`fluent_community/remove_old_notifications`](#fluent-community-remove-old-notifications) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:26` |
+| [`fluent_community_send_daily_digest`](#fluent-community-send-daily-digest) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:608` |
+| [`fluent_community_send_daily_digest_init`](#fluent-community-send-daily-digest-init) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:72` |
+| [`fluent_community/email_notify_users_everyone_tag`](#fluent-community-email-notify-users-everyone-tag) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:511` |
+| [`fluent_community/remove_old_notifications`](#fluent-community-remove-old-notifications) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:37` |
 
 <a id="fluent-community-send-daily-digest"></a>
 
@@ -31,8 +31,8 @@ Not a once-per-day event. The scheduled `fluent_community_send_daily_digest_init
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:603` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/Scheduler.php:21` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:608` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/Scheduler.php:22` | No parameters |
 
 ### Example
 
@@ -64,7 +64,7 @@ Note the underscore-only naming. It is a one-shot Action Scheduler entry rather 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/Scheduler.php:60` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/Scheduler.php:72` | No parameters |
 
 ### Example
 
@@ -103,7 +103,7 @@ Queued five minutes after a space admin or moderator publishes a post carrying t
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:508` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:511` | No parameters |
 | Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:730` | No parameters |
 
 ### Example
@@ -130,7 +130,7 @@ Dispatched from the `fluent_community_daily_jobs` handler. The core callback del
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/Scheduler.php:26` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/Scheduler.php:37` | No parameters |
 
 ### Example
 
