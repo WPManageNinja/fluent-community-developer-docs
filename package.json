@@ -3,6 +3,7 @@
   "devDependencies": {
     "@types/node": "^22.7.5",
     "mermaid": "^10.6.1",
+    "sharp": "^0.35.4",
     "vitepress": "^1.6.4",
     "vitepress-openapi": "^0.1.15",
     "vue": "^3.5.30"
@@ -12,6 +13,8 @@
     "generate:manifest": "node generate-manifest.js",
     "docs:dev": "npm run generate:docs && npm run generate:manifest && vitepress dev",
     "docs:build": "npm run generate:docs && npm run generate:manifest && vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "featured:generate": "node scripts/generate-featured-images.mjs",
+    "featured:regenerate": "node scripts/generate-featured-images.mjs --force"
   }
 }
