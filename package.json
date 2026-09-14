@@ -11,8 +11,8 @@
   "scripts": {
     "generate:docs": "node scripts/generate-docs.mjs",
     "generate:manifest": "node generate-manifest.js",
-    "docs:dev": "npm run generate:docs && npm run generate:manifest && vitepress dev",
-    "docs:build": "npm run generate:docs && npm run generate:manifest && vitepress build",
+    "docs:dev": "npm run generate:docs && npm run generate:manifest && npm run featured:generate && vitepress dev",
+    "docs:build": "npm run generate:docs && npm run generate:manifest && npm run featured:generate && vitepress build",
     "docs:preview": "vitepress preview",
     "featured:generate": "node scripts/generate-featured-images.mjs",
     "featured:regenerate": "node scripts/generate-featured-images.mjs --force"
