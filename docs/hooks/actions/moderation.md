@@ -11,14 +11,14 @@ description: Moderation action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/' . $contentType . '_report_added_async`](#fluent-community-' . contentType . '-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:272` |
-| [`fluent_community/comment_report_added_async`](#fluent-community-comment-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:610` |
-| [`fluent_community/content_flagged`](#fluent-community-content-flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:223` |
+| [`fluent_community/' . $contentType . '_report_added_async`](#fluent-community-' . contentType . '-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:276` |
+| [`fluent_community/comment_report_added_async`](#fluent-community-comment-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:614` |
+| [`fluent_community/content_flagged`](#fluent-community-content-flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:227` |
 | [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:81` |
-| [`fluent_community/post_report_added_async`](#fluent-community-post-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:669` |
-| [`fluent_community/report/{status}`](#fluent-community-report-status) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:233` |
-| [`fluent_community/report/after_delete`](#fluent-community-report-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:258` |
-| [`fluent_community/report/before_delete`](#fluent-community-report-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:255` |
+| [`fluent_community/post_report_added_async`](#fluent-community-post-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:673` |
+| [`fluent_community/report/{status}`](#fluent-community-report-status) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:249` |
+| [`fluent_community/report/after_delete`](#fluent-community-report-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:274` |
+| [`fluent_community/report/before_delete`](#fluent-community-report-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:271` |
 
 <a id="fluent-community-' . contentType . '-report-added-async"></a>
 
@@ -48,7 +48,7 @@ This entry documents the `as_schedule_single_action()` call in Pro's moderation 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:272` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:276` | No parameters |
 
 ### Example
 
@@ -87,7 +87,7 @@ The comment-side twin of `fluent_community/post_report_added_async`, with the sa
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:610` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:614` | No parameters |
 
 ### Example
 
@@ -120,7 +120,7 @@ Only reached when content moderation is enabled, a positive `flag_after_threshol
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:223` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:227` | `$report` (mixed)<br>`$content` (mixed) |
 
 ### Example
 
@@ -156,9 +156,9 @@ Covers both member-submitted reports and automatic profanity or first-post flags
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:81` | `$report` (mixed)<br>`$feed` (Feed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:148` | `$report` (mixed)<br>`$comment` (Comment) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:490` | `$report` (mixed)<br>`$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:549` | `$report` (mixed)<br>`$comment` (Comment) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:143` | `$report` (mixed)<br>`$content` (mixed)<br>`$data['content_type']` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:494` | `$report` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:553` | `$report` (mixed)<br>`$comment` (Comment) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:149` | `$report` (mixed)<br>`$content` (mixed)<br>`$data['content_type']` (array) |
 
 ### Example
 
@@ -197,7 +197,7 @@ Queued in the `fluent-community` group as soon as the report is created, and re-
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:669` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:673` | No parameters |
 
 ### Example
 
@@ -230,7 +230,7 @@ The placeholder is one of `published`, `unpublished`, `pending`, `rejected`, `fl
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:233` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:249` | `$report` (mixed)<br>`$content` (mixed) |
 
 ### Example
 
@@ -262,7 +262,7 @@ The model instance is still in memory and its attributes readable, but the row i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:258` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:274` | `$report` (mixed) |
 
 ### Example
 
@@ -294,7 +294,7 @@ The last point at which the report and its relations can be read. Deleting a rep
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:255` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:271` | `$report` (mixed) |
 
 ### Example
 

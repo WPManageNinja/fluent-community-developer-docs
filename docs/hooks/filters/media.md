@@ -11,18 +11,18 @@ description: Media filter hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/convert_image_to_webp`](#fluent-community-convert-image-to-webp) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:997` |
+| [`fluent_community/convert_image_to_webp`](#fluent-community-convert-image-to-webp) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1004` |
 | [`fluent_community/generated_upload_file_name`](#fluent-community-generated-upload-file-name) | Core | 1 | `fluent-community/app/Services/Libs/FileSystem.php:170` |
 | [`fluent_community/handle_remove_bulk_media`](#fluent-community-handle-remove-bulk-media) | Core | 2 | `fluent-community/app/Hooks/Handlers/CleanupHandler.php:134` |
-| [`fluent_community/has_inline_image_upload`](#fluent-community-has-inline-image-upload) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:517` |
-| [`fluent_community/has_video_embeder`](#fluent-community-has-video-embeder) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:516` |
+| [`fluent_community/has_inline_image_upload`](#fluent-community-has-inline-image-upload) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:530` |
+| [`fluent_community/has_video_embeder`](#fluent-community-has-video-embeder) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:529` |
 | [`fluent_community/media_public_url_{this}`](#fluent-community-media-public-url-this) | Core | 1 | `fluent-community/app/Models/Media.php:138` |
 | [`fluent_community/media_signed_public_url_{this}`](#fluent-community-media-signed-public-url-this) | Core | 1 | `fluent-community/app/Models/Media.php:143` |
 | [`fluent_community/media_upload_data`](#fluent-community-media-upload-data) | Core <span class="edition-note">(also fired by Pro)</span> | 4 | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:262` |
-| [`fluent_community/media_upload_max_file_size`](#fluent-community-media-upload-max-file-size) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:943` |
-| [`fluent_community/media_upload_max_file_unit`](#fluent-community-media-upload-max-file-unit) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:942` |
-| [`fluent_community/media_upload_max_width_{context}`](#fluent-community-media-upload-max-width-context) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1004` |
-| [`fluent_community/media_upload_resize`](#fluent-community-media-upload-resize) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1001` |
+| [`fluent_community/media_upload_max_file_size`](#fluent-community-media-upload-max-file-size) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:950` |
+| [`fluent_community/media_upload_max_file_unit`](#fluent-community-media-upload-max-file-unit) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:949` |
+| [`fluent_community/media_upload_max_width_{context}`](#fluent-community-media-upload-max-width-context) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1011` |
+| [`fluent_community/media_upload_resize`](#fluent-community-media-upload-resize) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1008` |
 | [`fluent_community/preview_metadata_pre_fetch`](#fluent-community-preview-metadata-pre-fetch) | Core | 1 | `fluent-community/app/Services/RemoteUrlParser.php:184` |
 | [`fluent_community/rate_limit/media_upload_per_minute`](#fluent-community-rate-limit-media-upload-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:68` |
 | [`fluent_community/rate_limit/oembed_per_minute`](#fluent-community-rate-limit-oembed-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:81` |
@@ -31,7 +31,7 @@ description: Media filter hooks for FluentCommunity.
 | [`fluent_community/space_media/api_response`](#fluent-community-space-media-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Http/MediaGalleryController.php:53` |
 | [`fluent_community/space_media/query`](#fluent-community-space-media-query) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:148` |
 | [`fluent_community/space_media/transform_item`](#fluent-community-space-media-transform-item) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:56` |
-| [`fluent_community/support_attachment_types`](#fluent-community-support-attachment-types) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:914` |
+| [`fluent_community/support_attachment_types`](#fluent-community-support-attachment-types) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:921` |
 | [`fluent_community/upload_folder_name`](#fluent-community-upload-folder-name) | Core | 2 | `fluent-community/app/Services/Libs/FileSystem.php:37` |
 
 <a id="fluent-community-convert-image-to-webp"></a>
@@ -58,7 +58,7 @@ Defaults to true unless the request asked for `disable_convert=yes`. Conversion 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:997` | `$willWebPConvert` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1004` | `$willWebPConvert` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:86` | `$willWebPConvert` (mixed)<br>`$file` (mixed) |
 
 ### Example
@@ -166,7 +166,7 @@ A string flag, not a boolean: it surfaces as `features.has_inline_image_upload` 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:517` | `'yes'` (string) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:530` | `'yes'` (string) |
 
 ### Example
 
@@ -201,7 +201,7 @@ Surfaces as `features.video_embeder` in `portal_vars` and defaults to `true`. Th
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:516` | `true` (bool) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:529` | `true` (bool) |
 
 ### Example
 
@@ -311,7 +311,7 @@ The last point at which an upload can be redirected or rejected — Pro's Cloud 
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:262` | `$mediaData` (mixed)<br>`$file` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1097` | `$mediaData` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1104` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:188` | `$mediaData` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:101` | `$mediaData` (mixed)<br>`$file` (mixed) |
 
@@ -348,7 +348,7 @@ Paired with `fluent_community/media_upload_max_file_unit`, which supplies `MB` o
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:943` | `100` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:950` | `100` (int) |
 | Core | `fluent-community/app/Services/UploadHelper.php:40` | `$options['max_size']` (array) |
 
 ### Example
@@ -384,7 +384,7 @@ Compared case-insensitively against `MB` and `GB`; anything else is treated as k
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:942` | `'MB'` (string) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:949` | `'MB'` (string) |
 | Core | `fluent-community/app/Services/UploadHelper.php:39` | `$options['size_unit']` (array) |
 
 ### Example
@@ -421,7 +421,7 @@ The suffix is the `context` sent with the upload request — the portal uses val
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1004` | `$maxWidth` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1011` | `$maxWidth` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:93` | `$maxWidth` (mixed)<br>`$file` (mixed) |
 
 ### Example
@@ -458,7 +458,7 @@ The two call sites disagree on the default, which is worth knowing before you wr
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1001` | `$willResize` (mixed)<br>`$file` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1008` | `$willResize` (mixed)<br>`$file` (mixed) |
 | Core | `fluent-community/app/Services/UploadHelper.php:90` | `$willResize` (mixed)<br>`$file` (mixed) |
 
 ### Example
@@ -770,7 +770,7 @@ Applied at two upload entry points whose defaults are not identical: `FeedsContr
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:914` | `array (6 items)` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:921` | `array (6 items)` (array) |
 | Core | `fluent-community/app/Services/UploadHelper.php:28` | `array (7 items)` (array) |
 
 ### Example

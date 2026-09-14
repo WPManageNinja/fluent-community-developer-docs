@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/settings/install_plugin": {
-      "post": {
-        "operationId": "installPlugin",
-        "summary": "POST Install Plugin",
-        "description": "Installs and activates one of the companion Fluent plugins from the add-on catalogue, in the background.\n\nController: `SettingController@installPlugin`\nRoute source: `fluent-community/app/Http/Routes/api.php:165`",
+    "/spaces/{spaceSlug}/pages/{pageSlug}": {
+      "get": {
+        "operationId": "getShow",
+        "summary": "GET Get Show",
+        "description": "Get Show for the FluentCommunity Spaces API.\n\nController: `SpacePageController@show`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:20`",
         "tags": [
-          "Settings"
+          "Spaces"
         ],
         "security": [
           {
@@ -37,24 +37,6 @@
           }
         ],
         "parameters": [],
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "plugin": {
-                    "type": "string"
-                  }
-                }
-              },
-              "example": {
-                "plugin": "fluent-cart"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -66,22 +48,18 @@
                     "message": {
                       "type": "string",
                       "nullable": false
-                    },
-                    "is_installed": {
-                      "type": "boolean"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Plugin has been installed Successfully",
-                  "is_installed": true
+                  "message": "Success"
                 }
               }
             }
           },
-          "422": {
-            "description": "This plugin can not be installed from here. Please install it manually.",
+          "400": {
+            "description": "Request error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +71,7 @@
                   }
                 },
                 "example": {
-                  "message": "This plugin can not be installed from here. Please install it manually."
+                  "message": "Request error."
                 }
               }
             }

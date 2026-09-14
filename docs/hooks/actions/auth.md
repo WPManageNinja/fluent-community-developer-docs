@@ -15,7 +15,7 @@ description: Auth action hooks for FluentCommunity.
 | [`fluent_community/auth/show_invitation_for_user`](#fluent-community-auth-show-invitation-for-user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:309` |
 | [`fluent_community/invitation_created`](#fluent-community-invitation-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:193` |
 | [`fluent_community/invitation_link_created`](#fluent-community-invitation-link-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:211` |
-| [`fluent_community/user/password_changed`](#fluent-community-user-password-changed) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:535` |
+| [`fluent_community/user/password_changed`](#fluent-community-user-password-changed) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:534` |
 
 <a id="fluent-community-auth-before-auth-page-process"></a>
 
@@ -168,7 +168,7 @@ Only the self-service change fires it; a password reset through WordPress or an 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:535` | `$user->ID` (int) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:534` | `$user->ID` (int) |
 
 ### Example
 

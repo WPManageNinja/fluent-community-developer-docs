@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/settings/install_plugin": {
-      "post": {
-        "operationId": "installPlugin",
-        "summary": "POST Install Plugin",
-        "description": "Installs and activates one of the companion Fluent plugins from the add-on catalogue, in the background.\n\nController: `SettingController@installPlugin`\nRoute source: `fluent-community/app/Http/Routes/api.php:165`",
+    "/spaces/{spaceSlug}/pages": {
+      "get": {
+        "operationId": "getIndex",
+        "summary": "GET Get Index",
+        "description": "Get Index for the FluentCommunity Spaces API.\n\nController: `SpacePageController@index`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:11`",
         "tags": [
-          "Settings"
+          "Spaces"
         ],
         "security": [
           {
@@ -37,24 +37,6 @@
           }
         ],
         "parameters": [],
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "plugin": {
-                    "type": "string"
-                  }
-                }
-              },
-              "example": {
-                "plugin": "fluent-cart"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful response",
@@ -63,25 +45,37 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "cursor": {
                       "type": "string",
-                      "nullable": false
+                      "nullable": true
                     },
-                    "is_installed": {
+                    "has_audio": {
                       "type": "boolean"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Plugin has been installed Successfully",
-                  "is_installed": true
+                  "cursor": null,
+                  "has_audio": false,
+                  "has_more": false,
+                  "items": []
                 }
               }
             }
           },
-          "422": {
-            "description": "This plugin can not be installed from here. Please install it manually.",
+          "400": {
+            "description": "Request error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +87,7 @@
                   }
                 },
                 "example": {
-                  "message": "This plugin can not be installed from here. Please install it manually."
+                  "message": "Request error."
                 }
               }
             }

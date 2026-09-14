@@ -1,5 +1,19 @@
 [
   {
+    "method": "POST",
+    "routePatterns": [
+      "notifications/mark-read/{feedId}/by-feed-id"
+    ],
+    "routeExpression": "`notifications/mark-read/${feedId}/by-feed-id`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "unread_notification_count"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/App.vue",
+    "line": 247
+  },
+  {
     "method": "GET",
     "routePatterns": [
       "options/sidebar-menu-html"
@@ -12,7 +26,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/App.vue",
-    "line": 253
+    "line": 272
   },
   {
     "method": "GET",
@@ -1002,6 +1016,20 @@
   {
     "method": "GET",
     "routePatterns": [
+      "admin/courses/{course_id}"
+    ],
+    "routeExpression": "'admin/courses/' + this.course_id",
+    "payloadKeys": [],
+    "responseKeys": [
+      "course"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Courses/Manage/Customizer/CourseSettingsRoute.vue",
+    "line": 143
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
       "admin/courses/{id}/welcome-banner"
     ],
     "routeExpression": "'admin/courses/' + this.course.id + '/welcome-banner'",
@@ -1041,7 +1069,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/EditCourseRoute.vue",
-    "line": 129
+    "line": 117
   },
   {
     "method": "POST",
@@ -1057,7 +1085,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/EditCourseRoute.vue",
-    "line": 185
+    "line": 173
   },
   {
     "method": "DELETE",
@@ -1071,7 +1099,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/EditCourseRoute.vue",
-    "line": 202
+    "line": 190
   },
   {
     "method": "GET",
@@ -1419,7 +1447,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_CourseComments.vue",
-    "line": 111
+    "line": 110
   },
   {
     "method": "POST",
@@ -1436,7 +1464,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_CourseComments.vue",
-    "line": 130
+    "line": 129
   },
   {
     "method": "DELETE",
@@ -1450,7 +1478,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_CourseComments.vue",
-    "line": 150
+    "line": 149
   },
   {
     "method": "GET",
@@ -2378,7 +2406,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Notifications/NotificationToaster.vue",
-    "line": 130
+    "line": 138
   },
   {
     "method": "GET",
@@ -2700,7 +2728,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 278
+    "line": 288
   },
   {
     "method": "POST",
@@ -2714,7 +2742,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 298
+    "line": 308
   },
   {
     "method": "POST",
@@ -2731,7 +2759,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_NotificationPrefForm.vue",
-    "line": 321
+    "line": 331
   },
   {
     "method": "GET",
@@ -2785,7 +2813,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_UserHeader.vue",
-    "line": 325
+    "line": 327
   },
   {
     "method": "POST",
@@ -2799,7 +2827,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_UserHeader.vue",
-    "line": 368
+    "line": 370
   },
   {
     "method": "GET",
@@ -3033,7 +3061,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 494
+    "line": 495
   },
   {
     "method": "GET",
@@ -3048,7 +3076,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 509
+    "line": 510
   },
   {
     "method": "POST",
@@ -3065,7 +3093,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 526
+    "line": 530
   },
   {
     "method": "GET",
@@ -3432,11 +3460,29 @@
     "payloadKeys": [],
     "responseKeys": [
       "push_settings",
-      "push_available"
+      "push_available",
+      "push_setup"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PushNotificationSettings.vue",
-    "line": 126
+    "line": 252
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "settings/install_plugin"
+    ],
+    "routeExpression": "'settings/install_plugin'",
+    "payloadKeys": [
+      "plugin"
+    ],
+    "responseKeys": [
+      "is_installed",
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Settings/PushNotificationSettings.vue",
+    "line": 276
   },
   {
     "method": "POST",
@@ -3452,7 +3498,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PushNotificationSettings.vue",
-    "line": 142
+    "line": 297
   },
   {
     "method": "GET",
@@ -3677,7 +3723,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_StorageSettings.vue",
-    "line": 197
+    "line": 190
   },
   {
     "method": "POST",
@@ -3693,7 +3739,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/_StorageSettings.vue",
-    "line": 219
+    "line": 212
   },
   {
     "method": "POST",
@@ -3939,6 +3985,150 @@
     "line": 317
   },
   {
+    "method": "GET",
+    "routePatterns": [
+      "spaces/{slug}/pages"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "pages"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ManageSpacePages.vue",
+    "line": 318
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "spaces/{slug}/pages"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages`",
+    "payloadKeys": [
+      "title"
+    ],
+    "responseKeys": [
+      "message",
+      "page"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ManageSpacePages.vue",
+    "line": 358
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "spaces/{slug}/pages/{id}/duplicate"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages/${page.id}/duplicate`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "message",
+      "page"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ManageSpacePages.vue",
+    "line": 373
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "spaces/{slug}/pages/{id}"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages/${page.id}`",
+    "payloadKeys": [
+      "page"
+    ],
+    "responseKeys": [
+      "message",
+      "page"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ManageSpacePages.vue",
+    "line": 401
+  },
+  {
+    "method": "DELETE",
+    "routePatterns": [
+      "spaces/{slug}/pages/{id}"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages/${page.id}`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ManageSpacePages.vue",
+    "line": 423
+  },
+  {
+    "method": "PATCH",
+    "routePatterns": [
+      "spaces/{slug}/pages/re-index"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages/re-index`",
+    "payloadKeys": [
+      "page_ids"
+    ],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ManageSpacePages.vue",
+    "line": 448
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "spaces/{slug}/pages/{slug}"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages/${this.page.slug}`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "page",
+      "page.title",
+      "page.slug",
+      "page.message",
+      "page.status",
+      "page.privacy",
+      "page.meta"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/SpacePageEditor.vue",
+    "line": 147
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "spaces/{slug}/pages/{id}"
+    ],
+    "routeExpression": "`spaces/${this.spaceProfile.slug}/pages/${this.page.id}`",
+    "payloadKeys": [
+      "page"
+    ],
+    "responseKeys": [
+      "message",
+      "page"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/SpacePageEditor.vue",
+    "line": 196
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "spaces/{spaceSlug}/pages/{requestedSlug}"
+    ],
+    "routeExpression": "`spaces/${this.spaceSlug}/pages/${requestedSlug}`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "page"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Space/Pages/ViewSpacePage.vue",
+    "line": 251
+  },
+  {
     "method": "PATCH",
     "routePatterns": [
       "spaces/space_groups/move-space"
@@ -3967,7 +4157,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/SpaceGroup/SpaceGroups.vue",
-    "line": 327
+    "line": 320
   },
   {
     "method": "GET",
@@ -3982,7 +4172,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/SpaceGroup/SpaceGroups.vue",
-    "line": 339
+    "line": 332
   },
   {
     "method": "PATCH",
@@ -3998,7 +4188,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/SpaceGroup/SpaceGroups.vue",
-    "line": 374
+    "line": 367
   },
   {
     "method": "PATCH",
@@ -4014,7 +4204,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/SpaceGroup/SpaceGroups.vue",
-    "line": 387
+    "line": 380
   },
   {
     "method": "DELETE",
@@ -4026,7 +4216,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/SpaceGroup/SpaceGroups.vue",
-    "line": 419
+    "line": 412
   },
   {
     "method": "GET",
@@ -4161,7 +4351,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Space/_SpaceMenu.vue",
-    "line": 207
+    "line": 232
   },
   {
     "method": "GET",
@@ -4388,7 +4578,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/customizer/CustommizerApp.vue",
-    "line": 128
+    "line": 130
   },
   {
     "method": "POST",
@@ -4407,7 +4597,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/customizer/CustommizerApp.vue",
-    "line": 144
+    "line": 146
   },
   {
     "method": "GET",
@@ -4667,7 +4857,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/space.js",
-    "line": 144
+    "line": 152
   },
   {
     "method": "POST",
@@ -4682,7 +4872,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/space.js",
-    "line": 211
+    "line": 219
   },
   {
     "method": "POST",
@@ -4696,7 +4886,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/stores/space.js",
-    "line": 285
+    "line": 293
   },
   {
     "method": "GET",

@@ -5,7 +5,7 @@ description: Permissions filter hooks for FluentCommunity.
 
 # Permissions Filters
 
-9 unique filter hooks currently map to this category, across 23 call sites.
+10 unique filter hooks currently map to this category, across 24 call sites.
 
 ## Hook Inventory
 
@@ -13,10 +13,11 @@ description: Permissions filter hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/bulk_members/can_create_wp_users`](#fluent-community-bulk-members-can-create-wp-users) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/BulkMemberHelper.php:438` |
 | [`fluent_community/can_access_portal`](#fluent-community-can-access-portal) | Core | 8 | `fluent-community/app/Services/Helper.php:530` |
-| [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:32` |
+| [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:37` |
 | [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members) | Core | 3 | `fluent-community/app/Functions/Utility.php:315` |
 | [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page) | Core | 3 | `fluent-community/app/Functions/Utility.php:300` |
 | [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:330` |
+| [`fluent_community/space_page/can_view_page`](#fluent-community-space-page-can-view-page) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:49` |
 | [`fluent_community/super_admin_capability`](#fluent-community-super-admin-capability) | Core | 1 | `fluent-community/app/Services/Helper.php:230` |
 | [`fluent_community/user/permissions`](#fluent-community-user-permissions) | Core | 2 | `fluent-community/app/Models/User.php:512` |
 | [`fluent_community/user/space/permissions`](#fluent-community-user-space-permissions) | Core | 1 | `fluent-community/app/Models/User.php:651` |
@@ -109,7 +110,7 @@ The placeholder is `$feed->type`, so in practice it is `fluent_community/can_vie
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:32` | `true` (bool)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:37` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -235,6 +236,28 @@ add_filter('fluent_community/can_view_user_profile', function ($canView, $pageSt
 ```
 
 **Related:** [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page)
+
+<a id="fluent-community-space-page-can-view-page"></a>
+
+## `fluent_community/space_page/can_view_page`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:49` | `$canView` (mixed)<br>`$page` (mixed)<br>`$space` (Space)<br>`$user` (User) |
+
+### Example
+
+```php
+add_filter('fluent_community/space_page/can_view_page', function ($canView, $page, $space, $user) {
+    return $canView;
+}, 10, 4);
+```
 
 <a id="fluent-community-super-admin-capability"></a>
 

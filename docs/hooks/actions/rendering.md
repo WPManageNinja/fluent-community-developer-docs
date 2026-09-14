@@ -5,7 +5,7 @@ description: Rendering action hooks for FluentCommunity.
 
 # Rendering Actions
 
-44 unique action hooks currently map to this category, across 71 call sites.
+45 unique action hooks currently map to this category, across 72 call sites.
 
 ## Hook Inventory
 
@@ -13,41 +13,42 @@ description: Rendering action hooks for FluentCommunity.
 | --- | --- | --- | --- |
 | [`fluent_community/after_header_logo`](#fluent-community-after-header-logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:45` |
 | [`fluent_community/after_header_menu`](#fluent-community-after-header-menu) | Core | 1 | `fluent-community/app/Views/portal/header.php:55` |
-| [`fluent_community/after_header_right_menu_items`](#fluent-community-after-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:371` |
-| [`fluent_community/after_portal_sidebar`](#fluent-community-after-portal-sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:159` |
+| [`fluent_community/after_header_right_menu_items`](#fluent-community-after-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:384` |
+| [`fluent_community/after_portal_sidebar`](#fluent-community-after-portal-sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:161` |
 | [`fluent_community/after_registration_form`](#fluent-community-after-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:59` |
-| [`fluent_community/after_sidebar_wrap`](#fluent-community-after-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:157` |
+| [`fluent_community/after_sidebar_wrap`](#fluent-community-after-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:159` |
 | [`fluent_community/before_auth_form_header`](#fluent-community-before-auth-form-header) | Core | 3 | `fluent-community/app/Views/auth/login_form.php:10` |
 | [`fluent_community/before_header_logo`](#fluent-community-before-header-logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:34` |
-| [`fluent_community/before_header_menu_items`](#fluent-community-before-header-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:315` |
-| [`fluent_community/before_header_right_menu_items`](#fluent-community-before-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:250` |
+| [`fluent_community/before_header_menu_items`](#fluent-community-before-header-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:328` |
+| [`fluent_community/before_header_right_menu_items`](#fluent-community-before-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:263` |
 | [`fluent_community/before_js_loaded`](#fluent-community-before-js-loaded) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:81` |
 | [`fluent_community/before_portal_dom`](#fluent-community-before-portal-dom) | Core | 4 | `fluent-community/app/Views/portal_page.php:78` |
-| [`fluent_community/before_portal_rendered`](#fluent-community-before-portal-rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:899` |
+| [`fluent_community/before_portal_rendered`](#fluent-community-before-portal-rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:920` |
 | [`fluent_community/before_registration_form`](#fluent-community-before-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:23` |
 | [`fluent_community/before_sidebar_wrap`](#fluent-community-before-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:31` |
-| [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:426` |
-| [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:419` |
+| [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:491` |
+| [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:484` |
 | [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:222` |
 | [`fluent_community/headless/before_js_loaded`](#fluent-community-headless-before-js-loaded) | Core | 1 | `fluent-community/app/Views/headless_page.php:110` |
 | [`fluent_community/headless/content`](#fluent-community-headless-content) | Core | 2 | `fluent-community/app/Views/headless_page.php:94` |
 | [`fluent_community/headless/footer`](#fluent-community-headless-footer) | Core | 1 | `fluent-community/app/Views/headless_page.php:118` |
 | [`fluent_community/headless/head`](#fluent-community-headless-head) | Core | 1 | `fluent-community/app/Views/headless_page.php:66` |
 | [`fluent_community/headless/head_early`](#fluent-community-headless-head-early) | Core | 1 | `fluent-community/app/Views/headless_page.php:61` |
-| [`fluent_community/on_wp_init`](#fluent-community-on-wp-init) | Core | 1 | `fluent-community/boot/app.php:41` |
-| [`fluent_community/portal_action_{action}`](#fluent-community-portal-action-action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:810` |
+| [`fluent_community/on_wp_init`](#fluent-community-on-wp-init) | Core | 1 | `fluent-community/boot/app.php:67` |
+| [`fluent_community/portal_action_{action}`](#fluent-community-portal-action-action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:823` |
+| [`fluent_community/portal_content_pre_render`](#fluent-community-portal-content-pre-render) | Core | 1 | `fluent-community/app/Views/portal/portal.php:21` |
 | [`fluent_community/portal_footer`](#fluent-community-portal-footer) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:82` |
 | [`fluent_community/portal_head`](#fluent-community-portal-head) | Core | 1 | `fluent-community/app/Views/portal_page.php:74` |
 | [`fluent_community/portal_head_meta`](#fluent-community-portal-head-meta) | Core | 1 | `fluent-community/app/Views/portal_page.php:44` |
 | [`fluent_community/portal_header`](#fluent-community-portal-header) | Core <span class="edition-note">(also fired by Pro)</span> | 6 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:64` |
 | [`fluent_community/portal_html`](#fluent-community-portal-html) | Core | 1 | `fluent-community/app/Views/portal_page.php:80` |
 | [`fluent_community/portal_loaded`](#fluent-community-portal-loaded) | Core | 1 | `fluent-community/boot/app.php:38` |
-| [`fluent_community/portal_render_for_user`](#fluent-community-portal-render-for-user) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:880` |
+| [`fluent_community/portal_render_for_user`](#fluent-community-portal-render-for-user) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:893` |
 | [`fluent_community/portal_sidebar`](#fluent-community-portal-sidebar) | Core <span class="edition-note">(also fired by Pro)</span> | 7 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:71` |
-| [`fluent_community/portal/not_logged_in`](#fluent-community-portal-not-logged-in) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:836` |
-| [`fluent_community/portal/viewed`](#fluent-community-portal-viewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:842` |
-| [`fluent_community/rendering_headless_portal`](#fluent-community-rendering-headless-portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:891` |
-| [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:814` |
+| [`fluent_community/portal/not_logged_in`](#fluent-community-portal-not-logged-in) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:849` |
+| [`fluent_community/portal/viewed`](#fluent-community-portal-viewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:855` |
+| [`fluent_community/rendering_headless_portal`](#fluent-community-rendering-headless-portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:912` |
+| [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:827` |
 | [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:863` |
 | [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:859` |
 | [`fluent_community/template_footer`](#fluent-community-template-footer) | Core | 3 | `fluent-community/Modules/Gutenberg/EditorBlock.php:180` |
@@ -141,7 +142,7 @@ Emit `<li>` elements. Beyond rendering, core treats this hook as an ordering pro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:371` | `$auth` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:384` | `$auth` (mixed) |
 
 ### Example
 
@@ -173,7 +174,7 @@ Core attaches the sidebar footer here — the upgrade or wp-admin shortcut, the 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:159` | `$fluentCommunityContext` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:161` | `$fluentCommunityContext` (mixed) |
 
 ### Example
 
@@ -231,7 +232,7 @@ The counterpart of `fluent_community/before_sidebar_wrap` and subject to the sam
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Views/portal/main_sidebar.php:157` | `$fluentCommunityContext` (mixed) |
+| Core | `fluent-community/app/Views/portal/main_sidebar.php:159` | `$fluentCommunityContext` (mixed) |
 
 ### Example
 
@@ -330,7 +331,7 @@ The name suggests the main navigation, but this fires inside `ul.fcom_user_conte
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:315` | `$auth` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:328` | `$auth` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -362,7 +363,7 @@ You are inside a `<ul>`, so emit complete `<li>` elements. It runs before the da
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:250` | `$auth` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:263` | `$auth` (mixed) |
 
 ### Example
 
@@ -450,7 +451,7 @@ The last point before any markup is emitted: assets have been enqueued, dynamic 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:899` | `$data` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:920` | `$data` (mixed) |
 
 ### Example
 
@@ -534,7 +535,7 @@ Core attaches the entire WordPress footer sequence here — footer scripts, scri
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:426` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:491` | No parameters |
 
 ### Example
 
@@ -560,7 +561,7 @@ The lesson editor renders its own complete HTML document in an iframe rather tha
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:419` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:484` | No parameters |
 
 ### Example
 
@@ -786,7 +787,7 @@ Registered from inside the `fluent_community/portal_loaded` callback, so it alwa
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/boot/app.php:41` | `$app` (mixed) |
+| Core | `fluent-community/boot/app.php:67` | `$app` (mixed) |
 
 ### Example
 
@@ -818,7 +819,7 @@ This is the plugin's front-controller extension point: `?fcom_action=my_thing` o
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:810` | `$_GET` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:823` | `$_GET` (mixed) |
 
 ### Example
 
@@ -828,6 +829,28 @@ add_action('fluent_community/portal_action_{action}', function ($requestData) {
 ```
 
 **Related:** [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts)
+
+<a id="fluent-community-portal-content-pre-render"></a>
+
+## `fluent_community/portal_content_pre_render`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Server-rendered first paint for the current route. Vue's mount() empties this container before it renders, so whatever is printed here is only ever seen by crawlers and by the browser before the SPA boots - it does not need to match the Vue DOM.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Views/portal/portal.php:21` | `isset($preRenderContext) ? $preRenderContext : []` (array) |
+
+### Example
+
+```php
+add_action('fluent_community/portal_content_pre_render', function ($preRenderContext) {
+}, 10, 1);
+```
 
 <a id="fluent-community-portal-footer"></a>
 
@@ -1030,7 +1053,7 @@ Reached only after the status and role gates pass, and only when an `XProfile` e
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:880` | `$xprofile` (XProfile) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:893` | `$xprofile` (XProfile) |
 
 ### Example
 
@@ -1100,7 +1123,7 @@ The redirect happens on the next line and is followed by `exit()`, so a callback
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:836` | `$authUrl` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:849` | `$authUrl` (mixed) |
 
 ### Example
 
@@ -1126,7 +1149,7 @@ Takes no arguments and does not tell you who is viewing — resolve the current 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:842` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:855` | No parameters |
 
 ### Example
 
@@ -1158,7 +1181,7 @@ Headless mode is the shipped default (`Modules\FeaturesHandler` returns `true` f
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:891` | `$data` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:912` | `$data` (mixed) |
 
 ### Example
 
@@ -1190,7 +1213,7 @@ The placeholder is `$pathParts[0]` — the segment straight after the portal slu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:814` | `$pathParts` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:827` | `$pathParts` (mixed) |
 
 ### Example
 

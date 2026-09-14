@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 252 routes registered in the FluentCommunity core and module route files.
+This reference covers 259 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -58,7 +58,7 @@ operation's own page.
 | Module | Edition | Route Count | Description |
 | --- | --- | --- | --- |
 | [Feeds API](/restapi/feeds) | Core <span class="edition-note">(extended by Pro)</span> | 19 | Feed creation, retrieval, discovery, ticker updates, bookmarks, and markdown preview. |
-| [Spaces API](/restapi/spaces) | Core <span class="edition-note">(extended by Pro)</span> | 23 | Space discovery, lifecycle management, joins/leaves, lock screen configuration, and group organization. |
+| [Spaces API](/restapi/spaces) | Core <span class="edition-note">(extended by Pro)</span> | 30 | Space discovery, lifecycle management, joins/leaves, lock screen configuration, and group organization. |
 | [Members API](/restapi/members) | Core <span class="edition-note">(extended by Pro)</span> | 8 | Global member listing plus space-scoped membership management endpoints. |
 | [Comments API](/restapi/comments) | Core | 8 | Feed comment listing, creation, updates, deletes, and single comment retrieval. |
 | [Reactions API](/restapi/reactions) | Core | 7 | Feed/comment reactions plus survey vote and survey voter endpoints. |

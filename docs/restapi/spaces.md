@@ -38,3 +38,10 @@ Most space routes are protected by `SpacePolicy`, which combines portal access w
 | `PATCH` | `/spaces/space_groups/re-index-spaces` | Core | [Reindex Spaces](/restapi/operations/spaces/reindex-spaces) | Applies a new sidebar order to spaces within their group. |
 | `PATCH` | `/spaces/space_groups/move-space` | Core | [Move Space](/restapi/operations/spaces/move-space) | Moves a space into a different space group. |
 | `PUT` | `/spaces/{spaceSlug}/lockscreens` | <span class="pro-badge">PRO</span> | [Update Space Lockscreen Settings](/restapi/operations/spaces/update-space-lockscreen-settings) | Stores the lock screen configuration a space shows to non-members. |
+| `GET` | `/spaces/{spaceSlug}/pages` | <span class="pro-badge">PRO</span> | [Get Index](/restapi/operations/spaces/get-index) | Get Index for the FluentCommunity Spaces API. |
+| `POST` | `/spaces/{spaceSlug}/pages` | <span class="pro-badge">PRO</span> | [Post Store](/restapi/operations/spaces/post-store) | Post Store for the FluentCommunity Spaces API. |
+| `PATCH` | `/spaces/{spaceSlug}/pages/re-index` | <span class="pro-badge">PRO</span> | [Patch Re Index](/restapi/operations/spaces/patch-re-index) | Patch Re Index for the FluentCommunity Spaces API. |
+| `GET` | `/spaces/{spaceSlug}/pages/{pageSlug}` | <span class="pro-badge">PRO</span> | [Get Show](/restapi/operations/spaces/get-show) | Get Show for the FluentCommunity Spaces API. |
+| `POST` | `/spaces/{spaceSlug}/pages/{pageId}/duplicate` | <span class="pro-badge">PRO</span> | [Post Duplicate](/restapi/operations/spaces/post-duplicate) | Post Duplicate for the FluentCommunity Spaces API. |
+| `PUT` | `/spaces/{spaceSlug}/pages/{pageId}` | <span class="pro-badge">PRO</span> | [Put Update](/restapi/operations/spaces/put-update) | Put Update for the FluentCommunity Spaces API. |
+| `DELETE` | `/spaces/{spaceSlug}/pages/{pageId}` | <span class="pro-badge">PRO</span> | [Delete Destroy](/restapi/operations/spaces/delete-destroy) | Delete Destroy for the FluentCommunity Spaces API. |
