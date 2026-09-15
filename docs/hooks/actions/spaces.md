@@ -5,13 +5,17 @@ description: Spaces action hooks for FluentCommunity.
 
 # Spaces Actions
 
-10 unique action hooks currently map to this category, across 22 call sites.
+14 unique action hooks currently map to this category, across 27 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/space`](#fluent-community-space) | Core | 3 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:420` |
+| [`fluent_community/space`](#fluent-community-space) | Core | 3 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:433` |
+| [`fluent_community/space_page/before_delete`](#fluent-community-space-page-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:257` |
+| [`fluent_community/space_page/created`](#fluent-community-space-page-created) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:123` |
+| [`fluent_community/space_page/duplicated`](#fluent-community-space-page-duplicated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:313` |
+| [`fluent_community/space_page/updated`](#fluent-community-space-page-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:231` |
 | [`fluent_community/space/before_delete`](#fluent-community-space-before-delete) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:567` |
 | [`fluent_community/space/created`](#fluent-community-space-created) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:142` |
 | [`fluent_community/space/deleted`](#fluent-community-space-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:584` |
@@ -43,7 +47,7 @@ Fired with `do_action_ref_array()`, so declare the parameter as `&$space` and mu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:420` | `&$space` (Space) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:433` | `&$space` (Space) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:242` | `&$space` (Space) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:267` | `&$space` (Space) |
 
@@ -55,6 +59,91 @@ add_action('fluent_community/space', function ($space) {
 ```
 
 **Related:** [`fluent_community/space_api_response`](/hooks/filters/spaces#fluent-community-space-api-response) · [`fluent_community/space_header_links`](/hooks/filters/rendering#fluent-community-space-header-links)
+
+<a id="fluent-community-space-page-before-delete"></a>
+
+## `fluent_community/space_page/before_delete`
+
+- **Type:** action
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:257` | `$page` (mixed)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_action('fluent_community/space_page/before_delete', function ($page, $space) {
+}, 10, 2);
+```
+
+<a id="fluent-community-space-page-created"></a>
+
+## `fluent_community/space_page/created`
+
+- **Type:** action
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 2
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:123` | `$page` (mixed)<br>`$space` (Space) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:312` | `$copy` (mixed)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_action('fluent_community/space_page/created', function ($page, $space) {
+}, 10, 2);
+```
+
+<a id="fluent-community-space-page-duplicated"></a>
+
+## `fluent_community/space_page/duplicated`
+
+- **Type:** action
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:313` | `$copy` (mixed)<br>`$page` (mixed)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_action('fluent_community/space_page/duplicated', function ($copy, $page, $space) {
+}, 10, 3);
+```
+
+<a id="fluent-community-space-page-updated"></a>
+
+## `fluent_community/space_page/updated`
+
+- **Type:** action
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:231` | `$page` (mixed)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_action('fluent_community/space_page/updated', function ($page, $space) {
+}, 10, 2);
+```
 
 <a id="fluent-community-space-before-delete"></a>
 
@@ -215,8 +304,8 @@ Course-type spaces never reach this hook — `Helper::addToSpace()` routes them 
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:520` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:651` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:669` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Services/Helper.php:1763` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:1787` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1785` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1809` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
 
 ### Example
 
@@ -354,7 +443,7 @@ Covers self-leaves, admin removals and CRM-driven removals alike; the `$by` argu
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/RemoveFromSpaceAction.php:87` | `$space` (Space)<br>`$user->ID` (int)<br>`'automation'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:706` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Services/Helper.php:1837` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1859` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 
 ### Example
 

@@ -5,7 +5,7 @@ description: Spaces filter hooks for FluentCommunity.
 
 # Spaces Filters
 
-18 unique filter hooks currently map to this category, across 21 call sites.
+23 unique filter hooks currently map to this category, across 26 call sites.
 
 ## Hook Inventory
 
@@ -19,10 +19,15 @@ description: Spaces filter hooks for FluentCommunity.
 | [`fluent_community/menu_groups`](#fluent-community-menu-groups) | Core | 1 | `fluent-community/app/Services/Helper.php:1347` |
 | [`fluent_community/menu_items_api_response`](#fluent-community-menu-items-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:31` |
 | [`fluent_community/menu_settings_api_response`](#fluent-community-menu-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:109` |
-| [`fluent_community/mobile_menu`](#fluent-community-mobile-menu) | Core | 1 | `fluent-community/app/Services/Helper.php:1642` |
+| [`fluent_community/mobile_menu`](#fluent-community-mobile-menu) | Core | 1 | `fluent-community/app/Services/Helper.php:1664` |
 | [`fluent_community/settings_menu`](#fluent-community-settings-menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1278` |
 | [`fluent_community/space_api_response`](#fluent-community-space-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:273` |
 | [`fluent_community/space_groups_api_response`](#fluent-community-space-groups-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:844` |
+| [`fluent_community/space_page/access_message_html`](#fluent-community-space-page-access-message-html) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:278` |
+| [`fluent_community/space_page/formatted_page`](#fluent-community-space-page-formatted-page) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:184` |
+| [`fluent_community/space_page/layout_templates`](#fluent-community-space-page-layout-templates) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:340` |
+| [`fluent_community/space_page/nav_query_limit`](#fluent-community-space-page-nav-query-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:503` |
+| [`fluent_community/space_page/update_data`](#fluent-community-space-page-update-data) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:226` |
 | [`fluent_community/space/create_data`](#fluent-community-space-create-data) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:79` |
 | [`fluent_community/space/join_status_for_private`](#fluent-community-space-join-status-for-private) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:498` |
 | [`fluent_community/space/meta_fields`](#fluent-community-space-meta-fields) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:1021` |
@@ -200,7 +205,7 @@ Applied at two call sites that both start from the stored `mainMenuItems` group:
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Functions/Utility.php:1283` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1207` | `$items` (mixed)<br>`$scope` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1249` | `$items` (mixed)<br>`$scope` (mixed) |
 
 ### Example
 
@@ -344,7 +349,7 @@ Built independently of the sidebar: it looks up only `all_feeds` and `spaces` fr
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1642` | `$mobileMenuItems` (mixed)<br>`$xprofile` (XProfile)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1664` | `$mobileMenuItems` (mixed)<br>`$xprofile` (XProfile)<br>`$context` (mixed) |
 
 ### Example
 
@@ -463,6 +468,116 @@ add_filter('fluent_community/space_groups_api_response', function ($data, $reque
 ```
 
 **Related:** [`fluent_community/all_spaces_api_response`](#fluent-community-all-spaces-api-response)
+
+<a id="fluent-community-space-page-access-message-html"></a>
+
+## `fluent_community/space_page/access_message_html`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:278` | `$message` (mixed)<br>`$page` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/space_page/access_message_html', function ($message, $page) {
+    return $message;
+}, 10, 2);
+```
+
+<a id="fluent-community-space-page-formatted-page"></a>
+
+## `fluent_community/space_page/formatted_page`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:184` | `$formatted` (mixed)<br>`$page` (mixed)<br>`$user` (User) |
+
+### Example
+
+```php
+add_filter('fluent_community/space_page/formatted_page', function ($formatted, $page, $user) {
+    return $formatted;
+}, 10, 3);
+```
+
+<a id="fluent-community-space-page-layout-templates"></a>
+
+## `fluent_community/space_page/layout_templates`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:340` | `$templates` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/space_page/layout_templates', function ($templates) {
+    return $templates;
+}, 10, 1);
+```
+
+<a id="fluent-community-space-page-nav-query-limit"></a>
+
+## `fluent_community/space_page/nav_query_limit`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:503` | `1000` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/space_page/nav_query_limit', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
+<a id="fluent-community-space-page-update-data"></a>
+
+## `fluent_community/space_page/update_data`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:226` | `$updateData` (mixed)<br>`$page` (mixed)<br>`$request->all()` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/space_page/update_data', function ($updateData, $page, $all) {
+    return $updateData;
+}, 10, 3);
+```
 
 <a id="fluent-community-space-create-data"></a>
 

@@ -562,6 +562,24 @@
               }
             }
           },
+          "404": {
+            "description": "The content you are trying to report could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "The content you are trying to report could not be found."
+                }
+              }
+            }
+          },
           "422": {
             "description": "You have already reported this content.",
             "content": {

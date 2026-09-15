@@ -79,7 +79,9 @@ npm run featured:generate     # render cards for pages that don't have one yet (
 npm run featured:regenerate   # re-render every card (after changing the generator's design)
 ```
 
-- Run `npm run featured:generate` after adding a page and commit the PNG alongside it.
+- `docs:dev` and `docs:build` run `featured:generate` after the doc generator, so a regeneration
+  that adds pages also renders their cards — commit the new PNGs alongside the regenerated pages.
+  Run it by hand only when invoking `scripts/generate-docs.mjs` directly instead of via the npm scripts.
 - If you rename or retitle a page, delete its old card first and run the generator again — it skips existing files and only *reports* orphans, it never deletes them.
 - Card naming rule: the page's served path (after `rewrites`) minus `.md`, with `/` replaced by `--`, plus `.png`. It lives in both the script (`cardNameFor()`) and the config (`featuredImageFor()`) — change one, change the other.
 - These PNGs are the deliberate exception to any "images must be `.webp`" rule in this repo: social scrapers expect PNG/JPEG.

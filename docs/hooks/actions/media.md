@@ -11,8 +11,8 @@ description: Media action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:912` |
-| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1453` |
+| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:919` |
+| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1484` |
 | [`fluent_community/delete_remote_media_{this}`](#fluent-community-delete-remote-media-this) | Core | 1 | `fluent-community/app/Models/Media.php:153` |
 | [`fluent_community/document/local_file_access`](#fluent-community-document-local-file-access) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:288` |
 | [`fluent_community/feed/media_deleted`](#fluent-community-feed-media-deleted) | Core <span class="edition-note">(also fired by Pro)</span> | 5 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:33` |
@@ -42,7 +42,7 @@ Core attaches `RateLimitHandler::maybeLimitMediaUpload()`, which throws once the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:912` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:919` | `$user` (User) |
 
 ### Example
 
@@ -65,7 +65,7 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1453` | `$currentUser` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1484` | `$currentUser` (User) |
 
 ### Example
 
@@ -162,7 +162,7 @@ Despite the name this is a request to clean up, not a notification that a delete
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:159` | `$documents` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:175` | `$deletedDocuments` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:205` | `$media` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:891` | `$feed->media` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:898` | `$feed->media` (Feed) |
 
 ### Example
 
@@ -243,7 +243,7 @@ This is an action rather than a filter, and the work is done by core's `CleanupH
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:84` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:238` | `$deletedMedias` (mixed)<br>`array (2 keys: user_id, object_sources)` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:237` | `$deletedMedias` (mixed)<br>`array (2 keys: user_id, object_sources)` (array) |
 | Core | `fluent-community/app/Models/BaseSpace.php:360` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Models/SpaceGroup.php:129` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Services/Helper.php:429` | `[$url]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |

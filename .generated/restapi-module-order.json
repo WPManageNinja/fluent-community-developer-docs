@@ -43,7 +43,14 @@
     "reindex-space-groups",
     "reindex-spaces",
     "move-space",
-    "update-space-lockscreen-settings"
+    "update-space-lockscreen-settings",
+    "get-index",
+    "post-store",
+    "patch-re-index",
+    "get-show",
+    "post-duplicate",
+    "put-update",
+    "delete-destroy"
   ],
   "members": [
     "list-space-members",

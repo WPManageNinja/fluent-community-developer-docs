@@ -81,7 +81,7 @@
             }
           },
           "422": {
-            "description": "FluentPlayer requires the pro version of FluentCommunity. Please install FluentCommunity Pro first.",
+            "description": "This plugin can not be installed from here. Please install it manually.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +93,7 @@
                   }
                 },
                 "example": {
-                  "message": "FluentPlayer requires the pro version of FluentCommunity. Please install FluentCommunity Pro first."
+                  "message": "This plugin can not be installed from here. Please install it manually."
                 }
               }
             }

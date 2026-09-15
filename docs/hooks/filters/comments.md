@@ -5,25 +5,27 @@ description: Comments filter hooks for FluentCommunity.
 
 # Comments Filters
 
-13 unique filter hooks currently map to this category, across 13 call sites.
+15 unique filter hooks currently map to this category, across 15 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/comment_api_response`](#fluent-community-comment-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:749` |
-| [`fluent_community/comment_order_options`](#fluent-community-comment-order-options) | Core | 1 | `fluent-community/app/Services/Helper.php:2279` |
-| [`fluent_community/comment/comment_data`](#fluent-community-comment-comment-data) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:124` |
-| [`fluent_community/comment/new_comment_response`](#fluent-community-comment-new-comment-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:182` |
-| [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:339` |
-| [`fluent_community/comment/update_comment_data`](#fluent-community-comment-update-comment-data) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:230` |
-| [`fluent_community/comments_api_response`](#fluent-community-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:72` |
-| [`fluent_community/comments_query_response`](#fluent-community-comments-query-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:53` |
-| [`fluent_community/disable_duplicate_comment_check`](#fluent-community-disable-duplicate-comment-check) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:127` |
-| [`fluent_community/disable_self_comment_react`](#fluent-community-disable-self-comment-react) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:640` |
-| [`fluent_community/max_comment_char_length`](#fluent-community-max-comment-char-length) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:453` |
-| [`fluent_community/profile_comments_api_response`](#fluent-community-profile-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:718` |
+| [`fluent_community/comment_api_response`](#fluent-community-comment-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:758` |
+| [`fluent_community/comment_order_options`](#fluent-community-comment-order-options) | Core | 1 | `fluent-community/app/Services/Helper.php:2301` |
+| [`fluent_community/comment/comment_data`](#fluent-community-comment-comment-data) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:133` |
+| [`fluent_community/comment/new_comment_response`](#fluent-community-comment-new-comment-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:191` |
+| [`fluent_community/comment/patch_comment_response`](#fluent-community-comment-patch-comment-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:348` |
+| [`fluent_community/comment/update_comment_data`](#fluent-community-comment-update-comment-data) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:239` |
+| [`fluent_community/comments_api_response`](#fluent-community-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:81` |
+| [`fluent_community/comments_query_response`](#fluent-community-comments-query-response) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:62` |
+| [`fluent_community/disable_duplicate_comment_check`](#fluent-community-disable-duplicate-comment-check) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:136` |
+| [`fluent_community/disable_self_comment_react`](#fluent-community-disable-self-comment-react) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:649` |
+| [`fluent_community/max_comment_char_length`](#fluent-community-max-comment-char-length) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:462` |
+| [`fluent_community/opt_in_comment_types`](#fluent-community-opt-in-comment-types) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:89` |
+| [`fluent_community/profile_comments_api_response`](#fluent-community-profile-comments-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:717` |
 | [`fluent_community/rate_limit/comments_per_minute`](#fluent-community-rate-limit-comments-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:50` |
+| [`fluent_community/seo/comment_limit`](#fluent-community-seo-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/FeedComments.php:37` |
 
 <a id="fluent-community-comment-api-response"></a>
 
@@ -49,7 +51,7 @@ Serves the endpoint the portal calls when deep-linking to a comment and when ope
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:749` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:758` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -85,7 +87,7 @@ Defaults to `oldest` (labelled "Earliest"), `latest`, `popular` and `most_replie
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2279` | `$options` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2301` | `$options` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -121,7 +123,7 @@ The pre-save hook for comments, applied immediately after the read-only `fluent_
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:124` | `$commentData` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:133` | `$commentData` (mixed)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -157,7 +159,7 @@ Only applied on the held-for-moderation branch. The success path returns its pay
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:182` | `$response` (mixed)<br>`$comment` (Comment) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:191` | `$response` (mixed)<br>`$comment` (Comment) |
 
 ### Example
 
@@ -195,7 +197,7 @@ The patch endpoint handles the pin toggle only and is restricted to moderators a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:339` | `array (2 keys: comment, message)` (array)<br>`$comment` (Comment)<br>`$feed` (Feed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:348` | `array (2 keys: comment, message)` (array)<br>`$comment` (Comment)<br>`$feed` (Feed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -233,7 +235,7 @@ The update-side twin of `fluent_community/comment/comment_data`, with two extra 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:230` | `$commentData` (mixed)<br>`$feed` (Feed)<br>`$requestData` (array)<br>`$comment` (Comment) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:239` | `$commentData` (mixed)<br>`$feed` (Feed)<br>`$requestData` (array)<br>`$comment` (Comment) |
 
 ### Example
 
@@ -269,7 +271,7 @@ The endpoint returns every comment on the post in one go — there is no paging,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:72` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:81` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -305,7 +307,7 @@ Receives an Eloquent collection of `Comment` models, not an array and not a resp
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:53` | `$comments` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:62` | `$comments` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -342,7 +344,7 @@ By default a comment whose body exactly matches an earlier comment by the same u
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:127` | `false` (bool)<br>`get_current_user_id()` (int)<br>`$feed->id` (int) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:136` | `false` (bool)<br>`get_current_user_id()` (int)<br>`$feed->id` (int) |
 
 ### Example
 
@@ -378,7 +380,7 @@ The name reads as a switch that is on by default, but it is not: it defaults to 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:640` | `false` (bool)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:649` | `false` (bool)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -411,7 +413,7 @@ Defaults to 10000 and, like the post limit, is measured with `strlen()` on the M
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:453` | `10000` (int) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:462` | `10000` (int) |
 
 ### Example
 
@@ -422,6 +424,28 @@ add_filter('fluent_community/max_comment_char_length', function ($maxLength) {
 ```
 
 **Related:** [`fluent_community/max_post_length`](/hooks/filters/feeds#fluent-community-max-post-length)
+
+<a id="fluent-community-opt-in-comment-types"></a>
+
+## `fluent_community/opt_in_comment_types`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/FeedsHelper.php:89` | `[ 'course_lesson' => 'yes', 'space_page' => 'no', ]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/opt_in_comment_types', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
 
 <a id="fluent-community-profile-comments-api-response"></a>
 
@@ -447,7 +471,7 @@ Scoped to comments on plain `text` posts the viewer may access, newest first, an
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:718` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:717` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -493,4 +517,26 @@ add_filter('fluent_community/rate_limit/comments_per_minute', function ($limitPe
 ```
 
 **Related:** [`fluent_community/disable_duplicate_comment_check`](#fluent-community-disable-duplicate-comment-check)
+
+<a id="fluent-community-seo-comment-limit"></a>
+
+## `fluent_community/seo/comment_limit`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/FeedComments.php:37` | `100` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/seo/comment_limit', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
 
