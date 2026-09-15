@@ -5,13 +5,14 @@ description: Miscellaneous filter hooks for FluentCommunity.
 
 # Miscellaneous Filters
 
-7 unique filter hooks currently map to this category, across 9 call sites.
+8 unique filter hooks currently map to this category, across 10 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/add_sitemap_provider`](#fluent-community-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:22` |
+| [`fluent_community/cloud_storage_trusted_hosts`](#fluent-community-cloud-storage-trusted-hosts) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/CloudStorage/StorageHelper.php:82` |
 | [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:388` |
 | [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:111` |
 | [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:637` |
@@ -39,6 +40,28 @@ description: Miscellaneous filter hooks for FluentCommunity.
 add_filter('fluent_community/add_sitemap_provider', function ($enableSitemap) {
     return $enableSitemap;
 }, 10, 1);
+```
+
+<a id="fluent-community-cloud-storage-trusted-hosts"></a>
+
+## `fluent_community/cloud_storage_trusted_hosts`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/CloudStorage/StorageHelper.php:82` | `$hosts` (mixed)<br>`$driver` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/cloud_storage_trusted_hosts', function ($hosts, $driver) {
+    return $hosts;
+}, 10, 2);
 ```
 
 <a id="fluent-community-custom-order-by"></a>

@@ -129,12 +129,18 @@ const MODEL_ORDER = [
   'BaseSpace',
   'Comment',
   'Contact',
+  'Course',
+  'CourseLesson',
+  'CourseTopic',
   'DynamicModel',
   'Feed',
+  'Follow',
   'Media',
   'Meta',
+  'Moderation',
   'Model',
   'Notification',
+  'NotificationPreference',
   'NotificationSubscriber',
   'NotificationSubscription',
   'Reaction',
@@ -153,12 +159,18 @@ const MODEL_SLUGS = {
   BaseSpace: 'base-space',
   Comment: 'comment',
   Contact: 'contact',
+  Course: 'course',
+  CourseLesson: 'course-lesson',
+  CourseTopic: 'course-topic',
   DynamicModel: 'dynamic-model',
   Feed: 'feed',
+  Follow: 'follow',
   Media: 'media',
   Meta: 'meta',
+  Moderation: 'moderation',
   Model: 'model',
   Notification: 'notification',
+  NotificationPreference: 'notification-preference',
   NotificationSubscriber: 'notification-subscriber',
   NotificationSubscription: 'notification-subscription',
   Reaction: 'reaction',
@@ -181,18 +193,30 @@ const MODEL_SUMMARIES = {
     'Stores feed comments, threaded replies, and their moderation-aware relationships.',
   Contact:
     'Bridges FluentCommunity users to FluentCRM contact records when FluentCRM is installed.',
+  Course:
+    'A `BaseSpace` scoped to `type = course`, adding enrolment and instructor behavior on top of the shared space columns.',
+  CourseLesson:
+    'An individual lesson row in `fcom_posts`, scoped by `type` and ordered within its course.',
+  CourseTopic:
+    'A section heading in `fcom_posts` that groups lessons within a course.',
   DynamicModel:
     'Creates runtime table bindings when FluentCommunity needs an ORM model for a dynamic table.',
   Feed:
     'Represents community posts, announcements, scheduled posts, and other feed content.',
+  Follow:
+    'A follower relationship in `fcom_followers` (Pro), scoped to active rows.',
   Media:
     'Stores uploaded media metadata and delivery information for feeds, comments, and spaces.',
   Meta:
     'Backs the shared meta table used across spaces, terms, users, and other object types.',
+  Moderation:
+    'A member report in `fcom_post_comments` (Pro), scoped to `type = report` and selected down to the reporting columns.',
   Model:
     'Defines the shared base ORM behavior inherited by FluentCommunity models built on WPFluent.',
   Notification:
     'Stores notification payloads before they are fanned out to per-user delivery rows.',
+  NotificationPreference:
+    'Holds a member\'s explicit notification overrides in `fcom_notification_prefs`, one row per event and channel. A missing row means the site default applies.',
   NotificationSubscriber:
     'Represents rows in `fcom_notification_users` where `object_type = notification`.',
   NotificationSubscription:
@@ -6967,6 +6991,19 @@ function main() {
     carry[route.exampleOrigin] = (carry[route.exampleOrigin] || 0) + 1
     return carry
   }, {})
+
+  // MODEL_ORDER is a hand-kept whitelist, so a model added to the plugin after this
+  // list was last touched would simply never get a page — silently, since every other
+  // count still looks right. Name the strays instead of dropping them.
+  const undocumentedModels = Object.keys(models)
+    .filter((name) => !MODEL_ORDER.includes(name))
+    .sort()
+  if (undocumentedModels.length) {
+    console.log(
+      `\n${undocumentedModels.length} model(s) found in the source but missing from MODEL_ORDER — add them to MODEL_ORDER, MODEL_SLUGS and MODEL_SUMMARIES:`,
+    )
+    undocumentedModels.forEach((name) => console.log(`  ${name}`))
+  }
 
   console.log(
     `Generated docs for ${MODEL_ORDER.length} models, ${

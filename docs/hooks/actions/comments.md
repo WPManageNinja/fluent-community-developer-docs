@@ -14,8 +14,8 @@ description: Comments action hooks for FluentCommunity.
 | [`fluent_community/before_comment_create`](#fluent-community-before-comment-create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:131` |
 | [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:609` |
 | [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:87` |
-| [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:240` |
-| [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:239` |
+| [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:268` |
+| [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:267` |
 | [`fluent_community/comment_added_async`](#fluent-community-comment-added-async) | Core | 4 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:239` |
 | [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:622` |
 | [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:621` |
@@ -151,7 +151,7 @@ Comments held for moderation never reach it — those fire `fluent_community/com
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:240` | `$content` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:268` | `$content` (mixed)<br>`$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:195` | `$comment` (Comment)<br>`$feed` (Feed)<br>`Arr::get($mentions, 'users', [])` (array) |
 
 ### Example
@@ -185,7 +185,7 @@ The suffix is `$feed->type`, so the live names are `fluent_community/comment_add
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:239` | `$content` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:267` | `$content` (mixed)<br>`$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:194` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example

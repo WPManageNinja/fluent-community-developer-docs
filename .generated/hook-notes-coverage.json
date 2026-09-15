@@ -100,8 +100,8 @@
     "documented": 43
   },
   "filter/notifications": {
-    "hooks": 16,
-    "callSites": 18,
+    "hooks": 18,
+    "callSites": 20,
     "documented": 12
   },
   "filter/media": {
@@ -140,8 +140,8 @@
     "documented": 22
   },
   "filter/miscellaneous": {
-    "hooks": 7,
-    "callSites": 9,
+    "hooks": 8,
+    "callSites": 10,
     "documented": 3
   }
 }

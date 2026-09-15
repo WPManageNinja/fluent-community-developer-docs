@@ -5,7 +5,7 @@ description: Notifications filter hooks for FluentCommunity.
 
 # Notifications Filters
 
-16 unique filter hooks currently map to this category, across 18 call sites.
+18 unique filter hooks currently map to this category, across 20 call sites.
 
 ## Hook Inventory
 
@@ -25,6 +25,8 @@ description: Notifications filter hooks for FluentCommunity.
 | [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:901` |
 | [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
+| [`fluent_community/smartcode/user_fields`](#fluent-community-smartcode-user-fields) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:270` |
+| [`fluent_community/smartcode/user_meta_keys`](#fluent-community-smartcode-user-meta-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:309` |
 | [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:59` |
 | [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1308` |
 
@@ -481,6 +483,50 @@ add_filter('fluent_community/smartcode_group_callback_{dataKey}', function ($mat
 ```
 
 **Related:** [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback)
+
+<a id="fluent-community-smartcode-user-fields"></a>
+
+## `fluent_community/smartcode/user_fields`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:270` | `array (11 items)` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/smartcode/user_fields', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
+<a id="fluent-community-smartcode-user-meta-keys"></a>
+
+## `fluent_community/smartcode/user_meta_keys`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:309` | `[]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/smartcode/user_meta_keys', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
 
 <a id="fluent-community-unread-notifications-api-response"></a>
 

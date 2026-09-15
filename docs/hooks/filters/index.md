@@ -9,8 +9,8 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 
 ## Overview
 
-- **Unique filters:** 317
-- **Filter call sites:** 369
+- **Unique filters:** 320
+- **Filter call sites:** 372
 - **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `permissions`, `moderation`, `integrations`, `rendering`, `settings`, `miscellaneous`
 
 ## Categories
@@ -23,7 +23,7 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | [Spaces](/hooks/filters/spaces) | 23 | 26 |
 | [Members](/hooks/filters/members) | 38 | 45 |
 | [Courses](/hooks/filters/courses) | 46 | 46 |
-| [Notifications](/hooks/filters/notifications) | 16 | 18 |
+| [Notifications](/hooks/filters/notifications) | 18 | 20 |
 | [Media](/hooks/filters/media) | 22 | 33 |
 | [Auth](/hooks/filters/auth) | 23 | 24 |
 | [Permissions](/hooks/filters/permissions) | 10 | 24 |
@@ -31,4 +31,4 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | [Integrations](/hooks/filters/integrations) | 9 | 9 |
 | [Rendering](/hooks/filters/rendering) | 42 | 44 |
 | [Settings](/hooks/filters/settings) | 25 | 25 |
-| [Miscellaneous](/hooks/filters/miscellaneous) | 7 | 9 |
+| [Miscellaneous](/hooks/filters/miscellaneous) | 8 | 10 |

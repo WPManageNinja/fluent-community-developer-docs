@@ -227,7 +227,7 @@ Fired from `FeedsHelper::createFeed()` and from `FeedsController::createFeed()`,
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:102` | `$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:242` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:270` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:93` | `$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:451` | `$feed` (Feed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:604` | `$feed` (Feed) |
@@ -736,7 +736,7 @@ Always fires immediately after `fluent_community/feed/created` and only when `$f
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:105` | `$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:244` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:272` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:96` | `$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:454` | `$feed` (Feed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:607` | `$feed` (Feed) |

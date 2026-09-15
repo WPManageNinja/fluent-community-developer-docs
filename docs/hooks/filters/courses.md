@@ -28,9 +28,9 @@ description: Courses filter hooks for FluentCommunity.
 | [`fluent_community/course_lesson_api_response`](#fluent-community-course-lesson-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:221` |
 | [`fluent_community/course_lesson_fullscreen_default`](#fluent-community-course-lesson-fullscreen-default) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:748` |
 | [`fluent_community/course_section_collapse_default`](#fluent-community-course-section-collapse-default) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:747` |
-| [`fluent_community/course_smart_codes`](#fluent-community-course-smart-codes) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:245` |
+| [`fluent_community/course_smart_codes`](#fluent-community-course-smart-codes) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:270` |
 | [`fluent_community/course_view_json_ld`](#fluent-community-course-view-json-ld) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1126` |
-| [`fluent_community/course_welcome_banner`](#fluent-community-course-welcome-banner) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:301` |
+| [`fluent_community/course_welcome_banner`](#fluent-community-course-welcome-banner) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:326` |
 | [`fluent_community/course/access_message_html`](#fluent-community-course-access-message-html) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:663` |
 | [`fluent_community/course/can_view_lesson`](#fluent-community-course-can-view-lesson) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:35` |
 | [`fluent_community/course/exportable_student_row`](#fluent-community-course-exportable-student-row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:960` |
@@ -38,7 +38,7 @@ description: Courses filter hooks for FluentCommunity.
 | [`fluent_community/course/meta_fields`](#fluent-community-course-meta-fields) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1311` |
 | [`fluent_community/course/processed`](#fluent-community-course-processed) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:253` |
 | [`fluent_community/courses_api_response`](#fluent-community-courses-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:85` |
-| [`fluent_community/default_course_email_notification`](#fluent-community-default-course-email-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:257` |
+| [`fluent_community/default_course_email_notification`](#fluent-community-default-course-email-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:282` |
 | [`fluent_community/get_course_api_response`](#fluent-community-get-course-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:107` |
 | [`fluent_community/get_course_welcome_banner_settings`](#fluent-community-get-course-welcome-banner-settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:509` |
 | [`fluent_community/is_allowed_to_complete_lesson`](#fluent-community-is-allowed-to-complete-lesson) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:417` |
@@ -688,7 +688,7 @@ A map of placeholder token to human label, used to populate the editor's insert 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:245` | `array (6 keys: {&#8203;{section.title}&#8203;}, {&#8203;{section.url}&#8203;}, {&#8203;{course.title}&#8203;}, …)` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:270` | `array (6 keys: {&#8203;{section.title}&#8203;}, {&#8203;{section.url}&#8203;}, {&#8203;{course.title}&#8203;}, …)` (array) |
 
 ### Example
 
@@ -762,7 +762,7 @@ Returns null before the filter runs when the banner for that view is not enabled
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:301` | `$banner` (mixed)<br>`$view` (mixed)<br>`$course` (Course) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:326` | `$banner` (mixed)<br>`$view` (mixed)<br>`$course` (Course) |
 
 ### Example
 
@@ -1059,7 +1059,7 @@ Supplies the starting template for a section that has no saved notification of i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:257` | `array (2 keys: subject, message)` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:282` | `array (2 keys: subject, message)` (array) |
 
 ### Example
 
