@@ -140,8 +140,8 @@
     "documented": 22
   },
   "filter/miscellaneous": {
-    "hooks": 8,
-    "callSites": 10,
+    "hooks": 7,
+    "callSites": 9,
     "documented": 3
   }
 }
