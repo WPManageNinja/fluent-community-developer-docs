@@ -38,7 +38,7 @@ Registered on activation and re-registered whenever a site administrator loads t
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` | No parameters |
 | Core | `fluent-community/boot/app.php:20` | No parameters |
-| Core | `fluent-community/boot/app.php:88` | No parameters |
+| Core | `fluent-community/boot/app.php:123` | No parameters |
 
 ### Example
 
@@ -72,7 +72,7 @@ Core uses it to re-evaluate the daily digest schedule and to fire `fluent_commun
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` | No parameters |
 | Core | `fluent-community/boot/app.php:16` | No parameters |
-| Core | `fluent-community/boot/app.php:84` | No parameters |
+| Core | `fluent-community/boot/app.php:119` | No parameters |
 
 ### Example
 

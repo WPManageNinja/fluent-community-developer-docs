@@ -53,13 +53,48 @@
                     "push_available": {
                       "type": "string",
                       "nullable": true
+                    },
+                    "push_setup": {
+                      "type": "object",
+                      "properties": {
+                        "state": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "settings_url": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "can_install": {
+                          "type": "boolean"
+                        },
+                        "can_activate": {
+                          "type": "boolean"
+                        },
+                        "has_installer": {
+                          "type": "boolean"
+                        },
+                        "learn_more_url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
                   "push_settings": {},
-                  "push_available": null
+                  "push_available": null,
+                  "push_setup": {
+                    "state": null,
+                    "settings_url": "",
+                    "can_install": false,
+                    "can_activate": false,
+                    "has_installer": false,
+                    "learn_more_url": "https://fluentnotify.com"
+                  }
                 }
               }
             }

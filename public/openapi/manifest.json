@@ -232,10 +232,13 @@
     "/openapi/public/settings/save-snippets-settings.json",
     "/openapi/public/spaces/create-space-group.json",
     "/openapi/public/spaces/create-space.json",
+    "/openapi/public/spaces/delete-destroy.json",
     "/openapi/public/spaces/delete-space-by-id.json",
     "/openapi/public/spaces/delete-space-by-slug.json",
     "/openapi/public/spaces/delete-space-group.json",
     "/openapi/public/spaces/discover-spaces.json",
+    "/openapi/public/spaces/get-index.json",
+    "/openapi/public/spaces/get-show.json",
     "/openapi/public/spaces/get-space-by-slug.json",
     "/openapi/public/spaces/get-space-lockscreens.json",
     "/openapi/public/spaces/get-space-meta-settings.json",
@@ -245,6 +248,10 @@
     "/openapi/public/spaces/list-space-groups.json",
     "/openapi/public/spaces/list-spaces.json",
     "/openapi/public/spaces/move-space.json",
+    "/openapi/public/spaces/patch-re-index.json",
+    "/openapi/public/spaces/post-duplicate.json",
+    "/openapi/public/spaces/post-store.json",
+    "/openapi/public/spaces/put-update.json",
     "/openapi/public/spaces/reindex-space-groups.json",
     "/openapi/public/spaces/reindex-spaces.json",
     "/openapi/public/spaces/search-space-users.json",
@@ -254,5 +261,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-09-03T15:23:02.946Z"
+  "generated": "2026-09-15T07:30:23.082Z"
 }

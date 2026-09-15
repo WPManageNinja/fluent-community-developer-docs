@@ -5,47 +5,52 @@ description: Rendering filter hooks for FluentCommunity.
 
 # Rendering Filters
 
-37 unique filter hooks currently map to this category, across 39 call sites.
+42 unique filter hooks currently map to this category, across 44 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_com_editor/asset_listed_slugs`](#fluent-com-editor-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:476` |
-| [`fluent_com_editor/skip_no_conflict`](#fluent-com-editor-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:470` |
-| [`fluent_community/allowed_block_types`](#fluent-community-allowed-block-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:648` |
+| [`fluent_com_editor/asset_listed_slugs`](#fluent-com-editor-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:541` |
+| [`fluent_com_editor/skip_no_conflict`](#fluent-com-editor-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:535` |
+| [`fluent_community/allowed_block_types`](#fluent-community-allowed-block-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:713` |
 | [`fluent_community/allowed_html_tags`](#fluent-community-allowed-html-tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:385` |
 | [`fluent_community/app_route_paths`](#fluent-community-app-route-paths) | Core | 1 | `fluent-community/app/Services/Helper.php:581` |
 | [`fluent_community/app_vars_api_response`](#fluent-community-app-vars-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:25` |
-| [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:530` |
+| [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:595` |
 | [`fluent_community/base_url`](#fluent-community-base-url) | Core | 1 | `fluent-community/app/Services/Helper.php:297` |
-| [`fluent_community/block_editor_settings`](#fluent-community-block-editor-settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:734` |
-| [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:551` |
+| [`fluent_community/block_editor_context`](#fluent-community-block-editor-context) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:125` |
+| [`fluent_community/block_editor_post_types`](#fluent-community-block-editor-post-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:27` |
+| [`fluent_community/block_editor_settings`](#fluent-community-block-editor-settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:799` |
+| [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:564` |
 | [`fluent_community/default_theme_mode`](#fluent-community-default-theme-mode) | Core | 1 | `fluent-community/app/Services/Helper.php:167` |
-| [`fluent_community/editor_i18n_strings`](#fluent-community-editor-i18n-strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:360` |
+| [`fluent_community/editor_i18n_strings`](#fluent-community-editor-i18n-strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:425` |
 | [`fluent_community/error_page_custom_css`](#fluent-community-error-page-custom-css) | Core | 1 | `fluent-community/app/Views/error_page.php:21` |
-| [`fluent_community/general_portal_vars`](#fluent-community-general-portal-vars) | Core | 2 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:773` |
-| [`fluent_community/header_vars`](#fluent-community-header-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1241` |
-| [`fluent_community/image_size_names_choose`](#fluent-community-image-size-names-choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:365` |
+| [`fluent_community/general_portal_vars`](#fluent-community-general-portal-vars) | Core | 2 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:786` |
+| [`fluent_community/header_vars`](#fluent-community-header-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1283` |
+| [`fluent_community/image_size_names_choose`](#fluent-community-image-size-names-choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:430` |
 | [`fluent_community/is_rtl`](#fluent-community-is-rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:29` |
 | [`fluent_community/is_supported_theme`](#fluent-community-is-supported-theme) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:36` |
-| [`fluent_community/portal_data_vars`](#fluent-community-portal-data-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1028` |
-| [`fluent_community/portal_notices`](#fluent-community-portal-notices) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:472` |
+| [`fluent_community/portal_data_vars`](#fluent-community-portal-data-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1048` |
+| [`fluent_community/portal_notices`](#fluent-community-portal-notices) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:485` |
 | [`fluent_community/portal_page_headless`](#fluent-community-portal-page-headless) | Core | 1 | `fluent-community/app/Services/Helper.php:141` |
+| [`fluent_community/portal_page_meta`](#fluent-community-portal-page-meta) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:905` |
 | [`fluent_community/portal_route_type`](#fluent-community-portal-route-type) | Core | 1 | `fluent-community/app/Services/Helper.php:131` |
 | [`fluent_community/portal_settings_menu_items`](#fluent-community-portal-settings-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalSettingsHandler.php:68` |
-| [`fluent_community/portal_supported_query_params`](#fluent-community-portal-supported-query-params) | Core | 1 | `fluent-community/app/Services/Helper.php:2154` |
-| [`fluent_community/portal_vars`](#fluent-community-portal-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:471` |
+| [`fluent_community/portal_supported_query_params`](#fluent-community-portal-supported-query-params) | Core | 1 | `fluent-community/app/Services/Helper.php:2176` |
+| [`fluent_community/portal_vars`](#fluent-community-portal-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:484` |
 | [`fluent_community/pro_upgrade_base_url`](#fluent-community-pro-upgrade-base-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:418` |
 | [`fluent_community/render_default_touch_icon`](#fluent-community-render-default-touch-icon) | Core | 1 | `fluent-community/app/Views/portal_page.php:29` |
-| [`fluent_community/rendering_feed_model`](#fluent-community-rendering-feed-model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1082` |
-| [`fluent_community/seo/ld_comment_limit`](#fluent-community-seo-ld-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:472` |
+| [`fluent_community/rendering_feed_model`](#fluent-community-rendering-feed-model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1150` |
+| [`fluent_community/seo/pre_render_comment_limit`](#fluent-community-seo-pre-render-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/AbstractPortalPreRenderer.php:428` |
+| [`fluent_community/seo/pre_render_feed_count`](#fluent-community-seo-pre-render-feed-count) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SpacePreRenderer.php:157` |
+| [`fluent_community/seo/pre_render_max_page`](#fluent-community-seo-pre-render-max-page) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SpacePreRenderer.php:150` |
 | [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1285` |
 | [`fluent_community/sidebar_menu_html_api_response`](#fluent-community-sidebar-menu-html-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:76` |
-| [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:518` |
+| [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:583` |
 | [`fluent_community/space_header_links`](#fluent-community-space-header-links) | Core | 1 | `fluent-community/app/Models/BaseSpace.php:659` |
 | [`fluent_community/template_slug`](#fluent-community-template-slug) | Core | 1 | `fluent-community/Modules/Theming/TemplateLoader.php:75` |
-| [`fluent_community/use_editor_block`](#fluent-community-use-editor-block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:160` |
+| [`fluent_community/use_editor_block`](#fluent-community-use-editor-block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:161` |
 | [`fluent_community/will_render_default_sidebar_items`](#fluent-community-will-render-default-sidebar-items) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:35` |
 | [`fluent_communuty/add_sitemap_provider`](#fluent-communuty-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:21` |
 
@@ -72,7 +77,7 @@ Scripts are the only assets this affects; the stylesheet side is governed by the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:476` | `[ '\/gutenberg\/' ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:541` | `[ '\/gutenberg\/' ]` (array) |
 
 ### Example
 
@@ -107,7 +112,7 @@ Return `true` and neither the script pass nor the stylesheet pass is registered,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:470` | `false` (bool) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:535` | `false` (bool) |
 
 ### Example
 
@@ -142,7 +147,7 @@ An explicit allowlist rather than a denylist, so a block that is not named is un
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:648` | `array (32 items)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:713` | `array (32 items)` (array) |
 
 ### Example
 
@@ -281,7 +286,7 @@ Stylesheets are the only assets this affects. The list is joined into a regular 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:530` | `[ '\/gutenberg\/', ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:595` | `[ '\/gutenberg\/', ]` (array) |
 
 ### Example
 
@@ -328,6 +333,50 @@ add_filter('fluent_community/base_url', function ($baseUrl) {
 
 **Related:** [`fluent_community/portal_slug`](/hooks/filters/settings#fluent-community-portal-slug) · [`fluent_community/portal_route_type`](#fluent-community-portal-route-type)
 
+<a id="fluent-community-block-editor-context"></a>
+
+## `fluent_community/block_editor_context`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:125` | `array (5 keys: has_access, post_type, has_content, …)` (array)<br>`$context` (mixed)<br>`$data` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/block_editor_context', function ($param1, $context, $data) {
+    return $param1;
+}, 10, 3);
+```
+
+<a id="fluent-community-block-editor-post-types"></a>
+
+## `fluent_community/block_editor_post_types`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:27` | `array (2 keys: fcom-dummy, fcom-lockscreen)` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/block_editor_post_types', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
 <a id="fluent-community-block-editor-settings"></a>
 
 ## `fluent_community/block_editor_settings`
@@ -351,7 +400,7 @@ Applied last, after the editor styles, resolved assets, default styles and image
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:734` | `$editor_settings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:799` | `$editor_settings` (mixed) |
 
 ### Example
 
@@ -386,7 +435,7 @@ Surfaces as `portal_vars.dateTime18n` and mixes two consumers. The `weekdays`, `
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:551` | `array (6 keys: /* translators: weekday. Please keep the serial and format */ 'weekdays', /* translators: Months Please keep the serial and format*/ 'months', /* translators: weekday short Please keep the serial and format*/ 'weekdaysShort', …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:564` | `array (6 keys: /* translators: weekday. Please keep the serial and format */ 'weekdays', /* translators: Months Please keep the serial and format*/ 'months', /* translators: weekday short Please keep the serial and format*/ 'weekdaysShort', …)` (array) |
 
 ### Example
 
@@ -456,7 +505,7 @@ An English-keyed map: each key is the source string and each value its translati
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:360` | `$strings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:425` | `$strings` (mixed) |
 
 ### Example
 
@@ -524,7 +573,7 @@ Localised as `fcom_portal_general` for the `portal_general.js` bundle, which han
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:773` | `array (10 keys: scope, theme, default_color, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:786` | `array (10 keys: scope, theme, default_color, …)` (array) |
 | Core | `fluent-community/app/Services/Helper.php:178` | `['color_switch_cookie_name' => '']` (array) |
 
 ### Example
@@ -560,7 +609,7 @@ Applied in `PortalHandler::getPortalHeader()` just before the `portal.header` vi
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1241` | `array (10 keys: portal_url, logo, white_logo, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1283` | `array (10 keys: portal_url, logo, white_logo, …)` (array) |
 
 ### Example
 
@@ -595,7 +644,7 @@ A FluentCommunity-scoped analogue of WordPress's own `image_size_names_choose`, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:365` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Me…` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:430` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Me…` (mixed) |
 
 ### Example
 
@@ -700,7 +749,7 @@ This is the server-side sibling of `fluent_community/portal_vars`, which it alre
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1028` | `$dataVars` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1048` | `$dataVars` (mixed) |
 
 ### Example
 
@@ -735,7 +784,7 @@ Part of the `portal_vars` payload and empty by default. The Vue app renders each
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:472` | `[]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:485` | `[]` (array) |
 
 ### Example
 
@@ -781,6 +830,29 @@ add_filter('fluent_community/portal_page_headless', function ($isHeadless) {
 ```
 
 **Related:** [`fluent_community/rendering_headless_portal`](/hooks/actions/rendering#fluent-community-rendering-headless-portal) · [`fluent_community/portal_head_meta`](/hooks/actions/rendering#fluent-community-portal-head-meta)
+
+<a id="fluent-community-portal-page-meta"></a>
+
+## `fluent_community/portal_page_meta`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Lets a listener adjust the resolved head meta (canonical_url, title, description, json_ld) with knowledge the handler does not have - for example a pre-renderer that paints ?page=N of a space listing and needs the canonical to point at that page rather than at page one.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:905` | `$data` (mixed)<br>`$this->currentPath` (mixed)<br>`$this->preRenderContext` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/portal_page_meta', function ($data, $currentPath, $preRenderContext) {
+    return $data;
+}, 10, 3);
+```
 
 <a id="fluent-community-portal-route-type"></a>
 
@@ -875,7 +947,7 @@ Applies to one narrow case: a portal mounted at the site root, with an empty req
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2154` | `[ 'customizer_panel', 'create_space' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2176` | `[ 'customizer_panel', 'create_space' ]` (array) |
 
 ### Example
 
@@ -910,7 +982,7 @@ The main extension point for the front end: everything the SPA knows about the c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:471` | `array (53 keys: portal_notices, i18n, auth, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:484` | `array (53 keys: portal_notices, i18n, auth, …)` (array) |
 
 ### Example
 
@@ -1014,7 +1086,7 @@ The final step of `FeedsHelper` post formatting, applied after the rendered HTML
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:1082` | `$feed` (Feed)<br>`$config` (mixed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:1150` | `$feed` (Feed)<br>`$config` (mixed) |
 
 ### Example
 
@@ -1024,36 +1096,69 @@ add_filter('fluent_community/rendering_feed_model', function ($feed, $config) {
 }, 10, 2);
 ```
 
-<a id="fluent-community-seo-ld-comment-limit"></a>
+<a id="fluent-community-seo-pre-render-comment-limit"></a>
 
-## `fluent_community/seo/ld_comment_limit`
+## `fluent_community/seo/pre_render_comment_limit`
 
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
-- **When it fires:** Filters how many comments are embedded in a post's JSON-LD structured data.
-
-Defaults to 100 and is cast to int. It caps the comments serialized into the schema.org graph for SEO only — it has no effect on the comments the portal or the REST API return. Replies are nested under their parent within whatever the limit returns, so a low limit can orphan replies whose parent fell outside it.
-
-### Parameters
-
-| # | Name | Type | Description |
-| --- | --- | --- | --- |
-| 1 | `$limit` | `int` | Maximum comments to embed, 100 by default. |
-
-**Return:** The comment limit as an integer.
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:472` | `100` (int) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/AbstractPortalPreRenderer.php:428` | `50` (int) |
 
 ### Example
 
 ```php
-add_filter('fluent_community/seo/ld_comment_limit', function ($limit) {
-    return $limit;
+add_filter('fluent_community/seo/pre_render_comment_limit', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
+<a id="fluent-community-seo-pre-render-feed-count"></a>
+
+## `fluent_community/seo/pre_render_feed_count`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SpacePreRenderer.php:157` | `10` (int)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_filter('fluent_community/seo/pre_render_feed_count', function ($param1, $space) {
+    return $param1;
+}, 10, 2);
+```
+
+<a id="fluent-community-seo-pre-render-max-page"></a>
+
+## `fluent_community/seo/pre_render_max_page`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/SpacePreRenderer.php:150` | `100` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/seo/pre_render_max_page', function ($param1) {
+    return $param1;
 }, 10, 1);
 ```
 
@@ -1153,7 +1258,7 @@ Return `true` and no stylesheet is dequeued on the editor page, which is the esc
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:518` | `false` (bool)<br>`'styles'` (string) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:583` | `false` (bool)<br>`'styles'` (string) |
 
 ### Example
 
@@ -1257,7 +1362,7 @@ Read once during module bootstrap, so it must be filtered from a plugin or a mus
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/FeaturesHandler.php:160` | `true` (bool) |
+| Core | `fluent-community/Modules/FeaturesHandler.php:161` | `true` (bool) |
 
 ### Example
 

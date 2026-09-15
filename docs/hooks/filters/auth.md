@@ -19,7 +19,7 @@ description: Auth filter hooks for FluentCommunity.
 | [`fluent_community/auth/disable_rate_limit`](#fluent-community-auth-disable-rate-limit) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:421` |
 | [`fluent_community/auth/invitation`](#fluent-community-auth-invitation) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:127` |
 | [`fluent_community/auth/login_fields`](#fluent-community-auth-login-fields) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:234` |
-| [`fluent_community/auth/login_url`](#fluent-community-auth-login-url) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1314` |
+| [`fluent_community/auth/login_url`](#fluent-community-auth-login-url) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1356` |
 | [`fluent_community/auth/lost_password_url`](#fluent-community-auth-lost-password-url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:229` |
 | [`fluent_community/auth/password_confirmation`](#fluent-community-auth-password-confirmation) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:256` |
 | [`fluent_community/auth/pre_content`](#fluent-community-auth-pre-content) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:274` |
@@ -31,7 +31,7 @@ description: Auth filter hooks for FluentCommunity.
 | [`fluent_community/auth/two_factor_enabled`](#fluent-community-auth-two-factor-enabled) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:277` |
 | [`fluent_community/create_invitation_link`](#fluent-community-create-invitation-link) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationController.php:133` |
 | [`fluent_community/default_redirect_url`](#fluent-community-default-redirect-url) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:753` |
-| [`fluent_community/get_auth_settings`](#fluent-community-get-auth-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:424` |
+| [`fluent_community/get_auth_settings`](#fluent-community-get-auth-settings) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:432` |
 | [`fluent_community/terms_policy_url`](#fluent-community-terms-policy-url) | Core | 1 | `fluent-community/Modules/Auth/AuthHelper.php:153` |
 | [`fluent_community/update_auth_settings`](#fluent-community-update-auth-settings) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:445` |
 
@@ -348,7 +348,7 @@ Wraps `Helper::getAuthUrl()`, which already honours the administrator-configured
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1314` | `Helper::getAuthUrl()` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1356` | `Helper::getAuthUrl()` (mixed) |
 
 ### Example
 
@@ -775,7 +775,7 @@ A thin wrapper over `fluent_community/auth/settings` that runs only in `AdminCon
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:424` | `$settings` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:432` | `$settings` (mixed) |
 
 ### Example
 

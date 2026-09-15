@@ -19,6 +19,15 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`BaseSpace`](/database/models/base-space) | `ByUserAccess` | `$query, $userId` |
 | [`Comment`](/database/models/comment) | `SearchBy` | `$query, $search` |
 | [`Comment`](/database/models/comment) | `ByContentModerationAccessStatus` | `$query, $user, $space = null` |
+| [`Course`](/database/models/course) | `SearchBy` | `$query, $search` |
+| [`Course`](/database/models/course) | `OnlyMain` | `$query` |
+| [`Course`](/database/models/course) | `FilterByUserId` | `$query, $userId` |
+| [`Course`](/database/models/course) | `ByUserAccess` | `$query, $userId` |
+| [`Course`](/database/models/course) | `ByAdminAccess` | `$query, $userId = null` |
+| [`Course`](/database/models/course) | `SearchBy` | `$query, $search` |
+| [`Course`](/database/models/course) | `ByPostTopic` | `$query, $topicSlug = null` |
+| [`CourseLesson`](/database/models/course-lesson) | `SearchBy` | `$query, $search` |
+| [`CourseTopic`](/database/models/course-topic) | `SearchBy` | `$query, $search` |
 | [`Feed`](/database/models/feed) | `SearchBy` | `$query, $search, $in = []` |
 | [`Feed`](/database/models/feed) | `ByUserAccess` | `$query, $userId` |
 | [`Feed`](/database/models/feed) | `ByContentModerationAccessStatus` | `$query, $user, $space = null` |
@@ -38,6 +47,10 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`Meta`](/database/models/meta) | `ByObjectId` | `$query, $objectId` |
 | [`Notification`](/database/models/notification) | `ByStatus` | `$query, $status, $userId` |
 | [`Notification`](/database/models/notification) | `ByType` | `$query, $type` |
+| [`NotificationPreference`](/database/models/notification-preference) | `ForChannel` | `$query, $channel` |
+| [`NotificationPreference`](/database/models/notification-preference) | `ForEvent` | `$query, $eventKey` |
+| [`NotificationPreference`](/database/models/notification-preference) | `GlobalScoped` | `$query` |
+| [`NotificationPreference`](/database/models/notification-preference) | `Enabled` | `$query` |
 | [`NotificationSubscriber`](/database/models/notification-subscriber) | `Unread` | `$query` |
 | [`NotificationSubscriber`](/database/models/notification-subscriber) | `Read` | `$query` |
 | [`Reaction`](/database/models/reaction) | `TypeBy` | `$query, $type = 'like'` |
