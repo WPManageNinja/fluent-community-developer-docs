@@ -13,7 +13,7 @@ Returns the welcome banner for the current audience — the signed-in variant fo
 - **Path:** `/feeds/welcome-banner`
 - **Edition:** Core
 - **Controller:** `FeedsController@getWelcomeBanner`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:73`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:76`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 ::: tip Live sample

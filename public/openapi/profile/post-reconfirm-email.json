@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postReconfirmEmail",
         "summary": "POST Post Reconfirm Email",
-        "description": "Post Reconfirm Email for the FluentCommunity Profile API.\n\nController: `ProfileController@reconfirmEmail`\nRoute source: `fluent-community/app/Http/Routes/api.php:97`",
+        "description": "Post Reconfirm Email for the FluentCommunity Profile API.\n\nController: `ProfileController@reconfirmEmail`\nRoute source: `fluent-community/app/Http/Routes/api.php:100`",
         "tags": [
           "Profile"
         ],

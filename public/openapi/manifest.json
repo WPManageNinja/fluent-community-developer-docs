@@ -238,6 +238,7 @@
     "/openapi/public/spaces/delete-space-group.json",
     "/openapi/public/spaces/discover-spaces.json",
     "/openapi/public/spaces/get-index.json",
+    "/openapi/public/spaces/get-primary-menu.json",
     "/openapi/public/spaces/get-show.json",
     "/openapi/public/spaces/get-space-by-slug.json",
     "/openapi/public/spaces/get-space-lockscreens.json",
@@ -251,6 +252,7 @@
     "/openapi/public/spaces/patch-re-index.json",
     "/openapi/public/spaces/post-duplicate.json",
     "/openapi/public/spaces/post-store.json",
+    "/openapi/public/spaces/post-update-primary-menu.json",
     "/openapi/public/spaces/put-update.json",
     "/openapi/public/spaces/reindex-space-groups.json",
     "/openapi/public/spaces/reindex-spaces.json",
@@ -261,5 +263,5 @@
     "/openapi/public/spaces/update-space-links.json",
     "/openapi/public/spaces/update-space-lockscreen-settings.json"
   ],
-  "generated": "2026-09-15T08:16:57.779Z"
+  "generated": "2026-09-18T14:28:24.621Z"
 }

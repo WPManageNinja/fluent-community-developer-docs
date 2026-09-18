@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getComments",
         "summary": "GET Get Comments",
-        "description": "Returns a paginated list of the comments one member has written, each with the full parent post eager-loaded so the post can open without a second request.\n\nController: `ProfileController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:93`",
+        "description": "Returns a paginated list of the comments one member has written, each with the full parent post eager-loaded so the post can open without a second request.\n\nController: `ProfileController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:96`",
         "tags": [
           "Comments"
         ],

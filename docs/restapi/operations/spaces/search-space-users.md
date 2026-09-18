@@ -15,7 +15,7 @@ Searches for WordPress users who are not yet members of a space, for the add-mem
 - **Path:** `/spaces/users/search`
 - **Edition:** Core
 - **Controller:** `SpaceController@getOtherUsers`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:29`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:32`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires the `can_add_member` permission in the space named by `space_id`.

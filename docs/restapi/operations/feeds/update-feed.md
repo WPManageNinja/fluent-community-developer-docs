@@ -15,7 +15,7 @@ Only posts in `published`, `unlisted`, `scheduled` or `pending` state can be edi
 - **Path:** `/feeds/{feed_id}`
 - **Edition:** Core
 - **Controller:** `FeedsController@update`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:44`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:47`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - The post author can always edit; anyone else needs the `edit_any_feed` permission globally or in the space.

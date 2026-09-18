@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpaceGroups",
         "summary": "GET List Space Groups",
-        "description": "Returns the space groups with their spaces expanded, plus any space or course that has not been assigned to a group.\n\nController: `SpaceController@getSpaceGroups`\nRoute source: `fluent-community/app/Http/Routes/api.php:32`",
+        "description": "Returns the space groups with their spaces expanded, plus any space or course that has not been assigned to a group.\n\nController: `SpaceController@getSpaceGroups`\nRoute source: `fluent-community/app/Http/Routes/api.php:35`",
         "tags": [
           "Spaces"
         ],

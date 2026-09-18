@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "reindexSpaces",
         "summary": "PATCH Reindex Spaces",
-        "description": "Applies a new sidebar order to spaces within their group.\n\nController: `SpaceController@updateSpaceIndexes`\nRoute source: `fluent-community/app/Http/Routes/api.php:37`",
+        "description": "Applies a new sidebar order to spaces within their group.\n\nController: `SpaceController@updateSpaceIndexes`\nRoute source: `fluent-community/app/Http/Routes/api.php:40`",
         "tags": [
           "Spaces"
         ],

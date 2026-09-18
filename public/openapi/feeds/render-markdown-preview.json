@@ -27,7 +27,7 @@
       "post": {
         "operationId": "renderMarkdownPreview",
         "summary": "POST Render Markdown Preview",
-        "description": "Renders submitted Markdown to the same sanitised HTML a saved post would produce, without creating anything.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:82`",
+        "description": "Renders submitted Markdown to the same sanitised HTML a saved post would produce, without creating anything.\n\nController: `FeedsController@markdownToHtml`\nRoute source: `fluent-community/app/Http/Routes/api.php:85`",
         "tags": [
           "Feeds"
         ],

@@ -15,7 +15,7 @@ Capped at 100 voters with no pagination. The option is identified by its slug in
 - **Path:** `/feeds/{feed_id}/apps/survey-voters/{option_slug}`
 - **Edition:** Core
 - **Controller:** `ReactionController@getSurveyVoters`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:80`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:83`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 ::: tip Live sample

@@ -13,7 +13,7 @@ Returns the login and signup configuration together with the resolved form field
 - **Path:** `/admin/auth-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@getAuthSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:116`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:119`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

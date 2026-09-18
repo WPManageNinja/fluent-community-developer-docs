@@ -15,7 +15,7 @@ Saves the editable profile fields — names, bio, headline, website and social l
 - **Path:** `/profile/{username}`
 - **Edition:** Core
 - **Controller:** `ProfileController@updateProfile`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:87`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:90`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Editing someone else profile requires community-moderator access; only moderators may set `is_verified`, `status` or badge slugs.

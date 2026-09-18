@@ -25,9 +25,9 @@ description: Media filter hooks for FluentCommunity.
 | [`fluent_community/media_upload_resize`](#fluent-community-media-upload-resize) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1008` |
 | [`fluent_community/preview_metadata_pre_fetch`](#fluent-community-preview-metadata-pre-fetch) | Core | 1 | `fluent-community/app/Services/RemoteUrlParser.php:184` |
 | [`fluent_community/rate_limit/media_upload_per_minute`](#fluent-community-rate-limit-media-upload-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:68` |
-| [`fluent_community/rate_limit/oembed_per_minute`](#fluent-community-rate-limit-oembed-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:81` |
-| [`fluent_community/space_document_title_label`](#fluent-community-space-document-title-label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:58` |
-| [`fluent_community/space_media_title_label`](#fluent-community-space-media-title-label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:31` |
+| [`fluent_community/rate_limit/oembed_per_minute`](#fluent-community-rate-limit-oembed-per-minute) | Core | 1 | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:87` |
+| [`fluent_community/space_document_title_label`](#fluent-community-space-document-title-label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:59` |
+| [`fluent_community/space_media_title_label`](#fluent-community-space-media-title-label) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:32` |
 | [`fluent_community/space_media/api_response`](#fluent-community-space-media-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Http/MediaGalleryController.php:53` |
 | [`fluent_community/space_media/query`](#fluent-community-space-media-query) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:148` |
 | [`fluent_community/space_media/transform_item`](#fluent-community-space-media-transform-item) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Services/MediaGalleryService.php:56` |
@@ -554,7 +554,7 @@ add_filter('fluent_community/rate_limit/media_upload_per_minute', function ($lim
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:81` | `20` (int) |
+| Core | `fluent-community/app/Hooks/Handlers/RateLimitHandler.php:87` | `20` (int) |
 
 ### Example
 
@@ -588,7 +588,7 @@ Only reached for spaces whose permissions grant can_view_documents, i.e. where t
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:58` | `__('Documents', 'fluent-community-pro')` (mixed)<br>`$space` (Space) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:59` | `__('Documents', 'fluent-community-pro')` (mixed)<br>`$space` (Space) |
 
 ### Example
 
@@ -624,7 +624,7 @@ Only reached for spaces whose permissions grant can_view_media, i.e. where the s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:31` | `__('Media', 'fluent-community-pro')` (mixed)<br>`$space` (Space) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:32` | `__('Media', 'fluent-community-pro')` (mixed)<br>`$space` (Space) |
 
 ### Example
 

@@ -9,8 +9,8 @@ This page is generated from `do_action()`, `do_action_ref_array()` and `do_actio
 
 ## Overview
 
-- **Unique actions:** 193
-- **Action call sites:** 301
+- **Unique actions:** 196
+- **Action call sites:** 305
 - **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `moderation`, `integrations`, `rendering`, `settings`, `miscellaneous`
 
 ## Categories
@@ -24,10 +24,10 @@ This page is generated from `do_action()`, `do_action_ref_array()` and `do_actio
 | [Members](/hooks/actions/members) | 18 | 25 |
 | [Courses](/hooks/actions/courses) | 37 | 54 |
 | [Notifications](/hooks/actions/notifications) | 4 | 6 |
-| [Media](/hooks/actions/media) | 9 | 18 |
+| [Media](/hooks/actions/media) | 9 | 19 |
 | [Auth](/hooks/actions/auth) | 5 | 5 |
 | [Moderation](/hooks/actions/moderation) | 8 | 12 |
-| [Integrations](/hooks/actions/integrations) | 4 | 5 |
+| [Integrations](/hooks/actions/integrations) | 7 | 8 |
 | [Rendering](/hooks/actions/rendering) | 45 | 72 |
 | [Settings](/hooks/actions/settings) | 3 | 7 |
 | [Miscellaneous](/hooks/actions/miscellaneous) | 3 | 3 |

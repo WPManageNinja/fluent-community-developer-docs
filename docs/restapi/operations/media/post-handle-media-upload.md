@@ -15,7 +15,7 @@ Accepts JPEG, PNG, GIF, WebP and HEIC by default, up to 100 MB, both adjustable 
 - **Path:** `/feeds/media-upload`
 - **Edition:** Core
 - **Controller:** `FeedsController@handleMediaUpload`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:46`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:49`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Requires a signed-in user; uploads are rate limited through the `fluent_community/check_rate_limit/media_upload` hook.

@@ -93,7 +93,7 @@
             }
           },
           "422": {
-            "description": "Please enroll this course first",
+            "description": "Your course progress could not be reset. Please try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -105,7 +105,7 @@
                   }
                 },
                 "example": {
-                  "message": "Please enroll this course first"
+                  "message": "Your course progress could not be reset. Please try again."
                 }
               }
             }

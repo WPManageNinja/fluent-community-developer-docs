@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listBookmarks",
         "summary": "GET List Bookmarks",
-        "description": "Returns a page of the published posts the current user has bookmarked, newest first and transformed for display.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
+        "description": "Returns a page of the published posts the current user has bookmarked, newest first and transformed for display.\n\nController: `FeedsController@getBookmarks`\nRoute source: `fluent-community/app/Http/Routes/api.php:51`",
         "tags": [
           "Feeds"
         ],

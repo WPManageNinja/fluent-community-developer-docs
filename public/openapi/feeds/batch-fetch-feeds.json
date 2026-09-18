@@ -27,7 +27,7 @@
       "post": {
         "operationId": "batchFetchFeeds",
         "summary": "POST Batch Fetch Feeds",
-        "description": "Returns the full transformed payload for a list of post ids in one request, for refreshing items a ticker call flagged as changed.\n\nController: `FeedsController@batchFetch`\nRoute source: `fluent-community/app/Http/Routes/api.php:66`",
+        "description": "Returns the full transformed payload for a list of post ids in one request, for refreshing items a ticker call flagged as changed.\n\nController: `FeedsController@batchFetch`\nRoute source: `fluent-community/app/Http/Routes/api.php:69`",
         "tags": [
           "Feeds"
         ],
