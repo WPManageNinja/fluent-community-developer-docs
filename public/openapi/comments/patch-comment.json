@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "patchComment",
         "summary": "PATCH Patch Comment",
-        "description": "Pins or unpins a top-level comment so it sorts above the rest of the thread.\n\nController: `CommentsController@patchComment`\nRoute source: `fluent-community/app/Http/Routes/api.php:55`",
+        "description": "Pins or unpins a top-level comment so it sorts above the rest of the thread.\n\nController: `CommentsController@patchComment`\nRoute source: `fluent-community/app/Http/Routes/api.php:58`",
         "tags": [
           "Comments"
         ],

@@ -15,7 +15,7 @@ Pass `context=edit` to receive the raw editable form instead of the rendered one
 - **Path:** `/feeds/{feed_slug}/by-slug`
 - **Edition:** Core
 - **Controller:** `FeedsController@getFeedBySlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:49`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:52`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - A post in a space the caller cannot reach returns 404 rather than 403, so post existence cannot be probed.

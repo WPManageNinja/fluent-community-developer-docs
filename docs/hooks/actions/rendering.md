@@ -26,9 +26,9 @@ description: Rendering action hooks for FluentCommunity.
 | [`fluent_community/before_portal_rendered`](#fluent-community-before-portal-rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:920` |
 | [`fluent_community/before_registration_form`](#fluent-community-before-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:23` |
 | [`fluent_community/before_sidebar_wrap`](#fluent-community-before-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:31` |
-| [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:491` |
-| [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:484` |
-| [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:222` |
+| [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:499` |
+| [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:492` |
+| [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:243` |
 | [`fluent_community/headless/before_js_loaded`](#fluent-community-headless-before-js-loaded) | Core | 1 | `fluent-community/app/Views/headless_page.php:110` |
 | [`fluent_community/headless/content`](#fluent-community-headless-content) | Core | 2 | `fluent-community/app/Views/headless_page.php:94` |
 | [`fluent_community/headless/footer`](#fluent-community-headless-footer) | Core | 1 | `fluent-community/app/Views/headless_page.php:118` |
@@ -266,7 +266,7 @@ Three call sites, and their positions differ: on the signup template it fires as
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:10` | `'login'` (string) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:11` | `'signup'` (string) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:768` | `'login'` (string) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:790` | `'login'` (string) |
 
 ### Example
 
@@ -535,7 +535,7 @@ Core attaches the entire WordPress footer sequence here — footer scripts, scri
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:491` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:499` | No parameters |
 
 ### Example
 
@@ -561,7 +561,7 @@ The lesson editor renders its own complete HTML document in an iframe rather tha
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:484` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:492` | No parameters |
 
 ### Example
 
@@ -593,7 +593,7 @@ Core's own callback does the enqueueing, so this is the hook to attach dependent
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:222` | `true` (bool) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:243` | `true` (bool) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:130` | `$useBuildInTheme` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:188` | `true` (bool) |
 | Core | `fluent-community/Modules/Theming/TemplateLoader.php:189` | `true` (bool) |

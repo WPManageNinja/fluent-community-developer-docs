@@ -5,30 +5,30 @@ description: Rendering filter hooks for FluentCommunity.
 
 # Rendering Filters
 
-42 unique filter hooks currently map to this category, across 44 call sites.
+43 unique filter hooks currently map to this category, across 45 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_com_editor/asset_listed_slugs`](#fluent-com-editor-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:541` |
-| [`fluent_com_editor/skip_no_conflict`](#fluent-com-editor-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:535` |
-| [`fluent_community/allowed_block_types`](#fluent-community-allowed-block-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:713` |
-| [`fluent_community/allowed_html_tags`](#fluent-community-allowed-html-tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:385` |
+| [`fluent_com_editor/asset_listed_slugs`](#fluent-com-editor-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:549` |
+| [`fluent_com_editor/skip_no_conflict`](#fluent-com-editor-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:543` |
+| [`fluent_community/allowed_block_types`](#fluent-community-allowed-block-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:721` |
+| [`fluent_community/allowed_html_tags`](#fluent-community-allowed-html-tags) | Core | 1 | `fluent-community/app/Services/CustomSanitizer.php:543` |
 | [`fluent_community/app_route_paths`](#fluent-community-app-route-paths) | Core | 1 | `fluent-community/app/Services/Helper.php:581` |
 | [`fluent_community/app_vars_api_response`](#fluent-community-app-vars-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:25` |
-| [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:595` |
+| [`fluent_community/asset_listed_slugs`](#fluent-community-asset-listed-slugs) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:603` |
 | [`fluent_community/base_url`](#fluent-community-base-url) | Core | 1 | `fluent-community/app/Services/Helper.php:297` |
 | [`fluent_community/block_editor_context`](#fluent-community-block-editor-context) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:125` |
 | [`fluent_community/block_editor_post_types`](#fluent-community-block-editor-post-types) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:27` |
-| [`fluent_community/block_editor_settings`](#fluent-community-block-editor-settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:799` |
+| [`fluent_community/block_editor_settings`](#fluent-community-block-editor-settings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:807` |
 | [`fluent_community/date_time_i18n`](#fluent-community-date-time-i18n) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:564` |
 | [`fluent_community/default_theme_mode`](#fluent-community-default-theme-mode) | Core | 1 | `fluent-community/app/Services/Helper.php:167` |
-| [`fluent_community/editor_i18n_strings`](#fluent-community-editor-i18n-strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:425` |
+| [`fluent_community/editor_i18n_strings`](#fluent-community-editor-i18n-strings) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:433` |
 | [`fluent_community/error_page_custom_css`](#fluent-community-error-page-custom-css) | Core | 1 | `fluent-community/app/Views/error_page.php:21` |
 | [`fluent_community/general_portal_vars`](#fluent-community-general-portal-vars) | Core | 2 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:786` |
 | [`fluent_community/header_vars`](#fluent-community-header-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1283` |
-| [`fluent_community/image_size_names_choose`](#fluent-community-image-size-names-choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:430` |
+| [`fluent_community/image_size_names_choose`](#fluent-community-image-size-names-choose) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:438` |
 | [`fluent_community/is_rtl`](#fluent-community-is-rtl) | Core | 1 | `fluent-community/app/Services/Helper.php:29` |
 | [`fluent_community/is_supported_theme`](#fluent-community-is-supported-theme) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:36` |
 | [`fluent_community/portal_data_vars`](#fluent-community-portal-data-vars) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1048` |
@@ -42,13 +42,14 @@ description: Rendering filter hooks for FluentCommunity.
 | [`fluent_community/pro_upgrade_base_url`](#fluent-community-pro-upgrade-base-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:418` |
 | [`fluent_community/render_default_touch_icon`](#fluent-community-render-default-touch-icon) | Core | 1 | `fluent-community/app/Views/portal_page.php:29` |
 | [`fluent_community/rendering_feed_model`](#fluent-community-rendering-feed-model) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:1150` |
+| [`fluent_community/seo/comment_limit`](#fluent-community-seo-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/FeedComments.php:37` |
 | [`fluent_community/seo/pre_render_comment_limit`](#fluent-community-seo-pre-render-comment-limit) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/AbstractPortalPreRenderer.php:428` |
 | [`fluent_community/seo/pre_render_feed_count`](#fluent-community-seo-pre-render-feed-count) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SpacePreRenderer.php:157` |
 | [`fluent_community/seo/pre_render_max_page`](#fluent-community-seo-pre-render-max-page) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SpacePreRenderer.php:150` |
 | [`fluent_community/sidebar_menu_groups_config`](#fluent-community-sidebar-menu-groups-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1285` |
 | [`fluent_community/sidebar_menu_html_api_response`](#fluent-community-sidebar-menu-html-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:76` |
-| [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:583` |
-| [`fluent_community/space_header_links`](#fluent-community-space-header-links) | Core | 1 | `fluent-community/app/Models/BaseSpace.php:659` |
+| [`fluent_community/skip_no_conflict`](#fluent-community-skip-no-conflict) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:591` |
+| [`fluent_community/space_header_links`](#fluent-community-space-header-links) | Core | 1 | `fluent-community/app/Services/SpaceMenuService.php:119` |
 | [`fluent_community/template_slug`](#fluent-community-template-slug) | Core | 1 | `fluent-community/Modules/Theming/TemplateLoader.php:75` |
 | [`fluent_community/use_editor_block`](#fluent-community-use-editor-block) | Core | 1 | `fluent-community/Modules/FeaturesHandler.php:161` |
 | [`fluent_community/will_render_default_sidebar_items`](#fluent-community-will-render-default-sidebar-items) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:35` |
@@ -77,7 +78,7 @@ Scripts are the only assets this affects; the stylesheet side is governed by the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:541` | `[ '\/gutenberg\/' ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:549` | `[ '\/gutenberg\/' ]` (array) |
 
 ### Example
 
@@ -112,7 +113,7 @@ Return `true` and neither the script pass nor the stylesheet pass is registered,
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:535` | `false` (bool) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:543` | `false` (bool) |
 
 ### Example
 
@@ -147,7 +148,7 @@ An explicit allowlist rather than a denylist, so a block that is not named is un
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:713` | `array (32 items)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:721` | `array (32 items)` (array) |
 
 ### Example
 
@@ -182,7 +183,7 @@ The base list is `wp_kses_allowed_html('post')` plus a deliberately narrow `ifra
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/CustomSanitizer.php:385` | `$tags` (mixed) |
+| Core | `fluent-community/app/Services/CustomSanitizer.php:543` | `$tags` (mixed) |
 
 ### Example
 
@@ -286,7 +287,7 @@ Stylesheets are the only assets this affects. The list is joined into a regular 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:595` | `[ '\/gutenberg\/', ]` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:603` | `[ '\/gutenberg\/', ]` (array) |
 
 ### Example
 
@@ -400,7 +401,7 @@ Applied last, after the editor styles, resolved assets, default styles and image
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:799` | `$editor_settings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:807` | `$editor_settings` (mixed) |
 
 ### Example
 
@@ -505,7 +506,7 @@ An English-keyed map: each key is the source string and each value its translati
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:425` | `$strings` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:433` | `$strings` (mixed) |
 
 ### Example
 
@@ -644,7 +645,7 @@ A FluentCommunity-scoped analogue of WordPress's own `image_size_names_choose`, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:430` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Me…` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:438` | `array( 'thumbnail' => __('Thumbnail', 'fluent-community'), 'medium' => __('Me…` (mixed) |
 
 ### Example
 
@@ -1096,6 +1097,41 @@ add_filter('fluent_community/rendering_feed_model', function ($feed, $config) {
 }, 10, 2);
 ```
 
+<a id="fluent-community-seo-comment-limit"></a>
+
+## `fluent_community/seo/comment_limit`
+
+- **Type:** filter
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 1
+- **When it fires:** Filters how many comments a post page loads for crawlers — the ceiling for both its JSON-LD and its pre-rendered body.
+
+Defaults to 100 and is clamped to zero or more. The thread is queried once per request, oldest first, and that one bounded set feeds both the schema.org graph in the page head and the server-rendered comment list, so this is the upper bound for each (`fluent_community/seo/pre_render_comment_limit` can cut the rendered list further). It has no effect on the comments the portal SPA or the REST API return — the SPA fetches the full thread itself. Replaces `fluent_community/seo/ld_comment_limit`, which only bounded the JSON-LD. Replies are nested under their parent within whatever the limit returns, so a low limit can orphan replies whose parent fell outside it.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$limit` | `int` | Maximum comments to load, 100 by default. |
+
+**Return:** The comment limit as an integer.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/SeoSiteMap/FeedComments.php:37` | `100` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/seo/comment_limit', function ($limit) {
+    return $limit;
+}, 10, 1);
+```
+
+**Related:** [`fluent_community/seo/pre_render_comment_limit`](#fluent-community-seo-pre-render-comment-limit)
+
 <a id="fluent-community-seo-pre-render-comment-limit"></a>
 
 ## `fluent_community/seo/pre_render_comment_limit`
@@ -1103,6 +1139,17 @@ add_filter('fluent_community/rendering_feed_model', function ($feed, $config) {
 - **Type:** filter
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Call sites:** 1
+- **When it fires:** Filters how many top-level comments the server-rendered post page prints for crawlers and first paint.
+
+Defaults to 50 and is cast to int. It slices top-level comments only, after the thread has been loaded — each kept comment still carries all of its loaded replies, so the rendered count can exceed the limit. It works inside the set `fluent_community/seo/comment_limit` already bounded, so raising it past that limit has no effect. The JSON-LD in the page head is unaffected.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$limit` | `int` | Maximum top-level comments to render, 50 by default. |
+
+**Return:** The top-level comment limit as an integer.
 
 ### Call Sites
 
@@ -1113,10 +1160,12 @@ add_filter('fluent_community/rendering_feed_model', function ($feed, $config) {
 ### Example
 
 ```php
-add_filter('fluent_community/seo/pre_render_comment_limit', function ($param1) {
-    return $param1;
+add_filter('fluent_community/seo/pre_render_comment_limit', function ($limit) {
+    return $limit;
 }, 10, 1);
 ```
+
+**Related:** [`fluent_community/seo/comment_limit`](#fluent-community-seo-comment-limit)
 
 <a id="fluent-community-seo-pre-render-feed-count"></a>
 
@@ -1258,7 +1307,7 @@ Return `true` and no stylesheet is dequeued on the editor page, which is the esc
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:583` | `false` (bool)<br>`'styles'` (string) |
+| Core | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:591` | `false` (bool)<br>`'styles'` (string) |
 
 ### Example
 
@@ -1294,7 +1343,7 @@ Built in `BaseSpace::formatSpaceData()`, so it runs once per space in every payl
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/BaseSpace.php:659` | `$headerLinks` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Services/SpaceMenuService.php:119` | `$items` (mixed)<br>`$space` (Space) |
 
 ### Example
 

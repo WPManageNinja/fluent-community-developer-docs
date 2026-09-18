@@ -15,7 +15,7 @@ Secret spaces are only included when the caller is the profile owner or a commun
 - **Path:** `/profile/{username}/spaces`
 - **Edition:** Core
 - **Controller:** `ProfileController@getSpaces`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:90`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:93`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Gated by the `user_space_visibility` privacy setting; failure comes back carrying `permission_failed`.

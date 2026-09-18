@@ -13,7 +13,7 @@ Deletes a post from the community.
 - **Path:** `/feeds/{feed_id}`
 - **Edition:** Core
 - **Controller:** `FeedsController@deleteFeed`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:61`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:64`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - The post author can always delete; anyone else needs the `delete_any_feed` permission globally or in the space.

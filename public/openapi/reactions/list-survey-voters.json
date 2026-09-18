@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSurveyVoters",
         "summary": "GET List Survey Voters",
-        "description": "Returns the members who voted for one survey option, with their public profiles.\n\nController: `ReactionController@getSurveyVoters`\nRoute source: `fluent-community/app/Http/Routes/api.php:80`",
+        "description": "Returns the members who voted for one survey option, with their public profiles.\n\nController: `ReactionController@getSurveyVoters`\nRoute source: `fluent-community/app/Http/Routes/api.php:83`",
         "tags": [
           "Reactions"
         ],

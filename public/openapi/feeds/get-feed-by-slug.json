@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeedBySlug",
         "summary": "GET Get Feed By Slug",
-        "description": "Returns a single post by slug, fully transformed, along with its reactions summary and author profile.\n\nController: `FeedsController@getFeedBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:49`",
+        "description": "Returns a single post by slug, fully transformed, along with its reactions summary and author profile.\n\nController: `FeedsController@getFeedBySlug`\nRoute source: `fluent-community/app/Http/Routes/api.php:52`",
         "tags": [
           "Feeds"
         ],
