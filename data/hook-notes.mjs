@@ -4756,19 +4756,29 @@ export const HOOK_NOTES = {
       "fluent_community/block_editor_settings"
     ]
   },
-  "fluent_community/install_fluent_player_plugin": {
-    "summary": "Fires when an administrator asks to install the FluentPlayer plugin from the add-ons screen.",
-    "details": "Guarded by an explicit Pro check before it fires — a free install gets an error telling it to upgrade, so unlike the messaging hook this one is genuinely unreachable without Pro. Pro answers it with a direct background install from the vendor's S3 bucket. No arguments.",
+  "fluent_community/install_fluent_notify_plugin": {
+    "summary": "Fires when an administrator asks to install the FluentNotify plugin from the add-ons screen.",
+    "details": "FluentNotify is not hosted on wordpress.org, so there is no default installer — Pro answers this hook with a direct background install. Unlike the messaging and player hooks there is no explicit Pro check in front of it, but the endpoint refuses with an error when nothing is listening (`has_action()` is checked first), so a free site gets a \"install it manually\" message rather than a false success. The add-ons screen reads the same `has_action()` result to decide whether to show an install button at all. No arguments.",
     "related": [
       "fluent_community/install_messaging_plugin",
+      "fluent_community/install_fluent_player_plugin"
+    ]
+  },
+  "fluent_community/install_fluent_player_plugin": {
+    "summary": "Fires when an administrator asks to install the FluentPlayer plugin from the add-ons screen.",
+    "details": "Guarded by an explicit Pro check before it fires — a free install gets an error telling it to upgrade. Pro answers it with a direct background install from the vendor's S3 bucket. If nothing is listening the endpoint returns an error rather than reporting success. No arguments.",
+    "related": [
+      "fluent_community/install_messaging_plugin",
+      "fluent_community/install_fluent_notify_plugin",
       "fluent_community/fluentplayer_defaults_settings"
     ]
   },
   "fluent_community/install_messaging_plugin": {
     "summary": "Fires when an administrator asks to install the Fluent Messages plugin from the add-ons screen.",
-    "details": "Fluent Messages is not hosted on wordpress.org, so there is no default installer — Pro answers this hook with a direct background install from the vendor's S3 bucket. On a free site nothing is listening and the endpoint reports success without having installed anything. The action carries no arguments and no result: it runs synchronously inside the request and the response is fixed either way.",
+    "details": "Fluent Messages is not hosted on wordpress.org, so there is no default installer — Pro answers this hook with a direct background install from the vendor's S3 bucket. The endpoint checks for Pro before firing, and refuses with an error when nothing is listening, so it never reports success without having installed anything. The action carries no arguments and no result: it runs synchronously inside the request, and an exception thrown by a listener is returned as the error message.",
     "related": [
-      "fluent_community/install_fluent_player_plugin"
+      "fluent_community/install_fluent_player_plugin",
+      "fluent_community/install_fluent_notify_plugin"
     ]
   },
   "fluent_community/invitation_created": {
@@ -7049,18 +7059,37 @@ export const HOOK_NOTES = {
       "fluent_community/section/reactions_count_updated"
     ]
   },
-  "fluent_community/seo/ld_comment_limit": {
-    "summary": "Filters how many comments are embedded in a post's JSON-LD structured data.",
-    "details": "Defaults to 100 and is cast to int. It caps the comments serialized into the schema.org graph for SEO only — it has no effect on the comments the portal or the REST API return. Replies are nested under their parent within whatever the limit returns, so a low limit can orphan replies whose parent fell outside it.",
+  "fluent_community/seo/comment_limit": {
+    "summary": "Filters how many comments a post page loads for crawlers — the ceiling for both its JSON-LD and its pre-rendered body.",
+    "details": "Defaults to 100 and is clamped to zero or more. The thread is queried once per request, oldest first, and that one bounded set feeds both the schema.org graph in the page head and the server-rendered comment list, so this is the upper bound for each (`fluent_community/seo/pre_render_comment_limit` can cut the rendered list further). It has no effect on the comments the portal SPA or the REST API return — the SPA fetches the full thread itself. Replaces `fluent_community/seo/ld_comment_limit`, which only bounded the JSON-LD. Replies are nested under their parent within whatever the limit returns, so a low limit can orphan replies whose parent fell outside it.",
     "params": [
       {
         "name": "limit",
         "type": "int",
-        "desc": "Maximum comments to embed, 100 by default."
+        "desc": "Maximum comments to load, 100 by default."
       }
     ],
     "returns": "The comment limit as an integer.",
-    "page": "rendering"
+    "page": "rendering",
+    "related": [
+      "fluent_community/seo/pre_render_comment_limit"
+    ]
+  },
+  "fluent_community/seo/pre_render_comment_limit": {
+    "summary": "Filters how many top-level comments the server-rendered post page prints for crawlers and first paint.",
+    "details": "Defaults to 50 and is cast to int. It slices top-level comments only, after the thread has been loaded — each kept comment still carries all of its loaded replies, so the rendered count can exceed the limit. It works inside the set `fluent_community/seo/comment_limit` already bounded, so raising it past that limit has no effect. The JSON-LD in the page head is unaffected.",
+    "params": [
+      {
+        "name": "limit",
+        "type": "int",
+        "desc": "Maximum top-level comments to render, 50 by default."
+      }
+    ],
+    "returns": "The top-level comment limit as an integer.",
+    "page": "rendering",
+    "related": [
+      "fluent_community/seo/comment_limit"
+    ]
   },
   "fluent_community/settings_menu": {
     "summary": "Collects the entries shown in the sidebar's settings section.",
