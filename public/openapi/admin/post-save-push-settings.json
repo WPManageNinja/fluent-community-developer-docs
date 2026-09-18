@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postSavePushSettings",
         "summary": "POST Post Save Push Settings",
-        "description": "Post Save Push Settings for the FluentCommunity Admin API.\n\nController: `AdminController@savePushSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:108`",
+        "description": "Post Save Push Settings for the FluentCommunity Admin API.\n\nController: `AdminController@savePushSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:111`",
         "tags": [
           "Admin"
         ],

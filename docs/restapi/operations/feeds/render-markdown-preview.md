@@ -15,7 +15,7 @@ Pass `text`. Adding `with[]=meta` together with a `feed` object also runs the po
 - **Path:** `/feeds/markdown-preview`
 - **Edition:** Core
 - **Controller:** `FeedsController@markdownToHtml`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:82`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:85`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 ::: tip Live sample

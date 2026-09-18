@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOembed",
         "summary": "GET Get OEmbed",
-        "description": "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:68`",
+        "description": "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:71`",
         "tags": [
           "Feeds"
         ],

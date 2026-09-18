@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listFeedComments",
         "summary": "GET List Feed Comments",
-        "description": "Returns every comment on a post in chronological order, with each author profile attached and the current user liked state flagged.\n\nController: `CommentsController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:52`",
+        "description": "Returns every comment on a post in chronological order, with each author profile attached and the current user liked state flagged.\n\nController: `CommentsController@getComments`\nRoute source: `fluent-community/app/Http/Routes/api.php:55`",
         "tags": [
           "Comments"
         ],

@@ -15,7 +15,7 @@ Scope with `context` set to `global`, `space-<slug>` or `user-<id>`. Up to 100 c
 - **Path:** `/feeds/ticker-updates`
 - **Edition:** Core
 - **Controller:** `FeedsController@getTickerUpdates`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:65`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:68`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Signed-out callers get an empty payload with an error string rather than an HTTP error.

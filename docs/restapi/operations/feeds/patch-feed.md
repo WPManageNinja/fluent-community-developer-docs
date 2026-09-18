@@ -15,7 +15,7 @@ Moderators may set `is_sticky`, `priority` and `comments_disabled`; a plain auth
 - **Path:** `/feeds/{feed_id}`
 - **Edition:** Core
 - **Controller:** `FeedsController@patchFeed`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:45`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:48`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Requires the post author, a community moderator, or a community admin, either globally or in the space.

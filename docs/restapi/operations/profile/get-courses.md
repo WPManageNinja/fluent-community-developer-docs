@@ -15,7 +15,7 @@ Secret courses are only included when the caller is the profile owner or a commu
 - **Path:** `/profile/{username}/courses`
 - **Edition:** Core
 - **Controller:** `ProfileController@getCourses`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:91`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:94`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Requires the `course_module` feature to be enabled.

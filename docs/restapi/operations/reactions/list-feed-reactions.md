@@ -15,7 +15,7 @@ Capped at 100 distinct users with no pagination, so a very popular post shows a 
 - **Path:** `/feeds/{feed_id}/reactions`
 - **Edition:** Core
 - **Controller:** `ReactionController@getByFeedId`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:75`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:78`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 ::: tip Live sample

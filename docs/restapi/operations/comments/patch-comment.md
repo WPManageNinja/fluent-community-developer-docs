@@ -15,7 +15,7 @@ Pins or unpins a top-level comment so it sorts above the rest of the thread.
 - **Path:** `/feeds/{feed_id}/comments/{comment_id}`
 - **Edition:** Core
 - **Controller:** `CommentsController@patchComment`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:55`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:58`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 - Requires a community moderator or community admin, either globally or within the post space.

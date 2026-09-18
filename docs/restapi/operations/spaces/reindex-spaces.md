@@ -15,7 +15,7 @@ Unlike the group variant, `indexes` here is an ordered array of space ids and th
 - **Path:** `/spaces/space_groups/re-index-spaces`
 - **Edition:** Core
 - **Controller:** `SpaceController@updateSpaceIndexes`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:37`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:40`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin or course-admin access, or the admin role in the space named by `space_id`.

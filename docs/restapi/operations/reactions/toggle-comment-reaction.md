@@ -15,7 +15,7 @@ Unlike the post reaction endpoints this takes an explicit `state` boolean rather
 - **Path:** `/feeds/{feed_id}/comments/{comment_id}/reactions`
 - **Edition:** Core
 - **Controller:** `CommentsController@toggleReaction`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:59`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:62`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 - Requires a signed-in user with at least registered access to the space holding the post.

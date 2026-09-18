@@ -78,7 +78,7 @@
             }
           },
           "422": {
-            "description": "This student is not enrolled in this course.",
+            "description": "Error response",
             "content": {
               "application/json": {
                 "schema": {
@@ -90,7 +90,7 @@
                   }
                 },
                 "example": {
-                  "message": "This student is not enrolled in this course."
+                  "message": "Error response"
                 }
               }
             }

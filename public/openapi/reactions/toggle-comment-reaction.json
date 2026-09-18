@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleCommentReaction",
         "summary": "POST Toggle Comment Reaction",
-        "description": "Sets or clears the current user like on a comment and returns the new reaction count with the resulting liked state.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
+        "description": "Sets or clears the current user like on a comment and returns the new reaction count with the resulting liked state.\n\nController: `CommentsController@toggleReaction`\nRoute source: `fluent-community/app/Http/Routes/api.php:62`",
         "tags": [
           "Reactions"
         ],

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listFeeds",
         "summary": "GET List Feeds",
-        "description": "Returns a page of posts the current user is allowed to read, transformed for display, with the pinned post of a space returned separately on the first page.\n\nController: `FeedsController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:42`",
+        "description": "Returns a page of posts the current user is allowed to read, transformed for display, with the pinned post of a space returned separately on the first page.\n\nController: `FeedsController@get`\nRoute source: `fluent-community/app/Http/Routes/api.php:45`",
         "tags": [
           "Feeds"
         ],

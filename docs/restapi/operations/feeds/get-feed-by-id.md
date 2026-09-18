@@ -15,7 +15,7 @@ Because it delegates, `context=edit` and the same access rules apply. Note that 
 - **Path:** `/feeds/{feed_id}/by-id`
 - **Edition:** Core
 - **Controller:** `FeedsController@getFeedById`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:50`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:53`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 ::: tip Live sample

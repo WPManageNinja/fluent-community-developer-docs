@@ -15,7 +15,7 @@ Adds or removes the current user reaction on a post and returns the updated reac
 - **Path:** `/feeds/{feed_id}/reactions/toggle`
 - **Edition:** Core
 - **Controller:** `ReactionController@addOrRemovePostReact`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:76`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:79`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 - Requires a signed-in user, and the post must be published.
