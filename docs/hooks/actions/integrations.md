@@ -5,16 +5,97 @@ description: Integrations action hooks for FluentCommunity.
 
 # Integrations Actions
 
-4 unique action hooks currently map to this category, across 5 call sites.
+7 unique action hooks currently map to this category, across 8 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
+| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:364` |
+| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:364` |
+| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:364` |
 | [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:100` |
 | [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:135` |
 | [`fluent_community/product_integration_feed_created`](#fluent-community-product-integration-feed-created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:84` |
 | [`fluent_community/product_integration_feed_updated`](#fluent-community-product-integration-feed-updated) | Core | 2 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:57` |
+
+<a id="fluent-community-install-fluent-notify-plugin"></a>
+
+## `fluent_community/install_fluent_notify_plugin`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires when an administrator asks to install the FluentNotify plugin from the add-ons screen.
+
+FluentNotify is not hosted on wordpress.org, so there is no default installer — Pro answers this hook with a direct background install. Unlike the messaging and player hooks there is no explicit Pro check in front of it, but the endpoint refuses with an error when nothing is listening (`has_action()` is checked first), so a free site gets a "install it manually" message rather than a false success. The add-ons screen reads the same `has_action()` result to decide whether to show an install button at all. No arguments.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:364` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community/install_fluent_notify_plugin', function () {
+}, 10, 0);
+```
+
+**Related:** [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) · [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin)
+
+<a id="fluent-community-install-fluent-player-plugin"></a>
+
+## `fluent_community/install_fluent_player_plugin`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires when an administrator asks to install the FluentPlayer plugin from the add-ons screen.
+
+Guarded by an explicit Pro check before it fires — a free install gets an error telling it to upgrade. Pro answers it with a direct background install from the vendor's S3 bucket. If nothing is listening the endpoint returns an error rather than reporting success. No arguments.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:364` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community/install_fluent_player_plugin', function () {
+}, 10, 0);
+```
+
+**Related:** [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) · [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) · [`fluent_community/fluentplayer_defaults_settings`](/hooks/filters/integrations#fluent-community-fluentplayer-defaults-settings)
+
+<a id="fluent-community-install-messaging-plugin"></a>
+
+## `fluent_community/install_messaging_plugin`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires when an administrator asks to install the Fluent Messages plugin from the add-ons screen.
+
+Fluent Messages is not hosted on wordpress.org, so there is no default installer — Pro answers this hook with a direct background install from the vendor's S3 bucket. The endpoint checks for Pro before firing, and refuses with an error when nothing is listening, so it never reports success without having installed anything. The action carries no arguments and no result: it runs synchronously inside the request, and an exception thrown by a listener is returned as the error message.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:364` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community/install_messaging_plugin', function () {
+}, 10, 0);
+```
+
+**Related:** [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) · [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin)
 
 <a id="fluent-community-paywall-added"></a>
 

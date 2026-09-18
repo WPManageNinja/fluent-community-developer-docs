@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "patchFeed",
         "summary": "PATCH Patch Feed",
-        "description": "Applies a small state change to a post — pinning it, changing its priority, or turning comments off.\n\nController: `FeedsController@patchFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:45`",
+        "description": "Applies a small state change to a post — pinning it, changing its priority, or turning comments off.\n\nController: `FeedsController@patchFeed`\nRoute source: `fluent-community/app/Http/Routes/api.php:48`",
         "tags": [
           "Feeds"
         ],

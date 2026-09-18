@@ -15,7 +15,7 @@ Send `feed_ids`; only the first 20 are honoured and the rest are dropped silentl
 - **Path:** `/feeds/batch`
 - **Edition:** Core
 - **Controller:** `FeedsController@batchFetch`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:66`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:69`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 ::: tip Live sample

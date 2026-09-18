@@ -15,7 +15,7 @@ Secret spaces are excluded unless the caller is the profile owner or a community
 - **Path:** `/profile/{username}/memberships`
 - **Edition:** Core
 - **Controller:** `ProfileController@getAllMemberships`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:92`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:95`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Gated by the `user_space_visibility` privacy setting.

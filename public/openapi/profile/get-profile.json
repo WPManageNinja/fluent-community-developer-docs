@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getProfile",
         "summary": "GET Get Profile",
-        "description": "Returns one member public profile by username, with the navigation tabs the portal should render for that member.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:86`",
+        "description": "Returns one member public profile by username, with the navigation tabs the portal should render for that member.\n\nController: `ProfileController@getProfile`\nRoute source: `fluent-community/app/Http/Routes/api.php:89`",
         "tags": [
           "Profile"
         ],

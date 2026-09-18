@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postAddOrRemovePostReact",
         "summary": "POST Post Add Or Remove Post React",
-        "description": "Adds or removes the current user reaction on a post and returns the updated reaction count.\n\nController: `ReactionController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:76`",
+        "description": "Adds or removes the current user reaction on a post and returns the updated reaction count.\n\nController: `ReactionController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:79`",
         "tags": [
           "Reactions"
         ],

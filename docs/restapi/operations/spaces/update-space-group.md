@@ -15,7 +15,7 @@ Updates the title, description and expansion behaviour of a space group.
 - **Path:** `/spaces/space_groups/{id}`
 - **Edition:** Core
 - **Controller:** `SpaceController@updateSpaceGroup`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:34`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:37`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin or course-admin access, or the admin role in the space named by `space_id`.
