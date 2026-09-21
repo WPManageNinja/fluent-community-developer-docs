@@ -15,7 +15,7 @@ Each link is sanitised individually and the submitted array replaces the stored 
 - **Path:** `/feeds/links`
 - **Edition:** Core
 - **Controller:** `FeedsController@updateLinks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:71`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:74`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

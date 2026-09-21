@@ -15,7 +15,7 @@ Creates a space group to hold spaces in the sidebar.
 - **Path:** `/spaces/space_groups`
 - **Edition:** Core
 - **Controller:** `SpaceController@createSpaceGroup`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:33`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:36`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin or course-admin access, or the admin role in the space named by `space_id`.

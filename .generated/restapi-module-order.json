@@ -33,6 +33,8 @@
     "delete-space-by-id",
     "get-space-lockscreens",
     "update-space-links",
+    "get-primary-menu",
+    "post-update-primary-menu",
     "search-space-users",
     "discover-spaces",
     "list-all-spaces",

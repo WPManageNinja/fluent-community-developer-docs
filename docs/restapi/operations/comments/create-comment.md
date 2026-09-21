@@ -15,7 +15,7 @@ Either `comment` text or a media attachment is required; text is capped at 10 00
 - **Path:** `/feeds/{feed_id}/comments`
 - **Edition:** Core
 - **Controller:** `CommentsController@store`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:53`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:56`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 - Requires the `can_comment` permission in the space, and fails when the post author has disabled comments or the course has comments switched off.

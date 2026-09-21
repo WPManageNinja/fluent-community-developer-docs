@@ -27,7 +27,7 @@
       "post": {
         "operationId": "toggleFeedReaction",
         "summary": "POST Toggle Feed Reaction",
-        "description": "Adds or removes the current user reaction on a post and returns the updated count — a second route onto the same behaviour as the reactions toggle endpoint.\n\nController: `CommentsController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:56`",
+        "description": "Adds or removes the current user reaction on a post and returns the updated count — a second route onto the same behaviour as the reactions toggle endpoint.\n\nController: `CommentsController@addOrRemovePostReact`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
         "tags": [
           "Reactions"
         ],

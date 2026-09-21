@@ -15,7 +15,7 @@ Pass `since` as a datetime; it defaults to one minute ago, and any value older t
 - **Path:** `/feeds/ticker`
 - **Edition:** Core
 - **Controller:** `FeedsController@getTicker`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:64`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:67`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Signed-out callers get an empty payload with an error string rather than an HTTP error.

@@ -15,7 +15,7 @@ Send the chosen option identifiers in `vote_indexes`. The post must actually be 
 - **Path:** `/feeds/{feed_id}/apps/survey-vote`
 - **Edition:** Core
 - **Controller:** `ReactionController@castSurveyVote`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:78`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:81`
 - **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 - Requires a signed-in user who can read the post.

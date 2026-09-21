@@ -27,7 +27,7 @@
       "get": {
         "operationId": "discoverSpaces",
         "summary": "GET Discover Spaces",
-        "description": "Returns the paginated set of spaces the current user could join or already belongs to, each with its active member count.\n\nController: `SpaceController@discover`\nRoute source: `fluent-community/app/Http/Routes/api.php:30`",
+        "description": "Returns the paginated set of spaces the current user could join or already belongs to, each with its active member count.\n\nController: `SpaceController@discover`\nRoute source: `fluent-community/app/Http/Routes/api.php:33`",
         "tags": [
           "Spaces"
         ],

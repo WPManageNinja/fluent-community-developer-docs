@@ -15,7 +15,7 @@ Creates a post, renders its Markdown, attaches media and topics, and returns the
 - **Path:** `/feeds`
 - **Edition:** Core
 - **Controller:** `FeedsController@store`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:43`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:46`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Requires the `can_create_post` permission in the target space.

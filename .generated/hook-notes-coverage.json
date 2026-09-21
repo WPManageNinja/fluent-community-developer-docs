@@ -36,7 +36,7 @@
   },
   "action/media": {
     "hooks": 9,
-    "callSites": 18,
+    "callSites": 19,
     "documented": 7
   },
   "action/auth": {
@@ -50,9 +50,9 @@
     "documented": 8
   },
   "action/integrations": {
-    "hooks": 4,
-    "callSites": 5,
-    "documented": 4
+    "hooks": 7,
+    "callSites": 8,
+    "documented": 7
   },
   "action/rendering": {
     "hooks": 45,
@@ -75,8 +75,8 @@
     "documented": 36
   },
   "filter/comments": {
-    "hooks": 15,
-    "callSites": 15,
+    "hooks": 14,
+    "callSites": 14,
     "documented": 13
   },
   "filter/reactions": {
@@ -85,8 +85,8 @@
     "documented": 4
   },
   "filter/spaces": {
-    "hooks": 23,
-    "callSites": 26,
+    "hooks": 24,
+    "callSites": 27,
     "documented": 18
   },
   "filter/members": {
@@ -130,9 +130,9 @@
     "documented": 9
   },
   "filter/rendering": {
-    "hooks": 42,
-    "callSites": 44,
-    "documented": 36
+    "hooks": 43,
+    "callSites": 45,
+    "documented": 38
   },
   "filter/settings": {
     "hooks": 25,

@@ -15,7 +15,7 @@ The comment must belong to the post named in the path. The post `comments_count`
 - **Path:** `/feeds/{feed_id}/comments/{comment_id}`
 - **Edition:** Core
 - **Controller:** `CommentsController@deleteComment`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:57`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:60`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 - The comment author can always delete; anyone else needs the `delete_any_comment` permission in the space.

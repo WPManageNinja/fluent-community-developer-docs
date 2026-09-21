@@ -15,7 +15,7 @@ Send `indexes` as a map of group id to zero-based position; each group serial is
 - **Path:** `/spaces/space_groups/re-index`
 - **Edition:** Core
 - **Controller:** `SpaceController@updateSpaceGroupIndexes`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:36`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:39`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin or course-admin access, or the admin role in the space named by `space_id`.

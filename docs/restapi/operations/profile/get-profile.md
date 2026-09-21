@@ -15,7 +15,7 @@ How much comes back depends on the `profile_page_visibility` privacy setting and
 - **Path:** `/profile/{username}`
 - **Edition:** Core
 - **Controller:** `ProfileController@getProfile`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:86`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:89`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Profiles that are not active are hidden from everyone except community moderators, with a 403.

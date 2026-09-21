@@ -11,7 +11,7 @@ aside: false
 - **Path:** `/admin/push-settings`
 - **Edition:** Core
 - **Controller:** `AdminController@savePushSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:108`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:111`
 - **Controller source:** `fluent-community/app/Http/Controllers/AdminController.php`
 
 ::: info Inferred sample

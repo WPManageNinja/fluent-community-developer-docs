@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPushSettings",
         "summary": "GET Get Push Settings",
-        "description": "Get Push Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getPushSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:107`",
+        "description": "Get Push Settings for the FluentCommunity Admin API.\n\nController: `AdminController@getPushSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:110`",
         "tags": [
           "Admin"
         ],

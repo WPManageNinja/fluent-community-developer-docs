@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listAllSpaces",
         "summary": "GET List All Spaces",
-        "description": "Returns the paginated list of spaces with each one formatted for display, including the current user permissions and membership within it.\n\nController: `SpaceController@getAllSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:31`",
+        "description": "Returns the paginated list of spaces with each one formatted for display, including the current user permissions and membership within it.\n\nController: `SpaceController@getAllSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:34`",
         "tags": [
           "Spaces"
         ],

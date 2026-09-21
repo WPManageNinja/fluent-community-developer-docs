@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeedTicker",
         "summary": "GET Get Feed Ticker",
-        "description": "Returns posts created or updated since a given moment, each with its full payload, plus the unread notification count — the polling endpoint that keeps an open feed fresh.\n\nController: `FeedsController@getTicker`\nRoute source: `fluent-community/app/Http/Routes/api.php:64`",
+        "description": "Returns posts created or updated since a given moment, each with its full payload, plus the unread notification count — the polling endpoint that keeps an open feed fresh.\n\nController: `FeedsController@getTicker`\nRoute source: `fluent-community/app/Http/Routes/api.php:67`",
         "tags": [
           "Feeds"
         ],

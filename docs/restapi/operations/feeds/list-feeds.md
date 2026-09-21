@@ -15,7 +15,7 @@ Pass `space` to scope to one space, `user_id` to scope to one author, `topic_slu
 - **Path:** `/feeds`
 - **Edition:** Core
 - **Controller:** `FeedsController@get`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:42`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:45`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Sticky posts are hoisted into the separate `sticky` key on page 1 of a space, and suppressed entirely when searching, filtering by topic, or when `disable_sticky=yes`.

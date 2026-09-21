@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFeedById",
         "summary": "GET Get Feed By ID",
-        "description": "Returns a single post by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint.\n\nController: `FeedsController@getFeedById`\nRoute source: `fluent-community/app/Http/Routes/api.php:50`",
+        "description": "Returns a single post by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint.\n\nController: `FeedsController@getFeedById`\nRoute source: `fluent-community/app/Http/Routes/api.php:53`",
         "tags": [
           "Feeds"
         ],

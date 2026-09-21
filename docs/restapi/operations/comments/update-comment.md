@@ -15,7 +15,7 @@ The comment must belong to the post named in the path. Media rows attached to th
 - **Path:** `/feeds/{feed_id}/comments/{comment_id}`
 - **Edition:** Core
 - **Controller:** `CommentsController@update`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:54`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:57`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 - The comment author can always edit; anyone else needs the `edit_any_comment` permission in the space.

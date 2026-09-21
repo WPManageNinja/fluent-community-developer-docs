@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateFeed",
         "summary": "POST Update Feed",
-        "description": "Replaces the body and metadata of an existing post, re-renders it, reconciles its media and topics, and records an edit history entry.\n\nController: `FeedsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:44`",
+        "description": "Replaces the body and metadata of an existing post, re-renders it, reconciles its media and topics, and records an edit history entry.\n\nController: `FeedsController@update`\nRoute source: `fluent-community/app/Http/Routes/api.php:47`",
         "tags": [
           "Feeds"
         ],

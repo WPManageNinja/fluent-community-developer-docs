@@ -15,7 +15,7 @@ Media URLs must resolve to an unclaimed uploaded media row, otherwise the call f
 - **Path:** `/profile/{username}`
 - **Edition:** Core
 - **Controller:** `ProfileController@patchProfile`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:88`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:91`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Requires the profile owner or a community moderator.

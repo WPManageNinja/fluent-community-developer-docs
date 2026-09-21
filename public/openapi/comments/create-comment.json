@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createComment",
         "summary": "POST Create Comment",
-        "description": "Posts a comment or a threaded reply on a feed item, renders its Markdown, links any attached media and bumps the post comment count.\n\nController: `CommentsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:53`",
+        "description": "Posts a comment or a threaded reply on a feed item, renders its Markdown, links any attached media and bumps the post comment count.\n\nController: `CommentsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:56`",
         "tags": [
           "Comments"
         ],

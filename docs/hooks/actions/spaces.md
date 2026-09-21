@@ -16,14 +16,14 @@ description: Spaces action hooks for FluentCommunity.
 | [`fluent_community/space_page/created`](#fluent-community-space-page-created) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:123` |
 | [`fluent_community/space_page/duplicated`](#fluent-community-space-page-duplicated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:313` |
 | [`fluent_community/space_page/updated`](#fluent-community-space-page-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Http/Controllers/SpacePageController.php:231` |
-| [`fluent_community/space/before_delete`](#fluent-community-space-before-delete) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:567` |
-| [`fluent_community/space/created`](#fluent-community-space-created) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:142` |
-| [`fluent_community/space/deleted`](#fluent-community-space-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:584` |
-| [`fluent_community/space/join_requested`](#fluent-community-space-join-requested) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:518` |
+| [`fluent_community/space/before_delete`](#fluent-community-space-before-delete) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:568` |
+| [`fluent_community/space/created`](#fluent-community-space-created) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:143` |
+| [`fluent_community/space/deleted`](#fluent-community-space-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:585` |
+| [`fluent_community/space/join_requested`](#fluent-community-space-join-requested) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:519` |
 | [`fluent_community/space/joined`](#fluent-community-space-joined) | Core <span class="edition-note">(also fired by Pro)</span> | 6 | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:245` |
-| [`fluent_community/space/member/role_updated`](#fluent-community-space-member-role-updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:637` |
-| [`fluent_community/space/update_meta_settings_{metaProvider}`](#fluent-community-space-update-meta-settings-metaProvider) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:372` |
-| [`fluent_community/space/updated`](#fluent-community-space-updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:366` |
+| [`fluent_community/space/member/role_updated`](#fluent-community-space-member-role-updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:638` |
+| [`fluent_community/space/update_meta_settings_{metaProvider}`](#fluent-community-space-update-meta-settings-metaProvider) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:373` |
+| [`fluent_community/space/updated`](#fluent-community-space-updated) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:367` |
 | [`fluent_community/space/user_left`](#fluent-community-space-user-left) | Core <span class="edition-note">(also fired by Pro)</span> | 4 | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` |
 
 <a id="fluent-community-space"></a>
@@ -48,8 +48,8 @@ Fired with `do_action_ref_array()`, so declare the parameter as `&$space` and mu
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:433` | `&$space` (Space) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:242` | `&$space` (Space) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:267` | `&$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:243` | `&$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:268` | `&$space` (Space) |
 
 ### Example
 
@@ -166,7 +166,7 @@ The last point at which the space, its posts, comments, reactions and membership
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:567` | `$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:568` | `$space` (Space) |
 
 ### Example
 
@@ -199,7 +199,7 @@ Only fires for spaces created through `SpaceController::create()`; spaces produc
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:142` | `$space` (Space)<br>`$data` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:143` | `$space` (Space)<br>`$data` (mixed) |
 
 ### Example
 
@@ -231,7 +231,7 @@ The model and all its content are gone, so capture anything you need from `fluen
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:584` | `$spaceId` (int) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:585` | `$spaceId` (int) |
 
 ### Example
 
@@ -265,7 +265,7 @@ The membership row already exists with `status = pending`, so the member is atta
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:518` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:519` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
 
 ### Example
 
@@ -301,9 +301,9 @@ Course-type spaces never reach this hook — `Helper::addToSpace()` routes them 
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:245` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:520` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:651` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:669` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:521` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:652` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:670` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | Core | `fluent-community/app/Services/Helper.php:1785` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 | Core | `fluent-community/app/Services/Helper.php:1809` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
 
@@ -338,8 +338,8 @@ Fires from the admin member-management endpoint only. When a pending member is a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:637` | `$space` (Space)<br>`$pivot` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:654` | `$space` (Space)<br>`$pivot` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:638` | `$space` (Space)<br>`$pivot` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:655` | `$space` (Space)<br>`$pivot` (mixed) |
 
 ### Example
 
@@ -372,7 +372,7 @@ The suffix is the provider slug used when the section was registered through `fl
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:372` | `$metaData` (mixed)<br>`$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:373` | `$metaData` (mixed)<br>`$space` (Space) |
 
 ### Example
 
@@ -405,8 +405,8 @@ Two call sites with different second arguments: `SpaceController::update()` pass
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:366` | `$space` (Space)<br>`$data` (mixed) |
-| Core | `fluent-community/app/Models/BaseSpace.php:370` | `$this` (mixed)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:367` | `$space` (Space)<br>`$data` (mixed) |
+| Core | `fluent-community/app/Models/BaseSpace.php:372` | `$this` (mixed)<br>`$dirty` (mixed) |
 
 ### Example
 
@@ -442,7 +442,7 @@ Covers self-leaves, admin removals and CRM-driven removals alike; the `$by` argu
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:365` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/RemoveFromSpaceAction.php:87` | `$space` (Space)<br>`$user->ID` (int)<br>`'automation'` (string) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:706` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:707` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | Core | `fluent-community/app/Services/Helper.php:1859` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 
 ### Example

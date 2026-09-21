@@ -15,7 +15,7 @@ All three of `current_password`, `new_password` and `confirm_password` are requi
 - **Path:** `/profile/{username}/change-password`
 - **Edition:** Core
 - **Controller:** `ProfileController@changePassword`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:89`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:92`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Only the account owner can call this; moderators and admins cannot change a password here.

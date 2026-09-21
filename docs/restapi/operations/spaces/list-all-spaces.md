@@ -15,7 +15,7 @@ Community moderators receive every space; everyone else sees public and private 
 - **Path:** `/spaces/all-spaces`
 - **Edition:** Core
 - **Controller:** `SpaceController@getAllSpaces`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:31`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:34`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 ::: tip Live sample

@@ -5561,6 +5561,23 @@ function extractScheduledActionHooks(content, file, source) {
   return hooks
 }
 
+/**
+ * `do_action($installHook)` names no hook at the call site, so the name is read from
+ * the string literals assigned to that variable earlier in the same function. Without
+ * this the plugin-installer hooks vanished from the docs, silently, the day the
+ * controller switched from one literal call per branch to a single variable call.
+ */
+function variableHookLiterals(content, callIndex, expression) {
+  const variable = expression.trim().match(/^\$([A-Za-z_][A-Za-z0-9_]*)$/)?.[1]
+  if (!variable) {
+    return []
+  }
+  const scope = content.slice(Math.max(0, content.lastIndexOf('function ', callIndex)), callIndex)
+  const assignment = new RegExp(`\\$${variable}\\s*=\\s*(['"])([^'"]+)\\1`, 'g')
+  const names = [...scope.matchAll(assignment)].map((m) => m[2]).filter(isFluentCommunityHook)
+  return [...new Set(names)]
+}
+
 function isFluentCommunityHook(hookName) {
   // The underscore form (fluent_community_send_daily_digest) is public surface too.
   return (
@@ -5602,8 +5619,11 @@ function extractHookCalls() {
 
       const inner = content.slice(callStart + 1, callEnd)
       const args = splitTopLevel(inner)
-      const hookName = expressionToHookName(args[0] || '')
-      if (!isFluentCommunityHook(hookName)) {
+      const hookNames = [expressionToHookName(args[0] || '')].filter(isFluentCommunityHook)
+      if (!hookNames.length) {
+        hookNames.push(...variableHookLiterals(content, match.index, args[0] || ''))
+      }
+      if (!hookNames.length) {
         continue
       }
 
@@ -5640,37 +5660,39 @@ function extractHookCalls() {
           index: index + 1,
         }))
 
-      hooks.push({
-        name: hookName,
-        kind,
-        deprecated,
-        deprecatedSince,
-        deprecatedReplacement,
-        sourceId: source.id,
-        file: displaySourcePath(file),
-        line: getLineNumber(content, match.index),
-        category: categorizeHook(hookName, file),
-        docblock: extractHookDocblock(content, match.index),
-        params,
-      })
-
-      // Also record the concrete names a runtime-assembled name resolves to, so
-      // each is individually findable rather than hidden behind one placeholder.
-      for (const resolved of HOOK_NAME_RESOLUTIONS[hookName] || []) {
+      for (const hookName of hookNames) {
         hooks.push({
-          name: resolved,
+          name: hookName,
           kind,
           deprecated,
           deprecatedSince,
           deprecatedReplacement,
-          resolvedFrom: hookName,
           sourceId: source.id,
           file: displaySourcePath(file),
           line: getLineNumber(content, match.index),
-          category: categorizeHook(resolved, file),
-          docblock: null,
+          category: categorizeHook(hookName, file),
+          docblock: extractHookDocblock(content, match.index),
           params,
         })
+
+        // Also record the concrete names a runtime-assembled name resolves to, so
+        // each is individually findable rather than hidden behind one placeholder.
+        for (const resolved of HOOK_NAME_RESOLUTIONS[hookName] || []) {
+          hooks.push({
+            name: resolved,
+            kind,
+            deprecated,
+            deprecatedSince,
+            deprecatedReplacement,
+            resolvedFrom: hookName,
+            sourceId: source.id,
+            file: displaySourcePath(file),
+            line: getLineNumber(content, match.index),
+            category: categorizeHook(resolved, file),
+            docblock: null,
+            params,
+          })
+        }
       }
     }
 

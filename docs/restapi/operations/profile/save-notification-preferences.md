@@ -15,7 +15,7 @@ Global toggles are sent as `yes` or `no` under `user_globals`. `message_email_fr
 - **Path:** `/profile/{username}/notification-preferences`
 - **Edition:** Core
 - **Controller:** `ProfileController@saveNotificationPreferance`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:96`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:99`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Requires the profile owner or a community moderator.

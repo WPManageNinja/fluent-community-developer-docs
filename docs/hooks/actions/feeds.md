@@ -20,8 +20,8 @@ description: Feeds action hooks for FluentCommunity.
 | [`fluent_community/feed/deleted`](#fluent-community-feed-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:885` |
 | [`fluent_community/feed/just_created_type_{formContentType}`](#fluent-community-feed-just-created-type-formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:407` |
 | [`fluent_community/feed/new_feed_{feed}`](#fluent-community-feed-new-feed-feed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:441` |
-| [`fluent_community/feed/react_added`](#fluent-community-feed-react-added) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:582` |
-| [`fluent_community/feed/react_removed`](#fluent-community-feed-react-removed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:552` |
+| [`fluent_community/feed/react_added`](#fluent-community-feed-react-added) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:588` |
+| [`fluent_community/feed/react_removed`](#fluent-community-feed-react-removed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:558` |
 | [`fluent_community/feed/rescheduled`](#fluent-community-feed-rescheduled) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:148` |
 | [`fluent_community/feed/scheduled`](#fluent-community-feed-scheduled) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:429` |
 | [`fluent_community/feed/scheduled_publish`](#fluent-community-feed-scheduled-publish) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:54` |
@@ -227,7 +227,7 @@ Fired from `FeedsHelper::createFeed()` and from `FeedsController::createFeed()`,
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:102` | `$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:270` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:273` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:93` | `$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:451` | `$feed` (Feed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:604` | `$feed` (Feed) |
@@ -360,7 +360,7 @@ Only likes reach it — bookmarks are stored through the same endpoint but skip 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:582` | `$react` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:588` | `$react` (mixed)<br>`$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/ReactionController.php:163` | `$react` (mixed)<br>`$feed` (Feed) |
 
 ### Example
@@ -393,7 +393,7 @@ Passes the post only — the reaction row is already deleted, so there is no way
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:552` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:558` | `$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/ReactionController.php:112` | `$feed` (Feed) |
 
 ### Example
@@ -736,7 +736,7 @@ Always fires immediately after `fluent_community/feed/created` and only when `$f
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:105` | `$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:272` | `$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:275` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:96` | `$feed` (Feed) |
 | Core | `fluent-community/app/Http/Controllers/FeedsController.php:454` | `$feed` (Feed) |
 | Core | `fluent-community/app/Services/FeedsHelper.php:607` | `$feed` (Feed) |

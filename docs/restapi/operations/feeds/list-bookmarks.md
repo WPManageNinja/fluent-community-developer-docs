@@ -15,7 +15,7 @@ Supports `topic_slug`, `search`, `order_by_type` and a `type` filter on the post
 - **Path:** `/feeds/bookmarks`
 - **Edition:** Core
 - **Controller:** `FeedsController@getBookmarks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:48`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:51`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Requires a signed-in user; bookmarks are per-user and never shared.

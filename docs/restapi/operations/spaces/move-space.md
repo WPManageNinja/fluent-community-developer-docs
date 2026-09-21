@@ -15,7 +15,7 @@ Send `space_id` and `group_id`; both must resolve. The space keeps its existing 
 - **Path:** `/spaces/space_groups/move-space`
 - **Edition:** Core
 - **Controller:** `SpaceController@moveSpace`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:38`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:41`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin access, or the admin role in the space named by `space_id`.

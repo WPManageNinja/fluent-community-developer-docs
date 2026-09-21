@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createFeed",
         "summary": "POST Create Feed",
-        "description": "Creates a post, renders its Markdown, attaches media and topics, and returns the transformed post ready to prepend to the feed.\n\nController: `FeedsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:43`",
+        "description": "Creates a post, renders its Markdown, attaches media and topics, and returns the transformed post ready to prepend to the feed.\n\nController: `FeedsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:46`",
         "tags": [
           "Feeds"
         ],

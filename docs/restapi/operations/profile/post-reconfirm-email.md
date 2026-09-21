@@ -11,7 +11,7 @@ aside: false
 - **Path:** `/profile/{username}/reconfirm-email`
 - **Edition:** Core
 - **Controller:** `ProfileController@reconfirmEmail`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:97`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:100`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 ::: info Inferred sample

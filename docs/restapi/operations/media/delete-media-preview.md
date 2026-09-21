@@ -13,7 +13,7 @@ Clears the link preview image stored on a post, leaving the rest of the post unt
 - **Path:** `/feeds/{feed_id}/media-preview`
 - **Edition:** Core
 - **Controller:** `FeedsController@deleteMediaPreview`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:62`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:65`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 - Requires the same permission as deleting the post: the author, or the `delete_any_feed` permission globally or in the space.
