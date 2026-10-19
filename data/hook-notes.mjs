@@ -3558,21 +3558,6 @@ export const HOOK_NOTES = {
     ],
     "returns": "`string` — CSS text. An empty or falsy value omits the `<style>` block entirely."
   },
-  "fluent_community/features/analytics": {
-    "summary": "Filters whether the community analytics feature is available.",
-    "details": "The default is `['status' => 'no']` and Pro flips `status` to `yes`, so analytics is effectively a Pro feature that free installs can unlock by returning `yes`. Only the `status` key is read, and it is compared with a strict `=== 'yes'` — a boolean `true` leaves the feature switched off. The result surfaces to the front end as `features.has_analytics`.",
-    "params": [
-      {
-        "name": "settings",
-        "type": "array",
-        "desc": "Analytics configuration; only `status` is consumed."
-      }
-    ],
-    "returns": "`array` — must be an array with a `status` key; the comparison is strictly against the string `yes`.",
-    "related": [
-      "fluent_community/features_api_response"
-    ]
-  },
   "fluent_community/features_api_response": {
     "summary": "Filters the feature-flag screen payload.",
     "details": "The Giphy API key is replaced with the placeholder `FCOM_ENCRYPTED_DATA_KEY` before the filter runs, so the real key never reaches the client — do not put it back. `addOns` describes the modules that can be switched on, several of which need Pro. Turning a flag off here only changes the form; the modules themselves read `Utility::getFeaturesConfig()` at bootstrap.",
@@ -3588,10 +3573,7 @@ export const HOOK_NOTES = {
         "desc": "The full request payload."
       }
     ],
-    "returns": "`array` — the response body.",
-    "related": [
-      "fluent_community/features/analytics"
-    ]
+    "returns": "`array` — the response body."
   },
   "fluent_community/feed/before_deleted": {
     "summary": "Runs immediately before a post row is deleted, while its relations are still readable.",
@@ -8622,5 +8604,169 @@ export const HOOK_NOTES = {
     ],
     "returns": "Boolean — false to skip registering the sitemap provider.",
     "page": "rendering"
+  },
+  "fluent_community/insights/level": {
+    "summary": "Filters how much of Insights an install gets: `basic` (free) or `full` (Pro).",
+    "details": "Core returns `basic`, which registers the Overview page and, when the course module is on, Courses. Pro returns `full`, which unlocks Engagement, Members, Spaces, Content and Moderation. Anything other than the exact string `full` is treated as `basic`, so a boolean or a typo silently downgrades the install. At `basic` the Pro pages are still listed, filled with locked card stubs so the UI can show what an upgrade adds.",
+    "params": [
+      {
+        "name": "level",
+        "type": "string",
+        "desc": "`basic` or `full`. Defaults to `basic`."
+      }
+    ],
+    "returns": "`string` \u2014 compared strictly against `full`; every other value means `basic`.",
+    "related": [
+      "fluent_community/insights/pages",
+      "fluent_community/insights/cards"
+    ]
+  },
+  "fluent_community/insights/pages": {
+    "summary": "Filters the Insights pages, before their cards are resolved.",
+    "details": "Keyed by page slug, each entry carrying `title`, `tier` (`free` or `pro`), `order` and an optional `available` flag \u2014 Courses and Moderation set `available` from their feature toggles, so a disabled feature drops its page without removing the registration. A key that is not `^[a-z0-9_-]+$`, or an entry with no title, is discarded. Add a page here and register its cards on `fluent_community/insights/cards` with a matching page key, otherwise the page renders empty.",
+    "params": [
+      {
+        "name": "pages",
+        "type": "array",
+        "desc": "Page slug => `[title, tier, order, available]`."
+      }
+    ],
+    "returns": "`array` \u2014 the page map; invalid keys and untitled entries are dropped.",
+    "related": [
+      "fluent_community/insights/cards",
+      "fluent_community/insights/level"
+    ]
+  },
+  "fluent_community/insights/cards": {
+    "summary": "Registers or removes Insights cards \u2014 the extension point Pro itself uses.",
+    "details": "Receives the core cards (Overview, plus the Course module's own) and, on a `basic` install, the locked stubs standing in for the Pro cards. Each entry is a `Card` object, not an array: it declares its own key, page, what it supports (compare, export, a space or course scope, sorting) and how to build its payload. Cards are then indexed by key, so returning a card whose key already exists replaces it. A card assigned to a page that does not exist is not rendered anywhere.",
+    "params": [
+      {
+        "name": "cards",
+        "type": "\\FluentCommunity\\App\\Services\\Insights\\Contracts\\Card[]",
+        "desc": "The registered card objects."
+      }
+    ],
+    "returns": "`Card[]` \u2014 the cards to register; later keys win over earlier ones.",
+    "related": [
+      "fluent_community/insights/pages",
+      "fluent_community/insights/card_payload"
+    ]
+  },
+  "fluent_community/insights/card_payload": {
+    "summary": "Last-mile filter on a single card's response, after it has been computed and cached.",
+    "details": "Runs on every card payload, including one served from cache \u2014 `meta.cached` is already set by the time it fires, so it can tell a fresh computation from a replay. It receives the card object, the resolved `Range` and the `Scope` alongside the payload, which is enough to recompute or annotate a value without re-querying from scratch. Changes made here are not cached: they are reapplied on each request.",
+    "params": [
+      {
+        "name": "payload",
+        "type": "array",
+        "desc": "The card's response, including its `meta` block."
+      },
+      {
+        "name": "card",
+        "type": "\\FluentCommunity\\App\\Services\\Insights\\Contracts\\Card",
+        "desc": "The card that produced it."
+      },
+      {
+        "name": "range",
+        "type": "\\FluentCommunity\\App\\Services\\Insights\\Range",
+        "desc": "The resolved date range."
+      },
+      {
+        "name": "scope",
+        "type": "\\FluentCommunity\\App\\Services\\Insights\\Scope",
+        "desc": "The resolved space/course scope."
+      }
+    ],
+    "returns": "`array` \u2014 the payload sent to the client.",
+    "related": [
+      "fluent_community/insights/cards"
+    ]
+  },
+  "fluent_community/insights/attention_items": {
+    "summary": "Filters the rows of the Overview page's \"Needs attention\" card.",
+    "details": "Core contributes the queues it owns (such as members awaiting approval) and Pro appends open moderation reports. Each row carries `key`, `label`, `action`, `severity` (`crit`, `warn` or `info`), `hint`, `count`, `link` and a `preview` array. The result is re-indexed with `array_values()`, so string keys are only useful for replacing or unsetting an existing row inside the filter.",
+    "params": [
+      {
+        "name": "items",
+        "type": "array",
+        "desc": "Rows, each `[key, label, action, severity, hint, count, link, preview[]]`."
+      },
+      {
+        "name": "scope",
+        "type": "\\FluentCommunity\\App\\Services\\Insights\\Scope",
+        "desc": "The resolved space/course scope; row links should respect it."
+      }
+    ],
+    "returns": "`array` \u2014 the rows to show; keys are discarded.",
+    "related": [
+      "fluent_community/insights/cards"
+    ]
+  },
+  "fluent_community/insights/track_visit": {
+    "summary": "Return false to stop a member's visit being recorded.",
+    "details": "Guards the only Insights metric that cannot be backfilled: visits are not stored anywhere else in FluentCommunity, so a visit suppressed here is invisible to every past-range report forever after. Intended for privacy-strict sites or for excluding staff accounts. It gates the write only \u2014 it does not hide already-recorded visits, which `fluent_community/insights/excluded_user_ids` does.",
+    "params": [
+      {
+        "name": "track",
+        "type": "bool",
+        "desc": "Whether to record the visit. Defaults to true."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member whose visit is being recorded."
+      }
+    ],
+    "returns": "`bool` \u2014 false skips the increment.",
+    "related": [
+      "fluent_community/insights/retention_days",
+      "fluent_community/insights/excluded_user_ids"
+    ]
+  },
+  "fluent_community/insights/retention_days": {
+    "summary": "Filters how long daily activity rows are kept before being pruned.",
+    "details": "Defaults to 761 days (about 25 months) so a year-over-year comparison of the last 12 months still has both sides of the data. The value is cast to int; anything below 1 disables pruning entirely and keeps every row. Lowering it deletes history that cannot be rebuilt, since the daily table is the only record of visits.",
+    "params": [
+      {
+        "name": "days",
+        "type": "int",
+        "desc": "Days of history to keep. Defaults to 761."
+      }
+    ],
+    "returns": "`int` \u2014 days to keep; a value below 1 means keep everything.",
+    "related": [
+      "fluent_community/insights/track_visit"
+    ]
+  },
+  "fluent_community/insights/excluded_user_ids": {
+    "summary": "Filters the members left out of every Insights metric.",
+    "details": "Seeded from the leaderboard's exclusion list (`fcom_leaderboard_excluded_user_ids`), so an install that already hides staff from the leaderboard hides them from reporting too. The IDs are normalised to integers. Unlike `fluent_community/insights/track_visit`, this is applied at read time and across all metrics, so changing it reshapes past ranges as well.",
+    "params": [
+      {
+        "name": "userIds",
+        "type": "int[]",
+        "desc": "Member IDs to exclude. Defaults to the leaderboard exclusion option."
+      }
+    ],
+    "returns": "`int[]` \u2014 the IDs to exclude; values are cast to integers.",
+    "related": [
+      "fluent_community/insights/track_visit"
+    ]
+  },
+  "fluent_community/insights/contributor_weights": {
+    "summary": "Filters the per-action weights behind the top-contributors score.",
+    "details": "Defaults to posts 3, comments 2, reactions 1 \u2014 a post counts for three reactions. The returned array is merged over those defaults and every value is cast to float, so a partial array only changes the keys it names and an unknown key is ignored. Weights decide the ranking only; the underlying counts are unaffected.",
+    "params": [
+      {
+        "name": "weights",
+        "type": "array",
+        "desc": "`posts`, `comments` and `reactions` weights. Defaults to 3, 2 and 1."
+      }
+    ],
+    "returns": "`array` \u2014 merged over the defaults and cast to float.",
+    "related": [
+      "fluent_community/insights/cards"
+    ]
   },
 }
