@@ -11,6 +11,10 @@ import {
   writeFileSync,
 } from 'fs'
 import { dirname, join, relative } from 'path'
+// One rule, one place: the card filenames the generator writes and the og:image
+// URLs here have to agree, and a mismatch silently serves default.png.
+// @ts-expect-error -- plain JS helper, shared with scripts/generate-featured-images.mjs
+import { cardNameFor } from '../scripts/lib/featured-card.mjs'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -23,6 +27,17 @@ const MODULE_ORDER: Record<string, string[]> = existsSync(moduleOrderPath)
   ? JSON.parse(readFileSync(moduleOrderPath, 'utf8'))
   : {}
 
+// Model pages and their grouping come from the generator, for the same reason the
+// hook pages do: a hand-written list here meant a newly generated model page was
+// reachable only if someone remembered to add it (NotificationPreference was not).
+const modelGroupPath = join(generatedDir, 'database-model-order.json')
+
+const MODEL_GROUPS: { text: string; items: { text: string; link: string }[] }[] = existsSync(
+  modelGroupPath,
+)
+  ? JSON.parse(readFileSync(modelGroupPath, 'utf8'))
+  : []
+
 const databaseSidebar = [
   {
     text: 'Overview',
@@ -33,53 +48,7 @@ const databaseSidebar = [
       { text: 'Relationships', link: '/database/models/relationships' },
     ],
   },
-  {
-    text: 'Content Models',
-    items: [
-      { text: 'Feed', link: '/database/models/feed' },
-      { text: 'Comment', link: '/database/models/comment' },
-      { text: 'Activity', link: '/database/models/activity' },
-      { text: 'Media', link: '/database/models/media' },
-      { text: 'Reaction', link: '/database/models/reaction' },
-      { text: 'Moderation', link: '/database/models/moderation' },
-    ],
-  },
-  {
-    text: 'Community Models',
-    items: [
-      { text: 'Space', link: '/database/models/space' },
-      { text: 'BaseSpace', link: '/database/models/base-space' },
-      { text: 'SpaceGroup', link: '/database/models/space-group' },
-      { text: 'SpaceUserPivot', link: '/database/models/space-user-pivot' },
-      { text: 'SidebarLink', link: '/database/models/sidebar-link' },
-      { text: 'Course', link: '/database/models/course' },
-      { text: 'CourseTopic', link: '/database/models/course-topic' },
-      { text: 'CourseLesson', link: '/database/models/course-lesson' },
-      { text: 'Term', link: '/database/models/term' },
-    ],
-  },
-  {
-    text: 'People and Messaging',
-    items: [
-      { text: 'User', link: '/database/models/user' },
-      { text: 'XProfile', link: '/database/models/x-profile' },
-      { text: 'UserMeta', link: '/database/models/user-meta' },
-      { text: 'Contact', link: '/database/models/contact' },
-      { text: 'Follow', link: '/database/models/follow' },
-      { text: 'Notification', link: '/database/models/notification' },
-      { text: 'NotificationPreference', link: '/database/models/notification-preference' },
-      { text: 'NotificationSubscriber', link: '/database/models/notification-subscriber' },
-      { text: 'NotificationSubscription', link: '/database/models/notification-subscription' },
-    ],
-  },
-  {
-    text: 'Framework Models',
-    items: [
-      { text: 'Meta', link: '/database/models/meta' },
-      { text: 'Model', link: '/database/models/model' },
-      { text: 'DynamicModel', link: '/database/models/dynamic-model' },
-    ],
-  },
+  ...MODEL_GROUPS,
 ]
 
 // Which hook pages exist, and in what order, is decided by the generator — it only
@@ -315,7 +284,7 @@ const SITE_URL = 'https://dev.fluentcommunity.co'
 const FEATURED_DIR = join(projectRoot, 'public', 'images', 'featured')
 
 function featuredImageFor(relativePath: string): string {
-  const name = `${relativePath.replace(/\.md$/, '').replace(/\//g, '--')}.png`
+  const name = cardNameFor(relativePath)
   const file = existsSync(join(FEATURED_DIR, name)) ? name : 'default.png'
   return `${SITE_URL}/images/featured/${encodeURIComponent(file)}`
 }

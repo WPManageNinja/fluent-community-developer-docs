@@ -29,6 +29,7 @@ import { readdirSync, statSync, readFileSync, existsSync, mkdirSync } from 'node
 import { join, relative, dirname, basename, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
+import { cardNameFor } from './lib/featured-card.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = join(__dirname, '..')
@@ -192,9 +193,7 @@ function escapeXml(text) {
   return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-function cardNameFor(servedPath) {
-  return `${servedPath.replace(/\.md$/, '').replace(/\//g, '--')}.png`
-}
+
 
 // -------------------------------------------------------------------------
 // Title layout

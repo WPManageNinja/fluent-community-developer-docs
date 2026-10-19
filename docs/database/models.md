@@ -21,8 +21,8 @@ The FluentCommunity ORM layer is built on WPFluent and Eloquent-style models. Th
 | [`Follow`](/database/models/follow) | `fcom_followers` | A follower relationship in `fcom_followers` (Pro), scoped to active rows. |
 | [`Media`](/database/models/media) | `fcom_media_archive` | Stores uploaded media metadata and delivery information for feeds, comments, and spaces. |
 | [`Meta`](/database/models/meta) | `fcom_meta` | Backs the shared meta table used across spaces, terms, users, and other object types. |
-| [`Moderation`](/database/models/moderation) | `fcom_post_comments` | A member report in `fcom_post_comments` (Pro), scoped to `type = report` and selected down to the reporting columns. |
 | [`Model`](/database/models/model) | Inherited / runtime-defined | Defines the shared base ORM behavior inherited by FluentCommunity models built on WPFluent. |
+| [`Moderation`](/database/models/moderation) | `fcom_post_comments` | A member report in `fcom_post_comments` (Pro), scoped to `type = report` and selected down to the reporting columns. |
 | [`Notification`](/database/models/notification) | `fcom_notifications` | Stores notification payloads before they are fanned out to per-user delivery rows. |
 | [`NotificationPreference`](/database/models/notification-preference) | `fcom_notification_prefs` | Holds a member's explicit notification overrides in `fcom_notification_prefs`, one row per event and channel. A missing row means the site default applies. |
 | [`NotificationSubscriber`](/database/models/notification-subscriber) | `fcom_notification_users` | Represents rows in `fcom_notification_users` where `object_type = notification`. |
