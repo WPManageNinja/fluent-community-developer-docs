@@ -1,5 +1,5 @@
 ---
-title: Get Feed Links
+title: "Get Feed Links"
 description: "Returns the configurable link list shown alongside the main feed."
 outline: false
 aside: false

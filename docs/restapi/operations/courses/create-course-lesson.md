@@ -1,5 +1,5 @@
 ---
-title: Create Course Lesson
+title: "Create Course Lesson"
 description: "Creates an empty draft lesson at the end of a section."
 outline: false
 aside: false

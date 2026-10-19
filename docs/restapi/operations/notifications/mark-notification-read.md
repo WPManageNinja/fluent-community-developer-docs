@@ -1,5 +1,5 @@
 ---
-title: Mark Notification Read
+title: "Mark Notification Read"
 description: "Marks one notification read for the current user and returns the recalculated unread count."
 outline: false
 aside: false

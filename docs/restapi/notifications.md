@@ -1,6 +1,6 @@
 ---
-title: Notifications API
-description: Read, unread, mark-as-read, and mark-all-read notification workflows.
+title: "Notifications API"
+description: "Read, unread, mark-as-read, and mark-all-read notification workflows."
 ---
 
 # Notifications API

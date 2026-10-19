@@ -1,5 +1,5 @@
 ---
-title: List Survey Voters
+title: "List Survey Voters"
 description: "Returns the members who voted for one survey option, with their public profiles."
 outline: false
 aside: false

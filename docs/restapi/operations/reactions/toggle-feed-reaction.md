@@ -1,5 +1,5 @@
 ---
-title: Toggle Feed Reaction
+title: "Toggle Feed Reaction"
 description: "Adds or removes the current user reaction on a post and returns the updated count — a second route onto the same behaviour as the reactions toggle endpoint."
 outline: false
 aside: false

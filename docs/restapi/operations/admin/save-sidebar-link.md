@@ -1,5 +1,5 @@
 ---
-title: Save Sidebar Link
+title: "Save Sidebar Link"
 description: "Creates or updates a custom sidebar link inside a space group, including its icon, target and visibility rule."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Topics
+title: "List Topics"
 description: "Returns the post topics defined for the community, along with every space they can be attached to."
 outline: false
 aside: false

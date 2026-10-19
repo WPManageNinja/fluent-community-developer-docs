@@ -1,5 +1,5 @@
 ---
-title: Update Feed Links
+title: "Update Feed Links"
 description: "Replaces the feed sidebar link list with the submitted set."
 outline: false
 aside: false

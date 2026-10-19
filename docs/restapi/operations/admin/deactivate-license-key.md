@@ -1,5 +1,5 @@
 ---
-title: Deactivate License Key
+title: "Deactivate License Key"
 description: "Releases the Pro licence activation for this site so the key can be used elsewhere."
 outline: false
 aside: false

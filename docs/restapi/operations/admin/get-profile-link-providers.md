@@ -1,5 +1,5 @@
 ---
-title: Get Profile Link Providers
+title: "Get Profile Link Providers"
 description: "Returns the catalogue of social link providers members can add to their profile, including the ones currently disabled."
 outline: false
 aside: false

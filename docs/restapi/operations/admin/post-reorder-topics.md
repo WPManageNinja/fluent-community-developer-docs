@@ -1,5 +1,5 @@
 ---
-title: Post Reorder Topics
+title: "Post Reorder Topics"
 description: "Post Reorder Topics for the FluentCommunity Admin API."
 outline: false
 aside: false

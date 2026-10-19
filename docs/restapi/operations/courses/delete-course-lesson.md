@@ -1,5 +1,5 @@
 ---
-title: Delete Course Lesson
+title: "Delete Course Lesson"
 description: "Deletes a single lesson from a course."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Put Update
+title: "Put Update"
 description: "Put Update for the FluentCommunity Spaces API."
 outline: false
 aside: false

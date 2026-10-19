@@ -1,5 +1,5 @@
 ---
-title: Copy Course Section
+title: "Copy Course Section"
 description: "Copies a section, its lessons and their attached documents from one course into another, appended to the end of the destination outline."
 outline: false
 aside: false

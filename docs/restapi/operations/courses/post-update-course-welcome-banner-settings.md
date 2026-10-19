@@ -1,5 +1,5 @@
 ---
-title: Post Update Course Welcome Banner Settings
+title: "Post Update Course Welcome Banner Settings"
 description: "Stores both course welcome banner variants and pre-renders their Markdown descriptions to HTML."
 outline: false
 aside: false

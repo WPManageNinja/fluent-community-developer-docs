@@ -1,5 +1,5 @@
 ---
-title: Get Pages
+title: "Get Pages"
 description: "Lists the Insights pages the current admin can open, plus the state the admin UI needs before it renders any of them."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Admin Courses
+title: "List Admin Courses"
 description: "Returns the paginated list of courses the current user may manage, each with its student count and its section and lesson totals."
 outline: false
 aside: false

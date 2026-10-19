@@ -1,5 +1,5 @@
 ---
-title: Upload Document
+title: "Upload Document"
 description: "Uploads a document file into a space document library, or — when `lesson_id` is given — attaches it directly to a course lesson."
 outline: false
 aside: false

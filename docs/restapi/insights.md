@@ -1,6 +1,6 @@
 ---
-title: Insights API
-description: Reporting — the pages an admin can open, each page's cards, a single card's data for a date range and scope, and CSV export. Replaced the old Pro analytics endpoints.
+title: "Insights API"
+description: "Reporting — the pages an admin can open, each page's cards, a single card's data for a date range and scope, and CSV export. Replaced the old Pro analytics endpoints."
 ---
 
 # Insights API

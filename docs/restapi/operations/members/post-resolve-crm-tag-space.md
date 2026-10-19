@@ -1,5 +1,5 @@
 ---
-title: Post Resolve CRM Tag Space
+title: "Post Resolve CRM Tag Space"
 description: "Resolves a FluentCRM tag into a page of contacts to add to the space, optionally creating WordPress users for contacts that do not have one."
 outline: false
 aside: false

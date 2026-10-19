@@ -1,5 +1,5 @@
 ---
-title: Get Feature Settings
+title: "Get Feature Settings"
 description: "Returns the feature flag configuration together with the add-on catalogue and whether each companion plugin is installed."
 outline: false
 aside: false

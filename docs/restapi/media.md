@@ -1,6 +1,6 @@
 ---
-title: Media API
-description: Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints.
+title: "Media API"
+description: "Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints."
 ---
 
 # Media API

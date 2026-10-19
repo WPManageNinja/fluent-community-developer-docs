@@ -1,5 +1,5 @@
 ---
-title: Save Onboarding Settings
+title: "Save Onboarding Settings"
 description: "Applies the setup wizard answers — site title, logo, portal slug and starter content — and kicks off the optional plugin installs."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Space Model
-description: ORM reference for FluentCommunity\App\Models\Space.
+title: "Space Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Space."
 ---
 
 # Space Model

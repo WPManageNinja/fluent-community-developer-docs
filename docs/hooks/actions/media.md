@@ -1,6 +1,6 @@
 ---
-title: Media Actions
-description: Media action hooks for FluentCommunity.
+title: "Media Actions"
+description: "Media action hooks for FluentCommunity."
 ---
 
 # Media Actions

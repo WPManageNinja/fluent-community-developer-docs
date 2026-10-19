@@ -1,5 +1,5 @@
 ---
-title: Patch Feed
+title: "Patch Feed"
 description: "Applies a small state change to a post — pinning it, changing its priority, or turning comments off."
 outline: false
 aside: false

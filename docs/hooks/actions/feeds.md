@@ -1,6 +1,6 @@
 ---
-title: Feeds Actions
-description: Feeds action hooks for FluentCommunity.
+title: "Feeds Actions"
+description: "Feeds action hooks for FluentCommunity."
 ---
 
 # Feeds Actions

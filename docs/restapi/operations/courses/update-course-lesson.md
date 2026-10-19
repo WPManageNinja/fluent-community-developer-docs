@@ -1,5 +1,5 @@
 ---
-title: Update Course Lesson
+title: "Update Course Lesson"
 description: "Saves the full lesson record — title, status, body and metadata — and reconciles the featured image media."
 outline: false
 aside: false

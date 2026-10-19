@@ -1,5 +1,5 @@
 ---
-title: Delete Webhook
+title: "Delete Webhook"
 description: "Deletes an inbound webhook so its URL stops accepting calls."
 outline: false
 aside: false

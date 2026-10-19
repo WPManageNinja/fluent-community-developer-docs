@@ -1,5 +1,5 @@
 ---
-title: Patch Profile
+title: "Patch Profile"
 description: "Applies a targeted profile change — swapping the avatar or cover photo, or deactivating the account."
 outline: false
 aside: false

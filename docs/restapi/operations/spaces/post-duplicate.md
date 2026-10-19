@@ -1,5 +1,5 @@
 ---
-title: Post Duplicate
+title: "Post Duplicate"
 description: "Post Duplicate for the FluentCommunity Spaces API."
 outline: false
 aside: false

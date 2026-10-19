@@ -1,5 +1,5 @@
 ---
-title: Get Leaderboard Levels
+title: "Get Leaderboard Levels"
 description: "Returns the leaderboard level definitions with their point thresholds, plus the members excluded from ranking."
 outline: false
 aside: false

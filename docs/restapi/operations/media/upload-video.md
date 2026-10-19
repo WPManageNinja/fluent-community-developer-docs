@@ -1,5 +1,5 @@
 ---
-title: Upload Video
+title: "Upload Video"
 description: "Uploads a video or audio file for FluentPlayer playback and returns the media record with the settings the player needs."
 outline: false
 aside: false

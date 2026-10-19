@@ -1,5 +1,5 @@
 ---
-title: Get Menu Settings
+title: "Get Menu Settings"
 description: "Returns the portal navigation configuration — the main menu, the profile dropdown, the pre-community items and the custom footer link groups."
 outline: false
 aside: false

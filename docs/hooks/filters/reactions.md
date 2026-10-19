@@ -1,6 +1,6 @@
 ---
-title: Reactions Filters
-description: Reactions filter hooks for FluentCommunity.
+title: "Reactions Filters"
+description: "Reactions filter hooks for FluentCommunity."
 ---
 
 # Reactions Filters

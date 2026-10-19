@@ -1,5 +1,5 @@
 ---
-title: List Available Migrations
+title: "List Available Migrations"
 description: "Returns the migration sources detected on this site — BuddyBoss or BuddyPress — as an empty list when neither is installed."
 outline: false
 aside: false

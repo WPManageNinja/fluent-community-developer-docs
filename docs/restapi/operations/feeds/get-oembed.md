@@ -1,5 +1,5 @@
 ---
-title: Get OEmbed
+title: "Get OEmbed"
 description: "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Scheduled Posts
+title: "List Scheduled Posts"
 description: "Returns the paginated list of posts one member has scheduled but not yet published, soonest first."
 outline: false
 aside: false

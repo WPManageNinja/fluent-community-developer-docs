@@ -1,5 +1,5 @@
 ---
-title: List Documents
+title: "List Documents"
 description: "Returns the paginated document posts of one space, newest first, each with its author and topics attached."
 outline: false
 aside: false

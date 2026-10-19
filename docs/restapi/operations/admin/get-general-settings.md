@@ -1,5 +1,5 @@
 ---
-title: Get General Settings
+title: "Get General Settings"
 description: "Returns the portal-wide settings record together with the list of WordPress roles that can be granted portal access and whether open registration is enabled on the site."
 outline: false
 aside: false

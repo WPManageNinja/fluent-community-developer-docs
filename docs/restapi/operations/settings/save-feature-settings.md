@@ -1,5 +1,5 @@
 ---
-title: Save Feature Settings
+title: "Save Feature Settings"
 description: "Saves the feature flag configuration, merging the submitted flags over the stored ones."
 outline: false
 aside: false

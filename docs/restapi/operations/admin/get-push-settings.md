@@ -1,5 +1,5 @@
 ---
-title: Get Push Settings
+title: "Get Push Settings"
 description: "Get Push Settings for the FluentCommunity Admin API."
 outline: false
 aside: false

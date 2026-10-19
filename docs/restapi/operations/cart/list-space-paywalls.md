@@ -1,5 +1,5 @@
 ---
-title: List Space Paywalls
+title: "List Space Paywalls"
 description: "Returns the published FluentCart products attached to a space as paywalls, each variant carrying its price, thumbnail and a ready-made instant-checkout URL."
 outline: false
 aside: false

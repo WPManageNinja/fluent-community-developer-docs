@@ -1,5 +1,5 @@
 ---
-title: Save License Key
+title: "Save License Key"
 description: "Activates a Pro licence key against the remote licensing service and stores the returned licence data."
 outline: false
 aside: false

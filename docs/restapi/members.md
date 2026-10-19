@@ -1,6 +1,6 @@
 ---
-title: Members API
-description: Global member listing plus space-scoped membership management endpoints.
+title: "Members API"
+description: "Global member listing plus space-scoped membership management endpoints."
 ---
 
 # Members API

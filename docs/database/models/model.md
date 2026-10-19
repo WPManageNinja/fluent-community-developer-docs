@@ -1,6 +1,6 @@
 ---
-title: Model Model
-description: ORM reference for FluentCommunity\App\Models\Model.
+title: "Model Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Model."
 ---
 
 # Model Model

@@ -1,5 +1,5 @@
 ---
-title: Get Index
+title: "Get Index"
 description: "Returns a cursor-paginated page of the photos, videos or audio shared in one space, each item carrying the post and author it came from."
 outline: false
 aside: false

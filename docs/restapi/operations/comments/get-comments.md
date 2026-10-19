@@ -1,5 +1,5 @@
 ---
-title: Get Comments
+title: "Get Comments"
 description: "Returns a paginated list of the comments one member has written, each with the full parent post eager-loaded so the post can open without a second request."
 outline: false
 aside: false

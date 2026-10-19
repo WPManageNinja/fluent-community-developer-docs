@@ -1,6 +1,6 @@
 ---
-title: Spaces Actions
-description: Spaces action hooks for FluentCommunity.
+title: "Spaces Actions"
+description: "Spaces action hooks for FluentCommunity."
 ---
 
 # Spaces Actions

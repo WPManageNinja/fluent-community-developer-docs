@@ -1,6 +1,6 @@
 ---
-title: Settings Filters
-description: Settings filter hooks for FluentCommunity.
+title: "Settings Filters"
+description: "Settings filter hooks for FluentCommunity."
 ---
 
 # Settings Filters

@@ -1,5 +1,5 @@
 ---
-title: Add Space Member
+title: "Add Space Member"
 description: "Adds an existing WordPress user to a space, approves their pending join request, or changes the role they already hold."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Moderation Reports
+title: "List Moderation Reports"
 description: "Returns the paginated moderation queue, newest first, with the reported post or comment, its author and the reporting member attached."
 outline: false
 aside: false

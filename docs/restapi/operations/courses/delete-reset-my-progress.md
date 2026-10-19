@@ -1,5 +1,5 @@
 ---
-title: Delete Reset My Progress
+title: "Delete Reset My Progress"
 description: "Clears the current user own completion records for a course and returns an empty progress track, leaving the enrolment in place."
 outline: false
 aside: false

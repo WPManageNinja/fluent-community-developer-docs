@@ -1,5 +1,5 @@
 ---
-title: Post Reconfirm Email
+title: "Post Reconfirm Email"
 description: "Post Reconfirm Email for the FluentCommunity Profile API."
 outline: false
 aside: false

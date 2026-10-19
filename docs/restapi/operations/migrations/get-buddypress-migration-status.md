@@ -1,5 +1,5 @@
 ---
-title: Get Buddypress Migration Status
+title: "Get Buddypress Migration Status"
 description: "Advances the migration by one time-boxed batch and returns the updated progress record — this endpoint does the work, it does not merely report on it."
 outline: false
 aside: false

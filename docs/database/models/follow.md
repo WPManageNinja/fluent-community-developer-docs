@@ -1,6 +1,6 @@
 ---
-title: Follow Model
-description: ORM reference for FluentCommunity\App\Models\Follow.
+title: "Follow Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Follow."
 ---
 
 # Follow Model

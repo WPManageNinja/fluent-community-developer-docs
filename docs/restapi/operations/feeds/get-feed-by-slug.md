@@ -1,5 +1,5 @@
 ---
-title: Get Feed By Slug
+title: "Get Feed By Slug"
 description: "Returns a single post by slug, fully transformed, along with its reactions summary and author profile."
 outline: false
 aside: false

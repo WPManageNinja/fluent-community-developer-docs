@@ -1,6 +1,6 @@
 ---
-title: Settings Actions
-description: Settings action hooks for FluentCommunity.
+title: "Settings Actions"
+description: "Settings action hooks for FluentCommunity."
 ---
 
 # Settings Actions

@@ -1,5 +1,5 @@
 ---
-title: Delete Course Section
+title: "Delete Course Section"
 description: "Deletes a section and every lesson inside it."
 outline: false
 aside: false

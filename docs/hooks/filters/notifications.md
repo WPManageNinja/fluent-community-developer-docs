@@ -1,6 +1,6 @@
 ---
-title: Notifications Filters
-description: Notifications filter hooks for FluentCommunity.
+title: "Notifications Filters"
+description: "Notifications filter hooks for FluentCommunity."
 ---
 
 # Notifications Filters

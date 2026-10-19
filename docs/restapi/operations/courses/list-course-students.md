@@ -1,5 +1,5 @@
 ---
-title: List Course Students
+title: "List Course Students"
 description: "Returns the paginated roster of a course, each student carrying their enrolment pivot and their completion percentage."
 outline: false
 aside: false

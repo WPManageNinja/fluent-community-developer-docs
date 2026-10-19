@@ -1,5 +1,5 @@
 ---
-title: Save Topic Config
+title: "Save Topic Config"
 description: "Stores the community-wide topic limits — how many topics a post and a space may carry, and whether topics appear on post cards."
 outline: false
 aside: false

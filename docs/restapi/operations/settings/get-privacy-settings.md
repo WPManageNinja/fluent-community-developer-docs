@@ -1,5 +1,5 @@
 ---
-title: Get Privacy Settings
+title: "Get Privacy Settings"
 description: "Returns the privacy configuration that governs who can see the members directory, member profiles and member space lists, and what members may change about their own account."
 outline: false
 aside: false

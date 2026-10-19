@@ -1,6 +1,6 @@
 ---
-title: Profile API
-description: Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences.
+title: "Profile API"
+description: "Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences."
 ---
 
 # Profile API

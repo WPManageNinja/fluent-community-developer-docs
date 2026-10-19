@@ -1,5 +1,5 @@
 ---
-title: Delete Invitation
+title: "Delete Invitation"
 description: "Revokes an invitation so its email and link can no longer be redeemed."
 outline: false
 aside: false

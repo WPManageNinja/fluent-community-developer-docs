@@ -1,5 +1,5 @@
 ---
-title: Delete Comment
+title: "Delete Comment"
 description: "Deletes a comment, recounts the comments on its post and hands any attached media to the media cleanup hook."
 outline: false
 aside: false

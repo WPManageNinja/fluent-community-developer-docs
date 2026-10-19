@@ -1,5 +1,5 @@
 ---
-title: List Activities
+title: "List Activities"
 description: "Returns the most recent post-published and comment-added events, collapsed to one entry per post per action, with a pre-rendered message and a portal route for each."
 outline: false
 aside: false

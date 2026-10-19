@@ -1,5 +1,5 @@
 ---
-title: Reschedule Post
+title: "Reschedule Post"
 description: "Moves a scheduled post to a new publish time and re-queues the background action that will publish it."
 outline: false
 aside: false

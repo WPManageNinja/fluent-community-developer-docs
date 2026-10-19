@@ -1,6 +1,6 @@
 ---
-title: Members Filters
-description: Members filter hooks for FluentCommunity.
+title: "Members Filters"
+description: "Members filter hooks for FluentCommunity."
 ---
 
 # Members Filters

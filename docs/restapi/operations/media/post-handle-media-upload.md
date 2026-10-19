@@ -1,5 +1,5 @@
 ---
-title: Post Handle Media Upload
+title: "Post Handle Media Upload"
 description: "Uploads an image for use in a post or comment, optionally resizing and converting it to WebP, and returns the media URL and key."
 outline: false
 aside: false

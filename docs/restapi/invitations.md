@@ -1,6 +1,6 @@
 ---
-title: Invitations API
-description: Invitation listing, creation, resend, delete, and link-generation endpoints.
+title: "Invitations API"
+description: "Invitation listing, creation, resend, delete, and link-generation endpoints."
 ---
 
 # Invitations API

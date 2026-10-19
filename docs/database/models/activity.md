@@ -1,6 +1,6 @@
 ---
-title: Activity Model
-description: ORM reference for FluentCommunity\App\Models\Activity.
+title: "Activity Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Activity."
 ---
 
 # Activity Model

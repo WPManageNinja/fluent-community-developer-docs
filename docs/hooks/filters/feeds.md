@@ -1,6 +1,6 @@
 ---
-title: Feeds Filters
-description: Feeds filter hooks for FluentCommunity.
+title: "Feeds Filters"
+description: "Feeds filter hooks for FluentCommunity."
 ---
 
 # Feeds Filters

@@ -1,5 +1,5 @@
 ---
-title: Discover Spaces
+title: "Discover Spaces"
 description: "Returns the paginated set of spaces the current user could join or already belongs to, each with its active member count."
 outline: false
 aside: false

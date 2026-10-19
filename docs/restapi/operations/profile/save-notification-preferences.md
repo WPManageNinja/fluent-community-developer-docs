@@ -1,5 +1,5 @@
 ---
-title: Save Notification Preferences
+title: "Save Notification Preferences"
 description: "Stores the email notification preferences for a member, translating the per-space choices into the underlying subscription rows."
 outline: false
 aside: false

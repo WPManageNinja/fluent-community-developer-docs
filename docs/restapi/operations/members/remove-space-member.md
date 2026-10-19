@@ -1,5 +1,5 @@
 ---
-title: Remove Space Member
+title: "Remove Space Member"
 description: "Removes a member from a space and refreshes their cached space access list."
 outline: false
 aside: false

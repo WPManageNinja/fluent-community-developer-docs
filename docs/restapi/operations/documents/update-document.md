@@ -1,5 +1,5 @@
 ---
-title: Update Document
+title: "Update Document"
 description: "Renames a document, updating both the media record and the entry in the parent post or lesson document list."
 outline: false
 aside: false

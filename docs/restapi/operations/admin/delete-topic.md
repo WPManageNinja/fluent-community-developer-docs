@@ -1,5 +1,5 @@
 ---
-title: Delete Topic
+title: "Delete Topic"
 description: "Deletes a post topic and every space relation recorded for it."
 outline: false
 aside: false

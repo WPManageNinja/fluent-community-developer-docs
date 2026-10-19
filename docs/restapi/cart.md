@@ -1,6 +1,6 @@
 ---
-title: Cart Integration API
-description: FluentCart-backed paywall search, creation, retrieval, and removal for spaces.
+title: "Cart Integration API"
+description: "FluentCart-backed paywall search, creation, retrieval, and removal for spaces."
 ---
 
 # Cart Integration API

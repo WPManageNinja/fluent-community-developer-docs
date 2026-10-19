@@ -1,5 +1,5 @@
 ---
-title: List All Spaces
+title: "List All Spaces"
 description: "Returns the paginated list of spaces with each one formatted for display, including the current user permissions and membership within it."
 outline: false
 aside: false

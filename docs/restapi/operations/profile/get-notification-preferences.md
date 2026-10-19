@@ -1,5 +1,5 @@
 ---
-title: Get Notification Preferences
+title: "Get Notification Preferences"
 description: "Returns the email notification preferences for a member — the global toggles, the per-space post preferences grouped by space group, and the digest send day."
 outline: false
 aside: false

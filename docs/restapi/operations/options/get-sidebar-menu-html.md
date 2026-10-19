@@ -1,5 +1,5 @@
 ---
-title: Get Sidebar Menu HTML
+title: "Get Sidebar Menu HTML"
 description: "Returns the server-rendered sidebar HTML together with the spaces the current user can act in, each carrying its resolved permissions, membership and topics."
 outline: false
 aside: false

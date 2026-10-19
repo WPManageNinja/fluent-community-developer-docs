@@ -1,5 +1,5 @@
 ---
-title: Delete Space Group
+title: "Delete Space Group"
 description: "Deletes an empty space group."
 outline: false
 aside: false

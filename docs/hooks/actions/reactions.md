@@ -1,6 +1,6 @@
 ---
-title: Reactions Actions
-description: Reactions action hooks for FluentCommunity.
+title: "Reactions Actions"
+description: "Reactions action hooks for FluentCommunity."
 ---
 
 # Reactions Actions

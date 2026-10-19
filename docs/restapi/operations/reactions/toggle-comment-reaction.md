@@ -1,5 +1,5 @@
 ---
-title: Toggle Comment Reaction
+title: "Toggle Comment Reaction"
 description: "Sets or clears the current user like on a comment and returns the new reaction count with the resulting liked state."
 outline: false
 aside: false

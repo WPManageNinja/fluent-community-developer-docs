@@ -1,5 +1,5 @@
 ---
-title: Save Profile Link Providers
+title: "Save Profile Link Providers"
 description: "Records which social link providers are offered on the profile editor, discarding any submitted key that is not a known provider."
 outline: false
 aside: false

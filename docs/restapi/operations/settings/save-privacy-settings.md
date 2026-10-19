@@ -1,5 +1,5 @@
 ---
-title: Save Privacy Settings
+title: "Save Privacy Settings"
 description: "Stores the privacy configuration."
 outline: false
 aside: false

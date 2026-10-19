@@ -1,5 +1,5 @@
 ---
-title: Delete Document
+title: "Delete Document"
 description: "Detaches a document from its post or lesson and hands the media record to the media cleanup hook."
 outline: false
 aside: false

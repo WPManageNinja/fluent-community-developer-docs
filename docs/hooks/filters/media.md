@@ -1,6 +1,6 @@
 ---
-title: Media Filters
-description: Media filter hooks for FluentCommunity.
+title: "Media Filters"
+description: "Media filter hooks for FluentCommunity."
 ---
 
 # Media Filters

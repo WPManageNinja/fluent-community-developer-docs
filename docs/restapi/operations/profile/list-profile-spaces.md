@@ -1,5 +1,5 @@
 ---
-title: List Profile Spaces
+title: "List Profile Spaces"
 description: "Returns the spaces a member actively belongs to, each with its member count."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Space Members
+title: "List Space Members"
 description: "Returns the paginated active membership of a space, each entry carrying the member profile and their role, plus the count of outstanding join requests."
 outline: false
 aside: false

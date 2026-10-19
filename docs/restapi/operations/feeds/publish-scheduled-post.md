@@ -1,5 +1,5 @@
 ---
-title: Publish Scheduled Post
+title: "Publish Scheduled Post"
 description: "Publishes a scheduled post immediately, cancelling its queued publish action and restamping its creation time to now."
 outline: false
 aside: false

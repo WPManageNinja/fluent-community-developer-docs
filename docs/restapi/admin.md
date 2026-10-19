@@ -1,6 +1,6 @@
 ---
-title: Admin API
-description: General admin settings, email/storage configuration, onboarding, profile links, and course discovery.
+title: "Admin API"
+description: "General admin settings, email/storage configuration, onboarding, profile links, and course discovery."
 ---
 
 # Admin API

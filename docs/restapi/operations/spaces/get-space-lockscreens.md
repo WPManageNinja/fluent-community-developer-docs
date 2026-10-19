@@ -1,5 +1,5 @@
 ---
-title: Get Space Lockscreens
+title: "Get Space Lockscreens"
 description: "Returns the lock screen configuration a space shows to visitors who are not members — its copy, imagery and call to action."
 outline: false
 aside: false

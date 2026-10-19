@@ -1,5 +1,5 @@
 ---
-title: Get Exportable Students
+title: "Get Exportable Students"
 description: "Returns a flattened, spreadsheet-shaped list of a course roster — name, email, username, progress percentage, enrolment date and last activity."
 outline: false
 aside: false

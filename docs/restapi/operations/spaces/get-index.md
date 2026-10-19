@@ -1,5 +1,5 @@
 ---
-title: Get Index
+title: "Get Index"
 description: "Get Index for the FluentCommunity Spaces API."
 outline: false
 aside: false

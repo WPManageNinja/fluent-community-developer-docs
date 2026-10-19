@@ -1,6 +1,6 @@
 ---
-title: CourseLesson Model
-description: ORM reference for FluentCommunity\App\Models\CourseLesson.
+title: "CourseLesson Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\CourseLesson."
 ---
 
 # CourseLesson Model

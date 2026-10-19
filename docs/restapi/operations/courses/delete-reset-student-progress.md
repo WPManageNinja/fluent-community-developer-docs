@@ -1,5 +1,5 @@
 ---
-title: Delete Reset Student Progress
+title: "Delete Reset Student Progress"
 description: "Clears one student completion records for the course while leaving them enrolled."
 outline: false
 aside: false

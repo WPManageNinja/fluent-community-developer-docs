@@ -1,5 +1,5 @@
 ---
-title: Save Snippets Settings
+title: "Save Snippets Settings"
 description: "Stores the custom CSS and, for callers allowed to post unfiltered HTML, the custom JavaScript injected into the portal."
 outline: false
 aside: false

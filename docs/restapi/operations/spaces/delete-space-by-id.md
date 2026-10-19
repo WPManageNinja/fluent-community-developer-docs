@@ -1,5 +1,5 @@
 ---
-title: Delete Space By ID
+title: "Delete Space By ID"
 description: "Deletes a space addressed by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint."
 outline: false
 aside: false

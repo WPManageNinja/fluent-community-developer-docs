@@ -1,5 +1,5 @@
 ---
-title: Get Ticker Updates
+title: "Get Ticker Updates"
 description: "Returns a lightweight list of post ids that have changed since a given moment, marked created, updated or deleted, without any post content."
 outline: false
 aside: false

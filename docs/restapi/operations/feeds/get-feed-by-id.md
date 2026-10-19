@@ -1,5 +1,5 @@
 ---
-title: Get Feed By ID
+title: "Get Feed By ID"
 description: "Returns a single post by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint."
 outline: false
 aside: false

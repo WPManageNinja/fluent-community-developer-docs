@@ -1,6 +1,6 @@
 ---
-title: Auth Filters
-description: Auth filter hooks for FluentCommunity.
+title: "Auth Filters"
+description: "Auth filter hooks for FluentCommunity."
 ---
 
 # Auth Filters

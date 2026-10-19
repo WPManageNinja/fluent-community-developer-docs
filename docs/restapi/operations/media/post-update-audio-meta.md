@@ -1,5 +1,5 @@
 ---
-title: Post Update Audio Meta
+title: "Post Update Audio Meta"
 description: "Updates the display title and poster thumbnail stored on an uploaded audio media item."
 outline: false
 aside: false

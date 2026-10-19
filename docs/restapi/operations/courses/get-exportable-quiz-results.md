@@ -1,5 +1,5 @@
 ---
-title: Get Exportable Quiz Results
+title: "Get Exportable Quiz Results"
 description: "Returns a flattened, spreadsheet-shaped list of quiz attempts for a course — student, email, quiz, score, grade, attempt count and submission time."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Get Space Meta Settings
+title: "Get Space Meta Settings"
 description: "Returns the extra space settings panels contributed by integrations, or `null` when nothing has registered any."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Feeds
+title: "List Feeds"
 description: "Returns a page of posts the current user is allowed to read, transformed for display, with the pinned post of a space returned separately on the first page."
 outline: false
 aside: false

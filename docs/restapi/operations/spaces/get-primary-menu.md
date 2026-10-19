@@ -1,5 +1,5 @@
 ---
-title: Get Primary Menu
+title: "Get Primary Menu"
 description: "Get Primary Menu for the FluentCommunity Spaces API."
 outline: false
 aside: false

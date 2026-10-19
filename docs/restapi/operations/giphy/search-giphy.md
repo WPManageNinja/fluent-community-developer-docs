@@ -1,5 +1,5 @@
 ---
-title: Search Giphy
+title: "Search Giphy"
 description: "Proxies a Giphy search — or the trending feed when no query is given — and returns a trimmed list of GIFs carrying only the preview and medium renditions."
 outline: false
 aside: false

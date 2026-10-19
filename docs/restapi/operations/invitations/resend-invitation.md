@@ -1,5 +1,5 @@
 ---
-title: Resend Invitation
+title: "Resend Invitation"
 description: "Sends the invitation email again for an invitation that has not yet been redeemed."
 outline: false
 aside: false

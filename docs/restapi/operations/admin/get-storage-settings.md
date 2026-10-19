@@ -1,5 +1,5 @@
 ---
-title: Get Storage Settings
+title: "Get Storage Settings"
 description: "Returns the media storage driver configuration, with secrets masked; without the Pro plugin it always reports the local driver."
 outline: false
 aside: false

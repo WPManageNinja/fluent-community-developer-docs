@@ -1,5 +1,5 @@
 ---
-title: Leave Space
+title: "Leave Space"
 description: "Removes the current user membership of a space and refreshes their cached space access."
 outline: false
 aside: false

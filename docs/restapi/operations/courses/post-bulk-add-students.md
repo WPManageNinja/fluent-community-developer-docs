@@ -1,5 +1,5 @@
 ---
-title: Post Bulk Add Students
+title: "Post Bulk Add Students"
 description: "Enrols many users in a course in one call, either from an explicit id list or by copying the membership of another space or course in batches."
 outline: false
 aside: false

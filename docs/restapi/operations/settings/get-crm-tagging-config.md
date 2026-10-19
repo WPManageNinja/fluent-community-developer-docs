@@ -1,5 +1,5 @@
 ---
-title: Get CRM Tagging Config
+title: "Get CRM Tagging Config"
 description: "Returns the FluentCRM tagging configuration together with every space and course that can be mapped, and the CRM tag list to map them onto."
 outline: false
 aside: false

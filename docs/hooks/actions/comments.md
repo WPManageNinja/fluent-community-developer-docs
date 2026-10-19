@@ -1,6 +1,6 @@
 ---
-title: Comments Actions
-description: Comments action hooks for FluentCommunity.
+title: "Comments Actions"
+description: "Comments action hooks for FluentCommunity."
 ---
 
 # Comments Actions

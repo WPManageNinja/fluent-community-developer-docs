@@ -1,5 +1,5 @@
 ---
-title: List Course Sections
+title: "List Course Sections"
 description: "Returns the sections of a course in display order, with their lessons attached."
 outline: false
 aside: false

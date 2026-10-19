@@ -1,5 +1,5 @@
 ---
-title: List Notifications
+title: "List Notifications"
 description: "Returns the paginated notification history for the current user, newest activity first, with the unread total alongside it."
 outline: false
 aside: false

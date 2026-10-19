@@ -1,5 +1,5 @@
 ---
-title: List Course Quiz Results
+title: "List Course Quiz Results"
 description: "Returns the paginated quiz attempts across a whole course, each with the student profile and the lesson attached."
 outline: false
 aside: false

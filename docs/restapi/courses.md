@@ -1,6 +1,6 @@
 ---
-title: Courses API
-description: Portal course consumption endpoints and the full course administration surface.
+title: "Courses API"
+description: "Portal course consumption endpoints and the full course administration surface."
 ---
 
 # Courses API

@@ -1,5 +1,5 @@
 ---
-title: Follow Profile User
+title: "Follow Profile User"
 description: "Creates a follow relationship from the current user to the named member."
 outline: false
 aside: false

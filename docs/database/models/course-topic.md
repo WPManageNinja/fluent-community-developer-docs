@@ -1,6 +1,6 @@
 ---
-title: CourseTopic Model
-description: ORM reference for FluentCommunity\App\Models\CourseTopic.
+title: "CourseTopic Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\CourseTopic."
 ---
 
 # CourseTopic Model

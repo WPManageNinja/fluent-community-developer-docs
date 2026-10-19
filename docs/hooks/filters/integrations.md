@@ -1,6 +1,6 @@
 ---
-title: Integrations Filters
-description: Integrations filter hooks for FluentCommunity.
+title: "Integrations Filters"
+description: "Integrations filter hooks for FluentCommunity."
 ---
 
 # Integrations Filters

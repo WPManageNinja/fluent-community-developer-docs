@@ -1,6 +1,6 @@
 ---
-title: BaseSpace Model
-description: ORM reference for FluentCommunity\App\Models\BaseSpace.
+title: "BaseSpace Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\BaseSpace."
 ---
 
 # BaseSpace Model

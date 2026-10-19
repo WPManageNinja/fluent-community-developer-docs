@@ -1,5 +1,5 @@
 ---
-title: Create Course Section
+title: "Create Course Section"
 description: "Adds a published section to the end of a course outline."
 outline: false
 aside: false

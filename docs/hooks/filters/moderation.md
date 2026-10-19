@@ -1,6 +1,6 @@
 ---
-title: Moderation Filters
-description: Moderation filter hooks for FluentCommunity.
+title: "Moderation Filters"
+description: "Moderation filter hooks for FluentCommunity."
 ---
 
 # Moderation Filters

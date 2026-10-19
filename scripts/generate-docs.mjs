@@ -528,6 +528,18 @@ function ensureDir(path) {
   mkdirSync(path, { recursive: true })
 }
 
+/**
+ * A page's title and description go straight into YAML frontmatter, where a
+ * colon-space, a leading quote, a `#` or a trailing backslash ends the scalar
+ * early and fails the VitePress build — a MODULE_META description that began
+ * "Reporting: ..." took the whole site down. Emit a double-quoted scalar
+ * instead; YAML's double-quoted escapes are a superset of JSON's, so
+ * JSON.stringify always produces a valid one.
+ */
+function yamlScalar(value) {
+  return JSON.stringify(String(value ?? ''))
+}
+
 function writeFile(path, content) {
   ensureDir(dirname(path))
   writeFileSync(path, content.replace(/\n{3,}/g, '\n\n'))
@@ -6038,8 +6050,8 @@ ${relationships
     writeFile(
       join(docsRoot, 'database', 'models', `${MODEL_SLUGS[modelName]}.md`),
       `---
-title: ${modelName} Model
-description: ORM reference for FluentCommunity\\App\\Models\\${modelName}.
+title: ${yamlScalar(`${modelName} Model`)}
+description: ${yamlScalar(`ORM reference for FluentCommunity\\App\\Models\\${modelName}.`)}
 ---
 
 # ${modelName} Model
@@ -6354,8 +6366,8 @@ function buildHookDocs(rawHooks) {
     writeFile(
       join(pageDir, 'index.md'),
       `---
-title: ${kind === 'action' ? 'Action Hooks' : 'Filter Hooks'}
-description: Source-verified ${kind} hook inventory for FluentCommunity.
+title: ${yamlScalar(kind === 'action' ? 'Action Hooks' : 'Filter Hooks')}
+description: ${yamlScalar(`Source-verified ${kind} hook inventory for FluentCommunity.`)}
 ---
 
 # ${kind === 'action' ? 'Action Hooks' : 'Filter Hooks'}
@@ -6393,8 +6405,8 @@ ${pagedHooks
       writeFile(
         join(pageDir, `${page}.md`),
         `---
-title: ${humanizeSlug(page)} ${kind === 'action' ? 'Actions' : 'Filters'}
-description: ${humanizeSlug(page)} ${kind} hooks for FluentCommunity.
+title: ${yamlScalar(`${humanizeSlug(page)} ${kind === 'action' ? 'Actions' : 'Filters'}`)}
+description: ${yamlScalar(`${humanizeSlug(page)} ${kind} hooks for FluentCommunity.`)}
 ---
 
 # ${humanizeSlug(page)} ${kind === 'action' ? 'Actions' : 'Filters'}
@@ -6811,8 +6823,8 @@ ${Object.entries(MODULE_META)
       writeFile(
         pagePath,
         `---
-title: ${meta.title}
-description: ${meta.description}
+title: ${yamlScalar(meta.title)}
+description: ${yamlScalar(meta.description)}
 ---
 
 # ${meta.title}
@@ -6830,8 +6842,8 @@ No REST routes are currently registered for this module in the route files scann
     writeFile(
       pagePath,
       `---
-title: ${meta.title}
-description: ${meta.description}
+title: ${yamlScalar(meta.title)}
+description: ${yamlScalar(meta.description)}
 ---
 
 # ${meta.title}
@@ -6862,8 +6874,8 @@ ${moduleRoutes
       writeFile(
         operationDocPath,
         `---
-title: ${route.title}
-description: "${route.description}"
+title: ${yamlScalar(route.title)}
+description: ${yamlScalar(route.description)}
 outline: false
 aside: false
 ---

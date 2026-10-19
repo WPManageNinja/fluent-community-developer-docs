@@ -1,5 +1,5 @@
 ---
-title: Post Add Or Remove Post React
+title: "Post Add Or Remove Post React"
 description: "Adds or removes the current user reaction on a post and returns the updated reaction count."
 outline: false
 aside: false

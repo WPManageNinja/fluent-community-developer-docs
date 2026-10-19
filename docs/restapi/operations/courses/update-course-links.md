@@ -1,5 +1,5 @@
 ---
-title: Update Course Links
+title: "Update Course Links"
 description: "Replaces the sidebar link list shown on a course with the submitted set."
 outline: false
 aside: false

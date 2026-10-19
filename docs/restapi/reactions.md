@@ -1,6 +1,6 @@
 ---
-title: Reactions API
-description: Feed/comment reactions plus survey vote and survey voter endpoints.
+title: "Reactions API"
+description: "Feed/comment reactions plus survey vote and survey voter endpoints."
 ---
 
 # Reactions API

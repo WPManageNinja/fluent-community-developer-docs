@@ -1,5 +1,5 @@
 ---
-title: Get App Vars
+title: "Get App Vars"
 description: "Returns the bootstrap payload the portal SPA needs — current user, permissions, feature flags, branding and route configuration — together with the sidebar menu groups."
 outline: false
 aside: false

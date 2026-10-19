@@ -1,5 +1,5 @@
 ---
-title: Get Custom Profile Fields
+title: "Get Custom Profile Fields"
 description: "Returns the custom profile field configuration — the field groups, the field definitions and whether the feature is switched on."
 outline: false
 aside: false

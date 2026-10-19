@@ -1,5 +1,5 @@
 ---
-title: Delete Admin Manager
+title: "Delete Admin Manager"
 description: "Revokes every FluentCommunity management role from a user, leaving their WordPress account and community profile intact."
 outline: false
 aside: false

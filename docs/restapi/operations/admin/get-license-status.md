@@ -1,5 +1,5 @@
 ---
-title: Get License Status
+title: "Get License Status"
 description: "Returns the current Pro licence state, including expiry and a renewal URL when the licence has lapsed."
 outline: false
 aside: false

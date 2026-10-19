@@ -1,5 +1,5 @@
 ---
-title: List Space Groups
+title: "List Space Groups"
 description: "Returns the space groups with their spaces expanded, plus any space or course that has not been assigned to a group."
 outline: false
 aside: false

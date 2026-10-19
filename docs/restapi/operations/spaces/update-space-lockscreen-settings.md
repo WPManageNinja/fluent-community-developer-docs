@@ -1,5 +1,5 @@
 ---
-title: Update Space Lockscreen Settings
+title: "Update Space Lockscreen Settings"
 description: "Stores the lock screen configuration a space shows to non-members."
 outline: false
 aside: false

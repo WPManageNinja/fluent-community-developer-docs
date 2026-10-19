@@ -1,5 +1,5 @@
 ---
-title: Get Customization Settings
+title: "Get Customization Settings"
 description: "Returns the portal appearance settings — dark mode, header and sidebar behaviour, post modal, and the powered-by line."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Save Admin Welcome Banner
+title: "Save Admin Welcome Banner"
 description: "Stores both welcome banner variants and pre-renders their Markdown descriptions to HTML so the portal does not have to parse them per request."
 outline: false
 aside: false

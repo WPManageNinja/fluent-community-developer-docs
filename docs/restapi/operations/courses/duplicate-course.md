@@ -1,5 +1,5 @@
 ---
-title: Duplicate Course
+title: "Duplicate Course"
 description: "Copies a course, its sections, its lessons and their attached documents into a new draft owned by the current user."
 outline: false
 aside: false

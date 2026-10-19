@@ -1,5 +1,5 @@
 ---
-title: Create Course
+title: "Create Course"
 description: "Creates a course in draft state, with its type, privacy, layout and lock screen behaviour set from the submitted settings."
 outline: false
 aside: false

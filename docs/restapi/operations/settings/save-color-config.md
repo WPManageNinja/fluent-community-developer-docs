@@ -1,5 +1,5 @@
 ---
-title: Save Color Config
+title: "Save Color Config"
 description: "Selects the light and dark colour schemas, and compiles the resulting CSS once so the portal can serve it without regenerating per request."
 outline: false
 aside: false

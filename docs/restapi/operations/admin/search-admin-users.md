@@ -1,5 +1,5 @@
 ---
-title: Search Admin Users
+title: "Search Admin Users"
 description: "Searches WordPress users for the admin pickers, returning a paginated list matched on name, login and email."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: User Model
-description: ORM reference for FluentCommunity\App\Models\User.
+title: "User Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\User."
 ---
 
 # User Model

@@ -1,6 +1,6 @@
 ---
-title: Comment Model
-description: ORM reference for FluentCommunity\App\Models\Comment.
+title: "Comment Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Comment."
 ---
 
 # Comment Model

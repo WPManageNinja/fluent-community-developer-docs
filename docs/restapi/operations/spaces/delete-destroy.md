@@ -1,5 +1,5 @@
 ---
-title: Delete Destroy
+title: "Delete Destroy"
 description: "Delete Destroy for the FluentCommunity Spaces API."
 outline: false
 aside: false

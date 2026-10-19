@@ -1,5 +1,5 @@
 ---
-title: Update Course Section
+title: "Update Course Section"
 description: "Replaces the title and status of a section."
 outline: false
 aside: false

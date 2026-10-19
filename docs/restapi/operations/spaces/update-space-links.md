@@ -1,5 +1,5 @@
 ---
-title: Update Space Links
+title: "Update Space Links"
 description: "Replaces the sidebar link list shown on a space with the submitted set."
 outline: false
 aside: false

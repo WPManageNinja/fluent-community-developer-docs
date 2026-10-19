@@ -1,5 +1,5 @@
 ---
-title: Save Leaderboard Levels
+title: "Save Leaderboard Levels"
 description: "Stores the leaderboard levels and the excluded-member list, recomputing every point boundary so the levels tile without gaps."
 outline: false
 aside: false

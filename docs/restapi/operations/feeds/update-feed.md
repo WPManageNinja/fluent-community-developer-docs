@@ -1,5 +1,5 @@
 ---
-title: Update Feed
+title: "Update Feed"
 description: "Replaces the body and metadata of an existing post, re-renders it, reconciles its media and topics, and records an edit history entry."
 outline: false
 aside: false

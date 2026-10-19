@@ -1,5 +1,5 @@
 ---
-title: Update Moderation Report
+title: "Update Moderation Report"
 description: "Resolves a moderation report by setting its status, and publishes or unpublishes the reported content to match."
 outline: false
 aside: false

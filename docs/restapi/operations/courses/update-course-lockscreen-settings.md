@@ -1,5 +1,5 @@
 ---
-title: Update Course Lockscreen Settings
+title: "Update Course Lockscreen Settings"
 description: "Stores the lock screen a private course shows to visitors who are not enrolled — its copy, imagery and call to action."
 outline: false
 aside: false

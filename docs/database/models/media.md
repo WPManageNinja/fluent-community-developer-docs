@@ -1,6 +1,6 @@
 ---
-title: Media Model
-description: ORM reference for FluentCommunity\App\Models\Media.
+title: "Media Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Media."
 ---
 
 # Media Model
