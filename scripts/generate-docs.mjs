@@ -124,35 +124,55 @@ const SOURCE_CONFIGS = [
     : []),
 ]
 
-const MODEL_ORDER = [
-  'Activity',
-  'BaseSpace',
-  'Comment',
-  'Contact',
-  'Course',
-  'CourseLesson',
-  'CourseTopic',
-  'DynamicModel',
-  'Feed',
-  'Follow',
-  'Media',
-  'Meta',
-  'Moderation',
-  'Model',
-  'Notification',
-  'NotificationPreference',
-  'NotificationSubscriber',
-  'NotificationSubscription',
-  'Reaction',
-  'SidebarLink',
-  'Space',
-  'SpaceGroup',
-  'SpaceUserPivot',
-  'Term',
-  'User',
-  'UserMeta',
-  'XProfile',
+/**
+ * The model pages, grouped the way the sidebar shows them. This used to be a flat
+ * list here and a hand-written sidebar in `.vitepress/config.mts`, so a new model
+ * got a page that nothing linked to — which is exactly how NotificationPreference
+ * sat unreachable while the schema page already pointed at it. The groups are
+ * written to `.generated/database-model-order.json` and the sidebar is built from
+ * that, so adding a model here is enough.
+ */
+const MODEL_GROUPS = [
+  {
+    title: 'Content Models',
+    models: ['Feed', 'Comment', 'Activity', 'Media', 'Reaction', 'Moderation'],
+  },
+  {
+    title: 'Community Models',
+    models: [
+      'Space',
+      'BaseSpace',
+      'SpaceGroup',
+      'SpaceUserPivot',
+      'SidebarLink',
+      'Course',
+      'CourseTopic',
+      'CourseLesson',
+      'Term',
+    ],
+  },
+  {
+    title: 'People and Messaging',
+    models: [
+      'User',
+      'XProfile',
+      'UserMeta',
+      'Contact',
+      'Follow',
+      'Notification',
+      'NotificationPreference',
+      'NotificationSubscriber',
+      'NotificationSubscription',
+    ],
+  },
+  {
+    title: 'Framework Models',
+    models: ['Meta', 'Model', 'DynamicModel'],
+  },
 ]
+
+// Pages are emitted and counted alphabetically; only the sidebar follows the groups.
+const MODEL_ORDER = MODEL_GROUPS.flatMap((group) => group.models).sort()
 
 const MODEL_SLUGS = {
   Activity: 'activity',
@@ -526,6 +546,18 @@ const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
 
 function ensureDir(path) {
   mkdirSync(path, { recursive: true })
+}
+
+/**
+ * A page's title and description go straight into YAML frontmatter, where a
+ * colon-space, a leading quote, a `#` or a trailing backslash ends the scalar
+ * early and fails the VitePress build — a MODULE_META description that began
+ * "Reporting: ..." took the whole site down. Emit a double-quoted scalar
+ * instead; YAML's double-quoted escapes are a superset of JSON's, so
+ * JSON.stringify always produces a valid one.
+ */
+function yamlScalar(value) {
+  return JSON.stringify(String(value ?? ''))
 }
 
 function writeFile(path, content) {
@@ -6010,6 +6042,40 @@ ${relationships
 `,
   )
 
+  // A model listed in MODEL_GROUPS but missing from MODEL_SLUGS wrote itself to
+  // `undefined.md` and linked there from the schema page; a missing summary left the
+  // page's opening line blank. Both were silent. Fail the build instead.
+  const slugless = MODEL_ORDER.filter((name) => !MODEL_SLUGS[name])
+  const summaryless = MODEL_ORDER.filter((name) => !MODEL_SUMMARIES[name])
+  if (slugless.length || summaryless.length) {
+    throw new Error(
+      [
+        slugless.length ? `Models missing from MODEL_SLUGS: ${slugless.join(', ')}.` : '',
+        summaryless.length ? `Models missing from MODEL_SUMMARIES: ${summaryless.join(', ')}.` : '',
+      ]
+        .filter(Boolean)
+        .join(' '),
+    )
+  }
+
+  // The sidebar is built from this, so a model added to MODEL_GROUPS is linked
+  // without touching .vitepress/config.mts.
+  ensureDir(generatedRoot)
+  writeFileSync(
+    join(generatedRoot, 'database-model-order.json'),
+    JSON.stringify(
+      MODEL_GROUPS.map((group) => ({
+        text: group.title,
+        items: group.models.map((name) => ({
+          text: name,
+          link: `/database/models/${MODEL_SLUGS[name]}`,
+        })),
+      })),
+      null,
+      2,
+    ),
+  )
+
   for (const modelName of MODEL_ORDER) {
     const model = models[modelName]
     const table = resolveModelProperty(models, modelName, 'table')
@@ -6038,8 +6104,8 @@ ${relationships
     writeFile(
       join(docsRoot, 'database', 'models', `${MODEL_SLUGS[modelName]}.md`),
       `---
-title: ${modelName} Model
-description: ORM reference for FluentCommunity\\App\\Models\\${modelName}.
+title: ${yamlScalar(`${modelName} Model`)}
+description: ${yamlScalar(`ORM reference for FluentCommunity\\App\\Models\\${modelName}.`)}
 ---
 
 # ${modelName} Model
@@ -6354,8 +6420,8 @@ function buildHookDocs(rawHooks) {
     writeFile(
       join(pageDir, 'index.md'),
       `---
-title: ${kind === 'action' ? 'Action Hooks' : 'Filter Hooks'}
-description: Source-verified ${kind} hook inventory for FluentCommunity.
+title: ${yamlScalar(kind === 'action' ? 'Action Hooks' : 'Filter Hooks')}
+description: ${yamlScalar(`Source-verified ${kind} hook inventory for FluentCommunity.`)}
 ---
 
 # ${kind === 'action' ? 'Action Hooks' : 'Filter Hooks'}
@@ -6393,8 +6459,8 @@ ${pagedHooks
       writeFile(
         join(pageDir, `${page}.md`),
         `---
-title: ${humanizeSlug(page)} ${kind === 'action' ? 'Actions' : 'Filters'}
-description: ${humanizeSlug(page)} ${kind} hooks for FluentCommunity.
+title: ${yamlScalar(`${humanizeSlug(page)} ${kind === 'action' ? 'Actions' : 'Filters'}`)}
+description: ${yamlScalar(`${humanizeSlug(page)} ${kind} hooks for FluentCommunity.`)}
 ---
 
 # ${humanizeSlug(page)} ${kind === 'action' ? 'Actions' : 'Filters'}
@@ -6811,8 +6877,8 @@ ${Object.entries(MODULE_META)
       writeFile(
         pagePath,
         `---
-title: ${meta.title}
-description: ${meta.description}
+title: ${yamlScalar(meta.title)}
+description: ${yamlScalar(meta.description)}
 ---
 
 # ${meta.title}
@@ -6830,8 +6896,8 @@ No REST routes are currently registered for this module in the route files scann
     writeFile(
       pagePath,
       `---
-title: ${meta.title}
-description: ${meta.description}
+title: ${yamlScalar(meta.title)}
+description: ${yamlScalar(meta.description)}
 ---
 
 # ${meta.title}
@@ -6862,8 +6928,8 @@ ${moduleRoutes
       writeFile(
         operationDocPath,
         `---
-title: ${route.title}
-description: "${route.description}"
+title: ${yamlScalar(route.title)}
+description: ${yamlScalar(route.description)}
 outline: false
 aside: false
 ---
@@ -7043,7 +7109,7 @@ function main() {
     return carry
   }, {})
 
-  // MODEL_ORDER is a hand-kept whitelist, so a model added to the plugin after this
+  // MODEL_GROUPS is a hand-kept whitelist, so a model added to the plugin after that
   // list was last touched would simply never get a page — silently, since every other
   // count still looks right. Name the strays instead of dropping them.
   const undocumentedModels = Object.keys(models)
@@ -7051,7 +7117,7 @@ function main() {
     .sort()
   if (undocumentedModels.length) {
     console.log(
-      `\n${undocumentedModels.length} model(s) found in the source but missing from MODEL_ORDER — add them to MODEL_ORDER, MODEL_SLUGS and MODEL_SUMMARIES:`,
+      `\n${undocumentedModels.length} model(s) found in the source but missing from MODEL_GROUPS — add them to a group in MODEL_GROUPS, plus MODEL_SLUGS and MODEL_SUMMARIES:`,
     )
     undocumentedModels.forEach((name) => console.log(`  ${name}`))
   }

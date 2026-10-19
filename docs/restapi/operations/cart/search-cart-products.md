@@ -1,5 +1,5 @@
 ---
-title: Search Cart Products
+title: "Search Cart Products"
 description: "Searches published FluentCart products that have at least one variant, returning up to 20 with their formatted price range, for the paywall picker."
 outline: false
 aside: false

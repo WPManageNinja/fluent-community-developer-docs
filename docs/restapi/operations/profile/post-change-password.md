@@ -1,5 +1,5 @@
 ---
-title: Post Change Password
+title: "Post Change Password"
 description: "Changes the account password after verifying the current one, and returns freshly minted nonces so the open session keeps working."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Moderation Actions
-description: Moderation action hooks for FluentCommunity.
+title: "Moderation Actions"
+description: "Moderation action hooks for FluentCommunity."
 ---
 
 # Moderation Actions

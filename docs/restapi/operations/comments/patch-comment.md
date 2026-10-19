@@ -1,5 +1,5 @@
 ---
-title: Patch Comment
+title: "Patch Comment"
 description: "Pins or unpins a top-level comment so it sorts above the rest of the thread."
 outline: false
 aside: false

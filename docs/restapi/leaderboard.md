@@ -1,6 +1,6 @@
 ---
-title: Leaderboard API
-description: Public leaderboard retrieval plus administrator level configuration endpoints.
+title: "Leaderboard API"
+description: "Public leaderboard retrieval plus administrator level configuration endpoints."
 ---
 
 # Leaderboard API

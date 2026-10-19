@@ -1,5 +1,5 @@
 ---
-title: Update Profile
+title: "Update Profile"
 description: "Saves the editable profile fields — names, bio, headline, website and social links — and mirrors the display name onto the WordPress user record."
 outline: false
 aside: false

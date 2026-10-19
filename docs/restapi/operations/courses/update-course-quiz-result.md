@@ -1,5 +1,5 @@
 ---
-title: Update Course Quiz Result
+title: "Update Course Quiz Result"
 description: "Overrides the pass or fail grade recorded against one quiz attempt."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Comment Reactions
+title: "List Comment Reactions"
 description: "Returns the members who liked a comment, with their public profiles."
 outline: false
 aside: false

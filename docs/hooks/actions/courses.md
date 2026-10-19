@@ -1,6 +1,6 @@
 ---
-title: Courses Actions
-description: Courses action hooks for FluentCommunity.
+title: "Courses Actions"
+description: "Courses action hooks for FluentCommunity."
 ---
 
 # Courses Actions

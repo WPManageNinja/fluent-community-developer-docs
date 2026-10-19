@@ -1,5 +1,5 @@
 ---
-title: Toggle Profile Notification
+title: "Toggle Profile Notification"
 description: "Turns notifications about a member you already follow on or off, without changing the follow itself."
 outline: false
 aside: false

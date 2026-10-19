@@ -1,5 +1,5 @@
 ---
-title: Reindex Course Lessons
+title: "Reindex Course Lessons"
 description: "Applies a new display order to the lessons inside one section."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Post Mark Lesson Video Watched
+title: "Post Mark Lesson Video Watched"
 description: "Records that the current user has watched enough of a gated lesson video to be allowed to mark the lesson complete."
 outline: false
 aside: false

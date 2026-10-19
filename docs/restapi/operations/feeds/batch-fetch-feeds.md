@@ -1,5 +1,5 @@
 ---
-title: Batch Fetch Feeds
+title: "Batch Fetch Feeds"
 description: "Returns the full transformed payload for a list of post ids in one request, for refreshing items a ticker call flagged as changed."
 outline: false
 aside: false

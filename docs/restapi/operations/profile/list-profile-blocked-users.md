@@ -1,5 +1,5 @@
 ---
-title: List Profile Blocked Users
+title: "List Profile Blocked Users"
 description: "Returns the paginated list of members this profile has blocked."
 outline: false
 aside: false

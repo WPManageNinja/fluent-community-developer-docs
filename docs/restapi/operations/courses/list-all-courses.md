@@ -1,5 +1,5 @@
 ---
-title: List All Courses
+title: "List All Courses"
 description: "Returns the paginated course catalogue with each course fully expanded — sections, per-lesson lock state and the current user progress track — in a single call."
 outline: false
 aside: false

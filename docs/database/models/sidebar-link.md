@@ -1,6 +1,6 @@
 ---
-title: SidebarLink Model
-description: ORM reference for FluentCommunity\App\Models\SidebarLink.
+title: "SidebarLink Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\SidebarLink."
 ---
 
 # SidebarLink Model

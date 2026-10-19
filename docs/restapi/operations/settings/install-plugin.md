@@ -1,5 +1,5 @@
 ---
-title: Install Plugin
+title: "Install Plugin"
 description: "Installs and activates one of the companion Fluent plugins from the add-on catalogue, in the background."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: XProfile Model
-description: ORM reference for FluentCommunity\App\Models\XProfile.
+title: "XProfile Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\XProfile."
 ---
 
 # XProfile Model

@@ -1,5 +1,5 @@
 ---
-title: Get Buddypress Migration Config
+title: "Get Buddypress Migration Config"
 description: "Returns everything the migration wizard needs before it starts: the BuddyPress groups with their member counts and migrated state, the source data statistics, and any previously saved progress."
 outline: false
 aside: false

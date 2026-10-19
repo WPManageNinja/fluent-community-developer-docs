@@ -1,5 +1,5 @@
 ---
-title: Get Comment
+title: "Get Comment"
 description: "Returns a single comment with its author profile, optionally in the shape the editor expects."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Activity API
-description: Activity feed retrieval, including support for pinned and trending content.
+title: "Activity API"
+description: "Activity feed retrieval, including support for pinned and trending content."
 ---
 
 # Activity API

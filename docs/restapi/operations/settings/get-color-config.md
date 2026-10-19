@@ -1,5 +1,5 @@
 ---
-title: Get Color Config
+title: "Get Color Config"
 description: "Returns the active light and dark colour schema selection alongside the full catalogue of available schemas."
 outline: false
 aside: false

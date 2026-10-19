@@ -1,5 +1,5 @@
 ---
-title: Remove Course Student
+title: "Remove Course Student"
 description: "Unenrols a student from the course."
 outline: false
 aside: false

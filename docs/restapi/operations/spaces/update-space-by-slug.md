@@ -1,5 +1,5 @@
 ---
-title: Update Space By Slug
+title: "Update Space By Slug"
 description: "Updates a space record and its settings, and returns a redirect URL when the change altered its slug."
 outline: false
 aside: false

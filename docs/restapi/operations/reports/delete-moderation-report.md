@@ -1,5 +1,5 @@
 ---
-title: Delete Moderation Report
+title: "Delete Moderation Report"
 description: "Removes a single moderation report from the queue."
 outline: false
 aside: false

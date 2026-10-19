@@ -1,6 +1,6 @@
 ---
-title: NotificationPreference Model
-description: ORM reference for FluentCommunity\App\Models\NotificationPreference.
+title: "NotificationPreference Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\NotificationPreference."
 ---
 
 # NotificationPreference Model

@@ -1,6 +1,6 @@
 ---
-title: Giphy API
-description: Giphy search and media discovery endpoints exposed by the Pro media integration.
+title: "Giphy API"
+description: "Giphy search and media discovery endpoints exposed by the Pro media integration."
 ---
 
 # Giphy API

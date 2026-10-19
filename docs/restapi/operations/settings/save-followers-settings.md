@@ -1,5 +1,5 @@
 ---
-title: Save Followers Settings
+title: "Save Followers Settings"
 description: "Stores the followers module configuration and returns the normalised result."
 outline: false
 aside: false

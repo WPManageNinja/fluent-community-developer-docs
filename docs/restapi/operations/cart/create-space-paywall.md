@@ -1,5 +1,5 @@
 ---
-title: Create Space Paywall
+title: "Create Space Paywall"
 description: "Attaches a published FluentCart product to a space as a paywall."
 outline: false
 aside: false

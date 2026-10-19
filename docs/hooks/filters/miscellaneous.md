@@ -1,6 +1,6 @@
 ---
-title: Miscellaneous Filters
-description: Miscellaneous filter hooks for FluentCommunity.
+title: "Miscellaneous Filters"
+description: "Miscellaneous filter hooks for FluentCommunity."
 ---
 
 # Miscellaneous Filters

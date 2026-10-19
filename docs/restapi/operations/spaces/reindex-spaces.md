@@ -1,5 +1,5 @@
 ---
-title: Reindex Spaces
+title: "Reindex Spaces"
 description: "Applies a new sidebar order to spaces within their group."
 outline: false
 aside: false

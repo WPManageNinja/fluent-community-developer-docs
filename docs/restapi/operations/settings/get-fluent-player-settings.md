@@ -1,5 +1,5 @@
 ---
-title: Get Fluent Player Settings
+title: "Get Fluent Player Settings"
 description: "Returns the FluentPlayer integration settings used for lesson and post video playback."
 outline: false
 aside: false

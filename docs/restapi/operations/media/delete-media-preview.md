@@ -1,5 +1,5 @@
 ---
-title: Delete Media Preview
+title: "Delete Media Preview"
 description: "Clears the link preview image stored on a post, leaving the rest of the post untouched."
 outline: false
 aside: false

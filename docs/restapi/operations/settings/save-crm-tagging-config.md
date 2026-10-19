@@ -1,5 +1,5 @@
 ---
-title: Save CRM Tagging Config
+title: "Save CRM Tagging Config"
 description: "Stores the mapping between FluentCRM tags and spaces or courses, and keeps the `has_crm_sync` feature flag in step."
 outline: false
 aside: false

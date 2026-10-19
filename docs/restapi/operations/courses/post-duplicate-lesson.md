@@ -1,5 +1,5 @@
 ---
-title: Post Duplicate Lesson
+title: "Post Duplicate Lesson"
 description: "Copies a lesson, inserts the copy directly after the original and renumbers the rest of the section."
 outline: false
 aside: false

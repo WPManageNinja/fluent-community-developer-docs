@@ -1,5 +1,5 @@
 ---
-title: List Invitations
+title: "List Invitations"
 description: "Returns the paginated invitations the current user has issued for one space, newest first, with a ready-to-share access URL on each one that is still valid."
 outline: false
 aside: false

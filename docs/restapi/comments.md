@@ -1,6 +1,6 @@
 ---
-title: Comments API
-description: Feed comment listing, creation, updates, deletes, and single comment retrieval.
+title: "Comments API"
+description: "Feed comment listing, creation, updates, deletes, and single comment retrieval."
 ---
 
 # Comments API

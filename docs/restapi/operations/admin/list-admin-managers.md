@@ -1,5 +1,5 @@
 ---
-title: List Admin Managers
+title: "List Admin Managers"
 description: "Returns the paginated list of members who hold a FluentCommunity management role, with their role set and profile attached."
 outline: false
 aside: false

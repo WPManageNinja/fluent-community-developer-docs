@@ -1,5 +1,5 @@
 ---
-title: Join Space
+title: "Join Space"
 description: "Joins the current user to a space, or lodges a join request when the space requires approval, and returns the resulting membership."
 outline: false
 aside: false

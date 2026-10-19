@@ -1,6 +1,6 @@
 ---
-title: Notification Model
-description: ORM reference for FluentCommunity\App\Models\Notification.
+title: "Notification Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Notification."
 ---
 
 # Notification Model

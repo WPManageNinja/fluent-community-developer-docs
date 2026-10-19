@@ -1,5 +1,5 @@
 ---
-title: List Spaces
+title: "List Spaces"
 description: "Returns every space the current user has a membership row for, in alphabetical order, without pagination."
 outline: false
 aside: false

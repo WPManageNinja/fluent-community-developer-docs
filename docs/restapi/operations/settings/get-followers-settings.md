@@ -1,5 +1,5 @@
 ---
-title: Get Followers Settings
+title: "Get Followers Settings"
 description: "Returns the followers module configuration, including who may see a member follower and following lists."
 outline: false
 aside: false

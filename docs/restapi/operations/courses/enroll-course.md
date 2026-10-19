@@ -1,5 +1,5 @@
 ---
-title: Enroll Course
+title: "Enroll Course"
 description: "Enrols the current user in a course and returns their freshly initialised progress track."
 outline: false
 aside: false

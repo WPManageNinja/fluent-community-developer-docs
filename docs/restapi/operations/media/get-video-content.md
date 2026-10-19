@@ -1,5 +1,5 @@
 ---
-title: Get Video Content
+title: "Get Video Content"
 description: "Renders the FluentPlayer markup for one media item, including the scoped CSS that applies the portal theme colours to the player."
 outline: false
 aside: false

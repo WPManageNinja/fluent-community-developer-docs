@@ -1,5 +1,5 @@
 ---
-title: Get Feed Ticker
+title: "Get Feed Ticker"
 description: "Returns posts created or updated since a given moment, each with its full payload, plus the unread notification count — the polling endpoint that keeps an open feed fresh."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Migrations API
-description: BuddyBoss and BuddyPress migration discovery, execution, and status polling.
+title: "Migrations API"
+description: "BuddyBoss and BuddyPress migration discovery, execution, and status polling."
 ---
 
 # Migrations API

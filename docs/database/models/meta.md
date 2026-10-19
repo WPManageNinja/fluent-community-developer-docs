@@ -1,6 +1,6 @@
 ---
-title: Meta Model
-description: ORM reference for FluentCommunity\App\Models\Meta.
+title: "Meta Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Meta."
 ---
 
 # Meta Model

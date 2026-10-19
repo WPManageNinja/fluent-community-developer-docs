@@ -1,5 +1,5 @@
 ---
-title: Reindex Course Sections
+title: "Reindex Course Sections"
 description: "Applies a new display order to a course outline by writing the submitted priority for each section."
 outline: false
 aside: false

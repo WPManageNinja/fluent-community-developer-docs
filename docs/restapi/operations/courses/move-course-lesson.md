@@ -1,5 +1,5 @@
 ---
-title: Move Course Lesson
+title: "Move Course Lesson"
 description: "Moves a lesson into a different section of the same course."
 outline: false
 aside: false

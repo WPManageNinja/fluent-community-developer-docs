@@ -1,5 +1,5 @@
 ---
-title: Get Auth Settings
+title: "Get Auth Settings"
 description: "Returns the login and signup configuration together with the resolved form field definitions the auth screens render."
 outline: false
 aside: false

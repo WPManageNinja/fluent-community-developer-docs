@@ -1,5 +1,5 @@
 ---
-title: Save User Badges
+title: "Save User Badges"
 description: "Replaces the whole badge catalogue with the submitted list, keying each badge by its slug and marking any uploaded logo as permanent media."
 outline: false
 aside: false

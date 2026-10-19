@@ -1,5 +1,5 @@
 ---
-title: Create Space
+title: "Create Space"
 description: "Creates a space, makes the caller its first admin, and attaches the submitted cover photo, logo and topics."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Save Email Settings
+title: "Save Email Settings"
 description: "Merges the submitted email notification settings over the stored ones and saves the result."
 outline: false
 aside: false

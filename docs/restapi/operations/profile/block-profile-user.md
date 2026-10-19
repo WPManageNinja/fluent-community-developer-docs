@@ -1,5 +1,5 @@
 ---
-title: Block Profile User
+title: "Block Profile User"
 description: "Blocks a member, converting any existing follow relationship into a block rather than creating a second row."
 outline: false
 aside: false

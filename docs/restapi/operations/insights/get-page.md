@@ -1,5 +1,5 @@
 ---
-title: Get Page
+title: "Get Page"
 description: "Returns one Insights page's definition together with the definition of every card on it."
 outline: false
 aside: false

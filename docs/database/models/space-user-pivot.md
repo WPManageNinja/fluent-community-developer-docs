@@ -1,6 +1,6 @@
 ---
-title: SpaceUserPivot Model
-description: ORM reference for FluentCommunity\App\Models\SpaceUserPivot.
+title: "SpaceUserPivot Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\SpaceUserPivot."
 ---
 
 # SpaceUserPivot Model

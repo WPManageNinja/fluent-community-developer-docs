@@ -1,6 +1,6 @@
 ---
-title: Settings API
-description: Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings.
+title: "Settings API"
+description: "Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings."
 ---
 
 # Settings API

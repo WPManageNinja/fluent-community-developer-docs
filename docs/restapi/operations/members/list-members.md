@@ -1,5 +1,5 @@
 ---
-title: List Members
+title: "List Members"
 description: "Returns a paginated directory of community members in the requested sort order, or the trimmed candidate list the mention autocomplete uses."
 outline: false
 aside: false

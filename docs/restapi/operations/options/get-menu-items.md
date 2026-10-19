@@ -1,5 +1,5 @@
 ---
-title: Get Menu Items
+title: "Get Menu Items"
 description: "Returns the sidebar menu groups on their own, for refreshing navigation without refetching the full bootstrap payload."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Save Customization Settings
+title: "Save Customization Settings"
 description: "Stores the portal appearance settings, coercing each field to its expected shape."
 outline: false
 aside: false

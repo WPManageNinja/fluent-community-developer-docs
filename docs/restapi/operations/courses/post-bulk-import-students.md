@@ -1,5 +1,5 @@
 ---
-title: Post Bulk Import Students
+title: "Post Bulk Import Students"
 description: "Imports students into a course from submitted rows, creating WordPress users for addresses that do not yet exist."
 outline: false
 aside: false

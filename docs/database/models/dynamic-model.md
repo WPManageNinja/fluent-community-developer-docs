@@ -1,6 +1,6 @@
 ---
-title: DynamicModel Model
-description: ORM reference for FluentCommunity\App\Models\DynamicModel.
+title: "DynamicModel Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\DynamicModel."
 ---
 
 # DynamicModel Model

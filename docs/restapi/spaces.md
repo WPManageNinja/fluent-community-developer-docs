@@ -1,6 +1,6 @@
 ---
-title: Spaces API
-description: Space discovery, lifecycle management, joins/leaves, lock screen configuration, and group organization.
+title: "Spaces API"
+description: "Space discovery, lifecycle management, joins/leaves, lock screen configuration, and group organization."
 ---
 
 # Spaces API

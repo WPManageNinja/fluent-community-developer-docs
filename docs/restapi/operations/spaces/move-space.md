@@ -1,5 +1,5 @@
 ---
-title: Move Space
+title: "Move Space"
 description: "Moves a space into a different space group."
 outline: false
 aside: false

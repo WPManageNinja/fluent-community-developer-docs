@@ -1,5 +1,5 @@
 ---
-title: List User Badges
+title: "List User Badges"
 description: "Returns the badge definitions available to award to member profiles."
 outline: false
 aside: false

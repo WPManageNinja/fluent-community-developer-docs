@@ -1,6 +1,6 @@
 ---
-title: Miscellaneous Actions
-description: Miscellaneous action hooks for FluentCommunity.
+title: "Miscellaneous Actions"
+description: "Miscellaneous action hooks for FluentCommunity."
 ---
 
 # Miscellaneous Actions

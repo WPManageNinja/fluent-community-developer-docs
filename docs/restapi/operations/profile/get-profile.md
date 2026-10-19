@@ -1,5 +1,5 @@
 ---
-title: Get Profile
+title: "Get Profile"
 description: "Returns one member public profile by username, with the navigation tabs the portal should render for that member."
 outline: false
 aside: false

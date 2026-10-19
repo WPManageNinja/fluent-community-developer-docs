@@ -1,5 +1,5 @@
 ---
-title: Mark All Notifications Read
+title: "Mark All Notifications Read"
 description: "Marks every unread notification read for the current user in a single update."
 outline: false
 aside: false

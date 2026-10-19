@@ -1,5 +1,5 @@
 ---
-title: Save General Settings
+title: "Save General Settings"
 description: "Persists the portal-wide settings record — branding, access level, auth copy and redirects, and the portal slug."
 outline: false
 aside: false

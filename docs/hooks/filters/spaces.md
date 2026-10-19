@@ -1,6 +1,6 @@
 ---
-title: Spaces Filters
-description: Spaces filter hooks for FluentCommunity.
+title: "Spaces Filters"
+description: "Spaces filter hooks for FluentCommunity."
 ---
 
 # Spaces Filters

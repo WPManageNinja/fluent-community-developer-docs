@@ -1,5 +1,5 @@
 ---
-title: Get Lesson Quiz Result
+title: "Get Lesson Quiz Result"
 description: "Returns the current user stored result for one quiz lesson, or null if they have not attempted it."
 outline: false
 aside: false

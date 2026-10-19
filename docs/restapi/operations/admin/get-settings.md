@@ -1,5 +1,5 @@
 ---
-title: Get Settings
+title: "Get Settings"
 description: "Returns the Progressive Web App settings — app name, short name, icon source, theme colour and install prompt position."
 outline: false
 aside: false

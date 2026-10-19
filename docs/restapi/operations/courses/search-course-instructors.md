@@ -1,5 +1,5 @@
 ---
-title: Search Course Instructors
+title: "Search Course Instructors"
 description: "Searches all WordPress users so one can be assigned as the course instructor."
 outline: false
 aside: false

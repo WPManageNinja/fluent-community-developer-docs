@@ -1,5 +1,5 @@
 ---
-title: Change Portal Slug
+title: "Change Portal Slug"
 description: "Changes the URL segment the portal is served from and rebuilds the WordPress rewrite rules so the new path resolves immediately."
 outline: false
 aside: false

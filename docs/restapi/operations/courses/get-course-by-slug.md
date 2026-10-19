@@ -1,5 +1,5 @@
 ---
-title: Get Course By Slug
+title: "Get Course By Slug"
 description: "Returns one course by slug with everything `get-course` returns, plus the instructor block — the creator profile, their total course count and optionally their total student count."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Action Hooks
-description: Source-verified action hook inventory for FluentCommunity.
+title: "Action Hooks"
+description: "Source-verified action hook inventory for FluentCommunity."
 ---
 
 # Action Hooks

@@ -1,5 +1,5 @@
 ---
-title: List Profile Memberships
+title: "List Profile Memberships"
 description: "Returns only the space ids a member actively belongs to — the cheap lookup used to decide what to show on their profile."
 outline: false
 aside: false

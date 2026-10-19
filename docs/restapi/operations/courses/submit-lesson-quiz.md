@@ -1,5 +1,5 @@
 ---
-title: Submit Lesson Quiz
+title: "Submit Lesson Quiz"
 description: "Grades a quiz lesson submission, stores the attempt and returns the per-question result with the score."
 outline: false
 aside: false

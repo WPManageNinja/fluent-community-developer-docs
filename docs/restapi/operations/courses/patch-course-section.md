@@ -1,5 +1,5 @@
 ---
-title: Patch Course Section
+title: "Patch Course Section"
 description: "Applies a partial update to a section, accepting the drip fields that match the course type."
 outline: false
 aside: false

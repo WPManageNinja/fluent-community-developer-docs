@@ -1,6 +1,6 @@
 ---
-title: Rendering Filters
-description: Rendering filter hooks for FluentCommunity.
+title: "Rendering Filters"
+description: "Rendering filter hooks for FluentCommunity."
 ---
 
 # Rendering Filters

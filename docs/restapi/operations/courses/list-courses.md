@@ -1,5 +1,5 @@
 ---
-title: List Courses
+title: "List Courses"
 description: "Returns the paginated course catalogue visible to the current user, each entry carrying its enrolment state, progress, section and lesson counts."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Webhooks
+title: "List Webhooks"
 description: "Returns the paginated list of inbound webhooks, and on the first page also the spaces and courses available as enrolment targets."
 outline: false
 aside: false

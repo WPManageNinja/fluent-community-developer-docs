@@ -1,5 +1,5 @@
 ---
-title: Get Email Settings
+title: "Get Email Settings"
 description: "Returns the global email notification settings — digest schedule, sender details and template branding — falling back to the portal logo when no email-specific logo is set."
 outline: false
 aside: false

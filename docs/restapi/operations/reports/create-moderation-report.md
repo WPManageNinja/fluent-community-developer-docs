@@ -1,5 +1,5 @@
 ---
-title: Create Moderation Report
+title: "Create Moderation Report"
 description: "Files a moderation report against a post or a comment and returns the report together with the reported content."
 outline: false
 aside: false

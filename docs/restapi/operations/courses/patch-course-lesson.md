@@ -1,5 +1,5 @@
 ---
-title: Patch Course Lesson
+title: "Patch Course Lesson"
 description: "Applies a partial update to a lesson, accepting only `title`, `status`, `slug` and `message`."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Delete Feed
+title: "Delete Feed"
 description: "Deletes a post from the community."
 outline: false
 aside: false

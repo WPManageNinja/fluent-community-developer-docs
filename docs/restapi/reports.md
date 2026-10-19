@@ -1,6 +1,6 @@
 ---
-title: Reports API
-description: Moderation reporting endpoints for administrators. The old analytics endpoints that also lived here were replaced by the Insights API.
+title: "Reports API"
+description: "Moderation reporting endpoints for administrators. The old analytics endpoints that also lived here were replaced by the Insights API."
 ---
 
 # Reports API

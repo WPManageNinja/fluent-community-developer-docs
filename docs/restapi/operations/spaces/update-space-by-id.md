@@ -1,5 +1,5 @@
 ---
-title: Update Space By ID
+title: "Update Space By ID"
 description: "Updates a space addressed by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint."
 outline: false
 aside: false

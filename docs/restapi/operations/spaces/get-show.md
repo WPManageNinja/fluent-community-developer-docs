@@ -1,5 +1,5 @@
 ---
-title: Get Show
+title: "Get Show"
 description: "Get Show for the FluentCommunity Spaces API."
 outline: false
 aside: false

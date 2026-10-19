@@ -1,5 +1,5 @@
 ---
-title: Save Messaging Settings
+title: "Save Messaging Settings"
 description: "Merges the submitted messaging settings over the stored ones and saves the realtime socket credentials when realtime chat is switched on."
 outline: false
 aside: false

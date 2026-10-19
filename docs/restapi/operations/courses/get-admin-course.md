@@ -1,5 +1,5 @@
 ---
-title: Get Admin Course
+title: "Get Admin Course"
 description: "Returns one course in its editable form, with the lock screen configuration, the attached category ids and — when it has students — the completion count and average progress."
 outline: false
 aside: false

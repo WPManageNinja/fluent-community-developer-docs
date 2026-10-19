@@ -1,6 +1,6 @@
 ---
-title: UserMeta Model
-description: ORM reference for FluentCommunity\App\Models\UserMeta.
+title: "UserMeta Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\UserMeta."
 ---
 
 # UserMeta Model

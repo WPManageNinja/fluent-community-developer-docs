@@ -1,5 +1,5 @@
 ---
-title: Toggle Profile Follow
+title: "Toggle Profile Follow"
 description: "Follows the named member if not already followed, and unfollows them if they are — addressed by numeric user id rather than username."
 outline: false
 aside: false

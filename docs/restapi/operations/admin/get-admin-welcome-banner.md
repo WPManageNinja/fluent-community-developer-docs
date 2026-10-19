@@ -1,5 +1,5 @@
 ---
-title: Get Admin Welcome Banner
+title: "Get Admin Welcome Banner"
 description: "Returns the two portal welcome banner variants — one shown to signed-in members, one to logged-out visitors — as stored, before rendering."
 outline: false
 aside: false

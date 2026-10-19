@@ -1,5 +1,5 @@
 ---
-title: List Course Lessons
+title: "List Course Lessons"
 description: "Returns the lessons of a course in display order, optionally narrowed to one section."
 outline: false
 aside: false

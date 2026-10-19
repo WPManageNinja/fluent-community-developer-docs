@@ -1,5 +1,5 @@
 ---
-title: Save Auth Settings
+title: "Save Auth Settings"
 description: "Normalises and stores the login and signup configuration, then returns it with the recalculated form field definitions."
 outline: false
 aside: false

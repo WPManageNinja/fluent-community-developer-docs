@@ -1,5 +1,5 @@
 ---
-title: Delete Sidebar Link
+title: "Delete Sidebar Link"
 description: "Removes a custom sidebar link from the portal navigation."
 outline: false
 aside: false

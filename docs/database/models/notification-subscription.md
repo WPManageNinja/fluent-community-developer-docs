@@ -1,6 +1,6 @@
 ---
-title: NotificationSubscription Model
-description: ORM reference for FluentCommunity\App\Models\NotificationSubscription.
+title: "NotificationSubscription Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\NotificationSubscription."
 ---
 
 # NotificationSubscription Model

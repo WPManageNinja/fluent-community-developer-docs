@@ -1,5 +1,5 @@
 ---
-title: Add Course Student
+title: "Add Course Student"
 description: "Enrols one existing WordPress user in the course on behalf of an administrator."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Create Feed
+title: "Create Feed"
 description: "Creates a post, renders its Markdown, attaches media and topics, and returns the transformed post ready to prepend to the feed."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Feed Comments
+title: "List Feed Comments"
 description: "Returns every comment on a post in chronological order, with each author profile attached and the current user liked state flagged."
 outline: false
 aside: false

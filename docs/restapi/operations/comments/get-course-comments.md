@@ -1,5 +1,5 @@
 ---
-title: Get Course Comments
+title: "Get Course Comments"
 description: "Returns a paginated, newest-first list of every comment left on lessons within one course, for the course management screen."
 outline: false
 aside: false

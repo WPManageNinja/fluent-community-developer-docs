@@ -1,5 +1,5 @@
 ---
-title: List All Space Courses
+title: "List All Space Courses"
 description: "Returns every space and course row in serial order, ignoring privacy and membership, for use in admin pickers and mapping screens."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Notifications Actions
-description: Notifications action hooks for FluentCommunity.
+title: "Notifications Actions"
+description: "Notifications action hooks for FluentCommunity."
 ---
 
 # Notifications Actions

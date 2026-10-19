@@ -1,6 +1,6 @@
 ---
-title: Integrations Actions
-description: Integrations action hooks for FluentCommunity.
+title: "Integrations Actions"
+description: "Integrations action hooks for FluentCommunity."
 ---
 
 # Integrations Actions

@@ -1,5 +1,5 @@
 ---
-title: Save Fluent Player Settings
+title: "Save Fluent Player Settings"
 description: "Stores the FluentPlayer integration settings and returns the normalised result."
 outline: false
 aside: false

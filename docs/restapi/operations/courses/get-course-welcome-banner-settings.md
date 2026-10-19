@@ -1,5 +1,5 @@
 ---
-title: Get Course Welcome Banner Settings
+title: "Get Course Welcome Banner Settings"
 description: "Returns the two course welcome banner variants, one for enrolled students and one for visitors who have not enrolled."
 outline: false
 aside: false

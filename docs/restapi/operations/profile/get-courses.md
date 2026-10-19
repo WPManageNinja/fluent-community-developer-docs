@@ -1,5 +1,5 @@
 ---
-title: Get Courses
+title: "Get Courses"
 description: "Returns the published courses a member is enrolled in, each with their progress, cover image and section, lesson and student counts."
 outline: false
 aside: false

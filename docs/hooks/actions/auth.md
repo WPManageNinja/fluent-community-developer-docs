@@ -1,6 +1,6 @@
 ---
-title: Auth Actions
-description: Auth action hooks for FluentCommunity.
+title: "Auth Actions"
+description: "Auth action hooks for FluentCommunity."
 ---
 
 # Auth Actions

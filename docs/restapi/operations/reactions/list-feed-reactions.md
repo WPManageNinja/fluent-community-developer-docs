@@ -1,5 +1,5 @@
 ---
-title: List Feed Reactions
+title: "List Feed Reactions"
 description: "Returns the members who liked a post, with their public profiles, for the reaction list popover."
 outline: false
 aside: false

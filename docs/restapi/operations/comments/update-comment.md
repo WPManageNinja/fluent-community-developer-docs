@@ -1,5 +1,5 @@
 ---
-title: Update Comment
+title: "Update Comment"
 description: "Replaces the body of an existing comment, re-renders it, and reconciles its attached media with the submitted list."
 outline: false
 aside: false

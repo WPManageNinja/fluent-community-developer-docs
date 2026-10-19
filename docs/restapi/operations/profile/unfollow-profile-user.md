@@ -1,5 +1,5 @@
 ---
-title: Unfollow Profile User
+title: "Unfollow Profile User"
 description: "Removes the follow relationship from the current user to the named member."
 outline: false
 aside: false

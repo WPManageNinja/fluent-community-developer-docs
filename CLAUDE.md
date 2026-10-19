@@ -66,7 +66,7 @@ Since generated output mirrors the checked-out plugin source, regenerating again
 
 ## Architecture
 
-- `.vitepress/config.mts` — site config and all sidebars. Sidebars are mostly hard-coded lists; REST API operation pages are discovered from `docs/restapi/operations/<module>/` and ordered via `.generated/restapi-module-order.json`. New hand-written pages must be added to the sidebar arrays here.
+- `.vitepress/config.mts` — site config and all sidebars. The generated sections are read from `.generated/`: REST API operation pages are discovered from `docs/restapi/operations/<module>/` and ordered via `restapi-module-order.json`, hook pages come from `hook-page-order.json`, and the database model groups from `database-model-order.json` — so a new model or hook page is linked without editing this file. New *hand-written* pages must still be added to the sidebar arrays here.
 - `.vitepress/theme/` — custom theme: `vitepress-openapi` client (interactive REST playground, including Basic-auth handling and SSR fetch shims in `index.ts`), `Mermaid.vue` for ER diagrams/flowcharts, `DocsHome.vue` landing page.
 - `public/openapi/` — generated OpenAPI specs powering the playground; `generate-manifest.js` indexes them into `manifest.json`.
 
@@ -83,5 +83,5 @@ npm run featured:regenerate   # re-render every card (after changing the generat
   that adds pages also renders their cards — commit the new PNGs alongside the regenerated pages.
   Run it by hand only when invoking `scripts/generate-docs.mjs` directly instead of via the npm scripts.
 - If you rename or retitle a page, delete its old card first and run the generator again — it skips existing files and only *reports* orphans, it never deletes them.
-- Card naming rule: the page's served path (after `rewrites`) minus `.md`, with `/` replaced by `--`, plus `.png`. It lives in both the script (`cardNameFor()`) and the config (`featuredImageFor()`) — change one, change the other.
+- Card naming rule: the page's served path (after `rewrites`) minus `.md`, with `/` replaced by `--`, plus `.png`. It lives once, in `scripts/lib/featured-card.mjs` (`cardNameFor()`), imported by both the script that writes the files and the config that points `og:image` at them.
 - These PNGs are the deliberate exception to any "images must be `.webp`" rule in this repo: social scrapers expect PNG/JPEG.

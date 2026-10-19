@@ -1,5 +1,5 @@
 ---
-title: Update Course
+title: "Update Course"
 description: "Updates a course record and its settings block, firing the course-published hook the first time its status crosses into `published`."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Delete Course
+title: "Delete Course"
 description: "Deletes a course together with all of its content and every trace of student participation in it."
 outline: false
 aside: false

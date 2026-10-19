@@ -1,6 +1,6 @@
 ---
-title: Feeds API
-description: Feed creation, retrieval, discovery, ticker updates, bookmarks, and markdown preview.
+title: "Feeds API"
+description: "Feed creation, retrieval, discovery, ticker updates, bookmarks, and markdown preview."
 ---
 
 # Feeds API

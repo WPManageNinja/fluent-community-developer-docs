@@ -1,5 +1,5 @@
 ---
-title: Search Space Users
+title: "Search Space Users"
 description: "Searches for WordPress users who are not yet members of a space, for the add-member picker."
 outline: false
 aside: false

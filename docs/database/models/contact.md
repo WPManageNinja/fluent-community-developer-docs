@@ -1,6 +1,6 @@
 ---
-title: Contact Model
-description: ORM reference for FluentCommunity\App\Models\Contact.
+title: "Contact Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Contact."
 ---
 
 # Contact Model

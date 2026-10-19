@@ -1,5 +1,5 @@
 ---
-title: Delete Space Paywall
+title: "Delete Space Paywall"
 description: "Detaches a FluentCart product from a space so it no longer sells access to it."
 outline: false
 aside: false

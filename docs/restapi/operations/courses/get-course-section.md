@@ -1,5 +1,5 @@
 ---
-title: Get Course Section
+title: "Get Course Section"
 description: "Returns one section of a course with its lessons."
 outline: false
 aside: false

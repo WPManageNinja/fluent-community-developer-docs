@@ -1,6 +1,6 @@
 ---
-title: Feed Model
-description: ORM reference for FluentCommunity\App\Models\Feed.
+title: "Feed Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Feed."
 ---
 
 # Feed Model

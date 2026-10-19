@@ -1,5 +1,5 @@
 ---
-title: Create Invitation
+title: "Create Invitation"
 description: "Invites one email address to join a space and sends the invitation email immediately."
 outline: false
 aside: false

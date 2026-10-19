@@ -1,5 +1,5 @@
 ---
-title: Mark Notifications Read By Feed
+title: "Mark Notifications Read By Feed"
 description: "Marks every notification about one post read for the current user and returns the new unread count together with the remaining unread post ids."
 outline: false
 aside: false

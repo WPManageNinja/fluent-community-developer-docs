@@ -1,5 +1,5 @@
 ---
-title: Post Store
+title: "Post Store"
 description: "Post Store for the FluentCommunity Spaces API."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: List Bookmarks
+title: "List Bookmarks"
 description: "Returns a page of the published posts the current user has bookmarked, newest first and transformed for display."
 outline: false
 aside: false

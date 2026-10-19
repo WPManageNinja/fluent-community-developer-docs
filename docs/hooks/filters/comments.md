@@ -1,6 +1,6 @@
 ---
-title: Comments Filters
-description: Comments filter hooks for FluentCommunity.
+title: "Comments Filters"
+description: "Comments filter hooks for FluentCommunity."
 ---
 
 # Comments Filters

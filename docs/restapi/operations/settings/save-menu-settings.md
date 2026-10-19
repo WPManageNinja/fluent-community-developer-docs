@@ -1,5 +1,5 @@
 ---
-title: Save Menu Settings
+title: "Save Menu Settings"
 description: "Replaces the portal navigation configuration, preserving the protected attributes of built-in menu entries."
 outline: false
 aside: false

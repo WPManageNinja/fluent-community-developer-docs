@@ -1,5 +1,5 @@
 ---
-title: Get Course Meta Settings
+title: "Get Course Meta Settings"
 description: "Returns the extra course settings panels contributed by integrations, or `null` when nothing has registered any."
 outline: false
 aside: false

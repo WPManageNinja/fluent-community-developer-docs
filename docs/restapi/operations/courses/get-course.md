@@ -1,5 +1,5 @@
 ---
-title: Get Course
+title: "Get Course"
 description: "Returns one course by numeric id with its sections, the lessons the caller may see, per-lesson lock state and the current progress track."
 outline: false
 aside: false

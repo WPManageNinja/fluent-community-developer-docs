@@ -1,5 +1,5 @@
 ---
-title: Post Resolve CRM Tag Course
+title: "Post Resolve CRM Tag Course"
 description: "Resolves a FluentCRM tag into a page of contacts to enrol in the course, optionally creating WordPress users for contacts that do not have one."
 outline: false
 aside: false

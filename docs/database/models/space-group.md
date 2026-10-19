@@ -1,6 +1,6 @@
 ---
-title: SpaceGroup Model
-description: ORM reference for FluentCommunity\App\Models\SpaceGroup.
+title: "SpaceGroup Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\SpaceGroup."
 ---
 
 # SpaceGroup Model

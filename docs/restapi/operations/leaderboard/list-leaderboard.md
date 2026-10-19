@@ -1,5 +1,5 @@
 ---
-title: List Leaderboard
+title: "List Leaderboard"
 description: "Returns the three leaderboards — last 7 days, last 30 days and all time — each with its top ten members and their profiles attached."
 outline: false
 aside: false

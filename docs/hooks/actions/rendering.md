@@ -1,6 +1,6 @@
 ---
-title: Rendering Actions
-description: Rendering action hooks for FluentCommunity.
+title: "Rendering Actions"
+description: "Rendering action hooks for FluentCommunity."
 ---
 
 # Rendering Actions

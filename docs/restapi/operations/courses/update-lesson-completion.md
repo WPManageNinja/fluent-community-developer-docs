@@ -1,5 +1,5 @@
 ---
-title: Update Lesson Completion
+title: "Update Lesson Completion"
 description: "Marks a lesson complete or incomplete for the current user and returns the recalculated course progress track."
 outline: false
 aside: false

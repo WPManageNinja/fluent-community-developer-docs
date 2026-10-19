@@ -1,5 +1,5 @@
 ---
-title: Get Snippets Settings
+title: "Get Snippets Settings"
 description: "Returns the custom CSS and custom JavaScript injected into the portal."
 outline: false
 aside: false

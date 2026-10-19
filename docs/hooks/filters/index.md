@@ -1,6 +1,6 @@
 ---
-title: Filter Hooks
-description: Source-verified filter hook inventory for FluentCommunity.
+title: "Filter Hooks"
+description: "Source-verified filter hook inventory for FluentCommunity."
 ---
 
 # Filter Hooks

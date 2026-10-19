@@ -1,5 +1,5 @@
 ---
-title: Get Export
+title: "Get Export"
 description: "Returns one card's data as CSV content plus a suggested filename, for the export button."
 outline: false
 aside: false

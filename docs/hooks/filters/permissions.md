@@ -1,6 +1,6 @@
 ---
-title: Permissions Filters
-description: Permissions filter hooks for FluentCommunity.
+title: "Permissions Filters"
+description: "Permissions filter hooks for FluentCommunity."
 ---
 
 # Permissions Filters

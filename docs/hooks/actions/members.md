@@ -1,6 +1,6 @@
 ---
-title: Members Actions
-description: Members action hooks for FluentCommunity.
+title: "Members Actions"
+description: "Members action hooks for FluentCommunity."
 ---
 
 # Members Actions

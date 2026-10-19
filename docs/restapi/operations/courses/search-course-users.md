@@ -1,5 +1,5 @@
 ---
-title: Search Course Users
+title: "Search Course Users"
 description: "Searches for WordPress users who are not yet enrolled in the course, for the add-student picker."
 outline: false
 aside: false

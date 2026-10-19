@@ -1,5 +1,5 @@
 ---
-title: Post Save Settings
+title: "Post Save Settings"
 description: "Validates and stores the Progressive Web App settings, marking a custom icon as permanent media and recording its pixel dimensions."
 outline: false
 aside: false

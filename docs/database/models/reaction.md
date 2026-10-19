@@ -1,6 +1,6 @@
 ---
-title: Reaction Model
-description: ORM reference for FluentCommunity\App\Models\Reaction.
+title: "Reaction Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Reaction."
 ---
 
 # Reaction Model

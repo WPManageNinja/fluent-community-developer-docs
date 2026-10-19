@@ -1,0 +1,130 @@
+[
+  {
+    "text": "Content Models",
+    "items": [
+      {
+        "text": "Feed",
+        "link": "/database/models/feed"
+      },
+      {
+        "text": "Comment",
+        "link": "/database/models/comment"
+      },
+      {
+        "text": "Activity",
+        "link": "/database/models/activity"
+      },
+      {
+        "text": "Media",
+        "link": "/database/models/media"
+      },
+      {
+        "text": "Reaction",
+        "link": "/database/models/reaction"
+      },
+      {
+        "text": "Moderation",
+        "link": "/database/models/moderation"
+      }
+    ]
+  },
+  {
+    "text": "Community Models",
+    "items": [
+      {
+        "text": "Space",
+        "link": "/database/models/space"
+      },
+      {
+        "text": "BaseSpace",
+        "link": "/database/models/base-space"
+      },
+      {
+        "text": "SpaceGroup",
+        "link": "/database/models/space-group"
+      },
+      {
+        "text": "SpaceUserPivot",
+        "link": "/database/models/space-user-pivot"
+      },
+      {
+        "text": "SidebarLink",
+        "link": "/database/models/sidebar-link"
+      },
+      {
+        "text": "Course",
+        "link": "/database/models/course"
+      },
+      {
+        "text": "CourseTopic",
+        "link": "/database/models/course-topic"
+      },
+      {
+        "text": "CourseLesson",
+        "link": "/database/models/course-lesson"
+      },
+      {
+        "text": "Term",
+        "link": "/database/models/term"
+      }
+    ]
+  },
+  {
+    "text": "People and Messaging",
+    "items": [
+      {
+        "text": "User",
+        "link": "/database/models/user"
+      },
+      {
+        "text": "XProfile",
+        "link": "/database/models/x-profile"
+      },
+      {
+        "text": "UserMeta",
+        "link": "/database/models/user-meta"
+      },
+      {
+        "text": "Contact",
+        "link": "/database/models/contact"
+      },
+      {
+        "text": "Follow",
+        "link": "/database/models/follow"
+      },
+      {
+        "text": "Notification",
+        "link": "/database/models/notification"
+      },
+      {
+        "text": "NotificationPreference",
+        "link": "/database/models/notification-preference"
+      },
+      {
+        "text": "NotificationSubscriber",
+        "link": "/database/models/notification-subscriber"
+      },
+      {
+        "text": "NotificationSubscription",
+        "link": "/database/models/notification-subscription"
+      }
+    ]
+  },
+  {
+    "text": "Framework Models",
+    "items": [
+      {
+        "text": "Meta",
+        "link": "/database/models/meta"
+      },
+      {
+        "text": "Model",
+        "link": "/database/models/model"
+      },
+      {
+        "text": "DynamicModel",
+        "link": "/database/models/dynamic-model"
+      }
+    ]
+  }
+]

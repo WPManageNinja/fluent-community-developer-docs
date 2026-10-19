@@ -1,5 +1,5 @@
 ---
-title: List Profile Followers
+title: "List Profile Followers"
 description: "Returns the paginated list of members following this profile, each annotated with whether the current user follows them back."
 outline: false
 aside: false

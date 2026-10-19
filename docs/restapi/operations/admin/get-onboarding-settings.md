@@ -1,5 +1,5 @@
 ---
-title: Get Onboarding Settings
+title: "Get Onboarding Settings"
 description: "Returns the general settings plus everything the setup wizard needs: which sibling Fluent plugins are already installed and the current user name and email to prefill."
 outline: false
 aside: false

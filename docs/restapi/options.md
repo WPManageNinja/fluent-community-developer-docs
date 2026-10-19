@@ -1,6 +1,6 @@
 ---
-title: Options API
-description: Portal bootstrap variables, server-rendered sidebar HTML, and menu item payloads.
+title: "Options API"
+description: "Portal bootstrap variables, server-rendered sidebar HTML, and menu item payloads."
 ---
 
 # Options API

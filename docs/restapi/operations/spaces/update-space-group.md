@@ -1,5 +1,5 @@
 ---
-title: Update Space Group
+title: "Update Space Group"
 description: "Updates the title, description and expansion behaviour of a space group."
 outline: false
 aside: false

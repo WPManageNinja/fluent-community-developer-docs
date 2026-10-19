@@ -1,5 +1,5 @@
 ---
-title: Cast Survey Vote
+title: "Cast Survey Vote"
 description: "Records the current user vote on a survey post and returns the updated survey configuration with their choices flagged."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Get Course Lesson
+title: "Get Course Lesson"
 description: "Returns one lesson in its editable form with its section and course attached."
 outline: false
 aside: false

@@ -1,5 +1,5 @@
 ---
-title: Save Moderation Config
+title: "Save Moderation Config"
 description: "Stores the content moderation configuration and keeps the `content_moderation` feature flag in step with its `is_enabled` value."
 outline: false
 aside: false

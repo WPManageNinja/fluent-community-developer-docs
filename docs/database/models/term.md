@@ -1,6 +1,6 @@
 ---
-title: Term Model
-description: ORM reference for FluentCommunity\App\Models\Term.
+title: "Term Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Term."
 ---
 
 # Term Model

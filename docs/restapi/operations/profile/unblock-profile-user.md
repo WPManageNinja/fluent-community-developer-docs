@@ -1,5 +1,5 @@
 ---
-title: Unblock Profile User
+title: "Unblock Profile User"
 description: "Lifts a block, deleting the relationship row entirely rather than reverting it to a follow."
 outline: false
 aside: false

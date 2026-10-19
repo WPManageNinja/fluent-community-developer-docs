@@ -1,5 +1,5 @@
 ---
-title: Get Messaging Settings
+title: "Get Messaging Settings"
 description: "Returns the direct-messaging configuration alongside the realtime socket credentials used by the chat client."
 outline: false
 aside: false

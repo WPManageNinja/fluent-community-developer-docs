@@ -1,5 +1,5 @@
 ---
-title: List Unread Notifications
+title: "List Unread Notifications"
 description: "Returns up to 50 unread notifications for the current user with the unread total, for the notification dropdown."
 outline: false
 aside: false

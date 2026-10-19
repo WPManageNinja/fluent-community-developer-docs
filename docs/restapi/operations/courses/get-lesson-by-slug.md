@@ -1,5 +1,5 @@
 ---
-title: Get Lesson By Slug
+title: "Get Lesson By Slug"
 description: "Returns a single lesson by course and lesson slug, with its access decision resolved and its body parsed only when the caller may read it."
 outline: false
 aside: false

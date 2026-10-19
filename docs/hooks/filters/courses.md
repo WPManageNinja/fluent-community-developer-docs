@@ -1,6 +1,6 @@
 ---
-title: Courses Filters
-description: Courses filter hooks for FluentCommunity.
+title: "Courses Filters"
+description: "Courses filter hooks for FluentCommunity."
 ---
 
 # Courses Filters

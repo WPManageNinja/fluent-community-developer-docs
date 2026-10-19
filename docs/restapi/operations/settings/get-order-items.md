@@ -1,5 +1,5 @@
 ---
-title: Get Order Items
+title: "Get Order Items"
 description: "Get Order Items for the FluentCommunity Settings API."
 outline: false
 aside: false

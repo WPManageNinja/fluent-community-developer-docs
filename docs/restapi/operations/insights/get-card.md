@@ -1,5 +1,5 @@
 ---
-title: Get Card
+title: "Get Card"
 description: "Returns one card's data for a date range and scope: the series or rows it plots, its totals, and the comparison against the preceding period."
 outline: false
 aside: false

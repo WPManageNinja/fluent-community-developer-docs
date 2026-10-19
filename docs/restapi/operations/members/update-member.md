@@ -1,5 +1,5 @@
 ---
-title: Update Member
+title: "Update Member"
 description: "Changes the community status of one member, moving them between active, pending and blocked."
 outline: false
 aside: false

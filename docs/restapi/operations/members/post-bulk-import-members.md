@@ -1,5 +1,5 @@
 ---
-title: Post Bulk Import Members
+title: "Post Bulk Import Members"
 description: "Imports members into a space from submitted rows, creating WordPress users for addresses that do not yet exist."
 outline: false
 aside: false

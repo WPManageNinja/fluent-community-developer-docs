@@ -1,5 +1,5 @@
 ---
-title: Get Space By Slug
+title: "Get Space By Slug"
 description: "Returns one space with its settings, topics, the current user membership and the permissions they hold inside it."
 outline: false
 aside: false

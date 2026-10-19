@@ -1,6 +1,6 @@
 ---
-title: Insights Filters
-description: Insights filter hooks for FluentCommunity.
+title: "Insights Filters"
+description: "Insights filter hooks for FluentCommunity."
 ---
 
 # Insights Filters

@@ -1,5 +1,5 @@
 ---
-title: Create Space Group
+title: "Create Space Group"
 description: "Creates a space group to hold spaces in the sidebar."
 outline: false
 aside: false

@@ -1,6 +1,6 @@
 ---
-title: Moderation Model
-description: ORM reference for FluentCommunity\App\Models\Moderation.
+title: "Moderation Model"
+description: "ORM reference for FluentCommunity\\App\\Models\\Moderation."
 ---
 
 # Moderation Model

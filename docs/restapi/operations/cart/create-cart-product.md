@@ -1,5 +1,5 @@
 ---
-title: Create Cart Product
+title: "Create Cart Product"
 description: "Creates a simple one-time digital FluentCart product with a single variant, so a paywall can be set up without leaving the community admin."
 outline: false
 aside: false

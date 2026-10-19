@@ -1,5 +1,5 @@
 ---
-title: Delete Space By Slug
+title: "Delete Space By Slug"
 description: "Deletes a space along with everything posted in it and every membership record for it."
 outline: false
 aside: false
