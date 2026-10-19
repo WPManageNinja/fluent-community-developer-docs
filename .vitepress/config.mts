@@ -11,11 +11,11 @@ import {
   writeFileSync,
 } from 'fs'
 import { dirname, join, relative } from 'path'
+import { fileURLToPath } from 'url'
 // One rule, one place: the card filenames the generator writes and the og:image
 // URLs here have to agree, and a mismatch silently serves default.png.
-// @ts-expect-error -- plain JS helper, shared with scripts/generate-featured-images.mjs
+// @ts-ignore -- plain JS helper, shared with scripts/generate-featured-images.mjs
 import { cardNameFor } from '../scripts/lib/featured-card.mjs'
-import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
