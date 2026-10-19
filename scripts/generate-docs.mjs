@@ -415,9 +415,16 @@ const MODULE_META = {
   reports: {
     title: 'Reports API',
     description:
-      'Analytics, moderation reporting, and Pro reporting endpoints for administrators.',
+      'Moderation reporting endpoints for administrators. The old analytics endpoints that also lived here were replaced by the Insights API.',
     auth:
       'Reports routes are primarily administrator-only and are protected by `AdminPolicy` or moderation-specific policies.',
+  },
+  insights: {
+    title: 'Insights API',
+    description:
+      'Reporting — the pages an admin can open, each page\'s cards, a single card\'s data for a date range and scope, and CSV export. Replaced the old Pro analytics endpoints.',
+    auth:
+      'Every route is registered with `InsightsPolicy`, which is site-admin only and implements one method per action, so none of them falls back to the weaker `verifyRequest()`. Cards are additionally checked with `canView()` for the requested scope and skipped when the install\'s Insights level does not include them.',
   },
   documents: {
     title: 'Documents API',
@@ -485,6 +492,7 @@ const HOOK_PAGE_ORDER = [
   'integrations',
   'rendering',
   'settings',
+  'insights',
   'admin',
   'miscellaneous',
 ]
@@ -511,6 +519,7 @@ const HOOK_PATH_RULES = [
   [/\/app\/Modules\/Pwa\//, 'settings'],
   [/\/app\/Modules\/LeaderBoard\//, 'members'],
   [/\/app\/Modules\/DocumentLibrary\/|\/app\/Modules\/MediaGallery\//, 'media'],
+  [/\/Services\/Insights\/|InsightsController\.php/, 'insights'],
 ]
 
 const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
@@ -5376,6 +5385,9 @@ function categorizeHook(hookName, filePath) {
   }
 
   // 3. Name rules, most specific first.
+  // Insights hooks are named for what they tune, not for the feature, so several
+  // of them (excluded_user_ids, attention_items) match a later rule and scatter.
+  if (/^insights\//.test(path)) return 'insights'
   if (/permission|capability|can_view|can_access|can_create|is_allowed/.test(path)) return 'permissions'
   if (/moderation|report|content_flagged|block(ed|ing)_user/.test(path)) return 'moderation'
   // Everything that shapes what the portal renders or how it boots, including the
@@ -6690,6 +6702,23 @@ function buildHookExample(group) {
 }
 
 function buildRouteOverviewAndSpecs(routes) {
+  // MODULE_META is a hand-kept whitelist and every page below is keyed off it, so a
+  // route group added to the plugin after this list was last touched gets no page and
+  // no spec — silently, because the route is still parsed and still counted. Name the
+  // strays instead of dropping them (this is how the Insights routes went missing).
+  const unknownModules = [...new Set(routes.map((route) => route.module))]
+    .filter((module) => !MODULE_META[module])
+    .sort()
+  if (unknownModules.length) {
+    console.log(
+      `\n${unknownModules.length} route module(s) found in the source but missing from MODULE_META — add an entry so their operations get pages and specs:`,
+    )
+    unknownModules.forEach((module) => {
+      const count = routes.filter((route) => route.module === module).length
+      console.log(`  ${module} (${count} route${count === 1 ? '' : 's'})`)
+    })
+  }
+
   const moduleGroups = Object.keys(MODULE_META).reduce((carry, key) => {
     carry[key] = routes.filter((route) => route.module === key)
     return carry

@@ -106,6 +106,7 @@ const HOOK_PAGE_LABELS: Record<string, string> = {
   integrations: 'Integrations',
   rendering: 'Rendering & Theming',
   settings: 'Settings',
+  insights: 'Insights',
   admin: 'Admin',
   miscellaneous: 'Miscellaneous',
 }

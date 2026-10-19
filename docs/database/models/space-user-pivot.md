@@ -20,10 +20,11 @@ Stores the membership, role, and membership metadata for users inside spaces.
 | --- | --- | --- | --- | --- |
 | `id` | `BIGINT UNSIGNED` | No | `—` | Primary key for the row. |
 | `space_id` | `BIGINT UNSIGNED` | Yes | `—` | Space ID stored for this record. |
-| `user_id` | `VARCHAR(194)` | No | `—` | WordPress user ID associated with the row. |
+| `user_id` | `BIGINT UNSIGNED` | No | `—` | WordPress user ID associated with the row. |
 | `status` | `VARCHAR(100)` | Yes | `'active'` | Lifecycle or moderation status. |
 | `role` | `VARCHAR(100)` | Yes | `'member'` | Membership role assigned to the user. |
 | `meta` | `TEXT` | Yes | `—` | Serialized meta payload used by FluentCommunity. |
+| `expire_at` | `DATETIME` | Yes | `—` | Expire At stored for this record. |
 | `created_at` | `TIMESTAMP` | Yes | `—` | Creation timestamp maintained by the ORM. |
 | `updated_at` | `TIMESTAMP` | Yes | `—` | Update timestamp maintained by the ORM. |
 

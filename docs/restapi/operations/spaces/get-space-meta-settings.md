@@ -15,7 +15,7 @@ The panels come entirely from the `fluent_community/space/meta_fields` filter, s
 - **Path:** `/spaces/{spaceSlug}/meta-settings`
 - **Edition:** Core
 - **Controller:** `SpaceController@getMetaSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:16`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:17`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin or course-admin access, or the admin role in this space.

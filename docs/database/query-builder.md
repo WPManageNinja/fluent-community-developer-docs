@@ -67,7 +67,7 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `BySpace` | `$query, $spaceId` |
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `ByUser` | `$query, $userId` |
 | [`Term`](/database/models/term) | `SearchBy` | `$query, $search` |
-| [`User`](/database/models/user) | `SearchBy` | `$query, $search` |
+| [`User`](/database/models/user) | `SearchBy` | `$query, $search, $fields = null` |
 | [`User`](/database/models/user) | `MentionBy` | `$query, $search` |
 | [`UserMeta`](/database/models/user-meta) | `ByKey` | `$query, $key` |
 | [`UserMeta`](/database/models/user-meta) | `ByUser` | `$query, $userId` |

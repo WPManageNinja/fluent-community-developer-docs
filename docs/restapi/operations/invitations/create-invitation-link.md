@@ -15,7 +15,7 @@ Creates a shareable invitation link for a space that any recipient can redeem, a
 - **Path:** `/invitations/link`
 - **Edition:** Core
 - **Controller:** `InvitationController@createNewLink`
-- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:26`
+- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:31`
 - **Controller source:** `fluent-community/Modules/Auth/Classes/InvitationController.php`
 
 - Requires the `community_moderator` permission in the space named by `space_id`.

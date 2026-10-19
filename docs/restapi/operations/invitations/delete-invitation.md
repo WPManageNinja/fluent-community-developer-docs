@@ -13,7 +13,7 @@ Revokes an invitation so its email and link can no longer be redeemed.
 - **Path:** `/invitations/{invitation_id}`
 - **Edition:** Core
 - **Controller:** `InvitationController@delete`
-- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:24`
+- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:29`
 - **Controller source:** `fluent-community/Modules/Auth/Classes/InvitationController.php`
 
 - Requires the `community_moderator` permission in the space the invitation was issued for.

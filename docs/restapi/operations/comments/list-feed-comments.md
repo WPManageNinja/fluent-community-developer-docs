@@ -15,7 +15,7 @@ Comments are not paginated — the whole thread is returned in one response. Pen
 - **Path:** `/feeds/{feed_id}/comments`
 - **Edition:** Core
 - **Controller:** `CommentsController@getComments`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:55`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:56`
 - **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
 
 - Comments from deactivated or blocked profiles are excluded.

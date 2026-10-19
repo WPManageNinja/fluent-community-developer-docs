@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPrimaryMenu",
         "summary": "GET Get Primary Menu",
-        "description": "Get Primary Menu for the FluentCommunity Spaces API.\n\nController: `SpaceController@getPrimaryMenu`\nRoute source: `fluent-community/app/Http/Routes/api.php:29`",
+        "description": "Get Primary Menu for the FluentCommunity Spaces API.\n\nController: `SpaceController@getPrimaryMenu`\nRoute source: `fluent-community/app/Http/Routes/api.php:30`",
         "tags": [
           "Spaces"
         ],

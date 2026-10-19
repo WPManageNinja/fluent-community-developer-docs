@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdatePrimaryMenu",
         "summary": "POST Post Update Primary Menu",
-        "description": "Post Update Primary Menu for the FluentCommunity Spaces API.\n\nController: `SpaceController@updatePrimaryMenu`\nRoute source: `fluent-community/app/Http/Routes/api.php:30`",
+        "description": "Post Update Primary Menu for the FluentCommunity Spaces API.\n\nController: `SpaceController@updatePrimaryMenu`\nRoute source: `fluent-community/app/Http/Routes/api.php:31`",
         "tags": [
           "Spaces"
         ],

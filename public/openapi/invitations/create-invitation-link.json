@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createInvitationLink",
         "summary": "POST Create Invitation Link",
-        "description": "Creates a shareable invitation link for a space that any recipient can redeem, and returns its access URL.\n\nController: `InvitationController@createNewLink`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:26`",
+        "description": "Creates a shareable invitation link for a space that any recipient can redeem, and returns its access URL.\n\nController: `InvitationController@createNewLink`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:31`",
         "tags": [
           "Invitations"
         ],

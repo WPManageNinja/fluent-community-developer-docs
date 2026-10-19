@@ -1,0 +1,127 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/settings/reorder": {
+      "post": {
+        "operationId": "postSaveOrder",
+        "summary": "POST Post Save Order",
+        "description": "Post Save Order for the FluentCommunity Settings API.\n\nController: `SettingController@saveOrder`\nRoute source: `fluent-community/app/Http/Routes/api.php:177`",
+        "tags": [
+          "Settings"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "order": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "type",
+                  "order"
+                ]
+              },
+              "example": {
+                "type": "",
+                "order": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "order": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "message": "Order saved successfully.",
+                  "order": null
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid order type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Invalid order type."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

@@ -11,9 +11,9 @@ description: Integrations action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:364` |
-| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:364` |
-| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:364` |
+| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:436` |
+| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:436` |
+| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:436` |
 | [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:100` |
 | [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:135` |
 | [`fluent_community/product_integration_feed_created`](#fluent-community-product-integration-feed-created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:84` |
@@ -34,7 +34,7 @@ FluentNotify is not hosted on wordpress.org, so there is no default installer â€
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:364` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:436` | No parameters |
 
 ### Example
 
@@ -60,7 +60,7 @@ Guarded by an explicit Pro check before it fires â€” a free install gets an erro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:364` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:436` | No parameters |
 
 ### Example
 
@@ -86,7 +86,7 @@ Fluent Messages is not hosted on wordpress.org, so there is no default installer
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:364` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:436` | No parameters |
 
 ### Example
 

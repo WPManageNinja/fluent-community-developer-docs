@@ -14,13 +14,13 @@ description: Permissions filter hooks for FluentCommunity.
 | [`fluent_community/bulk_members/can_create_wp_users`](#fluent-community-bulk-members-can-create-wp-users) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/BulkMemberHelper.php:438` |
 | [`fluent_community/can_access_portal`](#fluent-community-can-access-portal) | Core | 8 | `fluent-community/app/Services/Helper.php:530` |
 | [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:37` |
-| [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members) | Core | 3 | `fluent-community/app/Functions/Utility.php:315` |
-| [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page) | Core | 3 | `fluent-community/app/Functions/Utility.php:300` |
-| [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:330` |
+| [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members) | Core | 3 | `fluent-community/app/Functions/Utility.php:372` |
+| [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page) | Core | 3 | `fluent-community/app/Functions/Utility.php:357` |
+| [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:387` |
 | [`fluent_community/space_page/can_view_page`](#fluent-community-space-page-can-view-page) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:49` |
 | [`fluent_community/super_admin_capability`](#fluent-community-super-admin-capability) | Core | 1 | `fluent-community/app/Services/Helper.php:230` |
-| [`fluent_community/user/permissions`](#fluent-community-user-permissions) | Core | 2 | `fluent-community/app/Models/User.php:512` |
-| [`fluent_community/user/space/permissions`](#fluent-community-user-space-permissions) | Core | 1 | `fluent-community/app/Models/User.php:651` |
+| [`fluent_community/user/permissions`](#fluent-community-user-permissions) | Core | 2 | `fluent-community/app/Models/User.php:521` |
+| [`fluent_community/user/space/permissions`](#fluent-community-user-space-permissions) | Core | 1 | `fluent-community/app/Models/User.php:660` |
 
 <a id="fluent-community-bulk-members-can-create-wp-users"></a>
 
@@ -146,9 +146,9 @@ Reads the `leaderboard_members_visibility` privacy setting and otherwise mirrors
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:315` | `true` (bool)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:319` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:322` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:372` | `true` (bool)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:376` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:379` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
 
 ### Example
 
@@ -184,9 +184,9 @@ Driven by the `members_page_status` privacy setting, with the same three-way sha
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:300` | `true` (bool)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:304` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:307` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:357` | `true` (bool)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:361` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:364` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
 
 ### Example
 
@@ -223,9 +223,9 @@ The base decision comes from the `profile_page_visibility` privacy setting: `eve
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:330` | `true` (bool)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
-| Core | `fluent-community/app/Functions/Utility.php:334` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
-| Core | `fluent-community/app/Functions/Utility.php:339` | `($isOwn &#124;&#124; Helper::isModerator())` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
+| Core | `fluent-community/app/Functions/Utility.php:387` | `true` (bool)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
+| Core | `fluent-community/app/Functions/Utility.php:391` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
+| Core | `fluent-community/app/Functions/Utility.php:396` | `($isOwn &#124;&#124; Helper::isModerator())` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
 
 ### Example
 
@@ -319,8 +319,8 @@ Applied at both ends of `User::getRolePermissions()`. Users with no community ro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/User.php:512` | `[ 'read' => true, ]` (array)<br>`$roles` (mixed)<br>`$this` (mixed) |
-| Core | `fluent-community/app/Models/User.php:539` | `$permissions` (mixed)<br>`$roles` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:521` | `[ 'read' => true, ]` (array)<br>`$roles` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:548` | `$permissions` (mixed)<br>`$roles` (mixed)<br>`$this` (mixed) |
 
 ### Example
 
@@ -358,7 +358,7 @@ Distinct from the site-wide `fluent_community/user/permissions`: this is resolve
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/User.php:651` | `$permissions` (mixed)<br>`$space` (Space)<br>`$role` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:660` | `$permissions` (mixed)<br>`$space` (Space)<br>`$role` (mixed)<br>`$this` (mixed) |
 
 ### Example
 

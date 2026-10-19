@@ -5,19 +5,19 @@ description: Media action hooks for FluentCommunity.
 
 # Media Actions
 
-9 unique action hooks currently map to this category, across 19 call sites.
+9 unique action hooks currently map to this category, across 20 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:919` |
-| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1484` |
+| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:922` |
+| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1487` |
 | [`fluent_community/delete_remote_media_{this}`](#fluent-community-delete-remote-media-this) | Core | 1 | `fluent-community/app/Models/Media.php:153` |
 | [`fluent_community/document/local_file_access`](#fluent-community-document-local-file-access) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:290` |
 | [`fluent_community/feed/media_deleted`](#fluent-community-feed-media-deleted) | Core <span class="edition-note">(also fired by Pro)</span> | 5 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:33` |
 | [`fluent_community/maybe_delete_draft_medias`](#fluent-community-maybe-delete-draft-medias) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:18` |
-| [`fluent_community/remote_media_delete_failed`](#fluent-community-remote-media-delete-failed) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:68` |
+| [`fluent_community/remote_media_delete_failed`](#fluent-community-remote-media-delete-failed) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:63` |
 | [`fluent_community/remove_medias_by_url`](#fluent-community-remove-medias-by-url) | Core <span class="edition-note">(also fired by Pro)</span> | 7 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:176` |
 | [`fluent_community/space_media/viewed`](#fluent-community-space-media-viewed) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Http/MediaGalleryController.php:51` |
 
@@ -42,7 +42,7 @@ Core attaches `RateLimitHandler::maybeLimitMediaUpload()`, which throws once the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:919` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:922` | `$user` (User) |
 
 ### Example
 
@@ -65,7 +65,7 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1484` | `$currentUser` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1487` | `$currentUser` (User) |
 
 ### Example
 
@@ -162,7 +162,7 @@ Despite the name this is a request to clean up, not a notification that a delete
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:161` | `$documents` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:177` | `$deletedDocuments` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:205` | `$media` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:898` | `$feed->media` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:901` | `$feed->media` (Feed) |
 
 ### Example
 
@@ -205,13 +205,14 @@ add_action('fluent_community/maybe_delete_draft_medias', function () {
 
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
+- **Call sites:** 2
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:68` | `$media` (mixed)<br>`$result` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:63` | `$media` (mixed)<br>`$result` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:74` | `$media` (mixed)<br>`$result` (mixed) |
 
 ### Example
 
@@ -245,7 +246,7 @@ This is an action rather than a filter, and the work is done by core's `CleanupH
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:176` | `$dropped` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:281` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
 | Core | `fluent-community/app/Http/Controllers/ProfileController.php:237` | `$deletedMedias` (mixed)<br>`array (2 keys: user_id, object_sources)` (array) |
-| Core | `fluent-community/app/Models/BaseSpace.php:362` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
+| Core | `fluent-community/app/Models/BaseSpace.php:378` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Models/SpaceGroup.php:129` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Services/Helper.php:429` | `[$url]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |
 | Core | `fluent-community/app/Services/LockscreenService.php:207` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $spaceId, ]` (array) |

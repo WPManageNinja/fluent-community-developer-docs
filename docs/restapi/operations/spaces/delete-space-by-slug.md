@@ -13,7 +13,7 @@ Deletes a space along with everything posted in it and every membership record f
 - **Path:** `/spaces/{spaceSlug}`
 - **Edition:** Core
 - **Controller:** `SpaceController@deleteBySlug`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:21`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:22`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin access or the admin role in this space.

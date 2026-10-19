@@ -13,7 +13,7 @@ Removes a member from a space and refreshes their cached space access list.
 - **Path:** `/spaces/{spaceSlug}/members/remove`
 - **Edition:** Core
 - **Controller:** `SpaceController@removeMember`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:23`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:24`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires the `can_remove_member` permission in this space.

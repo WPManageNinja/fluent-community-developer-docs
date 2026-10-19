@@ -16,19 +16,19 @@ description: Notifications filter hooks for FluentCommunity.
 | [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
 | [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
 | [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
-| [`fluent_community/enable_notification_toast`](#fluent-community-enable-notification-toast) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1254` |
+| [`fluent_community/enable_notification_toast`](#fluent-community-enable-notification-toast) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1257` |
 | [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:492` |
 | [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:200` |
-| [`fluent_community/notification_toast_items`](#fluent-community-notification-toast-items) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1329` |
-| [`fluent_community/notification_toast_limit`](#fluent-community-notification-toast-limit) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1258` |
+| [`fluent_community/notification_toast_items`](#fluent-community-notification-toast-items) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1332` |
+| [`fluent_community/notification_toast_limit`](#fluent-community-notification-toast-limit) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1261` |
 | [`fluent_community/notifications_api_response`](#fluent-community-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
-| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:901` |
-| [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:89` |
-| [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:141` |
-| [`fluent_community/smartcode/user_fields`](#fluent-community-smartcode-user-fields) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:270` |
-| [`fluent_community/smartcode/user_meta_keys`](#fluent-community-smartcode-user-meta-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:309` |
+| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:928` |
+| [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:97` |
+| [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:149` |
+| [`fluent_community/smartcode/user_fields`](#fluent-community-smartcode-user-fields) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:278` |
+| [`fluent_community/smartcode/user_meta_keys`](#fluent-community-smartcode-user-meta-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:317` |
 | [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:59` |
-| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1308` |
+| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1372` |
 
 <a id="fluent-community-aggregated-notification-prefs"></a>
 
@@ -210,7 +210,7 @@ add_filter('fluent_community/digest_notification/email_sections', function ($sec
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1254` | `true` (bool)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1257` | `true` (bool)<br>`$userId` (int) |
 
 ### Example
 
@@ -306,7 +306,7 @@ add_filter('fluent_community/new_feed_notification/email_sections', function ($s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1329` | `$items` (mixed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1332` | `$items` (mixed)<br>`$userId` (int) |
 
 ### Example
 
@@ -328,7 +328,7 @@ add_filter('fluent_community/notification_toast_items', function ($items, $userI
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1258` | `3` (int)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1261` | `3` (int)<br>`$userId` (int) |
 
 ### Example
 
@@ -398,7 +398,7 @@ Backs the notification settings screen. The payload holds `user_globals` cast to
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:901` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:928` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -432,9 +432,9 @@ Applied at three points, all of them structural failures rather than missing dat
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/SmartCodeParser.php:89` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
 | Core | `fluent-community/app/Services/SmartCodeParser.php:97` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
 | Core | `fluent-community/app/Services/SmartCodeParser.php:105` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:113` | `$matches[0]` (array)<br>`$this->store['user']` (array) |
 
 ### Example
 
@@ -472,7 +472,7 @@ The suffix is the part before the first dot, so `{​{crm.company}​}` reaches 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/SmartCodeParser.php:141` | `$matches[0]` (array)<br>`$valueKey` (mixed)<br>`$defaultValue` (mixed)<br>`static::$store['user']` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:149` | `$matches[0]` (array)<br>`$valueKey` (mixed)<br>`$defaultValue` (mixed)<br>`static::$store['user']` (array) |
 
 ### Example
 
@@ -496,7 +496,7 @@ add_filter('fluent_community/smartcode_group_callback_{dataKey}', function ($mat
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/SmartCodeParser.php:270` | `array (11 items)` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:278` | `array (11 items)` (array) |
 
 ### Example
 
@@ -518,7 +518,7 @@ add_filter('fluent_community/smartcode/user_fields', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/SmartCodeParser.php:309` | `[]` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:317` | `[]` (array) |
 
 ### Example
 
@@ -587,7 +587,7 @@ Populated from FluentSMTP's configured sender mappings, and empty when FluentSMT
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1308` | `$verifiedSenders` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1372` | `$verifiedSenders` (mixed) |
 
 ### Example
 

@@ -41,7 +41,7 @@ Wraps the WordPress `users` table with community-specific relationships and help
 
 | Scope | Parameters | Purpose |
 | --- | --- | --- |
-| `SearchBy` | `$query, $search` | Search By scope declared on the model. |
+| `SearchBy` | `$query, $search, $fields = null` | Search By scope declared on the model. |
 | `MentionBy` | `$query, $search` | Mention By scope declared on the model. |
 
 ## Key Methods
@@ -77,7 +77,7 @@ Wraps the WordPress `users` table with community-specific relationships and help
 use FluentCommunity\App\Models\User;
 
 $records = User::query()
-    ->searchBy('example')
+    ->searchBy('example', null)
     ->limit(10)
     ->get();
 

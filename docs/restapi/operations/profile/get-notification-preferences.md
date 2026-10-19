@@ -15,7 +15,7 @@ Preferences the member has never set are filled in from the community defaults, 
 - **Path:** `/profile/{username}/notification-preferences`
 - **Edition:** Core
 - **Controller:** `ProfileController@getNotificationPreferance`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:98`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:99`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 - Requires the profile owner or a community moderator.

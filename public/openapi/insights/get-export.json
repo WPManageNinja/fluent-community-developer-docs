@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/analytics/spaces/search": {
+    "/insights/cards/{card}/export": {
       "get": {
-        "operationId": "searchReportSpaces",
-        "summary": "GET Search Report Spaces",
-        "description": "Searches community spaces by title, returning id and title pairs for the analytics space picker.\n\nController: `SpacesReportsController@searchSpace`\nRoute source: `fluent-community-pro/app/Http/Routes/api.php:91`",
+        "operationId": "getExport",
+        "summary": "GET Get Export",
+        "description": "Returns one card's data as CSV content plus a suggested filename, for the export button.\n\nController: `InsightsController@export`\nRoute source: `fluent-community/app/Http/Routes/api.php:168`",
         "tags": [
-          "Reports"
+          "Insights"
         ],
         "security": [
           {
@@ -38,10 +38,10 @@
         ],
         "parameters": [
           {
-            "name": "search",
-            "in": "query",
-            "required": false,
-            "description": "Search read via `$request->getSafe()` in searchSpace().",
+            "name": "card",
+            "in": "path",
+            "required": true,
+            "description": "Card extracted from the URL path.",
             "schema": {
               "type": "string"
             }
@@ -55,46 +55,26 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "title": {
-                            "type": "string",
-                            "nullable": false
-                          }
-                        },
-                        "additionalProperties": false
-                      }
+                    "filename": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "content": {
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "data": [
-                    {
-                      "id": 1,
-                      "title": "Three things I learned this month"
-                    },
-                    {
-                      "id": 7,
-                      "title": "Welcome to the community"
-                    },
-                    {
-                      "id": 9,
-                      "title": "Weekly office hours are back"
-                    }
-                  ]
+                  "filename": "",
+                  "content": null
                 }
               }
             }
           },
           "422": {
-            "description": "Request validation or permission error.",
+            "description": "This card cannot be exported.",
             "content": {
               "application/json": {
                 "schema": {
@@ -106,7 +86,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "This card cannot be exported."
                 }
               }
             }

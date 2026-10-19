@@ -11,11 +11,11 @@ description: Moderation action hooks for FluentCommunity.
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/' . $contentType . '_report_added_async`](#fluent-community-' . contentType . '-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:276` |
-| [`fluent_community/comment_report_added_async`](#fluent-community-comment-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:614` |
-| [`fluent_community/content_flagged`](#fluent-community-content-flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:227` |
-| [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:81` |
-| [`fluent_community/post_report_added_async`](#fluent-community-post-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:673` |
+| [`fluent_community/' . $contentType . '_report_added_async`](#fluent-community-' . contentType . '-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:278` |
+| [`fluent_community/comment_report_added_async`](#fluent-community-comment-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:616` |
+| [`fluent_community/content_flagged`](#fluent-community-content-flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:229` |
+| [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:83` |
+| [`fluent_community/post_report_added_async`](#fluent-community-post-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:675` |
 | [`fluent_community/report/{status}`](#fluent-community-report-status) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:280` |
 | [`fluent_community/report/after_delete`](#fluent-community-report-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:305` |
 | [`fluent_community/report/before_delete`](#fluent-community-report-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:302` |
@@ -48,7 +48,7 @@ This entry documents the `as_schedule_single_action()` call in Pro's moderation 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:276` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:278` | No parameters |
 
 ### Example
 
@@ -87,7 +87,7 @@ The comment-side twin of `fluent_community/post_report_added_async`, with the sa
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:614` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:616` | No parameters |
 
 ### Example
 
@@ -120,7 +120,7 @@ Only reached when content moderation is enabled, a positive `flag_after_threshol
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:227` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:229` | `$report` (mixed)<br>`$content` (mixed) |
 
 ### Example
 
@@ -154,10 +154,10 @@ Covers both member-submitted reports and automatic profanity or first-post flags
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:81` | `$report` (mixed)<br>`$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:148` | `$report` (mixed)<br>`$comment` (Comment) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:494` | `$report` (mixed)<br>`$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:553` | `$report` (mixed)<br>`$comment` (Comment) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:83` | `$report` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:150` | `$report` (mixed)<br>`$comment` (Comment) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:496` | `$report` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:555` | `$report` (mixed)<br>`$comment` (Comment) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:170` | `$report` (mixed)<br>`$content` (mixed)<br>`$data['content_type']` (array) |
 
 ### Example
@@ -197,7 +197,7 @@ Queued in the `fluent-community` group as soon as the report is created, and re-
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:673` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:675` | No parameters |
 
 ### Example
 

@@ -15,7 +15,7 @@ Each link is sanitised individually and the submitted array replaces the stored 
 - **Path:** `/spaces/{spaceSlug}/links`
 - **Edition:** Core
 - **Controller:** `SpaceController@updateLinks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:27`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:28`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin access or the admin role in this space.

@@ -13,7 +13,7 @@ Returns the lock screen configuration a space shows to visitors who are not memb
 - **Path:** `/spaces/{spaceSlug}/lockscreens`
 - **Edition:** Core
 - **Controller:** `SpaceController@getLockScreenSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:25`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:26`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - A secret space the caller is neither a member nor an admin of returns the same 404 as a space that does not exist.

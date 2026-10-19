@@ -1,0 +1,121 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/insights/pages": {
+      "get": {
+        "operationId": "getPages",
+        "summary": "GET Get Pages",
+        "description": "Lists the Insights pages the current admin can open, plus the state the admin UI needs before it renders any of them.\n\nController: `InsightsController@pages`\nRoute source: `fluent-community/app/Http/Routes/api.php:165`",
+        "tags": [
+          "Insights"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pages": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "level": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "pro_outdated": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "optimising": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "tracking_since": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "course_options": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "pages": null,
+                  "level": null,
+                  "pro_outdated": "2026-01-01 00:00:00",
+                  "optimising": null,
+                  "tracking_since": null,
+                  "course_options": []
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

@@ -1629,130 +1629,52 @@ export const OPERATION_NOTES = {
       'Requires FluentCommunity Pro. Disabling the feature here also removes the moderation queue routes on the next request.',
     ],
   },
-  'reports/get-overview-widget-report': {
+  // ---------------------------------------------------------------------------
+  // insights
+  // ---------------------------------------------------------------------------
+  'insights/get-pages': {
     summary:
-      'Returns the four headline community counters — members, posts, comments and spaces — each with a period-over-period comparison.',
+      'Lists the Insights pages the current admin can open, plus the state the admin UI needs before it renders any of them.',
     details:
-      '`start_date` and `end_date` default to the last 30 days and are read as plain dates in UTC. The comparison baseline is always the same window shifted back one calendar month, regardless of how wide the requested range is, so a seven-day range is compared against the same seven days a month earlier. `comparison` comes back as a string.',
+      'Pages come from the card registry and are filtered to the ones visible for the request scope, so the list differs between a free and a Pro install. Alongside them the response carries the install\'s Insights `level`, whether the installed Pro is too old for this core (`pro_outdated`), whether the tracking tables are still being optimised in the background (`optimising`), the date tracking started (`tracking_since`, `null` until the first backfill), and the course options for the course picker.',
     notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro. Counts are unfiltered by status, so drafts and pending posts are included.',
+      'Site admins only (`InsightsPolicy`).',
+      '`tracking_since` matters when reading any chart: nothing before that date was captured, so an earlier range is not an empty community, it is an un-tracked one.',
+      'While `optimising` is true the numbers are still incomplete.',
     ],
   },
-  'reports/get-overview-activity-report': {
+  'insights/get-page': {
     summary:
-      'Returns a gap-filled time series of one activity type across the community, ready to plot without client-side interpolation.',
+      "Returns one Insights page's definition together with the definition of every card on it.",
     details:
-      '`activity` selects the series and accepts `posts` (the default), `comments`, `members` or `spaces`; any other value raises an unhandled error rather than a validation message. Bucket size switches automatically with the range — daily up to 62 days, weekly to 92, monthly beyond — and the `date` label format changes with it, which the response does not signal.',
+      'Each card definition describes what the card is and what it supports (compare, export, a space or course scope, sorting) — it carries no data. The client then fetches each card separately, so a slow card cannot hold up the page. `page` is passed through `sanitize_key()` and must be an available page in the registry.',
     notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro. Weekly and monthly grouping has no year component, so a range spanning a year boundary merges buckets.',
+      'Site admins only (`InsightsPolicy`).',
+      'Returns 404 for both an unknown page and a page that exists but is not available on this install, so a Pro-only page reads the same as a typo.',
     ],
   },
-  'reports/get-popular-day-time-report': {
+  'insights/get-card': {
     summary:
-      'Returns a day-of-week by time-of-day heatmap of community activity, as a fixed grid of six four-hour blocks against the seven weekdays.',
+      "Returns one card's data for a date range and scope: the series or rows it plots, its totals, and the comparison against the preceding period.",
     details:
-      'Only `start_date` and `end_date` are read; the block size is fixed. Each cell sums posts, comments, spaces and member signups into a single figure, so it measures overall busyness rather than any one activity.',
+      'The card key is matched against `^[a-z0-9_.-]+$` and looked up in the registry. `from`/`to` (or a named `range`) set the window and `granularity` the bucket size; `space_id` and `course_id` are read only when the card declares it supports them, so an unsupported scope is ignored rather than rejected. `compare` defaults to `previous` on cards that support comparison and is forced to `none` on those that do not. `page`, `per_page` and `sort` apply to table cards. Pass `fresh=1` to bypass the cached payload.',
     notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-      'Expensive: the report issues one count query per day, per block, per model — roughly 720 queries for the default 30-day range, and proportionally more for wider ones. There is no range cap and no caching.',
+      'Site admins only (`InsightsPolicy`), and the card is additionally checked with `canView()` for the requested scope — that one returns 403.',
+      "A locked card (not included in this install's Insights level) returns 404, the same as an unknown key.",
+      'The range includes `to`, and a comparison window is the period immediately before the requested one, not the same dates in the previous month.',
     ],
   },
-  'reports/get-member-widget-report': {
+  'insights/get-export': {
     summary:
-      'Returns the member counters for a date range — total, active, new and pending — each with a period-over-period comparison.',
+      "Returns one card's data as CSV content plus a suggested filename, for the export button.",
     details:
-      'All four are counts within the requested window rather than lifetime totals, so `total_members` and `new_members` are computed identically and always match; only their titles differ. `active_members` counts by last activity instead of signup date.',
+      'Takes the same range, scope and option parameters as the card endpoint and builds the payload the same way, then serialises it with `CsvExporter`. The response is JSON carrying `filename` and `content` — not a file download — so the client writes the file itself. The filename embeds the card key and the resolved range.',
     notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-      'The comparison figure on `pending_members` is not reliable — the previous-period query is built on the already-filtered one, so it resolves to zero.',
+      'Site admins only (`InsightsPolicy`).',
+      'Returns 422 when the card does not list `export` among the features it supports.',
+      '`fresh` is not read here: an export always recomputes.',
     ],
   },
-  'reports/get-member-activity-report': {
-    summary: 'Returns a gap-filled time series of member signups across the requested range.',
-    details:
-      'The end date is excluded from this series while the member widget includes the whole end day, so the chart and the counters for the same range cover slightly different windows.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-    ],
-  },
-  'reports/list-top-members-report': {
-    summary:
-      'Returns ten member profiles ordered by lifetime points, drawn from those who joined within the requested range.',
-    details:
-      'The date range filters on the profile creation date, not on points earned, so this is really the highest-scoring recent joiners. A long-standing member with a high score never appears unless the range covers the date they signed up. Fixed at ten results with no pagination.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro; full profile records are returned, including their meta.',
-    ],
-  },
-  'reports/list-top-post-starters-report': {
-    summary:
-      'Returns the ten members who published the most posts within the requested range, each with their post count.',
-    details:
-      'The range is applied to the posts rather than to the member record, so this ranks activity in the window as expected. Only plain text posts are counted — lessons and documents are excluded — and post status is not filtered. Fixed at ten results.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-    ],
-  },
-  'reports/list-top-commenters-report': {
-    summary:
-      'Returns the ten members who wrote the most comments within the requested range, each with their comment count.',
-    details: 'The range is applied to the comments, so this ranks activity in the window. Fixed at ten results.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-    ],
-  },
-  'reports/get-space-widget-report': {
-    summary:
-      'Returns the space counters for a date range — spaces, posts, comments and members — optionally narrowed to one space.',
-    details:
-      'Pass `space_id` to scope posts, comments and members to a single space; the space total ignores it and always counts community-wide. Status filtering is inconsistent between the two modes: the site-wide post count includes drafts while the per-space count does not.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-      'The period-over-period `comparison` on all four counters is unreliable here, because each previous-period query is built on top of the current-period one; treat only `total_records` as meaningful.',
-    ],
-  },
-  'reports/get-space-activity-report': {
-    summary:
-      'Returns a gap-filled time series of posts, optionally narrowed to one space with `space_id`.',
-    details:
-      'Despite sitting under the spaces analytics group this charts posts, not spaces — the `activity` key in the response reads `posts`.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-    ],
-  },
-  'reports/list-popular-spaces-report': {
-    summary:
-      'Returns a ranked table of the busiest spaces, or — when `space_id` is supplied — the busiest posts inside that one space.',
-    details:
-      'Both variants come back as a `columns` and `data` pair, but the columns differ: spaces are ranked on posts, comments and members, while posts are ranked on comments and reactions with a 40-character title excerpt. The space `comments_count` is an all-time figure even though the post and member counts beside it are scoped to the range.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-      'The space ranking takes ten rows before sorting them, so on a site with more than ten spaces it ranks the ten oldest spaces among themselves rather than returning the ten most popular.',
-    ],
-  },
-  'reports/search-report-spaces': {
-    summary:
-      'Searches community spaces by title, returning id and title pairs for the analytics space picker.',
-    details:
-      'Only `search` is read. Space groups, courses and sidebar links are excluded, and unpublished spaces are not filtered out.',
-    notes: [
-      'Requires the FluentCommunity community-admin permission (or a WordPress super admin).',
-      'Requires FluentCommunity Pro.',
-      'There is no result limit, so an empty `search` returns every community space on the site in one response.',
-    ],
-  },
-
   // ---------------------------------------------------------------------------
   // leaderboard
   // ---------------------------------------------------------------------------
