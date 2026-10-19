@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listSpaceMembers",
         "summary": "GET List Space Members",
-        "description": "Returns the paginated active membership of a space, each entry carrying the member profile and their role, plus the count of outstanding join requests.\n\nController: `SpaceController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:18`",
+        "description": "Returns the paginated active membership of a space, each entry carrying the member profile and their role, plus the count of outstanding join requests.\n\nController: `SpaceController@getMembers`\nRoute source: `fluent-community/app/Http/Routes/api.php:19`",
         "tags": [
           "Members"
         ],

@@ -15,7 +15,7 @@ A valid `email` and a `space_id` are required; `invitee_name` is optional. The i
 - **Path:** `/invitations`
 - **Edition:** Core
 - **Controller:** `InvitationController@store`
-- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:25`
+- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:30`
 - **Controller source:** `fluent-community/Modules/Auth/Classes/InvitationController.php`
 
 - Requires the `community_moderator` permission in the space named by `space_id`.

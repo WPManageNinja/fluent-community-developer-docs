@@ -64,6 +64,7 @@ Provides the shared ORM behavior for spaces, courses, space groups, and sidebar 
 | `getMembership()` | Returns the current user membership record for the space, including the pivot metadata. |
 | `isAdmin()` | Checks whether a user is an admin or, optionally, a moderator for the current space. |
 | `formatSpaceData()` | Normalizes related data before a space object is returned from controllers. |
+| `isPublic()` | is Public implemented on the model. |
 | `preloadMemberships()` | preload Memberships implemented on the model. |
 | `isCourseSpace()` | is Course Space implemented on the model. |
 | `isContentSpace()` | is Content Space implemented on the model. |

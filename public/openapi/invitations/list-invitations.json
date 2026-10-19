@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listInvitations",
         "summary": "GET List Invitations",
-        "description": "Returns the paginated invitations the current user has issued for one space, newest first, with a ready-to-share access URL on each one that is still valid.\n\nController: `InvitationController@getInvitations`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:23`",
+        "description": "Returns the paginated invitations the current user has issued for one space, newest first, with a ready-to-share access URL on each one that is still valid.\n\nController: `InvitationController@getInvitations`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:28`",
         "tags": [
           "Invitations"
         ],

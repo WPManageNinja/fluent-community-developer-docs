@@ -15,7 +15,7 @@ Returns the paginated invitations the current user has issued for one space, new
 - **Path:** `/invitations`
 - **Edition:** Core
 - **Controller:** `InvitationController@getInvitations`
-- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:23`
+- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:28`
 - **Controller source:** `fluent-community/Modules/Auth/Classes/InvitationController.php`
 
 - Requires the `community_moderator` permission in the space named by `space_id`.

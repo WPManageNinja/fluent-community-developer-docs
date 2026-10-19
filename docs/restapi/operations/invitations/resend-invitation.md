@@ -15,7 +15,7 @@ Refused once the invitation has been sent more than five times; the send count i
 - **Path:** `/invitations/{invitation_id}/resend`
 - **Edition:** Core
 - **Controller:** `InvitationController@resend`
-- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:27`
+- **Route source:** `fluent-community/Modules/Auth/InvitationModule.php:32`
 - **Controller source:** `fluent-community/Modules/Auth/Classes/InvitationController.php`
 
 - Requires the `community_moderator` permission in the space the invitation was issued for.

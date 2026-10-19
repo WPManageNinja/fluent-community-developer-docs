@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createInvitation",
         "summary": "POST Create Invitation",
-        "description": "Invites one email address to join a space and sends the invitation email immediately.\n\nController: `InvitationController@store`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:25`",
+        "description": "Invites one email address to join a space and sends the invitation email immediately.\n\nController: `InvitationController@store`\nRoute source: `fluent-community/Modules/Auth/InvitationModule.php:30`",
         "tags": [
           "Invitations"
         ],

@@ -22,11 +22,11 @@ description: Members action hooks for FluentCommunity.
 | [`fluent_community/manager/after_remove`](#fluent-community-manager-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:132` |
 | [`fluent_community/manager/before_remove`](#fluent-community-manager-before-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:128` |
 | [`fluent_community/manager/updated`](#fluent-community-manager-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:91` |
-| [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:124` |
+| [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:134` |
 | [`fluent_community/profile_deactivated`](#fluent-community-profile-deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:176` |
 | [`fluent_community/reactivate_account`](#fluent-community-reactivate-account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:245` |
-| [`fluent_community/track_activity`](#fluent-community-track-activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:87` |
-| [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:584` |
+| [`fluent_community/track_activity`](#fluent-community-track-activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` |
+| [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:599` |
 | [`fluent_community/user_level_upgraded`](#fluent-community-user-level-upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:111` |
 | [`fluent_community/user_points_updated`](#fluent-community-user-points-updated) | Core <span class="edition-note">(also fired by Pro)</span> | 3 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` |
 
@@ -404,7 +404,7 @@ Fired with `do_action_ref_array()`, so take `&$query` and mutate it — a return
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:124` | `&$members` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:134` | `&$members` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -494,9 +494,9 @@ Fired after a post or comment activity row is written, and on every portal ticke
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:87` | No parameters |
-| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:109` | No parameters |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1153` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:103` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1156` | No parameters |
 
 ### Example
 
@@ -528,7 +528,7 @@ The free plugin does not persist this itself — the endpoint validates the subm
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:584` | `$config` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:599` | `$config` (mixed) |
 
 ### Example
 

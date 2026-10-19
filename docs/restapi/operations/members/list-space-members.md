@@ -15,7 +15,7 @@ Sort with `sort_by` set to `created_at` (join date, the default), `display_name`
 - **Path:** `/spaces/{spaceSlug}/members`
 - **Edition:** Core
 - **Controller:** `SpaceController@getMembers`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:18`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:19`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Gated by the `can_view_members` space permission; failure comes back as an error carrying `permission_failed`.

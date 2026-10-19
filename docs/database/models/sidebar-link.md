@@ -57,6 +57,7 @@ Uses the shared spaces table to store custom sidebar navigation links.
 
 | Method | Description |
 | --- | --- |
+| `isPublic()` | is Public implemented on the model. |
 | `preloadMemberships()` | preload Memberships implemented on the model. |
 | `isCourseSpace()` | is Course Space implemented on the model. |
 | `isAdmin()` | is Admin implemented on the model. |

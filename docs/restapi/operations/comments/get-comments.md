@@ -15,7 +15,7 @@ Despite living under the comments group this is a profile endpoint, addressed by
 - **Path:** `/profile/{username}/comments`
 - **Edition:** Core
 - **Controller:** `ProfileController@getComments`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:96`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:97`
 - **Controller source:** `fluent-community/app/Http/Controllers/ProfileController.php`
 
 ::: tip Live sample

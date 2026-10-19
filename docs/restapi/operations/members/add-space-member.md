@@ -15,7 +15,7 @@ Adds an existing WordPress user to a space, approves their pending join request,
 - **Path:** `/spaces/{spaceSlug}/members`
 - **Edition:** Core
 - **Controller:** `SpaceController@addMember`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:19`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:20`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires the `can_add_member` permission in this space.

@@ -67,6 +67,7 @@ A `BaseSpace` scoped to `type = course`, adding enrolment and instructor behavio
 
 | Method | Description |
 | --- | --- |
+| `isPublic()` | is Public implemented on the model. |
 | `preloadMemberships()` | preload Memberships implemented on the model. |
 | `isCourseSpace()` | is Course Space implemented on the model. |
 | `isAdmin()` | is Admin implemented on the model. |

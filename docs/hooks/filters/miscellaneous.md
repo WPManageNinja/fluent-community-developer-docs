@@ -5,19 +5,20 @@ description: Miscellaneous filter hooks for FluentCommunity.
 
 # Miscellaneous Filters
 
-7 unique filter hooks currently map to this category, across 9 call sites.
+8 unique filter hooks currently map to this category, across 10 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/add_sitemap_provider`](#fluent-community-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:22` |
-| [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:388` |
+| [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:387` |
 | [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:111` |
-| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:637` |
+| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:695` |
 | [`fluent_community/max_per_page`](#fluent-community-max-per-page) | Core | 2 | `fluent-community/app/Http/Controllers/ActivityController.php:23` |
 | [`fluent_community/seo/pre_render`](#fluent-community-seo-pre-render) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/AbstractPortalPreRenderer.php:74` |
-| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:2532` |
+| [`fluent_community/trusted_proxies`](#fluent-community-trusted-proxies) | Core | 1 | `fluent-community/app/Services/Helper.php:2174` |
+| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:2705` |
 
 <a id="fluent-community-add-sitemap-provider"></a>
 
@@ -65,7 +66,7 @@ Reachable only for keys you have added through `fluent_community/post_order_opti
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/Feed.php:388` | `$query` (mixed)<br>`$type` (mixed) |
+| Core | `fluent-community/app/Models/Feed.php:387` | `$query` (mixed)<br>`$type` (mixed) |
 
 ### Example
 
@@ -122,7 +123,7 @@ The default is derived from PHP's `max_execution_time`: unlimited or unreadable 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:637` | `$maxRunTime` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:695` | `$maxRunTime` (mixed) |
 
 ### Example
 
@@ -190,6 +191,28 @@ add_filter('fluent_community/seo/pre_render', function ($param1, $routeName) {
 }, 10, 2);
 ```
 
+<a id="fluent-community-trusted-proxies"></a>
+
+## `fluent_community/trusted_proxies`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/Helper.php:2174` | `['127.0.0.1']` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/trusted_proxies', function ($param1) {
+    return $param1;
+}, 10, 1);
+```
+
 <a id="fluent-community-undeliverable-crm-contact-statuses"></a>
 
 ## `fluent_community/undeliverable_crm_contact_statuses`
@@ -209,8 +232,8 @@ add_filter('fluent_community/seo/pre_render', function ($param1, $routeName) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2532` | `['bounced', 'complained', 'spammed']` (array) |
-| Core | `fluent-community/app/Services/Helper.php:2556` | `['bounced', 'complained', 'spammed']` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2705` | `['bounced', 'complained', 'spammed']` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2729` | `['bounced', 'complained', 'spammed']` (array) |
 
 ### Example
 

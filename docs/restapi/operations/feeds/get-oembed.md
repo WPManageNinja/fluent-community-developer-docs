@@ -15,7 +15,7 @@ Makes an outbound HTTP request to the target URL, so it is slower than other end
 - **Path:** `/feeds/oembed`
 - **Edition:** Core
 - **Controller:** `FeedsController@getOembed`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:71`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:72`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 ::: tip Live sample

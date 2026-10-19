@@ -15,7 +15,7 @@ Groups are normalised to plain arrays and groups without a title are dropped, so
 - **Path:** `/settings/menu-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@getMenuSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:166`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:174`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

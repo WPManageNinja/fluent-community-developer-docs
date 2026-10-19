@@ -13,7 +13,7 @@ Deletes a space addressed by numeric id; the id is resolved to a slug and then h
 - **Path:** `/spaces/{spaceId}/by-id`
 - **Edition:** Core
 - **Controller:** `SpaceController@deleteById`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:22`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:23`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin access or the admin role in this space.

@@ -13,7 +13,7 @@ Returns the paginated list of members this profile has blocked.
 - **Path:** `/profile/{username}/blocked-users`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@getBlockedUsers`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:133`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:109`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 - Requires FluentCommunity Pro with the `followers_module` feature enabled.

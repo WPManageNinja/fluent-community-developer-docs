@@ -15,7 +15,7 @@ Following yourself is rejected, as is following someone you already follow or ha
 - **Path:** `/profile/{username}/follow`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FollowController@follow`
-- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:134`
+- **Route source:** `fluent-community-pro/app/Http/Routes/api.php:110`
 - **Controller source:** `fluent-community-pro/app/Http/Controllers/FollowController.php`
 
 - Requires FluentCommunity Pro with the `followers_module` feature enabled.

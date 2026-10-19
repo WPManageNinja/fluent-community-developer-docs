@@ -9,9 +9,9 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 
 ## Overview
 
-- **Unique filters:** 320
-- **Filter call sites:** 372
-- **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `permissions`, `moderation`, `integrations`, `rendering`, `settings`, `miscellaneous`
+- **Unique filters:** 330
+- **Filter call sites:** 382
+- **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `permissions`, `moderation`, `integrations`, `rendering`, `settings`, `insights`, `miscellaneous`
 
 ## Categories
 
@@ -21,7 +21,7 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | [Comments](/hooks/filters/comments) | 14 | 14 |
 | [Reactions](/hooks/filters/reactions) | 4 | 5 |
 | [Spaces](/hooks/filters/spaces) | 24 | 27 |
-| [Members](/hooks/filters/members) | 38 | 45 |
+| [Members](/hooks/filters/members) | 39 | 46 |
 | [Courses](/hooks/filters/courses) | 46 | 46 |
 | [Notifications](/hooks/filters/notifications) | 18 | 20 |
 | [Media](/hooks/filters/media) | 22 | 33 |
@@ -30,5 +30,6 @@ This page is generated from `apply_filters()`, `apply_filters_ref_array()` and `
 | [Moderation](/hooks/filters/moderation) | 1 | 1 |
 | [Integrations](/hooks/filters/integrations) | 9 | 9 |
 | [Rendering](/hooks/filters/rendering) | 43 | 45 |
-| [Settings](/hooks/filters/settings) | 25 | 25 |
-| [Miscellaneous](/hooks/filters/miscellaneous) | 7 | 9 |
+| [Settings](/hooks/filters/settings) | 24 | 24 |
+| [Insights](/hooks/filters/insights) | 9 | 9 |
+| [Miscellaneous](/hooks/filters/miscellaneous) | 8 | 10 |
