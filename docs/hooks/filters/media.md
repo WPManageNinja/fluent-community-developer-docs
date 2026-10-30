@@ -267,6 +267,7 @@ The suffix is `$media->driver`; Pro's cloud storage registers `fluent_community/
 | 1 | `$mediaUrl` | `string` | The stored URL. |
 | 2 | `$media` | `\FluentCommunity\App\Models\Media` | The media row. |
 | 3 | `$time` | `int` | Requested validity in seconds, 3600 by default. |
+| 4 | `$args` | `array` | Extra query parameters to sign into the URL, such as `response-content-disposition` for a forced download. Empty by default. |
 
 **Return:** `string` — an absolute URL.
 
