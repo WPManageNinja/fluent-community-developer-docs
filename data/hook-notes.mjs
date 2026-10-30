@@ -5393,11 +5393,6 @@ export const HOOK_NOTES = {
         "name": "time",
         "type": "int",
         "desc": "Requested validity in seconds, 3600 by default."
-      },
-      {
-        "name": "args",
-        "type": "array",
-        "desc": "Extra query parameters to sign into the URL, such as `response-content-disposition` for a forced download. Empty by default."
       }
     ],
     "returns": "`string` — an absolute URL.",
