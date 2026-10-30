@@ -54,7 +54,7 @@ Stores uploaded media metadata and delivery information for feeds, comments, and
 | Method | Description |
 | --- | --- |
 | `getPublicUrlAttribute()` | Resolves the public URL through the active media driver filter. |
-| `getSignedPublicUrl()` | Builds a temporary signed URL through the active driver when private media is enabled. |
+| `getSignedPublicUrl()` | Builds a temporary signed URL through the active storage driver. Pro uses it for Document Library downloads on S3 and R2; other media keeps its permanent public URL. |
 | `deleteFile()` | Deletes the stored asset from the backing filesystem driver. |
 
 ## Usage Examples
