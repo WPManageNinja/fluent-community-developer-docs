@@ -8769,4 +8769,483 @@ export const HOOK_NOTES = {
       "fluent_community/insights/cards"
     ]
   },
+  "fluent_community/certificate/issued": {
+    "summary": "Fires after a certificate row has been written, for a course completion, a manual issue or a backfill.",
+    "details": "The certificate is saved and has its credential ID, serial and frozen merge values by the time this runs, and the global issuing lock has already been released. No email has been sent yet and no Open Badge exists \u2014 badges are built on demand. Core listeners clear the Open Badge status-list cache and queue the holder's notification email, the latter only when the certificate asked to notify and the site setting allows it. It does not fire when the member already holds a certificate for that course, so it is not a reliable \"course completed\" signal.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The saved certificate."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course|null",
+        "desc": "The course, or null for a manual certificate issued without one."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The holder, or 0 for a manual certificate with no account."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/reissued",
+      "fluent_community/certificate/issued_email",
+      "fluent_community/certificate/can_issue"
+    ]
+  },
+  "fluent_community/certificate/reissued": {
+    "summary": "Fires after a course certificate has been rebuilt onto the current template version.",
+    "details": "Merge values, template version and the reissue stamps are saved by the time this runs, and the cached preview image has been cleared. The credential ID, serial, issue date, expiry and status are all unchanged, so a listener must not treat this as a new credential. It never fires for a manual certificate or a revoked one, both of which are refused earlier.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The reissued certificate, refreshed from the saved row."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who reissued it."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/issued"
+    ]
+  },
+  "fluent_community/certificate/{action}": {
+    "summary": "The runtime-assembled name behind the suspended, reinstated and revoked actions.",
+    "details": "Pro fires `'fluent_community/certificate/' . $action` from one place, where `$action` is `suspended`, `reinstated` or `revoked`. Hook the concrete names rather than this placeholder \u2014 it exists to explain why grepping the source for those three names finds nothing.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The certificate whose status changed."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who changed it."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/suspended",
+      "fluent_community/certificate/reinstated",
+      "fluent_community/certificate/revoked"
+    ]
+  },
+  "fluent_community/certificate/suspended": {
+    "summary": "Fires when a certificate has been suspended, which is reversible.",
+    "details": "The status, the reason and who changed it are saved by the time this runs, and the per-certificate lock has been released. It only fires on a real transition \u2014 the precondition is re-checked against a freshly read row, so a stale caller gets an error and no action. Core clears the Open Badge status-list cache here. A suspended certificate also blocks the course from issuing that holder a new one until it is reinstated.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The suspended certificate."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who suspended it."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/reinstated",
+      "fluent_community/certificate/revoked",
+      "fluent_community/certificate/{action}"
+    ]
+  },
+  "fluent_community/certificate/reinstated": {
+    "summary": "Fires when a suspended certificate has been returned to force.",
+    "details": "Only a suspended certificate reaches this point, so the hook marks the one path back. The stored reason has been cleared and the Open Badge status-list cache is dropped by core's listener. Revoked certificates never arrive here: that state is final.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The reinstated certificate."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who reinstated it."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/suspended",
+      "fluent_community/certificate/{action}"
+    ]
+  },
+  "fluent_community/certificate/revoked": {
+    "summary": "Fires when a certificate has been revoked, which cannot be undone.",
+    "details": "The status and the reason are saved, and core clears the Open Badge status-list cache. Revoking is terminal in two senses: no endpoint reinstates it, and the course will not issue that holder a replacement even if they complete it again. The public status list cannot distinguish a revoked certificate from a suspended one, so a listener that needs the difference should read the certificate.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The revoked certificate."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who revoked it."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/suspended",
+      "fluent_community/certificate/{action}"
+    ]
+  },
+  "fluent_community/certificate/before_manual_issue": {
+    "summary": "Filters one row of a manual issue before any account is created or anything is written.",
+    "details": "Return a `WP_Error` to reject the row \u2014 the rest of the batch continues, and the error surfaces as that row's result. The array's keys are read directly afterwards rather than merged over the defaults, so dropping a key causes an error instead of a fallback. Values returned here are not re-sanitised before they are stored, so a filter can write any merge tag onto the certificate. It fires once per row, up to 25 times in a request, and only for manual issuing: the course rules (`can_issue`, one certificate per course) deliberately do not apply.",
+    "params": [
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "`name`, `email`, `user_id`, `template`, `course`, `values`, `privacy`, `issued_at`, `expires_at` and `notify`."
+      },
+      {
+        "name": "input",
+        "type": "array",
+        "desc": "The raw request row merged with the per-request options."
+      }
+    ],
+    "returns": "`array` \u2014 the row to issue, or a `WP_Error` to reject just this row.",
+    "related": [
+      "fluent_community/certificate/manual_updated",
+      "fluent_community/certificate/can_issue"
+    ]
+  },
+  "fluent_community/certificate/manual_updated": {
+    "summary": "Fires after an administrator has edited a manual certificate.",
+    "details": "The changed list names the areas that actually moved, drawn from `name`, `email`, `account`, `privacy`, `expiry`, `template_version` and `values`. It does not fire when the submitted values matched what was stored, so it marks a real change rather than a save. Course certificates and revoked certificates are refused earlier and never reach it. The credential ID, serial and issue date cannot change here, which is why the Open Badge status-list cache is not cleared.",
+    "params": [
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The updated certificate."
+      },
+      {
+        "name": "changed",
+        "type": "string[]",
+        "desc": "Which areas changed."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who made the change."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/before_manual_issue"
+    ]
+  },
+  "fluent_community/certificate/can_issue": {
+    "summary": "Decides whether a course certificate may be issued to a member.",
+    "details": "Return anything falsy to block it; the result is tested for truthiness rather than cast, so `0`, `''` and `null` all block. It runs after the template and member checks but before the issuing lock and before the \"already holds one\" check, so it fires on every completion of a certificate-enabled course \u2014 including completions where a certificate already exists or was revoked, and core re-fires course completion when a later-published lesson is finished. Blocking here does not withdraw a certificate already issued, and it has no effect on manual certificates. Backfills go through the same path, so it applies to them too.",
+    "params": [
+      {
+        "name": "canIssue",
+        "type": "bool",
+        "desc": "Whether to issue. True by default."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The completed course."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member who completed it."
+      },
+      {
+        "name": "args",
+        "type": "array",
+        "desc": "`source` (`auto`, `backfill` or a caller's own), and the issuing dates when supplied."
+      }
+    ],
+    "returns": "`bool` \u2014 falsy blocks the issue and the caller receives an error.",
+    "related": [
+      "fluent_community/certificate/issue_failed",
+      "fluent_community/certificate/issued"
+    ]
+  },
+  "fluent_community/certificate/can_see_profile_certificates": {
+    "summary": "Decides whether one member may see another member's certificates on their profile.",
+    "details": "The default follows the site's profile visibility setting for certificates, whose own default is owner-only. The result is cast to bool. It is not called at all when the viewer is the owner, so it cannot hide a member's own tab. It is also only one gate among several: core profile visibility, the profile's status, and the public-and-issued-only query still apply, so returning true never exposes a private, suspended or expired certificate.",
+    "params": [
+      {
+        "name": "allowed",
+        "type": "bool",
+        "desc": "Whether the viewer may see them, from the site setting."
+      },
+      {
+        "name": "ownerId",
+        "type": "int",
+        "desc": "The profile's owner."
+      },
+      {
+        "name": "currentUserId",
+        "type": "int",
+        "desc": "The viewer, or 0 for a guest."
+      }
+    ],
+    "returns": "`bool` \u2014 cast from whatever is returned.",
+    "related": [
+      "fluent_community/certificate/linkedin_params"
+    ]
+  },
+  "fluent_community/certificate/issue_failed": {
+    "summary": "Fires when an automatic issue on course completion did not produce a certificate.",
+    "details": "A notification hook only: nothing reads the result and there is no retry. The error code says what happened \u2014 no published template, an invalid member, a block from `fluent_community/certificate/can_issue`, or the issuing lock being busy. The case where the member already holds a certificate, or holds a revoked one, is deliberately excluded, so a repeat completion stays silent. It fires only for automatic issuing on completion: backfills, manual issues and direct calls receive the error as a return value instead.",
+    "params": [
+      {
+        "name": "result",
+        "type": "\\WP_Error",
+        "desc": "Why the issue failed."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The completed course."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member it would have been issued to."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/can_issue"
+    ]
+  },
+  "fluent_community/certificate/issued_email": {
+    "summary": "Filters the subject and body of the certificate notification email.",
+    "details": "Return an array with a `subject` and a `body`; emptying either one cancels the send. The body is used as complete HTML and is not wrapped or escaped afterwards. It runs inside a background job rather than the request that issued the certificate, so a filter must not depend on the current user, a nonce or the request payload, and the job re-reads the certificate and stops if it is no longer in force. The recipient is decided before the filter and cannot be changed through it. The whole path is skipped when the certificate was issued without notification \u2014 a backfill, an import, or a manual issue with notification off \u2014 or when the site setting disables the email.",
+    "params": [
+      {
+        "name": "email",
+        "type": "array",
+        "desc": "`subject` and `body`."
+      },
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The certificate being announced."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User|null",
+        "desc": "The holder, or null for a manual certificate with no account."
+      }
+    ],
+    "returns": "`array` \u2014 an empty subject or body cancels the email.",
+    "related": [
+      "fluent_community/certificate/issued"
+    ]
+  },
+  "fluent_community/certificate/linkedin_params": {
+    "summary": "Filters the query parameters of the \"Add to LinkedIn\" link.",
+    "details": "Every value is URL-encoded after the filter, so pre-encoding double-encodes and a nested array breaks the encoding. The documented use is swapping the organisation name for an organisation ID: LinkedIn accepts one or the other, never both. The link is built only for the holder, and only for a certificate that is valid and not private, and it is built once per certificate card shown.",
+    "params": [
+      {
+        "name": "params",
+        "type": "array",
+        "desc": "The LinkedIn parameters, including the certificate name, issuer, dates, URL and ID."
+      },
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The certificate the link is for."
+      }
+    ],
+    "returns": "`array` \u2014 parameters, each URL-encoded afterwards.",
+    "related": [
+      "fluent_community/certificate/can_see_profile_certificates"
+    ]
+  },
+  "fluent_community/certificate/max_image_bytes": {
+    "summary": "Filters the size limit for a template image upload.",
+    "details": "Defaults to 5 MB and is cast to int. Raising it does not raise PHP's or WordPress's own upload limits, which are applied first and produce the \"no upload file was received\" error instead. The accepted types \u2014 JPG, PNG and WebP, with SVG deliberately excluded \u2014 are not filterable.",
+    "params": [
+      {
+        "name": "maxBytes",
+        "type": "int",
+        "desc": "Maximum upload size in bytes. 5 MB by default."
+      }
+    ],
+    "returns": "`int` \u2014 the limit in bytes.",
+    "related": []
+  },
+  "fluent_community/certificate/merge_values": {
+    "summary": "Filters the values printed onto a course certificate, at the moment they are frozen.",
+    "details": "Covers the student, course, certificate and site tags. The return value is cast to an array and every value to a string, so a nested array raises an array-to-string conversion. These values are a snapshot: a later change to a member's name or a course title reaches an existing certificate only through a deliberate reissue. On reissue the original completion date is restored after the filter, so changing that one tag there has no effect. The filter runs while the global issuing lock is held, so a slow filter serialises certificate issuing across the whole site. It does not run for manual certificates, which build their values from the admin's own form \u2014 a filter that adds a custom tag will be missing from every manual certificate.",
+    "params": [
+      {
+        "name": "values",
+        "type": "array",
+        "desc": "Merge tag => printed string."
+      },
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course being certified."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The holder."
+      },
+      {
+        "name": "context",
+        "type": "array",
+        "desc": "The issue and expiry dates, the completion date, the credential ID and the serial."
+      }
+    ],
+    "returns": "`array` \u2014 coerced to an array of strings.",
+    "related": [
+      "fluent_community/certificate/issued"
+    ]
+  },
+  "fluent_community/certificate/open_badge_credential": {
+    "summary": "Filters the Open Badges 3.0 credential for a certificate, immediately before it is signed.",
+    "details": "The JWT claims are derived from the filtered document afterwards, so changing the credential's ID also changes the token ID, and the validity dates must stay strings a date parser understands. Removing or renaming the issuer, the ID, the subject ID or the start date raises a PHP error rather than failing gracefully. It runs once per download and nothing is stored, so there is no cache to clear. It does not affect the issuer profile or the status list, which are separate documents.",
+    "params": [
+      {
+        "name": "credential",
+        "type": "array",
+        "desc": "The unsigned credential document."
+      },
+      {
+        "name": "certificate",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Certificates\\Models\\Certificate",
+        "desc": "The certificate it describes."
+      }
+    ],
+    "returns": "`array` \u2014 the document that gets signed.",
+    "related": [
+      "fluent_community/certificate/open_badges_enabled"
+    ]
+  },
+  "fluent_community/certificate/open_badges_enabled": {
+    "summary": "Switches Open Badge downloads off for the site.",
+    "details": "Returning false hides the download button and makes the badge endpoints answer 422, while the issuer, public key and status list keep serving \u2014 so badges downloaded earlier still verify. The filter is only consulted when the server can sign at all: without the required OpenSSL functions it is never called, so returning true cannot turn badges on. The result is coerced to bool, and it is consulted several times in a page, once per certificate card.",
+    "params": [
+      {
+        "name": "enabled",
+        "type": "bool",
+        "desc": "Whether badge downloads are offered. True by default."
+      }
+    ],
+    "returns": "`bool` \u2014 false disables the downloads.",
+    "related": [
+      "fluent_community/certificate/open_badge_credential"
+    ]
+  },
+  "fluent_community/certificate/user_certificates_deleted": {
+    "summary": "Fires after every certificate belonging to a member has been deleted, for an account deletion or a privacy erasure.",
+    "details": "The rows are already gone by the time this runs, so their verification URLs answer 404 and the WordPress user no longer exists \u2014 a listener cannot look either of them up. Core drops every Open Badge status-list cache here, because the deleted IDs are no longer known. This is the one certificate hook that still fires when the certificates module is switched off, so a listener must not assume the module's services are registered. It does not fire when the member had no certificates, and an erasure that matches an account-less holder by email deletes those certificates on a separate path that does not fire it.",
+    "params": [
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member whose certificates were deleted."
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "desc": "How many rows were deleted."
+      }
+    ],
+    "related": [
+      "fluent_community/certificate/revoked"
+    ]
+  },
+  "fluent_community/search/providers": {
+    "summary": "Registers the result types global search can answer, each with the callable that answers it.",
+    "details": "Keyed by the type name the client asks for, with a callable receiving the parsed query, the user or null, and the request arguments (`limit`, `page`, `space` and `sort`). Core registers posts, comments, people and spaces, and the course module adds courses through this same filter. Entries that are not callable are dropped silently, and returning anything that is not an array disables search altogether, core types included. Type names are key-sanitised before they are matched, so an uppercase key can never be reached. A provider runs only when the request asks for its type, and it must apply the caller's own visibility rules, because guests reach search on a community whose access level is public.",
+    "params": [
+      {
+        "name": "providers",
+        "type": "array",
+        "desc": "Type name => callable(SearchQuery $query, User|null $user, array $args)."
+      }
+    ],
+    "returns": "`array` \u2014 non-callable entries are dropped; a non-array disables search.",
+    "related": [
+      "fluent_community/search/api_response"
+    ]
+  },
+  "fluent_community/search/api_response": {
+    "summary": "Filters the whole global search response, after every requested provider has run.",
+    "details": "The filtered value is returned to the client as it stands, with no reshaping or validation. `results` is an object rather than an array, so that an empty result set serialises as `{}` \u2014 a filter that treats it as an array will fail. It also fires for a query too short to search, where the results are empty and no provider ran. Extra keys are safe but the portal ignores them, and the portal issues several requests per search session, so this is not once per user search.",
+    "params": [
+      {
+        "name": "response",
+        "type": "array",
+        "desc": "`results` (object keyed by type), `terms` and `execution_time` in seconds."
+      },
+      {
+        "name": "query",
+        "type": "\\FluentCommunity\\App\\Services\\Search\\SearchQuery",
+        "desc": "The parsed query, with its trimmed text and extracted terms."
+      },
+      {
+        "name": "types",
+        "type": "string[]",
+        "desc": "The result types the request asked for."
+      }
+    ],
+    "returns": "`array` \u2014 returned to the client unchanged.",
+    "related": [
+      "fluent_community/search/providers"
+    ]
+  },
+  "fluent_community/quiz/graded": {
+    "summary": "Fires when a manually graded quiz result stops being pending.",
+    "details": "It fires on the transition only: the result row is saved with its new answers, score and pass state by the time this runs, and a regrade of an already-graded result does not fire it again. Pro's own listener creates the student's notification and sends the graded email synchronously, so a slow listener here lengthens the admin's request.",
+    "params": [
+      {
+        "name": "result",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Quiz\\QuizModel",
+        "desc": "The graded result, re-read from the saved row."
+      },
+      {
+        "name": "quiz",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\CourseLesson",
+        "desc": "The quiz lesson."
+      },
+      {
+        "name": "byUserId",
+        "type": "int",
+        "desc": "The administrator who graded it."
+      }
+    ],
+    "related": [
+      "fluent_community/quiz/send_graded_email",
+      "fluent_community/quiz/submitted"
+    ]
+  },
+  "fluent_community/quiz/send_graded_email": {
+    "summary": "Return false to stop the email telling a student their quiz has been graded.",
+    "details": "The in-app notification is created either way \u2014 this gates the email alone. It is consulted only when a result leaves the pending state, so it never runs for an automatically graded quiz or for a regrade. An address the site already knows to be undeliverable is skipped before the filter is reached.",
+    "params": [
+      {
+        "name": "send",
+        "type": "bool",
+        "desc": "Whether to send the email. True by default."
+      },
+      {
+        "name": "result",
+        "type": "\\FluentCommunityPro\\App\\Modules\\Quiz\\QuizModel",
+        "desc": "The graded result."
+      }
+    ],
+    "returns": "`bool` \u2014 false skips the email and keeps the notification.",
+    "related": [
+      "fluent_community/quiz/graded"
+    ]
+  },
 }
