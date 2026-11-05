@@ -13,6 +13,7 @@
     "integrations",
     "rendering",
     "settings",
+    "certificates",
     "miscellaneous"
   ],
   "filter": [
@@ -31,6 +32,7 @@
     "rendering",
     "settings",
     "insights",
+    "certificates",
     "miscellaneous"
   ]
 }

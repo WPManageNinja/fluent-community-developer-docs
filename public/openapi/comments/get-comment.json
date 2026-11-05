@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getComment",
         "summary": "GET Get Comment",
-        "description": "Returns a single comment with its author profile, optionally in the shape the editor expects.\n\nController: `CommentsController@show`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
+        "description": "Returns a single comment with its author profile, optionally in the shape the editor expects.\n\nController: `CommentsController@show`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
         "tags": [
           "Comments"
         ],
@@ -272,8 +272,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "Sorry, you do not have permission to view this post",
             "content": {
               "application/json": {
                 "schema": {
@@ -285,7 +285,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Sorry, you do not have permission to view this post"
                 }
               }
             }

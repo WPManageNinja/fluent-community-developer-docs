@@ -148,6 +148,10 @@ const MODEL_GROUPS = [
       'Course',
       'CourseTopic',
       'CourseLesson',
+      'QuizModel',
+      'Certificate',
+      'CertificateTemplate',
+      'SpacePageModel',
       'Term',
     ],
   },
@@ -159,6 +163,7 @@ const MODEL_GROUPS = [
       'UserMeta',
       'Contact',
       'Follow',
+      'Invitation',
       'Notification',
       'NotificationPreference',
       'NotificationSubscriber',
@@ -198,6 +203,11 @@ const MODEL_SLUGS = {
   Space: 'space',
   SpaceGroup: 'space-group',
   SpaceUserPivot: 'space-user-pivot',
+  Certificate: 'certificate',
+  CertificateTemplate: 'certificate-template',
+  Invitation: 'invitation',
+  QuizModel: 'quiz-model',
+  SpacePageModel: 'space-page-model',
   Term: 'term',
   User: 'user',
   UserMeta: 'user-meta',
@@ -251,6 +261,16 @@ const MODEL_SUMMARIES = {
     'Represents hierarchical group containers for organizing spaces on the portal.',
   SpaceUserPivot:
     'Stores the membership, role, and membership metadata for users inside spaces.',
+  Certificate:
+    'An issued certificate, course or manual. Shares `fcom_posts` under `type = course_certificate`, with the credential ID in `slug`, the holder in `user_id`, the course in `space_id` and the template version in `parent_id`.',
+  CertificateTemplate:
+    'A certificate design, sharing `fcom_posts` under `type = certificate_template`. Publishing copies the working design into an immutable version row, so editing a template never alters a certificate already issued from it.',
+  Invitation:
+    'A pending invitation to the portal or a space, sharing `fcom_post_comments` under `type = invitation` via a global scope.',
+  QuizModel:
+    'A quiz attempt and its result, sharing `fcom_post_comments` under `type = quiz`. `score` is an alias for the `reactions_count` column.',
+  SpacePageModel:
+    'A static, admin-authored page inside a space, sharing `fcom_posts` under `type = space_page`.',
   Term:
     'Stores taxonomy-like topics, categories, and term metadata used by feeds and courses.',
   User:
@@ -439,6 +459,20 @@ const MODULE_META = {
     auth:
       'Reports routes are primarily administrator-only and are protected by `AdminPolicy` or moderation-specific policies.',
   },
+  search: {
+    title: 'Search API',
+    description:
+      'One endpoint behind the portal search palette, answering across posts, comments, spaces, courses and members.',
+    auth:
+      'Registered with `PortalPolicy`, so the caller must be a portal user. Each result type is filtered again for that user, so a search never reveals a private space or an unpublished post the caller cannot already open.',
+  },
+  certificates: {
+    title: 'Certificates API',
+    description:
+      'Course and manual certificates: what a member holds, public verification, Open Badges 3.0 documents for wallets, and the admin endpoints for templates, issuing and revoking.',
+    auth:
+      'Member and admin routes use `CertificatePolicy`; the course certificate settings use `CourseAdminPolicy`, so a course creator can configure their own course. The verification, issuer, public-key, status-list and holder-badge routes are reachable without an account by design — a certificate is verifiable by whoever is shown it.',
+  },
   insights: {
     title: 'Insights API',
     description:
@@ -513,6 +547,7 @@ const HOOK_PAGE_ORDER = [
   'rendering',
   'settings',
   'insights',
+  'certificates',
   'admin',
   'miscellaneous',
 ]
@@ -540,6 +575,7 @@ const HOOK_PATH_RULES = [
   [/\/app\/Modules\/LeaderBoard\//, 'members'],
   [/\/app\/Modules\/DocumentLibrary\/|\/app\/Modules\/MediaGallery\//, 'media'],
   [/\/Services\/Insights\/|InsightsController\.php/, 'insights'],
+  [/\/app\/Modules\/Certificates\//, 'certificates'],
 ]
 
 const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
@@ -1283,12 +1319,25 @@ function inferRelationTarget(body) {
 
 function parseModel(classIndex, tableSchemas) {
   const models = {}
+  // Where a model file sits is not a reliable signal: core keeps its modules in
+  // Modules/ and Pro keeps its in app/Modules/, and a model need not live in a
+  // Models/ directory at all (core's Invitation is in Auth/Classes/). Matching on
+  // directories made five models invisible — Certificate, CertificateTemplate,
+  // QuizModel, SpacePageModel and Invitation — invisible to the undocumented-model
+  // guard as well, so nothing reported them. Decide by what the class extends.
+  const extendsModel = /class\s+\w+\s+extends\s+\\?[\w\\]*\b(?:Model|BaseSpace)\b/
   const modelFiles = [
-    ...collectFilesFromSources(['app', 'Models'], (file) => file.endsWith('.php')),
-    ...collectFilesFromSources(
-      ['Modules'],
-      (file) => file.endsWith('Model.php') || /\/Models?\//.test(toPosix(file)),
-    ),
+    ...new Set([
+      ...collectFilesFromSources(['app', 'Models'], (file) => file.endsWith('.php')),
+      ...collectFilesFromSources(
+        ['app'],
+        (file) => file.endsWith('.php') && extendsModel.test(read(file)),
+      ),
+      ...collectFilesFromSources(
+        ['Modules'],
+        (file) => file.endsWith('.php') && extendsModel.test(read(file)),
+      ),
+    ]),
   ]
 
   for (const file of modelFiles) {
@@ -1657,6 +1706,14 @@ function normalizeRoutePath(prefix, suffix) {
 }
 
 function classifyRoute(route) {
+  // Certificates span four prefixes — `certificates`, `admin/certificates`,
+  // `admin/courses/{id}/certificate-*` and one `profile` route — so prefix matching
+  // scatters the feature across admin, courses and profile. The controller is the
+  // reliable signal here.
+  if (/Certificate|OpenBadge/.test(route.controller)) {
+    return 'certificates'
+  }
+
   if (route.routePath.includes('/comments') && route.routePath.includes('/reactions')) {
     return 'reactions'
   }
@@ -5420,6 +5477,9 @@ function categorizeHook(hookName, filePath) {
   // Insights hooks are named for what they tune, not for the feature, so several
   // of them (excluded_user_ids, attention_items) match a later rule and scatter.
   if (/^insights\//.test(path)) return 'insights'
+  // Certificate hooks name the thing they act on, so several would land under
+  // members (badge, profile) or courses before reaching a certificates page.
+  if (/^certificate\//.test(path)) return 'certificates'
   if (/permission|capability|can_view|can_access|can_create|is_allowed/.test(path)) return 'permissions'
   if (/moderation|report|content_flagged|block(ed|ing)_user/.test(path)) return 'moderation'
   // Everything that shapes what the portal renders or how it boots, including the
@@ -5547,6 +5607,17 @@ const OFF_PREFIX_HOOK_NAMES = new Set([
  * Keep the placeholder documented too — it explains the naming pattern.
  */
 const HOOK_NAME_RESOLUTIONS = {
+  // Pro fires `'fluent_community/certificate/' . $action` from one place, and the
+  // module's own add_action() loop lists the five values. Three of them
+  // (suspended, reinstated, revoked) exist nowhere as a literal, so without this
+  // they are not findable by name at all.
+  'fluent_community/certificate/{action}': [
+    'fluent_community/certificate/issued',
+    'fluent_community/certificate/reissued',
+    'fluent_community/certificate/suspended',
+    'fluent_community/certificate/reinstated',
+    'fluent_community/certificate/revoked',
+  ],
   'fluent_community/bulk_members/{filterTag}': [
     'fluent_community/bulk_members/crm_tag_students_resolve_response',
     'fluent_community/bulk_members/crm_tag_members_resolve_response',

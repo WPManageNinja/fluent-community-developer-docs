@@ -15,7 +15,7 @@ Pages come from the card registry and are filtered to the ones visible for the r
 - **Path:** `/insights/pages`
 - **Edition:** Core
 - **Controller:** `InsightsController@pages`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:165`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:169`
 - **Controller source:** `fluent-community/app/Http/Controllers/InsightsController.php`
 
 - Site admins only (`InsightsPolicy`).

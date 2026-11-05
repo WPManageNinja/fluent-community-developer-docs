@@ -144,7 +144,7 @@
             }
           },
           "422": {
-            "description": "Sorry! This survey has ended",
+            "description": "This poll allows only one choice.",
             "content": {
               "application/json": {
                 "schema": {
@@ -156,7 +156,7 @@
                   }
                 },
                 "example": {
-                  "message": "Sorry! This survey has ended"
+                  "message": "This poll allows only one choice."
                 }
               }
             }

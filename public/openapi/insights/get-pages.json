@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPages",
         "summary": "GET Get Pages",
-        "description": "Lists the Insights pages the current admin can open, plus the state the admin UI needs before it renders any of them.\n\nController: `InsightsController@pages`\nRoute source: `fluent-community/app/Http/Routes/api.php:165`",
+        "description": "Lists the Insights pages the current admin can open, plus the state the admin UI needs before it renders any of them.\n\nController: `InsightsController@pages`\nRoute source: `fluent-community/app/Http/Routes/api.php:169`",
         "tags": [
           "Insights"
         ],

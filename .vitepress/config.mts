@@ -76,6 +76,7 @@ const HOOK_PAGE_LABELS: Record<string, string> = {
   rendering: 'Rendering & Theming',
   settings: 'Settings',
   insights: 'Insights',
+  certificates: 'Certificates',
   admin: 'Admin',
   miscellaneous: 'Miscellaneous',
 }

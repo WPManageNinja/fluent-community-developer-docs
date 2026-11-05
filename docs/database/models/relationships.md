@@ -23,6 +23,10 @@ The model layer uses standard WPFluent relation helpers such as `belongsTo`, `ha
 | [`BaseSpace`](/database/models/base-space) | `members` | `belongsToMany` | `User` |
 | [`BaseSpace`](/database/models/base-space) | `x_members` | `belongsToMany` | `XProfile` |
 | [`BaseSpace`](/database/models/base-space) | `group` | `belongsTo` | `SpaceGroup` |
+| [`Certificate`](/database/models/certificate) | `course` | `belongsTo` | `Course` |
+| [`Certificate`](/database/models/certificate) | `user` | `belongsTo` | `User` |
+| [`Certificate`](/database/models/certificate) | `template` | `belongsTo` | `CertificateTemplate` |
+| [`CertificateTemplate`](/database/models/certificate-template) | `certificates` | `hasMany` | `Certificate` |
 | [`Comment`](/database/models/comment) | `user` | `belongsTo` | `User` |
 | [`Comment`](/database/models/comment) | `xprofile` | `belongsTo` | `XProfile` |
 | [`Comment`](/database/models/comment) | `media` | `hasOne` | `Media` |
@@ -71,6 +75,9 @@ The model layer uses standard WPFluent relation helpers such as `belongsTo`, `ha
 | [`Feed`](/database/models/feed) | `media` | `hasMany` | `Media` |
 | [`Follow`](/database/models/follow) | `follower` | `belongsTo` | `XProfile` |
 | [`Follow`](/database/models/follow) | `followed` | `belongsTo` | `XProfile` |
+| [`Invitation`](/database/models/invitation) | `user` | `belongsTo` | `User` |
+| [`Invitation`](/database/models/invitation) | `xprofile` | `belongsTo` | `XProfile` |
+| [`Invitation`](/database/models/invitation) | `space` | `belongsTo` | `BaseSpace` |
 | [`Media`](/database/models/media) | `feed` | `belongsTo` | `Feed` |
 | [`Media`](/database/models/media) | `user` | `belongsTo` | `User` |
 | [`Media`](/database/models/media) | `xprofile` | `belongsTo` | `XProfile` |
@@ -89,6 +96,9 @@ The model layer uses standard WPFluent relation helpers such as `belongsTo`, `ha
 | [`NotificationSubscriber`](/database/models/notification-subscriber) | `notification` | `belongsTo` | `Notification` |
 | [`NotificationSubscription`](/database/models/notification-subscription) | `user` | `belongsTo` | `User` |
 | [`NotificationSubscription`](/database/models/notification-subscription) | `xprofile` | `belongsTo` | `XProfile` |
+| [`QuizModel`](/database/models/quiz-model) | `user` | `belongsTo` | `User` |
+| [`QuizModel`](/database/models/quiz-model) | `xprofile` | `belongsTo` | `XProfile` |
+| [`QuizModel`](/database/models/quiz-model) | `lesson` | `belongsTo` | `CourseLesson` |
 | [`Reaction`](/database/models/reaction) | `user` | `belongsTo` | `User` |
 | [`Reaction`](/database/models/reaction) | `xprofile` | `belongsTo` | `XProfile` |
 | [`Reaction`](/database/models/reaction) | `feed` | `belongsTo` | `Feed` |
@@ -111,6 +121,8 @@ The model layer uses standard WPFluent relation helpers such as `belongsTo`, `ha
 | [`Space`](/database/models/space) | `group` | `belongsTo` | `SpaceGroup` |
 | [`SpaceGroup`](/database/models/space-group) | `owner` | `belongsTo` | `User` |
 | [`SpaceGroup`](/database/models/space-group) | `spaces` | `hasMany` | `BaseSpace` |
+| [`SpacePageModel`](/database/models/space-page-model) | `space` | `belongsTo` | `BaseSpace` |
+| [`SpacePageModel`](/database/models/space-page-model) | `xprofile` | `belongsTo` | `XProfile` |
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `user` | `belongsTo` | `User` |
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `xprofile` | `belongsTo` | `XProfile` |
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `space` | `belongsTo` | `BaseSpace` |

@@ -63,6 +63,7 @@ Represents community posts, announcements, scheduled posts, and other feed conte
 | --- | --- | --- |
 | `SearchBy` | `$query, $search, $in = []` | Search By scope declared on the model. |
 | `ByUserAccess` | `$query, $userId` | By User Access scope declared on the model. |
+| `ByActiveAuthor` | `$query` | By Active Author scope declared on the model. |
 | `ByContentModerationAccessStatus` | `$query, $user, $space = null` | By Content Moderation Access Status scope declared on the model. |
 | `ByBookMarked` | `$query, $userId` | By Book Marked scope declared on the model. |
 | `ByTopicSlug` | `$query, $topicSlug` | By Topic Slug scope declared on the model. |
@@ -83,6 +84,7 @@ Represents community posts, announcements, scheduled posts, and other feed conte
 | `getCustomMeta()` | Reads a single custom meta value from the serialized feed meta payload. |
 | `withPublicRelations()` | with Public Relations implemented on the model. |
 | `hasUserReact()` | has User React implemented on the model. |
+| `isViewableBy()` | is Viewable By implemented on the model. |
 | `attachTopics()` | attach Topics implemented on the model. |
 | `recountStats()` | recount Stats implemented on the model. |
 | `isEnabledForEveryoneTag()` | is Enabled For Everyone Tag implemented on the model. |

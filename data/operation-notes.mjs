@@ -1676,6 +1676,415 @@ export const OPERATION_NOTES = {
     ],
   },
   // ---------------------------------------------------------------------------
+  // certificates
+  // ---------------------------------------------------------------------------
+  //
+  // The whole group exists only while the course module is on and the certificates
+  // module is not switched off; otherwise the routes are not registered at all, so a
+  // call gets a 404 from WordPress rather than a 403.
+  'certificates/get-mine': {
+    summary: "Lists the certificates the calling member holds, newest first.",
+    details:
+      'A summary per certificate — credential ID, course, status, privacy, verification URL and dates — with no design or merge data, so the list stays cheap. Revoked certificates are left out; suspended and expired ones are returned, carrying that as their status.',
+    notes: [
+      '`per_page` defaults to 20 and is clamped to 1-50, so a value of 0 or a non-number becomes 1 rather than the default.',
+      "`status` here is the computed verification status (`valid`, `expired`, `suspended`), not the stored column — expiry is worked out from the expiry date each time.",
+      'Nothing in the payload separates a manual certificate from a course one, and a manual certificate can carry a course id of 0 with its own title in place of a course title.',
+    ],
+  },
+  'certificates/get-mine-detail': {
+    summary: "Returns one of the caller's own certificates, including everything needed to render it.",
+    details:
+      'Adds a `render` block to the summary: the published template design with image IDs resolved to URLs, the merge values frozen at issue time, and the verification URL for the QR code. The lookup is scoped to the caller, so another member\'s credential ID reads as missing.',
+    notes: [
+      'The owner gets the full design — elements the template hides and merge values it never prints are both present, unlike the public verification payload.',
+      '`render` is `null` when the published template version it points at no longer exists. That is still a 200.',
+      'A revoked certificate returns 404 here, the same as an unknown ID.',
+    ],
+  },
+  'certificates/get-credential': {
+    summary: "Returns the caller's certificate as a signed Open Badges 3.0 credential for a wallet.",
+    details:
+      'The response is JSON carrying one `credential_jwt` string — a compact JWS, not a bare token and not a `vc+jwt` body. Its payload is an `OpenBadgeCredential` naming the issuer inline, with the achievement, the validity dates and a status entry pointing at this site\'s status list. It is built on demand and never stored.',
+    notes: [
+      'The holder\'s email is not in the badge in clear text: the subject identifier is a salted SHA-256 of it.',
+      'Returns 422 when the certificate is expired, suspended or revoked — only a valid certificate can be downloaded as a badge.',
+      'Returns 422 when the site cannot sign (no OpenSSL, or badges switched off through `fluent_community/certificate/open_badges_enabled`).',
+      'The first badge request on a site generates a 2048-bit RSA key and stores it, so that one request is noticeably slower.',
+    ],
+  },
+  'certificates/put-update-visibility': {
+    summary: "Switches one of the caller's own certificates between public and private.",
+    details:
+      'Private means the public verification endpoint confirms only that the ID exists and whether it is valid, and the certificate stops appearing on the member\'s profile to other people. Sent as POST with `X-HTTP-Method-Override: PUT` by the plugin\'s own client.',
+    notes: [
+      'The check is a single comparison against the exact string `private`. Anything else — a missing field, `Private`, `0`, `null` — sets the certificate to public.',
+      'Unlike the detail endpoint this one does not check status, so a suspended or revoked certificate can still have its visibility changed.',
+      'Privacy is not part of the Open Badge or the status list, so neither changes here.',
+    ],
+  },
+  'certificates/get-verify': {
+    summary: 'Verifies a credential ID and returns what the certificate is allowed to show publicly.',
+    details:
+      'Reachable without an account on purpose, including on a private community, because a certificate has to be verifiable by whoever is shown it. A public certificate returns the holder name, course title, issuer, dates and the printable part of the design; a private one returns only the ID, a private flag and whether it is valid.',
+    notes: [
+      'For a private certificate the status collapses to `valid` or `not_valid`, so suspended, expired and revoked are deliberately indistinguishable.',
+      'Rate limited to 60 lookups per 5 minutes per anonymised caller IP, which groups everyone behind the same /24 subnet. Over the limit the answer is 429.',
+      'A malformed ID answers 404 exactly like an unknown one, and the payload never carries an email, user ID or internal row ID.',
+      'The design is trimmed to what actually prints: hidden elements are dropped, and only merge values a visible element references are kept.',
+    ],
+  },
+  'certificates/get-issuer': {
+    summary: 'Returns this site as an Open Badges 3.0 issuer profile, for wallets and verifiers.',
+    details:
+      'A spec document rather than a FluentCommunity payload: the issuer `Profile` with its ID, name, URL and the community logo when one is set. Public by design, since a verifier must be able to fetch it.',
+    notes: [
+      'The issuer ID is this endpoint\'s own URL, and that URL is baked into every badge already issued — changing the site URL or the REST prefix breaks verification of those badges.',
+      'The name is the community title from FluentCommunity\'s settings, which is not necessarily the WordPress site title.',
+      'It keeps answering even when badge downloads are switched off, so badges downloaded earlier still verify.',
+    ],
+  },
+  'certificates/get-public-key': {
+    summary: "Returns the public half of the site's badge signing key as a JWK.",
+    details:
+      'A verifier reads the key ID from a badge\'s JWS header, fetches it here and checks the signature. The response is the bare JWK — key type, modulus, exponent, key ID, algorithm and use — and never contains the private part.',
+    notes: [
+      'There is one key per site and no rotation, so there is no key set endpoint either; the key ID is a thumbprint of the key itself.',
+      'A request with an unknown key ID answers 404, but it still generates and stores the key first if the site does not have one yet.',
+    ],
+  },
+  'certificates/get-status-list': {
+    summary: 'Returns the signed bitstring status list a verifier checks to see whether a badge is still in force.',
+    details:
+      'This one does not return JSON: the compact JWS is sent as `application/vc+jwt` with a five-minute cache header. The payload is a `BitstringStatusListCredential` whose encoded list covers 131,072 certificates, one bit each.',
+    notes: [
+      'The bits read the opposite way round to the obvious one: every bit starts set, and a bit is cleared for a certificate that is currently issued. A set bit therefore means suspended, revoked or deleted.',
+      'The purpose is suspension only, so a revoked certificate shows the same bit as a suspended one. The verification endpoint is where the two differ.',
+      'Expired certificates are not in the list at all — expiry travels in the badge\'s own validity dates instead.',
+      'Answers are cached for ten minutes on the server as well, and that cache is cleared when a certificate is issued, reissued, suspended, reinstated or revoked.',
+      'Only list 0 exists on any normal site; a higher number answers 404 so the URL cannot be used to make the site sign arbitrarily many lists.',
+    ],
+  },
+  'certificates/get-holder-credential': {
+    summary: 'Returns the Open Badge for a manual certificate whose holder has no account, using the token from their holder link.',
+    details:
+      'Same response as the member badge endpoint. The route itself is open, and the token in the query string is what authorises the download; it is compared in constant time against a hash of the certificate and the holder email.',
+    notes: [
+      'It only ever works for a manual certificate with no linked account. For a course certificate, or one linked to a member, it always answers 404 — the holder uses the member endpoint instead.',
+      'A wrong token answers 404 exactly like an unknown certificate, so the endpoint leaks nothing.',
+      'The token does not expire, but it is derived from the holder email and the row, so changing that email or linking an account invalidates every link already sent.',
+      'Anyone holding the token can download the badge, so treat the holder link as a secret.',
+    ],
+  },
+  'certificates/get-profile-certificates': {
+    summary: "Lists the certificates shown on a member's profile, shaped for the viewer.",
+    details:
+      'The owner sees everything except revoked certificates, each with the full design, a prefilled LinkedIn link and whether a badge can be downloaded. Anyone else sees only issued, public ones, with the privacy field removed and the design trimmed to what prints.',
+    notes: [
+      'Whether other people see anything at all is a site setting, and its default is owner-only — so this list is empty for other viewers until an admin opens it up. The last word belongs to `fluent_community/certificate/can_see_profile_certificates`.',
+      'Every refusal — unknown username, hidden profile, closed setting — answers the same 403, so profiles cannot be enumerated.',
+      '`per_page` defaults to 12 and is clamped to at most 12, so a caller cannot ask for more.',
+      'The viewer changes the query rather than only the shaping, so the total differs between the owner and everyone else.',
+      '`is_owner` is false for a logged-out caller even on their own profile.',
+    ],
+  },
+
+  'certificates/get-list-templates': {
+    summary: 'Lists every certificate template with its publishing state and how many certificates it has issued.',
+    details:
+      'Not paginated and not filtered: drafts and archived templates come back alongside active ones, so the caller filters on `status` itself. Pass `with_design=yes` to include each full design with image IDs resolved to URLs.',
+    notes: [
+      'This is the one template route a course creator can call, so they can choose a template for their own course. Every other template route is admin-only.',
+      '`has_draft_changes` means the working copy differs from the published version.',
+      'The issued count includes manual certificates, not only course ones.',
+    ],
+  },
+  'certificates/post-create-template': {
+    summary: 'Creates a certificate template, either blank or from a supplied design.',
+    details:
+      'A new template is a draft, so it cannot issue anything until it is published. Omit the design and it starts as a blank A4 landscape page. A supplied design is sanitised hard: element types and keys come from a whitelist, numbers are clamped, text is stripped of markup and cut to 500 characters, and images are stored as attachment IDs.',
+    notes: [
+      'At most 100 elements, each with an ID of up to 32 characters from `A-Za-z0-9_-`, and no two elements may share an ID.',
+      'A missing or empty title is rejected.',
+      'Each call creates another template; there is no deduplication by title.',
+    ],
+  },
+  'certificates/get-template': {
+    summary: 'Returns one template with its working design.',
+    details:
+      'The design here is the draft copy, which is what the editor loads — not necessarily what new certificates currently use. Admins only, so a course creator who can list templates cannot open one.',
+    notes: [
+      'The issued count is always 0 on this route by construction, so do not read it as "never issued" — the list endpoint is where that number is real.',
+      'An ID belonging to some other kind of row answers 404 just like an unknown one.',
+    ],
+  },
+  'certificates/put-update-template': {
+    summary: "Renames a template, saves its design, or restores it from archived.",
+    details:
+      'Every field is optional and only the ones sent are touched. Saving a design updates the draft and flags the template as having unpublished changes; certificates already issued are unaffected, because each points at a frozen version. Runs under a per-template lock on a freshly read row.',
+    notes: [
+      'This only edits the draft. Nothing changes for new certificates until the template is published.',
+      '`restore=yes` is the only way out of the archived state: the template becomes active again if it has a published version, and a draft otherwise.',
+      'A title sent as an empty string is rejected, while omitting it leaves the title alone.',
+      'Returns 422 when another request holds the template lock.',
+    ],
+  },
+  'certificates/post-publish-template': {
+    summary: 'Publishes the current draft as a new, immutable template version.',
+    details:
+      'Publishing copies the working design into a version row and points the template at it, so a later edit never changes a certificate that was already issued from that template. The template becomes active at the same time.',
+    notes: [
+      'Not idempotent: every call writes a new version even when nothing changed.',
+      'Version numbers are derived from the versions already stored, so an interrupted publish never reuses one.',
+      'An archived template is refused — restore it first.',
+      'Versions are never edited or deleted, and there is no endpoint that rolls a template back to an earlier one.',
+    ],
+  },
+  'certificates/delete-template': {
+    summary: 'Deletes a template, or archives it when certificates were issued from it.',
+    details:
+      'A template that has issued nothing is deleted along with its version rows. One that has issued certificates is archived instead, keeping the row so those certificates still render. Runs under the global issuing lock, so it cannot race an issue in progress.',
+    notes: [
+      'The response is a message only, and that message is the one thing that says whether the template was deleted or archived. Re-read the list if the difference matters.',
+      'Refused with 422 while any course has certificates enabled with this template; the message names those courses.',
+      'The in-use check looks only at courses with certificates switched on, so a disabled course can keep a dangling template ID and will not block deletion.',
+      'Archiving does not touch certificates already issued.',
+    ],
+  },
+  'certificates/post-upload-image': {
+    summary: 'Uploads a logo, signature or background image for use in a template design.',
+    details:
+      'A multipart upload under the field name `file`, stored as a normal WordPress media attachment; designs then reference the attachment ID rather than a URL, so offloading plugins keep working. Returns the new ID and its URL.',
+    notes: [
+      'JPG, PNG and WebP only. SVG is deliberately not accepted, and the type is checked against the real file rather than its name.',
+      'The limit is 5 MB, adjustable with `fluent_community/certificate/max_image_bytes` — but PHP\'s own upload limits apply first, and hitting those produces the "no upload file was received" error instead.',
+      'Uploads are never cleaned up automatically: deleting a template leaves its images in the media library.',
+    ],
+  },
+  'certificates/get-list-issued': {
+    summary: 'Lists issued course certificates for administrators, with search and filters.',
+    details:
+      'Each row carries the credential ID, serial, stored and computed status, the holder, the course, the template and version, the source, and who changed the status when. Filter by course or stored status, and search by exact credential ID or by holder name or email.',
+    notes: [
+      'Manual certificates never appear here — they have their own list.',
+      '`status` is the stored state (`issued`, `suspended`, `revoked`) while `verification` is the computed one and can also be `expired`.',
+      'Searching by email only matches certificates that have an account linked.',
+      '`per_page` defaults to 20 and is clamped to 1-100.',
+      'Course creators cannot call this, even for their own course; it is admins only.',
+    ],
+  },
+  'certificates/post-suspend': {
+    summary: "Suspends a certificate, so verification reports it as not currently in force.",
+    details:
+      'Reversible, unlike revoking. The optional `reason` is stored with who changed it and when. Runs under a per-certificate lock on a freshly read row, and fires `fluent_community/certificate/suspended`, which clears the badge status-list cache.',
+    notes: [
+      'Only a certificate in the `issued` state can be suspended; a repeat call answers 422.',
+      'A suspended certificate also blocks automatic re-issuing for that course until it is reinstated.',
+      'No email is sent on a status change.',
+      'Manual certificates use this same endpoint.',
+    ],
+  },
+  'certificates/post-reinstate': {
+    summary: 'Returns a suspended certificate to force.',
+    details:
+      'The inverse of suspending, and the only way back. Clears the stored reason and fires `fluent_community/certificate/reinstated`, which clears the badge status-list cache.',
+    notes: [
+      'Only a suspended certificate can be reinstated; anything else answers 422.',
+      'A revoked certificate cannot be reinstated — that state is final.',
+      'Any `reason` sent is ignored here.',
+    ],
+  },
+  'certificates/post-revoke': {
+    summary: 'Revokes a certificate permanently.',
+    details:
+      'Terminal: no endpoint undoes it. The optional `reason` is stored alongside who revoked it and when, and `fluent_community/certificate/revoked` clears the badge status-list cache.',
+    notes: [
+      'Revoking also stops the course issuing that holder a new certificate, even if they complete the course again.',
+      'A revoked certificate drops out of the holder\'s own lists and answers 404 on their detail endpoint, while remaining visible to admins.',
+      'The public status list reports revoked and suspended the same way; only verification tells them apart.',
+    ],
+  },
+  'certificates/post-reissue': {
+    summary: "Rebuilds a course certificate from today's course and member details, onto the template's current version.",
+    details:
+      'Merge values are resolved again and the certificate is moved to the newest published version of its template, keeping the original completion date. The credential ID, serial, issue date and expiry all stay, so links, QR codes and LinkedIn entries keep working. The cached preview image is dropped so it regenerates.',
+    notes: [
+      'This is the only way to pull an existing certificate onto a newer template version.',
+      'It does not extend expiry — a certificate that has expired stays expired.',
+      'Manual certificates are refused with 422; edit them instead. Revoked ones are refused too, while a suspended one can be reissued.',
+      'Refused with 422 when the template is no longer published.',
+    ],
+  },
+  'certificates/get-list-manual': {
+    summary: 'Lists manually issued certificates for administrators.',
+    details:
+      'The counterpart of the issued list, covering certificates an admin created for a person rather than ones a course awarded. Filter by stored status or template, and search by credential ID, title or holder details.',
+    notes: [
+      'Admins only, by design: without a course there is nothing to scope a course creator to.',
+      'The holder search runs over the stored metadata as a text match, so an unusual search term can match more than intended.',
+      '`per_page` defaults to 20 and is clamped to 1-100.',
+    ],
+  },
+  'certificates/get-manual-fields': {
+    summary: 'Returns the fields an admin has to fill in to issue from a given template, with sensible defaults.',
+    details:
+      'Reads the template\'s published version and offers one field per merge tag that a visible text element actually prints, plus the certificate title. Pass a course to prefill course values, or a name to prefill the student ones.',
+    notes: [
+      'Tags inside hidden elements, in non-text elements, or that the template does not use are not offered at all.',
+      'The four generated values — issue date, expiry date, credential ID and serial — come back read-only and empty, because the system fills them.',
+      'Requires a published template; a draft or archived one answers 422.',
+    ],
+  },
+  'certificates/post-issue-manual': {
+    summary: 'Issues certificates by hand to up to 25 people at once, with or without a course.',
+    details:
+      'Each row carries a name, an email and the merge values the template prints. The shared options decide the template, the optional course, privacy, the dates, whether to notify, and whether to leave the holder without an account, link an existing one by email, or create one.',
+    notes: [
+      'Partial success is a 200: per-row outcomes live in `results`. The exception is a single-row request, where the row\'s own failure becomes the 422.',
+      'Options are global to the request, so one bad expiry date fails every row.',
+      'Nothing deduplicates, so the same person can be issued any number of certificates.',
+      'Holders without an account are first class: they get a tokenised verification link, and the notification goes to the address typed in.',
+      'Creating an account issues a real WordPress user and, with `account_email=yes`, sends the standard password email.',
+      'Course rules do not apply here — no `fluent_community/certificate/can_issue`, and no one-per-course check. `fluent_community/certificate/before_manual_issue` can still rewrite or block a row.',
+      'Serial numbers share one sequence with course certificates.',
+    ],
+  },
+  'certificates/get-manual': {
+    summary: 'Returns one manual certificate with its fields, design, values and edit history.',
+    details:
+      'What the edit form loads. The fields and design reflect the version the certificate was issued from; pass `latest=yes` to see them as the template\'s current version would render them instead. Includes the linked account when there is one.',
+    notes: [
+      '`latest_version` is 0 when nothing newer exists, so read it as a "newer version available" flag rather than the current version.',
+      'The history is newest first and always ends with the original issue entry. Authors appear as display names, and an author whose account is gone shows as empty.',
+      'A course certificate\'s ID answers 404 here.',
+    ],
+  },
+  'certificates/put-update-manual': {
+    summary: "Edits a manual certificate's holder, values, privacy, expiry or template version.",
+    details:
+      'Typed values are merged over the stored ones, the title and expiry are recomputed, and an entry is appended to the certificate\'s history recording who changed what. Fires `fluent_community/certificate/manual_updated` with the list of changed areas.',
+    notes: [
+      'The credential ID, serial and issue date cannot be changed, and an expiry before the issue date is rejected.',
+      'Omitting `values` changes nothing, but omitting `expires_at` clears the expiry.',
+      'Changing the holder email, or linking an account, invalidates any holder link already sent.',
+      'A suspended certificate can be edited; a revoked one cannot.',
+      'No email goes to the holder, and the history keeps only the most recent 50 entries.',
+      'When nothing actually changed the response is still a success, with no history entry written.',
+    ],
+  },
+  'certificates/get-lookup-user': {
+    summary: 'Looks up a member by exact email, so the manual issue form can offer to link an account.',
+    details:
+      'Returns the account or `null`. An invalid email short-circuits to `null` without a query.',
+    notes: [
+      'Exact email match only — no partial or name search.',
+      '`null` is the normal answer for "no account", never an error status.',
+    ],
+  },
+  'certificates/get-course-settings': {
+    summary: "Returns a course's certificate settings: whether it awards one, from which template, and after how long it expires.",
+    details:
+      'Stored as course metadata rather than columns, and defaulted to off with no template. This is one of the few certificate routes a course creator can call, for their own course.',
+    notes: [
+      'Authorisation here runs through the course admin policy, so a community admin without course-creator access is refused — the opposite of the other certificate admin routes.',
+      'An ID that is not a course answers 404.',
+    ],
+  },
+  'certificates/post-save-course-settings': {
+    summary: "Saves a course's certificate settings and returns the values as stored.",
+    details:
+      'Switching it on requires a published template. Expiry is a number of months, clamped to 600, and applies only at issue time. Runs under the global issuing lock, so it cannot race an issue in progress.',
+    notes: [
+      'Turning the certificate on issues nothing for members who already completed the course — that is what the backfill is for.',
+      'Changing the expiry never re-dates certificates already issued.',
+      'With the certificate switched off the template ID is saved without validation, so a disabled course can keep a dangling ID — and such a course does not block deleting that template.',
+      'A course creator can save this for their own course.',
+    ],
+  },
+  'certificates/get-backfill-summary': {
+    summary: 'Counts the completions of a course and how many of them have no certificate yet.',
+    details:
+      'Two counts, read straight from the completion activity records, so the admin can see what a backfill would do before running it.',
+    notes: [
+      'It counts completion records rather than members, so a member who completed a course twice counts twice.',
+      'Pending counts members with no certificate for the course at all, revoked ones included.',
+      'It answers even when the course does not award certificates, unlike running the backfill.',
+    ],
+  },
+  'certificates/post-backfill': {
+    summary: 'Issues certificates for past completions of a course, 25 completions at a time.',
+    details:
+      'Walks completion records in order from the `cursor` the caller passes back each time, skipping anybody who already holds a certificate for the course. Each certificate is dated from the real completion, not from today. The response carries the counts, the next cursor and whether the walk is done.',
+    notes: [
+      'The caller drives the loop: post the returned cursor to continue. Re-posting cursor 0 simply re-walks and skips everything.',
+      'The batch size is fixed at 25 and cannot be set from the request, and the work runs inside the request rather than as a background job.',
+      'Backfilled certificates never send the notification email.',
+      'Because expiry counts from the completion date, a backfilled certificate can be born already expired.',
+      'Per-row failures are counted rather than fatal, and only the first five appear in `errors` — so `done` can be true while some remain pending.',
+      'Refused with 422 until the course has certificates switched on and saved.',
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // search
+  // ---------------------------------------------------------------------------
+  'search/get-search': {
+    summary: 'Searches posts, comments, members, spaces and courses in one request, and returns a block of results per type.',
+    details:
+      'The caller asks for the types it wants and gets one entry per type, each with its items and whether more are available, alongside the search terms the query was reduced to and how long it took. Each type is answered by its own provider, and each provider applies the caller\'s own visibility rules, so a result set never includes a private space or an unpublished post the caller could not already open.',
+    notes: [
+      'The query text is trimmed, collapsed and cut to 100 characters, then reduced to at most 8 terms of two characters or more.',
+      '`limit` is capped at 20 per type and `page` at 10, and on the last page the "more available" flag is forced to false.',
+      'A type the caller does not ask for is never run, so this is not an "everything" endpoint. Type names are key-sanitised, so they must be lowercase.',
+      'An empty or too-short query still answers 200, with an empty result object and no provider called.',
+      'Guests reach this endpoint on a community whose access level is public, so a provider must not assume there is a logged-in user.',
+      'Add a type with `fluent_community/search/providers`; the course type is itself registered that way by the course module.',
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // courses: quiz
+  // ---------------------------------------------------------------------------
+  'courses/post-start-quiz': {
+    summary: "Starts a quiz attempt and returns its questions, with the attempt's timer when the quiz is timed.",
+    details:
+      'The questions come back without their answer key: the blanks, the matching pairs and the correct options are stripped, and ordering options are shuffled. A timed quiz also returns when the attempt started, when it is due and the server time, so the client can show a countdown against the server rather than the device clock.',
+    notes: [
+      'The caller must be enrolled in the course, the lesson must be published, and the student must have an attempt left.',
+      'Starting does not consume an attempt — only a submit does.',
+      'Calling it again returns the attempt already in progress, including one whose deadline has passed, so that reloading the page cannot buy more time. The client is expected to submit it, and the submission is marked as over time.',
+      'A quiz with no time limit returns a null timer.',
+      'The time limit is clamped to 1-600 minutes, and a submission gets a 60-second grace period.',
+    ],
+  },
+  'courses/post-grade-quiz-result': {
+    summary: 'Grades the written answers of one submitted quiz result and recomputes its score and pass state.',
+    details:
+      'Send points and optional feedback per question slug. Points are clamped to that question\'s maximum, feedback is sanitised, and the grader and time are recorded on each answer. Everything else in the quiz was graded automatically at submit time, so only written answers set to manual grading can be graded here.',
+    notes: [
+      'The `{quiz_id}` segment is the ID of the result row, not of the quiz lesson.',
+      'Unknown slugs, automatically graded questions and entries with no numeric `points` are skipped in silence; when nothing could be graded the answer is 422.',
+      'The score and pass state are recomputed against the quiz\'s current questions and current pass mark, not the ones in force when the student submitted, so changing either between submit and grading can change the outcome.',
+      'An answer given partial credit counts toward the score but still reads as incorrect.',
+      '`fluent_community/quiz/graded` fires, and the student is notified by email, only on the transition out of `pending` — so a regrade of an already-graded result changes the data silently.',
+      'Grading never gives back an attempt, and it never withdraws a lesson completion that an earlier pass already recorded.',
+      'A quiz with no pass mark ends up neither passed nor failed; its result simply stays published.',
+    ],
+  },
+  'courses/post-allow-extra-attempt': {
+    summary: 'Gives one student one more attempt at a quiz.',
+    details:
+      'Adds a single attempt to that student\'s own result row, on top of the quiz\'s limit. Takes no parameters: the result row identifies both the student and the quiz.',
+    notes: [
+      'Each call adds another attempt, so calling it twice grants two.',
+      'The student\'s result row has to exist, so an extra attempt cannot be granted before their first submission.',
+      'The student is not told: no notification and no email.',
+      'On a quiz with no attempt limit the allowance is recorded but changes nothing.',
+      'There is one result row per student per quiz, so when the extra attempt is used it overwrites the previous answers — no attempt history is kept.',
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
   // leaderboard
   // ---------------------------------------------------------------------------
   'leaderboard/list-leaderboard': {

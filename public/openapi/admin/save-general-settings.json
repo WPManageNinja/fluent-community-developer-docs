@@ -56,9 +56,6 @@
                       "featured_image": {
                         "type": "string"
                       },
-                      "site_title": {
-                        "type": "string"
-                      },
                       "disable_global_posts": {
                         "type": "string"
                       },

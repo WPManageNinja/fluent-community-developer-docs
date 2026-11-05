@@ -11,12 +11,12 @@ description: "Integrations filter hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/fluent_player/fallback_timings`](#fluent-community-fluent-player-fallback-timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:220` |
-| [`fluent_community/fluent_player/max_audios_per_post`](#fluent-community-fluent-player-max-audios-per-post) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:295` |
+| [`fluent_community/fluent_player/fallback_timings`](#fluent-community-fluent-player-fallback-timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:226` |
+| [`fluent_community/fluent_player/max_audios_per_post`](#fluent-community-fluent-player-max-audios-per-post) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:301` |
 | [`fluent_community/fluentform__defaults`](#fluent-community-fluentform--defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
-| [`fluent_community/fluentplayer_defaults_settings`](#fluent-community-fluentplayer-defaults-settings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:619` |
-| [`fluent_community/support_audio_types`](#fluent-community-support-audio-types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:183` |
-| [`fluent_community/support_video_types`](#fluent-community-support-video-types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:173` |
+| [`fluent_community/fluentplayer_defaults_settings`](#fluent-community-fluentplayer-defaults-settings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:621` |
+| [`fluent_community/support_audio_types`](#fluent-community-support-audio-types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:189` |
+| [`fluent_community/support_video_types`](#fluent-community-support-video-types) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:179` |
 | [`fluent_community/video_upload_max_file_size`](#fluent-community-video-upload-max-file-size) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:61` |
 | [`fluent_community/video_upload_max_file_unit`](#fluent-community-video-upload-max-file-unit) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:60` |
 | [`fluent_community/wppayform__defaults`](#fluent-community-wppayform--defaults) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Integrations/Paymattic/Bootstrap.php:65` |
@@ -44,7 +44,7 @@ All five values are milliseconds and they govern the fallback path only — how 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:220` | `array (5 keys: content_timeout_ms, script_timeout_ms, script_grace_ms, …)` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:226` | `array (5 keys: content_timeout_ms, script_timeout_ms, script_grace_ms, …)` (array) |
 
 ### Example
 
@@ -79,7 +79,7 @@ Defaults to 10 and is clamped to 1–50 after the filter, so a callback cannot l
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:295` | `10` (int) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:301` | `10` (int) |
 
 ### Example
 
@@ -148,7 +148,7 @@ Applied last, after the plugin defaults have been merged with the stored FluentP
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:619` | `$settings` (mixed) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:621` | `$settings` (mixed) |
 
 ### Example
 
@@ -183,7 +183,7 @@ Only applied when audio uploads are switched on in the FluentPlayer settings —
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:183` | `array (6 items)` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:189` | `array (6 items)` (array) |
 
 ### Example
 
@@ -218,7 +218,7 @@ Defaults to MP4, WebM and QuickTime. The list is deduplicated, joined into the v
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:173` | `[ 'video/mp4', 'video/webm', 'video/quicktime' ]` (array) |
+| Core | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:179` | `[ 'video/mp4', 'video/webm', 'video/quicktime', ]` (array) |
 
 ### Example
 

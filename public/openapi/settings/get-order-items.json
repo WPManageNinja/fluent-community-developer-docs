@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOrderItems",
         "summary": "GET Get Order Items",
-        "description": "Get Order Items for the FluentCommunity Settings API.\n\nController: `SettingController@getOrderItems`\nRoute source: `fluent-community/app/Http/Routes/api.php:176`",
+        "description": "Get Order Items for the FluentCommunity Settings API.\n\nController: `SettingController@getOrderItems`\nRoute source: `fluent-community/app/Http/Routes/api.php:180`",
         "tags": [
           "Settings"
         ],

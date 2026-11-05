@@ -1,7 +1,7 @@
 {
   "action/feeds": {
     "hooks": 23,
-    "callSites": 39,
+    "callSites": 40,
     "documented": 23
   },
   "action/comments": {
@@ -21,13 +21,13 @@
   },
   "action/members": {
     "hooks": 18,
-    "callSites": 25,
+    "callSites": 26,
     "documented": 17
   },
   "action/courses": {
-    "hooks": 37,
-    "callSites": 54,
-    "documented": 34
+    "hooks": 38,
+    "callSites": 55,
+    "documented": 35
   },
   "action/notifications": {
     "hooks": 4,
@@ -36,7 +36,7 @@
   },
   "action/media": {
     "hooks": 9,
-    "callSites": 20,
+    "callSites": 21,
     "documented": 7
   },
   "action/auth": {
@@ -64,14 +64,19 @@
     "callSites": 7,
     "documented": 3
   },
+  "action/certificates": {
+    "hooks": 9,
+    "callSites": 12,
+    "documented": 9
+  },
   "action/miscellaneous": {
     "hooks": 3,
     "callSites": 3,
     "documented": 0
   },
   "filter/feeds": {
-    "hooks": 36,
-    "callSites": 45,
+    "hooks": 37,
+    "callSites": 46,
     "documented": 36
   },
   "filter/comments": {
@@ -95,9 +100,9 @@
     "documented": 37
   },
   "filter/courses": {
-    "hooks": 46,
-    "callSites": 46,
-    "documented": 43
+    "hooks": 48,
+    "callSites": 48,
+    "documented": 44
   },
   "filter/notifications": {
     "hooks": 18,
@@ -105,8 +110,8 @@
     "documented": 12
   },
   "filter/media": {
-    "hooks": 22,
-    "callSites": 33,
+    "hooks": 23,
+    "callSites": 34,
     "documented": 21
   },
   "filter/auth": {
@@ -116,7 +121,7 @@
   },
   "filter/permissions": {
     "hooks": 10,
-    "callSites": 24,
+    "callSites": 25,
     "documented": 8
   },
   "filter/moderation": {
@@ -144,9 +149,14 @@
     "callSites": 9,
     "documented": 9
   },
+  "filter/certificates": {
+    "hooks": 9,
+    "callSites": 9,
+    "documented": 9
+  },
   "filter/miscellaneous": {
-    "hooks": 8,
-    "callSites": 10,
-    "documented": 3
+    "hooks": 14,
+    "callSites": 15,
+    "documented": 5
   }
 }

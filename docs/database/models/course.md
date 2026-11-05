@@ -60,7 +60,7 @@ A `BaseSpace` scoped to `type = course`, adding enrolment and instructor behavio
 | `FilterByUserId` | `$query, $userId` | Filter By User Id scope declared on the model. |
 | `ByUserAccess` | `$query, $userId` | By User Access scope declared on the model. |
 | `ByAdminAccess` | `$query, $userId = null` | By Admin Access scope declared on the model. |
-| `SearchBy` | `$query, $search` | Search By scope declared on the model. |
+| `SearchBy` | `$query, $search, $includePosts = false` | Search By scope declared on the model. |
 | `ByPostTopic` | `$query, $topicSlug = null` | By Post Topic scope declared on the model. |
 
 ## Key Methods
@@ -68,6 +68,7 @@ A `BaseSpace` scoped to `type = course`, adding enrolment and instructor behavio
 | Method | Description |
 | --- | --- |
 | `isPublic()` | is Public implemented on the model. |
+| `isActiveMember()` | is Active Member implemented on the model. |
 | `preloadMemberships()` | preload Memberships implemented on the model. |
 | `isCourseSpace()` | is Course Space implemented on the model. |
 | `isAdmin()` | is Admin implemented on the model. |
@@ -80,6 +81,7 @@ A `BaseSpace` scoped to `type = course`, adding enrolment and instructor behavio
 | `updateCustomMeta()` | update Custom Meta implemented on the model. |
 | `syncTopics()` | sync Topics implemented on the model. |
 | `formatSpaceData()` | format Space Data implemented on the model. |
+| `hasPublicLessonView()` | has Public Lesson View implemented on the model. |
 | `syncCategories()` | sync Categories implemented on the model. |
 | `isCourseAdmin()` | is Course Admin implemented on the model. |
 
