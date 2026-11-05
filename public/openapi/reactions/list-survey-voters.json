@@ -225,8 +225,8 @@
               }
             }
           },
-          "422": {
-            "description": "Request validation or permission error.",
+          "404": {
+            "description": "Sorry, you do not have permission to view this post",
             "content": {
               "application/json": {
                 "schema": {
@@ -238,7 +238,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request validation or permission error."
+                  "message": "Sorry, you do not have permission to view this post"
                 }
               }
             }

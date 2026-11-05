@@ -52,7 +52,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Bits/openPostMixin.js",
-    "line": 45
+    "line": 50
   },
   {
     "method": "POST",
@@ -103,11 +103,12 @@
       "space_id"
     ],
     "responseKeys": [
-      "paywalls"
+      "paywalls",
+      "unavailable_paywalls"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/ManagePaywalls.vue",
-    "line": 226
+    "line": 270
   },
   {
     "method": "DELETE",
@@ -124,7 +125,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/ManagePaywalls.vue",
-    "line": 241
+    "line": 286
   },
   {
     "method": "POST",
@@ -141,7 +142,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/ManagePaywalls.vue",
-    "line": 259
+    "line": 304
   },
   {
     "method": "POST",
@@ -382,6 +383,27 @@
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/ReportReviewModal.vue",
     "line": 181
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "search"
+    ],
+    "routeExpression": "'search'",
+    "payloadKeys": [
+      "q",
+      "types",
+      "per_type",
+      "page",
+      "space",
+      "sort"
+    ],
+    "responseKeys": [
+      "results"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Common/SearchBar.vue",
+    "line": 812
   },
   {
     "method": "GET",
@@ -761,7 +783,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Common/_SidebarLinkForm.vue",
-    "line": 124
+    "line": 127
   },
   {
     "method": "GET",
@@ -855,6 +877,22 @@
     "line": 249
   },
   {
+    "method": "POST",
+    "routePatterns": [
+      "settings/features"
+    ],
+    "routeExpression": "'settings/features'",
+    "payloadKeys": [
+      "features"
+    ],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Courses/Manage/CourseModuleIntro.vue",
+    "line": 49
+  },
+  {
     "method": "GET",
     "routePatterns": [
       "admin/courses/{id}/meta-settings"
@@ -930,7 +968,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/Customizer/CourseSettingsRoute.vue",
-    "line": 143
+    "line": 145
   },
   {
     "method": "GET",
@@ -1089,11 +1127,12 @@
     ],
     "responseKeys": [
       "results.data",
-      "results.total"
+      "results.total",
+      "pending_count"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/QuizResults.vue",
-    "line": 145
+    "line": 166
   },
   {
     "method": "GET",
@@ -1110,7 +1149,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/QuizResults.vue",
-    "line": 165
+    "line": 187
   },
   {
     "method": "PATCH",
@@ -1143,6 +1182,36 @@
   {
     "method": "POST",
     "routePatterns": [
+      "admin/courses/{id}/quiz-results/{id}/grade"
+    ],
+    "routeExpression": "'admin/courses/' + this.course.id + '/quiz-results/' + this.result.id + '/grade'",
+    "payloadKeys": [
+      "grades"
+    ],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Courses/Manage/_ViewQuizResult.vue",
+    "line": 267
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/courses/{id}/quiz-results/{id}/extra-attempt"
+    ],
+    "routeExpression": "'admin/courses/' + this.course.id + '/quiz-results/' + this.result.id + '/extra-attempt'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "message"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Courses/Manage/_ViewQuizResult.vue",
+    "line": 281
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
       "admin/courses/{id}/quiz-results/{id}"
     ],
     "routeExpression": "'admin/courses/' + this.course.id + '/quiz-results/' + this.result.id",
@@ -1154,7 +1223,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Manage/_ViewQuizResult.vue",
-    "line": 219
+    "line": 342
   },
   {
     "method": "PUT",
@@ -1188,7 +1257,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/QuizEditor.vue",
-    "line": 476
+    "line": 489
   },
   {
     "method": "PATCH",
@@ -1386,6 +1455,21 @@
     "line": 149
   },
   {
+    "method": "POST",
+    "routePatterns": [
+      "courses/{course_id}/lessons/{id}/quiz/start"
+    ],
+    "routeExpression": "'courses/' + this.lesson.course_id + '/lessons/' + this.lesson.id + '/quiz/start'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "questions",
+      "timer"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/Modules/Courses/Parts/_QuizView.vue",
+    "line": 383
+  },
+  {
     "method": "GET",
     "routePatterns": [
       "courses/{course_id}/lessons/{id}/quiz/result"
@@ -1393,11 +1477,12 @@
     "routeExpression": "'courses/' + this.lesson.course_id + '/lessons/' + this.lesson.id + '/quiz/result'",
     "payloadKeys": [],
     "responseKeys": [
-      "result"
+      "result",
+      "timer"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_QuizView.vue",
-    "line": 390
+    "line": 591
   },
   {
     "method": "POST",
@@ -1416,7 +1501,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/Parts/_QuizView.vue",
-    "line": 407
+    "line": 616
   },
   {
     "method": "POST",
@@ -1444,7 +1529,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewCourse.vue",
-    "line": 366
+    "line": 367
   },
   {
     "method": "GET",
@@ -1489,7 +1574,8 @@
     ],
     "responseKeys": [
       "track.completed_lessons",
-      "track"
+      "track",
+      "is_completed"
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewLesson.vue",
@@ -1507,7 +1593,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Courses/ViewLesson.vue",
-    "line": 415
+    "line": 419
   },
   {
     "method": "GET",
@@ -1750,7 +1836,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Feed.vue",
-    "line": 446
+    "line": 447
   },
   {
     "method": "PATCH",
@@ -1766,7 +1852,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Feed.vue",
-    "line": 464
+    "line": 465
   },
   {
     "method": "POST",
@@ -1780,7 +1866,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/Feed.vue",
-    "line": 477
+    "line": 478
   },
   {
     "method": "POST",
@@ -1858,7 +1944,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Feeds/Parts/RenderChildPost.vue",
-    "line": 112
+    "line": 135
   },
   {
     "method": "GET",
@@ -2085,32 +2171,6 @@
   {
     "method": "GET",
     "routePatterns": [
-      "insights/pages/{page}"
-    ],
-    "routeExpression": "`insights/pages/${this.page}`",
-    "payloadKeys": [],
-    "responseKeys": [
-      "cards"
-    ],
-    "sourceId": "core",
-    "file": "fluent-community/src/Modules/Insights/CardGrid.vue",
-    "line": 47
-  },
-  {
-    "method": "GET",
-    "routePatterns": [
-      "insights/cards/{key}"
-    ],
-    "routeExpression": "`insights/cards/${this.card.key}`",
-    "payloadKeys": [],
-    "responseKeys": [],
-    "sourceId": "core",
-    "file": "fluent-community/src/Modules/Insights/CardShell.vue",
-    "line": 220
-  },
-  {
-    "method": "GET",
-    "routePatterns": [
       "insights/cards/{key}/export"
     ],
     "routeExpression": "`insights/cards/${this.card.key}/export`",
@@ -2121,7 +2181,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Insights/CardShell.vue",
-    "line": 245
+    "line": 268
   },
   {
     "method": "GET",
@@ -2135,7 +2195,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Insights/InsightsPage.vue",
-    "line": 93
+    "line": 147
   },
   {
     "method": "POST",
@@ -2781,7 +2841,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_UserHeader.vue",
-    "line": 327
+    "line": 328
   },
   {
     "method": "POST",
@@ -2795,7 +2855,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Profile/_UserHeader.vue",
-    "line": 370
+    "line": 371
   },
   {
     "method": "GET",
@@ -3029,7 +3089,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 495
+    "line": 476
   },
   {
     "method": "GET",
@@ -3044,7 +3104,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 510
+    "line": 491
   },
   {
     "method": "POST",
@@ -3061,7 +3121,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/Features.vue",
-    "line": 530
+    "line": 511
   },
   {
     "method": "GET",
@@ -3401,7 +3461,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PrivacySettings.vue",
-    "line": 159
+    "line": 166
   },
   {
     "method": "POST",
@@ -3417,7 +3477,7 @@
     ],
     "sourceId": "core",
     "file": "fluent-community/src/Modules/Settings/PrivacySettings.vue",
-    "line": 172
+    "line": 179
   },
   {
     "method": "GET",
@@ -4443,7 +4503,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 99
+    "line": 108
   },
   {
     "method": "POST",
@@ -4455,7 +4515,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 100
+    "line": 109
   },
   {
     "method": "PUT",
@@ -4467,7 +4527,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 101
+    "line": 110
   },
   {
     "method": "PATCH",
@@ -4479,7 +4539,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 102
+    "line": 111
   },
   {
     "method": "DELETE",
@@ -4491,7 +4551,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/admin_app.js",
-    "line": 103
+    "line": 112
   },
   {
     "method": "GET",
@@ -4503,7 +4563,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/app.js",
-    "line": 125
+    "line": 132
   },
   {
     "method": "POST",
@@ -4515,7 +4575,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/app.js",
-    "line": 126
+    "line": 133
   },
   {
     "method": "PUT",
@@ -4527,7 +4587,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/app.js",
-    "line": 127
+    "line": 134
   },
   {
     "method": "PATCH",
@@ -4539,7 +4599,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/app.js",
-    "line": 128
+    "line": 135
   },
   {
     "method": "DELETE",
@@ -4551,7 +4611,7 @@
     "responseKeys": [],
     "sourceId": "core",
     "file": "fluent-community/src/app.js",
-    "line": 129
+    "line": 136
   },
   {
     "method": "GET",
@@ -4757,6 +4817,34 @@
   {
     "method": "GET",
     "routePatterns": [
+      "insights/pages/{page}"
+    ],
+    "routeExpression": "`insights/pages/${page}`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "cards"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/stores/insights.js",
+    "line": 52
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "insights/cards/{key}"
+    ],
+    "routeExpression": "`insights/cards/${key}`",
+    "payloadKeys": [],
+    "responseKeys": [
+      "meta.generated_at"
+    ],
+    "sourceId": "core",
+    "file": "fluent-community/src/stores/insights.js",
+    "line": 66
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
       "notifications"
     ],
     "routeExpression": "'notifications'",
@@ -4945,5 +5033,483 @@
     "sourceId": "core",
     "file": "fluent-community/src/stores/user.js",
     "line": 299
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/courses/{id}/certificate-settings"
+    ],
+    "routeExpression": "'admin/courses/' + this.course.id + '/certificate-settings'",
+    "payloadKeys": [],
+    "responseKeys": [],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/CourseCertificateTab.vue",
+    "line": 130
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/templates"
+    ],
+    "routeExpression": "'admin/certificates/templates'",
+    "payloadKeys": [
+      "with_design"
+    ],
+    "responseKeys": [],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/CourseCertificateTab.vue",
+    "line": 131
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/courses/{id}/certificate-settings"
+    ],
+    "routeExpression": "'admin/courses/' + this.course.id + '/certificate-settings'",
+    "payloadKeys": [
+      "settings"
+    ],
+    "responseKeys": [
+      "settings",
+      "message"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/CourseCertificateTab.vue",
+    "line": 149
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/courses/{id}/certificate-backfill"
+    ],
+    "routeExpression": "'admin/courses/' + this.course.id + '/certificate-backfill'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "backfill"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/CourseCertificateTab.vue",
+    "line": 159
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/courses/{id}/certificate-backfill"
+    ],
+    "routeExpression": "'admin/courses/' + this.course.id + '/certificate-backfill'",
+    "payloadKeys": [
+      "cursor"
+    ],
+    "responseKeys": [
+      "backfill",
+      "backfill.issued",
+      "backfill.skipped",
+      "backfill.failed",
+      "backfill.errors",
+      "backfill.pending",
+      "backfill.done",
+      "backfill.cursor"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/CourseCertificateTab.vue",
+    "line": 174
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/courses"
+    ],
+    "routeExpression": "'admin/courses'",
+    "payloadKeys": [
+      "per_page"
+    ],
+    "responseKeys": [
+      "courses.data"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/IssuedList.vue",
+    "line": 111
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/issued"
+    ],
+    "routeExpression": "'admin/certificates/issued'",
+    "payloadKeys": [
+      "page",
+      "per_page",
+      "search",
+      "course_id",
+      "status"
+    ],
+    "responseKeys": [
+      "certificates.data",
+      "certificates.total"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/IssuedList.vue",
+    "line": 126
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/courses"
+    ],
+    "routeExpression": "'admin/courses'",
+    "payloadKeys": [
+      "per_page"
+    ],
+    "responseKeys": [
+      "courses.data"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualCertificateDialog.vue",
+    "line": 253
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/users/lookup"
+    ],
+    "routeExpression": "'admin/certificates/users/lookup'",
+    "payloadKeys": [
+      "email"
+    ],
+    "responseKeys": [
+      "user",
+      "user.name"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualCertificateDialog.vue",
+    "line": 299
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/manual/fields"
+    ],
+    "routeExpression": "'admin/certificates/manual/fields'",
+    "payloadKeys": [
+      "template_id",
+      "course_id"
+    ],
+    "responseKeys": [
+      "fields",
+      "design"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualCertificateDialog.vue",
+    "line": 327
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/issued/{certificateId}/manual"
+    ],
+    "routeExpression": "'admin/certificates/issued/' + this.certificateId + '/manual'",
+    "payloadKeys": [
+      "latest"
+    ],
+    "responseKeys": [
+      "fields",
+      "design",
+      "certificate",
+      "account",
+      "latest_version",
+      "values",
+      "history",
+      "certificate.holder.name",
+      "certificate.holder.email",
+      "certificate.template_title",
+      "certificate.issued_at",
+      "certificate.expires_at",
+      "certificate.privacy"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualCertificateDialog.vue",
+    "line": 347
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "admin/certificates/issued/{certificateId}/manual"
+    ],
+    "routeExpression": "'admin/certificates/issued/' + this.certificateId + '/manual'",
+    "payloadKeys": [
+      "values",
+      "latest_version"
+    ],
+    "responseKeys": [
+      "message",
+      "certificate"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualCertificateDialog.vue",
+    "line": 419
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/certificates/manual"
+    ],
+    "routeExpression": "'admin/certificates/manual'",
+    "payloadKeys": [
+      "rows",
+      "template_id",
+      "course_id",
+      "account",
+      "account_email",
+      "notify",
+      "privacy",
+      "issued_at",
+      "expires_at"
+    ],
+    "responseKeys": [
+      "results",
+      "message",
+      "results.status",
+      "results.message",
+      "results.certificate"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualCertificateDialog.vue",
+    "line": 430
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/templates"
+    ],
+    "routeExpression": "'admin/certificates/templates'",
+    "payloadKeys": [
+      "with_design"
+    ],
+    "responseKeys": [
+      "templates"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualList.vue",
+    "line": 133
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/manual"
+    ],
+    "routeExpression": "'admin/certificates/manual'",
+    "payloadKeys": [
+      "page",
+      "per_page",
+      "search",
+      "template_id",
+      "status"
+    ],
+    "responseKeys": [
+      "certificates.data",
+      "certificates.total"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/ManualList.vue",
+    "line": 146
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/templates/{template_id}"
+    ],
+    "routeExpression": "'admin/certificates/templates/' + this.template_id",
+    "payloadKeys": [],
+    "responseKeys": [
+      "template",
+      "template.title",
+      "template.design"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplateEditor.vue",
+    "line": 324
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "admin/certificates/templates/{id}"
+    ],
+    "routeExpression": "'admin/certificates/templates/' + this.template.id",
+    "payloadKeys": [
+      "design"
+    ],
+    "responseKeys": [
+      "template",
+      "message"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplateEditor.vue",
+    "line": 603
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "admin/certificates/templates/{id}"
+    ],
+    "routeExpression": "'admin/certificates/templates/' + this.template.id",
+    "payloadKeys": [
+      "title"
+    ],
+    "responseKeys": [
+      "template.title"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplateEditor.vue",
+    "line": 632
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/certificates/templates/{id}/publish"
+    ],
+    "routeExpression": "'admin/certificates/templates/' + this.template.id + '/publish'",
+    "payloadKeys": [],
+    "responseKeys": [
+      "template",
+      "message"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplateEditor.vue",
+    "line": 661
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "admin/certificates/templates"
+    ],
+    "routeExpression": "'admin/certificates/templates'",
+    "payloadKeys": [
+      "with_design"
+    ],
+    "responseKeys": [
+      "templates"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplatesList.vue",
+    "line": 127
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/certificates/templates"
+    ],
+    "routeExpression": "'admin/certificates/templates'",
+    "payloadKeys": [
+      "title",
+      "design"
+    ],
+    "responseKeys": [
+      "template"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplatesList.vue",
+    "line": 182
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "admin/certificates/templates/{id}"
+    ],
+    "routeExpression": "'admin/certificates/templates/' + template.id",
+    "payloadKeys": [
+      "restore"
+    ],
+    "responseKeys": [],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplatesList.vue",
+    "line": 193
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/certificates/templates"
+    ],
+    "routeExpression": "'admin/certificates/templates'",
+    "payloadKeys": [
+      "title",
+      "design"
+    ],
+    "responseKeys": [],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplatesList.vue",
+    "line": 203
+  },
+  {
+    "method": "DELETE",
+    "routePatterns": [
+      "admin/certificates/templates/{id}"
+    ],
+    "routeExpression": "'admin/certificates/templates/' + template.id",
+    "payloadKeys": [],
+    "responseKeys": [],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/TemplatesList.vue",
+    "line": 218
+  },
+  {
+    "method": "POST",
+    "routePatterns": [
+      "admin/certificates/issued/{id}/{action}"
+    ],
+    "routeExpression": "'admin/certificates/issued/' + row.id + '/' + action",
+    "payloadKeys": [],
+    "responseKeys": [
+      "certificate",
+      "message"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/admin/certificateRows.js",
+    "line": 37
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "certificates/mine/{credential_id}/open-badge"
+    ],
+    "routeExpression": "'certificates/mine/' + this.certificate.credential_id + '/open-badge'",
+    "payloadKeys": [],
+    "responseKeys": [],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/portal/CertificateDialog.vue",
+    "line": 46
+  },
+  {
+    "method": "GET",
+    "routePatterns": [
+      "profile/{username}/certificates"
+    ],
+    "routeExpression": "'profile/' + this.profile.username + '/certificates'",
+    "payloadKeys": [
+      "page"
+    ],
+    "responseKeys": [
+      "is_owner",
+      "certificates.data",
+      "certificates.last_page"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/portal/ProfileCertificates.vue",
+    "line": 77
+  },
+  {
+    "method": "PUT",
+    "routePatterns": [
+      "certificates/{credential_id}/visibility"
+    ],
+    "routeExpression": "'certificates/' + item.credential_id + '/visibility'",
+    "payloadKeys": [
+      "privacy"
+    ],
+    "responseKeys": [
+      "certificate.privacy"
+    ],
+    "sourceId": "pro",
+    "file": "fluent-community-pro/src/modules/certificates/portal/ProfileCertificates.vue",
+    "line": 100
   }
 ]

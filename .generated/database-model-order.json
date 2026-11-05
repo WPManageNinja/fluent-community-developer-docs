@@ -64,6 +64,22 @@
         "link": "/database/models/course-lesson"
       },
       {
+        "text": "QuizModel",
+        "link": "/database/models/quiz-model"
+      },
+      {
+        "text": "Certificate",
+        "link": "/database/models/certificate"
+      },
+      {
+        "text": "CertificateTemplate",
+        "link": "/database/models/certificate-template"
+      },
+      {
+        "text": "SpacePageModel",
+        "link": "/database/models/space-page-model"
+      },
+      {
         "text": "Term",
         "link": "/database/models/term"
       }
@@ -91,6 +107,10 @@
       {
         "text": "Follow",
         "link": "/database/models/follow"
+      },
+      {
+        "text": "Invitation",
+        "link": "/database/models/invitation"
       },
       {
         "text": "Notification",

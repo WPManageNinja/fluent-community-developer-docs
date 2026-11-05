@@ -15,7 +15,7 @@ When the quiz has `hide_result` set, the correct answers are stripped from the s
 - **Path:** `/courses/{course_id}/lessons/{lesson_id}/quiz/result`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FluentCommunityPro\App\Modules\Quiz\Http\Controllers\QuizController@getQuizResult`
-- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:9`
+- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:10`
 
 - Requires the caller to be enrolled in the course.
 - Requires FluentCommunity Pro with the Quiz module.

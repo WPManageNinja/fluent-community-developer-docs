@@ -11,8 +11,8 @@ description: "Miscellaneous action hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/migration/after_delete_current_data`](#fluent-community-migration-after-delete-current-data) | Core | 1 | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:669` |
-| [`fluent_community/migration/before_delete_current_data`](#fluent-community-migration-before-delete-current-data) | Core | 1 | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:641` |
+| [`fluent_community/migration/after_delete_current_data`](#fluent-community-migration-after-delete-current-data) | Core | 1 | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:674` |
+| [`fluent_community/migration/before_delete_current_data`](#fluent-community-migration-before-delete-current-data) | Core | 1 | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:646` |
 | [`fluent_community/update_verification_failed`](#fluent-community-update-verification-failed) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/PluginManager/UpdateVerifier.php:443` |
 
 <a id="fluent-community-migration-after-delete-current-data"></a>
@@ -27,7 +27,7 @@ description: "Miscellaneous action hooks for FluentCommunity."
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:669` | `$auditContext` (mixed) |
+| Core | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:674` | `$auditContext` (mixed) |
 
 ### Example
 
@@ -48,7 +48,7 @@ add_action('fluent_community/migration/after_delete_current_data', function ($au
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:641` | `$auditContext` (mixed) |
+| Core | `fluent-community/Modules/Migrations/Helpers/BPMigratorHelper.php:646` | `$auditContext` (mixed) |
 
 ### Example
 

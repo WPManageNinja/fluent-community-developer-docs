@@ -15,7 +15,7 @@ Capped at 5000 rows and filterable with the same `search` and `filter_by` values
 - **Path:** `/admin/courses/{course_id}/export/quiz-results`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FluentCommunityPro\App\Modules\Quiz\Http\Controllers\QuizController@getExportableQuizResults`
-- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`
+- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:18`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.
 - Requires FluentCommunity Pro with the Quiz module; the response includes member email addresses.

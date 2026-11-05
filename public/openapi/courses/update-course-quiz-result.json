@@ -27,7 +27,7 @@
       "post": {
         "operationId": "updateCourseQuizResult",
         "summary": "POST Update Course Quiz Result",
-        "description": "Overrides the pass or fail grade recorded against one quiz attempt.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@updateQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:14`",
+        "description": "Overrides the pass or fail grade recorded against one quiz attempt.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@updateQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`",
         "tags": [
           "Courses"
         ],

@@ -5,35 +5,35 @@ description: "Feeds action hooks for FluentCommunity."
 
 # Feeds Actions
 
-23 unique action hooks currently map to this category, across 39 call sites.
+23 unique action hooks currently map to this category, across 40 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/check_rate_limit/create_post`](#fluent-community-check-rate-limit-create-post) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:279` |
+| [`fluent_community/check_rate_limit/create_post`](#fluent-community-check-rate-limit-create-post) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:275` |
 | [`fluent_community/email_notify_new_posts`](#fluent-community-email-notify-new-posts) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:85` |
-| [`fluent_community/feed_mentioned`](#fluent-community-feed-mentioned) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:403` |
-| [`fluent_community/feed_mentioned_user_ids`](#fluent-community-feed-mentioned-user-ids) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:681` |
-| [`fluent_community/feed/before_deleted`](#fluent-community-feed-before-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:885` |
+| [`fluent_community/feed_mentioned`](#fluent-community-feed-mentioned) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:396` |
+| [`fluent_community/feed_mentioned_user_ids`](#fluent-community-feed-mentioned-user-ids) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:673` |
+| [`fluent_community/feed/before_deleted`](#fluent-community-feed-before-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:895` |
 | [`fluent_community/feed/created`](#fluent-community-feed-created) | Core <span class="edition-note">(also fired by Pro)</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:102` |
-| [`fluent_community/feed/deleted`](#fluent-community-feed-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:888` |
-| [`fluent_community/feed/just_created_type_{formContentType}`](#fluent-community-feed-just-created-type-formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:407` |
-| [`fluent_community/feed/new_feed_{feed}`](#fluent-community-feed-new-feed-feed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:441` |
-| [`fluent_community/feed/react_added`](#fluent-community-feed-react-added) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:588` |
-| [`fluent_community/feed/react_removed`](#fluent-community-feed-react-removed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:558` |
-| [`fluent_community/feed/rescheduled`](#fluent-community-feed-rescheduled) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:148` |
-| [`fluent_community/feed/scheduled`](#fluent-community-feed-scheduled) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:429` |
+| [`fluent_community/feed/deleted`](#fluent-community-feed-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:898` |
+| [`fluent_community/feed/just_created_type_{formContentType}`](#fluent-community-feed-just-created-type-formContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:400` |
+| [`fluent_community/feed/new_feed_{feed}`](#fluent-community-feed-new-feed-feed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:434` |
+| [`fluent_community/feed/react_added`](#fluent-community-feed-react-added) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:612` |
+| [`fluent_community/feed/react_removed`](#fluent-community-feed-react-removed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:582` |
+| [`fluent_community/feed/rescheduled`](#fluent-community-feed-rescheduled) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:150` |
+| [`fluent_community/feed/scheduled`](#fluent-community-feed-scheduled) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:422` |
 | [`fluent_community/feed/scheduled_publish`](#fluent-community-feed-scheduled-publish) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:54` |
-| [`fluent_community/feed/scheduling_everyone_tag`](#fluent-community-feed-scheduling-everyone-tag) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:727` |
-| [`fluent_community/feed/updated`](#fluent-community-feed-updated) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:679` |
-| [`fluent_community/feed/updating_content_type_old_{existingContentType}`](#fluent-community-feed-updating-content-type-old-existingContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:552` |
-| [`fluent_community/feeds_query`](#fluent-community-feeds-query) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:120` |
+| [`fluent_community/feed/scheduling_everyone_tag`](#fluent-community-feed-scheduling-everyone-tag) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:719` |
+| [`fluent_community/feed/updated`](#fluent-community-feed-updated) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:687` |
+| [`fluent_community/feed/updating_content_type_old_{existingContentType}`](#fluent-community-feed-updating-content-type-old-existingContentType) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:548` |
+| [`fluent_community/feeds_query`](#fluent-community-feeds-query) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:115` |
 | [`fluent_community/notify_profile_feed_new_post`](#fluent-community-notify-profile-feed-new-post) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/FollowHandler.php:191` |
-| [`fluent_community/profile_feed/created`](#fluent-community-profile-feed-created) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:456` |
+| [`fluent_community/profile_feed/created`](#fluent-community-profile-feed-created) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:449` |
 | [`fluent_community/space_feed/created`](#fluent-community-space-feed-created) | Core <span class="edition-note">(also fired by Pro)</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:105` |
 | [`fluent_community/space_feed/email_notify_sub_query`](#fluent-community-space-feed-email-notify-sub-query) | Core | 2 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:78` |
-| [`fluent_community/space_feed/updated`](#fluent-community-space-feed-updated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:681` |
+| [`fluent_community/space_feed/updated`](#fluent-community-space-feed-updated) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:689` |
 
 <a id="fluent-community-check-rate-limit-create-post"></a>
 
@@ -56,7 +56,7 @@ Core attaches `RateLimitHandler::maybeLimitPost()`, which throws when the author
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:279` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:275` | `$user` (User) |
 
 ### Example
 
@@ -128,8 +128,8 @@ Fired from `FeedsController::store()` and from `FeedsHelper::createFeed()`, in b
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:403` | `$feed` (Feed)<br>`Arr::get($mentions, 'users')` (array) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:592` | `$feed` (Feed)<br>`$mentions['users']` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:396` | `$feed` (Feed)<br>`Arr::get($mentions, 'users')` (array) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:590` | `$feed` (Feed)<br>`$mentions['users']` (array) |
 
 ### Example
 
@@ -162,7 +162,7 @@ Hangs off `fluent_community/feed/created`, so unlike `fluent_community/feed_ment
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:681` | `$feed` (Feed)<br>`$mentionedUserIds` (int[]) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:673` | `$feed` (Feed)<br>`$mentionedUserIds` (int[]) |
 
 ### Example
 
@@ -194,7 +194,7 @@ This is the last point at which comments, reactions, activities, media and notif
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:885` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:895` | `$feed` (Feed) |
 
 ### Example
 
@@ -229,8 +229,8 @@ Fired from `FeedsHelper::createFeed()` and from `FeedsController::createFeed()`,
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:102` | `$feed` (Feed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:273` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:93` | `$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:451` | `$feed` (Feed) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:604` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:444` | `$feed` (Feed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:602` | `$feed` (Feed) |
 
 ### Example
 
@@ -262,7 +262,7 @@ The model is gone by this point, so capture anything you need from `fluent_commu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:888` | `$feed_id` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:898` | `$feed_id` (int) |
 
 ### Example
 
@@ -295,7 +295,7 @@ The suffix is the `content_type` value submitted with the request, so the live n
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:407` | `$feed` (Feed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:400` | `$feed` (Feed)<br>`$requestData` (array) |
 
 ### Example
 
@@ -327,7 +327,7 @@ The real names are `fluent_community/feed/new_feed_pending`, `..._draft` and so 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:441` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:434` | `$feed` (Feed) |
 
 ### Example
 
@@ -360,8 +360,8 @@ Only likes reach it — bookmarks are stored through the same endpoint but skip 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:588` | `$react` (mixed)<br>`$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:163` | `$react` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:612` | `$react` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:181` | `$react` (mixed)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -393,8 +393,8 @@ Passes the post only — the reaction row is already deleted, so there is no way
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:558` | `$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:112` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:582` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:130` | `$feed` (Feed) |
 
 ### Example
 
@@ -426,7 +426,7 @@ Fires only for posts still in `scheduled` status, and only once the new time has
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:148` | `$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:150` | `$feed` (Feed) |
 
 ### Example
 
@@ -458,7 +458,7 @@ Checked before the published and non-published branches, so a scheduled post fir
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:429` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:422` | `$feed` (Feed) |
 
 ### Example
 
@@ -497,7 +497,7 @@ Pro-only. Queued in the `fluent-community` group with the post ID as its single 
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:54` | No parameters |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:146` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:148` | No parameters |
 
 ### Example
 
@@ -529,7 +529,7 @@ Only reached for space posts whose body carries the everyone tag and whose autho
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:727` | `$feed` (Feed) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:719` | `$feed` (Feed) |
 
 ### Example
 
@@ -562,8 +562,8 @@ It is skipped when the save produced no dirty attributes, so editing a post with
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:679` | `$existingFeed` (Feed)<br>`$dirty` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:756` | `$feed` (Feed)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:687` | `$existingFeed` (Feed)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:765` | `$feed` (Feed)<br>`$dirty` (mixed) |
 
 ### Example
 
@@ -597,7 +597,7 @@ The suffix is the type being left behind, so a document post turned back into te
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:552` | `$existingFeed` (Feed)<br>`$newContentType` (mixed)<br>`$requestData` (array) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:548` | `$existingFeed` (Feed)<br>`$newContentType` (mixed)<br>`$requestData` (array) |
 
 ### Example
 
@@ -614,7 +614,7 @@ add_action('fluent_community/feed/updating_content_type_old_{existingContentType
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Passes the main feed list query by reference so callbacks can constrain it before it is paged.
 
 Fired with `do_action_ref_array()`, so declare the first parameter as `&$query` and mutate it in place — returning a builder does nothing. It runs after search, topic, status, space, author and access scoping have been applied and immediately before `limit()`/`offset()`, which makes it the right place to add joins or further `where` clauses but the wrong place to change the page size. `$queryArgs` is the resolved, array-filtered context and always carries `is_main_query`, true only for the unfiltered global feed. Pro uses it to apply block lists and the "Following" sort.
@@ -631,7 +631,8 @@ Fired with `do_action_ref_array()`, so declare the first parameter as `&$query` 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:120` | `&$feedsQuery` (mixed)<br>`$request->all()` (array)<br>`$queryArgs` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:115` | `&$feedsQuery` (mixed)<br>`$request->all()` (array)<br>`$queryArgs` (mixed) |
+| Core | `fluent-community/app/Services/Search/Providers/PostSearchProvider.php:88` | `&$feedsQuery` (mixed)<br>`$requestData` (array)<br>`$queryArgs` (mixed) |
 
 ### Example
 
@@ -703,7 +704,7 @@ Fires immediately after `fluent_community/feed/created` when `$feed->space_id` i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:456` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:449` | `$feed` (Feed) |
 
 ### Example
 
@@ -738,8 +739,8 @@ Always fires immediately after `fluent_community/feed/created` and only when `$f
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/SchedulePostHandler.php:105` | `$feed` (Feed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:275` | `$content` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/SchedulePostsController.php:96` | `$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:454` | `$feed` (Feed) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:607` | `$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:447` | `$feed` (Feed) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:605` | `$feed` (Feed) |
 
 ### Example
 
@@ -807,7 +808,7 @@ Fires directly after `fluent_community/feed/updated` when the edited post belong
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:681` | `$existingFeed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:689` | `$existingFeed` (Feed) |
 
 ### Example
 

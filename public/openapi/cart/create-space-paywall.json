@@ -170,6 +170,24 @@
               }
             }
           },
+          "403": {
+            "description": "You do not have permission to edit products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "You do not have permission to edit products"
+                }
+              }
+            }
+          },
           "422": {
             "description": "Product already exists",
             "content": {

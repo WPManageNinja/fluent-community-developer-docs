@@ -84,46 +84,7 @@
                   "settings": {
                     "type": "object",
                     "properties": {
-                      "custom_lock_screen": {
-                        "type": "string"
-                      },
-                      "onboard_redirect_url": {
-                        "type": "string"
-                      },
-                      "emoji": {
-                        "type": "string"
-                      },
-                      "shape_svg": {
-                        "type": "string"
-                      },
-                      "disable_comments": {
-                        "type": "string"
-                      },
-                      "hide_members_count": {
-                        "type": "string"
-                      },
-                      "hide_instructor_view": {
-                        "type": "string"
-                      },
-                      "show_instructor_students_count": {
-                        "type": "string"
-                      },
-                      "show_paywalls": {
-                        "type": "string"
-                      },
-                      "show_welcome_banner": {
-                        "type": "string"
-                      },
-                      "course_layout": {
-                        "type": "string"
-                      },
                       "course_details": {
-                        "type": "string"
-                      },
-                      "sequential_lesson_order": {
-                        "type": "string"
-                      },
-                      "public_lesson_view": {
                         "type": "string"
                       }
                     },

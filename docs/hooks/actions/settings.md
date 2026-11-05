@@ -13,7 +13,7 @@ description: "Settings action hooks for FluentCommunity."
 | --- | --- | --- | --- |
 | [`fluent_community_daily_jobs`](#fluent-community-daily-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` |
 | [`fluent_community_scheduled_hour_jobs`](#fluent-community-scheduled-hour-jobs) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` |
-| [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1208` |
+| [`fluent_community/recache_color_schema`](#fluent-community-recache-color-schema) | Core | 1 | `fluent-community/app/Functions/Utility.php:1214` |
 
 <a id="fluent-community-daily-jobs"></a>
 
@@ -37,8 +37,8 @@ Registered on activation and re-registered whenever a site administrator loads t
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:30` | No parameters |
-| Core | `fluent-community/boot/app.php:20` | No parameters |
-| Core | `fluent-community/boot/app.php:123` | No parameters |
+| Core | `fluent-community/boot/app.php:21` | No parameters |
+| Core | `fluent-community/boot/app.php:124` | No parameters |
 
 ### Example
 
@@ -71,8 +71,8 @@ Core uses it to re-evaluate the daily digest schedule and to fire `fluent_commun
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivationHandler.php:26` | No parameters |
-| Core | `fluent-community/boot/app.php:16` | No parameters |
-| Core | `fluent-community/boot/app.php:119` | No parameters |
+| Core | `fluent-community/boot/app.php:17` | No parameters |
+| Core | `fluent-community/boot/app.php:120` | No parameters |
 
 ### Example
 
@@ -98,7 +98,7 @@ Fired from `Utility::getColorCssVariables()` when a `cached_css` value exists bu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1208` | No parameters |
+| Core | `fluent-community/app/Functions/Utility.php:1214` | No parameters |
 
 ### Example
 

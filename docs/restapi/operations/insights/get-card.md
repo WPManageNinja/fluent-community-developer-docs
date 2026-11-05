@@ -15,7 +15,7 @@ The card key is matched against `^[a-z0-9_.-]+$` and looked up in the registry. 
 - **Path:** `/insights/cards/{card}`
 - **Edition:** Core
 - **Controller:** `InsightsController@card`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:167`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:171`
 - **Controller source:** `fluent-community/app/Http/Controllers/InsightsController.php`
 
 - Site admins only (`InsightsPolicy`), and the card is additionally checked with `canView()` for the requested scope — that one returns 403.

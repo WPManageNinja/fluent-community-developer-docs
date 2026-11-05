@@ -15,7 +15,7 @@ Overrides the pass or fail grade recorded against one quiz attempt.
 - **Path:** `/admin/courses/{course_id}/quiz-results/{quiz_id}`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FluentCommunityPro\App\Modules\Quiz\Http\Controllers\QuizController@updateQuizResult`
-- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:14`
+- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:15`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.
 - Requires FluentCommunity Pro with the Quiz module.

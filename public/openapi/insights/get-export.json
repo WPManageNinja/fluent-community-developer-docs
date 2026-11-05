@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getExport",
         "summary": "GET Get Export",
-        "description": "Returns one card's data as CSV content plus a suggested filename, for the export button.\n\nController: `InsightsController@export`\nRoute source: `fluent-community/app/Http/Routes/api.php:168`",
+        "description": "Returns one card's data as CSV content plus a suggested filename, for the export button.\n\nController: `InsightsController@export`\nRoute source: `fluent-community/app/Http/Routes/api.php:172`",
         "tags": [
           "Insights"
         ],

@@ -5,20 +5,20 @@ description: "Media action hooks for FluentCommunity."
 
 # Media Actions
 
-9 unique action hooks currently map to this category, across 20 call sites.
+9 unique action hooks currently map to this category, across 21 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:922` |
-| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1487` |
-| [`fluent_community/delete_remote_media_{this}`](#fluent-community-delete-remote-media-this) | Core | 1 | `fluent-community/app/Models/Media.php:153` |
-| [`fluent_community/document/local_file_access`](#fluent-community-document-local-file-access) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:290` |
-| [`fluent_community/feed/media_deleted`](#fluent-community-feed-media-deleted) | Core <span class="edition-note">(also fired by Pro)</span> | 5 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:33` |
+| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:931` |
+| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 3 | `fluent-community/app/Http/Controllers/FeedsController.php:1507` |
+| [`fluent_community/delete_remote_media_{this}`](#fluent-community-delete-remote-media-this) | Core | 1 | `fluent-community/app/Models/Media.php:154` |
+| [`fluent_community/document/local_file_access`](#fluent-community-document-local-file-access) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:294` |
+| [`fluent_community/feed/media_deleted`](#fluent-community-feed-media-deleted) | <span class="pro-badge">PRO</span> | 4 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:33` |
 | [`fluent_community/maybe_delete_draft_medias`](#fluent-community-maybe-delete-draft-medias) | Core | 1 | `fluent-community/app/Hooks/Handlers/Scheduler.php:18` |
 | [`fluent_community/remote_media_delete_failed`](#fluent-community-remote-media-delete-failed) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:63` |
-| [`fluent_community/remove_medias_by_url`](#fluent-community-remove-medias-by-url) | Core <span class="edition-note">(also fired by Pro)</span> | 7 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:176` |
+| [`fluent_community/remove_medias_by_url`](#fluent-community-remove-medias-by-url) | Core <span class="edition-note">(also fired by Pro)</span> | 7 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:187` |
 | [`fluent_community/space_media/viewed`](#fluent-community-space-media-viewed) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/MediaGallery/Http/MediaGalleryController.php:51` |
 
 <a id="fluent-community-check-rate-limit-media-upload"></a>
@@ -42,7 +42,7 @@ Core attaches `RateLimitHandler::maybeLimitMediaUpload()`, which throws once the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:922` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:931` | `$user` (User) |
 
 ### Example
 
@@ -59,13 +59,15 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 3
 
 ### Call Sites
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1487` | `$currentUser` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1507` | `$currentUser` (User) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:855` | `$user` (User) |
+| Core | `fluent-community/Modules/FeaturesHandler.php:104` | `$user` (User) |
 
 ### Example
 
@@ -95,7 +97,7 @@ The suffix is `$media->driver`, so the live name is `fluent_community/delete_rem
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/Media.php:153` | `$this` (mixed) |
+| Core | `fluent-community/app/Models/Media.php:154` | `$this` (mixed) |
 
 ### Example
 
@@ -128,7 +130,7 @@ Runs after the permission check has passed, on the local-driver path only — do
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:290` | `$document` (mixed)<br>`$forceDownload` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:294` | `$document` (mixed)<br>`$forceDownload` (mixed) |
 
 ### Example
 
@@ -142,8 +144,8 @@ add_action('fluent_community/document/local_file_access', function ($document, $
 ## `fluent_community/feed/media_deleted`
 
 - **Type:** action
-- **Edition:** Core <span class="edition-note">(also fired by Pro)</span>
-- **Call sites:** 5
+- **Edition:** <span class="pro-badge">PRO</span>
+- **Call sites:** 4
 - **When it fires:** Signals that one or more media rows attached to a post should be detached and cleaned up.
 
 Despite the name this is a request to clean up, not a notification that a delete already happened: core's `CleanupHandler::handleMediaDelete()` is what actually queues the files for removal, and lesson documents are routed to the lesson-specific path instead. The only live callers are in the Pro Document Library, which passes documents being replaced or removed; the one core call site in `FeedsController::deleteMediaPreview()` is commented out, so deleting a post's preview image does not currently fire it.
@@ -161,8 +163,7 @@ Despite the name this is a request to clean up, not a notification that a delete
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:33` | `$documents` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:161` | `$documents` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:177` | `$deletedDocuments` (mixed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:205` | `$media` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:901` | `$feed->media` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/DocumentLibrary/Http/DocumentController.php:206` | `$media` (mixed) |
 
 ### Example
 
@@ -243,12 +244,12 @@ This is an action rather than a filter, and the work is done by core's `CleanupH
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:176` | `$dropped` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:281` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:237` | `$deletedMedias` (mixed)<br>`array (2 keys: user_id, object_sources)` (array) |
-| Core | `fluent-community/app/Models/BaseSpace.php:378` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
-| Core | `fluent-community/app/Models/SpaceGroup.php:129` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
-| Core | `fluent-community/app/Services/Helper.php:429` | `[$url]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:187` | `$dropped` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:292` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $lessonId, ]` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:239` | `$deletedMedias` (mixed)<br>`array (2 keys: user_id, object_sources)` (array) |
+| Core | `fluent-community/app/Models/BaseSpace.php:394` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
+| Core | `fluent-community/app/Models/SpaceGroup.php:131` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:467` | `[ $url ]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |
 | Core | `fluent-community/app/Services/LockscreenService.php:207` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $spaceId, ]` (array) |
 
 ### Example

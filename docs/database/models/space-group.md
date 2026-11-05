@@ -53,6 +53,7 @@ Represents hierarchical group containers for organizing spaces on the portal.
 | --- | --- |
 | `updateCustomData()` | Sanitizes and updates the editable attributes for a space group record. |
 | `defaultSettings()` | default Settings implemented on the model. |
+| `sanitizeSidebarVisibility()` | sanitize Sidebar Visibility implemented on the model. |
 
 ## Usage Examples
 

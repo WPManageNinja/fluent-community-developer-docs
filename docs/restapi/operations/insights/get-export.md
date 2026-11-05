@@ -15,7 +15,7 @@ Takes the same range, scope and option parameters as the card endpoint and build
 - **Path:** `/insights/cards/{card}/export`
 - **Edition:** Core
 - **Controller:** `InsightsController@export`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:168`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:172`
 - **Controller source:** `fluent-community/app/Http/Controllers/InsightsController.php`
 
 - Site admins only (`InsightsPolicy`).

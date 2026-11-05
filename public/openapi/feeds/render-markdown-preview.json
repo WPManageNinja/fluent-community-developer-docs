@@ -47,14 +47,26 @@
                   "text": {
                     "type": "string"
                   },
+                  "feed": {
+                    "type": "object",
+                    "properties": {
+                      "space": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": []
+                      }
+                    },
+                    "required": []
+                  },
                   "with": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     }
-                  },
-                  "feed": {
-                    "type": "string"
                   }
                 }
               },

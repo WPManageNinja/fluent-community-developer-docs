@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 256 routes registered in the FluentCommunity core and module route files.
+This reference covers 292 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -69,11 +69,13 @@ operation's own page.
 | [Settings API](/restapi/settings) | Core <span class="edition-note">(extended by Pro)</span> | 21 | Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings. |
 | [Admin API](/restapi/admin) | Core <span class="edition-note">(extended by Pro)</span> | 44 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |
 | [Options API](/restapi/options) | Core | 3 | Portal bootstrap variables, server-rendered sidebar HTML, and menu item payloads. |
-| [Courses API](/restapi/courses) | Core <span class="edition-note">(extended by Pro)</span> | 51 | Portal course consumption endpoints and the full course administration surface. |
+| [Courses API](/restapi/courses) | Core <span class="edition-note">(extended by Pro)</span> | 54 | Portal course consumption endpoints and the full course administration surface. |
 | [Migrations API](/restapi/migrations) | Core | 4 | BuddyBoss and BuddyPress migration discovery, execution, and status polling. |
 | [Invitations API](/restapi/invitations) | Core | 5 | Invitation listing, creation, resend, delete, and link-generation endpoints. |
 | [Cart Integration API](/restapi/cart) | Core | 5 | FluentCart-backed paywall search, creation, retrieval, and removal for spaces. |
 | [Reports API](/restapi/reports) | <span class="pro-badge">PRO</span> | 5 | Moderation reporting endpoints for administrators. The old analytics endpoints that also lived here were replaced by the Insights API. |
+| [Search API](/restapi/search) | Core | 1 | One endpoint behind the portal search palette, answering across posts, comments, spaces, courses and members. |
+| [Certificates API](/restapi/certificates) | <span class="pro-badge">PRO</span> | 32 | Course and manual certificates: what a member holds, public verification, Open Badges 3.0 documents for wallets, and the admin endpoints for templates, issuing and revoking. |
 | [Insights API](/restapi/insights) | Core | 4 | Reporting — the pages an admin can open, each page's cards, a single card's data for a date range and scope, and CSV export. Replaced the old Pro analytics endpoints. |
 | [Documents API](/restapi/documents) | <span class="pro-badge">PRO</span> | 4 | Document library upload, listing, update, delete, and download-related portal endpoints. |
 | [Giphy API](/restapi/giphy) | <span class="pro-badge">PRO</span> | 1 | Giphy search and media discovery endpoints exposed by the Pro media integration. |

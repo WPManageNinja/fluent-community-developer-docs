@@ -15,7 +15,7 @@ Returns the paginated quiz attempts across a whole course, each with the student
 - **Path:** `/admin/courses/{course_id}/quiz-results`
 - **Edition:** <span class="pro-badge">PRO</span>
 - **Controller:** `FluentCommunityPro\App\Modules\Quiz\Http\Controllers\QuizController@getCourseQuizResults`
-- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:13`
+- **Route source:** `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:14`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.
 - Requires FluentCommunity Pro with the Quiz module.

@@ -17,6 +17,11 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`BaseSpace`](/database/models/base-space) | `OnlyMain` | `$query` |
 | [`BaseSpace`](/database/models/base-space) | `FilterByUserId` | `$query, $userId` |
 | [`BaseSpace`](/database/models/base-space) | `ByUserAccess` | `$query, $userId` |
+| [`Certificate`](/database/models/certificate) | `CourseCertificates` | `$query` |
+| [`Certificate`](/database/models/certificate) | `Manual` | `$query` |
+| [`Certificate`](/database/models/certificate) | `ByHolderEmail` | `$query, $email` |
+| [`Certificate`](/database/models/certificate) | `ByCredential` | `$query, $credentialId` |
+| [`Certificate`](/database/models/certificate) | `Active` | `$query` |
 | [`Comment`](/database/models/comment) | `SearchBy` | `$query, $search` |
 | [`Comment`](/database/models/comment) | `ByContentModerationAccessStatus` | `$query, $user, $space = null` |
 | [`Course`](/database/models/course) | `SearchBy` | `$query, $search` |
@@ -24,12 +29,13 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`Course`](/database/models/course) | `FilterByUserId` | `$query, $userId` |
 | [`Course`](/database/models/course) | `ByUserAccess` | `$query, $userId` |
 | [`Course`](/database/models/course) | `ByAdminAccess` | `$query, $userId = null` |
-| [`Course`](/database/models/course) | `SearchBy` | `$query, $search` |
+| [`Course`](/database/models/course) | `SearchBy` | `$query, $search, $includePosts = false` |
 | [`Course`](/database/models/course) | `ByPostTopic` | `$query, $topicSlug = null` |
 | [`CourseLesson`](/database/models/course-lesson) | `SearchBy` | `$query, $search` |
 | [`CourseTopic`](/database/models/course-topic) | `SearchBy` | `$query, $search` |
 | [`Feed`](/database/models/feed) | `SearchBy` | `$query, $search, $in = []` |
 | [`Feed`](/database/models/feed) | `ByUserAccess` | `$query, $userId` |
+| [`Feed`](/database/models/feed) | `ByActiveAuthor` | `$query` |
 | [`Feed`](/database/models/feed) | `ByContentModerationAccessStatus` | `$query, $user, $space = null` |
 | [`Feed`](/database/models/feed) | `ByBookMarked` | `$query, $userId` |
 | [`Feed`](/database/models/feed) | `ByTopicSlug` | `$query, $topicSlug` |
@@ -64,6 +70,8 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`Space`](/database/models/space) | `FilterByUserId` | `$query, $userId` |
 | [`Space`](/database/models/space) | `ByUserAccess` | `$query, $userId` |
 | [`SpaceGroup`](/database/models/space-group) | `SearchBy` | `$query, $search` |
+| [`SpacePageModel`](/database/models/space-page-model) | `Ordered` | `$query` |
+| [`SpacePageModel`](/database/models/space-page-model) | `Published` | `$query` |
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `BySpace` | `$query, $spaceId` |
 | [`SpaceUserPivot`](/database/models/space-user-pivot) | `ByUser` | `$query, $userId` |
 | [`Term`](/database/models/term) | `SearchBy` | `$query, $search` |

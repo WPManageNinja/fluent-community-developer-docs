@@ -15,7 +15,7 @@ Each card definition describes what the card is and what it supports (compare, e
 - **Path:** `/insights/pages/{page}`
 - **Edition:** Core
 - **Controller:** `InsightsController@page`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:166`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:170`
 - **Controller source:** `fluent-community/app/Http/Controllers/InsightsController.php`
 
 - Site admins only (`InsightsPolicy`).

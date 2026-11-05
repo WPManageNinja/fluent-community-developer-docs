@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "FluentCommunity API",
+    "description": "Complete REST API documentation for FluentCommunity — a WordPress community and forum plugin.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{website}/wp-json/fluent-community/v2",
+      "description": "Your WordPress website",
+      "variables": {
+        "website": {
+          "default": "YourWebsite.com",
+          "description": "Your WordPress website domain (without https://)"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "ApplicationPasswords": []
+    }
+  ],
+  "paths": {
+    "/search": {
+      "get": {
+        "operationId": "getSearch",
+        "summary": "GET Get Search",
+        "description": "Searches posts, comments, members, spaces and courses in one request, and returns a block of results per type.\n\nController: `SearchController@search`\nRoute source: `fluent-community/app/Http/Routes/api.php:137`",
+        "tags": [
+          "Search"
+        ],
+        "security": [
+          {
+            "ApplicationPasswords": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Q read via `$request->getSafe()` in search().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "description": "Types read via `$request->get()` in search().",
+            "schema": {
+              "type": "array",
+              "default": []
+            }
+          },
+          {
+            "name": "per_type",
+            "in": "query",
+            "required": false,
+            "description": "Per Type read via `$request->getSafe()` in search().",
+            "schema": {
+              "type": "integer",
+              "default": 6
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page read via `$request->getSafe()` in search().",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "space",
+            "in": "query",
+            "required": false,
+            "description": "Space read via `$request->getSafe()` in search().",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort read via `$request->getSafe()` in search().",
+            "schema": {
+              "type": "string",
+              "default": "relevance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "terms": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "execution_time": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "example": {
+                  "results": [],
+                  "terms": [],
+                  "execution_time": 0.123
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation or permission error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Request validation or permission error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApplicationPasswords": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "WordPress Application Passwords — use Basic auth with username:application_password."
+      }
+    }
+  }
+}

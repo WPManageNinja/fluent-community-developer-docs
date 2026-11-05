@@ -5,22 +5,22 @@ description: "Permissions filter hooks for FluentCommunity."
 
 # Permissions Filters
 
-10 unique filter hooks currently map to this category, across 24 call sites.
+10 unique filter hooks currently map to this category, across 25 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/bulk_members/can_create_wp_users`](#fluent-community-bulk-members-can-create-wp-users) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/BulkMemberHelper.php:438` |
-| [`fluent_community/can_access_portal`](#fluent-community-can-access-portal) | Core | 8 | `fluent-community/app/Services/Helper.php:530` |
-| [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:37` |
-| [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members) | Core | 3 | `fluent-community/app/Functions/Utility.php:372` |
-| [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page) | Core | 3 | `fluent-community/app/Functions/Utility.php:357` |
-| [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:387` |
+| [`fluent_community/bulk_members/can_create_wp_users`](#fluent-community-bulk-members-can-create-wp-users) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/BulkMemberHelper.php:445` |
+| [`fluent_community/can_access_portal`](#fluent-community-can-access-portal) | Core | 8 | `fluent-community/app/Services/Helper.php:569` |
+| [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:45` |
+| [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members) | Core | 3 | `fluent-community/app/Functions/Utility.php:377` |
+| [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page) | Core | 3 | `fluent-community/app/Functions/Utility.php:362` |
+| [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:392` |
 | [`fluent_community/space_page/can_view_page`](#fluent-community-space-page-can-view-page) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:49` |
-| [`fluent_community/super_admin_capability`](#fluent-community-super-admin-capability) | Core | 1 | `fluent-community/app/Services/Helper.php:230` |
-| [`fluent_community/user/permissions`](#fluent-community-user-permissions) | Core | 2 | `fluent-community/app/Models/User.php:521` |
-| [`fluent_community/user/space/permissions`](#fluent-community-user-space-permissions) | Core | 1 | `fluent-community/app/Models/User.php:660` |
+| [`fluent_community/super_admin_capability`](#fluent-community-super-admin-capability) | Core | 1 | `fluent-community/app/Services/Helper.php:252` |
+| [`fluent_community/user/permissions`](#fluent-community-user-permissions) | Core | 2 | `fluent-community/app/Models/User.php:524` |
+| [`fluent_community/user/space/permissions`](#fluent-community-user-space-permissions) | Core | 1 | `fluent-community/app/Models/User.php:665` |
 
 <a id="fluent-community-bulk-members-can-create-wp-users"></a>
 
@@ -34,7 +34,7 @@ description: "Permissions filter hooks for FluentCommunity."
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/BulkMemberHelper.php:438` | `current_user_can('create_users')` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/BulkMemberHelper.php:445` | `current_user_can('create_users')` (array) |
 
 ### Example
 
@@ -67,14 +67,14 @@ Applied at every return point of `Helper::canAccessPortal()`, so a callback sees
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:530` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:538` | `false` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:542` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:546` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:554` | `false` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:560` | `false` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:564` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:571` | `$result` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:569` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:577` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:581` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:585` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:593` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:599` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:603` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:610` | `$result` (mixed) |
 
 ### Example
 
@@ -92,7 +92,7 @@ add_filter('fluent_community/can_access_portal', function ($canAccess) {
 
 - **Type:** filter
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Dynamic filter deciding whether the comment list for a post or lesson is returned at all.
 
 The placeholder is `$feed->type`, so in practice it is `fluent_community/can_view_comments_text` for ordinary posts and `fluent_community/can_view_comments_course_lesson` for lesson discussions — there is no un-suffixed variant to hook. Returning `false` makes the endpoint respond with an empty `comments` array rather than an error, so the client shows a post with no comments instead of a permission message. The post has already passed its own visibility check by then.
@@ -110,7 +110,8 @@ The placeholder is `$feed->type`, so in practice it is `fluent_community/can_vie
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:37` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:45` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Services/Search/Providers/PostSearchProvider.php:99` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -146,9 +147,9 @@ Reads the `leaderboard_members_visibility` privacy setting and otherwise mirrors
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:372` | `true` (bool)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:376` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:379` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:377` | `true` (bool)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:381` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:384` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
 
 ### Example
 
@@ -184,9 +185,9 @@ Driven by the `members_page_status` privacy setting, with the same three-way sha
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:357` | `true` (bool)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:361` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:364` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:362` | `true` (bool)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:366` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:369` | `Helper::isModerator()` (mixed)<br>`$pageStatus` (mixed) |
 
 ### Example
 
@@ -223,9 +224,9 @@ The base decision comes from the `profile_page_visibility` privacy setting: `eve
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:387` | `true` (bool)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
-| Core | `fluent-community/app/Functions/Utility.php:391` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
-| Core | `fluent-community/app/Functions/Utility.php:396` | `($isOwn &#124;&#124; Helper::isModerator())` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
+| Core | `fluent-community/app/Functions/Utility.php:392` | `true` (bool)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
+| Core | `fluent-community/app/Functions/Utility.php:396` | `is_user_logged_in()` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
+| Core | `fluent-community/app/Functions/Utility.php:401` | `($isOwn &#124;&#124; Helper::isModerator())` (mixed)<br>`$pageStatus` (mixed)<br>`$targetUserId` (int) |
 
 ### Example
 
@@ -282,7 +283,7 @@ Defaults to `manage_options` and is checked with `user_can()`. Returning an empt
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:230` | `'manage_options'` (string) |
+| Core | `fluent-community/app/Services/Helper.php:252` | `'manage_options'` (string) |
 
 ### Example
 
@@ -319,8 +320,8 @@ Applied at both ends of `User::getRolePermissions()`. Users with no community ro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/User.php:521` | `[ 'read' => true, ]` (array)<br>`$roles` (mixed)<br>`$this` (mixed) |
-| Core | `fluent-community/app/Models/User.php:548` | `$permissions` (mixed)<br>`$roles` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:524` | `[ 'read' => true, ]` (array)<br>`$roles` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:551` | `$permissions` (mixed)<br>`$roles` (mixed)<br>`$this` (mixed) |
 
 ### Example
 
@@ -358,7 +359,7 @@ Distinct from the site-wide `fluent_community/user/permissions`: this is resolve
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/User.php:660` | `$permissions` (mixed)<br>`$space` (Space)<br>`$role` (mixed)<br>`$this` (mixed) |
+| Core | `fluent-community/app/Models/User.php:665` | `$permissions` (mixed)<br>`$space` (Space)<br>`$role` (mixed)<br>`$this` (mixed) |
 
 ### Example
 

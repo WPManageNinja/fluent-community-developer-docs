@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getLessonQuizResult",
         "summary": "GET Get Lesson Quiz Result",
-        "description": "Returns the current user stored result for one quiz lesson, or null if they have not attempted it.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:9`",
+        "description": "Returns the current user stored result for one quiz lesson, or null if they have not attempted it.\n\nController: `FluentCommunityPro\\App\\Modules\\Quiz\\Http\\Controllers\\QuizController@getQuizResult`\nRoute source: `fluent-community-pro/app/Modules/Quiz/Http/quiz_api.php:10`",
         "tags": [
           "Courses"
         ],

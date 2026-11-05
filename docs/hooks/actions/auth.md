@@ -11,11 +11,11 @@ description: "Auth action hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/auth/before_auth_page_process`](#fluent-community-auth-before-auth-page-process) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:176` |
-| [`fluent_community/auth/show_invitation_for_user`](#fluent-community-auth-show-invitation-for-user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:330` |
-| [`fluent_community/invitation_created`](#fluent-community-invitation-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:193` |
-| [`fluent_community/invitation_link_created`](#fluent-community-invitation-link-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:211` |
-| [`fluent_community/user/password_changed`](#fluent-community-user-password-changed) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:561` |
+| [`fluent_community/auth/before_auth_page_process`](#fluent-community-auth-before-auth-page-process) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:178` |
+| [`fluent_community/auth/show_invitation_for_user`](#fluent-community-auth-show-invitation-for-user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:332` |
+| [`fluent_community/invitation_created`](#fluent-community-invitation-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:194` |
+| [`fluent_community/invitation_link_created`](#fluent-community-invitation-link-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:212` |
+| [`fluent_community/user/password_changed`](#fluent-community-user-password-changed) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:571` |
 
 <a id="fluent-community-auth-before-auth-page-process"></a>
 
@@ -39,7 +39,7 @@ By the time it runs, an already-signed-in visitor without an invitation has been
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:176` | `$currentUserId` (int)<br>`$inviation` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:178` | `$currentUserId` (int)<br>`$inviation` (mixed) |
 
 ### Example
 
@@ -72,7 +72,7 @@ Reached only when the visitor is already logged in, the invitation is valid, and
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:330` | `$inviation` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:332` | `$inviation` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 
@@ -104,7 +104,7 @@ Fired from `InvitationService::invite()` once every duplicate and membership che
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/Classes/InvitationService.php:193` | `$inviation` (mixed) |
+| Core | `fluent-community/Modules/Auth/Classes/InvitationService.php:194` | `$inviation` (mixed) |
 
 ### Example
 
@@ -136,7 +136,7 @@ Link invitations differ from email ones: `message` is empty, `status` is `active
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/Classes/InvitationService.php:211` | `$inviation` (mixed) |
+| Core | `fluent-community/Modules/Auth/Classes/InvitationService.php:212` | `$inviation` (mixed) |
 
 ### Example
 
@@ -168,7 +168,7 @@ Only the self-service change fires it; a password reset through WordPress or an 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:561` | `$user->ID` (int) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:571` | `$user->ID` (int) |
 
 ### Example
 
