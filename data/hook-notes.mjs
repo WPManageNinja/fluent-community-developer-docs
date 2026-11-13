@@ -3960,9 +3960,9 @@ export const HOOK_NOTES = {
       "fluent_community/feed/new_feed_data"
     ]
   },
-  "fluent_community/feed/update_feed_data_type_{newContentType}": {
+  "fluent_community/feed/update_feed_data_type_{filterType}": {
     "summary": "Content-type-scoped filter applied when an edited post has a non-text content type.",
-    "details": "The suffix is the incoming type, so `..._document` and `..._survey` are the live names. It is skipped entirely when the resolved type is `text`, including the case where a document post loses its documents and is demoted back to text. Note the extra third argument compared with the create-side twin, and that it honours `WP_Error` — the Document Library uses that to refuse an edit with invalid documents.",
+    "details": "The suffix is the type whose update rules apply, so `..._document` is the live name Pro listens on. That is normally the incoming type, but a request that leaves `content_type` out keeps the post's existing type and runs that type's rules instead — so an add-on's post cannot shed its type by omission. Documents are settled before this point and are the one exception to that fallback. It is skipped entirely when the resolved type is `text`, including a document post that loses its documents and is demoted back to text. Note the extra third argument compared with the create-side twin, and that it honours `WP_Error` — the Document Library uses that to refuse an edit with invalid documents.",
     "params": [
       {
         "name": "data",
@@ -4072,7 +4072,7 @@ export const HOOK_NOTES = {
       }
     ],
     "related": [
-      "fluent_community/feed/update_feed_data_type_{newContentType}"
+      "fluent_community/feed/update_feed_data_type_{filterType}"
     ]
   },
   "fluent_community/feed/uploaded_feed_medias": {
@@ -9246,6 +9246,440 @@ export const HOOK_NOTES = {
     "returns": "`bool` \u2014 false skips the email and keeps the notification.",
     "related": [
       "fluent_community/quiz/graded"
+    ]
+  },
+  "fluent_community/action_query_key": {
+    "summary": "Renames the query argument the portal uses for its own actions.",
+    "details": "The default is `fcom_action`. The returned key is validated rather than cast: it must be 3-32 characters of lowercase letters, digits and underscores, and must not collide with a WordPress query variable or one of the portal's own argument names. An invalid key is discarded in silence and the default is used. The `FLUENT_COMMUNITY_ACTION_KEY` constant wins outright \u2014 when it is defined and valid the filter is never applied. Renaming the key does not retire the old one: `fcom_action` keeps working alongside it.",
+    "params": [
+      {
+        "name": "key",
+        "type": "string",
+        "desc": "The query key. `fcom_action` by default."
+      }
+    ],
+    "returns": "`string` \u2014 ignored unless it passes validation.",
+    "related": [
+      "fluent_community/portal_action_auth"
+    ]
+  },
+  "fluent_community/auth_paths": {
+    "summary": "Sets the portal paths for the login, signup and password reset screens.",
+    "details": "Keyed `login`, `signup` and `reset_password`, defaulting to `login`, `signup` and `reset-password`. Returning an empty value for a screen turns that path off; returning anything that is not an array drops the whole filter and the defaults stand. Each slug must be lowercase words separated by single hyphens, at most 64 characters, and must not already belong to a portal route or to a screen earlier in the same array. An invalid slug falls back to its own default. When the portal is installed at the site root, a slug that matches a published page or post is turned off, so the page keeps winning.",
+    "params": [
+      {
+        "name": "paths",
+        "type": "array",
+        "desc": "`login`, `signup` and `reset_password` slugs."
+      }
+    ],
+    "returns": "`array` \u2014 a non-array return is ignored; invalid slugs fall back.",
+    "notes": [
+      "These paths are only used when the site has pretty permalinks and the portal is not in hash-routing mode. Otherwise the links fall back to the query-argument form.",
+      "Extra keys are ignored, so a fourth auth screen cannot be added this way."
+    ],
+    "related": [
+      "fluent_community/app_route_paths"
+    ]
+  },
+  "fluent_community/can_install_addons": {
+    "summary": "Switches off add-on installing and activating from inside the community.",
+    "details": "Defaults to true and is cast to bool. It is an extra restriction rather than a grant: WordPress's own `install_plugins` and `activate_plugins` capabilities still apply, so returning true elevates nobody. It gates the install endpoint itself, not only the buttons, so a host that wants to lock this down should filter it rather than hide the UI.",
+    "params": [
+      {
+        "name": "canInstall",
+        "type": "bool",
+        "desc": "Whether add-ons may be installed. True by default."
+      }
+    ],
+    "returns": "`bool` \u2014 cast from whatever is returned.",
+    "related": [
+      "fluent_community/install_fluent_event_plugin"
+    ]
+  },
+  "fluent_community/can_use_custom_js": {
+    "summary": "Decides who may save, see and run the community's custom JavaScript.",
+    "details": "The second argument says which of the three is being asked about: `save`, `ui` or `output`. Output defaults to true, while saving and seeing default to the caller holding `unfiltered_html`. The result is cast to bool. The three are independent, so a filter that returns one value for every context is answering a question it was not asked \u2014 and `save` is the dangerous one, because the stored script is printed into the portal footer unescaped for every visitor. The free plugin never applies this filter; only Pro's snippet settings and footer output do.",
+    "params": [
+      {
+        "name": "allowed",
+        "type": "bool",
+        "desc": "Whether it is allowed."
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "`save`, `ui` or `output`."
+      }
+    ],
+    "returns": "`bool` \u2014 cast from whatever is returned.",
+    "notes": [
+      "Hook it with three arguments declared, or the context is invisible and every context gets the same answer."
+    ]
+  },
+  "fluent_community/check_rate_limit/giphy": {
+    "summary": "Runs before a Giphy search is sent, so a listener can refuse it.",
+    "details": "The contract is to throw: a listener that throws an exception makes the endpoint answer 429 with that exception's message, and returning a value does nothing. The message reaches the client as written, so keep internal detail out of it. Only exceptions are caught \u2014 an error thrown instead escapes as a 500. Core's own rate limiter listens here and exempts site admins before it counts anything. The cached first page of trending images is served before this point, so the hook does not fire once per Giphy request.",
+    "params": [
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User",
+        "desc": "The member making the search."
+      }
+    ],
+    "related": [
+      "fluent_community/rate_limit/giphy_per_minute"
+    ]
+  },
+  "fluent_community/rate_limit/giphy_per_minute": {
+    "summary": "Sets how many Giphy searches one member may make per minute.",
+    "details": "Defaults to 30 and is used as given, so return a positive integer \u2014 zero, a negative number or null blocks every request for that member. The window is a fixed minute that starts at the member's first search, counted per member, and a change takes effect against a window already running. A refused search is not counted, and if the counter cannot be locked the request is refused rather than allowed.",
+    "params": [
+      {
+        "name": "limit",
+        "type": "int",
+        "desc": "Searches allowed per minute. 30 by default."
+      }
+    ],
+    "returns": "`int` \u2014 used without casting.",
+    "related": [
+      "fluent_community/check_rate_limit/giphy"
+    ]
+  },
+  "fluent_community/cloud_storage_strict": {
+    "summary": "Decides whether an upload fails outright when cloud storage cannot take it.",
+    "details": "Defaults to whatever the `FLUENT_COMMUNITY_CLOUD_STORAGE_STRICT` constant says, and the result is cast to bool. In strict mode a push that fails deletes the local file and returns an error instead of quietly keeping the file on the server. It is consulted twice: once per upload, and once at bootstrap while the plugins load. The bootstrap reading is the one to watch \u2014 with the cloud storage feature switched off and strict mode on, every upload is refused, and a filter registered on `init` is too late to change that branch.",
+    "params": [
+      {
+        "name": "strict",
+        "type": "bool",
+        "desc": "Whether a failed push fails the upload. False by default."
+      }
+    ],
+    "returns": "`bool` \u2014 cast from whatever is returned.",
+    "related": [
+      "fluent_community/cloud_storage_upload_failed"
+    ]
+  },
+  "fluent_community/cloud_storage_upload_failed": {
+    "summary": "Fires when an upload was refused because cloud storage could not take it.",
+    "details": "The local file has already been deleted by the time this runs and no media row was ever written, so the path is useful for logging and nothing else. It fires once per failed file, so one request with several files fires it several times. It only happens in strict mode: without strict mode a failed push leaves the file on the server and says nothing.",
+    "params": [
+      {
+        "name": "mediaPath",
+        "type": "string",
+        "desc": "The local path the file had before it was deleted."
+      },
+      {
+        "name": "error",
+        "type": "\\WP_Error",
+        "desc": "Why the push failed."
+      }
+    ],
+    "related": [
+      "fluent_community/cloud_storage_strict"
+    ]
+  },
+  "fluent_community/cloudflare_ip_ranges": {
+    "summary": "Sets which address ranges are trusted to send Cloudflare's visitor-IP header.",
+    "details": "This decides whether a client-supplied header is believed over the real connecting address, and the answer feeds rate limiting and audit records \u2014 so widening the list lets a visitor choose the IP the community sees. The filter receives the full published Cloudflare list, which means a careless append is really a replace; return the list you want in full. Entries must be CIDR blocks or exact addresses, and anything else never matches. Returning an empty array turns Cloudflare detection off and leaves the separate trusted-proxy path in charge.",
+    "params": [
+      {
+        "name": "ranges",
+        "type": "string[]",
+        "desc": "CIDR blocks and addresses, IPv4 and IPv6."
+      }
+    ],
+    "returns": "`string[]` \u2014 cast to an array.",
+    "related": [
+      "fluent_community/trusted_proxies"
+    ]
+  },
+  "fluent_community/course/enrollment_scheduled": {
+    "summary": "Fires when a member is given a future start date for a course.",
+    "details": "The enrollment row is written by the time this runs, with its status set to scheduled, but the member has no access yet \u2014 the course still reports them as not enrolled, and `fluent_community/course/enrolled` fires later when the date arrives. It never fires for a member who is already active in the course, and it never fires for a date that has already passed: that case enrolls immediately and fires the enrolled hook instead. Access opens on an hourly sweep or on the member's own next visit, so the gap between the two hooks is anything from nothing to an hour.",
+    "params": [
+      {
+        "name": "course",
+        "type": "\\FluentCommunity\\Modules\\Course\\Model\\Course",
+        "desc": "The course."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member."
+      },
+      {
+        "name": "startsAt",
+        "type": "string",
+        "desc": "When access opens, in site time as `Y-m-d H:i:s`."
+      },
+      {
+        "name": "by",
+        "type": "string",
+        "desc": "What scheduled it, `by_admin` by default."
+      },
+      {
+        "name": "enrollment",
+        "type": "\\FluentCommunity\\App\\Models\\SpaceUserPivot",
+        "desc": "The scheduled enrollment row."
+      }
+    ],
+    "notes": [
+      "Declare five arguments to receive the enrollment row; the default of one gives you the course alone.",
+      "Scheduling several members runs this once per member."
+    ],
+    "related": [
+      "fluent_community/course/scheduled_enrollment_removed",
+      "fluent_community/course/enrolled"
+    ]
+  },
+  "fluent_community/course/scheduled_enrollment_removed": {
+    "summary": "Fires when a scheduled course enrollment is cancelled before it ever opened.",
+    "details": "The scheduled rows are already deleted when this runs. It stands in for `fluent_community/course/student_left`, which does not fire here because the member was never active in the course \u2014 exactly one of the two happens.",
+    "params": [
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace",
+        "desc": "The course. Type-hint BaseSpace: callers that passed an ID produce a plain space model without the course relations."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member whose schedule was cancelled."
+      },
+      {
+        "name": "by",
+        "type": "string",
+        "desc": "What removed it, `self` by default."
+      }
+    ],
+    "related": [
+      "fluent_community/course/enrollment_scheduled"
+    ]
+  },
+  "fluent_community/default_main_menu_items": {
+    "summary": "Registers the items an add-on contributes to the portal's main menu.",
+    "details": "Keyed by slug, each item carrying its title, whether it is a system item, whether it is locked and whether it starts enabled. The result is merged with the menu the admin has saved: a saved item takes its system flags and its link from here, an item that is new to the saved menu is appended, and a saved system item whose slug is no longer supplied is dropped. That last rule is how a menu item disappears when its add-on is deactivated \u2014 so the filter has to answer on every request, not once at install time. Overriding a core slug does not get an item appended once a menu has been saved. The result is remembered for the rest of the request the first time the menu is built for display, so register the filter early. An add-on usually also has to register its route path, or the item links nowhere.",
+    "params": [
+      {
+        "name": "items",
+        "type": "array",
+        "desc": "Slug => item definition."
+      }
+    ],
+    "returns": "`array` \u2014 the menu items available to the portal.",
+    "related": [
+      "fluent_community/app_route_paths",
+      "fluent_community/main_menu_items"
+    ]
+  },
+  "fluent_community/feed/message_required": {
+    "summary": "Decides whether a post must carry a message, so a content type can allow an empty one.",
+    "details": "Defaults to true and is used as a plain truthiness test. The third argument is the existing post on an edit and null on a create, which is how a listener tells the two apart \u2014 on a create the request has not been through space resolution yet, so it carries no space. Note that on an edit this runs before the permission check, so the existing post is not yet known to belong to the caller. A message of only whitespace or HTML entities counts as empty, and allowing an empty message also switches off duplicate detection for that post.",
+    "params": [
+      {
+        "name": "required",
+        "type": "bool",
+        "desc": "Whether a message is required. True by default."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The raw request payload, before sanitising."
+      },
+      {
+        "name": "existingFeed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed|null",
+        "desc": "The stored post on an edit, null on a create."
+      }
+    ],
+    "returns": "`bool` \u2014 tested for truthiness.",
+    "notes": [
+      "Declare three arguments. With the default of one you cannot tell a create from an edit and will relax the rule for every post."
+    ]
+  },
+  "fluent_community/fluent_event/init": {
+    "summary": "Fires when the FluentEvent integration is switched on, so the events add-on can register itself.",
+    "details": "It runs while the plugins load, before `init`, so a listener registered on `init` never sees it. For that reason the add-on may also call its own handler directly after the fact, which means a listener can be called with no arguments at all \u2014 give the callback defaults. The hook does not fire when the integration is switched off, so a listener must not treat it as one-time setup. The settings it carries are raw stored values: sanitise the route slug before using it.",
+    "params": [
+      {
+        "name": "app",
+        "type": "\\FluentCommunity\\Framework\\Foundation\\Application",
+        "desc": "The application instance."
+      },
+      {
+        "name": "settings",
+        "type": "array",
+        "desc": "The integration settings, including the events route slug."
+      }
+    ],
+    "related": [
+      "fluent_community/install_fluent_event_plugin"
+    ]
+  },
+  "fluent_community/getting_started_steps": {
+    "summary": "Adds, removes or reorders the steps on the admin getting-started checklist.",
+    "details": "Everything returned is re-sanitised rather than escaped later, so markup in a title or description is stripped. A step with no key, no title or a duplicate key is dropped, unknown fields are dropped, and an action is kept only when it is a URL, a portal route or an event name in the expected shape \u2014 otherwise the step renders without a button. Returning something that is not an array empties the checklist. Core's own steps are detected from site data on every read and never stored, so a step hard-coded as done here stays done for good. Progress counts the required steps only, so an optional step never holds completion back.",
+    "params": [
+      {
+        "name": "steps",
+        "type": "array",
+        "desc": "The checklist steps in order."
+      },
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The administrator viewing the checklist."
+      }
+    ],
+    "returns": "`array` \u2014 re-sanitised; a non-array empties the list.",
+    "notes": [
+      "Which core steps appear depends on the install: one needs Pro, another needs the course module."
+    ]
+  },
+  "fluent_community/install_fluent_event_plugin": {
+    "summary": "Fires when an administrator asks to install the FluentEvent plugin from the add-ons screen.",
+    "details": "FluentEvent is not hosted on wordpress.org, so there is no default installer \u2014 Pro answers this hook by fetching and installing the plugin from the vendor, inside the same request despite the background-sounding name. The endpoint checks that something is listening before it fires, so a site with no listener gets an error telling it to install manually, and the add-ons screen uses the same check to decide whether to offer a button. Throwing is how a listener reports failure: the message is returned to the client.",
+    "related": [
+      "fluent_community/fluent_event/init",
+      "fluent_community/can_install_addons",
+      "fluent_community/install_messaging_plugin"
+    ]
+  },
+  "fluent_community/mention_members_query_ref": {
+    "summary": "Adjusts the query behind the member suggestions shown while typing a mention.",
+    "details": "The query arrives by reference, just before the ten suggestions are fetched and after every access rule has been applied \u2014 the caller must be logged in, must belong to the space, and a member without wider privileges is already narrowed to people they share a space with. Those clauses are the access control for who may be mentioned, so removing them exposes members. Adding a limit here is pointless, because ten is applied immediately afterwards. This is deliberately separate from the general member listing hook, so an existing callback does not start reshaping mention suggestions.",
+    "params": [
+      {
+        "name": "query",
+        "type": "\\FluentCommunity\\Framework\\Database\\Orm\\Builder",
+        "desc": "The profile query, by reference."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The request payload."
+      },
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\BaseSpace|null",
+        "desc": "The space the mention is being made in."
+      }
+    ],
+    "notes": [
+      "Declare the first argument by reference if you intend to replace the builder; chaining conditions onto it works either way, but an assignment inside a listener that took it by value is lost.",
+      "Declare three arguments to receive the request payload and the space."
+    ],
+    "related": [
+      "fluent_community/space_members_query_ref"
+    ]
+  },
+  "fluent_community/space_members_query_ref": {
+    "summary": "Adjusts the query behind a space's member list and its join requests.",
+    "details": "One hook name covers two different queries, and only one of them runs in a request: the pending join requests when the viewer may approve members and asked for that status, and the active member list otherwise. Tell them apart by the requested status, or a listener written for one will quietly reshape the other. The active branch sometimes joins the profile table, so qualify column names \u2014 an unqualified condition is ambiguous. It fires after the view-members permission check and immediately before pagination, so adding a limit fights the paginator. Shaping the output belongs in the matching response filter; this hook is for the query.",
+    "params": [
+      {
+        "name": "query",
+        "type": "\\FluentCommunity\\Framework\\Database\\Orm\\Builder",
+        "desc": "The membership query, by reference."
+      },
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The request payload, including the requested status."
+      },
+      {
+        "name": "space",
+        "type": "\\FluentCommunity\\App\\Models\\Space",
+        "desc": "The space being listed."
+      }
+    ],
+    "related": [
+      "fluent_community/mention_members_query_ref",
+      "fluent_community/space_members_api_response"
+    ]
+  },
+  "fluent_community/portal_action_auth": {
+    "summary": "Fires when a request asks for the portal's authentication screens.",
+    "details": "It runs before any portal HTML is produced. There are two ways in: the action query argument, and a readable auth path. Only the second adds a derived `form` to the payload, so do not rely on it being there. Both can happen in one request, so a listener that does not end the request may run twice. The payload is raw query data that has not been sanitised or unslashed. The convention is that a listener renders the screen and stops the request, which is what core's auth module does at the default priority \u2014 a second renderer produces duplicate output unless it runs earlier and exits.",
+    "params": [
+      {
+        "name": "requestData",
+        "type": "array",
+        "desc": "The raw query arguments, sometimes with a derived `form`."
+      }
+    ],
+    "related": [
+      "fluent_community/action_query_key",
+      "fluent_community/auth_paths"
+    ]
+  },
+  "fluent_community/powered_by_text": {
+    "summary": "Changes the \"Powered by FluentCommunity\" wording in the portal sidebar and in emails.",
+    "details": "The second argument says which of the two is being rendered. The email default is deliberately left untranslated while the portal default is translated. Every call site escapes the result as plain text, so markup and a second link cannot be injected through it. In the portal it only applies to members: a site administrator sees a different block, so test the filter while logged out of an admin account. In an email run it fires once per email composed.",
+    "params": [
+      {
+        "name": "text",
+        "type": "string",
+        "desc": "The wording."
+      },
+      {
+        "name": "context",
+        "type": "string",
+        "desc": "`portal` or `email`."
+      }
+    ],
+    "returns": "`string` \u2014 cast, then escaped as plain text.",
+    "related": [
+      "fluent_community/powered_by_url"
+    ]
+  },
+  "fluent_community/powered_by_url": {
+    "summary": "Changes where the \"Powered by FluentCommunity\" link points.",
+    "details": "The URL arrives with its campaign arguments already applied, and those arguments are passed alongside it. Unlike the text filter there is no context argument, so the campaign source is the only way to tell the portal footer from an email footer. The site's own affiliate reference is already built into the URL, so replacing the URL outright drops that attribution. The result is escaped as a URL at every call site, and it does not touch the product links elsewhere in the plugin.",
+    "params": [
+      {
+        "name": "url",
+        "type": "string",
+        "desc": "The link, with campaign arguments applied."
+      },
+      {
+        "name": "params",
+        "type": "array",
+        "desc": "The campaign arguments used."
+      }
+    ],
+    "returns": "`string` \u2014 cast, then escaped as a URL.",
+    "related": [
+      "fluent_community/powered_by_text"
+    ]
+  },
+  "fluent_community/show_wp_admin_link": {
+    "summary": "Hides the WordPress admin link in the portal sidebar.",
+    "details": "Defaults to true and is tested for truthiness. It is read late, while the sidebar renders, and only for a site administrator on a site running Pro \u2014 on the free plugin the upgrade link takes that place and this filter never applies. Returning false hides the link only: it does not restrict access to the admin area, and the link WordPress itself adds in the other direction is separate.",
+    "params": [
+      {
+        "name": "show",
+        "type": "bool",
+        "desc": "Whether to show the link. True by default."
+      }
+    ],
+    "returns": "`bool` \u2014 tested for truthiness."
+  },
+  "fluent_community/smartcode/site_keys": {
+    "summary": "Sets which site values a smart code may read.",
+    "details": "The default list is deliberately short \u2014 the site URL, the WordPress URL and the tagline \u2014 because the people writing templates include course creators, and the underlying WordPress call would otherwise hand out the administrator's email address and the WordPress version. The site name and the login URL are handled separately and are always available. A key that is not on the list falls back to the smart code's own default value. The match is strict, so return a flat list of strings. The list arrives complete, so return the full list you want rather than only your additions, or existing templates stop resolving. Values are still escaped for their context, so an allowed key cannot smuggle markup \u2014 but it can disclose data.",
+    "params": [
+      {
+        "name": "allowedKeys",
+        "type": "string[]",
+        "desc": "The site keys a smart code may read."
+      }
+    ],
+    "returns": "`string[]` \u2014 compared strictly, so strings only.",
+    "notes": [
+      "It is applied once for every `{{site.\u2026}}` code in a template, not once per template."
     ]
   },
 }
