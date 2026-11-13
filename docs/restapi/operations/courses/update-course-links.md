@@ -15,7 +15,7 @@ Each link is sanitised individually. The submitted array replaces the stored one
 - **Path:** `/admin/courses/{course_id}/links`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@updateLinks`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:37`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:38`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

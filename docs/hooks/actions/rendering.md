@@ -5,7 +5,7 @@ description: "Rendering action hooks for FluentCommunity."
 
 # Rendering Actions
 
-45 unique action hooks currently map to this category, across 73 call sites.
+46 unique action hooks currently map to this category, across 74 call sites.
 
 ## Hook Inventory
 
@@ -13,29 +13,30 @@ description: "Rendering action hooks for FluentCommunity."
 | --- | --- | --- | --- |
 | [`fluent_community/after_header_logo`](#fluent-community-after-header-logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:45` |
 | [`fluent_community/after_header_menu`](#fluent-community-after-header-menu) | Core | 1 | `fluent-community/app/Views/portal/header.php:55` |
-| [`fluent_community/after_header_right_menu_items`](#fluent-community-after-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:384` |
+| [`fluent_community/after_header_right_menu_items`](#fluent-community-after-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:385` |
 | [`fluent_community/after_portal_sidebar`](#fluent-community-after-portal-sidebar) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:161` |
 | [`fluent_community/after_registration_form`](#fluent-community-after-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:59` |
 | [`fluent_community/after_sidebar_wrap`](#fluent-community-after-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:159` |
 | [`fluent_community/before_auth_form_header`](#fluent-community-before-auth-form-header) | Core | 3 | `fluent-community/app/Views/auth/login_form.php:10` |
 | [`fluent_community/before_header_logo`](#fluent-community-before-header-logo) | Core | 1 | `fluent-community/app/Views/portal/header.php:34` |
-| [`fluent_community/before_header_menu_items`](#fluent-community-before-header-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:328` |
-| [`fluent_community/before_header_right_menu_items`](#fluent-community-before-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:260` |
+| [`fluent_community/before_header_menu_items`](#fluent-community-before-header-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:329` |
+| [`fluent_community/before_header_right_menu_items`](#fluent-community-before-header-right-menu-items) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:261` |
 | [`fluent_community/before_js_loaded`](#fluent-community-before-js-loaded) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:66` |
 | [`fluent_community/before_portal_dom`](#fluent-community-before-portal-dom) | Core | 4 | `fluent-community/app/Views/portal_page.php:80` |
-| [`fluent_community/before_portal_rendered`](#fluent-community-before-portal-rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:930` |
+| [`fluent_community/before_portal_rendered`](#fluent-community-before-portal-rendered) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:968` |
 | [`fluent_community/before_registration_form`](#fluent-community-before-registration-form) | Core | 1 | `fluent-community/app/Views/auth/user_invitation.php:23` |
 | [`fluent_community/before_sidebar_wrap`](#fluent-community-before-sidebar-wrap) | Core | 1 | `fluent-community/app/Views/portal/main_sidebar.php:31` |
 | [`fluent_community/block_editor_footer`](#fluent-community-block-editor-footer) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:583` |
 | [`fluent_community/block_editor_head`](#fluent-community-block-editor-head) | Core | 1 | `fluent-community/app/Hooks/Handlers/FluentBlockEditorHandler.php:576` |
-| [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:245` |
+| [`fluent_community/enqueue_global_assets`](#fluent-community-enqueue-global-assets) | Core | 4 | `fluent-community/Modules/Auth/AuthModdule.php:249` |
 | [`fluent_community/headless/before_js_loaded`](#fluent-community-headless-before-js-loaded) | Core | 1 | `fluent-community/app/Views/headless_page.php:110` |
 | [`fluent_community/headless/content`](#fluent-community-headless-content) | Core | 2 | `fluent-community/app/Views/headless_page.php:94` |
 | [`fluent_community/headless/footer`](#fluent-community-headless-footer) | Core | 1 | `fluent-community/app/Views/headless_page.php:118` |
 | [`fluent_community/headless/head`](#fluent-community-headless-head) | Core | 1 | `fluent-community/app/Views/headless_page.php:66` |
 | [`fluent_community/headless/head_early`](#fluent-community-headless-head-early) | Core | 1 | `fluent-community/app/Views/headless_page.php:61` |
 | [`fluent_community/on_wp_init`](#fluent-community-on-wp-init) | Core | 1 | `fluent-community/boot/app.php:68` |
-| [`fluent_community/portal_action_{action}`](#fluent-community-portal-action-action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:834` |
+| [`fluent_community/portal_action_{action}`](#fluent-community-portal-action-action) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:846` |
+| [`fluent_community/portal_action_auth`](#fluent-community-portal-action-auth) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:864` |
 | [`fluent_community/portal_content_pre_render`](#fluent-community-portal-content-pre-render) | Core | 1 | `fluent-community/app/Views/portal/portal.php:21` |
 | [`fluent_community/portal_footer`](#fluent-community-portal-footer) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:67` |
 | [`fluent_community/portal_head`](#fluent-community-portal-head) | Core | 1 | `fluent-community/app/Views/portal_page.php:76` |
@@ -43,14 +44,14 @@ description: "Rendering action hooks for FluentCommunity."
 | [`fluent_community/portal_header`](#fluent-community-portal-header) | Core <span class="edition-note">(also fired by Pro)</span> | 6 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:49` |
 | [`fluent_community/portal_html`](#fluent-community-portal-html) | Core | 1 | `fluent-community/app/Views/portal_page.php:82` |
 | [`fluent_community/portal_loaded`](#fluent-community-portal-loaded) | Core | 1 | `fluent-community/boot/app.php:39` |
-| [`fluent_community/portal_render_for_user`](#fluent-community-portal-render-for-user) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:903` |
+| [`fluent_community/portal_render_for_user`](#fluent-community-portal-render-for-user) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:941` |
 | [`fluent_community/portal_sidebar`](#fluent-community-portal-sidebar) | Core <span class="edition-note">(also fired by Pro)</span> | 7 | `fluent-community-pro/app/Hooks/Handlers/ShortCodeHandler.php:56` |
-| [`fluent_community/portal/not_logged_in`](#fluent-community-portal-not-logged-in) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:859` |
-| [`fluent_community/portal/viewed`](#fluent-community-portal-viewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:865` |
-| [`fluent_community/rendering_headless_portal`](#fluent-community-rendering-headless-portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:922` |
-| [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:838` |
-| [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:865` |
-| [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:861` |
+| [`fluent_community/portal/not_logged_in`](#fluent-community-portal-not-logged-in) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:897` |
+| [`fluent_community/portal/viewed`](#fluent-community-portal-viewed) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:903` |
+| [`fluent_community/rendering_headless_portal`](#fluent-community-rendering-headless-portal) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:960` |
+| [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:876` |
+| [`fluent_community/sidebar_link/after_delete`](#fluent-community-sidebar-link-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:876` |
+| [`fluent_community/sidebar_link/before_delete`](#fluent-community-sidebar-link-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:872` |
 | [`fluent_community/template_footer`](#fluent-community-template-footer) | Core | 3 | `fluent-community/Modules/Gutenberg/EditorBlock.php:186` |
 | [`fluent_community/template_header`](#fluent-community-template-header) | Core | 3 | `fluent-community/Modules/Gutenberg/EditorBlock.php:134` |
 | [`fluent_community/theme_body_atts`](#fluent-community-theme-body-atts) | Core | 2 | `fluent-community/Modules/Theming/templates/fluent-community-frame-full.php:21` |
@@ -142,7 +143,7 @@ Emit `<li>` elements. Beyond rendering, core treats this hook as an ordering pro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:384` | `$auth` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:385` | `$auth` (mixed) |
 
 ### Example
 
@@ -266,7 +267,7 @@ Three call sites, and their positions differ: on the signup template it fires as
 | --- | --- | --- |
 | Core | `fluent-community/app/Views/auth/login_form.php:10` | `'login'` (string) |
 | Core | `fluent-community/app/Views/auth/user_invitation.php:11` | `'signup'` (string) |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:803` | `'login'` (string) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:837` | `'login'` (string) |
 
 ### Example
 
@@ -331,7 +332,7 @@ The name suggests the main navigation, but this fires inside `ul.fcom_user_conte
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:328` | `$auth` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:329` | `$auth` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -363,7 +364,7 @@ You are inside a `<ul>`, so emit complete `<li>` elements. It runs before the da
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:260` | `$auth` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:261` | `$auth` (mixed) |
 
 ### Example
 
@@ -451,7 +452,7 @@ The last point before any markup is emitted: assets have been enqueued, dynamic 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:930` | `$data` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:968` | `$data` (mixed) |
 
 ### Example
 
@@ -593,7 +594,7 @@ Core's own callback does the enqueueing, so this is the hook to attach dependent
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:245` | `true` (bool) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:249` | `true` (bool) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:130` | `$useBuildInTheme` (mixed) |
 | Core | `fluent-community/Modules/Gutenberg/EditorBlock.php:194` | `true` (bool) |
 | Core | `fluent-community/Modules/Theming/TemplateLoader.php:189` | `true` (bool) |
@@ -819,7 +820,7 @@ This is the plugin's front-controller extension point: `?fcom_action=my_thing` o
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:834` | `$_GET` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:846` | `$_GET` (mixed) |
 
 ### Example
 
@@ -829,6 +830,38 @@ add_action('fluent_community/portal_action_{action}', function ($requestData) {
 ```
 
 **Related:** [`fluent_community/rendering_path_ssr_{pathParts}`](#fluent-community-rendering-path-ssr-pathParts)
+
+<a id="fluent-community-portal-action-auth"></a>
+
+## `fluent_community/portal_action_auth`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires when a request asks for the portal's authentication screens.
+
+It runs before any portal HTML is produced. There are two ways in: the action query argument, and a readable auth path. Only the second adds a derived `form` to the payload, so do not rely on it being there. Both can happen in one request, so a listener that does not end the request may run twice. The payload is raw query data that has not been sanitised or unslashed. The convention is that a listener renders the screen and stops the request, which is what core's auth module does at the default priority — a second renderer produces duplicate output unless it runs earlier and exits.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$requestData` | `array` | The raw query arguments, sometimes with a derived `form`. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:864` | `$requestData` (array) |
+
+### Example
+
+```php
+add_action('fluent_community/portal_action_auth', function ($requestData) {
+}, 10, 1);
+```
+
+**Related:** [`fluent_community/action_query_key`](/hooks/filters/miscellaneous#fluent-community-action-query-key) · [`fluent_community/auth_paths`](/hooks/filters/auth#fluent-community-auth-paths)
 
 <a id="fluent-community-portal-content-pre-render"></a>
 
@@ -1053,7 +1086,7 @@ Reached only after the status and role gates pass, and only when an `XProfile` e
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:903` | `$xprofile` (XProfile) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:941` | `$xprofile` (XProfile) |
 
 ### Example
 
@@ -1123,7 +1156,7 @@ The redirect happens on the next line and is followed by `exit()`, so a callback
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:859` | `$authUrl` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:897` | `$authUrl` (mixed) |
 
 ### Example
 
@@ -1149,7 +1182,7 @@ Takes no arguments and does not tell you who is viewing — resolve the current 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:865` | No parameters |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:903` | No parameters |
 
 ### Example
 
@@ -1181,7 +1214,7 @@ Headless mode is the shipped default (`Modules\FeaturesHandler` returns `true` f
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:922` | `$data` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:960` | `$data` (mixed) |
 
 ### Example
 
@@ -1213,7 +1246,7 @@ The placeholder is `$pathParts[0]` — the segment straight after the portal slu
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:838` | `$pathParts` (mixed) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:876` | `$pathParts` (mixed) |
 
 ### Example
 
@@ -1245,7 +1278,7 @@ The in-memory model is still passed, but the row is gone by this point.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:865` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:876` | `$link` (mixed) |
 
 ### Example
 
@@ -1277,7 +1310,7 @@ The record is still readable here. There is no matching hook on save — only de
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:861` | `$link` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:872` | `$link` (mixed) |
 
 ### Example
 

@@ -11,7 +11,7 @@ aside: false
 - **Path:** `/spaces/{spaceSlug}/primary-menu`
 - **Edition:** Core
 - **Controller:** `SpaceController@updatePrimaryMenu`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:31`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:33`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 ::: info Inferred sample

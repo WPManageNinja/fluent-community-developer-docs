@@ -14,9 +14,9 @@ description: "Insights filter hooks for FluentCommunity."
 | [`fluent_community/insights/attention_items`](#fluent-community-insights-attention-items) | Core | 1 | `fluent-community/app/Services/Insights/Cards/Overview/AttentionCard.php:103` |
 | [`fluent_community/insights/card_payload`](#fluent-community-insights-card-payload) | Core | 1 | `fluent-community/app/Services/Insights/Cards/AbstractCard.php:111` |
 | [`fluent_community/insights/cards`](#fluent-community-insights-cards) | Core | 1 | `fluent-community/app/Services/Insights/CardRegistry.php:86` |
-| [`fluent_community/insights/contributor_weights`](#fluent-community-insights-contributor-weights) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/Insights/Metrics/MemberMetrics.php:205` |
+| [`fluent_community/insights/contributor_weights`](#fluent-community-insights-contributor-weights) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/Insights/Metrics/MemberMetrics.php:200` |
 | [`fluent_community/insights/excluded_user_ids`](#fluent-community-insights-excluded-user-ids) | Core | 1 | `fluent-community/app/Services/Insights/Scope.php:62` |
-| [`fluent_community/insights/level`](#fluent-community-insights-level) | Core | 1 | `fluent-community/app/Functions/Utility.php:1339` |
+| [`fluent_community/insights/level`](#fluent-community-insights-level) | Core | 1 | `fluent-community/app/Functions/Utility.php:1433` |
 | [`fluent_community/insights/pages`](#fluent-community-insights-pages) | Core | 1 | `fluent-community/app/Services/Insights/CardRegistry.php:43` |
 | [`fluent_community/insights/retention_days`](#fluent-community-insights-retention-days) | Core | 1 | `fluent-community/app/Services/Insights/Tracking/ActivityTracker.php:170` |
 | [`fluent_community/insights/track_visit`](#fluent-community-insights-track-visit) | Core | 1 | `fluent-community/app/Services/Insights/Tracking/ActivityTracker.php:62` |
@@ -153,7 +153,7 @@ Defaults to posts 3, comments 2, reactions 1 — a post counts for three reactio
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Insights/Metrics/MemberMetrics.php:205` | `[ 'posts' => 3, 'comments' => 2, 'reactions' => 1 ]` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Insights/Metrics/MemberMetrics.php:200` | `[ 'posts' => 3, 'comments' => 2, 'reactions' => 1 ]` (array) |
 
 ### Example
 
@@ -223,7 +223,7 @@ Core returns `basic`, which registers the Overview page and, when the course mod
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1339` | `'basic'` (string) |
+| Core | `fluent-community/app/Functions/Utility.php:1433` | `'basic'` (string) |
 
 ### Example
 

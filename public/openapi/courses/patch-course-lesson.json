@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "patchCourseLesson",
         "summary": "PATCH Patch Course Lesson",
-        "description": "Applies a partial update to a lesson, accepting only `title`, `status`, `slug` and `message`.\n\nController: `CourseAdminController@patchLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:58`",
+        "description": "Applies a partial update to a lesson, accepting only `title`, `status`, `slug` and `message`.\n\nController: `CourseAdminController@patchLesson`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:59`",
         "tags": [
           "Courses"
         ],

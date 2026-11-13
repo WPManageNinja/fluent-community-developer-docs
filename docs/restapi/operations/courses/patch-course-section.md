@@ -15,7 +15,7 @@ Beyond `title` and `status`, a scheduled course also accepts `scheduled_at` and 
 - **Path:** `/admin/courses/{course_id}/sections/{section_id}`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@patchSection`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:48`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:49`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

@@ -13,7 +13,7 @@ Unenrols a student from the course.
 - **Path:** `/admin/courses/{course_id}/students/{student_id}`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@removeStudent`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:31`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:32`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

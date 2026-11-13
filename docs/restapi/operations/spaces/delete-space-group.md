@@ -15,7 +15,7 @@ A group that still contains spaces is refused, so no space is ever orphaned by t
 - **Path:** `/spaces/space_groups/{id}`
 - **Edition:** Core
 - **Controller:** `SpaceController@deleteSpaceGroup`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:39`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:41`
 - **Controller source:** `fluent-community/app/Http/Controllers/SpaceController.php`
 
 - Requires community-admin or course-admin access, or the admin role in the space named by `space_id`.

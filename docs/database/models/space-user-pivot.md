@@ -25,6 +25,7 @@ Stores the membership, role, and membership metadata for users inside spaces.
 | `role` | `VARCHAR(100)` | Yes | `'member'` | Membership role assigned to the user. |
 | `meta` | `TEXT` | Yes | `—` | Serialized meta payload used by FluentCommunity. |
 | `expire_at` | `DATETIME` | Yes | `—` | Expire At stored for this record. |
+| `starts_at` | `DATETIME` | Yes | `—` | Starts At stored for this record. |
 | `created_at` | `TIMESTAMP` | Yes | `—` | Creation timestamp maintained by the ORM. |
 | `updated_at` | `TIMESTAMP` | Yes | `—` | Update timestamp maintained by the ORM. |
 

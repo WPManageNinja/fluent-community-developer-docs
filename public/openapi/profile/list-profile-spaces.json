@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listProfileSpaces",
         "summary": "GET List Profile Spaces",
-        "description": "Returns the spaces a member actively belongs to, each with its member count.\n\nController: `ProfileController@getSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:94`",
+        "description": "Returns the spaces a member actively belongs to, each with its member count.\n\nController: `ProfileController@getSpaces`\nRoute source: `fluent-community/app/Http/Routes/api.php:96`",
         "tags": [
           "Profile"
         ],
@@ -42,6 +42,15 @@
             "in": "path",
             "required": true,
             "description": "Username extracted from the URL path.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "description": "Sort By read via `$request->getSafe()` in getSpaces().",
             "schema": {
               "type": "string"
             }

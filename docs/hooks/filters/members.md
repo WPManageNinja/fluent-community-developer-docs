@@ -25,28 +25,28 @@ description: "Members filter hooks for FluentCommunity."
 | [`fluent_community/bulk_members/crm_tag_students_resolve_response`](#fluent-community-bulk-members-crm-tag-students-resolve-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:164` |
 | [`fluent_community/bulk_members/import_members_response`](#fluent-community-bulk-members-import-members-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:116` |
 | [`fluent_community/bulk_members/import_students_response`](#fluent-community-bulk-members-import-students-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/BulkMembersController.php:102` |
-| [`fluent_community/created_user_role`](#fluent-community-created-user-role) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:341` |
+| [`fluent_community/created_user_role`](#fluent-community-created-user-role) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:343` |
 | [`fluent_community/custom_profile_field_types`](#fluent-community-custom-profile-field-types) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProfileFieldsService.php:60` |
 | [`fluent_community/default_avatar`](#fluent-community-default-avatar) | Core | 4 | `fluent-community/app/Models/User.php:114` |
-| [`fluent_community/default_profile_tab_route`](#fluent-community-default-profile-tab-route) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:760` |
+| [`fluent_community/default_profile_tab_route`](#fluent-community-default-profile-tab-route) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:767` |
 | [`fluent_community/leaderboard_api_response`](#fluent-community-leaderboard-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:109` |
 | [`fluent_community/max_profile_description_length`](#fluent-community-max-profile-description-length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:383` |
 | [`fluent_community/max_profile_headline_length`](#fluent-community-max-profile-headline-length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:394` |
-| [`fluent_community/members_api_response`](#fluent-community-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:140` |
-| [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:87` |
-| [`fluent_community/menu_groups_for_user`](#fluent-community-menu-groups-for-user) | Core | 1 | `fluent-community/app/Services/Helper.php:1077` |
-| [`fluent_community/profile_all_memberships_api_response`](#fluent-community-profile-all-memberships-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:605` |
-| [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:592` |
-| [`fluent_community/profile_spaces_api_response`](#fluent-community-profile-spaces-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:650` |
+| [`fluent_community/members_api_response`](#fluent-community-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:149` |
+| [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:96` |
+| [`fluent_community/menu_groups_for_user`](#fluent-community-menu-groups-for-user) | Core | 1 | `fluent-community/app/Services/Helper.php:1452` |
+| [`fluent_community/profile_all_memberships_api_response`](#fluent-community-profile-all-memberships-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:604` |
+| [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:677` |
+| [`fluent_community/profile_spaces_api_response`](#fluent-community-profile-spaces-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:654` |
 | [`fluent_community/profile_view_data`](#fluent-community-profile-view-data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:152` |
 | [`fluent_community/public_display_name`](#fluent-community-public-display-name) | Core | 1 | `fluent-community/app/Models/User.php:329` |
 | [`fluent_community/reserved_usernames`](#fluent-community-reserved-usernames) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:217` |
 | [`fluent_community/social_link_providers`](#fluent-community-social-link-providers) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:74` |
-| [`fluent_community/space_members_api_response`](#fluent-community-space-members-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:453` |
-| [`fluent_community/space_non_members_api_response`](#fluent-community-space-non-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:815` |
+| [`fluent_community/space_members_api_response`](#fluent-community-space-members-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:456` |
+| [`fluent_community/space_non_members_api_response`](#fluent-community-space-non-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:828` |
 | [`fluent_community/space_page/manager_row`](#fluent-community-space-page-manager-row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:228` |
 | [`fluent_community/track_activity_throttle_seconds`](#fluent-community-track-activity-throttle-seconds) | Core | 1 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:117` |
-| [`fluent_community/unread_badge_max_days`](#fluent-community-unread-badge-max-days) | Core | 1 | `fluent-community/app/Services/Helper.php:1128` |
+| [`fluent_community/unread_badge_max_days`](#fluent-community-unread-badge-max-days) | Core | 1 | `fluent-community/app/Services/Helper.php:1503` |
 | [`fluent_community/update_profile_data`](#fluent-community-update-profile-data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:282` |
 | [`fluent_community/xprofile_public_fields`](#fluent-community-xprofile-public-fields) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:48` |
 | [`fluent_community/xprofile/badge`](#fluent-community-xprofile-badge) | Core | 1 | `fluent-community/app/Models/XProfile.php:237` |
@@ -603,7 +603,7 @@ Narrower than the name suggests. It is only consulted by `ProfileHelper::createW
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/ProfileHelper.php:341` | `'subscriber'` (string)<br>`$userData` (mixed) |
+| Core | `fluent-community/app/Services/ProfileHelper.php:343` | `'subscriber'` (string)<br>`$userData` (mixed) |
 
 ### Example
 
@@ -706,7 +706,7 @@ Surfaces as `portal_vars.default_profile_tab` and is matched against a fixed map
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:760` | `''` (string) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:767` | `''` (string) |
 
 ### Example
 
@@ -850,7 +850,7 @@ Reached only after the members page permission check passes and only on the non-
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:140` | `[ 'members' => $members, 'execution_time' => microtime(true) - $start, ]` (array)<br>`$members` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:149` | `[ 'members' => $members, 'execution_time' => microtime(true) - $start, ]` (array)<br>`$members` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -886,7 +886,7 @@ A separate early-return branch of the members endpoint, triggered by a `mention`
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:87` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:96` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -922,7 +922,7 @@ Runs after per-viewer visibility has been applied: secret spaces the viewer does
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1077` | `$formattedGroups` (mixed)<br>`$user` (User) |
+| Core | `fluent-community/app/Services/Helper.php:1452` | `$formattedGroups` (mixed)<br>`$user` (User) |
 
 ### Example
 
@@ -958,7 +958,7 @@ Returns bare IDs under a `memberships` key, not space models — the portal uses
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:605` | `[ 'memberships' => $memberships, ]` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:604` | `[ 'memberships' => $memberships, ]` (array)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -994,7 +994,7 @@ Returns every registered provider, including the ones currently disabled, becaus
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:592` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:677` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1030,7 +1030,7 @@ Only active memberships appear, and secret spaces are shown only to the profile 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:650` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:654` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1206,8 +1206,8 @@ Two call sites with the same payload shape but different contents: requesting `s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:453` | `[ 'members' => $pendingRequests, 'pending_count' => $pendingCount, ]` (array)<br>`$pendingRequests` (array)<br>`$request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:491` | `[ 'members' => $spaceMembers, 'pending_count' => $pendingCount, ]` (array)<br>`$spaceMembers` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:456` | `[ 'members' => $pendingRequests, 'pending_count' => $pendingCount, ]` (array)<br>`$pendingRequests` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:498` | `[ 'members' => $spaceMembers, 'pending_count' => $pendingCount, ]` (array)<br>`$spaceMembers` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1243,7 +1243,7 @@ Backs the admin add-member picker. The result is doubly capped — an inner quer
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:815` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:828` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1324,7 +1324,7 @@ add_filter('fluent_community/track_activity_throttle_seconds', function ($thrott
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1128` | `14` (int)<br>`$xprofile` (XProfile) |
+| Core | `fluent-community/app/Services/Helper.php:1503` | `14` (int)<br>`$xprofile` (XProfile) |
 
 ### Example
 

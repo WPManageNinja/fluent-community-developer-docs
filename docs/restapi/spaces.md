@@ -23,6 +23,8 @@ Most space routes are protected by `SpacePolicy`, which combines portal access w
 | `POST` | `/spaces/{spaceSlug}/join` | Core | [Join Space](/restapi/operations/spaces/join-space) | Joins the current user to a space, or lodges a join request when the space requires approval, and returns the resulting membership. |
 | `POST` | `/spaces/{spaceSlug}/leave` | Core | [Leave Space](/restapi/operations/spaces/leave-space) | Removes the current user membership of a space and refreshes their cached space access. |
 | `POST` | `/spaces/{spaceSlug}/mark-seen` | Core | [Post Mark Seen](/restapi/operations/spaces/post-mark-seen) | Post Mark Seen for the FluentCommunity Spaces API. |
+| `GET` | `/spaces/{spaceSlug}/email-pref` | Core | [Get Email Pref](/restapi/operations/spaces/get-email-pref) | Returns the calling member's email preferences for one space. |
+| `POST` | `/spaces/{spaceSlug}/email-pref` | Core | [Post Update Email Pref](/restapi/operations/spaces/post-update-email-pref) | Updates the calling member's email preferences for one space. |
 | `GET` | `/spaces/{spaceSlug}/meta-settings` | Core | [Get Space Meta Settings](/restapi/operations/spaces/get-space-meta-settings) | Returns the extra space settings panels contributed by integrations, or \`null\` when nothing has registered any. |
 | `DELETE` | `/spaces/{spaceSlug}` | Core | [Delete Space By Slug](/restapi/operations/spaces/delete-space-by-slug) | Deletes a space along with everything posted in it and every membership record for it. |
 | `DELETE` | `/spaces/{spaceId}/by-id` | Core | [Delete Space By ID](/restapi/operations/spaces/delete-space-by-id) | Deletes a space addressed by numeric id; the id is resolved to a slug and then handled exactly as the by-slug endpoint. |

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "createComment",
         "summary": "POST Create Comment",
-        "description": "Posts a comment or a threaded reply on a feed item, renders its Markdown, links any attached media and bumps the post comment count.\n\nController: `CommentsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:57`",
+        "description": "Posts a comment or a threaded reply on a feed item, renders its Markdown, links any attached media and bumps the post comment count.\n\nController: `CommentsController@store`\nRoute source: `fluent-community/app/Http/Routes/api.php:59`",
         "tags": [
           "Comments"
         ],
@@ -286,6 +286,24 @@
                 },
                 "example": {
                   "message": "The comment is too long. Please keep it under %s characters."
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Error response"
                 }
               }
             }

@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postSaveOrder",
         "summary": "POST Post Save Order",
-        "description": "Post Save Order for the FluentCommunity Settings API.\n\nController: `SettingController@saveOrder`\nRoute source: `fluent-community/app/Http/Routes/api.php:181`",
+        "description": "Post Save Order for the FluentCommunity Settings API.\n\nController: `SettingController@saveOrder`\nRoute source: `fluent-community/app/Http/Routes/api.php:186`",
         "tags": [
           "Settings"
         ],

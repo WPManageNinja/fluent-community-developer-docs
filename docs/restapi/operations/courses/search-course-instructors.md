@@ -15,7 +15,7 @@ Unlike the student picker this does not exclude existing course members, and it 
 - **Path:** `/admin/courses/{course_id}/instructors/search`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@getOtherInstructors`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:41`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:42`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

@@ -5,19 +5,80 @@ description: "Integrations action hooks for FluentCommunity."
 
 # Integrations Actions
 
-7 unique action hooks currently map to this category, across 8 call sites.
+9 unique action hooks currently map to this category, across 10 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:442` |
-| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:442` |
-| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:442` |
+| [`fluent_community/fluent_event/init`](#fluent-community-fluent-event-init) | Core | 1 | `fluent-community/Modules/Integrations/Integrations.php:67` |
+| [`fluent_community/install_fluent_event_plugin`](#fluent-community-install-fluent-event-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
+| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
+| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
+| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
 | [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:152` |
 | [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:181` |
 | [`fluent_community/product_integration_feed_created`](#fluent-community-product-integration-feed-created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:84` |
 | [`fluent_community/product_integration_feed_updated`](#fluent-community-product-integration-feed-updated) | Core | 2 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:57` |
+
+<a id="fluent-community-fluent-event-init"></a>
+
+## `fluent_community/fluent_event/init`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires when the FluentEvent integration is switched on, so the events add-on can register itself.
+
+It runs while the plugins load, before `init`, so a listener registered on `init` never sees it. For that reason the add-on may also call its own handler directly after the fact, which means a listener can be called with no arguments at all — give the callback defaults. The hook does not fire when the integration is switched off, so a listener must not treat it as one-time setup. The settings it carries are raw stored values: sanitise the route slug before using it.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$app` | `\FluentCommunity\Framework\Foundation\Application` | The application instance. |
+| 2 | `$settings` | `array` | The integration settings, including the events route slug. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Integrations/Integrations.php:67` | `$app` (mixed)<br>`$fluentEventSettings` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/fluent_event/init', function ($app, $settings) {
+}, 10, 2);
+```
+
+**Related:** [`fluent_community/install_fluent_event_plugin`](#fluent-community-install-fluent-event-plugin)
+
+<a id="fluent-community-install-fluent-event-plugin"></a>
+
+## `fluent_community/install_fluent_event_plugin`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires when an administrator asks to install the FluentEvent plugin from the add-ons screen.
+
+FluentEvent is not hosted on wordpress.org, so there is no default installer — Pro answers this hook by fetching and installing the plugin from the vendor, inside the same request despite the background-sounding name. The endpoint checks that something is listening before it fires, so a site with no listener gets an error telling it to install manually, and the add-ons screen uses the same check to decide whether to offer a button. Throwing is how a listener reports failure: the message is returned to the client.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
+
+### Example
+
+```php
+add_action('fluent_community/install_fluent_event_plugin', function () {
+}, 10, 0);
+```
+
+**Related:** [`fluent_community/fluent_event/init`](#fluent-community-fluent-event-init) · [`fluent_community/can_install_addons`](/hooks/filters/integrations#fluent-community-can-install-addons) · [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin)
 
 <a id="fluent-community-install-fluent-notify-plugin"></a>
 
@@ -34,7 +95,7 @@ FluentNotify is not hosted on wordpress.org, so there is no default installer �
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:442` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
 
 ### Example
 
@@ -60,7 +121,7 @@ Guarded by an explicit Pro check before it fires — a free install gets an erro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:442` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
 
 ### Example
 
@@ -86,7 +147,7 @@ Fluent Messages is not hosted on wordpress.org, so there is no default installer
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:442` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
 
 ### Example
 

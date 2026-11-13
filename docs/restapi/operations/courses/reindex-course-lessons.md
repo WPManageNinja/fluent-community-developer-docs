@@ -15,7 +15,7 @@ Send `indexes` as a map of lesson id to priority. Only lessons that belong to bo
 - **Path:** `/admin/courses/{course_id}/sections/{section_id}/indexes`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@resetLessonIndexes`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:50`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:51`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.
