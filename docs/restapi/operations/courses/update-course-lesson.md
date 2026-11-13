@@ -15,7 +15,7 @@ The payload is nested under `lesson`, and `title`, `parent_id` and a `status` of
 - **Path:** `/admin/courses/{course_id}/lessons/{lesson_id}`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@updateLesson`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:57`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:58`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

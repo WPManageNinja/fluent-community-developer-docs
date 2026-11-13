@@ -14,9 +14,9 @@ This path is served by the comments controller rather than the reaction controll
 - **Method:** `POST`
 - **Path:** `/feeds/{feed_id}/react`
 - **Edition:** Core
-- **Controller:** `CommentsController@addOrRemovePostReact`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:60`
-- **Controller source:** `fluent-community/app/Http/Controllers/CommentsController.php`
+- **Controller:** `ReactionController@addOrRemovePostReact`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:62`
+- **Controller source:** `fluent-community/app/Http/Controllers/ReactionController.php`
 
 - Requires a signed-in user, and the post must be published.
 

@@ -2085,6 +2085,101 @@ export const OPERATION_NOTES = {
   },
 
   // ---------------------------------------------------------------------------
+  // 2.14.0 additions
+  // ---------------------------------------------------------------------------
+  "spaces/get-email-pref": {
+    "summary": "Returns the calling member's email preferences for one space.",
+    "details": "Three values: how much of the space's new-post email they get (`all`, `admin` or `none`), whether they receive its announcements, and whether the announcement choice is theirs to make at all. The new-post setting is derived from the stored preference rows rather than held as a field, so a member who has never touched it reads as `none`.",
+    "notes": [
+      "The caller must be an active member of the space; everyone else gets 403, including a member whose own membership is still pending.",
+      "Spaces only. A course slug answers the same 403, because the lookup is scoped to community spaces.",
+      "`show_announcements` is true only when the site sends announcement emails and this member has switched them off globally. The per-space box is an opt-in for someone who opted out, never a per-space mute."
+    ]
+  },
+  "spaces/post-update-email-pref": {
+    "summary": "Updates the calling member's email preferences for one space.",
+    "details": "Send `new_posts`, `announcements`, or both \u2014 anything left out stays as it is, and sending neither is an error. Writing `new_posts` rewrites that member's preference rows for the space, which are the same rows the profile notification settings edit.",
+    "notes": [
+      "The response is the recomputed state, not an echo of what was sent.",
+      "Setting `announcements` is silently ignored when the site has announcement emails switched off, or when the member has not opted out globally. The call still answers 200, with the unchanged value in the response.",
+      "A member who receives admin-post emails from the space always receives its announcements, so `announcements` can read true straight after being set to false.",
+      "`new_posts` must be `all`, `admin` or `none`. The call is idempotent \u2014 repeating it converges on the same rows.",
+      "New-post emails are queued a couple of minutes after a post and the recipients are read when the job runs, so a change made in that window still applies."
+    ]
+  },
+  "admin/post-upload-site-icon": {
+    "summary": "Uploads the site icon \u2014 the favicon the whole WordPress site uses, not a community-only setting.",
+    "details": "A multipart upload under the field name `file`, stored as a media library attachment and then recorded in WordPress's own `site_icon` option. PNG, JPEG, GIF and WebP are accepted, up to 5 MB, and the type is checked against the real file rather than the name.",
+    "notes": [
+      "Super administrators only. Community administrators can reach the other settings endpoints but not this one.",
+      "The image must be square within a pixel and at least 64 x 64; 512 x 512 is the size to aim for. A file whose dimensions cannot be read fails with that same message.",
+      "The image is used exactly as uploaded \u2014 there is no cropping step.",
+      "A file larger than the server's own upload limit answers 413 before validation runs.",
+      "Each upload leaves a new attachment in the media library; the one it replaces is not removed."
+    ]
+  },
+  "admin/delete-remove-site-icon": {
+    "summary": "Clears the site icon setting.",
+    "details": "Unsets WordPress's `site_icon` option and leaves the uploaded image in the media library. Sent as POST with `X-HTTP-Method-Override: DELETE` by the plugin's own client.",
+    "notes": [
+      "Super administrators only.",
+      "It removes the setting, not the file, so a caller expecting cleanup will be wrong.",
+      "It reports success even when no icon was set."
+    ]
+  },
+  "settings/get-getting-started": {
+    "summary": "Returns the getting-started checklist for the calling administrator, with each step already marked done or not.",
+    "details": "Every step is detected from the site's own data \u2014 there is no way to tick one by hand \u2014 and each carries an optional action telling the client where to send the admin. The summary counts the required steps only, and the state says whether this admin has dismissed the card, finished it, or is owed the one-off completion message.",
+    "notes": [
+      "The card state is per administrator, held in their own user meta, while the step results are site data and the same for everyone.",
+      "This GET writes once: the first call on an incomplete checklist records when the admin started.",
+      "The step list varies by install \u2014 one step appears only with Pro, another only when the course module is on \u2014 and `fluent_community/getting_started_steps` can add, remove or reorder steps.",
+      "A site that was already set up before the feature shipped never gets the completion message, because there is no start time to compare against."
+    ]
+  },
+  "settings/post-update-getting-started": {
+    "summary": "Hides, restores or acknowledges the getting-started card for the calling administrator.",
+    "details": "Takes one `action`: `dismiss`, `reopen` or `celebrated`. It changes nothing about the checklist itself \u2014 the steps are always detected from site data \u2014 and answers with the recomputed checklist.",
+    "notes": [
+      "Despite the name, this only changes card visibility for the administrator who calls it.",
+      "`dismiss` can be undone with `reopen`. `celebrated` cannot be undone through the API, and it keeps the card hidden for good.",
+      "The response carries the checklist and no message field, unlike the other settings endpoints.",
+      "Any other action is rejected with 422."
+    ]
+  },
+  "settings/get-fluent-event-settings": {
+    "summary": "Returns the FluentEvent integration settings, and where to manage events when the plugin is active.",
+    "details": "Two settings \u2014 whether the integration is on, and the URL slug events are served under \u2014 plus an admin URL that is an empty string when the FluentEvent plugin is not active. That empty string is the only signal in this payload about the plugin's presence.",
+    "notes": [
+      "The defaults, integration off and the slug `events`, are filled in on read, so a site that has never saved looks identical to one saved with the defaults.",
+      "The values live in FluentCommunity's own options, not in a WordPress option."
+    ]
+  },
+  "settings/post-update-fluent-event-settings": {
+    "summary": "Saves the FluentEvent integration settings.",
+    "details": "Takes a `settings` object holding the on/off flag and the events slug. Only those two keys are kept; anything else in the object is dropped. The slug is checked against the portal\\'s own routes and the space sub-pages, so events cannot take a path the community already uses.",
+    "notes": [
+      "The flag is compared against the exact string `yes`, so `true`, `1` and `on` all save as off.",
+      "Turning the integration on does not take effect in the same request \u2014 the integration is wired up on the next page load.",
+      "The endpoint does not check whether the FluentEvent plugin is installed, so it will store an enabled integration with no plugin behind it. Installing the plugin is a separate call.",
+      "Re-saving the slug a site already uses is allowed; a slug that sanitises down to nothing fails with the same message as one that is taken."
+    ]
+  },
+  "courses/post-schedule-students": {
+    "summary": "Enrolls students in a course with a start date, so their access opens later.",
+    "details": "Takes a list of user IDs and a `starts_at` timestamp in site time, formatted exactly as `Y-m-d H:i:s`. A future date creates a scheduled enrollment and fires `fluent_community/course/enrollment_scheduled`. A date that has already passed enrolls the member immediately and keeps that date as the anchor the lesson drip counts from.",
+    "notes": [
+      "The response is always the bulk shape \u2014 added, skipped, failed and processed \u2014 with no per-member detail. Per-member problems are counted rather than raised.",
+      "An existing active enrollment is never touched: no new date, no re-enrollment, counted as skipped. That is deliberate, so a renewal cannot restart the drip.",
+      "Re-scheduling a member who is already scheduled moves the date and fires the scheduled hook again.",
+      "Scheduled members are not students yet. They are left out of the student count, the course cards and Insights, and appear only in the admin list, marked as not open yet.",
+      "Access opens on an hourly sweep or on the member's own next visit, so the enrolled hook can fire up to an hour after the start time.",
+      "Bulk scheduling needs Pro; without it only a single ID is accepted. At most 500 IDs per request, and that check runs after the Pro check \u2014 so a free site sending 600 IDs is told about Pro, not about the limit.",
+      "When nothing was added, the `message` carries the reason inside a 200 response, for the single-member form."
+    ]
+  },
+
+  // ---------------------------------------------------------------------------
   // leaderboard
   // ---------------------------------------------------------------------------
   'leaderboard/list-leaderboard': {

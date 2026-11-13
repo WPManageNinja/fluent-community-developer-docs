@@ -13,7 +13,7 @@ Returns one lesson in its editable form with its section and course attached.
 - **Path:** `/admin/courses/{course_id}/lessons/{lesson_id}`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@getLesson`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:56`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:57`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

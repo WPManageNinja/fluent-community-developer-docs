@@ -15,7 +15,7 @@ Send `indexes` as a map of section id to priority. Ids that do not belong to thi
 - **Path:** `/admin/courses/{course_id}/sections/indexes`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@resetSectionIndexes`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:45`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:46`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

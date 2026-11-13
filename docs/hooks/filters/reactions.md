@@ -11,10 +11,10 @@ description: "Reactions filter hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:498` |
-| [`fluent_community/reactions_api_response`](#fluent-community-reactions-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/ReactionController.php:48` |
-| [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:253` |
-| [`fluent_community/survey_voters_api_response`](#fluent-community-survey-voters-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:286` |
+| [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:503` |
+| [`fluent_community/reactions_api_response`](#fluent-community-reactions-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/ReactionController.php:47` |
+| [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:270` |
+| [`fluent_community/survey_voters_api_response`](#fluent-community-survey-voters-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:303` |
 
 <a id="fluent-community-feed-updated-survey-config"></a>
 
@@ -41,7 +41,7 @@ The returned array is written straight into the post's `meta.survey_config` and 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:498` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:503` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
 
 ### Example
 
@@ -78,8 +78,8 @@ One filter for both endpoints: `GET /feeds/{id}/reactions` and `GET /comments/{i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:48` | `[ 'reactions' => $reactions, ]` (array)<br>`$reactions` (mixed)<br>`$request->all()` (array) |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:92` | `[ 'reactions' => $reactions, ]` (array)<br>`$reactions` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:47` | `[ 'reactions' => $reactions, ]` (array)<br>`$reactions` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:91` | `[ 'reactions' => $reactions, ]` (array)<br>`$reactions` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -116,7 +116,7 @@ Applied to the response only — unlike `fluent_community/feed/updated_survey_co
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:253` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:270` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
 
 ### Example
 
@@ -152,7 +152,7 @@ The option is identified by its slug, which is stored in the reaction's `object_
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ReactionController.php:286` | `$data` (mixed)<br>`$this->request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ReactionController.php:303` | `$data` (mixed)<br>`$this->request->all()` (array) |
 
 ### Example
 

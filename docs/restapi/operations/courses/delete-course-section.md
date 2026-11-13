@@ -13,7 +13,7 @@ Deletes a section and every lesson inside it.
 - **Path:** `/admin/courses/{course_id}/sections/{section_id}`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@deleteSection`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:49`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:50`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

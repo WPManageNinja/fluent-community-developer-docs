@@ -15,7 +15,7 @@ Send `section_id` and `from_course_id`; the caller must administer the source co
 - **Path:** `/admin/courses/{course_id}/copy-section`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@copySection`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:54`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:55`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires course-admin access to both the source and the destination course.

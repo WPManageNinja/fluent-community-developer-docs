@@ -11,20 +11,20 @@ description: "Settings filter hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/{scope}_color`](#fluent-community-scope-color) | Core | 1 | `fluent-community/app/Functions/Utility.php:1247` |
-| [`fluent_community/color_config_api_response`](#fluent-community-color-config-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:548` |
-| [`fluent_community/color_schmea_config`](#fluent-community-color-schmea-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1191` |
-| [`fluent_community/crm_tagging_config_api_response`](#fluent-community-crm-tagging-config-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:662` |
-| [`fluent_community/customization_settings`](#fluent-community-customization-settings) | Core | 1 | `fluent-community/app/Functions/Utility.php:292` |
-| [`fluent_community/customization_settings_api_response`](#fluent-community-customization-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:460` |
-| [`fluent_community/email_settings_api_response`](#fluent-community-email-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:178` |
-| [`fluent_community/features_api_response`](#fluent-community-features-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:36` |
-| [`fluent_community/general_settings_api_response`](#fluent-community-general-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:39` |
-| [`fluent_community/has_color_scheme`](#fluent-community-has-color-scheme) | Core | 1 | `fluent-community/app/Services/Helper.php:155` |
-| [`fluent_community/onboarding_settings_api_response`](#fluent-community-onboarding-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:485` |
-| [`fluent_community/portal_slug`](#fluent-community-portal-slug) | Core | 1 | `fluent-community/app/Services/Helper.php:105` |
-| [`fluent_community/privacy_settings_api_response`](#fluent-community-privacy-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:525` |
-| [`fluent_community/push_settings_api_response`](#fluent-community-push-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:236` |
+| [`fluent_community/{scope}_color`](#fluent-community-scope-color) | Core | 1 | `fluent-community/app/Functions/Utility.php:1341` |
+| [`fluent_community/color_config_api_response`](#fluent-community-color-config-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:612` |
+| [`fluent_community/color_schmea_config`](#fluent-community-color-schmea-config) | Core | 1 | `fluent-community/app/Functions/Utility.php:1285` |
+| [`fluent_community/crm_tagging_config_api_response`](#fluent-community-crm-tagging-config-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:727` |
+| [`fluent_community/customization_settings`](#fluent-community-customization-settings) | Core | 1 | `fluent-community/app/Functions/Utility.php:315` |
+| [`fluent_community/customization_settings_api_response`](#fluent-community-customization-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:486` |
+| [`fluent_community/email_settings_api_response`](#fluent-community-email-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:263` |
+| [`fluent_community/features_api_response`](#fluent-community-features-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:37` |
+| [`fluent_community/general_settings_api_response`](#fluent-community-general-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:41` |
+| [`fluent_community/has_color_scheme`](#fluent-community-has-color-scheme) | Core | 1 | `fluent-community/app/Services/Helper.php:169` |
+| [`fluent_community/onboarding_settings_api_response`](#fluent-community-onboarding-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:570` |
+| [`fluent_community/portal_slug`](#fluent-community-portal-slug) | Core | 1 | `fluent-community/app/Services/Helper.php:119` |
+| [`fluent_community/privacy_settings_api_response`](#fluent-community-privacy-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:589` |
+| [`fluent_community/push_settings_api_response`](#fluent-community-push-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:321` |
 | [`fluent_community/pwa/background_color`](#fluent-community-pwa-background-color) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:322` |
 | [`fluent_community/pwa/description`](#fluent-community-pwa-description) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:118` |
 | [`fluent_community/pwa/icon_purpose`](#fluent-community-pwa-icon-purpose) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:155` |
@@ -33,8 +33,8 @@ description: "Settings filter hooks for FluentCommunity."
 | [`fluent_community/pwa/manifest_scope`](#fluent-community-pwa-manifest-scope) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:358` |
 | [`fluent_community/pwa/orientation`](#fluent-community-pwa-orientation) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:136` |
 | [`fluent_community/pwa/theme_color`](#fluent-community-pwa-theme-color) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Pwa/PwaHelper.php:296` |
-| [`fluent_community/storage_settings_response`](#fluent-community-storage-settings-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:275` |
-| [`fluent_community/suggested_colors`](#fluent-community-suggested-colors) | Core | 1 | `fluent-community/app/Functions/Utility.php:1301` |
+| [`fluent_community/storage_settings_response`](#fluent-community-storage-settings-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:360` |
+| [`fluent_community/suggested_colors`](#fluent-community-suggested-colors) | Core | 1 | `fluent-community/app/Functions/Utility.php:1395` |
 
 <a id="fluent-community-scope-color"></a>
 
@@ -59,7 +59,7 @@ Two scopes are used in the shipped code: `theme`, which resolves the primary but
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1247` | `$color` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1341` | `$color` (mixed) |
 
 ### Example
 
@@ -95,7 +95,7 @@ add_filter('fluent_community/{scope}_color', function ($color) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:548` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:612` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -131,7 +131,7 @@ The hook name contains a typo — "schmea" — that has to be reproduced exactly
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1191` | `array (5 keys: light_schema, dark_schema, light_config, …)` (array)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1285` | `array (5 keys: light_schema, dark_schema, light_config, …)` (array)<br>`$context` (mixed) |
 
 ### Example
 
@@ -167,7 +167,7 @@ add_filter('fluent_community/color_schmea_config', function ($config, $context) 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:662` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:727` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -200,7 +200,7 @@ Applied after the stored values are merged over the defaults, but before the fre
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:292` | `$settings` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:315` | `$settings` (mixed) |
 
 ### Example
 
@@ -236,7 +236,7 @@ A read-only view of what `fluent_community/customization_settings` produced, inc
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:460` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:486` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -272,7 +272,7 @@ When no email logo has been set, the general site logo is added as `global_logo`
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:178` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:263` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -308,7 +308,7 @@ The Giphy API key is replaced with the placeholder `FCOM_ENCRYPTED_DATA_KEY` bef
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:36` | `$data` (mixed)<br>`$this->request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:37` | `$data` (mixed)<br>`$this->request->all()` (array) |
 
 ### Example
 
@@ -342,7 +342,7 @@ The settings are re-read from the database rather than from cache. `user_roles` 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:39` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:41` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -377,7 +377,7 @@ The base value is the `dark_mode` customisation setting. It controls three thing
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:155` | `$status` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:169` | `$status` (mixed) |
 
 ### Example
 
@@ -413,7 +413,7 @@ Built from the general settings plus a detection pass for the other Fluent plugi
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:485` | `$data` (mixed)<br>`$this->request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:570` | `$data` (mixed)<br>`$this->request->all()` (array) |
 
 ### Example
 
@@ -446,7 +446,7 @@ Runs after the stored setting and the `FLUENT_COMMUNITY_PORTAL_SLUG` constant ha
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:105` | `$slug` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:119` | `$slug` (mixed) |
 
 ### Example
 
@@ -480,7 +480,7 @@ Carries the visibility settings that the `fluent_community/can_view_*` filters r
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:525` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:589` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -504,7 +504,7 @@ add_filter('fluent_community/privacy_settings_api_response', function ($data, $r
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:236` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:321` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -794,7 +794,7 @@ On a free install `config` is hard-coded to `['driver' => 'local']` without cons
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:275` | `[ 'config' => $config, ]` (array)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:360` | `[ 'config' => $config, ]` (array)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -827,7 +827,7 @@ The defaults come from the active theme's `editor-color-palette` support, with C
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1301` | `$colors` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1395` | `$colors` (mixed) |
 
 ### Example
 

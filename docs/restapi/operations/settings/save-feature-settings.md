@@ -15,7 +15,7 @@ Only recognised flags are accepted — courses, leaderboard, Giphy, emoji, badge
 - **Path:** `/settings/features`
 - **Edition:** Core
 - **Controller:** `SettingController@setFeatures`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:177`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:182`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).

@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getPage",
         "summary": "GET Get Page",
-        "description": "Returns one Insights page's definition together with the definition of every card on it.\n\nController: `InsightsController@page`\nRoute source: `fluent-community/app/Http/Routes/api.php:170`",
+        "description": "Returns one Insights page's definition together with the definition of every card on it.\n\nController: `InsightsController@page`\nRoute source: `fluent-community/app/Http/Routes/api.php:175`",
         "tags": [
           "Insights"
         ],

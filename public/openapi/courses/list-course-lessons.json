@@ -27,7 +27,7 @@
       "get": {
         "operationId": "listCourseLessons",
         "summary": "GET List Course Lessons",
-        "description": "Returns the lessons of a course in display order, optionally narrowed to one section.\n\nController: `CourseAdminController@getLessons`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:52`",
+        "description": "Returns the lessons of a course in display order, optionally narrowed to one section.\n\nController: `CourseAdminController@getLessons`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:53`",
         "tags": [
           "Courses"
         ],

@@ -15,7 +15,7 @@ The copy takes a "(Copy)" suffix, incremented if that title is already used in t
 - **Path:** `/admin/courses/{course_id}/lessons/{lesson_id}/duplicate`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@duplicateLesson`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:60`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:61`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

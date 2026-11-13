@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getSearch",
         "summary": "GET Get Search",
-        "description": "Searches posts, comments, members, spaces and courses in one request, and returns a block of results per type.\n\nController: `SearchController@search`\nRoute source: `fluent-community/app/Http/Routes/api.php:137`",
+        "description": "Searches posts, comments, members, spaces and courses in one request, and returns a block of results per type.\n\nController: `SearchController@search`\nRoute source: `fluent-community/app/Http/Routes/api.php:142`",
         "tags": [
           "Search"
         ],

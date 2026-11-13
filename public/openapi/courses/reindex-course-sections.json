@@ -27,7 +27,7 @@
       "patch": {
         "operationId": "reindexCourseSections",
         "summary": "PATCH Reindex Course Sections",
-        "description": "Applies a new display order to a course outline by writing the submitted priority for each section.\n\nController: `CourseAdminController@resetSectionIndexes`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:45`",
+        "description": "Applies a new display order to a course outline by writing the submitted priority for each section.\n\nController: `CourseAdminController@resetSectionIndexes`\nRoute source: `fluent-community/Modules/Course/Http/course_api.php:46`",
         "tags": [
           "Courses"
         ],

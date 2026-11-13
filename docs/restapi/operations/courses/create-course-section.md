@@ -15,7 +15,7 @@ Adds a published section to the end of a course outline.
 - **Path:** `/admin/courses/{course_id}/sections`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@createSection`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:44`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:45`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

@@ -5,7 +5,7 @@ description: "Members action hooks for FluentCommunity."
 
 # Members Actions
 
-18 unique action hooks currently map to this category, across 26 call sites.
+20 unique action hooks currently map to this category, across 29 call sites.
 
 ## Hook Inventory
 
@@ -22,11 +22,13 @@ description: "Members action hooks for FluentCommunity."
 | [`fluent_community/manager/after_remove`](#fluent-community-manager-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:134` |
 | [`fluent_community/manager/before_remove`](#fluent-community-manager-before-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:130` |
 | [`fluent_community/manager/updated`](#fluent-community-manager-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:93` |
-| [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/MembersController.php:136` |
+| [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/MembersController.php:145` |
+| [`fluent_community/mention_members_query_ref`](#fluent-community-mention-members-query-ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:86` |
 | [`fluent_community/profile_deactivated`](#fluent-community-profile-deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:177` |
-| [`fluent_community/reactivate_account`](#fluent-community-reactivate-account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:242` |
+| [`fluent_community/reactivate_account`](#fluent-community-reactivate-account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:243` |
+| [`fluent_community/space_members_query_ref`](#fluent-community-space-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:452` |
 | [`fluent_community/track_activity`](#fluent-community-track-activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` |
-| [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:604` |
+| [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:689` |
 | [`fluent_community/user_level_upgraded`](#fluent-community-user-level-upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:111` |
 | [`fluent_community/user_points_updated`](#fluent-community-user-points-updated) | Core <span class="edition-note">(also fired by Pro)</span> | 3 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` |
 
@@ -404,7 +406,7 @@ Fired with `do_action_ref_array()`, so take `&$query` and mutate it — a return
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:136` | `&$members` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:145` | `&$members` (mixed)<br>`$request->all()` (array) |
 | Core | `fluent-community/app/Services/Search/Providers/MemberSearchProvider.php:42` | `&$membersQuery` (mixed)<br>`$requestData` (array) |
 
 ### Example
@@ -415,6 +417,40 @@ add_action('fluent_community/members_query_ref', function ($members, $requestDat
 ```
 
 **Related:** [`fluent_community/members_api_response`](/hooks/filters/members#fluent-community-members-api-response) · [`fluent_community/mention_members_api_response`](/hooks/filters/members#fluent-community-mention-members-api-response)
+
+<a id="fluent-community-mention-members-query-ref"></a>
+
+## `fluent_community/mention_members_query_ref`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Adjusts the query behind the member suggestions shown while typing a mention.
+
+The query arrives by reference, just before the ten suggestions are fetched and after every access rule has been applied — the caller must be logged in, must belong to the space, and a member without wider privileges is already narrowed to people they share a space with. Those clauses are the access control for who may be mentioned, so removing them exposes members. Adding a limit here is pointless, because ten is applied immediately afterwards. This is deliberately separate from the general member listing hook, so an existing callback does not start reshaping mention suggestions.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$query` | `\FluentCommunity\Framework\Database\Orm\Builder` | The profile query, by reference. |
+| 2 | `$requestData` | `array` | The request payload. |
+| 3 | `$space` | `\FluentCommunity\App\Models\BaseSpace&#124;null` | The space the mention is being made in. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:86` | `&$members` (mixed)<br>`$request->all()` (array)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_action('fluent_community/mention_members_query_ref', function ($query, $requestData, $space) {
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/space_members_query_ref`](#fluent-community-space-members-query-ref)
 
 <a id="fluent-community-profile-deactivated"></a>
 
@@ -469,7 +505,7 @@ Reached through the portal action URL rather than the REST API, and only after a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:242` | `$xprofile` (XProfile) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:243` | `$xprofile` (XProfile) |
 
 ### Example
 
@@ -479,6 +515,41 @@ add_action('fluent_community/reactivate_account', function ($xprofile) {
 ```
 
 **Related:** [`fluent_community/profile_deactivated`](#fluent-community-profile-deactivated)
+
+<a id="fluent-community-space-members-query-ref"></a>
+
+## `fluent_community/space_members_query_ref`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 2
+- **When it fires:** Adjusts the query behind a space's member list and its join requests.
+
+One hook name covers two different queries, and only one of them runs in a request: the pending join requests when the viewer may approve members and asked for that status, and the active member list otherwise. Tell them apart by the requested status, or a listener written for one will quietly reshape the other. The active branch sometimes joins the profile table, so qualify column names — an unqualified condition is ambiguous. It fires after the view-members permission check and immediately before pagination, so adding a limit fights the paginator. Shaping the output belongs in the matching response filter; this hook is for the query.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$query` | `\FluentCommunity\Framework\Database\Orm\Builder` | The membership query, by reference. |
+| 2 | `$requestData` | `array` | The request payload, including the requested status. |
+| 3 | `$space` | `\FluentCommunity\App\Models\Space` | The space being listed. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:452` | `&$pendingRequests` (array)<br>`$request->all()` (array)<br>`$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:494` | `&$spaceMembers` (mixed)<br>`$request->all()` (array)<br>`$space` (Space) |
+
+### Example
+
+```php
+add_action('fluent_community/space_members_query_ref', function ($query, $requestData, $space) {
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/mention_members_query_ref`](#fluent-community-mention-members-query-ref) · [`fluent_community/space_members_api_response`](/hooks/filters/members#fluent-community-space-members-api-response)
 
 <a id="fluent-community-track-activity"></a>
 
@@ -497,7 +568,7 @@ Fired after a post or comment activity row is written, and on every portal ticke
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` | No parameters |
 | Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:103` | No parameters |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1172` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1205` | No parameters |
 
 ### Example
 
@@ -529,7 +600,7 @@ The free plugin does not persist this itself — the endpoint validates the subm
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:604` | `$config` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:689` | `$config` (mixed) |
 
 ### Example
 
@@ -598,7 +669,7 @@ Points are recalculated lazily and cached for an hour per user, so this fires at
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` | `$profileModel` (mixed)<br>`$oldPoints` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Services/LeaderBoardHelper.php:197` | `$xprofile` (XProfile)<br>`$oldPoints` (mixed) |
-| Core | `fluent-community/app/Hooks/CLI/Commands.php:73` | `$xProfile` (XProfile)<br>`$oldPoints` (mixed) |
+| Core | `fluent-community/app/Hooks/CLI/Commands.php:83` | `$xProfile` (XProfile)<br>`$oldPoints` (mixed) |
 
 ### Example
 

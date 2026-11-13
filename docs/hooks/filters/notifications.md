@@ -5,30 +5,31 @@ description: "Notifications filter hooks for FluentCommunity."
 
 # Notifications Filters
 
-18 unique filter hooks currently map to this category, across 20 call sites.
+19 unique filter hooks currently map to this category, across 21 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/aggregated_notification_prefs`](#fluent-community-aggregated-notification-prefs) | Core | 1 | `fluent-community/app/Services/NotificationPref.php:500` |
-| [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:368` |
+| [`fluent_community/aggregated_notification_prefs`](#fluent-community-aggregated-notification-prefs) | Core | 1 | `fluent-community/app/Services/NotificationPref.php:507` |
+| [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:379` |
 | [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
 | [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
 | [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
-| [`fluent_community/enable_notification_toast`](#fluent-community-enable-notification-toast) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1274` |
-| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:493` |
-| [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:200` |
-| [`fluent_community/notification_toast_items`](#fluent-community-notification-toast-items) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1351` |
-| [`fluent_community/notification_toast_limit`](#fluent-community-notification-toast-limit) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1278` |
+| [`fluent_community/enable_notification_toast`](#fluent-community-enable-notification-toast) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1307` |
+| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:503` |
+| [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:209` |
+| [`fluent_community/notification_toast_items`](#fluent-community-notification-toast-items) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1384` |
+| [`fluent_community/notification_toast_limit`](#fluent-community-notification-toast-limit) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1311` |
 | [`fluent_community/notifications_api_response`](#fluent-community-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
-| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:949` |
+| [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:973` |
 | [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:122` |
 | [`fluent_community/smartcode_group_callback_{dataKey}`](#fluent-community-smartcode-group-callback-dataKey) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:175` |
-| [`fluent_community/smartcode/user_fields`](#fluent-community-smartcode-user-fields) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:304` |
-| [`fluent_community/smartcode/user_meta_keys`](#fluent-community-smartcode-user-meta-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:343` |
+| [`fluent_community/smartcode/site_keys`](#fluent-community-smartcode-site-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:263` |
+| [`fluent_community/smartcode/user_fields`](#fluent-community-smartcode-user-fields) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:312` |
+| [`fluent_community/smartcode/user_meta_keys`](#fluent-community-smartcode-user-meta-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:351` |
 | [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:61` |
-| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1378` |
+| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1472` |
 
 <a id="fluent-community-aggregated-notification-prefs"></a>
 
@@ -42,7 +43,7 @@ description: "Notifications filter hooks for FluentCommunity."
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/NotificationPref.php:500` | `[ [ 'mail', 'digest' ], ]` (array) |
+| Core | `fluent-community/app/Services/NotificationPref.php:507` | `[ [ 'mail', 'digest' ], ]` (array) |
 
 ### Example
 
@@ -77,7 +78,7 @@ Same marker mechanism as the post notifications, but the third argument is the c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:368` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$comment` (Comment) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:379` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$comment` (Comment) |
 
 ### Example
 
@@ -210,7 +211,7 @@ add_filter('fluent_community/digest_notification/email_sections', function ($sec
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1274` | `true` (bool)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1307` | `true` (bool)<br>`$userId` (int) |
 
 ### Example
 
@@ -245,7 +246,7 @@ A separate call site from the space notification with an identical signature, be
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:493` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:503` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -282,7 +283,7 @@ The two strings are substituted into the `<!--email_content_before-->` and `<!--
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:200` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:209` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -306,7 +307,7 @@ add_filter('fluent_community/new_feed_notification/email_sections', function ($s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1351` | `$items` (mixed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1384` | `$items` (mixed)<br>`$userId` (int) |
 
 ### Example
 
@@ -328,7 +329,7 @@ add_filter('fluent_community/notification_toast_items', function ($items, $userI
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1278` | `3` (int)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1311` | `3` (int)<br>`$userId` (int) |
 
 ### Example
 
@@ -398,7 +399,7 @@ Backs the notification settings screen. The payload holds `user_globals` cast to
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:949` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:973` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -484,6 +485,39 @@ add_filter('fluent_community/smartcode_group_callback_{dataKey}', function ($mat
 
 **Related:** [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback)
 
+<a id="fluent-community-smartcode-site-keys"></a>
+
+## `fluent_community/smartcode/site_keys`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Sets which site values a smart code may read.
+
+The default list is deliberately short — the site URL, the WordPress URL and the tagline — because the people writing templates include course creators, and the underlying WordPress call would otherwise hand out the administrator's email address and the WordPress version. The site name and the login URL are handled separately and are always available. A key that is not on the list falls back to the smart code's own default value. The match is strict, so return a flat list of strings. The list arrives complete, so return the full list you want rather than only your additions, or existing templates stop resolving. Values are still escaped for their context, so an allowed key cannot smuggle markup — but it can disclose data.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$allowedKeys` | `string[]` | The site keys a smart code may read. |
+
+**Return:** `string[]` — compared strictly, so strings only.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:263` | `[ 'url', 'wpurl', 'description' ]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/smartcode/site_keys', function ($allowedKeys) {
+    return $allowedKeys;
+}, 10, 1);
+```
+
 <a id="fluent-community-smartcode-user-fields"></a>
 
 ## `fluent_community/smartcode/user_fields`
@@ -496,7 +530,7 @@ add_filter('fluent_community/smartcode_group_callback_{dataKey}', function ($mat
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/SmartCodeParser.php:304` | `array (11 items)` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:312` | `array (11 items)` (array) |
 
 ### Example
 
@@ -518,7 +552,7 @@ add_filter('fluent_community/smartcode/user_fields', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/SmartCodeParser.php:343` | `[]` (array) |
+| Core | `fluent-community/app/Services/SmartCodeParser.php:351` | `[]` (array) |
 
 ### Example
 
@@ -587,7 +621,7 @@ Populated from FluentSMTP's configured sender mappings, and empty when FluentSMT
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1378` | `$verifiedSenders` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1472` | `$verifiedSenders` (mixed) |
 
 ### Example
 

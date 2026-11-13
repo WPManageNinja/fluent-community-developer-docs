@@ -15,7 +15,7 @@ Send `lesson_id` and `section_id`; both must already belong to the course in the
 - **Path:** `/admin/courses/{course_id}/move-lesson`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@moveLesson`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:55`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:56`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.

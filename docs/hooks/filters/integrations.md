@@ -5,12 +5,13 @@ description: "Integrations filter hooks for FluentCommunity."
 
 # Integrations Filters
 
-9 unique filter hooks currently map to this category, across 9 call sites.
+10 unique filter hooks currently map to this category, across 10 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
+| [`fluent_community/can_install_addons`](#fluent-community-can-install-addons) | Core | 1 | `fluent-community/app/Functions/Utility.php:487` |
 | [`fluent_community/fluent_player/fallback_timings`](#fluent-community-fluent-player-fallback-timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:226` |
 | [`fluent_community/fluent_player/max_audios_per_post`](#fluent-community-fluent-player-max-audios-per-post) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:301` |
 | [`fluent_community/fluentform__defaults`](#fluent-community-fluentform--defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
@@ -20,6 +21,41 @@ description: "Integrations filter hooks for FluentCommunity."
 | [`fluent_community/video_upload_max_file_size`](#fluent-community-video-upload-max-file-size) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:61` |
 | [`fluent_community/video_upload_max_file_unit`](#fluent-community-video-upload-max-file-unit) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Http/Controllers/MediaController.php:60` |
 | [`fluent_community/wppayform__defaults`](#fluent-community-wppayform--defaults) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Integrations/Paymattic/Bootstrap.php:65` |
+
+<a id="fluent-community-can-install-addons"></a>
+
+## `fluent_community/can_install_addons`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Switches off add-on installing and activating from inside the community.
+
+Defaults to true and is cast to bool. It is an extra restriction rather than a grant: WordPress's own `install_plugins` and `activate_plugins` capabilities still apply, so returning true elevates nobody. It gates the install endpoint itself, not only the buttons, so a host that wants to lock this down should filter it rather than hide the UI.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$canInstall` | `bool` | Whether add-ons may be installed. True by default. |
+
+**Return:** `bool` — cast from whatever is returned.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Functions/Utility.php:487` | `true` (bool) |
+
+### Example
+
+```php
+add_filter('fluent_community/can_install_addons', function ($canInstall) {
+    return $canInstall;
+}, 10, 1);
+```
+
+**Related:** [`fluent_community/install_fluent_event_plugin`](/hooks/actions/integrations#fluent-community-install-fluent-event-plugin)
 
 <a id="fluent-community-fluent-player-fallback-timings"></a>
 

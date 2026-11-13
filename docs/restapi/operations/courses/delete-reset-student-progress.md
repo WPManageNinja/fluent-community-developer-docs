@@ -13,7 +13,7 @@ Clears one student completion records for the course while leaving them enrolled
 - **Path:** `/admin/courses/{course_id}/students/{student_id}/progress`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@resetStudentProgress`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:32`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:33`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires a course admin for this course, or a WordPress user with `manage_options`.

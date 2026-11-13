@@ -15,7 +15,7 @@ Pass `scope=view` to receive only the links that are currently enabled; without 
 - **Path:** `/feeds/links`
 - **Edition:** Core
 - **Controller:** `FeedsController@getLinks`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:74`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:76`
 - **Controller source:** `fluent-community/app/Http/Controllers/FeedsController.php`
 
 ::: tip Live sample

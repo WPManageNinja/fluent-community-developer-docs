@@ -15,7 +15,7 @@ The caller asks for the types it wants and gets one entry per type, each with it
 - **Path:** `/search`
 - **Edition:** Core
 - **Controller:** `SearchController@search`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:137`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:142`
 - **Controller source:** `fluent-community/app/Http/Controllers/SearchController.php`
 
 - The query text is trimmed, collapsed and cut to 100 characters, then reduced to at most 8 terms of two characters or more.

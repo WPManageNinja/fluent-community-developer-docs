@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getOembed",
         "summary": "GET Get OEmbed",
-        "description": "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:72`",
+        "description": "Fetches and returns link preview metadata for a URL so the composer can show a card before the post is saved.\n\nController: `FeedsController@getOembed`\nRoute source: `fluent-community/app/Http/Routes/api.php:74`",
         "tags": [
           "Feeds"
         ],
@@ -125,6 +125,24 @@
                 },
                 "example": {
                   "message": "No oembed data found"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Error response"
                 }
               }
             }

@@ -15,7 +15,7 @@ The panels come entirely from the `fluent_community/course/meta_fields` filter, 
 - **Path:** `/admin/courses/{course_id}/meta-settings`
 - **Edition:** Core
 - **Controller:** `CourseAdminController@getMetaSettings`
-- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:39`
+- **Route source:** `fluent-community/Modules/Course/Http/course_api.php:40`
 - **Controller source:** `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php`
 
 - Requires the course-creator permission and management access to this course.
