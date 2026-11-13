@@ -5607,6 +5607,14 @@ const OFF_PREFIX_HOOK_NAMES = new Set([
  * Keep the placeholder documented too — it explains the naming pattern.
  */
 const HOOK_NAME_RESOLUTIONS = {
+  // Both of these take a content type as their suffix. `document` is the only one
+  // either plugin listens on today, and it is the name an integrator searches for.
+  'fluent_community/feed/update_feed_data_type_{filterType}': [
+    'fluent_community/feed/update_feed_data_type_document',
+  ],
+  'fluent_community/feed/updating_content_type_old_{existingContentType}': [
+    'fluent_community/feed/updating_content_type_old_document',
+  ],
   // Pro fires `'fluent_community/certificate/' . $action` from one place, and the
   // module's own add_action() loop lists the five values. Three of them
   // (suspended, reinstated, revoked) exist nowhere as a literal, so without this
