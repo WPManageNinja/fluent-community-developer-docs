@@ -36,6 +36,7 @@ FluentCommunity is structured around WPFluent service providers, route files, co
 | `Course` | Courses, sections, lessons, and learner progress. |
 | `Gutenberg` | Frontend rendering inside WordPress blocks. |
 | `Integrations` | FluentCRM, FluentCart, Fluent Forms, and Fluent Player bridges. |
+| `Mcp` | An MCP server exposing community tools to AI agents, off until an administrator switches it on. |
 | `Migrations` | BuddyBoss/BuddyPress migration tooling. |
 | `PushNotification` | Notification fan-out for supported events. |
 | `Theming` | Theme wrappers and headless portal rendering. |

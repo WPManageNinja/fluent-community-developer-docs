@@ -578,6 +578,35 @@ const HOOK_PATH_RULES = [
   [/\/app\/Modules\/Certificates\//, 'certificates'],
 ]
 
+/**
+ * What each plugin module is for. The rows of the "Existing Modules" table used to be
+ * written out by hand in the template, so the table simply did not mention a module
+ * added after the table was last touched — core's `Mcp` was missing. The names now come
+ * from the directories on disk and only the wording lives here, so a new module shows
+ * up with or without a sentence, and a run reports the ones still waiting for one.
+ */
+const MODULE_PURPOSES = {
+  Auth: 'Invitation, signup, and login flows.',
+  Course: 'Courses, sections, lessons, and learner progress.',
+  Gutenberg: 'Frontend rendering inside WordPress blocks.',
+  Integrations: 'FluentCRM, FluentCart, Fluent Forms, and Fluent Player bridges.',
+  Mcp: 'An MCP server exposing community tools to AI agents, off until an administrator switches it on.',
+  Migrations: 'BuddyBoss/BuddyPress migration tooling.',
+  PushNotification: 'Notification fan-out for supported events.',
+  Theming: 'Theme wrappers and headless portal rendering.',
+}
+
+function listModuleDirectories(dir) {
+  if (!existsSync(dir)) {
+    return []
+  }
+
+  return readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort()
+}
+
 const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
 
 function ensureDir(path) {
@@ -6337,13 +6366,9 @@ FluentCommunity is structured around WPFluent service providers, route files, co
 
 | Module | Purpose |
 | --- | --- |
-| \`Auth\` | Invitation, signup, and login flows. |
-| \`Course\` | Courses, sections, lessons, and learner progress. |
-| \`Gutenberg\` | Frontend rendering inside WordPress blocks. |
-| \`Integrations\` | FluentCRM, FluentCart, Fluent Forms, and Fluent Player bridges. |
-| \`Migrations\` | BuddyBoss/BuddyPress migration tooling. |
-| \`PushNotification\` | Notification fan-out for supported events. |
-| \`Theming\` | Theme wrappers and headless portal rendering. |
+${listModuleDirectories(join(pluginRoot, 'Modules'))
+  .map((name) => `| \`${name}\` | ${MODULE_PURPOSES[name] || '_No description yet._'} |`)
+  .join('\n')}
 `,
   )
 }
@@ -7263,6 +7288,18 @@ function main() {
   // MODEL_GROUPS is a hand-kept whitelist, so a model added to the plugin after that
   // list was last touched would simply never get a page — silently, since every other
   // count still looks right. Name the strays instead of dropping them.
+  // The module table is built from the directories on disk, so a new module always
+  // appears — but with no sentence next to it until someone writes one. Say which.
+  const describedlessModules = listModuleDirectories(join(pluginRoot, 'Modules')).filter(
+    (name) => !MODULE_PURPOSES[name],
+  )
+  if (describedlessModules.length) {
+    console.log(
+      `\n${describedlessModules.length} plugin module(s) listed with no description — add them to MODULE_PURPOSES:`,
+    )
+    describedlessModules.forEach((name) => console.log(`  ${name}`))
+  }
+
   const undocumentedModels = Object.keys(models)
     .filter((name) => !MODEL_ORDER.includes(name))
     .sort()
