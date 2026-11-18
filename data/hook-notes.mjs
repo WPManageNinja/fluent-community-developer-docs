@@ -9682,4 +9682,253 @@ export const HOOK_NOTES = {
       "It is applied once for every `{{site.\u2026}}` code in a template, not once per template."
     ]
   },
+  "fluent_community/mcp/tools": {
+    "summary": "Registers MCP tools, so an add-on can expose its own abilities to AI agents.",
+    "details": "The array starts empty \u2014 core's own tools are not passed through it \u2014 and each entry is validated before it is kept. The name must be a string prefixed `fluent-community/`, the definition needs a label, a description, an array input schema and a callable, and `requires` must be one of `manager`, `moderator`, `site_admin` or `course_creator`. An entry that fails any of those is dropped without a warning, and the only visible sign is the tool missing from the count on the settings screen. Core's own names always win, so a tool cannot be replaced \u2014 though two add-ons can still overwrite each other, with the later one winning. A registered tool then goes through core's whole check chain on every call: the gate, the feature flag, the role, then parameter validation.",
+    "params": [
+      {
+        "name": "definitions",
+        "type": "array",
+        "desc": "Tool name => definition. Empty by default."
+      }
+    ],
+    "returns": "`array` \u2014 cast to an array, then validated entry by entry.",
+    "notes": [
+      "It is applied once per request, including on a plain read of the settings screen, so it fires even when the MCP server is switched off. A listener must not assume the server is live.",
+      "The callback receives the validated parameters and should answer with the standard envelope, or an error built by the module's own helper.",
+      "Pro registers nine tools this way; on a free site their names are filled by stubs that answer that Pro is required."
+    ],
+    "related": [
+      "fluent_community/mcp/single_result_copy"
+    ]
+  },
+  "fluent_community/mcp/single_result_copy": {
+    "summary": "Return false to keep the structured copy of a tool result alongside its text copy.",
+    "details": "By default a result that carries both a text copy and a structured copy has the structured one removed, so a client does not show the same answer twice. Return false for a client that reads the structured copy and ignores the text. It applies to FluentCommunity's own MCP endpoint only \u2014 the same tools served through FluentHub's shared endpoint are shaped by FluentHub.",
+    "params": [
+      {
+        "name": "once",
+        "type": "bool",
+        "desc": "Whether to send one copy of the result. True by default."
+      }
+    ],
+    "returns": "`bool` \u2014 tested for truthiness.",
+    "notes": [
+      "It is consulted once per tool call, but the first truthy answer in a request settles it \u2014 returning false later in a batch has no effect.",
+      "It never fires while MCP is switched off, or on a site without the Abilities API.",
+      "A result whose text copy is empty keeps its structured copy regardless."
+    ],
+    "related": [
+      "fluent_community/mcp/tools"
+    ]
+  },
+  "fluent_community/announcement_email/hold": {
+    "summary": "Return true to stop an announcement email run before any recipient is queried.",
+    "details": "It runs inside the background job that mails an announcement, after the post and its in-app notification have been confirmed and before the recipient query. Holding makes the job finish quietly: nothing is sent and, importantly, nothing is rescheduled. There is no automatic retry and no per-recipient record of who was already mailed, so a hold with no plan to resume drops the announcement for good.",
+    "params": [
+      {
+        "name": "hold",
+        "type": "bool",
+        "desc": "Whether to stop the run. False by default."
+      },
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The announcement post."
+      },
+      {
+        "name": "lastSendUserId",
+        "type": "int",
+        "desc": "The last member mailed in the previous batch, 0 on the first batch."
+      }
+    ],
+    "returns": "`bool` \u2014 tested for truthiness.",
+    "notes": [
+      "It is consulted once per batch of 100 recipients, not once per announcement, so a hold part-way through pauses a send already in progress.",
+      "To resume, re-schedule the job with the same post and the last member ID the filter was given. Resuming from zero mails everyone again.",
+      "Declare three arguments to see which batch is being held."
+    ],
+    "related": [
+      "fluent_community/announcement_email/recipients_query"
+    ]
+  },
+  "fluent_community/announcement_email/recipients_query": {
+    "summary": "Narrows who receives an announcement email.",
+    "details": "The query arrives already carrying the rules that make an announcement safe to send: the member belongs to the announcement's space and is active in it, their community profile is active, and they have not opted out of announcement emails unless they opted back in for this space. Those clauses are the access control. Narrow the query with further conditions and return it; a listener that clears the conditions, or hands back a fresh query, mails a private space's announcement to every WordPress user on the site \u2014 and each message carries sign-in links built for its recipient.",
+    "params": [
+      {
+        "name": "recipients",
+        "type": "\\FluentCommunity\\Framework\\Database\\Orm\\Builder",
+        "desc": "The recipient query."
+      },
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The announcement post."
+      }
+    ],
+    "returns": "`\\FluentCommunity\\Framework\\Database\\Orm\\Builder` \u2014 the query is used directly, so it must be returned.",
+    "notes": [
+      "The query object is shared, so conditions added to it apply even without returning it \u2014 but the return value replaces it, so a listener that forgets to return one causes a fatal error.",
+      "It is consulted once per batch of 100 recipients, so a condition that depends on the current time produces a different recipient set from batch to batch.",
+      "Batching walks members by ascending ID, so adding an order or a limit of your own breaks the paging and can skip or repeat people."
+    ],
+    "related": [
+      "fluent_community/announcement_email/hold"
+    ]
+  },
+  "fluent_community/auth/password_toggle_enabled": {
+    "summary": "Switches off the show-password button on the portal's own auth forms.",
+    "details": "Defaults to true and is cast to bool. The second argument says which form is being rendered: login, register, reset password or accept invitation. It affects only the server-rendered auth forms, not the portal app.",
+    "params": [
+      {
+        "name": "enabled",
+        "type": "bool",
+        "desc": "Whether the toggle is offered. True by default."
+      },
+      {
+        "name": "targetForm",
+        "type": "string",
+        "desc": "`login`, `register`, `reset_password` or `accept_invitation`."
+      }
+    ],
+    "returns": "`bool` \u2014 cast from whatever is returned.",
+    "notes": [
+      "It does not fire on every auth screen. When FluentAuth has been adopted and the screen is login or password reset without an invitation, the script is not loaded and the filter never runs \u2014 so returning true cannot add a toggle there.",
+      "Declare two arguments to tell the forms apart; `accept_invitation` is reachable even though it is not one of the three form values a request may ask for."
+    ]
+  },
+  "fluent_community/email_notification_settings": {
+    "summary": "Filters the community's email settings \u2014 the sender identity, the footer, the digest schedule and the notification switches.",
+    "details": "The array arrives merged over the defaults. If the filter changes the footer, its rendered HTML is rebuilt from the new value. The result is remembered for the rest of the request, so a filter registered after the first read is ignored.",
+    "params": [
+      {
+        "name": "settings",
+        "type": "array",
+        "desc": "The email settings."
+      }
+    ],
+    "returns": "`array` \u2014 used as returned, with no key whitelist.",
+    "notes": [
+      "Filtered values can end up stored. The settings screen reads the filtered array as its starting point, so an administrator pressing Save writes the host's filtered values into the database. A host that overrides the sender identity should also tell the screen to hide those fields, through the settings response filter, or the fields stay editable and the save overwrites them.",
+      "Adding a key here makes that key savable from the settings request; removing one makes it unsavable.",
+      "The free plugin forces the powered-by line back on before this filter runs, so a filter can still switch it off \u2014 the licence check is upstream of the hook."
+    ],
+    "related": [
+      "fluent_community/powered_by_text"
+    ]
+  },
+  "fluent_community/media_limit_exempt": {
+    "summary": "Exempts a member from the limit on how many images one post or comment may carry.",
+    "details": "The default exempts site administrators and community moderators. Returning anything truthy lifts the limit entirely for that member, and the per-post limit filter is then never consulted at all. The limit counts attached images on a post or a comment; images inside the message text do not count, and it is not a file-size or storage limit.",
+    "params": [
+      {
+        "name": "isExempt",
+        "type": "bool",
+        "desc": "Whether this member is exempt. True for admins and moderators."
+      },
+      {
+        "name": "user",
+        "type": "\\FluentCommunity\\App\\Models\\User|false",
+        "desc": "The current member, or false when nobody is logged in."
+      }
+    ],
+    "returns": "`bool` \u2014 tested for truthiness.",
+    "notes": [
+      "Check the member before exempting. The argument is false for a logged-out request, so a listener that returns true without looking lifts the limit for every request that reaches these paths.",
+      "Returning false removes the built-in exemption for administrators and moderators.",
+      "Over-limit images are dropped silently on the web paths, while the MCP tools refuse the call instead \u2014 the same decision produces two different outcomes."
+    ],
+    "related": [
+      "fluent_community/max_media_per_post"
+    ]
+  },
+  "fluent_community/oembed_cache_ttl": {
+    "summary": "Sets how long a successful link preview is cached, in seconds.",
+    "details": "Defaults to a day and is cast to int, so a value that casts to zero or less switches caching off. It is applied before the cache is read, so it fires on a hit as well as a miss, and it covers the oEmbed answer only \u2014 the fallback that scrapes page metadata caches separately under a WordPress core filter, and a failed lookup is never cached.",
+    "params": [
+      {
+        "name": "ttl",
+        "type": "int",
+        "desc": "Seconds to cache. One day by default."
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "desc": "The URL being previewed."
+      }
+    ],
+    "returns": "`int` \u2014 cast; zero or less disables the cache.",
+    "notes": [
+      "Caching only happens on a site with a persistent object cache, so on a default install this filter changes nothing and every preview is fetched again.",
+      "The cache key is the URL alone, so one member's preview is served to everyone. A long lifetime pins a third party's title, image and embed markup for that long, with no way for a member to clear it."
+    ],
+    "related": [
+      "fluent_community/remote_preview_pre_parse"
+    ]
+  },
+  "fluent_community/reaction_notification/enabled": {
+    "summary": "Decides whether a reaction creates a notification for the author.",
+    "details": "Defaults to true and is cast to bool, so a string like `no` is truthy and does not block. It fires once per reaction, for the one member who would be notified, after the reaction itself has been stored and counted \u2014 so blocking affects the notification only, never the reaction. It never fires when somebody reacts to their own content.",
+    "params": [
+      {
+        "name": "enabled",
+        "type": "bool",
+        "desc": "Whether to notify. True by default."
+      },
+      {
+        "name": "recipientId",
+        "type": "int",
+        "desc": "The author who would be notified."
+      },
+      {
+        "name": "react",
+        "type": "\\FluentCommunity\\App\\Models\\Reaction",
+        "desc": "The new reaction."
+      },
+      {
+        "name": "feed",
+        "type": "\\FluentCommunity\\App\\Models\\Feed",
+        "desc": "The post, or the post holding the comment."
+      },
+      {
+        "name": "comment",
+        "type": "\\FluentCommunity\\App\\Models\\Comment|null",
+        "desc": "The comment reacted to, or null for a reaction on a post."
+      }
+    ],
+    "returns": "`bool` \u2014 cast from whatever is returned.",
+    "notes": [
+      "Reactions have no email or push path, so this is not a way to mute reactions everywhere \u2014 it governs the in-app notification.",
+      "Reactions after the first update one grouped notification and mark it unread again. A blocked reaction leaves that group untouched, and a later allowed one overwrites it with a newer count, so the blocked reaction vanishes from the summary.",
+      "Declare five arguments, and do not type-hint the comment: it is null for a reaction on a post."
+    ]
+  },
+  "fluent_community/remote_preview_pre_parse": {
+    "summary": "Short-circuits a link preview lookup before any request leaves the site.",
+    "details": "Return null to let the lookup proceed. Anything else \u2014 including false, an empty string or an empty array \u2014 counts as handled, because the result is compared strictly against null. What a non-null value then means depends on which lookup asked: the main parser hands your value back to its caller as the preview, the iframe-thumbnail path reads only an `image` key out of it, and the block editor's preview proxy treats any non-null value as a refusal and answers 404. Supplying a preview array therefore also turns that proxy into a 404.",
+    "params": [
+      {
+        "name": "pre",
+        "type": "null|array|false|\\WP_Error",
+        "desc": "Null to continue. Anything else is treated as handled."
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "desc": "The URL being previewed."
+      }
+    ],
+    "returns": "`null|array|false|\\WP_Error` \u2014 compared strictly against null.",
+    "notes": [
+      "An array returned here skips the sanitiser the normal path applies, and on a post save it is stored as the post's preview and later rendered as HTML. Supply only a title, image, description and URL, or run your own markup through the parser's own sanitiser first \u2014 untrusted markup returned here becomes stored markup.",
+      "Saving one post can consult this several times: once for an attached media URL or iframe, once for the first link in the body, again from the thumbnail path, and once more for a player rebuild. Keep listeners free of side effects.",
+      "Blocking here stops both the oEmbed lookup and the metadata fallback, but not the hard-coded thumbnail rewrites for the well-known video providers.",
+      "A value returned here is never cached, so an expensive listener is consulted every time."
+    ],
+    "related": [
+      "fluent_community/oembed_cache_ttl",
+      "fluent_community/preview_metadata_pre_fetch"
+    ]
+  },
 }
