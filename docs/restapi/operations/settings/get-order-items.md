@@ -11,7 +11,7 @@ aside: false
 - **Path:** `/settings/reorder`
 - **Edition:** Core
 - **Controller:** `SettingController@getOrderItems`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:185`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:186`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 ::: info Inferred sample

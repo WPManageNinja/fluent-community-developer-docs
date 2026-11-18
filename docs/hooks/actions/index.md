@@ -10,7 +10,7 @@ This page is generated from `do_action()`, `do_action_ref_array()` and `do_actio
 ## Overview
 
 - **Unique actions:** 216
-- **Action call sites:** 334
+- **Action call sites:** 335
 - **Categories covered:** `feeds`, `comments`, `reactions`, `spaces`, `members`, `courses`, `notifications`, `media`, `auth`, `moderation`, `integrations`, `rendering`, `settings`, `certificates`, `miscellaneous`
 
 ## Categories
@@ -24,7 +24,7 @@ This page is generated from `do_action()`, `do_action_ref_array()` and `do_actio
 | [Members](/hooks/actions/members) | 20 | 29 |
 | [Courses](/hooks/actions/courses) | 40 | 58 |
 | [Notifications](/hooks/actions/notifications) | 4 | 6 |
-| [Media](/hooks/actions/media) | 11 | 23 |
+| [Media](/hooks/actions/media) | 11 | 24 |
 | [Auth](/hooks/actions/auth) | 5 | 5 |
 | [Moderation](/hooks/actions/moderation) | 8 | 12 |
 | [Integrations](/hooks/actions/integrations) | 9 | 10 |

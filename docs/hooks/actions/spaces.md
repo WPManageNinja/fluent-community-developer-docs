@@ -304,8 +304,8 @@ Course-type spaces never reach this hook — `Helper::addToSpace()` routes them 
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:558` | `$space` (Space)<br>`$user->ID` (int)<br>`'self'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:703` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:721` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Services/Helper.php:2405` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$exist` (mixed) |
-| Core | `fluent-community/app/Services/Helper.php:2429` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2478` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$exist` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2502` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed)<br>`$created` (mixed) |
 
 ### Example
 
@@ -443,7 +443,7 @@ Covers self-leaves, admin removals and CRM-driven removals alike; the `$by` argu
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/ContactAdvancedFilter.php:371` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/Integrations/FluentCRM/RemoveFromSpaceAction.php:87` | `$space` (Space)<br>`$user->ID` (int)<br>`'automation'` (string) |
 | Core | `fluent-community/app/Http/Controllers/SpaceController.php:758` | `$space` (Space)<br>`$userId` (int)<br>`'by_admin'` (string) |
-| Core | `fluent-community/app/Services/Helper.php:2494` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2567` | `$space` (Space)<br>`$userId` (int)<br>`$by` (mixed) |
 
 ### Example
 

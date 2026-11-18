@@ -1,6 +1,6 @@
 ---
-title: "Put Update"
-description: "Put Update for the FluentCommunity Spaces API."
+title: "Update Space Page"
+description: "Update Space Page for the FluentCommunity Spaces API."
 outline: false
 aside: false
 ---
@@ -17,4 +17,4 @@ aside: false
 No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
 :::
 
-<OAOperation operationId="putUpdate" specUrl="/openapi/public/spaces/put-update.json" />
+<OAOperation operationId="updateSpacePage" specUrl="/openapi/public/spaces/update-space-page.json" />

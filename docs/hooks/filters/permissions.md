@@ -5,15 +5,15 @@ description: "Permissions filter hooks for FluentCommunity."
 
 # Permissions Filters
 
-10 unique filter hooks currently map to this category, across 25 call sites.
+10 unique filter hooks currently map to this category, across 26 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/bulk_members/can_create_wp_users`](#fluent-community-bulk-members-can-create-wp-users) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/BulkMemberHelper.php:445` |
-| [`fluent_community/can_access_portal`](#fluent-community-can-access-portal) | Core | 8 | `fluent-community/app/Services/Helper.php:926` |
-| [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:44` |
+| [`fluent_community/can_access_portal`](#fluent-community-can-access-portal) | Core | 8 | `fluent-community/app/Services/Helper.php:999` |
+| [`fluent_community/can_view_comments_{feed}`](#fluent-community-can-view-comments-feed) | Core | 3 | `fluent-community/app/Http/Controllers/CommentsController.php:44` |
 | [`fluent_community/can_view_leaderboard_members`](#fluent-community-can-view-leaderboard-members) | Core | 3 | `fluent-community/app/Functions/Utility.php:409` |
 | [`fluent_community/can_view_members_page`](#fluent-community-can-view-members-page) | Core | 3 | `fluent-community/app/Functions/Utility.php:394` |
 | [`fluent_community/can_view_user_profile`](#fluent-community-can-view-user-profile) | Core | 3 | `fluent-community/app/Functions/Utility.php:424` |
@@ -67,14 +67,14 @@ Applied at every return point of `Helper::canAccessPortal()`, so a callback sees
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:926` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:934` | `false` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:938` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:942` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:950` | `false` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:956` | `false` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:960` | `true` (bool) |
-| Core | `fluent-community/app/Services/Helper.php:969` | `$result` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:999` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1007` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1011` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1015` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1023` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1029` | `false` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1033` | `true` (bool) |
+| Core | `fluent-community/app/Services/Helper.php:1042` | `$result` (mixed) |
 
 ### Example
 
@@ -92,7 +92,7 @@ add_filter('fluent_community/can_access_portal', function ($canAccess) {
 
 - **Type:** filter
 - **Edition:** Core
-- **Call sites:** 2
+- **Call sites:** 3
 - **When it fires:** Dynamic filter deciding whether the comment list for a post or lesson is returned at all.
 
 The placeholder is `$feed->type`, so in practice it is `fluent_community/can_view_comments_text` for ordinary posts and `fluent_community/can_view_comments_course_lesson` for lesson discussions — there is no un-suffixed variant to hook. Returning `false` makes the endpoint respond with an empty `comments` array rather than an error, so the client shows a post with no comments instead of a permission message. The post has already passed its own visibility check by then.
@@ -112,6 +112,7 @@ The placeholder is `$feed->type`, so in practice it is `fluent_community/can_vie
 | --- | --- | --- |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:44` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
 | Core | `fluent-community/app/Services/Search/Providers/PostSearchProvider.php:99` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
+| Core | `fluent-community/Modules/Mcp/Tools/PostTools.php:482` | `FeedsHelper::commentsEnabled($feed)` (Feed)<br>`$feed` (Feed) |
 
 ### Example
 

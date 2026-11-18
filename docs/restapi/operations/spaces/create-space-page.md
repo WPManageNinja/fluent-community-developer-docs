@@ -1,6 +1,6 @@
 ---
-title: "Post Store"
-description: "Post Store for the FluentCommunity Spaces API."
+title: "Create Space Page"
+description: "Create Space Page for the FluentCommunity Spaces API."
 outline: false
 aside: false
 ---
@@ -17,4 +17,4 @@ aside: false
 No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
 :::
 
-<OAOperation operationId="postStore" specUrl="/openapi/public/spaces/post-store.json" />
+<OAOperation operationId="createSpacePage" specUrl="/openapi/public/spaces/create-space-page.json" />

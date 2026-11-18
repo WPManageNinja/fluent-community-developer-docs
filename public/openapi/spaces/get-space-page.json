@@ -23,11 +23,11 @@
     }
   ],
   "paths": {
-    "/spaces/{spaceSlug}/pages": {
-      "post": {
-        "operationId": "postStore",
-        "summary": "POST Post Store",
-        "description": "Post Store for the FluentCommunity Spaces API.\n\nController: `SpacePageController@store`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:14`",
+    "/spaces/{spaceSlug}/pages/{pageSlug}": {
+      "get": {
+        "operationId": "getSpacePage",
+        "summary": "GET Get Space Page",
+        "description": "Get Space Page for the FluentCommunity Spaces API.\n\nController: `SpacePageController@show`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:20`",
         "tags": [
           "Spaces"
         ],

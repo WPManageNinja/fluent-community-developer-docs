@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/spaces/{spaceSlug}/pages/{pageId}": {
-      "delete": {
-        "operationId": "deleteDestroy",
-        "summary": "DELETE Delete Destroy",
-        "description": "Delete Destroy for the FluentCommunity Spaces API.\n\nController: `SpacePageController@destroy`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:32`",
+    "/settings/mcp/enable-hub": {
+      "post": {
+        "operationId": "enableMcpHub",
+        "summary": "POST Enable MCP Hub",
+        "description": "Turns on FluentHub's shared MCP server, or another Fluent plugin's MCP, through FluentHub.\n\nController: `McpSettingsController@enableHub`\nRoute source: `fluent-community/Modules/Mcp/Http/mcp_api.php:12`",
         "tags": [
-          "Spaces"
+          "Settings"
         ],
         "security": [
           {
@@ -37,29 +37,39 @@
           }
         ],
         "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "target": ""
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
-                    }
-                  },
-                  "additionalProperties": false
+                  "type": "string",
+                  "nullable": false
                 },
-                "example": {
-                  "message": "Success"
-                }
+                "example": "The FluentHub MCP server is on."
               }
             }
           },
-          "400": {
-            "description": "Request error.",
+          "403": {
+            "description": "Only a site administrator can turn this on.",
             "content": {
               "application/json": {
                 "schema": {
@@ -71,7 +81,25 @@
                   }
                 },
                 "example": {
-                  "message": "Request error."
+                  "message": "Only a site administrator can turn this on."
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "FluentHub is not active on this site.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "FluentHub is not active on this site."
                 }
               }
             }

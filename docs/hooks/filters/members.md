@@ -34,7 +34,7 @@ description: "Members filter hooks for FluentCommunity."
 | [`fluent_community/max_profile_headline_length`](#fluent-community-max-profile-headline-length) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:394` |
 | [`fluent_community/members_api_response`](#fluent-community-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:149` |
 | [`fluent_community/mention_members_api_response`](#fluent-community-mention-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:96` |
-| [`fluent_community/menu_groups_for_user`](#fluent-community-menu-groups-for-user) | Core | 1 | `fluent-community/app/Services/Helper.php:1452` |
+| [`fluent_community/menu_groups_for_user`](#fluent-community-menu-groups-for-user) | Core | 1 | `fluent-community/app/Services/Helper.php:1525` |
 | [`fluent_community/profile_all_memberships_api_response`](#fluent-community-profile-all-memberships-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:604` |
 | [`fluent_community/profile_link_providers_api_response`](#fluent-community-profile-link-providers-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:677` |
 | [`fluent_community/profile_spaces_api_response`](#fluent-community-profile-spaces-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:654` |
@@ -46,7 +46,7 @@ description: "Members filter hooks for FluentCommunity."
 | [`fluent_community/space_non_members_api_response`](#fluent-community-space-non-members-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:828` |
 | [`fluent_community/space_page/manager_row`](#fluent-community-space-page-manager-row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:228` |
 | [`fluent_community/track_activity_throttle_seconds`](#fluent-community-track-activity-throttle-seconds) | Core | 1 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:117` |
-| [`fluent_community/unread_badge_max_days`](#fluent-community-unread-badge-max-days) | Core | 1 | `fluent-community/app/Services/Helper.php:1503` |
+| [`fluent_community/unread_badge_max_days`](#fluent-community-unread-badge-max-days) | Core | 1 | `fluent-community/app/Services/Helper.php:1576` |
 | [`fluent_community/update_profile_data`](#fluent-community-update-profile-data) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:282` |
 | [`fluent_community/xprofile_public_fields`](#fluent-community-xprofile-public-fields) | Core | 1 | `fluent-community/app/Services/ProfileHelper.php:48` |
 | [`fluent_community/xprofile/badge`](#fluent-community-xprofile-badge) | Core | 1 | `fluent-community/app/Models/XProfile.php:237` |
@@ -922,7 +922,7 @@ Runs after per-viewer visibility has been applied: secret spaces the viewer does
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1452` | `$formattedGroups` (mixed)<br>`$user` (User) |
+| Core | `fluent-community/app/Services/Helper.php:1525` | `$formattedGroups` (mixed)<br>`$user` (User) |
 
 ### Example
 
@@ -1324,7 +1324,7 @@ add_filter('fluent_community/track_activity_throttle_seconds', function ($thrott
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1503` | `14` (int)<br>`$xprofile` (XProfile) |
+| Core | `fluent-community/app/Services/Helper.php:1576` | `14` (int)<br>`$xprofile` (XProfile) |
 
 ### Example
 

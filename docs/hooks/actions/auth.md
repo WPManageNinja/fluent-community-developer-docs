@@ -12,7 +12,7 @@ description: "Auth action hooks for FluentCommunity."
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/auth/before_auth_page_process`](#fluent-community-auth-before-auth-page-process) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:182` |
-| [`fluent_community/auth/show_invitation_for_user`](#fluent-community-auth-show-invitation-for-user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:339` |
+| [`fluent_community/auth/show_invitation_for_user`](#fluent-community-auth-show-invitation-for-user) | Core | 1 | `fluent-community/Modules/Auth/AuthModdule.php:341` |
 | [`fluent_community/invitation_created`](#fluent-community-invitation-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:201` |
 | [`fluent_community/invitation_link_created`](#fluent-community-invitation-link-created) | Core | 1 | `fluent-community/Modules/Auth/Classes/InvitationService.php:219` |
 | [`fluent_community/user/password_changed`](#fluent-community-user-password-changed) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:570` |
@@ -72,7 +72,7 @@ Reached only when the visitor is already logged in, the invitation is valid, and
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Auth/AuthModdule.php:339` | `$inviation` (mixed)<br>`$frameData` (mixed) |
+| Core | `fluent-community/Modules/Auth/AuthModdule.php:341` | `$inviation` (mixed)<br>`$frameData` (mixed) |
 
 ### Example
 

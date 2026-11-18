@@ -5,13 +5,14 @@ description: "Reactions filter hooks for FluentCommunity."
 
 # Reactions Filters
 
-4 unique filter hooks currently map to this category, across 5 call sites.
+5 unique filter hooks currently map to this category, across 6 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:503` |
+| [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:538` |
+| [`fluent_community/reaction_notification/enabled`](#fluent-community-reaction-notification-enabled) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:229` |
 | [`fluent_community/reactions_api_response`](#fluent-community-reactions-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/ReactionController.php:47` |
 | [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:270` |
 | [`fluent_community/survey_voters_api_response`](#fluent-community-survey-voters-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:303` |
@@ -41,7 +42,7 @@ The returned array is written straight into the post's `meta.survey_config` and 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:503` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:538` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
 
 ### Example
 
@@ -52,6 +53,43 @@ add_filter('fluent_community/feed/updated_survey_config', function ($surveyConfi
 ```
 
 **Related:** [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) · [`fluent_community/feed/cast_survey_vote`](/hooks/actions/reactions#fluent-community-feed-cast-survey-vote)
+
+<a id="fluent-community-reaction-notification-enabled"></a>
+
+## `fluent_community/reaction_notification/enabled`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Decides whether a reaction creates a notification for the author.
+
+Defaults to true and is cast to bool, so a string like `no` is truthy and does not block. It fires once per reaction, for the one member who would be notified, after the reaction itself has been stored and counted — so blocking affects the notification only, never the reaction. It never fires when somebody reacts to their own content.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$enabled` | `bool` | Whether to notify. True by default. |
+| 2 | `$recipientId` | `int` | The author who would be notified. |
+| 3 | `$react` | `\FluentCommunity\App\Models\Reaction` | The new reaction. |
+| 4 | `$feed` | `\FluentCommunity\App\Models\Feed` | The post, or the post holding the comment. |
+| 5 | `$comment` | `\FluentCommunity\App\Models\Comment&#124;null` | The comment reacted to, or null for a reaction on a post. |
+
+**Return:** `bool` — cast from whatever is returned.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:229` | `true` (bool)<br>`(int) $recipientId` (int)<br>`$react` (mixed)<br>`$feed` (Feed)<br>`$comment` (Comment) |
+
+### Example
+
+```php
+add_filter('fluent_community/reaction_notification/enabled', function ($enabled, $recipientId, $react, $feed, $comment) {
+    return $enabled;
+}, 10, 5);
+```
 
 <a id="fluent-community-reactions-api-response"></a>
 
