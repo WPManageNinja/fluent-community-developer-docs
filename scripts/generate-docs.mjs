@@ -680,6 +680,10 @@ function humanizeSlug(value) {
     .replace(/\bapi\b/gi, 'API')
     .replace(/\boembed\b/gi, 'OEmbed')
     .replace(/\bcrm\b/gi, 'CRM')
+    .replace(/\bmcp\b/gi, 'MCP')
+    .replace(/\bpwa\b/gi, 'PWA')
+    .replace(/\bseo\b/gi, 'SEO')
+    .replace(/\bcsv\b/gi, 'CSV')
     .replace(/\bwp\b/gi, 'WP')
     .replace(/\bid\b/gi, 'ID')
     .replace(/\bog\b/gi, 'OG')
@@ -1880,6 +1884,41 @@ function buildOperationAlias(route) {
     { module: 'settings', path: /^\/settings\/menu-settings$/, method: 'GET', slug: 'get-menu-settings' },
     { module: 'settings', path: /^\/settings\/menu-settings$/, method: 'POST', slug: 'save-menu-settings' },
     { module: 'settings', path: /^\/settings\/install_plugin$/, method: 'POST', slug: 'install-plugin' },
+    // The MCP controller's methods are named get/save/installAdapter/enableHub, which
+    // on their own produce pages called "Get" and "Save".
+    // Space Pages and the media gallery are REST resources whose controller methods are
+    // index/show/store/update/destroy, so without these their pages were titled "Index",
+    // "Show" and "Destroy". The guard at the end of a run now reports that shape.
+    { module: 'media', path: /^\/media-gallery\/\{spaceSlug\}$/, method: 'GET', slug: 'list-gallery-media' },
+    { module: 'spaces', path: /^\/spaces\/\{spaceSlug\}\/pages$/, method: 'GET', slug: 'list-space-pages' },
+    { module: 'spaces', path: /^\/spaces\/\{spaceSlug\}\/pages$/, method: 'POST', slug: 'create-space-page' },
+    {
+      module: 'spaces',
+      path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageSlug\}$/,
+      method: 'GET',
+      slug: 'get-space-page',
+    },
+    {
+      module: 'spaces',
+      path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageId\}$/,
+      method: 'PUT',
+      slug: 'update-space-page',
+    },
+    {
+      module: 'spaces',
+      path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageId\}$/,
+      method: 'DELETE',
+      slug: 'delete-space-page',
+    },
+    { module: 'settings', path: /^\/settings\/mcp$/, method: 'GET', slug: 'get-mcp-settings' },
+    { module: 'settings', path: /^\/settings\/mcp$/, method: 'POST', slug: 'save-mcp-settings' },
+    {
+      module: 'settings',
+      path: /^\/settings\/mcp\/install-adapter$/,
+      method: 'POST',
+      slug: 'install-mcp-adapter',
+    },
+    { module: 'settings', path: /^\/settings\/mcp\/enable-hub$/, method: 'POST', slug: 'enable-mcp-hub' },
     { module: 'settings', path: /^\/settings\/customization-settings$/, method: 'GET', slug: 'get-customization-settings' },
     { module: 'settings', path: /^\/settings\/customization-settings$/, method: 'POST', slug: 'save-customization-settings' },
     { module: 'settings', path: /^\/settings\/privacy-settings$/, method: 'GET', slug: 'get-privacy-settings' },
@@ -6851,6 +6890,39 @@ function buildRouteOverviewAndSpecs(routes) {
   // route group added to the plugin after this list was last touched gets no page and
   // no spec — silently, because the route is still parsed and still counted. Name the
   // strays instead of dropping them (this is how the Insights routes went missing).
+  // A slug is built from the controller method when no alias matches, so a method
+  // named get() or save() yields a page titled "Get" whose description reads "Get for
+  // the FluentCommunity Settings API." Nothing is missing, so no other count moves —
+  // the page is simply useless. Name them so an alias gets added.
+  const GENERIC_METHOD_SLUGS = [
+    'get',
+    'save',
+    'index',
+    'show',
+    'store',
+    'update',
+    'destroy',
+    'handle',
+    'process',
+    'create',
+    'delete',
+  ]
+  const genericSlugs = routes.filter((route) => {
+    const withoutVerb = route.slug.replace(
+      /^(get|post|put|patch|delete)-?/,
+      '',
+    )
+    return !withoutVerb || GENERIC_METHOD_SLUGS.includes(withoutVerb)
+  })
+  if (genericSlugs.length) {
+    console.log(
+      `\n${genericSlugs.length} operation(s) named only after a generic controller method — add an entry to buildOperationAlias() so the page has a real title:`,
+    )
+    genericSlugs.forEach((route) => {
+      console.log(`  ${route.module}/${route.slug}  (${route.httpMethod} ${route.routePath})`)
+    })
+  }
+
   const unknownModules = [...new Set(routes.map((route) => route.module))]
     .filter((module) => !MODULE_META[module])
     .sort()
