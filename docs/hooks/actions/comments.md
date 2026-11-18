@@ -12,24 +12,24 @@ description: "Comments action hooks for FluentCommunity."
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/before_comment_create`](#fluent-community-before-comment-create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:138` |
-| [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:577` |
+| [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:582` |
 | [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:151` |
 | [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:271` |
 | [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:270` |
 | [`fluent_community/comment_added_async`](#fluent-community-comment-added-async) | Core | 4 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:249` |
-| [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:592` |
-| [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:591` |
+| [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:597` |
+| [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:596` |
 | [`fluent_community/comment_updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:313` |
 | [`fluent_community/comment_updated_{feed}`](#fluent-community-comment-updated-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:314` |
 | [`fluent_community/comment/media_deleted`](#fluent-community-comment-media-deleted) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:307` |
 | [`fluent_community/comment/new_comment_{comment}`](#fluent-community-comment-new-comment-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:209` |
-| [`fluent_community/comment/react_added`](#fluent-community-comment-react-added) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:655` |
-| [`fluent_community/comment/react_removed`](#fluent-community-comment-react-removed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:668` |
+| [`fluent_community/comment/react_added`](#fluent-community-comment-react-added) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:660` |
+| [`fluent_community/comment/react_removed`](#fluent-community-comment-react-removed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:673` |
 | [`fluent_community/comment/updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:371` |
-| [`fluent_community/notification/comment/notifed_to_author`](#fluent-community-notification-comment-notifed-to-author) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:330` |
-| [`fluent_community/notification/comment/notifed_to_mentions`](#fluent-community-notification-comment-notifed-to-mentions) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:548` |
-| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent-community-notification-comment-notifed-to-other-users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:513` |
-| [`fluent_community/notification/comment/notifed_to_thread_commetenter`](#fluent-community-notification-comment-notifed-to-thread-commetenter) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:618` |
+| [`fluent_community/notification/comment/notifed_to_author`](#fluent-community-notification-comment-notifed-to-author) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:363` |
+| [`fluent_community/notification/comment/notifed_to_mentions`](#fluent-community-notification-comment-notifed-to-mentions) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:581` |
+| [`fluent_community/notification/comment/notifed_to_other_users`](#fluent-community-notification-comment-notifed-to-other-users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:546` |
+| [`fluent_community/notification/comment/notifed_to_thread_commetenter`](#fluent-community-notification-comment-notifed-to-thread-commetenter) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:651` |
 
 <a id="fluent-community-before-comment-create"></a>
 
@@ -85,7 +85,7 @@ The only place to capture a comment before it disappears — `fluent_community/c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:577` | `$comment` (Comment) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:582` | `$comment` (Comment) |
 
 ### Example
 
@@ -261,7 +261,7 @@ The first argument is the comment ID, not a model — the row is already gone by
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:592` | `$commentId` (int)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:597` | `$commentId` (int)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -294,7 +294,7 @@ Suffixed with `$feed->type`, and fired immediately before the generic hook, so b
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:591` | `$commentId` (int)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:596` | `$commentId` (int)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -393,7 +393,7 @@ A request to clean up rather than a report that a delete happened: core's `Clean
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/app/Http/Controllers/CommentsController.php:307` | `$otherMedias` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:580` | `$comment->media` (Comment) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:585` | `$comment->media` (Comment) |
 
 ### Example
 
@@ -460,7 +460,7 @@ Guarded by `wasRecentlyCreated`, so re-sending the same like is a no-op that doe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:655` | `$reaction` (mixed)<br>`$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:660` | `$reaction` (mixed)<br>`$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -493,7 +493,7 @@ Only fires when a row was actually deleted, so a stray un-like is silent. The re
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:668` | `$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:673` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -558,8 +558,8 @@ Takes a single associative array rather than positional arguments — the shape 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:330` | `array (6 keys: user_ids, notification, key, …)` (array) |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:356` | `array (6 keys: user_ids, notification, comment, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:363` | `array (6 keys: user_ids, notification, key, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:389` | `array (6 keys: user_ids, notification, comment, …)` (array) |
 
 ### Example
 
@@ -591,7 +591,7 @@ Runs for both top-level comments and replies, and always creates a fresh notific
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:548` | `array (5 keys: user_ids, notification, key, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:581` | `array (5 keys: user_ids, notification, key, …)` (array) |
 
 ### Example
 
@@ -623,7 +623,7 @@ The odd one out of the four. Its `notification` value is the raw attribute array
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:513` | `array (5 keys: user_ids, key, notification, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:546` | `array (5 keys: user_ids, key, notification, …)` (array) |
 
 ### Example
 
@@ -655,8 +655,8 @@ Note the misspelling in the hook name; it is part of the public surface and is d
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:618` | `array (5 keys: user_ids, notification, key, …)` (array) |
-| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:655` | `array (5 keys: user_ids, notification, key, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:651` | `array (5 keys: user_ids, notification, key, …)` (array) |
+| Core | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:688` | `array (5 keys: user_ids, notification, key, …)` (array) |
 
 ### Example
 

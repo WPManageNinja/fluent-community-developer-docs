@@ -5,15 +5,15 @@ description: "Media action hooks for FluentCommunity."
 
 # Media Actions
 
-11 unique action hooks currently map to this category, across 23 call sites.
+11 unique action hooks currently map to this category, across 24 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/check_rate_limit/giphy`](#fluent-community-check-rate-limit-giphy) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Giphy/Http/Controllers/GiphyController.php:48` |
-| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:959` |
-| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 3 | `fluent-community/app/Http/Controllers/FeedsController.php:1541` |
+| [`fluent_community/check_rate_limit/media_upload`](#fluent-community-check-rate-limit-media-upload) | Core | 2 | `fluent-community/app/Http/Controllers/FeedsController.php:1082` |
+| [`fluent_community/check_rate_limit/oembed`](#fluent-community-check-rate-limit-oembed) | Core | 3 | `fluent-community/app/Http/Controllers/FeedsController.php:1587` |
 | [`fluent_community/cloud_storage_upload_failed`](#fluent-community-cloud-storage-upload-failed) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/CloudStorage/CloudStorageModule.php:100` |
 | [`fluent_community/delete_remote_media_{this}`](#fluent-community-delete-remote-media-this) | Core | 1 | `fluent-community/app/Models/Media.php:154` |
 | [`fluent_community/document/local_file_access`](#fluent-community-document-local-file-access) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/DocumentLibrary/DocumentModule.php:305` |
@@ -61,7 +61,7 @@ add_action('fluent_community/check_rate_limit/giphy', function ($user) {
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Runs before an upload is validated so rate limiters can abort the request.
 
 Core attaches `RateLimitHandler::maybeLimitMediaUpload()`, which throws once the member has created more media rows than `fluent_community/rate_limit/media_upload_per_minute` allows in the last 60 seconds. It runs after the PHP upload-size sanity check but before MIME validation, so nothing about the file is available yet. Site administrators are exempted inside the callback.
@@ -76,7 +76,8 @@ Core attaches `RateLimitHandler::maybeLimitMediaUpload()`, which throws once the
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:959` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1082` | `$user` (User) |
+| Core | `fluent-community/Modules/Mcp/Support/PostImages.php:194` | `Helper::getCurrentUser()` (mixed) |
 
 ### Example
 
@@ -99,8 +100,8 @@ add_action('fluent_community/check_rate_limit/media_upload', function ($user) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1541` | `$currentUser` (User) |
-| Core | `fluent-community/app/Services/FeedsHelper.php:860` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1587` | `$currentUser` (User) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:896` | `$user` (User) |
 | Core | `fluent-community/Modules/FeaturesHandler.php:104` | `$user` (User) |
 
 ### Example
@@ -316,7 +317,7 @@ This is an action rather than a filter, and the work is done by core's `CleanupH
 | Core | `fluent-community/app/Http/Controllers/ProfileController.php:239` | `$deletedMedias` (mixed)<br>`array (2 keys: user_id, object_sources)` (array) |
 | Core | `fluent-community/app/Models/BaseSpace.php:395` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
 | Core | `fluent-community/app/Models/SpaceGroup.php:131` | `$deletePhotos` (mixed)<br>`[ 'sub_object_id' => $this->id, ]` (array) |
-| Core | `fluent-community/app/Services/Helper.php:824` | `[ $url ]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:897` | `[ $url ]` (array)<br>`[ 'sub_object_id' => $subObjectId, ]` (array) |
 | Core | `fluent-community/app/Services/LockscreenService.php:207` | `$deleteMediaUrls` (mixed)<br>`[ 'sub_object_id' => $spaceId, ]` (array) |
 
 ### Example

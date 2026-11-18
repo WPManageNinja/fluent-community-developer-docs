@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getFluentEventSettings",
         "summary": "GET Get Fluent Event Settings",
-        "description": "Returns the FluentEvent integration settings, and where to manage events when the plugin is active.\n\nController: `SettingController@getFluentEventSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:202`",
+        "description": "Returns the FluentEvent integration settings, and where to manage events when the plugin is active.\n\nController: `SettingController@getFluentEventSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:203`",
         "tags": [
           "Settings"
         ],

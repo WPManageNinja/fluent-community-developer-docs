@@ -16,7 +16,7 @@ description: "Insights filter hooks for FluentCommunity."
 | [`fluent_community/insights/cards`](#fluent-community-insights-cards) | Core | 1 | `fluent-community/app/Services/Insights/CardRegistry.php:86` |
 | [`fluent_community/insights/contributor_weights`](#fluent-community-insights-contributor-weights) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/Insights/Metrics/MemberMetrics.php:200` |
 | [`fluent_community/insights/excluded_user_ids`](#fluent-community-insights-excluded-user-ids) | Core | 1 | `fluent-community/app/Services/Insights/Scope.php:62` |
-| [`fluent_community/insights/level`](#fluent-community-insights-level) | Core | 1 | `fluent-community/app/Functions/Utility.php:1433` |
+| [`fluent_community/insights/level`](#fluent-community-insights-level) | Core | 1 | `fluent-community/app/Functions/Utility.php:1449` |
 | [`fluent_community/insights/pages`](#fluent-community-insights-pages) | Core | 1 | `fluent-community/app/Services/Insights/CardRegistry.php:43` |
 | [`fluent_community/insights/retention_days`](#fluent-community-insights-retention-days) | Core | 1 | `fluent-community/app/Services/Insights/Tracking/ActivityTracker.php:170` |
 | [`fluent_community/insights/track_visit`](#fluent-community-insights-track-visit) | Core | 1 | `fluent-community/app/Services/Insights/Tracking/ActivityTracker.php:62` |
@@ -223,7 +223,7 @@ Core returns `basic`, which registers the Overview page and, when the course mod
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1433` | `'basic'` (string) |
+| Core | `fluent-community/app/Functions/Utility.php:1449` | `'basic'` (string) |
 
 ### Example
 

@@ -5,7 +5,7 @@ description: "Notifications filter hooks for FluentCommunity."
 
 # Notifications Filters
 
-19 unique filter hooks currently map to this category, across 21 call sites.
+20 unique filter hooks currently map to this category, across 22 call sites.
 
 ## Hook Inventory
 
@@ -13,14 +13,15 @@ description: "Notifications filter hooks for FluentCommunity."
 | --- | --- | --- | --- |
 | [`fluent_community/aggregated_notification_prefs`](#fluent-community-aggregated-notification-prefs) | Core | 1 | `fluent-community/app/Services/NotificationPref.php:507` |
 | [`fluent_community/comment_notification/email_sections`](#fluent-community-comment-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:379` |
-| [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:119` |
-| [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:149` |
-| [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:106` |
-| [`fluent_community/enable_notification_toast`](#fluent-community-enable-notification-toast) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1307` |
-| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:503` |
+| [`fluent_community/digest_email_body`](#fluent-community-digest-email-body) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:118` |
+| [`fluent_community/digest_email_subject`](#fluent-community-digest-email-subject) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:162` |
+| [`fluent_community/digest_notification/email_sections`](#fluent-community-digest-notification-email-sections) | Core | 1 | `fluent-community/app/Services/Libs/DailyDigest.php:105` |
+| [`fluent_community/email_notification_settings`](#fluent-community-email-notification-settings) | Core | 1 | `fluent-community/app/Functions/Utility.php:640` |
+| [`fluent_community/enable_notification_toast`](#fluent-community-enable-notification-toast) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1338` |
+| [`fluent_community/new_feed_everybody_notification/email_sections`](#fluent-community-new-feed-everybody-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:528` |
 | [`fluent_community/new_feed_notification/email_sections`](#fluent-community-new-feed-notification-email-sections) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:209` |
-| [`fluent_community/notification_toast_items`](#fluent-community-notification-toast-items) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1384` |
-| [`fluent_community/notification_toast_limit`](#fluent-community-notification-toast-limit) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1311` |
+| [`fluent_community/notification_toast_items`](#fluent-community-notification-toast-items) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1415` |
+| [`fluent_community/notification_toast_limit`](#fluent-community-notification-toast-limit) | Core | 1 | `fluent-community/app/Http/Controllers/FeedsController.php:1342` |
 | [`fluent_community/notifications_api_response`](#fluent-community-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:38` |
 | [`fluent_community/profile_notification_pref_api_response`](#fluent-community-profile-notification-pref-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:973` |
 | [`fluent_community/smartcode_fallback`](#fluent-community-smartcode-fallback) | Core | 3 | `fluent-community/app/Services/SmartCodeParser.php:122` |
@@ -29,7 +30,7 @@ description: "Notifications filter hooks for FluentCommunity."
 | [`fluent_community/smartcode/user_fields`](#fluent-community-smartcode-user-fields) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:312` |
 | [`fluent_community/smartcode/user_meta_keys`](#fluent-community-smartcode-user-meta-keys) | Core | 1 | `fluent-community/app/Services/SmartCodeParser.php:351` |
 | [`fluent_community/unread_notifications_api_response`](#fluent-community-unread-notifications-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/NotificationsController.php:61` |
-| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1472` |
+| [`fluent_community/verified_email_senders`](#fluent-community-verified-email-senders) | Core | 1 | `fluent-community/app/Functions/Utility.php:1488` |
 
 <a id="fluent-community-aggregated-notification-prefs"></a>
 
@@ -114,7 +115,7 @@ The last hook before the digest is handed to the mailer. Logo, footer, the signe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:119` | `$emailBody` (mixed)<br>`$this->user` (User) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:118` | `$emailBody` (mixed)<br>`$this->user` (User) |
 
 ### Example
 
@@ -151,7 +152,7 @@ The default greets the member by name, names the site, and appends a bell glyph 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:149` | `$emailSubject` (mixed)<br>`$this->user` (User)<br>`$notificationCount` (mixed) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:162` | `$emailSubject` (mixed)<br>`$this->user` (User)<br>`$notificationCount` (mixed) |
 
 ### Example
 
@@ -187,7 +188,7 @@ The only one of the four section filters with a two-argument signature — there
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Libs/DailyDigest.php:106` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$this->user` (User) |
+| Core | `fluent-community/app/Services/Libs/DailyDigest.php:105` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$this->user` (User) |
 
 ### Example
 
@@ -198,6 +199,41 @@ add_filter('fluent_community/digest_notification/email_sections', function ($sec
 ```
 
 **Related:** [`fluent_community/digest_email_body`](#fluent-community-digest-email-body)
+
+<a id="fluent-community-email-notification-settings"></a>
+
+## `fluent_community/email_notification_settings`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Filters the community's email settings — the sender identity, the footer, the digest schedule and the notification switches.
+
+The array arrives merged over the defaults. If the filter changes the footer, its rendered HTML is rebuilt from the new value. The result is remembered for the rest of the request, so a filter registered after the first read is ignored.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$settings` | `array` | The email settings. |
+
+**Return:** `array` — used as returned, with no key whitelist.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Functions/Utility.php:640` | `$settings` (mixed) |
+
+### Example
+
+```php
+add_filter('fluent_community/email_notification_settings', function ($settings) {
+    return $settings;
+}, 10, 1);
+```
+
+**Related:** [`fluent_community/powered_by_text`](/hooks/filters/miscellaneous#fluent-community-powered-by-text)
 
 <a id="fluent-community-enable-notification-toast"></a>
 
@@ -211,7 +247,7 @@ add_filter('fluent_community/digest_notification/email_sections', function ($sec
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1307` | `true` (bool)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1338` | `true` (bool)<br>`$userId` (int) |
 
 ### Example
 
@@ -246,7 +282,7 @@ A separate call site from the space notification with an identical signature, be
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:503` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:528` | `[ 'before_content' => '', 'after_content' => '', ]` (array)<br>`$user` (User)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -307,7 +343,7 @@ add_filter('fluent_community/new_feed_notification/email_sections', function ($s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1384` | `$items` (mixed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1415` | `$items` (mixed)<br>`$userId` (int) |
 
 ### Example
 
@@ -329,7 +365,7 @@ add_filter('fluent_community/notification_toast_items', function ($items, $userI
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1311` | `3` (int)<br>`$userId` (int) |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1342` | `3` (int)<br>`$userId` (int) |
 
 ### Example
 
@@ -621,7 +657,7 @@ Populated from FluentSMTP's configured sender mappings, and empty when FluentSMT
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1472` | `$verifiedSenders` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1488` | `$verifiedSenders` (mixed) |
 
 ### Example
 

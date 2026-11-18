@@ -24,10 +24,10 @@
   ],
   "paths": {
     "/spaces/{spaceSlug}/pages/{pageId}": {
-      "delete": {
-        "operationId": "deleteDestroy",
-        "summary": "DELETE Delete Destroy",
-        "description": "Delete Destroy for the FluentCommunity Spaces API.\n\nController: `SpacePageController@destroy`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:32`",
+      "put": {
+        "operationId": "updateSpacePage",
+        "summary": "PUT Update Space Page",
+        "description": "Update Space Page for the FluentCommunity Spaces API.\n\nController: `SpacePageController@update`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:28`",
         "tags": [
           "Spaces"
         ],

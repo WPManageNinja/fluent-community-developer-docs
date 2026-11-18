@@ -23,13 +23,13 @@
     }
   ],
   "paths": {
-    "/spaces/{spaceSlug}/pages": {
+    "/media-gallery/{spaceSlug}": {
       "get": {
-        "operationId": "getIndex",
-        "summary": "GET Get Index",
-        "description": "Get Index for the FluentCommunity Spaces API.\n\nController: `SpacePageController@index`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:11`",
+        "operationId": "listGalleryMedia",
+        "summary": "GET List Gallery Media",
+        "description": "Returns a cursor-paginated page of the photos, videos or audio shared in one space, each item carrying the post and author it came from.\n\nController: `MediaGalleryController@index`\nRoute source: `fluent-community-pro/app/Modules/MediaGallery/MediaGalleryModule.php:18`",
         "tags": [
-          "Spaces"
+          "Media"
         ],
         "security": [
           {
@@ -45,31 +45,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "cursor": {
+                    "message": {
                       "type": "string",
-                      "nullable": true
-                    },
-                    "has_audio": {
-                      "type": "boolean"
-                    },
-                    "has_more": {
-                      "type": "boolean"
-                    },
-                    "items": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "cursor": null,
-                  "has_audio": false,
-                  "has_more": false,
-                  "items": []
+                  "message": "Success"
                 }
               }
             }

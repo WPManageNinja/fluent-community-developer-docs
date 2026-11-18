@@ -12,16 +12,16 @@ description: "Spaces filter hooks for FluentCommunity."
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/all_spaces_api_response`](#fluent-community-all-spaces-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:257` |
-| [`fluent_community/default_main_menu_items`](#fluent-community-default-main-menu-items) | Core | 1 | `fluent-community/app/Services/Helper.php:1791` |
+| [`fluent_community/default_main_menu_items`](#fluent-community-default-main-menu-items) | Core | 1 | `fluent-community/app/Services/Helper.php:1864` |
 | [`fluent_community/get_lockscreen_settings`](#fluent-community-get-lockscreen-settings) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:1124` |
 | [`fluent_community/lockscreen_fields`](#fluent-community-lockscreen-fields) | Core | 1 | `fluent-community/app/Services/LockscreenService.php:80` |
 | [`fluent_community/lockscreen_formatted_field`](#fluent-community-lockscreen-formatted-field) | Core | 1 | `fluent-community/app/Services/LockscreenService.php:130` |
-| [`fluent_community/main_menu_items`](#fluent-community-main-menu-items) | Core | 2 | `fluent-community/app/Functions/Utility.php:1447` |
-| [`fluent_community/menu_groups`](#fluent-community-menu-groups) | Core | 1 | `fluent-community/app/Services/Helper.php:1952` |
+| [`fluent_community/main_menu_items`](#fluent-community-main-menu-items) | Core | 2 | `fluent-community/app/Functions/Utility.php:1463` |
+| [`fluent_community/menu_groups`](#fluent-community-menu-groups) | Core | 1 | `fluent-community/app/Services/Helper.php:2025` |
 | [`fluent_community/menu_items_api_response`](#fluent-community-menu-items-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/OptionController.php:31` |
 | [`fluent_community/menu_settings_api_response`](#fluent-community-menu-settings-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:128` |
-| [`fluent_community/mobile_menu`](#fluent-community-mobile-menu) | Core | 1 | `fluent-community/app/Services/Helper.php:2266` |
-| [`fluent_community/settings_menu`](#fluent-community-settings-menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1442` |
+| [`fluent_community/mobile_menu`](#fluent-community-mobile-menu) | Core | 1 | `fluent-community/app/Services/Helper.php:2339` |
+| [`fluent_community/settings_menu`](#fluent-community-settings-menu) | Core | 1 | `fluent-community/app/Functions/Utility.php:1458` |
 | [`fluent_community/space_api_response`](#fluent-community-space-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:285` |
 | [`fluent_community/space_groups_api_response`](#fluent-community-space-groups-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SpaceController.php:957` |
 | [`fluent_community/space_page/access_message_html`](#fluent-community-space-page-access-message-html) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SpacePages/Services/SpacePageHelper.php:281` |
@@ -96,7 +96,7 @@ Keyed by slug, each item carrying its title, whether it is a system item, whethe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1791` | `$defaultMainMenuItems` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:1864` | `$defaultMainMenuItems` (mixed) |
 
 ### Example
 
@@ -241,7 +241,7 @@ Applied at two call sites that both start from the stored `mainMenuItems` group:
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1447` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1463` | `$primaryMenuItems` (mixed)<br>`$scope` (mixed) |
 | Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:1306` | `$items` (mixed)<br>`$scope` (mixed) |
 
 ### Example
@@ -277,7 +277,7 @@ Applied only when the menu is built with the `view` context, so the admin menu-s
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:1952` | `$menuGroups` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2025` | `$menuGroups` (mixed) |
 
 ### Example
 
@@ -386,7 +386,7 @@ Built independently of the sidebar: it looks up only `all_feeds` and `spaces` fr
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2266` | `$mobileMenuItems` (mixed)<br>`$xprofile` (XProfile)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:2339` | `$mobileMenuItems` (mixed)<br>`$xprofile` (XProfile)<br>`$context` (mixed) |
 
 ### Example
 
@@ -422,7 +422,7 @@ Starts as an empty array and nothing in core adds to it, so the section is absen
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:1442` | `[]` (array)<br>`$userModel` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:1458` | `[]` (array)<br>`$userModel` (mixed) |
 
 ### Example
 

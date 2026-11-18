@@ -5,33 +5,38 @@ description: "Miscellaneous filter hooks for FluentCommunity."
 
 # Miscellaneous Filters
 
-21 unique filter hooks currently map to this category, across 23 call sites.
+26 unique filter hooks currently map to this category, across 30 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community_pro/module_entries`](#fluent-community-pro-module-entries) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModuleAssetsHandler.php:164` |
-| [`fluent_community/action_query_key`](#fluent-community-action-query-key) | Core | 1 | `fluent-community/app/Services/Helper.php:400` |
+| [`fluent_community/action_query_key`](#fluent-community-action-query-key) | Core | 1 | `fluent-community/app/Services/Helper.php:415` |
 | [`fluent_community/add_sitemap_provider`](#fluent-community-add-sitemap-provider) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/SeoSiteMapHandler.php:22` |
+| [`fluent_community/announcement_email/hold`](#fluent-community-announcement-email-hold) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:450` |
+| [`fluent_community/announcement_email/recipients_query`](#fluent-community-announcement-email-recipients-query) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:470` |
 | [`fluent_community/can_use_custom_js`](#fluent-community-can-use-custom-js) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Services/ProHelper.php:162` |
 | [`fluent_community/cloud_storage_strict`](#fluent-community-cloud-storage-strict) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/CloudStorage/StorageHelper.php:66` |
-| [`fluent_community/cloudflare_ip_ranges`](#fluent-community-cloudflare-ip-ranges) | Core | 1 | `fluent-community/app/Services/Helper.php:2726` |
+| [`fluent_community/cloudflare_ip_ranges`](#fluent-community-cloudflare-ip-ranges) | Core | 1 | `fluent-community/app/Services/Helper.php:2799` |
 | [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:403` |
 | [`fluent_community/getting_started_steps`](#fluent-community-getting-started-steps) | Core | 1 | `fluent-community/app/Services/GettingStartedService.php:107` |
 | [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:113` |
 | [`fluent_community/lock_timeout`](#fluent-community-lock-timeout) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/NamedLock.php:33` |
-| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:795` |
+| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:811` |
 | [`fluent_community/max_per_page`](#fluent-community-max-per-page) | Core | 1 | `fluent-community/app/Services/Helper.php:311` |
+| [`fluent_community/mcp/single_result_copy`](#fluent-community-mcp-single-result-copy) | Core | 1 | `fluent-community/Modules/Mcp/McpModule.php:172` |
+| [`fluent_community/mcp/tools`](#fluent-community-mcp-tools) | Core | 1 | `fluent-community/Modules/Mcp/AbilitiesRegistrar.php:393` |
 | [`fluent_community/module_import_map`](#fluent-community-module-import-map) | Core | 1 | `fluent-community/app/Vite.php:167` |
 | [`fluent_community/module_scripts`](#fluent-community-module-scripts) | Core | 1 | `fluent-community/app/Vite.php:200` |
 | [`fluent_community/powered_by_text`](#fluent-community-powered-by-text) | Core | 1 | `fluent-community/app/Functions/Utility.php:521` |
 | [`fluent_community/powered_by_url`](#fluent-community-powered-by-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:548` |
+| [`fluent_community/remote_preview_pre_parse`](#fluent-community-remote-preview-pre-parse) | Core | 3 | `fluent-community/app/Services/RemoteUrlParser.php:26` |
 | [`fluent_community/search/api_response`](#fluent-community-search-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SearchController.php:33` |
 | [`fluent_community/search/providers`](#fluent-community-search-providers) | Core | 1 | `fluent-community/app/Services/Search/SearchService.php:25` |
 | [`fluent_community/seo/pre_render`](#fluent-community-seo-pre-render) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/AbstractPortalPreRenderer.php:74` |
-| [`fluent_community/trusted_proxies`](#fluent-community-trusted-proxies) | Core | 1 | `fluent-community/app/Services/Helper.php:2671` |
-| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:3231` |
+| [`fluent_community/trusted_proxies`](#fluent-community-trusted-proxies) | Core | 1 | `fluent-community/app/Services/Helper.php:2744` |
+| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:3304` |
 
 <a id="fluent-community-pro-module-entries"></a>
 
@@ -78,7 +83,7 @@ The default is `fcom_action`. The returned key is validated rather than cast: it
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:400` | `self::LEGACY_ACTION_KEY` (mixed) |
+| Core | `fluent-community/app/Services/Helper.php:415` | `self::LEGACY_ACTION_KEY` (mixed) |
 
 ### Example
 
@@ -111,6 +116,79 @@ add_filter('fluent_community/add_sitemap_provider', function ($enableSitemap) {
     return $enableSitemap;
 }, 10, 1);
 ```
+
+<a id="fluent-community-announcement-email-hold"></a>
+
+## `fluent_community/announcement_email/hold`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Return true to stop an announcement email run before any recipient is queried.
+
+It runs inside the background job that mails an announcement, after the post and its in-app notification have been confirmed and before the recipient query. Holding makes the job finish quietly: nothing is sent and, importantly, nothing is rescheduled. There is no automatic retry and no per-recipient record of who was already mailed, so a hold with no plan to resume drops the announcement for good.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$hold` | `bool` | Whether to stop the run. False by default. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The announcement post. |
+| 3 | `$lastSendUserId` | `int` | The last member mailed in the previous batch, 0 on the first batch. |
+
+**Return:** `bool` — tested for truthiness.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:450` | `false` (bool)<br>`$feed` (Feed)<br>`(int) $lastSendUserId` (int) |
+
+### Example
+
+```php
+add_filter('fluent_community/announcement_email/hold', function ($hold, $feed, $lastSendUserId) {
+    return $hold;
+}, 10, 3);
+```
+
+**Related:** [`fluent_community/announcement_email/recipients_query`](#fluent-community-announcement-email-recipients-query)
+
+<a id="fluent-community-announcement-email-recipients-query"></a>
+
+## `fluent_community/announcement_email/recipients_query`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Narrows who receives an announcement email.
+
+The query arrives already carrying the rules that make an announcement safe to send: the member belongs to the announcement's space and is active in it, their community profile is active, and they have not opted out of announcement emails unless they opted back in for this space. Those clauses are the access control. Narrow the query with further conditions and return it; a listener that clears the conditions, or hands back a fresh query, mails a private space's announcement to every WordPress user on the site — and each message carries sign-in links built for its recipient.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$recipients` | `\FluentCommunity\Framework\Database\Orm\Builder` | The recipient query. |
+| 2 | `$feed` | `\FluentCommunity\App\Models\Feed` | The announcement post. |
+
+**Return:** `\FluentCommunity\Framework\Database\Orm\Builder` — the query is used directly, so it must be returned.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:470` | `$recipients` (mixed)<br>`$feed` (Feed) |
+
+### Example
+
+```php
+add_filter('fluent_community/announcement_email/recipients_query', function ($recipients, $feed) {
+    return $recipients;
+}, 10, 2);
+```
+
+**Related:** [`fluent_community/announcement_email/hold`](#fluent-community-announcement-email-hold)
 
 <a id="fluent-community-can-use-custom-js"></a>
 
@@ -205,7 +283,7 @@ This decides whether a client-supplied header is believed over the real connecti
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2726` | `array (22 items)` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2799` | `array (22 items)` (array) |
 
 ### Example
 
@@ -362,7 +440,7 @@ The default is derived from PHP's `max_execution_time`: unlimited or unreadable 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:795` | `$maxRunTime` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:811` | `$maxRunTime` (mixed) |
 
 ### Example
 
@@ -406,6 +484,76 @@ add_filter('fluent_community/max_per_page', function ($maxPerPage) {
     return $maxPerPage;
 }, 10, 1);
 ```
+
+<a id="fluent-community-mcp-single-result-copy"></a>
+
+## `fluent_community/mcp/single_result_copy`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Return false to keep the structured copy of a tool result alongside its text copy.
+
+By default a result that carries both a text copy and a structured copy has the structured one removed, so a client does not show the same answer twice. Return false for a client that reads the structured copy and ignores the text. It applies to FluentCommunity's own MCP endpoint only — the same tools served through FluentHub's shared endpoint are shaped by FluentHub.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$once` | `bool` | Whether to send one copy of the result. True by default. |
+
+**Return:** `bool` — tested for truthiness.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Mcp/McpModule.php:172` | `true` (bool) |
+
+### Example
+
+```php
+add_filter('fluent_community/mcp/single_result_copy', function ($once) {
+    return $once;
+}, 10, 1);
+```
+
+**Related:** [`fluent_community/mcp/tools`](#fluent-community-mcp-tools)
+
+<a id="fluent-community-mcp-tools"></a>
+
+## `fluent_community/mcp/tools`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Registers MCP tools, so an add-on can expose its own abilities to AI agents.
+
+The array starts empty — core's own tools are not passed through it — and each entry is validated before it is kept. The name must be a string prefixed `fluent-community/`, the definition needs a label, a description, an array input schema and a callable, and `requires` must be one of `manager`, `moderator`, `site_admin` or `course_creator`. An entry that fails any of those is dropped without a warning, and the only visible sign is the tool missing from the count on the settings screen. Core's own names always win, so a tool cannot be replaced — though two add-ons can still overwrite each other, with the later one winning. A registered tool then goes through core's whole check chain on every call: the gate, the feature flag, the role, then parameter validation.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$definitions` | `array` | Tool name => definition. Empty by default. |
+
+**Return:** `array` — cast to an array, then validated entry by entry.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/Modules/Mcp/AbilitiesRegistrar.php:393` | `[]` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/mcp/tools', function ($definitions) {
+    return $definitions;
+}, 10, 1);
+```
+
+**Related:** [`fluent_community/mcp/single_result_copy`](#fluent-community-mcp-single-result-copy)
 
 <a id="fluent-community-module-import-map"></a>
 
@@ -539,6 +687,44 @@ add_filter('fluent_community/powered_by_url', function ($url, $params) {
 
 **Related:** [`fluent_community/powered_by_text`](#fluent-community-powered-by-text)
 
+<a id="fluent-community-remote-preview-pre-parse"></a>
+
+## `fluent_community/remote_preview_pre_parse`
+
+- **Type:** filter
+- **Edition:** Core
+- **Call sites:** 3
+- **When it fires:** Short-circuits a link preview lookup before any request leaves the site.
+
+Return null to let the lookup proceed. Anything else — including false, an empty string or an empty array — counts as handled, because the result is compared strictly against null. What a non-null value then means depends on which lookup asked: the main parser hands your value back to its caller as the preview, the iframe-thumbnail path reads only an `image` key out of it, and the block editor's preview proxy treats any non-null value as a refusal and answers 404. Supplying a preview array therefore also turns that proxy into a 404.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$pre` | `null&#124;array&#124;false&#124;\WP_Error` | Null to continue. Anything else is treated as handled. |
+| 2 | `$url` | `string` | The URL being previewed. |
+
+**Return:** `null|array|false|\WP_Error` — compared strictly against null.
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/RemoteUrlParser.php:26` | `null` (mixed)<br>`$url` (mixed) |
+| Core | `fluent-community/app/Services/RemoteUrlParser.php:81` | `null` (mixed)<br>`$src` (mixed) |
+| Core | `fluent-community/Modules/FeaturesHandler.php:115` | `null` (mixed)<br>`$params['url']` (array) |
+
+### Example
+
+```php
+add_filter('fluent_community/remote_preview_pre_parse', function ($pre, $url) {
+    return $pre;
+}, 10, 2);
+```
+
+**Related:** [`fluent_community/oembed_cache_ttl`](/hooks/filters/media#fluent-community-oembed-cache-ttl) · [`fluent_community/preview_metadata_pre_fetch`](/hooks/filters/media#fluent-community-preview-metadata-pre-fetch)
+
 <a id="fluent-community-search-api-response"></a>
 
 ## `fluent_community/search/api_response`
@@ -645,7 +831,7 @@ add_filter('fluent_community/seo/pre_render', function ($param1, $routeName) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2671` | `[ '127.0.0.1' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2744` | `[ '127.0.0.1' ]` (array) |
 
 ### Example
 
@@ -674,8 +860,8 @@ add_filter('fluent_community/trusted_proxies', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:3231` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
-| Core | `fluent-community/app/Services/Helper.php:3255` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:3304` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:3328` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
 
 ### Example
 

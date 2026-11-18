@@ -1,6 +1,6 @@
 ---
-title: "Get Show"
-description: "Get Show for the FluentCommunity Spaces API."
+title: "Get Space Page"
+description: "Get Space Page for the FluentCommunity Spaces API."
 outline: false
 aside: false
 ---
@@ -17,4 +17,4 @@ aside: false
 No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
 :::
 
-<OAOperation operationId="getShow" specUrl="/openapi/public/spaces/get-show.json" />
+<OAOperation operationId="getSpacePage" specUrl="/openapi/public/spaces/get-space-page.json" />

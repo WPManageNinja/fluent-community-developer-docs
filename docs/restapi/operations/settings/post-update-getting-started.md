@@ -15,7 +15,7 @@ Takes one `action`: `dismiss`, `reopen` or `celebrated`. It changes nothing abou
 - **Path:** `/settings/getting-started`
 - **Edition:** Core
 - **Controller:** `SettingController@updateGettingStarted`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:195`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:196`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - Despite the name, this only changes card visibility for the administrator who calls it.

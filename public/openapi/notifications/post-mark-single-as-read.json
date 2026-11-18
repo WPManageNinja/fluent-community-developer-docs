@@ -23,20 +23,30 @@
     }
   ],
   "paths": {
-    "/spaces/{spaceSlug}/pages/{pageId}": {
-      "put": {
-        "operationId": "putUpdate",
-        "summary": "PUT Put Update",
-        "description": "Put Update for the FluentCommunity Spaces API.\n\nController: `SpacePageController@update`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:28`",
+    "/notifications/mark-read/{notification_id}/single": {
+      "post": {
+        "operationId": "postMarkSingleAsRead",
+        "summary": "POST Post Mark Single As Read",
+        "description": "Marks one notification as read for the calling member, and returns their new unread count.\n\nController: `NotificationsController@markSingleAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
         "tags": [
-          "Spaces"
+          "Notifications"
         ],
         "security": [
           {
             "ApplicationPasswords": []
           }
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "required": true,
+            "description": "Notification ID extracted from the URL path.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -45,21 +55,20 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "nullable": false
+                    "unread_count": {
+                      "type": "integer"
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "message": "Success"
+                  "unread_count": 0
                 }
               }
             }
           },
-          "400": {
-            "description": "Request error.",
+          "422": {
+            "description": "Request validation or permission error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -71,7 +80,7 @@
                   }
                 },
                 "example": {
-                  "message": "Request error."
+                  "message": "Request validation or permission error."
                 }
               }
             }

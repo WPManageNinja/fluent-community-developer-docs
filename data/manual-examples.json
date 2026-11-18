@@ -474,6 +474,145 @@
           "message": "Plugin has been installed Successfully",
           "is_installed": true
         }
+      },
+      "get-mcp-settings": {
+        "method": "GET",
+        "path": "/settings/mcp",
+        "status": 200,
+        "source": "fluent-community/Modules/Mcp/Http/Controllers/McpSettingsController.php:28",
+        "response": {
+          "settings": {
+            "active": "yes"
+          },
+          "endpoint_url": "https://example.com/wp-json/fluent-community/mcp",
+          "server_name": "example-community",
+          "adapter": {
+            "installed": true,
+            "active": true,
+            "provider": "toolkit",
+            "version": "1.2.0",
+            "abilities_api": true,
+            "can_auto_install": false,
+            "download_url": "https://github.com/WPManageNinja/fluent-toolkit"
+          },
+          "hub": null,
+          "tools": {
+            "total": 23,
+            "pro": 9
+          },
+          "pro_active": true,
+          "app_passwords_url": "https://example.com/wp-admin/profile.php#application-passwords-section",
+          "plugins_url": "https://example.com/wp-admin/plugins.php",
+          "current_user_login": "community-admin",
+          "is_local_dev": false
+        }
+      },
+      "save-mcp-settings": {
+        "method": "POST",
+        "path": "/settings/mcp",
+        "status": 200,
+        "source": "fluent-community/Modules/Mcp/Http/Controllers/McpSettingsController.php:28",
+        "request": {
+          "settings": {
+            "active": "yes"
+          }
+        },
+        "response": {
+          "message": "MCP is enabled. AI agents can now connect.",
+          "settings": {
+            "active": "yes"
+          },
+          "endpoint_url": "https://example.com/wp-json/fluent-community/mcp",
+          "server_name": "example-community",
+          "adapter": {
+            "installed": true,
+            "active": true,
+            "provider": "toolkit",
+            "version": "1.2.0",
+            "abilities_api": true,
+            "can_auto_install": false,
+            "download_url": "https://github.com/WPManageNinja/fluent-toolkit"
+          },
+          "hub": null,
+          "tools": {
+            "total": 23,
+            "pro": 9
+          },
+          "pro_active": true,
+          "app_passwords_url": "https://example.com/wp-admin/profile.php#application-passwords-section",
+          "plugins_url": "https://example.com/wp-admin/plugins.php",
+          "current_user_login": "community-admin",
+          "is_local_dev": false
+        }
+      },
+      "install-mcp-adapter": {
+        "method": "POST",
+        "path": "/settings/mcp/install-adapter",
+        "status": 200,
+        "source": "fluent-community/Modules/Mcp/Http/Controllers/McpSettingsController.php:54",
+        "response": {
+          "message": "The MCP adapter is installed and active.",
+          "settings": {
+            "active": "yes"
+          },
+          "endpoint_url": "https://example.com/wp-json/fluent-community/mcp",
+          "server_name": "example-community",
+          "adapter": {
+            "installed": true,
+            "active": true,
+            "provider": "toolkit",
+            "version": "1.2.0",
+            "abilities_api": true,
+            "can_auto_install": false,
+            "download_url": "https://github.com/WPManageNinja/fluent-toolkit"
+          },
+          "hub": null,
+          "tools": {
+            "total": 23,
+            "pro": 9
+          },
+          "pro_active": true,
+          "app_passwords_url": "https://example.com/wp-admin/profile.php#application-passwords-section",
+          "plugins_url": "https://example.com/wp-admin/plugins.php",
+          "current_user_login": "community-admin",
+          "is_local_dev": false
+        }
+      },
+      "enable-mcp-hub": {
+        "method": "POST",
+        "path": "/settings/mcp/enable-hub",
+        "status": 200,
+        "source": "fluent-community/Modules/Mcp/Http/Controllers/McpSettingsController.php:92",
+        "request": {
+          "target": "hub"
+        },
+        "response": {
+          "message": "The FluentHub MCP server is on.",
+          "settings": {
+            "active": "yes"
+          },
+          "endpoint_url": "https://example.com/wp-json/fluent-community/mcp",
+          "server_name": "example-community",
+          "adapter": {
+            "installed": true,
+            "active": true,
+            "provider": "toolkit",
+            "version": "1.2.0",
+            "abilities_api": true,
+            "can_auto_install": false,
+            "download_url": "https://github.com/WPManageNinja/fluent-toolkit"
+          },
+          "hub": null,
+          "tools": {
+            "total": 23,
+            "pro": 9
+          },
+          "pro_active": true,
+          "app_passwords_url": "https://example.com/wp-admin/profile.php#application-passwords-section",
+          "plugins_url": "https://example.com/wp-admin/plugins.php",
+          "current_user_login": "community-admin",
+          "is_local_dev": false
+        }
       }
     }
   }

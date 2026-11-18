@@ -1,5 +1,5 @@
 ---
-title: "Get Index"
+title: "List Gallery Media"
 description: "Returns a cursor-paginated page of the photos, videos or audio shared in one space, each item carrying the post and author it came from."
 outline: false
 aside: false
@@ -20,8 +20,8 @@ Select the tab with `type` set to `photos` (the default), `videos` or `audios`. 
 - Requires the `can_view_media` permission in the space; failure returns 403 carrying `permission_failed`, and an unknown space slug returns 404.
 - Requires FluentCommunity Pro.
 
-::: tip Live sample
-The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+::: info Inferred sample
+No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
 :::
 
-<OAOperation operationId="getIndex" specUrl="/openapi/public/media/get-index.json" />
+<OAOperation operationId="listGalleryMedia" specUrl="/openapi/public/media/list-gallery-media.json" />

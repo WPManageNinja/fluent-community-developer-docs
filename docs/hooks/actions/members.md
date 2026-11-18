@@ -568,7 +568,7 @@ Fired after a post or comment activity row is written, and on every portal ticke
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` | No parameters |
 | Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:103` | No parameters |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1205` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1236` | No parameters |
 
 ### Example
 
@@ -669,7 +669,7 @@ Points are recalculated lazily and cached for an hour per user, so this fires at
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` | `$profileModel` (mixed)<br>`$oldPoints` (mixed) |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Modules/LeaderBoard/Services/LeaderBoardHelper.php:197` | `$xprofile` (XProfile)<br>`$oldPoints` (mixed) |
-| Core | `fluent-community/app/Hooks/CLI/Commands.php:83` | `$xProfile` (XProfile)<br>`$oldPoints` (mixed) |
+| Core | `fluent-community/app/Hooks/CLI/Commands.php:128` | `$xProfile` (XProfile)<br>`$oldPoints` (mixed) |
 
 ### Example
 

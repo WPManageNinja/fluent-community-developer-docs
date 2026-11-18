@@ -25,9 +25,9 @@
   "paths": {
     "/spaces/{spaceSlug}/pages": {
       "post": {
-        "operationId": "postStore",
-        "summary": "POST Post Store",
-        "description": "Post Store for the FluentCommunity Spaces API.\n\nController: `SpacePageController@store`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:14`",
+        "operationId": "createSpacePage",
+        "summary": "POST Create Space Page",
+        "description": "Create Space Page for the FluentCommunity Spaces API.\n\nController: `SpacePageController@store`\nRoute source: `fluent-community-pro/app/Modules/SpacePages/Http/space_pages_api.php:14`",
         "tags": [
           "Spaces"
         ],

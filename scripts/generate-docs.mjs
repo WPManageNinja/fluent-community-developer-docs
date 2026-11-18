@@ -578,6 +578,65 @@ const HOOK_PATH_RULES = [
   [/\/app\/Modules\/Certificates\//, 'certificates'],
 ]
 
+/**
+ * What each plugin module is for. The rows of the "Existing Modules" table used to be
+ * written out by hand in the template, so the table simply did not mention a module
+ * added after the table was last touched — core's `Mcp` was missing. The names now come
+ * from the directories on disk and only the wording lives here, so a new module shows
+ * up with or without a sentence, and a run reports the ones still waiting for one.
+ */
+const MODULE_PURPOSES = {
+  Auth: 'Invitation, signup, and login flows.',
+  Course: 'Courses, sections, lessons, and learner progress.',
+  Gutenberg: 'Frontend rendering inside WordPress blocks.',
+  Integrations: 'FluentCRM, FluentCart, Fluent Forms, and Fluent Player bridges.',
+  Mcp: 'An MCP server exposing community tools to AI agents, off until an administrator switches it on.',
+  Migrations: 'BuddyBoss/BuddyPress migration tooling.',
+  PushNotification: 'Notification fan-out for supported events.',
+  Theming: 'Theme wrappers and headless portal rendering.',
+}
+
+/**
+ * The Pro plugin's modules. Pro keeps them under app/Modules/ rather than Modules/,
+ * which is also why the model scan had to stop matching on directories.
+ */
+const PRO_MODULE_PURPOSES = {
+  Certificates:
+    'Course certificates: templates, issuing on completion, manual issuing, public verification and Open Badges.',
+  CloudStorage: 'Uploads pushed to S3-compatible storage, with signed URLs for private files.',
+  DocumentLibrary: 'Document posts and their downloads, including signed links for stored files.',
+  Emoji: 'The emoji picker and its assets in the portal composer.',
+  Followers: 'Member following, and the feeds and counts that follow from it.',
+  Giphy: 'GIF search in the composer, rate limited per member.',
+  Integrations: 'Paymattic and the other commerce bridges that gate paid access.',
+  LeaderBoard: 'Point scoring, leaderboard periods and the ranking screens.',
+  Mcp: "Pro's tools on the free plugin's MCP server, handed over through `fluent_community/mcp/tools`.",
+  MediaGallery: "A space's photo, video and audio gallery, built from what members already posted.",
+  Pwa: 'The installable progressive web app: manifest, service worker and install prompts.',
+  Quiz: 'Quiz lessons: question types, attempt and time limits, scoring and instructor grading.',
+  SeoSiteMap: 'Sitemaps, structured data and server-rendered pages for crawlers.',
+  SpacePages: 'Static, admin-authored pages inside a space, written in the block editor.',
+  UserBadge: 'Badges on member profiles and posts.',
+  Webhooks: 'Incoming webhooks that grant or revoke access from another system.',
+}
+
+function proModuleRows() {
+  return listModuleDirectories(join(proPluginRoot, 'app', 'Modules')).map(
+    (name) => `| \`${name}\` | ${PRO_MODULE_PURPOSES[name] || '_No description yet._'} |`,
+  )
+}
+
+function listModuleDirectories(dir) {
+  if (!existsSync(dir)) {
+    return []
+  }
+
+  return readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort()
+}
+
 const DYNAMIC_OBJECT_SCHEMA = Symbol('dynamicObjectSchema')
 
 function ensureDir(path) {
@@ -680,6 +739,10 @@ function humanizeSlug(value) {
     .replace(/\bapi\b/gi, 'API')
     .replace(/\boembed\b/gi, 'OEmbed')
     .replace(/\bcrm\b/gi, 'CRM')
+    .replace(/\bmcp\b/gi, 'MCP')
+    .replace(/\bpwa\b/gi, 'PWA')
+    .replace(/\bseo\b/gi, 'SEO')
+    .replace(/\bcsv\b/gi, 'CSV')
     .replace(/\bwp\b/gi, 'WP')
     .replace(/\bid\b/gi, 'ID')
     .replace(/\bog\b/gi, 'OG')
@@ -1880,6 +1943,41 @@ function buildOperationAlias(route) {
     { module: 'settings', path: /^\/settings\/menu-settings$/, method: 'GET', slug: 'get-menu-settings' },
     { module: 'settings', path: /^\/settings\/menu-settings$/, method: 'POST', slug: 'save-menu-settings' },
     { module: 'settings', path: /^\/settings\/install_plugin$/, method: 'POST', slug: 'install-plugin' },
+    // The MCP controller's methods are named get/save/installAdapter/enableHub, which
+    // on their own produce pages called "Get" and "Save".
+    // Space Pages and the media gallery are REST resources whose controller methods are
+    // index/show/store/update/destroy, so without these their pages were titled "Index",
+    // "Show" and "Destroy". The guard at the end of a run now reports that shape.
+    { module: 'media', path: /^\/media-gallery\/\{spaceSlug\}$/, method: 'GET', slug: 'list-gallery-media' },
+    { module: 'spaces', path: /^\/spaces\/\{spaceSlug\}\/pages$/, method: 'GET', slug: 'list-space-pages' },
+    { module: 'spaces', path: /^\/spaces\/\{spaceSlug\}\/pages$/, method: 'POST', slug: 'create-space-page' },
+    {
+      module: 'spaces',
+      path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageSlug\}$/,
+      method: 'GET',
+      slug: 'get-space-page',
+    },
+    {
+      module: 'spaces',
+      path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageId\}$/,
+      method: 'PUT',
+      slug: 'update-space-page',
+    },
+    {
+      module: 'spaces',
+      path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageId\}$/,
+      method: 'DELETE',
+      slug: 'delete-space-page',
+    },
+    { module: 'settings', path: /^\/settings\/mcp$/, method: 'GET', slug: 'get-mcp-settings' },
+    { module: 'settings', path: /^\/settings\/mcp$/, method: 'POST', slug: 'save-mcp-settings' },
+    {
+      module: 'settings',
+      path: /^\/settings\/mcp\/install-adapter$/,
+      method: 'POST',
+      slug: 'install-mcp-adapter',
+    },
+    { module: 'settings', path: /^\/settings\/mcp\/enable-hub$/, method: 'POST', slug: 'enable-mcp-hub' },
     { module: 'settings', path: /^\/settings\/customization-settings$/, method: 'GET', slug: 'get-customization-settings' },
     { module: 'settings', path: /^\/settings\/customization-settings$/, method: 'POST', slug: 'save-customization-settings' },
     { module: 'settings', path: /^\/settings\/privacy-settings$/, method: 'GET', slug: 'get-privacy-settings' },
@@ -6298,13 +6396,24 @@ FluentCommunity is structured around WPFluent service providers, route files, co
 
 | Module | Purpose |
 | --- | --- |
-| \`Auth\` | Invitation, signup, and login flows. |
-| \`Course\` | Courses, sections, lessons, and learner progress. |
-| \`Gutenberg\` | Frontend rendering inside WordPress blocks. |
-| \`Integrations\` | FluentCRM, FluentCart, Fluent Forms, and Fluent Player bridges. |
-| \`Migrations\` | BuddyBoss/BuddyPress migration tooling. |
-| \`PushNotification\` | Notification fan-out for supported events. |
-| \`Theming\` | Theme wrappers and headless portal rendering. |
+${listModuleDirectories(join(pluginRoot, 'Modules'))
+  .map((name) => `| \`${name}\` | ${MODULE_PURPOSES[name] || '_No description yet._'} |`)
+  .join('\n')}
+${
+  proModuleRows().length
+    ? `
+## Pro Modules
+
+The Pro plugin keeps its modules in \`app/Modules/\`, and each extends this plugin through the
+same hooks an add-on would use. Most are gated by a feature switch, so a module being present
+does not mean it is running.
+
+| Module | Purpose |
+| --- | --- |
+${proModuleRows().join('\n')}
+`
+    : ''
+}
 `,
   )
 }
@@ -6851,6 +6960,39 @@ function buildRouteOverviewAndSpecs(routes) {
   // route group added to the plugin after this list was last touched gets no page and
   // no spec — silently, because the route is still parsed and still counted. Name the
   // strays instead of dropping them (this is how the Insights routes went missing).
+  // A slug is built from the controller method when no alias matches, so a method
+  // named get() or save() yields a page titled "Get" whose description reads "Get for
+  // the FluentCommunity Settings API." Nothing is missing, so no other count moves —
+  // the page is simply useless. Name them so an alias gets added.
+  const GENERIC_METHOD_SLUGS = [
+    'get',
+    'save',
+    'index',
+    'show',
+    'store',
+    'update',
+    'destroy',
+    'handle',
+    'process',
+    'create',
+    'delete',
+  ]
+  const genericSlugs = routes.filter((route) => {
+    const withoutVerb = route.slug.replace(
+      /^(get|post|put|patch|delete)-?/,
+      '',
+    )
+    return !withoutVerb || GENERIC_METHOD_SLUGS.includes(withoutVerb)
+  })
+  if (genericSlugs.length) {
+    console.log(
+      `\n${genericSlugs.length} operation(s) named only after a generic controller method — add an entry to buildOperationAlias() so the page has a real title:`,
+    )
+    genericSlugs.forEach((route) => {
+      console.log(`  ${route.module}/${route.slug}  (${route.httpMethod} ${route.routePath})`)
+    })
+  }
+
   const unknownModules = [...new Set(routes.map((route) => route.module))]
     .filter((module) => !MODULE_META[module])
     .sort()
@@ -7191,6 +7333,21 @@ function main() {
   // MODEL_GROUPS is a hand-kept whitelist, so a model added to the plugin after that
   // list was last touched would simply never get a page — silently, since every other
   // count still looks right. Name the strays instead of dropping them.
+  // The module table is built from the directories on disk, so a new module always
+  // appears — but with no sentence next to it until someone writes one. Say which.
+  const describedlessModules = [
+    ...listModuleDirectories(join(pluginRoot, 'Modules')).filter((name) => !MODULE_PURPOSES[name]),
+    ...listModuleDirectories(join(proPluginRoot, 'app', 'Modules')).filter(
+      (name) => !PRO_MODULE_PURPOSES[name],
+    ),
+  ]
+  if (describedlessModules.length) {
+    console.log(
+      `\n${describedlessModules.length} plugin module(s) listed with no description — add them to MODULE_PURPOSES:`,
+    )
+    describedlessModules.forEach((name) => console.log(`  ${name}`))
+  }
+
   const undocumentedModels = Object.keys(models)
     .filter((name) => !MODEL_ORDER.includes(name))
     .sort()

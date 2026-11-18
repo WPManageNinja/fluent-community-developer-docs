@@ -5,18 +5,18 @@ description: "Courses filter hooks for FluentCommunity."
 
 # Courses Filters
 
-48 unique filter hooks currently map to this category, across 48 call sites.
+48 unique filter hooks currently map to this category, across 49 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/admin_course_comments_api_response`](#fluent-community-admin-course-comments-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:502` |
-| [`fluent_community/admin_course_exportable_students_api_response`](#fluent-community-admin-course-exportable-students-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:983` |
+| [`fluent_community/admin_course_exportable_students_api_response`](#fluent-community-admin-course-exportable-students-api-response) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:984` |
 | [`fluent_community/admin_course_lesson_api_response`](#fluent-community-admin-course-lesson-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1060` |
 | [`fluent_community/admin_course_lessons_api_response`](#fluent-community-admin-course-lessons-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1044` |
-| [`fluent_community/admin_course_non_members_api_response`](#fluent-community-admin-course-non-members-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1394` |
-| [`fluent_community/admin_course_other_instructors_api_response`](#fluent-community-admin-course-other-instructors-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1467` |
+| [`fluent_community/admin_course_non_members_api_response`](#fluent-community-admin-course-non-members-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1399` |
+| [`fluent_community/admin_course_other_instructors_api_response`](#fluent-community-admin-course-other-instructors-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1472` |
 | [`fluent_community/admin_course_section_api_response`](#fluent-community-admin-course-section-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:765` |
 | [`fluent_community/admin_course_sections_api_response`](#fluent-community-admin-course-sections-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:748` |
 | [`fluent_community/admin_course_students_api_response`](#fluent-community-admin-course-students-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:557` |
@@ -33,10 +33,10 @@ description: "Courses filter hooks for FluentCommunity."
 | [`fluent_community/course_welcome_banner`](#fluent-community-course-welcome-banner) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:346` |
 | [`fluent_community/course/access_message_html`](#fluent-community-course-access-message-html) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:1061` |
 | [`fluent_community/course/can_view_lesson`](#fluent-community-course-can-view-lesson) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:301` |
-| [`fluent_community/course/exportable_student_row`](#fluent-community-course-exportable-student-row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:973` |
+| [`fluent_community/course/exportable_student_row`](#fluent-community-course-exportable-student-row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:974` |
 | [`fluent_community/course/lesson_access_info`](#fluent-community-course-lesson-access-info) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:302` |
 | [`fluent_community/course/lesson_completion_response`](#fluent-community-course-lesson-completion-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:464` |
-| [`fluent_community/course/meta_fields`](#fluent-community-course-meta-fields) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1420` |
+| [`fluent_community/course/meta_fields`](#fluent-community-course-meta-fields) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1425` |
 | [`fluent_community/course/processed`](#fluent-community-course-processed) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:257` |
 | [`fluent_community/courses_api_response`](#fluent-community-courses-api-response) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseController.php:104` |
 | [`fluent_community/default_course_email_notification`](#fluent-community-default-course-email-notification) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/ProHelper.php:302` |
@@ -49,7 +49,7 @@ description: "Courses filter hooks for FluentCommunity."
 | [`fluent_community/lesson/create_data`](#fluent-community-lesson-create-data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1095` |
 | [`fluent_community/lesson/get_public_meta`](#fluent-community-lesson-get-public-meta) | Core | 1 | `fluent-community/Modules/Course/Model/CourseLesson.php:376` |
 | [`fluent_community/lesson/sanitize_meta`](#fluent-community-lesson-sanitize-meta) | Core | 1 | `fluent-community/Modules/Course/Services/CourseHelper.php:864` |
-| [`fluent_community/lesson/update_data`](#fluent-community-lesson-update-data) | Core | 1 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1174` |
+| [`fluent_community/lesson/update_data`](#fluent-community-lesson-update-data) | Core | 2 | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1174` |
 | [`fluent_community/profile_courses_api_response`](#fluent-community-profile-courses-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:720` |
 | [`fluent_community/question_types`](#fluent-community-question-types) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/QuizHelper.php:14` |
 | [`fluent_community/quiz/exportable_result_row`](#fluent-community-quiz-exportable-result-row) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/Quiz/Http/Controllers/QuizController.php:416` |
@@ -119,7 +119,7 @@ Runs once, after fluent_community/course/exportable_student_row has run for each
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:983` | `[ 'students' => $rows, ]` (array)<br>`$request->all()` (array)<br>`$courseId` (int) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:984` | `[ 'students' => $rows, ]` (array)<br>`$request->all()` (array)<br>`$courseId` (int) |
 
 ### Example
 
@@ -227,7 +227,7 @@ Feeds the "add student" picker. `user_email` is only among the selected columns 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1394` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1399` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -263,7 +263,7 @@ A plain search across WordPress users capped at 100 rows, with no filtering by r
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1467` | `$data` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1472` | `$data` (mixed)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -878,7 +878,7 @@ Runs once per student. Keys are human-readable column headings — Name, Email, 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:973` | `array (6 keys: Name, Email, Username, …)` (array)<br>`$student` (mixed)<br>`$progress` (mixed)<br>`$courseId` (int) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:974` | `array (6 keys: Name, Email, Username, …)` (array)<br>`$student` (mixed)<br>`$progress` (mixed)<br>`$courseId` (int) |
 
 ### Example
 
@@ -976,7 +976,7 @@ The course-side twin of `fluent_community/space/meta_fields`, with the same sect
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1420` | `[]` (array)<br>`$course` (Course)<br>`$request->all()` (array) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1425` | `[]` (array)<br>`$course` (Course)<br>`$request->all()` (array) |
 
 ### Example
 
@@ -1411,7 +1411,7 @@ add_filter('fluent_community/lesson/sanitize_meta', function ($meta, $lesson) {
 
 - **Type:** filter
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Filters the attributes about to be written when a lesson is saved.
 
 The array has already been through `array_filter()`, so empty values were dropped — with one deliberate exception, `message`, which is added afterwards precisely so that clearing a lesson body still saves. The `meta` value has already passed through `fluent_community/lesson/sanitize_meta` and been merged over the lesson's existing meta. What you return determines the dirty check, and therefore whether `fluent_community/lesson/updated` fires at all.
@@ -1430,6 +1430,7 @@ The array has already been through `array_filter()`, so empty values were droppe
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1174` | `$updateData` (mixed)<br>`$lesson` (CourseLesson) |
+| Core | `fluent-community/Modules/Course/Http/Controllers/CourseAdminController.php:1249` | `$lessonData` (mixed)<br>`$lesson` (CourseLesson) |
 
 ### Example
 

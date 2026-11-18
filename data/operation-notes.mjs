@@ -2180,6 +2180,58 @@ export const OPERATION_NOTES = {
   },
 
   // ---------------------------------------------------------------------------
+  // 2.15.0 additions
+  // ---------------------------------------------------------------------------
+  "settings/get-mcp-settings": {
+    "summary": "Returns everything the MCP settings screen shows: whether the server is on, its endpoint and name, the adapter's state, the tool count and the FluentHub connection details.",
+    "details": "The tool count is what this site has switched on rather than what the calling admin may run, and the Pro count is zero on a free site, where Pro's tools are present only as upsell stubs. `adapter.active` is the field that matters: it is true only when an MCP adapter plugin is active and the WordPress Abilities API is available. `hub` is null unless FluentHub is installed and reports a usable state.",
+    "notes": [
+      "Site administrators only.",
+      "It answers normally with MCP switched off and with no adapter installed \u2014 the settings routes are registered either way.",
+      "`is_local_dev` is true for the usual local hostnames and private addresses, which the screen uses to explain why a remote AI client cannot reach the site."
+    ]
+  },
+  "settings/save-mcp-settings": {
+    "summary": "Switches the MCP server on or off.",
+    "details": "Takes `settings.active` as the exact string `yes` or `no`; anything else is rejected. The value is stored in FluentCommunity's own options and the response is the full settings screen payload with a message.",
+    "notes": [
+      "Site administrators only, and the switch saves as soon as it is toggled \u2014 there is no separate save step.",
+      "Turning it on neither installs nor checks for an adapter. Without one the MCP endpoint does not exist at all, so check `adapter.active` in the response rather than assuming the server is reachable.",
+      "Abilities are registered on the next request, not this one.",
+      "A missing or out-of-range value answers 422."
+    ]
+  },
+  "settings/install-mcp-adapter": {
+    "summary": "Asks another Fluent plugin to install the MCP adapter, and returns the refreshed adapter state.",
+    "details": "FluentCommunity ships no installer of its own. This endpoint delegates to FluentHub's installer and then re-reads the adapter state in the same request \u2014 it is synchronous, with no background job. Takes no parameters.",
+    "notes": [
+      "Site administrators who also hold the WordPress capability to install plugins.",
+      "It answers 422 when nothing on the site offers an installer, which is the normal case; the screen then links to the adapter download instead.",
+      "It can answer 200 while the adapter is still not active, so read `adapter.active` rather than the status code.",
+      "Either of two plugins can supply the adapter, and the response says which one is in play."
+    ]
+  },
+  "settings/enable-mcp-hub": {
+    "summary": "Turns on FluentHub's shared MCP server, or another Fluent plugin's MCP, through FluentHub.",
+    "details": "This endpoint writes nothing itself: it asks FluentHub to do the switching and translates the answer. `target` defaults to `hub`, which turns on FluentHub's single-URL server; a plugin slug turns that plugin's MCP on instead.",
+    "notes": [
+      "Site administrators only, and FluentHub applies its own permission check on top.",
+      "FluentHub has to be installed and active. Without it the call answers 422, so this endpoint is useless on its own.",
+      "It only ever turns things on. Switching off stays in FluentHub.",
+      "A refusal from FluentHub answers 403, and every other failure \u2014 a missing or outdated adapter, an unknown product, no handler \u2014 answers 422 with the reason in the message."
+    ]
+  },
+  "notifications/post-mark-single-as-read": {
+    "summary": "Marks one notification as read for the calling member, and returns their new unread count.",
+    "details": "The difference from the other mark-read route is the point of this one: it marks only the notification named in the path, leaving the rest of the thread alone. The other route also marks every notification that shares the same post.",
+    "notes": [
+      "The path takes a notification ID, not the ID of the member's own subscription row.",
+      "There is no 404: an unknown ID, or one belonging to somebody else, updates nothing and still answers 200 with the current count. A mistyped ID therefore looks like success.",
+      "Repeating the call is harmless."
+    ]
+  },
+
+  // ---------------------------------------------------------------------------
   // leaderboard
   // ---------------------------------------------------------------------------
   'leaderboard/list-leaderboard': {
@@ -2277,7 +2329,7 @@ export const OPERATION_NOTES = {
   // ---------------------------------------------------------------------------
   // media
   // ---------------------------------------------------------------------------
-  'media/get-index': {
+  'media/list-gallery-media': {
     summary:
       'Returns a cursor-paginated page of the photos, videos or audio shared in one space, each item carrying the post and author it came from.',
     details:

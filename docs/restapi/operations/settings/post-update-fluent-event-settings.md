@@ -15,7 +15,7 @@ Takes a `settings` object holding the on/off flag and the events slug. Only thos
 - **Path:** `/settings/fluent-event-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@updateFluentEventSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:203`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:204`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - The flag is compared against the exact string `yes`, so `true`, `1` and `on` all save as off.
