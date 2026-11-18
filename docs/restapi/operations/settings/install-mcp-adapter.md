@@ -23,8 +23,8 @@ FluentCommunity ships no installer of its own. This endpoint delegates to Fluent
 - It can answer 200 while the adapter is still not active, so read `adapter.active` rather than the status code.
 - Either of two plugins can supply the adapter, and the response says which one is in play.
 
-::: info Inferred sample
-No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
+::: tip Reconstructed sample
+This endpoint belongs to a module that is not active on the reference install (or needs a file upload), so the payload below was reconstructed by reading the controller rather than recorded. Field names and types follow the source; values are illustrative.
 :::
 
 <OAOperation operationId="installMcpAdapter" specUrl="/openapi/public/settings/install-mcp-adapter.json" />

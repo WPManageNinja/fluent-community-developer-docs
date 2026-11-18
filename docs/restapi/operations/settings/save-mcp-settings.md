@@ -23,8 +23,8 @@ Takes `settings.active` as the exact string `yes` or `no`; anything else is reje
 - Abilities are registered on the next request, not this one.
 - A missing or out-of-range value answers 422.
 
-::: info Inferred sample
-No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
+::: tip Reconstructed sample
+This endpoint belongs to a module that is not active on the reference install (or needs a file upload), so the payload below was reconstructed by reading the controller rather than recorded. Field names and types follow the source; values are illustrative.
 :::
 
 <OAOperation operationId="saveMcpSettings" specUrl="/openapi/public/settings/save-mcp-settings.json" />

@@ -50,7 +50,7 @@
                 }
               },
               "example": {
-                "target": ""
+                "target": "hub"
               }
             }
           }
@@ -61,10 +61,124 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "nullable": false
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "active": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "endpoint_url": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "server_name": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "adapter": {
+                      "type": "object",
+                      "properties": {
+                        "installed": {
+                          "type": "boolean"
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "provider": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "version": {
+                          "type": "string",
+                          "nullable": false
+                        },
+                        "abilities_api": {
+                          "type": "boolean"
+                        },
+                        "can_auto_install": {
+                          "type": "boolean"
+                        },
+                        "download_url": {
+                          "type": "string",
+                          "nullable": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "hub": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "tools": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "pro": {
+                          "type": "integer"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "pro_active": {
+                      "type": "boolean"
+                    },
+                    "app_passwords_url": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "plugins_url": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "current_user_login": {
+                      "type": "string",
+                      "nullable": false
+                    },
+                    "is_local_dev": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "example": "The FluentHub MCP server is on."
+                "example": {
+                  "message": "The FluentHub MCP server is on.",
+                  "settings": {
+                    "active": "yes"
+                  },
+                  "endpoint_url": "https://example.com/wp-json/fluent-community/mcp",
+                  "server_name": "example-community",
+                  "adapter": {
+                    "installed": true,
+                    "active": true,
+                    "provider": "toolkit",
+                    "version": "1.2.0",
+                    "abilities_api": true,
+                    "can_auto_install": false,
+                    "download_url": "https://github.com/WPManageNinja/fluent-toolkit"
+                  },
+                  "hub": null,
+                  "tools": {
+                    "total": 23,
+                    "pro": 9
+                  },
+                  "pro_active": true,
+                  "app_passwords_url": "https://example.com/wp-admin/profile.php#application-passwords-section",
+                  "plugins_url": "https://example.com/wp-admin/plugins.php",
+                  "current_user_login": "community-admin",
+                  "is_local_dev": false
+                }
               }
             }
           },

@@ -23,8 +23,8 @@ This endpoint writes nothing itself: it asks FluentHub to do the switching and t
 - It only ever turns things on. Switching off stays in FluentHub.
 - A refusal from FluentHub answers 403, and every other failure — a missing or outdated adapter, an unknown product, no handler — answers 422 with the reason in the message.
 
-::: info Inferred sample
-No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
+::: tip Reconstructed sample
+This endpoint belongs to a module that is not active on the reference install (or needs a file upload), so the payload below was reconstructed by reading the controller rather than recorded. Field names and types follow the source; values are illustrative.
 :::
 
 <OAOperation operationId="enableMcpHub" specUrl="/openapi/public/settings/enable-mcp-hub.json" />

@@ -22,8 +22,8 @@ The tool count is what this site has switched on rather than what the calling ad
 - It answers normally with MCP switched off and with no adapter installed — the settings routes are registered either way.
 - `is_local_dev` is true for the usual local hostnames and private addresses, which the screen uses to explain why a remote AI client cannot reach the site.
 
-::: info Inferred sample
-No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
+::: tip Reconstructed sample
+This endpoint belongs to a module that is not active on the reference install (or needs a file upload), so the payload below was reconstructed by reading the controller rather than recorded. Field names and types follow the source; values are illustrative.
 :::
 
 <OAOperation operationId="getMcpSettings" specUrl="/openapi/public/settings/get-mcp-settings.json" />
