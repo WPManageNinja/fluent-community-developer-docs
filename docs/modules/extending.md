@@ -40,3 +40,29 @@ FluentCommunity is structured around WPFluent service providers, route files, co
 | `Migrations` | BuddyBoss/BuddyPress migration tooling. |
 | `PushNotification` | Notification fan-out for supported events. |
 | `Theming` | Theme wrappers and headless portal rendering. |
+
+## Pro Modules
+
+The Pro plugin keeps its modules in `app/Modules/`, and each extends this plugin through the
+same hooks an add-on would use. Most are gated by a feature switch, so a module being present
+does not mean it is running.
+
+| Module | Purpose |
+| --- | --- |
+| `Certificates` | Course certificates: templates, issuing on completion, manual issuing, public verification and Open Badges. |
+| `CloudStorage` | Uploads pushed to S3-compatible storage, with signed URLs for private files. |
+| `DocumentLibrary` | Document posts and their downloads, including signed links for stored files. |
+| `Emoji` | The emoji picker and its assets in the portal composer. |
+| `Followers` | Member following, and the feeds and counts that follow from it. |
+| `Giphy` | GIF search in the composer, rate limited per member. |
+| `Integrations` | Paymattic and the other commerce bridges that gate paid access. |
+| `LeaderBoard` | Point scoring, leaderboard periods and the ranking screens. |
+| `Mcp` | Pro's tools on the free plugin's MCP server, handed over through `fluent_community/mcp/tools`. |
+| `MediaGallery` | A space's photo, video and audio gallery, built from what members already posted. |
+| `Pwa` | The installable progressive web app: manifest, service worker and install prompts. |
+| `Quiz` | Quiz lessons: question types, attempt and time limits, scoring and instructor grading. |
+| `SeoSiteMap` | Sitemaps, structured data and server-rendered pages for crawlers. |
+| `SpacePages` | Static, admin-authored pages inside a space, written in the block editor. |
+| `UserBadge` | Badges on member profiles and posts. |
+| `Webhooks` | Incoming webhooks that grant or revoke access from another system. |
+
