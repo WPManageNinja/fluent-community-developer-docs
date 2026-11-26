@@ -324,7 +324,7 @@ export const OPERATION_NOTES = {
       'Removing a badge here does not clear the badge slug already stored on member profiles.',
     ],
   },
-  'admin/get-settings': {
+  'admin/get-pwa-settings': {
     summary:
       'Returns the Progressive Web App settings — app name, short name, icon source, theme colour and install prompt position.',
     notes: [
@@ -332,7 +332,7 @@ export const OPERATION_NOTES = {
       'Requires FluentCommunity Pro; this is the PWA module settings endpoint despite its generic path name.',
     ],
   },
-  'admin/post-save-settings': {
+  'admin/save-pwa-settings': {
     summary:
       'Validates and stores the Progressive Web App settings, marking a custom icon as permanent media and recording its pixel dimensions.',
     details:
@@ -2228,6 +2228,158 @@ export const OPERATION_NOTES = {
       "The path takes a notification ID, not the ID of the member's own subscription row.",
       "There is no 404: an unknown ID, or one belonging to somebody else, updates nothing and still answers 200 with the current count. A mistyped ID therefore looks like success.",
       "Repeating the call is harmless."
+    ]
+  },
+
+  // ---------------------------------------------------------------------------
+  // 2.16.0 additions
+  // ---------------------------------------------------------------------------
+  "course-reviews/list-course-reviews": {
+    "summary": "Returns a course's reviews, its rating summary, and what the caller may do with them.",
+    "details": "What comes back depends on how much the caller may see. A member of the course, a course admin, or anyone on a public course gets the full list; someone outside a private course gets the summary alone, with an empty list and `can_view_list` false, which is what the lock screen draws. Only approved reviews are listed.",
+    "notes": [
+      "`my_review` is returned without a status filter, so the author sees their own review even while it is held for moderation and even when the list itself is hidden. Read its `status` rather than assuming it is live.",
+      "A course with reviews switched off answers 404, exactly like a course the caller may not see \u2014 the two are deliberately indistinguishable.",
+      "The `rating` filter is ignored on a course that hides its breakdown, and `sort` only understands `highest` and `lowest`; anything else keeps newest first.",
+      "Reading is open to a guest when the community's access level is public."
+    ]
+  },
+  "course-reviews/save-course-review": {
+    "summary": "Creates or updates the caller's review of a course.",
+    "details": "One review per member per course: a second call overwrites the first rather than failing, and the message in the response is the only signal of which happened. The rating is required and clamped to 1-5, the message is optional and capped at 5000 characters, and both are stored with a rendered copy. The whole write runs under a per-course lock, so a rating and its summary can never race.",
+    "notes": [
+      "Eligibility is checked again on an edit, so a member who has since left the course gets 403 when saving \u2014 though they can still delete.",
+      "When the course requires progress, the author keeps the right to edit once they have reviewed, even if their progress later falls short.",
+      "Content moderation can hold a review: it is saved as pending, left out of the list and out of the average, and reported to the moderation queue. An edit can hold a review but never release one.",
+      "A held save fires no hook. `fluent_community/course_review/created` arrives later, when a moderator approves it.",
+      "A busy course lock answers 409, which is a different problem from the 403 an ineligible member gets.",
+      "A text-only edit does not recompute the course average, by design."
+    ]
+  },
+  "course-reviews/delete-course-review": {
+    "summary": "Deletes one review, as its author or as a course admin.",
+    "details": "The author may always delete their own review, including one that is held or hidden. A course admin may delete only an approved review \u2014 a held one belongs to the moderation queue instead. Deleting also removes the review's moderation reports and recomputes the course's rating summary.",
+    "notes": [
+      "A review ID that belongs to another course answers 404.",
+      "`can_review` and `review_prompt` come back as null when an admin deletes somebody else's review, and carry fresh values when an author deletes their own.",
+      "A review that was never live fires no deletion hook.",
+      "Sent as POST with `X-HTTP-Method-Override: DELETE` by the plugin's own client."
+    ]
+  },
+  "course-reviews/list-all-reviews": {
+    "summary": "Lists reviews across the courses the calling admin manages, for the moderation screen.",
+    "details": "Scoped to the caller's own courses unless they manage every space. Unlike the student-facing list this one includes held and hidden reviews, and it includes reviews on courses whose reviews are switched off, so that they can still be cleared out. Filter by course or rating, and search the review text or the author's display name.",
+    "notes": [
+      "The rows are a reduced shape \u2014 id, rating, message, status, created date, author and a small course object \u2014 not the review model, so deleting from this screen needs the course ID from the row.",
+      "An unknown or out-of-scope `course_id` returns an empty list rather than an error.",
+      "`per_page` is clamped to 150, and the course list for the filter is only included when `with_courses` is sent."
+    ]
+  },
+  "course-reviews/list-reviewed-courses": {
+    "summary": "Lists the courses that have reviews, worst-rated first.",
+    "details": "Built from the stored rating summaries rather than from the reviews themselves, so a course with no approved review never appears. The order is deliberate: the lowest average comes first, so the courses that need attention are on the first page.",
+    "notes": [
+      "The breakdown is returned whatever the course's own display setting says, because this is an admin view.",
+      "Paging happens in PHP over the whole in-scope set, so this is not a cheap endpoint on a site with many courses.",
+      "The payload has no `last_page`, unlike the review list beside it."
+    ]
+  },
+  "course-reviews/get-review-settings": {
+    "summary": "Returns the site-wide review defaults applied to new courses, with the field definitions the settings form draws.",
+    "details": "Community administrators only \u2014 a course creator who can moderate reviews cannot read these. A site that has never saved them gets the shipped defaults: reviews off, enrolment-based eligibility, 25% minimum progress, breakdown shown.",
+    "notes": [
+      "`fields` is there to render the form and is not a schema contract; `settings` only ever carries the four known keys."
+    ]
+  },
+  "course-reviews/save-review-settings": {
+    "summary": "Saves the site-wide review defaults for new courses.",
+    "details": "Everything is sanitised rather than validated, so an unknown value falls back to its default instead of failing: the two switches accept only the exact strings `yes` and `no`, eligibility accepts only `enrolled` or `progress`, and the minimum progress is capped at 100 and falls back to 25.",
+    "notes": [
+      "These defaults apply only to courses created afterwards. No existing course changes, and a course that already carries its own configuration is never touched.",
+      "Duplicating a course does not copy its review configuration, so the duplicate picks up whatever the defaults say at that moment.",
+      "A missing or malformed body is not an error: it stores the sanitised defaults."
+    ]
+  },
+  "members/get-content-summary": {
+    "summary": "Counts what a member has posted, for the admin card that offers to delete it.",
+    "details": "Four live counts \u2014 posts, comments, messages and course progress records \u2014 plus whether a purge is already running for that member. The counts are read at request time, so they can differ from what a purge then removes.",
+    "notes": [
+      "Community administrators only; a moderator cannot call it.",
+      "Posts counts only text, image and article posts, so lessons and other post types are excluded.",
+      "`messages` is null when Fluent Messaging is not active, which is different from zero.",
+      "`course_progress` is a count of progress records, not of courses or lessons."
+    ]
+  },
+  "members/post-purge-content": {
+    "summary": "Blocks a member and permanently deletes the kinds of content named in the request.",
+    "details": "`types` is required and accepts `posts`, `comments`, `messages` and `course_progress`; unknown values are dropped. The member is blocked first, before anything is deleted, and the deletes then run inside a time budget \u2014 whatever is left is finished by a background job, so the response may report that it has not completed.",
+    "notes": [
+      "This always blocks the member. There is no delete-without-blocking mode, and blocking happens even if every delete is deferred or fails.",
+      "Nothing is reversible. Rows are deleted outright, not trashed, and unblocking the member later does not bring anything back.",
+      "There is no confirmation parameter: sending `types` performs the ban and the deletes.",
+      "It does not delete the WordPress account, the profile row, space memberships, or posts of other types.",
+      "Each delete fires the same hooks a single delete would, so listeners run once per item.",
+      "Asking for a purge while one is running merges the two sets of types rather than starting again.",
+      "Sending an empty `types` answers 422. Blocking a member without deleting anything is a different call.",
+      "Blocking yourself, or a moderator or admin, is refused."
+    ]
+  },
+  "members/post-save-moderation-note": {
+    "summary": "Saves the private administrator note on a member.",
+    "details": "One note per member, up to 2000 characters, stamped with who saved it and when. The note is visible to administrators on the member's profile, and never to the member.",
+    "notes": [
+      "Sending an empty note clears it, and still rewrites the stamp.",
+      "There is no history \u2014 the previous note is replaced.",
+      "Unlike the moderation actions beside it, a note can be saved on an administrator or moderator."
+    ]
+  },
+  "members/post-update-quick-actions": {
+    "summary": "Sets the verified mark, the badges and the moderation flag on a member, from the admin card.",
+    "details": "Each of the three is applied only when its key is present, so a call can change one without disturbing the others. The verified mark and the badges are stored on the profile; the flag is handed to Pro's moderation module through `fluent_community/member/update_flag`, and core stores nothing itself.",
+    "notes": [
+      "The two switches do not take the same kind of value. The flag must be the exact string `yes`, while the verified mark is read as a number \u2014 so sending `true` for the flag unflags the member, and sending `yes` for verified unverifies them.",
+      "Sending an empty `badge_slugs` array clears every badge; leaving the key out keeps them.",
+      "Badges are ignored when the badge feature is off, and the flag does nothing at all without Pro's content moderation \u2014 in both cases the call still reports success.",
+      "Flagging an administrator or moderator is refused before anything is written.",
+      "Member status is not settable here; that is the member update endpoint."
+    ]
+  },
+  "profile/get-contact": {
+    "summary": "Returns the member's FluentCRM contact for the profile widget: status, engagement stats, lifetime value, lists and tags.",
+    "details": "Reading needs both community administrator rights and FluentCRM's own read permission. Each tag carries the spaces and courses that tag grants, so an administrator can see what removing it would take away.",
+    "notes": [
+      "The route only exists when FluentCRM is installed; without it the call is a plain 404.",
+      "A member with no contact is a 200 with `contact: null`, not an error. The write endpoints answer 404 in the same situation.",
+      "`can_manage` is a stronger permission than reading, so an administrator may receive the data and still be refused on a change.",
+      "`lifetime_value` is an empty string when there is nothing to show, and depends on a FluentCRM filter being answered."
+    ]
+  },
+  "profile/get-options": {
+    "summary": "Lists the tags or lists an administrator can choose from in the contact widget.",
+    "details": "Pass `type=lists` for lists; anything else is treated as tags. For tags, each option carries the spaces and courses it grants. `search` matches the title.",
+    "notes": [
+      "At most 50 options come back, ordered by title, with no paging \u2014 `search` is the only way to reach anything past the first 50.",
+      "The username in the path is ignored: the options are site-wide, so an unknown member still returns the full list."
+    ]
+  },
+  "profile/post-update-tags": {
+    "summary": "Attaches and detaches FluentCRM tags on a member's contact.",
+    "details": "A delta rather than a replacement: `attach_ids` and `detach_ids` are each compared against what the contact already has, and anything not named is left alone \u2014 including a tag an automation added a moment ago. The response carries the contact as it now stands.",
+    "notes": [
+      "Attaching a tag fires FluentCRM's own hooks, so it can start an automation.",
+      "With CRM sync switched on, a tag change can add the member to, or remove them from, spaces and courses. That is why each tag lists the spaces it carries.",
+      "A member with no FluentCRM contact answers 404 here, while the read endpoint answers 200 with null. This endpoint never creates a contact.",
+      "There is no replace-everything mode, so a client working from a stale view leaves stray tags behind.",
+      "Writing needs FluentCRM's manage permission, not only its read permission."
+    ]
+  },
+  "profile/post-update-lists": {
+    "summary": "Attaches and detaches FluentCRM lists on a member's contact.",
+    "details": "The same delta behaviour as the tags endpoint, against the contact's lists. Lists carry no space or course mapping, so a list change never moves anybody between spaces.",
+    "notes": [
+      "Attaching or detaching fires FluentCRM's own list hooks, which can start an automation.",
+      "A member with no FluentCRM contact answers 404, and no contact is created.",
+      "Writing needs FluentCRM's manage permission."
     ]
   },
 

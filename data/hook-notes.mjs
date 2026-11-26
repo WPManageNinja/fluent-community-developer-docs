@@ -9931,4 +9931,122 @@ export const HOOK_NOTES = {
       "fluent_community/preview_metadata_pre_fetch"
     ]
   },
+  "fluent_community/course_review/created": {
+    "summary": "Fires when a review becomes visible on a course for the first time.",
+    "details": "It marks a review going live, not a student pressing save. A review held by content moderation fires nothing at save time; this fires later, when a moderator approves it, so the event can arrive long after the student wrote it. The row, its status and the course's recomputed rating summary are all written by the time it runs, and it fires outside the per-course lock. It stays silent while the review feature is switched off site-wide, even though a moderator can still change a status.",
+    "params": [
+      {
+        "name": "review",
+        "type": "\\\\FluentCommunityPro\\\\App\\\\Modules\\\\CourseReview\\\\Models\\\\CourseReview",
+        "desc": "The review, with its rating in `priority` and exposed as `rating`."
+      },
+      {
+        "name": "course",
+        "type": "\\\\FluentCommunity\\\\Modules\\\\Course\\\\Model\\\\Course|null",
+        "desc": "The course, or null when it has been deleted in the meantime."
+      }
+    ],
+    "related": [
+      "fluent_community/course_review/updated",
+      "fluent_community/course_review/deleted"
+    ]
+  },
+  "fluent_community/course_review/updated": {
+    "summary": "Fires when an existing, visible review is saved again, or when a held edit is approved.",
+    "details": "One student edit can produce no event or one, at an unpredictable time: an edit that content moderation holds fires nothing until a moderator approves it, and a re-approval of an unchanged review fires it too. A text-only edit does not refresh the course's rating summary, so a listener reading the average after this hook may see the previous value.",
+    "params": [
+      {
+        "name": "review",
+        "type": "\\\\FluentCommunityPro\\\\App\\\\Modules\\\\CourseReview\\\\Models\\\\CourseReview",
+        "desc": "The saved review."
+      },
+      {
+        "name": "course",
+        "type": "\\\\FluentCommunity\\\\Modules\\\\Course\\\\Model\\\\Course|null",
+        "desc": "The course, or null when it has been deleted in the meantime."
+      }
+    ],
+    "related": [
+      "fluent_community/course_review/created"
+    ]
+  },
+  "fluent_community/course_review/deleted": {
+    "summary": "Fires when a review that was once visible has been deleted.",
+    "details": "By the time it runs the row is gone, its moderation reports are gone and the course's rating summary has been recomputed; the model is still readable in memory. A review that was never visible \u2014 held from the moment it was written \u2014 fires nothing. Note the arguments differ from the other two review hooks: there is no course, so read the course from the review's `space_id`.",
+    "params": [
+      {
+        "name": "review",
+        "type": "\\\\FluentCommunityPro\\\\App\\\\Modules\\\\CourseReview\\\\Models\\\\CourseReview",
+        "desc": "The deleted review, still readable in memory."
+      }
+    ],
+    "notes": [
+      "It is not fired by the bulk paths. Deleting a member, purging their content, or deleting a course removes reviews with a direct query and no hook, so anything mirroring reviews elsewhere will drift on those events."
+    ],
+    "related": [
+      "fluent_community/course_review/created",
+      "fluent_community/member/content_purged"
+    ]
+  },
+  "fluent_community/member/content_purged": {
+    "summary": "Fires once after an administrator's content purge of a member has finished.",
+    "details": "The member is already blocked, and every row of every requested kind is already deleted, so a listener cannot stop or alter anything \u2014 it exists to let a feature clean up what the purge does not know about. Pro uses it to remove that member's course reviews when posts were purged. The types it carries are the merged set for the purge, which may be wider than any single request asked for.",
+    "params": [
+      {
+        "name": "userId",
+        "type": "int",
+        "desc": "The member whose content was deleted."
+      },
+      {
+        "name": "types",
+        "type": "string[]",
+        "desc": "The kinds of content purged: `posts`, `comments`, `messages`, `course_progress`."
+      }
+    ],
+    "notes": [
+      "A purge that does not finish inside its time budget continues in a background job, so this can fire long after the request that started it, and never fires in that request at all.",
+      "There is no matching hook for the start of a purge.",
+      "A listener runs inside either the administrator's request or the queue runner, under the same time budget as the purge itself."
+    ],
+    "related": [
+      "fluent_community/course_review/deleted"
+    ]
+  },
+  "fluent_community/member/update_flag": {
+    "summary": "Carries a moderation flag from the admin quick actions to whatever stores it.",
+    "details": "Core fires this and stores nothing itself: Pro's moderation module is what writes the flag, and it only listens while content moderation is switched on. On a core-only site, or with that feature off, the request still reports success and the flag is simply never recorded. It fires after the profile has been saved and cannot veto anything.",
+    "params": [
+      {
+        "name": "user",
+        "type": "\\\\FluentCommunity\\\\App\\\\Models\\\\User",
+        "desc": "The member being flagged or unflagged."
+      },
+      {
+        "name": "isFlagged",
+        "type": "bool",
+        "desc": "True when the request asked for the flag, already resolved from the exact string `yes`."
+      }
+    ],
+    "notes": [
+      "It fires at most once per request, and only when the request carried the flag field.",
+      "The capability check lives in the endpoint, not here, so anything firing this action directly bypasses it.",
+      "The profile-edit screen reaches the same state through a filter instead, so this state has two entry points of different kinds."
+    ]
+  },
+  "fluent_community/default_members_per_page": {
+    "summary": "Sets the page size the portal's member lists start with.",
+    "details": "Defaults to 24, and the result is cast to an integer and clamped between 1 and 150 \u2014 so zero, a negative number or a non-numeric value all become 1, and anything larger becomes 150. It is published to the portal app as a starting value, not applied to any query.",
+    "params": [
+      {
+        "name": "perPage",
+        "type": "int",
+        "desc": "Members per page. 24 by default."
+      }
+    ],
+    "returns": "`int` \u2014 cast, then clamped to 1-150.",
+    "notes": [
+      "It is not a server-side limit. The member endpoint takes its page size from the request, clamped to the same ceiling, so a client can still ask for more and a caller outside the portal never sees this filter.",
+      "It is consulted once per portal render and once per app-variables request."
+    ]
+  },
 }
