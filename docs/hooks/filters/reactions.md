@@ -11,7 +11,7 @@ description: "Reactions filter hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:538` |
+| [`fluent_community/feed/updated_survey_config`](#fluent-community-feed-updated-survey-config) | Core | 1 | `fluent-community/app/Services/FeedsHelper.php:563` |
 | [`fluent_community/reaction_notification/enabled`](#fluent-community-reaction-notification-enabled) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:229` |
 | [`fluent_community/reactions_api_response`](#fluent-community-reactions-api-response) | Core | 2 | `fluent-community/app/Http/Controllers/ReactionController.php:47` |
 | [`fluent_community/survey_config_response`](#fluent-community-survey-config-response) | Core | 1 | `fluent-community/app/Http/Controllers/ReactionController.php:270` |
@@ -42,7 +42,7 @@ The returned array is written straight into the post's `meta.survey_config` and 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/FeedsHelper.php:538` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
+| Core | `fluent-community/app/Services/FeedsHelper.php:563` | `$surveyConfig` (mixed)<br>`$feed` (Feed)<br>`$userId` (int) |
 
 ### Example
 

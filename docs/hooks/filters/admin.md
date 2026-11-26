@@ -11,7 +11,7 @@ description: "Admin filter hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/show_wp_admin_link`](#fluent-community-show-wp-admin-link) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:167` |
+| [`fluent_community/show_wp_admin_link`](#fluent-community-show-wp-admin-link) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:174` |
 
 <a id="fluent-community-show-wp-admin-link"></a>
 
@@ -36,7 +36,7 @@ Defaults to true and is tested for truthiness. It is read late, while the sideba
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:167` | `true` (bool) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:174` | `true` (bool) |
 
 ### Example
 

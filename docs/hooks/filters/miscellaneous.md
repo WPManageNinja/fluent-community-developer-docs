@@ -18,25 +18,25 @@ description: "Miscellaneous filter hooks for FluentCommunity."
 | [`fluent_community/announcement_email/recipients_query`](#fluent-community-announcement-email-recipients-query) | Core | 1 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:470` |
 | [`fluent_community/can_use_custom_js`](#fluent-community-can-use-custom-js) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Services/ProHelper.php:162` |
 | [`fluent_community/cloud_storage_strict`](#fluent-community-cloud-storage-strict) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/CloudStorage/StorageHelper.php:66` |
-| [`fluent_community/cloudflare_ip_ranges`](#fluent-community-cloudflare-ip-ranges) | Core | 1 | `fluent-community/app/Services/Helper.php:2799` |
-| [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:403` |
+| [`fluent_community/cloudflare_ip_ranges`](#fluent-community-cloudflare-ip-ranges) | Core | 1 | `fluent-community/app/Services/Helper.php:2821` |
+| [`fluent_community/custom_order_by`](#fluent-community-custom-order-by) | Core | 1 | `fluent-community/app/Models/Feed.php:438` |
 | [`fluent_community/getting_started_steps`](#fluent-community-getting-started-steps) | Core | 1 | `fluent-community/app/Services/GettingStartedService.php:107` |
 | [`fluent_community/license_grace_period_days`](#fluent-community-license-grace-period-days) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/LicenseController.php:113` |
 | [`fluent_community/lock_timeout`](#fluent-community-lock-timeout) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Services/NamedLock.php:33` |
-| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:811` |
+| [`fluent_community/max_execution_time`](#fluent-community-max-execution-time) | Core | 1 | `fluent-community/app/Functions/Utility.php:812` |
 | [`fluent_community/max_per_page`](#fluent-community-max-per-page) | Core | 1 | `fluent-community/app/Services/Helper.php:311` |
 | [`fluent_community/mcp/single_result_copy`](#fluent-community-mcp-single-result-copy) | Core | 1 | `fluent-community/Modules/Mcp/McpModule.php:172` |
 | [`fluent_community/mcp/tools`](#fluent-community-mcp-tools) | Core | 1 | `fluent-community/Modules/Mcp/AbilitiesRegistrar.php:393` |
 | [`fluent_community/module_import_map`](#fluent-community-module-import-map) | Core | 1 | `fluent-community/app/Vite.php:167` |
 | [`fluent_community/module_scripts`](#fluent-community-module-scripts) | Core | 1 | `fluent-community/app/Vite.php:200` |
-| [`fluent_community/powered_by_text`](#fluent-community-powered-by-text) | Core | 1 | `fluent-community/app/Functions/Utility.php:521` |
-| [`fluent_community/powered_by_url`](#fluent-community-powered-by-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:548` |
+| [`fluent_community/powered_by_text`](#fluent-community-powered-by-text) | Core | 1 | `fluent-community/app/Functions/Utility.php:522` |
+| [`fluent_community/powered_by_url`](#fluent-community-powered-by-url) | Core | 1 | `fluent-community/app/Functions/Utility.php:549` |
 | [`fluent_community/remote_preview_pre_parse`](#fluent-community-remote-preview-pre-parse) | Core | 3 | `fluent-community/app/Services/RemoteUrlParser.php:26` |
 | [`fluent_community/search/api_response`](#fluent-community-search-api-response) | Core | 1 | `fluent-community/app/Http/Controllers/SearchController.php:33` |
 | [`fluent_community/search/providers`](#fluent-community-search-providers) | Core | 1 | `fluent-community/app/Services/Search/SearchService.php:25` |
 | [`fluent_community/seo/pre_render`](#fluent-community-seo-pre-render) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/SeoSiteMap/AbstractPortalPreRenderer.php:74` |
-| [`fluent_community/trusted_proxies`](#fluent-community-trusted-proxies) | Core | 1 | `fluent-community/app/Services/Helper.php:2744` |
-| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:3304` |
+| [`fluent_community/trusted_proxies`](#fluent-community-trusted-proxies) | Core | 1 | `fluent-community/app/Services/Helper.php:2766` |
+| [`fluent_community/undeliverable_crm_contact_statuses`](#fluent-community-undeliverable-crm-contact-statuses) | Core | 2 | `fluent-community/app/Services/Helper.php:3326` |
 
 <a id="fluent-community-pro-module-entries"></a>
 
@@ -215,7 +215,7 @@ The second argument says which of the three is being asked about: `save`, `ui` o
 | Edition | Source | Parameters |
 | --- | --- | --- |
 | <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/ProHelper.php:162` | `$default` (mixed)<br>`$context` (mixed) |
-| Core | `fluent-community/app/Functions/Utility.php:508` | `$default` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:509` | `$default` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -283,7 +283,7 @@ This decides whether a client-supplied header is believed over the real connecti
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2799` | `array (22 items)` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2821` | `array (22 items)` (array) |
 
 ### Example
 
@@ -319,7 +319,7 @@ Reachable only for keys you have added through `fluent_community/post_order_opti
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Models/Feed.php:403` | `$query` (mixed)<br>`$type` (mixed) |
+| Core | `fluent-community/app/Models/Feed.php:438` | `$query` (mixed)<br>`$type` (mixed) |
 
 ### Example
 
@@ -440,7 +440,7 @@ The default is derived from PHP's `max_execution_time`: unlimited or unreadable 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:811` | `$maxRunTime` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:812` | `$maxRunTime` (mixed) |
 
 ### Example
 
@@ -639,7 +639,7 @@ The second argument says which of the two is being rendered. The email default i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:521` | `$default` (mixed)<br>`$context` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:522` | `$default` (mixed)<br>`$context` (mixed) |
 
 ### Example
 
@@ -675,7 +675,7 @@ The URL arrives with its campaign arguments already applied, and those arguments
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:548` | `add_query_arg($params, $url)` (mixed)<br>`$params` (mixed) |
+| Core | `fluent-community/app/Functions/Utility.php:549` | `add_query_arg($params, $url)` (mixed)<br>`$params` (mixed) |
 
 ### Example
 
@@ -831,7 +831,7 @@ add_filter('fluent_community/seo/pre_render', function ($param1, $routeName) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:2744` | `[ '127.0.0.1' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:2766` | `[ '127.0.0.1' ]` (array) |
 
 ### Example
 
@@ -860,8 +860,8 @@ add_filter('fluent_community/trusted_proxies', function ($param1) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Services/Helper.php:3304` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
-| Core | `fluent-community/app/Services/Helper.php:3328` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:3326` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
+| Core | `fluent-community/app/Services/Helper.php:3350` | `[ 'bounced', 'complained', 'spammed' ]` (array) |
 
 ### Example
 

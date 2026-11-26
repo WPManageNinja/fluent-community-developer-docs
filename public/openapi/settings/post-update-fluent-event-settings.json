@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdateFluentEventSettings",
         "summary": "POST Post Update Fluent Event Settings",
-        "description": "Saves the FluentEvent integration settings.\n\nController: `SettingController@updateFluentEventSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:204`",
+        "description": "Saves the FluentEvent integration settings.\n\nController: `SettingController@updateFluentEventSettings`\nRoute source: `fluent-community/app/Http/Routes/api.php:208`",
         "tags": [
           "Settings"
         ],

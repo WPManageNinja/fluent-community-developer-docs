@@ -17,6 +17,7 @@ The FluentCommunity ORM layer is built on WPFluent and Eloquent-style models. Th
 | [`Contact`](/database/models/contact) | `fc_subscribers` | Bridges FluentCommunity users to FluentCRM contact records when FluentCRM is installed. |
 | [`Course`](/database/models/course) | `fcom_spaces` | A `BaseSpace` scoped to `type = course`, adding enrolment and instructor behavior on top of the shared space columns. |
 | [`CourseLesson`](/database/models/course-lesson) | `fcom_posts` | An individual lesson row in `fcom_posts`, scoped by `type` and ordered within its course. |
+| [`CourseReview`](/database/models/course-review) | `fcom_posts` | A student's review of a course. Shares `fcom_posts` under `type = course_review`, with the course in `space_id`, the author in `user_id` and the 1-5 rating in `priority`, read as `rating`. |
 | [`CourseTopic`](/database/models/course-topic) | `fcom_posts` | A section heading in `fcom_posts` that groups lessons within a course. |
 | [`DynamicModel`](/database/models/dynamic-model) | Inherited / runtime-defined | Creates runtime table bindings when FluentCommunity needs an ORM model for a dynamic table. |
 | [`Feed`](/database/models/feed) | `fcom_posts` | Represents community posts, announcements, scheduled posts, and other feed content. |

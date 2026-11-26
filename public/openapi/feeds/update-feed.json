@@ -54,10 +54,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "new_space_id": {
+                  "move_to_profile": {
                     "type": "string"
                   },
-                  "move_to_profile": {
+                  "new_space_id": {
                     "type": "string"
                   },
                   "survey": {
@@ -916,6 +916,24 @@
                     }
                   },
                   "message": "Great point — I ran into the same thing last week."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The feed could not be found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "The feed could not be found"
                 }
               }
             }

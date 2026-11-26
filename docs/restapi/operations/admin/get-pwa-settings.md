@@ -1,5 +1,5 @@
 ---
-title: "Get Settings"
+title: "Get PWA Settings"
 description: "Returns the Progressive Web App settings — app name, short name, icon source, theme colour and install prompt position."
 outline: false
 aside: false
@@ -18,8 +18,8 @@ Returns the Progressive Web App settings — app name, short name, icon source, 
 - Requires the FluentCommunity community-admin permission (or a WordPress super admin).
 - Requires FluentCommunity Pro; this is the PWA module settings endpoint despite its generic path name.
 
-::: tip Live sample
-The request and response below were recorded against a running FluentCommunity install and then anonymised — member names, emails, avatars and post content are fictional, and long collections are trimmed to a few entries.
+::: info Inferred sample
+No recorded sample exists for this endpoint yet, so the payload below is inferred from the controller and model definitions. Field names and types are accurate; values are placeholders.
 :::
 
-<OAOperation operationId="getSettings" specUrl="/openapi/public/admin/get-settings.json" />
+<OAOperation operationId="getPwaSettings" specUrl="/openapi/public/admin/get-pwa-settings.json" />

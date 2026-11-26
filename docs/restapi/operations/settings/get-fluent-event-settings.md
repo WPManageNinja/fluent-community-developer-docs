@@ -15,7 +15,7 @@ Two settings — whether the integration is on, and the URL slug events are serv
 - **Path:** `/settings/fluent-event-settings`
 - **Edition:** Core
 - **Controller:** `SettingController@getFluentEventSettings`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:203`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:207`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - The defaults, integration off and the slug `events`, are filled in on read, so a site that has never saved looks identical to one saved with the defaults.

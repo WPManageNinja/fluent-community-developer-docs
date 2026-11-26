@@ -51,6 +51,7 @@ does not mean it is running.
 | --- | --- |
 | `Certificates` | Course certificates: templates, issuing on completion, manual issuing, public verification and Open Badges. |
 | `CloudStorage` | Uploads pushed to S3-compatible storage, with signed URLs for private files. |
+| `CourseReview` | Student reviews and ratings on courses, with moderation and the aggregate shown on course cards. |
 | `DocumentLibrary` | Document posts and their downloads, including signed links for stored files. |
 | `Emoji` | The emoji picker and its assets in the portal composer. |
 | `Followers` | Member following, and the feeds and counts that follow from it. |

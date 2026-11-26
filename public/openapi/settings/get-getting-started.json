@@ -27,7 +27,7 @@
       "get": {
         "operationId": "getGettingStarted",
         "summary": "GET Get Getting Started",
-        "description": "Returns the getting-started checklist for the calling administrator, with each step already marked done or not.\n\nController: `SettingController@getGettingStarted`\nRoute source: `fluent-community/app/Http/Routes/api.php:195`",
+        "description": "Returns the getting-started checklist for the calling administrator, with each step already marked done or not.\n\nController: `SettingController@getGettingStarted`\nRoute source: `fluent-community/app/Http/Routes/api.php:199`",
         "tags": [
           "Settings"
         ],

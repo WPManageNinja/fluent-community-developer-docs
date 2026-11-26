@@ -41,7 +41,7 @@
             "name": "context",
             "in": "query",
             "required": false,
-            "description": "Context read via `$request->get()` in getTickerUpdates().",
+            "description": "Context read via `$request->getSafe()` in getTickerUpdates().",
             "schema": {
               "type": "string",
               "default": "global"
@@ -51,7 +51,7 @@
             "name": "since",
             "in": "query",
             "required": false,
-            "description": "Since read via `$request->get()` in getTickerUpdates().",
+            "description": "Since read via `$request->getSafe()` in getTickerUpdates().",
             "schema": {
               "type": "string"
             }

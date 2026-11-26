@@ -273,7 +273,7 @@
             }
           },
           "422": {
-            "description": "The comment is too long. Please keep it under %s characters.",
+            "description": "No duplicate comment please!",
             "content": {
               "application/json": {
                 "schema": {
@@ -285,7 +285,7 @@
                   }
                 },
                 "example": {
-                  "message": "The comment is too long. Please keep it under %s characters."
+                  "message": "No duplicate comment please!"
                 }
               }
             }

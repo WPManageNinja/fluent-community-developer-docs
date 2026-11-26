@@ -63,6 +63,8 @@ Represents community posts, announcements, scheduled posts, and other feed conte
 | --- | --- | --- |
 | `SearchBy` | `$query, $search, $in = []` | Search By scope declared on the model. |
 | `ByUserAccess` | `$query, $userId` | By User Access scope declared on the model. |
+| `ByUserOrLessonAccess` | `$query, $userId` | By User Or Lesson Access scope declared on the model. |
+| `ByExistingSpace` | `$query` | By Existing Space scope declared on the model. |
 | `ByActiveAuthor` | `$query` | By Active Author scope declared on the model. |
 | `ByContentModerationAccessStatus` | `$query, $user, $space = null` | By Content Moderation Access Status scope declared on the model. |
 | `ByBookMarked` | `$query, $userId` | By Book Marked scope declared on the model. |

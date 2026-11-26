@@ -5,20 +5,20 @@ description: "Moderation action hooks for FluentCommunity."
 
 # Moderation Actions
 
-8 unique action hooks currently map to this category, across 12 call sites.
+8 unique action hooks currently map to this category, across 17 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/' . $contentType . '_report_added_async`](#fluent-community-' . contentType . '-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:302` |
-| [`fluent_community/comment_report_added_async`](#fluent-community-comment-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:640` |
-| [`fluent_community/content_flagged`](#fluent-community-content-flagged) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:253` |
-| [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created) | <span class="pro-badge">PRO</span> | 5 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:83` |
-| [`fluent_community/post_report_added_async`](#fluent-community-post-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:699` |
-| [`fluent_community/report/{status}`](#fluent-community-report-status) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:280` |
-| [`fluent_community/report/after_delete`](#fluent-community-report-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:305` |
-| [`fluent_community/report/before_delete`](#fluent-community-report-before-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:302` |
+| [`fluent_community/' . $contentType . '_report_added_async`](#fluent-community-' . contentType . '-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:321` |
+| [`fluent_community/comment_report_added_async`](#fluent-community-comment-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:659` |
+| [`fluent_community/content_flagged`](#fluent-community-content-flagged) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:233` |
+| [`fluent_community/content_moderation/created`](#fluent-community-content-moderation-created) | <span class="pro-badge">PRO</span> | 7 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:84` |
+| [`fluent_community/post_report_added_async`](#fluent-community-post-report-added-async) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:718` |
+| [`fluent_community/report/{status}`](#fluent-community-report-status) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:309` |
+| [`fluent_community/report/after_delete`](#fluent-community-report-after-delete) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:343` |
+| [`fluent_community/report/before_delete`](#fluent-community-report-before-delete) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:339` |
 
 <a id="fluent-community-' . contentType . '-report-added-async"></a>
 
@@ -48,7 +48,7 @@ This entry documents the `as_schedule_single_action()` call in Pro's moderation 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:302` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:321` | No parameters |
 
 ### Example
 
@@ -87,7 +87,7 @@ The comment-side twin of `fluent_community/post_report_added_async`, with the sa
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:640` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:659` | No parameters |
 
 ### Example
 
@@ -104,7 +104,7 @@ add_action('fluent_community/comment_report_added_async', function ($reportId, $
 
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Fires when accumulated reports push a post or comment over the configured flag threshold and it is unpublished.
 
 Only reached when content moderation is enabled, a positive `flag_after_threshold` is configured, the content is still `published`, and the report count has met the threshold. By the time callbacks run the content status is already `pending`, the report is marked `flagged`, and a flagged comment has been decremented from its post's comment count. This is Pro-only.
@@ -120,7 +120,8 @@ Only reached when content moderation is enabled, a positive `flag_after_threshol
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:253` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:233` | `$report` (mixed)<br>`$held` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:263` | `$report` (mixed)<br>`$content` (mixed) |
 
 ### Example
 
@@ -137,7 +138,7 @@ add_action('fluent_community/content_flagged', function ($report, $content) {
 
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 5
+- **Call sites:** 7
 - **When it fires:** Fires whenever a moderation report is created against a post or comment.
 
 Covers both member-submitted reports and automatic profanity or first-post flags, which create a report with `meta.flagged_by = auto` and no `user_id` — check that before treating a report as human-submitted. Only the member-report endpoint passes the third argument; the auto-flag paths pass two. Several Pro handlers are attached, including the threshold check that may go on to fire `fluent_community/content_flagged`.
@@ -154,11 +155,13 @@ Covers both member-submitted reports and automatic profanity or first-post flags
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:83` | `$report` (mixed)<br>`$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:150` | `$report` (mixed)<br>`$comment` (Comment) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:520` | `$report` (mixed)<br>`$feed` (Feed) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:579` | `$report` (mixed)<br>`$comment` (Comment) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:170` | `$report` (mixed)<br>`$content` (mixed)<br>`$data['content_type']` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:84` | `$report` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:151` | `$report` (mixed)<br>`$comment` (Comment) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:539` | `$report` (mixed)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:598` | `$report` (mixed)<br>`$comment` (Comment) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:195` | `$report` (mixed)<br>`$content` (mixed)<br>`$data['content_type']` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/CourseReviewService.php:297` | `$report` (mixed)<br>`$review` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/CourseReviewService.php:384` | `$report` (mixed)<br>`$review` (mixed)<br>`CourseReview::TYPE` (mixed) |
 
 ### Example
 
@@ -197,7 +200,7 @@ Queued in the `fluent-community` group as soon as the report is created, and re-
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:699` | No parameters |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Hooks/Handlers/ModerationHandler.php:718` | No parameters |
 
 ### Example
 
@@ -214,7 +217,7 @@ add_action('fluent_community/post_report_added_async', function ($reportId, $las
 
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Dynamic action fired after a moderator sets the status of a report.
 
 The placeholder is one of `published`, `unpublished`, `pending`, `rejected`, `flagged` or `ignored`, validated before the update. Only `unpublished` actually unpublishes the content — every other status publishes it — and Pro listens on `fluent_community/report/unpublished` to record a strike against the author. The status is applied to every report filed against the same content, not just the one being acted on. When approving content that had been held back, the ordinary creation hooks fire first, so a post can reach `fluent_community/feed/created` from here. This is Pro-only.
@@ -230,7 +233,8 @@ The placeholder is one of `published`, `unpublished`, `pending`, `rejected`, `fl
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:280` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:309` | `$report` (mixed)<br>`$content` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/CourseReviewService.php:418` | `$report` (mixed)<br>`$review` (mixed) |
 
 ### Example
 
@@ -262,7 +266,7 @@ The model instance is still in memory and its attributes readable, but the row i
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:305` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:343` | `$report` (mixed) |
 
 ### Example
 
@@ -279,7 +283,7 @@ add_action('fluent_community/report/after_delete', function ($report) {
 
 - **Type:** action
 - **Edition:** <span class="pro-badge">PRO</span>
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Fires immediately before a moderation report row is deleted.
 
 The last point at which the report and its relations can be read. Deleting a report does not touch the content it was filed against — an unpublished post stays unpublished — so this is purely about the moderation record. Pro-only.
@@ -294,7 +298,8 @@ The last point at which the report and its relations can be read. Deleting a rep
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:302` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:339` | `$report` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Services/CourseReviewService.php:623` | `$report` (mixed) |
 
 ### Example
 

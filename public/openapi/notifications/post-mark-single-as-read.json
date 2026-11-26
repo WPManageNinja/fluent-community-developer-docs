@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postMarkSingleAsRead",
         "summary": "POST Post Mark Single As Read",
-        "description": "Marks one notification as read for the calling member, and returns their new unread count.\n\nController: `NotificationsController@markSingleAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:155`",
+        "description": "Marks one notification as read for the calling member, and returns their new unread count.\n\nController: `NotificationsController@markSingleAsRead`\nRoute source: `fluent-community/app/Http/Routes/api.php:159`",
         "tags": [
           "Notifications"
         ],

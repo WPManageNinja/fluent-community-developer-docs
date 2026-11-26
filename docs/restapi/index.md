@@ -5,7 +5,7 @@ description: Source-verified overview for the FluentCommunity REST API.
 
 # FluentCommunity REST API
 
-This reference covers 306 routes registered in the FluentCommunity core and module route files.
+This reference covers 321 routes registered in the FluentCommunity core and module route files.
 
 ## Base URL
 
@@ -59,12 +59,12 @@ operation's own page.
 | --- | --- | --- | --- |
 | [Feeds API](/restapi/feeds) | Core <span class="edition-note">(extended by Pro)</span> | 19 | Feed creation, retrieval, discovery, ticker updates, bookmarks, and markdown preview. |
 | [Spaces API](/restapi/spaces) | Core <span class="edition-note">(extended by Pro)</span> | 35 | Space discovery, lifecycle management, joins/leaves, lock screen configuration, and group organization. |
-| [Members API](/restapi/members) | Core <span class="edition-note">(extended by Pro)</span> | 8 | Global member listing plus space-scoped membership management endpoints. |
+| [Members API](/restapi/members) | Core <span class="edition-note">(extended by Pro)</span> | 12 | Global member listing plus space-scoped membership management endpoints. |
 | [Comments API](/restapi/comments) | Core | 8 | Feed comment listing, creation, updates, deletes, and single comment retrieval. |
 | [Reactions API](/restapi/reactions) | Core | 7 | Feed/comment reactions plus survey vote and survey voter endpoints. |
 | [Notifications API](/restapi/notifications) | Core | 6 | Read, unread, mark-as-read, and mark-all-read notification workflows. |
 | [Activity API](/restapi/activity) | Core | 1 | Activity feed retrieval, including support for pinned and trending content. |
-| [Profile API](/restapi/profile) | Core <span class="edition-note">(extended by Pro)</span> | 19 | Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences. |
+| [Profile API](/restapi/profile) | Core <span class="edition-note">(extended by Pro)</span> | 23 | Public profile retrieval plus profile edits, memberships, comments, spaces, and notification preferences. |
 | [Media API](/restapi/media) | Core <span class="edition-note">(extended by Pro)</span> | 6 | Feed media uploads, media preview cleanup, and Fluent Player video upload/content endpoints. |
 | [Settings API](/restapi/settings) | Core <span class="edition-note">(extended by Pro)</span> | 29 | Feature flags, menu configuration, customization settings, privacy settings, and Fluent Player settings. |
 | [Admin API](/restapi/admin) | Core <span class="edition-note">(extended by Pro)</span> | 46 | General admin settings, email/storage configuration, onboarding, profile links, and course discovery. |
@@ -75,6 +75,7 @@ operation's own page.
 | [Cart Integration API](/restapi/cart) | Core | 5 | FluentCart-backed paywall search, creation, retrieval, and removal for spaces. |
 | [Reports API](/restapi/reports) | <span class="pro-badge">PRO</span> | 5 | Moderation reporting endpoints for administrators. The old analytics endpoints that also lived here were replaced by the Insights API. |
 | [Search API](/restapi/search) | Core | 1 | One endpoint behind the portal search palette, answering across posts, comments, spaces, courses and members. |
+| [Course Reviews API](/restapi/course-reviews) | <span class="pro-badge">PRO</span> | 7 | Student reviews on a course, the moderation queue across the courses an admin manages, and the site-wide defaults for new courses. |
 | [Certificates API](/restapi/certificates) | <span class="pro-badge">PRO</span> | 32 | Course and manual certificates: what a member holds, public verification, Open Badges 3.0 documents for wallets, and the admin endpoints for templates, issuing and revoking. |
 | [Insights API](/restapi/insights) | Core | 4 | Reporting — the pages an admin can open, each page's cards, a single card's data for a date range and scope, and CSV export. Replaced the old Pro analytics endpoints. |
 | [Documents API](/restapi/documents) | <span class="pro-badge">PRO</span> | 4 | Document library upload, listing, update, delete, and download-related portal endpoints. |

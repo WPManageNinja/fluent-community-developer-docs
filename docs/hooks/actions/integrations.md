@@ -12,10 +12,10 @@ description: "Integrations action hooks for FluentCommunity."
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
 | [`fluent_community/fluent_event/init`](#fluent-community-fluent-event-init) | Core | 1 | `fluent-community/Modules/Integrations/Integrations.php:67` |
-| [`fluent_community/install_fluent_event_plugin`](#fluent-community-install-fluent-event-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
-| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
-| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
-| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:468` |
+| [`fluent_community/install_fluent_event_plugin`](#fluent-community-install-fluent-event-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:470` |
+| [`fluent_community/install_fluent_notify_plugin`](#fluent-community-install-fluent-notify-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:470` |
+| [`fluent_community/install_fluent_player_plugin`](#fluent-community-install-fluent-player-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:470` |
+| [`fluent_community/install_messaging_plugin`](#fluent-community-install-messaging-plugin) | Core | 1 | `fluent-community/app/Http/Controllers/SettingController.php:470` |
 | [`fluent_community/paywall_added`](#fluent-community-paywall-added) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:152` |
 | [`fluent_community/paywall_removed`](#fluent-community-paywall-removed) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Http/Controllers/PaywallController.php:181` |
 | [`fluent_community/product_integration_feed_created`](#fluent-community-product-integration-feed-created) | Core | 1 | `fluent-community/Modules/Integrations/FluentCart/Paywalls.php:84` |
@@ -69,7 +69,7 @@ FluentEvent is not hosted on wordpress.org, so there is no default installer —
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:470` | No parameters |
 
 ### Example
 
@@ -95,7 +95,7 @@ FluentNotify is not hosted on wordpress.org, so there is no default installer �
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:470` | No parameters |
 
 ### Example
 
@@ -121,7 +121,7 @@ Guarded by an explicit Pro check before it fires — a free install gets an erro
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:470` | No parameters |
 
 ### Example
 
@@ -147,7 +147,7 @@ Fluent Messages is not hosted on wordpress.org, so there is no default installer
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SettingController.php:468` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/SettingController.php:470` | No parameters |
 
 ### Example
 

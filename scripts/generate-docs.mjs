@@ -149,6 +149,7 @@ const MODEL_GROUPS = [
       'CourseTopic',
       'CourseLesson',
       'QuizModel',
+      'CourseReview',
       'Certificate',
       'CertificateTemplate',
       'SpacePageModel',
@@ -204,6 +205,7 @@ const MODEL_SLUGS = {
   SpaceGroup: 'space-group',
   SpaceUserPivot: 'space-user-pivot',
   Certificate: 'certificate',
+  CourseReview: 'course-review',
   CertificateTemplate: 'certificate-template',
   Invitation: 'invitation',
   QuizModel: 'quiz-model',
@@ -263,6 +265,8 @@ const MODEL_SUMMARIES = {
     'Stores the membership, role, and membership metadata for users inside spaces.',
   Certificate:
     'An issued certificate, course or manual. Shares `fcom_posts` under `type = course_certificate`, with the credential ID in `slug`, the holder in `user_id`, the course in `space_id` and the template version in `parent_id`.',
+  CourseReview:
+    "A student's review of a course. Shares `fcom_posts` under `type = course_review`, with the course in `space_id`, the author in `user_id` and the 1-5 rating in `priority`, read as `rating`.",
   CertificateTemplate:
     'A certificate design, sharing `fcom_posts` under `type = certificate_template`. Publishing copies the working design into an immutable version row, so editing a template never alters a certificate already issued from it.',
   Invitation:
@@ -466,6 +470,13 @@ const MODULE_META = {
     auth:
       'Registered with `PortalPolicy`, so the caller must be a portal user. Each result type is filtered again for that user, so a search never reveals a private space or an unpublished post the caller cannot already open.',
   },
+  'course-reviews': {
+    title: 'Course Reviews API',
+    description:
+      "Student reviews on a course, the moderation queue across the courses an admin manages, and the site-wide defaults for new courses.",
+    auth:
+      'The student routes use `PortalPolicy` and are checked again inside the controller against enrolment and the course\'s own review settings. The moderation routes use `CourseAdminPolicy`, so a course creator sees their own courses, while the site-wide defaults are community-admin only.',
+  },
   certificates: {
     title: 'Certificates API',
     description:
@@ -604,6 +615,8 @@ const PRO_MODULE_PURPOSES = {
   Certificates:
     'Course certificates: templates, issuing on completion, manual issuing, public verification and Open Badges.',
   CloudStorage: 'Uploads pushed to S3-compatible storage, with signed URLs for private files.',
+  CourseReview:
+    'Student reviews and ratings on courses, with moderation and the aggregate shown on course cards.',
   DocumentLibrary: 'Document posts and their downloads, including signed links for stored files.',
   Emoji: 'The emoji picker and its assets in the portal composer.',
   Followers: 'Member following, and the feeds and counts that follow from it.',
@@ -1776,6 +1789,11 @@ function classifyRoute(route) {
   if (/Certificate|OpenBadge/.test(route.controller)) {
     return 'certificates'
   }
+  // Course reviews live under both `courses` and `admin/course-reviews`, so the prefix
+  // would split one feature across two pages.
+  if (/CourseReview/.test(route.controller)) {
+    return 'course-reviews'
+  }
 
   if (route.routePath.includes('/comments') && route.routePath.includes('/reactions')) {
     return 'reactions'
@@ -1968,6 +1986,48 @@ function buildOperationAlias(route) {
       path: /^\/spaces\/\{spaceSlug\}\/pages\/\{pageId\}$/,
       method: 'DELETE',
       slug: 'delete-space-page',
+    },
+    // Two routes whose controller methods are getSettings()/saveSettings() produce the
+    // same slug, and the second silently overwrote the first — PWA settings and course
+    // review settings collided exactly that way.
+    { module: 'admin', path: /^\/admin\/pwa-settings$/, method: 'GET', slug: 'get-pwa-settings' },
+    { module: 'admin', path: /^\/admin\/pwa-settings$/, method: 'POST', slug: 'save-pwa-settings' },
+    {
+      module: 'course-reviews',
+      path: /^\/courses\/\{course_id\}\/reviews$/,
+      method: 'GET',
+      slug: 'list-course-reviews',
+    },
+    {
+      module: 'course-reviews',
+      path: /^\/courses\/\{course_id\}\/reviews$/,
+      method: 'POST',
+      slug: 'save-course-review',
+    },
+    {
+      module: 'course-reviews',
+      path: /^\/courses\/\{course_id\}\/reviews\/\{review_id\}$/,
+      method: 'DELETE',
+      slug: 'delete-course-review',
+    },
+    { module: 'course-reviews', path: /^\/admin\/course-reviews$/, method: 'GET', slug: 'list-all-reviews' },
+    {
+      module: 'course-reviews',
+      path: /^\/admin\/course-reviews\/courses$/,
+      method: 'GET',
+      slug: 'list-reviewed-courses',
+    },
+    {
+      module: 'course-reviews',
+      path: /^\/admin\/course-reviews\/settings$/,
+      method: 'GET',
+      slug: 'get-review-settings',
+    },
+    {
+      module: 'course-reviews',
+      path: /^\/admin\/course-reviews\/settings$/,
+      method: 'POST',
+      slug: 'save-review-settings',
     },
     { module: 'settings', path: /^\/settings\/mcp$/, method: 'GET', slug: 'get-mcp-settings' },
     { module: 'settings', path: /^\/settings\/mcp$/, method: 'POST', slug: 'save-mcp-settings' },
@@ -5788,6 +5848,19 @@ function extractScheduledActionHooks(content, file, source) {
  * this the plugin-installer hooks vanished from the docs, silently, the day the
  * controller switched from one literal call per branch to a single variable call.
  */
+/**
+ * `do_action($isNew ? 'a/created' : 'a/updated', ...)` names two hooks in one call, and
+ * neither is a plain literal or a concatenation, so both were invisible — that is how
+ * the course review created/updated pair went missing. Any fluent_community literal
+ * inside the first argument counts as a name this call can fire.
+ */
+function inlineHookLiterals(expression) {
+  const names = [...expression.matchAll(/'(fluent_community[^']*)'|"(fluent_community[^"]*)"/g)]
+    .map((match) => match[1] || match[2])
+    .filter(isFluentCommunityHook)
+  return [...new Set(names)]
+}
+
 function variableHookLiterals(content, callIndex, expression) {
   const variable = expression.trim().match(/^\$([A-Za-z_][A-Za-z0-9_]*)$/)?.[1]
   if (!variable) {
@@ -5843,6 +5916,9 @@ function extractHookCalls() {
       const hookNames = [expressionToHookName(args[0] || '')].filter(isFluentCommunityHook)
       if (!hookNames.length) {
         hookNames.push(...variableHookLiterals(content, match.index, args[0] || ''))
+      }
+      if (!hookNames.length) {
+        hookNames.push(...inlineHookLiterals(args[0] || ''))
       }
       if (!hookNames.length) {
         continue
@@ -6976,6 +7052,8 @@ function buildRouteOverviewAndSpecs(routes) {
     'process',
     'create',
     'delete',
+    'settings',
+    'save-settings',
   ]
   const genericSlugs = routes.filter((route) => {
     const withoutVerb = route.slug.replace(
@@ -6991,6 +7069,26 @@ function buildRouteOverviewAndSpecs(routes) {
     genericSlugs.forEach((route) => {
       console.log(`  ${route.module}/${route.slug}  (${route.httpMethod} ${route.routePath})`)
     })
+  }
+
+  // Two routes that land on the same module and slug write the same page and the same
+  // spec, so the second silently replaces the first: the run still counts both routes
+  // while the site carries one. That is how the course review settings routes
+  // disappeared behind the PWA ones. Fail the build rather than the docs.
+  const slugOwners = new Map()
+  for (const route of routes) {
+    const key = `${route.module}/${route.slug}`
+    if (!slugOwners.has(key)) {
+      slugOwners.set(key, [])
+    }
+    slugOwners.get(key).push(`${route.httpMethod} ${route.routePath}`)
+  }
+  const collisions = [...slugOwners.entries()].filter(([, owners]) => owners.length > 1)
+  if (collisions.length) {
+    throw new Error(
+      `${collisions.length} operation slug(s) claimed by more than one route. Add an entry to buildOperationAlias() for each:\n` +
+        collisions.map(([key, owners]) => `  ${key}  <- ${owners.join('  |  ')}`).join('\n'),
+    )
   }
 
   const unknownModules = [...new Set(routes.map((route) => route.module))]

@@ -45,28 +45,7 @@
                 "type": "object",
                 "properties": {
                   "config": {
-                    "type": "object",
-                    "properties": {
-                      "is_enabled": {
-                        "type": "string"
-                      },
-                      "profanity_filter": {
-                        "type": "string"
-                      },
-                      "flag_after_threshold": {
-                        "type": "integer"
-                      },
-                      "first_comment_approval": {
-                        "type": "string"
-                      },
-                      "auto_flag_user_reject_threshold": {
-                        "type": "integer"
-                      },
-                      "auto_flag_user_report_threshold": {
-                        "type": "integer"
-                      }
-                    },
-                    "required": []
+                    "type": "object"
                   }
                 }
               },

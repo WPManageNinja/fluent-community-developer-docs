@@ -41,7 +41,7 @@
             "name": "space",
             "in": "query",
             "required": false,
-            "description": "Space read via `$request->get()` in get().",
+            "description": "Space read via `$request->getSafe()` in get().",
             "schema": {
               "type": "string"
             }

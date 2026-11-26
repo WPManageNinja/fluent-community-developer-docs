@@ -302,7 +302,7 @@
             }
           },
           "422": {
-            "description": "The comment is too long. Please keep it under %s characters.",
+            "description": "You are not allowed to edit this comment",
             "content": {
               "application/json": {
                 "schema": {
@@ -314,7 +314,7 @@
                   }
                 },
                 "example": {
-                  "message": "The comment is too long. Please keep it under %s characters."
+                  "message": "You are not allowed to edit this comment"
                 }
               }
             }

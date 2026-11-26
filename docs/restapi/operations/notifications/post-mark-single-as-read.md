@@ -15,7 +15,7 @@ The difference from the other mark-read route is the point of this one: it marks
 - **Path:** `/notifications/mark-read/{notification_id}/single`
 - **Edition:** Core
 - **Controller:** `NotificationsController@markSingleAsRead`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:155`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:159`
 - **Controller source:** `fluent-community/app/Http/Controllers/NotificationsController.php`
 
 - The path takes a notification ID, not the ID of the member's own subscription row.

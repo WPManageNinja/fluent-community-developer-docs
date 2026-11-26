@@ -63,6 +63,10 @@
     "remove-space-member",
     "list-members",
     "update-member",
+    "get-content-summary",
+    "post-purge-content",
+    "post-save-moderation-note",
+    "post-update-quick-actions",
     "post-bulk-add-members",
     "post-bulk-import-members",
     "post-resolve-crm-tag-space"
@@ -116,7 +120,11 @@
     "toggle-profile-follow",
     "block-profile-user",
     "unblock-profile-user",
-    "toggle-profile-notification"
+    "toggle-profile-notification",
+    "get-contact",
+    "get-options",
+    "post-update-tags",
+    "post-update-lists"
   ],
   "media": [
     "post-handle-media-upload",
@@ -200,8 +208,8 @@
     "delete-webhook",
     "save-sidebar-link",
     "delete-sidebar-link",
-    "get-settings",
-    "post-save-settings",
+    "get-pwa-settings",
+    "save-pwa-settings",
     "list-user-badges",
     "save-user-badges"
   ],
@@ -296,6 +304,15 @@
   ],
   "search": [
     "get-search"
+  ],
+  "course-reviews": [
+    "list-course-reviews",
+    "save-course-review",
+    "delete-course-review",
+    "list-all-reviews",
+    "list-reviewed-courses",
+    "get-review-settings",
+    "save-review-settings"
   ],
   "certificates": [
     "get-list-templates",
