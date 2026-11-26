@@ -103,6 +103,24 @@
               }
             }
           },
+          "403": {
+            "description": "Comments are disabled for this post",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Comments are disabled for this post"
+                }
+              }
+            }
+          },
           "422": {
             "description": "You cannot react to your own comment",
             "content": {

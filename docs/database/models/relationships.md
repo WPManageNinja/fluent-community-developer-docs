@@ -56,6 +56,7 @@ The model layer uses standard WPFluent relation helpers such as `belongsTo`, `ha
 | [`CourseLesson`](/database/models/course-lesson) | `lessonCompleted` | `hasMany` | `Reaction` |
 | [`CourseLesson`](/database/models/course-lesson) | `media` | `hasMany` | `Media` |
 | [`CourseLesson`](/database/models/course-lesson) | `terms` | `belongsToMany` | `Term` |
+| [`CourseReview`](/database/models/course-review) | `xprofile` | `belongsTo` | `XProfile` |
 | [`CourseTopic`](/database/models/course-topic) | `lessons` | `hasMany` | `CourseLesson` |
 | [`CourseTopic`](/database/models/course-topic) | `owner` | `belongsTo` | `User` |
 | [`CourseTopic`](/database/models/course-topic) | `course` | `belongsTo` | `Course` |

@@ -25,8 +25,8 @@
   "paths": {
     "/admin/pwa-settings": {
       "get": {
-        "operationId": "getSettings",
-        "summary": "GET Get Settings",
+        "operationId": "getPwaSettings",
+        "summary": "GET Get PWA Settings",
         "description": "Returns the Progressive Web App settings — app name, short name, icon source, theme colour and install prompt position.\n\nController: `PwaController@getSettings`\nRoute source: `fluent-community-pro/app/Modules/Pwa/Http/pwa_api.php:8`",
         "tags": [
           "Admin"
@@ -45,63 +45,15 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "settings": {
-                      "type": "object",
-                      "properties": {
-                        "app_name": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "background_color": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "custom_icon": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "icon_sizes": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "icon_source": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "install_dismissible": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "install_entry": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "install_position": {
-                          "type": "string",
-                          "nullable": false
-                        },
-                        "short_name": {
-                          "type": "string",
-                          "nullable": false
-                        }
-                      },
-                      "additionalProperties": false
+                    "message": {
+                      "type": "string",
+                      "nullable": false
                     }
                   },
                   "additionalProperties": false
                 },
                 "example": {
-                  "settings": {
-                    "app_name": "",
-                    "background_color": "",
-                    "custom_icon": "",
-                    "icon_sizes": "",
-                    "icon_source": "default",
-                    "install_dismissible": "no",
-                    "install_entry": "yes",
-                    "install_position": "bottom",
-                    "short_name": ""
-                  }
+                  "message": "Success"
                 }
               }
             }

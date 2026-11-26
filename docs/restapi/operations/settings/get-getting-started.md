@@ -15,7 +15,7 @@ Every step is detected from the site's own data — there is no way to tick one 
 - **Path:** `/settings/getting-started`
 - **Edition:** Core
 - **Controller:** `SettingController@getGettingStarted`
-- **Route source:** `fluent-community/app/Http/Routes/api.php:195`
+- **Route source:** `fluent-community/app/Http/Routes/api.php:199`
 - **Controller source:** `fluent-community/app/Http/Controllers/SettingController.php`
 
 - The card state is per administrator, held in their own user meta, while the step results are site data and the same for everyone.

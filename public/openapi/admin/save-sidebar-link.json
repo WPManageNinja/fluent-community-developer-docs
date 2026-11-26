@@ -45,42 +45,43 @@
                 "type": "object",
                 "properties": {
                   "link": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "parent_id": {
+                    "type": "string"
+                  },
+                  "privacy": {
+                    "type": "string"
+                  },
+                  "settings": {
                     "type": "object",
                     "properties": {
-                      "title": {
+                      "permalink": {
                         "type": "string"
                       },
-                      "parent_id": {
-                        "type": "string"
-                      },
-                      "privacy": {
-                        "type": "string"
-                      },
-                      "settings": {
-                        "type": "object",
-                        "properties": {
-                          "permalink": {
-                            "type": "string"
-                          },
-                          "membership_ids": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "required": [
-                          "permalink"
-                        ]
+                      "membership_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     },
                     "required": [
-                      "title",
-                      "parent_id",
-                      "privacy"
+                      "permalink"
                     ]
                   }
-                }
+                },
+                "required": [
+                  "title",
+                  "parent_id",
+                  "privacy"
+                ]
               },
               "example": {
                 "link": {

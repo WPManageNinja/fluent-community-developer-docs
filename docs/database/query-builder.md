@@ -35,6 +35,8 @@ FluentCommunity models inherit the WPFluent query builder. The generated scope i
 | [`CourseTopic`](/database/models/course-topic) | `SearchBy` | `$query, $search` |
 | [`Feed`](/database/models/feed) | `SearchBy` | `$query, $search, $in = []` |
 | [`Feed`](/database/models/feed) | `ByUserAccess` | `$query, $userId` |
+| [`Feed`](/database/models/feed) | `ByUserOrLessonAccess` | `$query, $userId` |
+| [`Feed`](/database/models/feed) | `ByExistingSpace` | `$query` |
 | [`Feed`](/database/models/feed) | `ByActiveAuthor` | `$query` |
 | [`Feed`](/database/models/feed) | `ByContentModerationAccessStatus` | `$query, $user, $space = null` |
 | [`Feed`](/database/models/feed) | `ByBookMarked` | `$query, $userId` |

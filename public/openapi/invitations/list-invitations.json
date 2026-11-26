@@ -50,7 +50,7 @@
             "name": "status",
             "in": "query",
             "required": false,
-            "description": "Status read via `$request->get()` in getInvitations().",
+            "description": "Status read via `$request->getSafe()` in getInvitations().",
             "schema": {
               "type": "string",
               "default": "pending"

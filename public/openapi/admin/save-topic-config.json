@@ -45,19 +45,7 @@
                 "type": "object",
                 "properties": {
                   "config": {
-                    "type": "object",
-                    "properties": {
-                      "max_topics_per_post": {
-                        "type": "integer"
-                      },
-                      "max_topics_per_space": {
-                        "type": "integer"
-                      },
-                      "show_on_post_card": {
-                        "type": "string"
-                      }
-                    },
-                    "required": []
+                    "type": "object"
                   }
                 }
               },

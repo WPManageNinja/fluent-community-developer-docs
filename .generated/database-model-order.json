@@ -68,6 +68,10 @@
         "link": "/database/models/quiz-model"
       },
       {
+        "text": "CourseReview",
+        "link": "/database/models/course-review"
+      },
+      {
         "text": "Certificate",
         "link": "/database/models/certificate"
       },

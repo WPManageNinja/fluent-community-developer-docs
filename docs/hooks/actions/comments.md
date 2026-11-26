@@ -5,27 +5,27 @@ description: "Comments action hooks for FluentCommunity."
 
 # Comments Actions
 
-19 unique action hooks currently map to this category, across 27 call sites.
+19 unique action hooks currently map to this category, across 31 call sites.
 
 ## Hook Inventory
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/before_comment_create`](#fluent-community-before-comment-create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:138` |
-| [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:582` |
-| [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:151` |
-| [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:271` |
-| [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:270` |
+| [`fluent_community/before_comment_create`](#fluent-community-before-comment-create) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:128` |
+| [`fluent_community/before_comment_delete`](#fluent-community-before-comment-delete) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:585` |
+| [`fluent_community/check_rate_limit/create_comment`](#fluent-community-check-rate-limit-create-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:141` |
+| [`fluent_community/comment_added`](#fluent-community-comment-added) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:300` |
+| [`fluent_community/comment_added_{feed}`](#fluent-community-comment-added-feed) | Core <span class="edition-note">(also fired by Pro)</span> | 2 | `fluent-community-pro/app/Http/Controllers/ModerationController.php:299` |
 | [`fluent_community/comment_added_async`](#fluent-community-comment-added-async) | Core | 4 | `fluent-community/app/Hooks/Handlers/EmailNotificationHandler.php:249` |
-| [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:597` |
-| [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:596` |
-| [`fluent_community/comment_updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:313` |
-| [`fluent_community/comment_updated_{feed}`](#fluent-community-comment-updated-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:314` |
-| [`fluent_community/comment/media_deleted`](#fluent-community-comment-media-deleted) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:307` |
-| [`fluent_community/comment/new_comment_{comment}`](#fluent-community-comment-new-comment-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:209` |
-| [`fluent_community/comment/react_added`](#fluent-community-comment-react-added) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:660` |
-| [`fluent_community/comment/react_removed`](#fluent-community-comment-react-removed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:673` |
-| [`fluent_community/comment/updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:371` |
+| [`fluent_community/comment_deleted`](#fluent-community-comment-deleted) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:600` |
+| [`fluent_community/comment_deleted_{feed}`](#fluent-community-comment-deleted-feed) | Core | 2 | `fluent-community/app/Http/Controllers/CommentsController.php:599` |
+| [`fluent_community/comment_updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:311` |
+| [`fluent_community/comment_updated_{feed}`](#fluent-community-comment-updated-feed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:312` |
+| [`fluent_community/comment/media_deleted`](#fluent-community-comment-media-deleted) | Core | 3 | `fluent-community/app/Http/Controllers/CommentsController.php:305` |
+| [`fluent_community/comment/new_comment_{comment}`](#fluent-community-comment-new-comment-comment) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:199` |
+| [`fluent_community/comment/react_added`](#fluent-community-comment-react-added) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:669` |
+| [`fluent_community/comment/react_removed`](#fluent-community-comment-react-removed) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:682` |
+| [`fluent_community/comment/updated`](#fluent-community-comment-updated) | Core | 1 | `fluent-community/app/Http/Controllers/CommentsController.php:369` |
 | [`fluent_community/notification/comment/notifed_to_author`](#fluent-community-notification-comment-notifed-to-author) | Core | 2 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:363` |
 | [`fluent_community/notification/comment/notifed_to_mentions`](#fluent-community-notification-comment-notifed-to-mentions) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:581` |
 | [`fluent_community/notification/comment/notifed_to_other_users`](#fluent-community-notification-comment-notifed-to-other-users) | Core | 1 | `fluent-community/app/Hooks/Handlers/NotificationEventHandler.php:546` |
@@ -53,7 +53,7 @@ Read-only: the attributes are passed by value, so mutating them changes nothing.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:138` | `$commentData` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:128` | `$commentData` (mixed)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -70,7 +70,7 @@ add_action('fluent_community/before_comment_create', function ($commentData, $fe
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Runs immediately before a comment row is deleted, while it and its relations are still readable.
 
 The only place to capture a comment before it disappears — `fluent_community/comment_deleted` receives just the ID. Attached media is announced separately through `fluent_community/comment/media_deleted` right after this hook, and the post's comment count is recalculated after the delete, so the count on `$comment->post` is still the pre-delete value here.
@@ -85,7 +85,8 @@ The only place to capture a comment before it disappears — `fluent_community/c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:582` | `$comment` (Comment) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:585` | `$comment` (Comment) |
+| Core | `fluent-community/app/Services/MemberContentPurgeService.php:258` | `$comment` (Comment) |
 
 ### Example
 
@@ -117,7 +118,7 @@ Core attaches `RateLimitHandler::maybeLimitComment()`, which throws once the mem
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:151` | `$user` (User) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:141` | `$user` (User) |
 
 ### Example
 
@@ -151,8 +152,8 @@ Comments held for moderation never reach it — those fire `fluent_community/com
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:271` | `$content` (mixed)<br>`$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:220` | `$comment` (Comment)<br>`$feed` (Feed)<br>`Arr::get($mentions, 'users', [])` (array) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:300` | `$content` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:210` | `$comment` (Comment)<br>`$feed` (Feed)<br>`Arr::get($mentions, 'users', [])` (array) |
 
 ### Example
 
@@ -185,8 +186,8 @@ The suffix is `$feed->type`, so the live names are `fluent_community/comment_add
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:270` | `$content` (mixed)<br>`$feed` (Feed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:219` | `$comment` (Comment)<br>`$feed` (Feed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ModerationController.php:299` | `$content` (mixed)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:209` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -245,7 +246,7 @@ add_action('fluent_community/comment_added_async', function ($commentId, $lastUs
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Runs after a comment row has been deleted and the post's comment count recalculated.
 
 The first argument is the comment ID, not a model — the row is already gone by the time the hook runs, so anything you need from the comment must be captured earlier via `fluent_community/before_comment_delete`. Attached media is announced beforehand through `fluent_community/comment/media_deleted`.
@@ -261,7 +262,8 @@ The first argument is the comment ID, not a model — the row is already gone by
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:597` | `$commentId` (int)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:600` | `$commentId` (int)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Services/MemberContentPurgeService.php:277` | `$commentId` (int)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -278,7 +280,7 @@ add_action('fluent_community/comment_deleted', function ($commentId, $feed) {
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 1
+- **Call sites:** 2
 - **When it fires:** Post-type-scoped twin of `fluent_community/comment_deleted`.
 
 Suffixed with `$feed->type`, and fired immediately before the generic hook, so both run for every deletion. As with the generic hook the first argument is an ID, not a model — the row is already gone. The post's `comments_count` has been recounted and saved without bumping `updated_at`.
@@ -294,7 +296,8 @@ Suffixed with `$feed->type`, and fired immediately before the generic hook, so b
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:596` | `$commentId` (int)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:599` | `$commentId` (int)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Services/MemberContentPurgeService.php:276` | `$commentId` (int)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -327,7 +330,7 @@ Guarded by a dirty check, so a no-op edit is silent. Media attached to the comme
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:313` | `$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:311` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -360,7 +363,7 @@ Suffixed with `$feed->type` and fired immediately after the generic hook, under 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:314` | `$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:312` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -377,7 +380,7 @@ add_action('fluent_community/comment_updated_{feed}', function ($comment, $feed)
 
 - **Type:** action
 - **Edition:** Core
-- **Call sites:** 2
+- **Call sites:** 3
 - **When it fires:** Signals that media attached to a comment should be detached and cleaned up.
 
 A request to clean up rather than a report that a delete happened: core's `CleanupHandler::queueMediaDelete()` is what removes local files and deactivates remote ones. Two call sites, and they pass different things — editing a comment passes only the media rows the edit dropped, whereas deleting a comment passes the whole `media` relation. It is not fired at all when an edit drops no media.
@@ -392,8 +395,9 @@ A request to clean up rather than a report that a delete happened: core's `Clean
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:307` | `$otherMedias` (mixed) |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:585` | `$comment->media` (Comment) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:305` | `$otherMedias` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:588` | `$comment->media` (Comment) |
+| Core | `fluent-community/app/Services/MemberContentPurgeService.php:261` | `$comment->media` (Comment) |
 
 ### Example
 
@@ -426,7 +430,7 @@ In practice the live name is `fluent_community/comment/new_comment_pending`, fir
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:209` | `$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:199` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -460,7 +464,7 @@ Guarded by `wasRecentlyCreated`, so re-sending the same like is a no-op that doe
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:660` | `$reaction` (mixed)<br>`$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:669` | `$reaction` (mixed)<br>`$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -493,7 +497,7 @@ Only fires when a row was actually deleted, so a stray un-like is silent. The re
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:673` | `$comment` (Comment)<br>`$feed` (Feed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:682` | `$comment` (Comment)<br>`$feed` (Feed) |
 
 ### Example
 
@@ -526,7 +530,7 @@ A different event from `fluent_community/comment_updated`, which covers author e
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/CommentsController.php:371` | `$comment` (Comment)<br>`$dirty` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/CommentsController.php:369` | `$comment` (Comment)<br>`$dirty` (mixed) |
 
 ### Example
 

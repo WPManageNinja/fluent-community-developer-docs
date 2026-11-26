@@ -41,7 +41,7 @@
             "name": "since",
             "in": "query",
             "required": false,
-            "description": "Since read via `$request->get()` in getTicker().",
+            "description": "Since read via `$request->getSafe()` in getTicker().",
             "schema": {
               "type": "string"
             }

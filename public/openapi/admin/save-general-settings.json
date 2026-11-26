@@ -45,61 +45,7 @@
                 "type": "object",
                 "properties": {
                   "settings": {
-                    "type": "object",
-                    "properties": {
-                      "logo": {
-                        "type": "string"
-                      },
-                      "white_logo": {
-                        "type": "string"
-                      },
-                      "featured_image": {
-                        "type": "string"
-                      },
-                      "disable_global_posts": {
-                        "type": "string"
-                      },
-                      "access": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      },
-                      "auth_content": {
-                        "type": "string"
-                      },
-                      "auth_redirect": {
-                        "type": "string"
-                      },
-                      "restricted_role_content": {
-                        "type": "string"
-                      },
-                      "logo_permalink": {
-                        "type": "string"
-                      },
-                      "logo_permalink_type": {
-                        "type": "string"
-                      },
-                      "auth_url": {
-                        "type": "string"
-                      },
-                      "cutsom_auth_url": {
-                        "type": "string"
-                      },
-                      "auth_form_type": {
-                        "type": "string"
-                      },
-                      "explicit_registration": {
-                        "type": "string"
-                      },
-                      "use_custom_signup_page": {
-                        "type": "string"
-                      },
-                      "custom_signup_url": {
-                        "type": "string"
-                      }
-                    },
-                    "required": []
+                    "type": "object"
                   }
                 }
               },

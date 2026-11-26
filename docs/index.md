@@ -9,4 +9,4 @@ editLink: false
 pageClass: docs-home
 ---
 
-<DocsHome :stats="{ models: 32, routes: 306, hooks: 590, hookCallSites: 767, openapiSpecs: 307 }" />
+<DocsHome :stats="{ models: 33, routes: 321, hooks: 596, hookCallSites: 786, openapiSpecs: 322 }" />

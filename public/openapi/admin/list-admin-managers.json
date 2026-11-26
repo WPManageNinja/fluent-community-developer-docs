@@ -41,7 +41,7 @@
             "name": "search",
             "in": "query",
             "required": false,
-            "description": "Search read via `$request->get()` in getManagers().",
+            "description": "Search read via `$request->getSafe()` in getManagers().",
             "schema": {
               "type": "string"
             }

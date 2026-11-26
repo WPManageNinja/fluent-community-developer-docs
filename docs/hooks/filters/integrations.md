@@ -11,7 +11,7 @@ description: "Integrations filter hooks for FluentCommunity."
 
 | Hook | Edition | Call Sites | First Source |
 | --- | --- | --- | --- |
-| [`fluent_community/can_install_addons`](#fluent-community-can-install-addons) | Core | 1 | `fluent-community/app/Functions/Utility.php:487` |
+| [`fluent_community/can_install_addons`](#fluent-community-can-install-addons) | Core | 1 | `fluent-community/app/Functions/Utility.php:488` |
 | [`fluent_community/fluent_player/fallback_timings`](#fluent-community-fluent-player-fallback-timings) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:236` |
 | [`fluent_community/fluent_player/max_audios_per_post`](#fluent-community-fluent-player-max-audios-per-post) | Core | 1 | `fluent-community/Modules/Integrations/FluentPlayer/Bootstrap.php:311` |
 | [`fluent_community/fluentform__defaults`](#fluent-community-fluentform--defaults) | Core | 1 | `fluent-community/Modules/Integrations/FluentForms/Bootstrap.php:58` |
@@ -45,7 +45,7 @@ Defaults to true and is cast to bool. It is an extra restriction rather than a g
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Functions/Utility.php:487` | `true` (bool) |
+| Core | `fluent-community/app/Functions/Utility.php:488` | `true` (bool) |
 
 ### Example
 

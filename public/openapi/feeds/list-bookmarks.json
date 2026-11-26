@@ -68,7 +68,7 @@
             "name": "type",
             "in": "query",
             "required": false,
-            "description": "Type read via `$request->get()` in getBookmarks().",
+            "description": "Type read via `$request->getSafe()` in getBookmarks().",
             "schema": {
               "type": "string"
             }

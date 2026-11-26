@@ -45,13 +45,10 @@
                 "type": "object",
                 "properties": {
                   "email_settings": {
-                    "type": "object",
-                    "properties": {
-                      "logo": {
-                        "type": "string"
-                      }
-                    },
-                    "required": []
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 }
               },

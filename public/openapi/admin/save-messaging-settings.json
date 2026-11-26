@@ -45,19 +45,16 @@
                 "type": "object",
                 "properties": {
                   "settings": {
+                    "type": "object"
+                  },
+                  "socket_config": {
                     "type": "object",
                     "properties": {
-                      "realtime_enabled": {
+                      "secret": {
                         "type": "string"
                       }
                     },
                     "required": []
-                  },
-                  "socket_config": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
                   }
                 }
               },

@@ -47,6 +47,9 @@
                   "parent_id": {
                     "type": "string"
                   },
+                  "status": {
+                    "type": "string"
+                  },
                   "title": {
                     "type": "string"
                   },
@@ -54,9 +57,6 @@
                     "type": "string"
                   },
                   "description": {
-                    "type": "string"
-                  },
-                  "status": {
                     "type": "string"
                   },
                   "course_type": {
@@ -90,6 +90,12 @@
                         "type": "string"
                       },
                       "sequential_lesson_order": {
+                        "type": "string"
+                      },
+                      "show_lessons": {
+                        "type": "string"
+                      },
+                      "show_reviews": {
                         "type": "string"
                       },
                       "custom_lock_screen": {

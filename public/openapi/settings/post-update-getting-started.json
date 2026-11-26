@@ -27,7 +27,7 @@
       "post": {
         "operationId": "postUpdateGettingStarted",
         "summary": "POST Post Update Getting Started",
-        "description": "Hides, restores or acknowledges the getting-started card for the calling administrator.\n\nController: `SettingController@updateGettingStarted`\nRoute source: `fluent-community/app/Http/Routes/api.php:196`",
+        "description": "Hides, restores or acknowledges the getting-started card for the calling administrator.\n\nController: `SettingController@updateGettingStarted`\nRoute source: `fluent-community/app/Http/Routes/api.php:200`",
         "tags": [
           "Settings"
         ],

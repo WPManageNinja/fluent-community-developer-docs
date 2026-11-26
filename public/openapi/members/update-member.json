@@ -198,7 +198,7 @@
             }
           },
           "422": {
-            "description": "Sorry, you cannot change the status of another admin. Remove the user from moderators",
+            "description": "Sorry, only a community admin can change the status of a moderator.",
             "content": {
               "application/json": {
                 "schema": {
@@ -210,7 +210,7 @@
                   }
                 },
                 "example": {
-                  "message": "Sorry, you cannot change the status of another admin. Remove the user from moderators"
+                  "message": "Sorry, only a community admin can change the status of a moderator."
                 }
               }
             }

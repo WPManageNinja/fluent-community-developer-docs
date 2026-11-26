@@ -5,7 +5,7 @@ description: "Members action hooks for FluentCommunity."
 
 # Members Actions
 
-20 unique action hooks currently map to this category, across 29 call sites.
+22 unique action hooks currently map to this category, across 31 call sites.
 
 ## Hook Inventory
 
@@ -13,22 +13,24 @@ description: "Members action hooks for FluentCommunity."
 | --- | --- | --- | --- |
 | [`fluent_community_sync_user_points`](#fluent-community-sync-user-points) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:96` |
 | [`fluent_community/after_sync_bp_users`](#fluent-community-after-sync-bp-users) | Core | 2 | `fluent-community/app/Hooks/CLI/BuddyPressMigrator.php:155` |
-| [`fluent_community/before_unblocking_user`](#fluent-community-before-unblocking-user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:205` |
-| [`fluent_community/before_unfollowing_user`](#fluent-community-before-unfollowing-user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` |
-| [`fluent_community/blocked_user`](#fluent-community-blocked-user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` |
-| [`fluent_community/followed_user`](#fluent-community-followed-user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` |
-| [`fluent_community/managed/after_remove`](#fluent-community-managed-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:135` |
-| [`fluent_community/manager/added`](#fluent-community-manager-added) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:110` |
-| [`fluent_community/manager/after_remove`](#fluent-community-manager-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:134` |
-| [`fluent_community/manager/before_remove`](#fluent-community-manager-before-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:130` |
-| [`fluent_community/manager/updated`](#fluent-community-manager-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:93` |
-| [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/MembersController.php:145` |
-| [`fluent_community/mention_members_query_ref`](#fluent-community-mention-members-query-ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:86` |
-| [`fluent_community/profile_deactivated`](#fluent-community-profile-deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:177` |
-| [`fluent_community/reactivate_account`](#fluent-community-reactivate-account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:243` |
-| [`fluent_community/space_members_query_ref`](#fluent-community-space-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:452` |
+| [`fluent_community/before_unblocking_user`](#fluent-community-before-unblocking-user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:207` |
+| [`fluent_community/before_unfollowing_user`](#fluent-community-before-unfollowing-user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:78` |
+| [`fluent_community/blocked_user`](#fluent-community-blocked-user) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/FollowController.php:178` |
+| [`fluent_community/followed_user`](#fluent-community-followed-user) | <span class="pro-badge">PRO</span> | 2 | `fluent-community-pro/app/Http/Controllers/FollowController.php:49` |
+| [`fluent_community/managed/after_remove`](#fluent-community-managed-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:137` |
+| [`fluent_community/manager/added`](#fluent-community-manager-added) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:112` |
+| [`fluent_community/manager/after_remove`](#fluent-community-manager-after-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:136` |
+| [`fluent_community/manager/before_remove`](#fluent-community-manager-before-remove) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:132` |
+| [`fluent_community/manager/updated`](#fluent-community-manager-updated) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:95` |
+| [`fluent_community/member/content_purged`](#fluent-community-member-content-purged) | Core | 1 | `fluent-community/app/Services/MemberContentPurgeService.php:162` |
+| [`fluent_community/member/update_flag`](#fluent-community-member-update-flag) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:314` |
+| [`fluent_community/members_query_ref`](#fluent-community-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/MembersController.php:151` |
+| [`fluent_community/mention_members_query_ref`](#fluent-community-mention-members-query-ref) | Core | 1 | `fluent-community/app/Http/Controllers/MembersController.php:92` |
+| [`fluent_community/profile_deactivated`](#fluent-community-profile-deactivated) | Core | 1 | `fluent-community/app/Http/Controllers/ProfileController.php:187` |
+| [`fluent_community/reactivate_account`](#fluent-community-reactivate-account) | Core | 1 | `fluent-community/app/Hooks/Handlers/PortalHandler.php:250` |
+| [`fluent_community/space_members_query_ref`](#fluent-community-space-members-query-ref) | Core | 2 | `fluent-community/app/Http/Controllers/SpaceController.php:453` |
 | [`fluent_community/track_activity`](#fluent-community-track-activity) | Core | 3 | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` |
-| [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:689` |
+| [`fluent_community/update_profile_link_providers`](#fluent-community-update-profile-link-providers) | Core | 1 | `fluent-community/app/Http/Controllers/AdminController.php:695` |
 | [`fluent_community/user_level_upgraded`](#fluent-community-user-level-upgraded) | <span class="pro-badge">PRO</span> | 1 | `fluent-community-pro/app/Modules/LeaderBoard/LeaderBoardModule.php:111` |
 | [`fluent_community/user_points_updated`](#fluent-community-user-points-updated) | Core <span class="edition-note">(also fired by Pro)</span> | 3 | `fluent-community-pro/app/Modules/LeaderBoard/Http/Controllers/LeaderBoardController.php:82` |
 
@@ -117,7 +119,7 @@ The row still exists when callbacks run; the handler deletes it on the next line
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:205` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:207` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
 
 ### Example
 
@@ -150,8 +152,8 @@ Fired from both the explicit POST /profile/{username}/unfollow endpoint and the 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:76` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:113` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:78` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:115` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
 
 ### Example
 
@@ -184,7 +186,7 @@ A block is stored as a Follow row with level 0, so this fires both when a brand 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:176` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:178` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
 
 ### Example
 
@@ -217,8 +219,8 @@ Fired from two call sites — the explicit POST /profile/{username}/follow endpo
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:47` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:120` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:49` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/FollowController.php:122` | `$follow` (mixed)<br>`$xProfile` (XProfile) |
 
 ### Example
 
@@ -254,7 +256,7 @@ The paired action for `manager/before_remove`. The segment is spelled `managed` 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:135` | `$user` (User) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:137` | `$user` (User) |
 
 ### Example
 
@@ -287,7 +289,7 @@ Fires only on first assignment — updating an existing manager fires fluent_com
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:110` | `$user` (User)<br>`$roles` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:112` | `$user` (User)<br>`$roles` (mixed) |
 
 ### Example
 
@@ -310,7 +312,7 @@ add_action('fluent_community/manager/added', function ($user, $roles) {
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:134` | `$user` (User) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:136` | `$user` (User) |
 
 ### Example
 
@@ -340,7 +342,7 @@ The community_role relation is still readable here, which is the only place to c
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:130` | `$user` (User) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:132` | `$user` (User) |
 
 ### Example
 
@@ -373,7 +375,7 @@ Guarded by a value comparison, so re-saving the same set of roles fires nothing.
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:93` | `$user` (User)<br>`$roles` (mixed) |
+| <span class="pro-badge">PRO</span> | `fluent-community-pro/app/Http/Controllers/ProAdminController.php:95` | `$user` (User)<br>`$roles` (mixed) |
 
 ### Example
 
@@ -383,6 +385,70 @@ add_action('fluent_community/manager/updated', function ($user, $roles) {
 ```
 
 **Related:** [`fluent_community/manager/added`](#fluent-community-manager-added)
+
+<a id="fluent-community-member-content-purged"></a>
+
+## `fluent_community/member/content_purged`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Fires once after an administrator's content purge of a member has finished.
+
+The member is already blocked, and every row of every requested kind is already deleted, so a listener cannot stop or alter anything — it exists to let a feature clean up what the purge does not know about. Pro uses it to remove that member's course reviews when posts were purged. The types it carries are the merged set for the purge, which may be wider than any single request asked for.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$userId` | `int` | The member whose content was deleted. |
+| 2 | `$types` | `string[]` | The kinds of content purged: `posts`, `comments`, `messages`, `course_progress`. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Services/MemberContentPurgeService.php:162` | `$userId` (int)<br>`$types` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/member/content_purged', function ($userId, $types) {
+}, 10, 2);
+```
+
+**Related:** [`fluent_community/course_review/deleted`](/hooks/actions/courses#fluent-community-course-review-deleted)
+
+<a id="fluent-community-member-update-flag"></a>
+
+## `fluent_community/member/update_flag`
+
+- **Type:** action
+- **Edition:** Core
+- **Call sites:** 1
+- **When it fires:** Carries a moderation flag from the admin quick actions to whatever stores it.
+
+Core fires this and stores nothing itself: Pro's moderation module is what writes the flag, and it only listens while content moderation is switched on. On a core-only site, or with that feature off, the request still reports success and the flag is simply never recorded. It fires after the profile has been saved and cannot veto anything.
+
+### Parameters
+
+| # | Name | Type | Description |
+| --- | --- | --- | --- |
+| 1 | `$user` | `\\FluentCommunity\\App\\Models\\User` | The member being flagged or unflagged. |
+| 2 | `$isFlagged` | `bool` | True when the request asked for the flag, already resolved from the exact string `yes`. |
+
+### Call Sites
+
+| Edition | Source | Parameters |
+| --- | --- | --- |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:314` | `$wpUser` (User)<br>`$isFlagged` (mixed) |
+
+### Example
+
+```php
+add_action('fluent_community/member/update_flag', function ($user, $isFlagged) {
+}, 10, 2);
+```
 
 <a id="fluent-community-members-query-ref"></a>
 
@@ -406,7 +472,7 @@ Fired with `do_action_ref_array()`, so take `&$query` and mutate it — a return
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:145` | `&$members` (mixed)<br>`$request->all()` (array) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:151` | `&$members` (mixed)<br>`$request->all()` (array) |
 | Core | `fluent-community/app/Services/Search/Providers/MemberSearchProvider.php:42` | `&$membersQuery` (mixed)<br>`$requestData` (array) |
 
 ### Example
@@ -441,7 +507,7 @@ The query arrives by reference, just before the ten suggestions are fetched and 
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/MembersController.php:86` | `&$members` (mixed)<br>`$request->all()` (array)<br>`$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/MembersController.php:92` | `&$members` (mixed)<br>`$request->all()` (array)<br>`$space` (Space) |
 
 ### Example
 
@@ -473,7 +539,7 @@ Deactivation blanks `xprofile.status` to an empty string rather than setting a `
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/ProfileController.php:177` | `$xprofile` (XProfile) |
+| Core | `fluent-community/app/Http/Controllers/ProfileController.php:187` | `$xprofile` (XProfile) |
 
 ### Example
 
@@ -505,7 +571,7 @@ Reached through the portal action URL rather than the REST API, and only after a
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:243` | `$xprofile` (XProfile) |
+| Core | `fluent-community/app/Hooks/Handlers/PortalHandler.php:250` | `$xprofile` (XProfile) |
 
 ### Example
 
@@ -539,8 +605,8 @@ One hook name covers two different queries, and only one of them runs in a reque
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:452` | `&$pendingRequests` (array)<br>`$request->all()` (array)<br>`$space` (Space) |
-| Core | `fluent-community/app/Http/Controllers/SpaceController.php:494` | `&$spaceMembers` (mixed)<br>`$request->all()` (array)<br>`$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:453` | `&$pendingRequests` (array)<br>`$request->all()` (array)<br>`$space` (Space) |
+| Core | `fluent-community/app/Http/Controllers/SpaceController.php:495` | `&$spaceMembers` (mixed)<br>`$request->all()` (array)<br>`$space` (Space) |
 
 ### Example
 
@@ -568,7 +634,7 @@ Fired after a post or comment activity row is written, and on every portal ticke
 | --- | --- | --- |
 | Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:81` | No parameters |
 | Core | `fluent-community/app/Hooks/Handlers/ActivityMonitorHandler.php:103` | No parameters |
-| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1236` | No parameters |
+| Core | `fluent-community/app/Http/Controllers/FeedsController.php:1262` | No parameters |
 
 ### Example
 
@@ -600,7 +666,7 @@ The free plugin does not persist this itself — the endpoint validates the subm
 
 | Edition | Source | Parameters |
 | --- | --- | --- |
-| Core | `fluent-community/app/Http/Controllers/AdminController.php:689` | `$config` (mixed) |
+| Core | `fluent-community/app/Http/Controllers/AdminController.php:695` | `$config` (mixed) |
 
 ### Example
 
